@@ -7,13 +7,16 @@
 ## 1. Research Objectives
 
 ### Primary Objective
+
 Develop a universally valid accounting ontology that:
+
 1. Maps to IFRS/XBRL with 95%+ coverage
 2. Supports 15+ national GAAPs with documented mappings
 3. Enables AI-based classification with >85% accuracy
 4. Passes peer review in accounting/information systems journals
 
 ### Research Questions
+
 1. **RQ1:** What is the minimal set of accounts that covers 80% of transactions across industries?
 2. **RQ2:** How do local GAAPs diverge from IFRS, and what aggregation rules resolve these?
 3. **RQ3:** Can a graph-based ontology outperform tree-based structures in multi-dimensional reporting?
@@ -22,16 +25,20 @@ Develop a universally valid accounting ontology that:
 ## 2. Research Design
 
 ### 2.1 Methodology Type
+
 **Mixed Methods:**
+
 - **Quantitative:** Comparative analysis of account structures (frequencies, mappings)
 - **Qualitative:** Expert interviews, case studies
 
 ### 2.2 Data Collection
 
 #### Phase A: Standards Inventory (Weeks 1-4)
+
 **Objective:** Systematic collection of all relevant standards.
 
 **Sources:**
+
 1. **International Standards**
    - IFRS Foundation (primary)
    - US GAAP (FASB)
@@ -55,44 +62,51 @@ Develop a universally valid accounting ontology that:
    - Technology (SaaS revenue recognition)
 
 **Data Collection Protocol:**
-````
+
+```python
 For each standard:
 1. Download official PDF/XML
 2. Create .meta.yaml with citation
 3. Calculate SHA-256 hash
 4. Extract account list to CSV
 5. Document in research/standards/[country_code]/
-````
+```
 
 #### Phase B: Comparative Analysis (Weeks 5-8)
+
 **Objective:** Identify commonalities and divergences.
 
 **Method:** Cross-tabulation matrix
 
 | Account Concept | IFRS Code | US GAAP | MX SAT | CO PUC | PA Common | Mapping Type |
-|-----------------|-----------|---------|--------|--------|-----------|--------------|
+| --- | --- | --- | --- | --- | --- | --- |
 | Cash & Equivalents | ifrs-full:Cash... | ASC 305 | 101-103 | 1105 | 1101-1102 | N:1 aggregation |
 
 **Tools:**
+
 - Excel/Google Sheets for initial analysis
 - Python (pandas) for statistical analysis
 - Jupyter notebooks for reproducibility
 
 #### Phase C: Expert Validation (Weeks 9-10)
+
 **Objective:** Validate findings with practitioners.
 
 **Sample:**
+
 - 10+ CPAs from different countries
 - 3+ Big 4 auditors
 - 2+ ERP implementation consultants
 - 1+ XBRL expert
 
 **Method:**
+
 - Semi-structured interviews (30-45 min)
 - Survey on proposed ontology (Likert scale)
 - Case study: "Map your company's COA to Kontablo"
 
 **Documentation:**
+
 - Transcripts (anonymized)
 - Coded responses (thematic analysis)
 - Stored in `research/validation/expert_interviews/`
@@ -100,6 +114,7 @@ For each standard:
 ### 2.3 Data Analysis
 
 #### Quantitative Analysis
+
 1. **Coverage Analysis:**
    - % of standard accounts mapped to Kontablo
    - % of transactions classifiable automatically
@@ -113,6 +128,7 @@ For each standard:
    - Precision/Recall of AI classifier
 
 #### Qualitative Analysis
+
 1. **Thematic Coding:**
    - Expert feedback on edge cases
    - Cultural accounting practices
@@ -124,21 +140,26 @@ For each standard:
 ## 3. Quality Assurance
 
 ### 3.1 Traceability
+
 Every claim in the paper must cite:
+
 - Source document (with SHA-256 hash)
 - Analysis script (Jupyter notebook)
 - Expert validation (interview ID)
 
 ### 3.2 Reproducibility
+
 All analysis code in `research/analysis/`:
-````python
+
+```python
 # Example: coverage_analysis.ipynb
 # Input: bibliography/primary_sources/ifrs_2023.pdf
 # Output: research/analysis/results/ifrs_coverage.csv
 # Hash: abc123...
-````
+```
 
 ### 3.3 Version Control
+
 - Git commits for every change
 - Tagged releases (v0.1-research-findings)
 - Zenodo DOI for dataset snapshots
@@ -146,18 +167,20 @@ All analysis code in `research/analysis/`:
 ## 4. Ethical Considerations
 
 ### 4.1 Data Privacy
+
 - No real company financial data published
 - Case studies anonymized
 - Expert interviews require consent
 
 ### 4.2 Conflicts of Interest
+
 - Disclosed in paper
 - No funding from ERP vendors (to maintain neutrality)
 
 ## 5. Timeline
 
 | Week | Activity | Deliverable |
-|------|----------|-------------|
+| --- | --- | --- |
 | 1-4 | Standards collection | Bibliography complete |
 | 5-8 | Comparative analysis | Mapping matrix |
 | 9-10 | Expert validation | Interview transcripts |
@@ -170,17 +193,20 @@ All analysis code in `research/analysis/`:
 ## 6. Target Journals
 
 ### Tier 1 (Ideal)
+
 - **Journal of Information Systems** (AIS)
 - **MIS Quarterly** (if AI angle strong)
 - **Accounting Horizons** (AICPA)
 
 ### Tier 2 (Backup)
+
 - **International Journal of Accounting Information Systems**
 - **Journal of Emerging Technologies in Accounting**
 
 ### Preprint
-- SSRN (Social Science Research Network)
-- arXiv (cs.AI or cs.DB)
+
+- SSRN: [Social Science Research Network](https://ssrn.com)
+- arXiv: [cs.AI or cs.DB](https://arxiv.org)
 
 ## 7. Success Criteria
 
@@ -195,4 +221,4 @@ All analysis code in `research/analysis/`:
 
 **Principal Investigator:** Christian Luciani  
 **Institution:** Kontablo Research Initiative  
-**Contact:** cluciani@gmail.com
+**Contact:** [cluciani@gmail.com](mailto:cluciani@gmail.com)
