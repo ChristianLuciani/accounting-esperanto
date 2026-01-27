@@ -1,0 +1,30 @@
+# Accounting Esperanto - Human-Readable Specification
+# This format is for DOCUMENTATION and REVIEW
+# For machine processing, use /spec/machine/nodes.json
+
+version: "0.1.0"
+last_updated: "2025-01-27"
+
+elements:
+  - uuid: "00000000-0000-4000-8000-000000000001"
+    code: "1"
+    label: "Assets"
+    nature: debit
+    xbrl: "ifrs-full:Assets"
+    
+    groups:
+      - uuid: "00000000-0000-4000-8000-000000000011"
+        code: "1.1"
+        label: "Current Assets"
+        liquidity: current
+        
+        categories:
+          - uuid: "550e8400-e29b-41d4-a716-446655440000"
+            code: "1.1.01"
+            label: "Cash and Cash Equivalents"
+            synonyms: ["Cash", "Caja", "Efectivo"]
+            appears_on: ["Balance Sheet", "Cash Flow Statement"]
+            
+          # More accounts here...
+
+  # More elements...

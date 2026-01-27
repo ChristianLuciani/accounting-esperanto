@@ -1,0 +1,25 @@
+# Mexico SAT → Accounting Esperanto Mappings
+
+mappings:
+  # Cash accounts (aggregation example)
+  - local_codes: ["101", "102", "103"]
+    esperanto_uuid: "550e8400-e29b-41d4-a716-446655440000"
+    esperanto_code: "1.1.01"
+    aggregation_rule: "sum"
+    confidence: 1.0
+    notes: "Multiple cash accounts aggregate to one global account"
+    
+  # Revenue disaggregation example
+  - local_codes: ["401", "402", "403"]
+    esperanto_uuid: "revenue-operating-uuid"
+    esperanto_code: "4.1.01"
+    aggregation_rule: "sum"
+    confidence: 1.0
+    disaggregation_dimension: "geography"  # National vs Export
+    notes: "Revenue splits by geography in SAT"
+
+validation_rules:
+  - rule: "101 must be debit balance"
+    enforcement: "error"
+  - rule: "401 must be credit balance"
+    enforcement: "error"

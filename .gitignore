@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Large files
+research/raw_data/*.pdf
+research/raw_data/*.xlsx
+*.zip
+
+# Generated
+coverage.html
+dist/
+build/

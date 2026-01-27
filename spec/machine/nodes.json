@@ -1,0 +1,70 @@
+[
+  {
+    "uuid": "00000000-0000-4000-8000-000000000001",
+    "standard_code": "1",
+    "label_en": "Assets",
+    "label_key": "assets",
+    "nature": "debit",
+    "classifications": {
+      "statement_type": ["balance_sheet"],
+      "liquidity": "not_applicable"
+    },
+    "relations": {
+      "parent_uuid": null
+    },
+    "xbrl_mapping": {
+      "primary_tag": "ifrs-full:Assets"
+    },
+    "metadata": {
+      "status": "active",
+      "is_monetary": false
+    }
+  },
+  {
+    "uuid": "00000000-0000-4000-8000-000000000011",
+    "standard_code": "1.1",
+    "label_en": "Current Assets",
+    "label_key": "current_assets",
+    "nature": "debit",
+    "classifications": {
+      "statement_type": ["balance_sheet"],
+      "liquidity": "current"
+    },
+    "relations": {
+      "parent_uuid": "00000000-0000-4000-8000-000000000001"
+    },
+    "xbrl_mapping": {
+      "primary_tag": "ifrs-full:CurrentAssets"
+    },
+    "metadata": {
+      "status": "active"
+    }
+  },
+  {
+    "uuid": "550e8400-e29b-41d4-a716-446655440000",
+    "standard_code": "1.1.01",
+    "label_en": "Cash and Cash Equivalents",
+    "label_key": "cash_and_equivalents",
+    "synonyms": ["Cash", "Caja", "Efectivo", "Bancos"],
+    "nature": "debit",
+    "classifications": {
+      "statement_type": ["balance_sheet", "cash_flow"],
+      "liquidity": "current",
+      "functional_category": "operating"
+    },
+    "relations": {
+      "parent_uuid": "00000000-0000-4000-8000-000000000011"
+    },
+    "xbrl_mapping": {
+      "primary_tag": "ifrs-full:CashAndCashEquivalents"
+    },
+    "metadata": {
+      "is_monetary": true,
+      "status": "active"
+    },
+    "agent_hints": {
+      "vendor_patterns": ["bank*", "paypal.com", "stripe.com"],
+      "frequency": "varies"
+    }
+  }
+]

@@ -1,0 +1,164 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://accounting-esperanto.org/schemas/account.json",
+  "title": "Accounting Esperanto Account",
+  "description": "Universal account definition with multi-dimensional classification",
+  "type": "object",
+  "required": ["uuid", "standard_code", "label_en", "nature", "classifications"],
+  "properties": {
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Immutable global identifier (primary key)"
+    },
+    "standard_code": {
+      "type": "string",
+      "pattern": "^\\d\\.\\d\\.\\d{2}(\\.\\d{3})?$",
+      "description": "Human-readable hierarchical code (display only)",
+      "examples": ["1.1.01", "5.2.15.002"]
+    },
+    "label_en": {
+      "type": "string",
+      "minLength": 1,
+      "description": "English canonical label"
+    },
+    "label_key": {
+      "type": "string",
+      "description": "i18n key for translation systems",
+      "pattern": "^[a-z_]+$",
+      "examples": ["cash_and_equivalents", "software_subscriptions"]
+    },
+    "synonyms": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Alternative names for AI semantic matching"
+    },
+    "nature": {
+      "type": "string",
+      "enum": ["debit", "credit"],
+      "description": "Fundamental accounting nature (never changes)"
+    },
+    "classifications": {
+      "type": "object",
+      "required": ["statement_type", "liquidity"],
+      "properties": {
+        "statement_type": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["balance_sheet", "income_statement", "cash_flow", "retained_earnings"]
+          },
+          "minItems": 1,
+          "description": "Which financial statement(s) this account appears on"
+        },
+        "liquidity": {
+          "type": "string",
+          "enum": ["current", "non_current", "not_applicable"],
+          "description": "For balance sheet accounts"
+        },
+        "functional_category": {
+          "type": "string",
+          "enum": ["operating", "investing", "financing", "not_applicable"],
+          "description": "For cash flow classification"
+        }
+      }
+    },
+    "relations": {
+      "type": "object",
+      "description": "Graph relationships to other accounts",
+      "properties": {
+        "parent_uuid": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Primary parent for rollup"
+        },
+        "also_rolls_up_to": {
+          "type": "array",
+          "items": {"type": "string", "format": "uuid"},
+          "description": "Additional rollup parents (for multi-dimensional reporting)"
+        },
+        "contra_account_of": {
+          "type": "string",
+          "format": "uuid",
+          "description": "If this is a contra account (e.g., Accumulated Depreciation)"
+        }
+      }
+    },
+    "xbrl_mapping": {
+      "type": "object",
+      "properties": {
+        "primary_tag": {
+          "type": "string",
+          "pattern": "^[a-z-]+:[A-Z][a-zA-Z]+$",
+          "examples": ["ifrs-full:CashAndCashEquivalents"]
+        },
+        "dimensions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "dimension": {"type": "string"},
+              "member": {"type": "string"}
+            }
+          },
+          "description": "XBRL dimensional metadata (advanced)"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "is_monetary": {
+          "type": "boolean",
+          "description": "Requires currency revaluation"
+        },
+        "requires_depreciation": {
+          "type": "boolean"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "deprecated", "experimental"],
+          "default": "active"
+        },
+        "deprecated_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "effective_date": {
+          "type": "string",
+          "format": "date",
+          "description": "When this account became valid"
+        }
+      }
+    },
+    "agent_hints": {
+      "type": "object",
+      "description": "Metadata for AI classification",
+      "properties": {
+        "vendor_patterns": {
+          "type": "array",
+          "items": {"type": "string"},
+          "examples": [["aws.amazon.com", "cloud.google.com"]]
+        },
+        "amount_ranges": {
+          "type": "object",
+          "properties": {
+            "typical_min": {"type": "number"},
+            "typical_max": {"type": "number"}
+          }
+        },
+        "frequency": {
+          "type": "string",
+          "enum": ["one-time", "monthly", "quarterly", "annual", "varies"]
+        }
+      }
+    },
+    "blockchain": {
+      "type": "object",
+      "properties": {
+        "supports_smart_contracts": {"type": "boolean"},
+        "evm_compatible": {"type": "boolean"}
+      }
+    }
+  }
+}
