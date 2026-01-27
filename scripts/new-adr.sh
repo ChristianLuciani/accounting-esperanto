@@ -1,7 +1,11 @@
 #!/bin/bash
 
+# Find project root (where docs/ directory is)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+
 # Get next ADR number
-LAST_ADR=$(ls docs/adr/*.md 2>/dev/null | grep -E '^docs/adr/[0-9]+' | tail -1 | sed 's/.*\/0*\([0-9]*\).*/\1/')
+LAST_ADR=$(ls "$PROJECT_ROOT/docs/adr"/*.md 2>/dev/null | grep -E '[0-9]+' | tail -1 | sed 's/.*\/0*\([0-9]*\).*/\1/')
 NEXT_NUM=$(printf "%03d" $((LAST_ADR + 1)))
 
 TITLE="$1"
@@ -10,7 +14,7 @@ if [ -z "$TITLE" ]; then
     exit 1
 fi
 
-FILENAME="docs/adr/${NEXT_NUM}-$(echo "$TITLE" | tr '[:upper:]' '[:lower:]' | tr ' ' '-').md"
+FILENAME="$PROJECT_ROOT/docs/adr/${NEXT_NUM}-$(echo "$TITLE" | tr '[:upper:]' '[:lower:]' | tr ' ' '-').md"
 
 cat > "$FILENAME" << TEMPLATE
 # ADR ${NEXT_NUM}: ${TITLE}
