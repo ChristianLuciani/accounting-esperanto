@@ -1,0 +1,11 @@
+# Analysis Notebooks
+
+All quantitative analysis must be:
+1. Reproducible (environment.yml included)
+2. Documented (markdown cells)
+3. Version controlled
+
+Example notebooks:
+- coverage_analysis.ipynb
+- mapping_complexity.ipynb
+- ai_benchmark_results.ipynb

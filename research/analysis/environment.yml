@@ -1,0 +1,18 @@
+name: kontablo-research
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pandas
+  - numpy
+  - matplotlib
+  - seaborn
+  - jupyter
+  - openpyxl
+  - pyyaml
+  - pip
+  - pip:
+    - anthropic
+    - langchain
+    - jsonschema

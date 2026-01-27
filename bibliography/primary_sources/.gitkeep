@@ -1,0 +1,9 @@
+# Primary Sources
+
+Store official documents here:
+- IFRS_2023_consolidated.pdf
+- XBRL_taxonomy_2024.zip
+- Mexico_SAT_catalog_2024.pdf
+- etc.
+
+Each file MUST have a corresponding .meta.yaml
