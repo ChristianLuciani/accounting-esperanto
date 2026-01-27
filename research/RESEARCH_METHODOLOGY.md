@@ -193,6 +193,6 @@ All analysis code in `research/analysis/`:
 
 ---
 
-**Principal Investigator:** [Your Name]  
+**Principal Investigator:** Christian Luciani  
 **Institution:** Kontablo Research Initiative  
-**Contact:** [Email]
+**Contact:** cluciani@gmail.com
