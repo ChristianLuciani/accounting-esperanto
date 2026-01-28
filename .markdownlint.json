@@ -1,0 +1,23 @@
+{
+  "extends": "default",
+  "rules": {
+    "MD003": { "style": "consistent" },
+    "MD004": { "style": "consistent" },
+    "MD005": false,
+    "MD007": { "indent": 2 },
+    "MD013": false,
+    "MD022": {
+      "lines": 1
+    },
+    "MD024": false,
+    "MD025": false,
+    "MD032": {
+      "lists": true
+    },
+    "MD033": false,
+    "MD034": false,
+    "MD040": false,
+    "no-hard-tabs": false,
+    "whitespace": false
+  }
+}
