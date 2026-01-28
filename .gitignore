@@ -23,3 +23,15 @@ research/raw_data/*.xlsx
 coverage.html
 dist/
 build/
+
+# Infisical
+.infisical.json
+.env
+.env.local
+
+
+# Infisical
+.infisical.json
+.env
+.env.local
+
