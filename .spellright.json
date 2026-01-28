@@ -1,0 +1,50 @@
+{
+  "language": "en",
+  "ignoreWords": [
+    "Aggregation",
+    "Kontablo",
+    "Mexico",
+    "Colombia",
+    "Panama",
+    "IFRS",
+    "SAT",
+    "DIAN",
+    "DGI",
+    "aggregation",
+    "aggregations",
+    "blockchain",
+    "immutability",
+    "cryptocurrency",
+    "verifiable",
+    "cryptocurrency",
+    "latency",
+    "depreciation",
+    "stateful",
+    "consolidations",
+    "Ethereum",
+    "Polygon",
+    "accounting",
+    "ontology",
+    "taxonomies",
+    "OpenSpec",
+    "Antigravity",
+    "Infisical",
+    "Groq",
+    "Cerebras",
+    "OpenRouter",
+    "Kontablo",
+    "XBRL",
+    "taxonomies",
+    "conditional",
+    "PUC",
+    "SMV"
+  ],
+  "ignoreRegexps": [
+    "^[A-Z][a-z]+[A-Z][a-z]+.*",
+    "^[A-Z]{2,}.*"
+  ],
+  "ignoreWordsInMarkdown": true,
+  "documentTypes": [
+    "markdown"
+  ]
+}
