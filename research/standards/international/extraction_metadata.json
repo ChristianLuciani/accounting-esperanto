@@ -1,0 +1,15 @@
+{
+  "extraction_date": "2026-01-27T23:18:33.882722",
+  "phase": "Phase 0, Week 1",
+  "source": "IFRS Foundation Taxonomy",
+  "standard": "IFRS 2024",
+  "accounts_extracted": 14,
+  "ai_model": "gemini-2.5-flash",
+  "tokens_used": 0,
+  "latency_seconds": 12.68270230293274,
+  "files_created": [
+    "research/standards/international/ifrs_primary_accounts.csv",
+    "core/kontablo_v0_1_mapping.yaml",
+    "research/standards/international/extraction_metadata.json"
+  ]
+}

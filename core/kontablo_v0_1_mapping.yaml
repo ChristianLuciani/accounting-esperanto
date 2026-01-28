@@ -1,0 +1,332 @@
+```yaml
+kontablo_level_1:
+  - id: assets
+    uuid: 00000000-0000-4000-8000-000000000001
+    label_en: Assets
+    ifrs_root: Assets
+    level_2_accounts:
+      - id: assets.current
+        uuid: 00000000-0000-4000-8000-000000000002
+        label_en: Current Assets
+        ifrs_mappings:
+          - ifrs-full:AssetsCurrent
+        accounts:
+          - code: 1010
+            label: Cash and Cash Equivalents
+            ifrs_tag: ifrs-full:CashAndCashEquivalents
+          - code: 1020
+            label: Trade and Other Receivables
+            ifrs_tag: ifrs-full:TradeAndOtherReceivables
+          - code: 1030
+            label: Inventories
+            ifrs_tag: ifrs-full:Inventories
+          - code: 1040
+            label: Current Tax Assets
+            ifrs_tag: ifrs-full:CurrentTaxAssets
+          - code: 1050
+            label: Prepaid Expenses
+            ifrs_tag: ifrs-full:PrepaidExpenses
+      - id: assets.noncurrent
+        uuid: 00000000-0000-4000-8000-000000000003
+        label_en: Non-current Assets
+        ifrs_mappings:
+          - ifrs-full:AssetsNoncurrent
+        accounts:
+          - code: 1110
+            label: Property, Plant and Equipment
+            ifrs_tag: ifrs-full:PropertyPlantAndEquipment
+          - code: 1120
+            label: Intangible Assets
+            ifrs_tag: ifrs-full:IntangibleAssetsOtherThanGoodwill
+          - code: 1130
+            label: Investment Property
+            ifrs_tag: ifrs-full:InvestmentProperty
+          - code: 1140
+            label: Investments in Associates and Joint Ventures
+            ifrs_tag: ifrs-full:InvestmentsInAssociatesAndJointVentures
+          - code: 1150
+            label: Deferred Tax Assets
+            ifrs_tag: ifrs-full:DeferredTaxAssets
+
+  - id: liabilities
+    uuid: 00000000-0000-4000-8000-000000000004
+    label_en: Liabilities
+    ifrs_root: Liabilities
+    level_2_accounts:
+      - id: liabilities.current
+        uuid: 00000000-0000-4000-8000-000000000005
+        label_en: Current Liabilities
+        ifrs_mappings:
+          - ifrs-full:LiabilitiesCurrent
+        accounts:
+          - code: 2010
+            label: Trade and Other Payables
+            ifrs_tag: ifrs-full:TradeAndOtherPayables
+          - code: 2020
+            label: Short-term Borrowings
+            ifrs_tag: ifrs-full:CurrentBorrowings
+          - code: 2030
+            label: Current Tax Liabilities
+            ifrs_tag: ifrs-full:CurrentTaxLiabilities
+          - code: 2040
+            label: Provisions
+            ifrs_tag: ifrs-full:Provisions
+          - code: 2050
+            label: Contract Liabilities
+            ifrs_tag: ifrs-full:ContractLiabilities
+      - id: liabilities.noncurrent
+        uuid: 00000000-0000-4000-8000-000000000006
+        label_en: Non-current Liabilities
+        ifrs_mappings:
+          - ifrs-full:LiabilitiesNoncurrent
+        accounts:
+          - code: 2110
+            label: Long-term Borrowings
+            ifrs_tag: ifrs-full:NoncurrentBorrowings
+          - code: 2120
+            label: Deferred Tax Liabilities
+            ifrs_tag: ifrs-full:DeferredTaxLiabilities
+          - code: 2130
+            label: Provisions for Post-employment Benefits
+            ifrs_tag: ifrs-full:ProvisionsForPostemploymentBenefits
+          - code: 2140
+            label: Lease Liabilities
+            ifrs_tag: ifrs-full:LeaseLiabilities
+          - code: 2150
+            label: Long-term Trade and Other Payables
+            ifrs_tag: ifrs-full:OtherNoncurrentFinancialLiabilities # General category often used for these
+
+  - id: equity
+    uuid: 00000000-0000-4000-8000-000000000007
+    label_en: Equity
+    ifrs_root: Equity # Conceptual root combining multiple IFRS equity tags
+    level_2_accounts:
+      - id: equity.issued_capital
+        uuid: 00000000-0000-4000-8000-000000000008
+        label_en: Issued Capital
+        ifrs_mappings:
+          - ifrs-full:IssuedCapital
+        accounts:
+          - code: 3010
+            label: Share Capital
+            ifrs_tag: ifrs-full:ShareCapital
+          - code: 3020
+            label: Share Premium
+            ifrs_tag: ifrs-full:SharePremium
+          - code: 3030
+            label: Other Equity Instruments
+            ifrs_tag: ifrs-full:OtherEquityInstruments
+      - id: equity.retained_earnings
+        uuid: 00000000-0000-4000-8000-000000000009
+        label_en: Retained Earnings
+        ifrs_mappings:
+          - ifrs-full:RetainedEarnings
+        accounts:
+          - code: 3110
+            label: Accumulated Profits (Losses)
+            ifrs_tag: ifrs-full:RetainedEarnings # Often the same tag as the parent
+          - code: 3120
+            label: Dividends Declared
+            ifrs_tag: ifrs-full:DividendsDeclared
+      - id: equity.other_reserves
+        uuid: 00000000-0000-4000-8000-000000000010
+        label_en: Other Reserves
+        ifrs_mappings:
+          - ifrs-full:OtherReserves
+        accounts:
+          - code: 3210
+            label: Revaluation Surplus
+            ifrs_tag: ifrs-full:RevaluationSurplus
+          - code: 3220
+            label: Foreign Currency Translation Reserve
+            ifrs_tag: ifrs-full:ForeignCurrencyTranslationReserve
+          - code: 3230
+            label: Cash Flow Hedge Reserve
+            ifrs_tag: ifrs-full:CashFlowHedgeReserve
+          - code: 3240
+            label: Capital Redemption Reserve
+            ifrs_tag: ifrs-full:CapitalRedemptionReserve
+
+  - id: income_statement.revenue
+    uuid: 00000000-0000-4000-8000-000000000011
+    label_en: Revenue
+    ifrs_root: Revenue
+    level_2_accounts:
+      - id: income_statement.revenue.total
+        uuid: 00000000-0000-4000-8000-000000000012
+        label_en: Total Revenue
+        ifrs_mappings:
+          - ifrs-full:Revenue
+        accounts:
+          - code: 4010
+            label: Revenue from Contracts with Customers
+            ifrs_tag: ifrs-full:RevenueFromContractsWithCustomers
+          - code: 4020
+            label: Interest Revenue
+            ifrs_tag: ifrs-full:InterestRevenue
+          - code: 4030
+            label: Dividend Revenue
+            ifrs_tag: ifrs-full:DividendRevenue
+          - code: 4040
+            label: Royalties Revenue
+            ifrs_tag: ifrs-full:RoyaltiesRevenue
+
+  - id: income_statement.expenses
+    uuid: 00000000-0000-4000-8000-000000000013
+    label_en: Expenses
+    ifrs_root: Expenses # Conceptual root for various expense categories
+    level_2_accounts:
+      - id: income_statement.expenses.cost_of_sales
+        uuid: 00000000-0000-4000-8000-000000000014
+        label_en: Cost of Sales
+        ifrs_mappings:
+          - ifrs-full:CostOfSales
+        accounts:
+          - code: 5010
+            label: Raw Materials and Consumables Used
+            ifrs_tag: ifrs-full:RawMaterialsAndConsumablesUsed
+          - code: 5020
+            label: Employee Benefits Expense
+            ifrs_tag: ifrs-full:EmployeeBenefitsExpense
+          - code: 5030
+            label: Depreciation and Amortisation Expense
+            ifrs_tag: ifrs-full:DepreciationAndAmortisationExpense
+          - code: 5040
+            label: Other Direct Costs
+            ifrs_tag: ifrs-full:OtherCostOfSales
+      - id: income_statement.expenses.operating_expenses
+        uuid: 00000000-0000-4000-8000-000000000015
+        label_en: Operating Expenses
+        ifrs_mappings:
+          - ifrs-full:OperatingExpenses
+        accounts:
+          - code: 6010
+            label: Administrative Expenses
+            ifrs_tag: ifrs-full:AdministrativeExpenses
+          - code: 6020
+            label: Distribution Costs
+            ifrs_tag: ifrs-full:DistributionCosts
+          - code: 6030
+            label: Research and Development Expenses
+            ifrs_tag: ifrs-full:ResearchAndDevelopmentExpense
+          - code: 6040
+            label: Other Operating Expenses
+            ifrs_tag: ifrs-full:OtherOperatingExpenses
+
+  - id: income_statement.finance_items
+    uuid: 00000000-0000-4000-8000-000000000016
+    label_en: Finance Income and Expense
+    ifrs_root: FinanceIncomeExpense
+    level_2_accounts:
+      - id: income_statement.finance_income_expense.total
+        uuid: 00000000-0000-4000-8000-000000000017
+        label_en: Net Finance Income (Expense)
+        ifrs_mappings:
+          - ifrs-full:FinanceIncomeExpense
+        accounts:
+          - code: 7010
+            label: Interest Expense
+            ifrs_tag: ifrs-full:InterestExpense
+          - code: 7020
+            label: Interest Income
+            ifrs_tag: ifrs-full:InterestIncome
+          - code: 7030
+            label: Net Foreign Exchange Gains (Losses)
+            ifrs_tag: ifrs-full:NetExchangeDifferencesOnMonetaryItems
+          - code: 7040
+            label: Gains (Losses) on Financial Instruments
+            ifrs_tag: ifrs-full:GainsLossesOnFinancialInstruments
+
+  - id: income_statement.income_tax
+    uuid: 00000000-0000-4000-8000-000000000018
+    label_en: Income Tax Expense (Benefit)
+    ifrs_root: IncomeTaxExpenseBenefit
+    level_2_accounts:
+      - id: income_statement.income_tax_expense_benefit.total
+        uuid: 00000000-0000-4000-8000-000000000019
+        label_en: Total Income Tax Expense (Benefit)
+        ifrs_mappings:
+          - ifrs-full:IncomeTaxExpenseBenefit
+        accounts:
+          - code: 8010
+            label: Current Tax Expense
+            ifrs_tag: ifrs-full:CurrentTaxExpense
+          - code: 8020
+            label: Deferred Tax Expense
+            ifrs_tag: ifrs-full:DeferredTaxExpense
+          - code: 8030
+            label: Prior Period Tax Adjustments
+            ifrs_tag: ifrs-full:IncomeTaxRelatingToPriorPeriods
+
+  - id: cash_flow_statement.operating
+    uuid: 00000000-0000-4000-8000-000000000020
+    label_en: Cash Flows from Operating Activities
+    ifrs_root: CashFlowsFromUsedInOperatingActivities
+    level_2_accounts:
+      - id: cash_flow_statement.operating.total
+        uuid: 00000000-0000-4000-8000-000000000021
+        label_en: Total Cash Flows from Operating Activities
+        ifrs_mappings:
+          - ifrs-full:CashFlowsFromUsedInOperatingActivities
+        accounts:
+          - code: 9010
+            label: Cash Receipts from Customers
+            ifrs_tag: ifrs-full:CashReceiptsFromCustomers
+          - code: 9020
+            label: Cash Paid to Suppliers and Employees
+            ifrs_tag: ifrs-full:CashPaidToSuppliersAndEmployees
+          - code: 9030
+            label: Interest Received
+            ifrs_tag: ifrs-full:InterestReceived
+          - code: 9040
+            label: Income Taxes Paid
+            ifrs_tag: ifrs-full:IncomeTaxesPaid
+
+  - id: cash_flow_statement.investing
+    uuid: 00000000-0000-4000-8000-000000000022
+    label_en: Cash Flows from Investing Activities
+    ifrs_root: CashFlowsFromUsedInInvestingActivities
+    level_2_accounts:
+      - id: cash_flow_statement.investing.total
+        uuid: 00000000-0000-4000-8000-000000000023
+        label_en: Total Cash Flows from Investing Activities
+        ifrs_mappings:
+          - ifrs-full:CashFlowsFromUsedInInvestingActivities
+        accounts:
+          - code: 9110
+            label: Purchase of Property, Plant and Equipment
+            ifrs_tag: ifrs-full:PaymentsToAcquirePropertyPlantAndEquipment
+          - code: 9120
+            label: Proceeds from Sale of Property, Plant and Equipment
+            ifrs_tag: ifrs-full:ProceedsFromSalesOfPropertyPlantAndEquipment
+          - code: 9130
+            label: Purchase of Intangible Assets
+            ifrs_tag: ifrs-full:PaymentsToAcquireIntangibleAssets
+          - code: 9140
+            label: Investments in Associates
+            ifrs_tag: ifrs-full:PaymentsToAcquireInvestmentsInAssociatesAndJointVentures
+
+  - id: cash_flow_statement.financing
+    uuid: 00000000-0000-4000-8000-000000000024
+    label_en: Cash Flows from Financing Activities
+    ifrs_root: CashFlowsFromUsedInFinancingActivities
+    level_2_accounts:
+      - id: cash_flow_statement.financing.total
+        uuid: 00000000-0000-4000-8000-000000000025
+        label_en: Total Cash Flows from Financing Activities
+        ifrs_mappings:
+          - ifrs-full:CashFlowsFromUsedInFinancingActivities
+        accounts:
+          - code: 9210
+            label: Proceeds from Issue of Shares
+            ifrs_tag: ifrs-full:ProceedsFromIssuingShares
+          - code: 9220
+            label: Repayments of Borrowings
+            ifrs_tag: ifrs-full:RepaymentsOfBorrowings
+          - code: 9230
+            label: Dividends Paid
+            ifrs_tag: ifrs-full:DividendsPaid
+          - code: 9240
+            label: Lease Payments
+            ifrs_tag: ifrs-full:PaymentsOfLeaseLiabilities
+```

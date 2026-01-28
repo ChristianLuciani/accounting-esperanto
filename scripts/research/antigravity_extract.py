@@ -97,10 +97,10 @@ File hash for verification: {file_hash}
 Provide extremely detailed extraction. This is for academic research requiring 100% accuracy.
 """
 
-    # Call Gemini 2.0 Flash (FREE, multimodal)
-    model = genai.GenerativeModel('gemini-2.0-flash-exp')
+    # Call Gemini 2.5 Flash (latest, multimodal)
+    model = genai.GenerativeModel('gemini-2.5-flash')
     
-    print("🤖 Extracting with Gemini 2.0 Flash...")
+    print("🤖 Extracting with Gemini 2.5 Flash...")
     response = model.generate_content([uploaded_file, prompt])
     
     # Save output
@@ -124,17 +124,23 @@ Provide extremely detailed extraction. This is for academic research requiring 1
     
     print(f"✅ Saved to: {output_file}")
     
-    # Extract CSV if present
+    # Extract CSV if present in markdown
     if '```csv' in response.text:
         csv_start = response.text.find('```csv') + 6
         csv_end = response.text.find('```', csv_start)
-        csv_content = response.text[csv_start:csv_end].strip()
-        
-        csv_file = output_dir / 'accounts.csv'
-        with open(csv_file, 'w') as f:
-            f.write(csv_content)
-        
-        print(f"✅ Extracted CSV: {csv_file}")
+        if csv_end > csv_start:
+            csv_content = response.text[csv_start:csv_end].strip()
+            
+            csv_file = output_dir / 'accounts.csv'
+            with open(csv_file, 'w') as f:
+                f.write(csv_content)
+            
+            row_count = len(csv_content.strip().split('\n')) - 1
+            print(f"✅ Extracted CSV: {csv_file} ({row_count} accounts)")
+        else:
+            print(f"⚠️  CSV block found but parsing failed")
+    else:
+        print(f"⚠️  No CSV block in markdown response")
     
     # Create metadata
     meta_file = output_dir / f'{pdf_path.stem}.meta.yaml'

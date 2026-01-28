@@ -35,3 +35,9 @@ build/
 .env
 .env.local
 
+
+# Infisical
+.infisical.json
+.env
+.env.local
+
