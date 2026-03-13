@@ -1,0 +1,63 @@
+# Kontablo Localization Mapping: Brazil (SPED/RFB)
+# Version: 0.1.0-draft
+# Target: Plano de Contas Referencial - SPED (ECD/ECF)
+
+metadata:
+  country: br
+  authority: Receita Federal do Brasil (RFB)
+  standard: plano_referencial_sped_2024
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-11
+
+mappings:
+  # --- ATIVO ---
+  "1.01.01.01":
+    name: "Caixa Geral"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101" # Cash
+
+  "1.01.01.02":
+    name: "Bancos Conta Movimento - País"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102" # Banks
+
+  # --- PASSIVO ---
+  "2.01.01":
+    name: "Empréstimos e Financiamentos"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202" # Short-term Borrowings
+
+  "2.01.02":
+    name: "Fornecedores"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201" # Trade Payables
+
+  "2.01.05.01":
+    name: "ICMS a Recolher"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203" # VAT/ICMS Payable
+
+  "2.01.05.03":
+    name: "PIS a Recolher"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "30000000-0000-4000-8000-000000000001" # PIS/COFINS (Brazil Specific)
+
+  # --- RECEITAS ---
+  "4.01.01":
+    name: "Venda de Mercadorias"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301" # Domestic Revenue
+
+  # --- DESPESAS ---
+  "5.02.01":
+    name: "Despesas com Pessoal"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501" # Deductible

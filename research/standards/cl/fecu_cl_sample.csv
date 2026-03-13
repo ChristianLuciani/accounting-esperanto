@@ -1,0 +1,14 @@
+CÓDIGO,NOMBRE,NATURALEZA,TIPO
+1.01.01,Efectivo y equivalentes de efectivo,DEUDORA,ACTIVO CORRIENTE
+1.01.02,Otros activos financieros corrientes,DEUDORA,ACTIVO CORRIENTE
+1.01.03,Otros activos no financieros corrientes,DEUDORA,ACTIVO CORRIENTE
+1.01.04,Deudores comerciales y otras cuentas por cobrar corrientes,DEUDORA,ACTIVO CORRIENTE
+1.01.07,Inventarios,DEUDORA,ACTIVO CORRIENTE
+1.02.01,Propiedades planta y equipo,DEUDORA,ACTIVO NO CORRIENTE
+2.01.01,Otros pasivos financieros corrientes,ACREEDORA,PASIVO CORRIENTE
+2.01.03,Cuentas por pagar comerciales y otras cuentas por pagar,ACREEDORA,PASIVO CORRIENTE
+2.01.05,Pasivos por impuestos corrientes,ACREEDORA,PASIVO CORRIENTE
+3.01.01,Capital emitido,ACREEDORA,PATRIMONIO
+4.01.01,Ingresos de actividades ordinarias,ACREEDORA,RESULTADO
+5.01.01,Costos de ventas,DEUDORA,RESULTADO
+5.02.01,Gastos de administración,DEUDORA,RESULTADO

@@ -1,0 +1,13 @@
+CODE,ACCOUNT_NAME,TYPE,NATURE
+1000,Cash at Bank and In Hand,Current Asset,DEBIT
+1100,Trade Debtors,Current Asset,DEBIT
+1200,Stock (Inventories),Current Asset,DEBIT
+1500,Tangible Fixed Assets,Fixed Asset,DEBIT
+2000,Trade Creditors,Current Liability,CREDIT
+2100,VAT Liability,Current Liability,CREDIT
+2200,Accruals and Deferred Income,Current Liability,CREDIT
+3000,Called Up Share Capital,Equity,CREDIT
+3100,Retained Earnings / P&L Account,Equity,CREDIT
+4000,Turnover (Revenue),Revenue,CREDIT
+5000,Cost of Sales,Cost,DEBIT
+6000,Administrative Expenses,Expense,DEBIT

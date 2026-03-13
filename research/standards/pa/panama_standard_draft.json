@@ -1,0 +1,107 @@
+[
+    {
+        "code": "1000",
+        "name": "ACTIVO",
+        "level": 1,
+        "nature": "Debit",
+        "description": "Recursos controlados por la entidad"
+    },
+    {
+        "code": "1010",
+        "name": "Efectivo y Equivalentes",
+        "level": 2,
+        "nature": "Debit",
+        "description": "Caja y bancos"
+    },
+    {
+        "code": "1030",
+        "name": "Cuentas por Cobrar Clientes",
+        "level": 2,
+        "nature": "Debit",
+        "description": "Ventas a crédito"
+    },
+    {
+        "code": "1050",
+        "name": "Créditos Fiscales (DGI)",
+        "level": 2,
+        "nature": "Debit",
+        "description": "Saldos a favor en ITBMS o ISR"
+    },
+    {
+        "code": "2000",
+        "name": "PASIVO",
+        "level": 1,
+        "nature": "Credit",
+        "description": "Obligaciones presentes"
+    },
+    {
+        "code": "2030",
+        "name": "ITBMS por Pagar (Tesoro Nacional)",
+        "level": 2,
+        "nature": "Credit",
+        "description": "ITBMS 7%, 10%, 15% recolectado"
+    },
+    {
+        "code": "2040",
+        "name": "Retenciones ITBMS (DGI)",
+        "level": 2,
+        "nature": "Credit",
+        "description": "Retenciones efectuadas a terceros"
+    },
+    {
+        "code": "2050",
+        "name": "Impuesto sobre la Renta por Pagar",
+        "level": 2,
+        "nature": "Credit",
+        "description": "ISR anual y adelantos"
+    },
+    {
+        "code": "3000",
+        "name": "CAPITAL",
+        "level": 1,
+        "nature": "Credit",
+        "description": "Patrimonio de los accionistas"
+    },
+    {
+        "code": "4000",
+        "name": "INGRESOS",
+        "level": 1,
+        "nature": "Credit",
+        "description": "Ventas de bienes y servicios"
+    },
+    {
+        "code": "4010",
+        "name": "Ventas Locales (Sujetas a ITBMS)",
+        "level": 2,
+        "nature": "Credit",
+        "description": "Ingresos territoriales panameños"
+    },
+    {
+        "code": "4020",
+        "name": "Ventas de Exportación / Off-shore",
+        "level": 2,
+        "nature": "Credit",
+        "description": "Ingresos no sujetos a ISR territorial"
+    },
+    {
+        "code": "5000",
+        "name": "COSTOS Y GASTOS",
+        "level": 1,
+        "nature": "Debit",
+        "description": "Erogaciones del periodo"
+    },
+    {
+        "code": "5010",
+        "name": "Gastos Deducibles (Territoriales)",
+        "level": 2,
+        "nature": "Debit",
+        "description": "Gastos necesarios para producir renta"
+    },
+    {
+        "code": "5020",
+        "name": "Gastos No Deducibles",
+        "level": 2,
+        "nature": "Debit",
+        "description": "Gastos sin sustento fiscal panameño"
+    }
+]

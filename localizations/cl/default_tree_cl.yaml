@@ -1,0 +1,67 @@
+# Default Tree Chile Kontablo (v0.1.0)
+# Purpose: Baseline configuration for new companies and ERP templates in Chile.
+# Note: Based on FECU (Ficha Estadística Codificada Uniforme) structure.
+
+metadata:
+  market: Chile
+  standard: FECU / IFRS
+  language: es
+  currency: CLP
+
+tree:
+  - code: "1.01"
+    name: "Activos Corrientes"
+    uuid: "00000000-0000-4000-8000-000000000002"
+    children:
+      - code: "1.01.01"
+        name: "Efectivo y Equivalentes de Efectivo"
+        uuid: "00000000-0000-4000-8000-000000000101"
+      - code: "1.01.04"
+        name: "Deudores Comerciales y Otras Cuentas por Cobrar"
+        uuid: "00000000-0000-4000-8000-000000000104"
+      - code: "1.01.07"
+        name: "Inventarios"
+        uuid: "00000000-0000-4000-8000-000000000106"
+
+  - code: "1.02"
+    name: "Activos No Corrientes"
+    uuid: "00000000-0000-4000-8000-000000000003"
+    children:
+      - code: "1.02.01"
+        name: "Propiedades, Planta y Equipo"
+        uuid: "00000000-0000-4000-8000-000000000101" # Note: Needs specific level 3 for PPE
+
+  - code: "2.01"
+    name: "Pasivos Corrientes"
+    uuid: "00000000-0000-4000-8000-000000000005"
+    children:
+      - code: "2.01.03"
+        name: "Cuentas por Pagar Comerciales y Otras"
+        uuid: "00000000-0000-4000-8000-000000000201"
+      - code: "2.01.05"
+        name: "Pasivos por Impuestos Corrientes"
+        uuid: "00000000-0000-4000-8000-000000000203"
+
+  - code: "3.01"
+    name: "Patrimonio"
+    uuid: "00000000-0000-4000-8000-000000000007"
+    children:
+      - code: "3.01.01"
+        name: "Capital Emitido"
+        uuid: "00000000-0000-4000-8000-000000000008"
+
+  - code: "4.01"
+    name: "Ingresos"
+    uuid: "00000000-0000-4000-8000-000000000009"
+    children:
+      - code: "4.01.01"
+        name: "Ingresos de Actividades Ordinarias"
+        uuid: "00000000-0000-4000-8000-000000000301"
+
+  - code: "5.01"
+    name: "Costos y Gastos"
+    uuid: "00000000-0000-4000-8000-000000000010"
+    children:
+      - code: "5.02.01"
+        name: "Gastos de Administración"
+        uuid: "00000000-0000-4000-8000-000000000501"

@@ -1,0 +1,29 @@
+# Kontablo Localization Mapping: Japan (J-GAAP)
+# Version: 0.1.0-draft
+# Target: Japanese Generally Accepted Accounting Principles (Revenue-Expense focus)
+
+metadata:
+  country: jp
+  authority: ASBJ (Accounting Standards Board of Japan)
+  standard: jgaap_mapping
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-11
+
+mappings:
+  "1111":
+    name: "現金 (Cash on Hand)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+
+  "4111":
+    name: "売上高 (Net Sales)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+
+  "5111":
+    name: "売上原価 (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"

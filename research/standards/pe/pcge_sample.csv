@@ -1,0 +1,20 @@
+CÓDIGO,NOMBRE,ELEMENTO,NATURALEZA
+101,Caja,1,DÉBITO
+1041,Cuentas corrientes operativas,1,DÉBITO
+111,Inversiones mantenidas para negociación,1,DÉBITO
+1212,Cuentas por cobrar comerciales - Emitidas en cartera,1,DÉBITO
+20111,Mercaderías manufacturadas - Costo,2,DÉBITO
+33111,Terrenos - Costo,3,DÉBITO
+33311,Maquinaria y equipo de explotación - Costo,3,DÉBITO
+39131,Depreciación acumulada - Edificaciones,3,CRÉDITO
+40111,IGV - Cuenta propia,4,CRÉDITO
+40171,Impuesto a la renta - Tercera categoría,4,CRÉDITO
+4111,Sueldos y salarios por pagar,4,CRÉDITO
+4212,Facturas, boletas y otros comprobantes por pagar - Emitidas,4,CRÉDITO
+5011,Acciones comunes,5,CRÉDITO
+591,Utilidades acumuladas,5,CRÉDITO
+6011,Mercaderías manufacturadas,6,DÉBITO
+6211,Sueldos y salarios,6,DÉBITO
+70111,Mercaderías manufacturadas - Terceros,7,CRÉDITO
+941,Gastos de administración,9,DÉBITO
+951,Gastos de ventas,9,DÉBITO

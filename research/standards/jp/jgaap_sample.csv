@@ -1,0 +1,12 @@
+CODE,NAME_JP,NAME_EN,CATEGORY,NATURE
+1111,現金,Cash on Hand,Asset,DEBIT
+1112,普通預金,Bank Deposits (Ordinary),Asset,DEBIT
+1121,売掛金,Accounts Receivable,Asset,DEBIT
+1141,商品,Merchandise / Inventory,Asset,DEBIT
+2121,買掛金,Accounts Payable,Liability,CREDIT
+2131,未払金,Accrued Payable (Non-Trade),Liability,CREDIT
+3111,資本金,Common Stock,Equity,CREDIT
+4111,売上高,Net Sales,Revenue,CREDIT
+5111,売上原価,Cost of Goods Sold,Expense,DEBIT
+6111,給料手当,Salaries and Allowances,Expense,DEBIT
+6112,法定福利費,Social Security Expenses,Expense,DEBIT

@@ -1,0 +1,70 @@
+# Kontablo Localization Mapping: China (ASBE / CAS)
+# Version: 0.1.0-draft
+# Target: Accounting Standards for Business Enterprises (ASBE)
+
+metadata:
+  country: cn
+  authority: Ministry of Finance of the PRC
+  standard: asbe_cas_mapping
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-11
+
+mappings:
+  # --- ASSETS (1xxx) ---
+  "1001":
+    name: "Cash on Hand"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+
+  "1002":
+    name: "Bank Deposits"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+
+  "1122":
+    name: "Accounts Receivable"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+
+  "1403":
+    name: "Raw Materials"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106" # Inventories
+
+  # --- LIABILITIES (2xxx) ---
+  "2202":
+    name: "Accounts Payable"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+
+  "2221":
+    name: "Taxes Payable (Output VAT / Other)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+
+  # --- EQUITY (4xxx) ---
+  "4001":
+    name: "Paid-in Capital"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000008"
+
+  # --- REVENUE (6xxx) ---
+  "6001":
+    name: "Main Business Revenue"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+
+  # --- EXPENSES (6xxx) ---
+  "6401":
+    name: "Main Business Cost"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"

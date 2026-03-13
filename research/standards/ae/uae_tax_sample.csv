@@ -1,0 +1,12 @@
+CODE,ACCOUNT_NAME,CONTEXT,TAX_TREATMENT,NATURE
+1010,Main Cash,UAE mainland,N/A,DEBIT
+1020,FAB Bank Account,UAE mainland,N/A,DEBIT
+1100,Trade Receivables,UAE mainland,N/A,DEBIT
+2100,Trade Payables,UAE mainland,N/A,CREDIT
+2200,VAT Output (5%),VAT Standard,5%,CREDIT
+2300,Corporate Tax Provision (9%),Taxable >375k,9%,CREDIT
+3001,Share Capital,Free Zone Company,0%,CREDIT
+4001,Qualifying Income (Free Zone),Free Zone,0% (Tax Exempt),CREDIT
+4002,Non-Qualifying Income (Mainland),Mainland,9% (Taxable),CREDIT
+5001,COGS,Operating,N/A,DEBIT
+6001,Staff Costs,Admin,N/A,DEBIT

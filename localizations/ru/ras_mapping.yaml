@@ -1,0 +1,53 @@
+# Kontablo Localization Mapping: Russia (RAS)
+# Version: 0.1.0-draft
+# Target: Russian Statutory Chart of Accounts (Plan Schetov)
+
+metadata:
+  country: ru
+  authority: Ministry of Finance of the Russian Federation
+  standard: ras_plan_schetov_mapping
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-11
+
+mappings:
+  "50":
+    name: "Касса (Cash)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+
+  "51":
+    name: "Расчетные счета (Bank)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+
+  "62":
+    name: "Расчеты с покупателями (AR)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+
+  "60":
+    name: "Расчеты с поставщиками (AP)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+
+  "68":
+    name: "Налоги (Taxes)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+
+  "90":
+    name: "Продажи (Sales)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+
+  "80":
+    name: "Уставный капитал (Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000008"

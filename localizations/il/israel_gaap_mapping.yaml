@@ -1,0 +1,41 @@
+# Kontablo Localization Mapping: Israel (GAAP / IFRS)
+# Version: 0.1.0-draft
+# Target: Israeli Accounting Standards (IFRS based)
+
+metadata:
+  country: il
+  authority: Israeli Accounting Standards Board
+  standard: israel_gaap_mapping
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-11
+
+mappings:
+  "1010":
+    name: "קופה (Cash)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+
+  "1100":
+    name: "לקוחות (AR)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+
+  "2100":
+    name: "ספקים (AP)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+
+  "2210":
+    name: "מע"מ עסקאות (Output VAT)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "40000000-0000-4000-8000-000000000002"
+
+  "4001":
+    name: "מכירות (Sales)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"

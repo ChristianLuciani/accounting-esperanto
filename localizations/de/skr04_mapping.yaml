@@ -1,0 +1,47 @@
+# Kontablo Localization Mapping: Germany (SKR 04)
+# Version: 0.1.0-draft
+# Target: DATEV Standardkontenrahmen 04 (Process-oriented)
+
+metadata:
+  country: de
+  authority: DATEV / HGB
+  standard: skr04_mapping
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-11
+
+mappings:
+  "1600":
+    name: "Kasse"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101" # Cash
+  
+  "1810":
+    name: "Bank"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102" # Banks
+
+  "1200":
+    name: "Forderungen aus L.L."
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104" # Trade Receivables
+
+  "3300":
+    name: "Verbindlichkeiten aus L.L."
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201" # Trade Payables
+
+  "3806":
+    name: "Umsatzsteuer 19%"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "40000000-0000-4000-8000-000000000002" # VAT/GST Output (Standard)
+
+  "4400":
+    name: "Erlöse 19% USt"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301" # Domestic Revenue

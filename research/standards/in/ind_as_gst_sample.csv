@@ -1,0 +1,13 @@
+CODE,ACCOUNT_NAME,TYPE,GST_TAG,NATURE
+1001,Cash on Hand,Asset,N/A,DEBIT
+1002,Bank Account (HDFC),Asset,N/A,DEBIT
+1100,Trade Receivables,Asset,N/A,DEBIT
+2100,Trade Payables,Liability,N/A,CREDIT
+2201,Output CGST @ 9%,Liability,GST,CREDIT
+2202,Output SGST @ 9%,Liability,GST,CREDIT
+2203,Output IGST @ 18%,Liability,GST,CREDIT
+2204,Output GST @ 5%,Liability,GST,CREDIT
+3001,Equity Share Capital,Equity,N/A,CREDIT
+4001,Sale of Services (18% GST),Revenue,GST_REQUIRED,CREDIT
+5001,COGS - Materials,Expense,N/A,DEBIT
+6001,Salaries and Staff Welfare,Expense,N/A,DEBIT

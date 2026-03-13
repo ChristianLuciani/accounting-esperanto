@@ -1,0 +1,29 @@
+# Kontablo Localization Mapping: India (GST / Ind AS)
+# Version: 0.1.0-draft
+# Target: GST Compliant Chart of Accounts (Ind AS Context)
+
+metadata:
+  country: in
+  authority: CBIC / ICAI
+  standard: ind_as_gst_mapping
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-11
+
+mappings:
+  "1001":
+    name: "Cash on Hand"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+
+  "2201":
+    name: "Output CGST"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "40000000-0000-4000-8000-000000000001" # GST India (Output) - Multi-slab
+
+  "4001":
+    name: "Sale of Services"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"

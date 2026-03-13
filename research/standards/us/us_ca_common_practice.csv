@@ -1,0 +1,13 @@
+CODE,ACCOUNT_NAME,TYPE,GAAP_CONTEXT
+1000,Cash and Cash Equivalents,Asset,US GAAP / ASPE
+1100,Accounts Receivable,Asset,US GAAP / ASPE
+1200,Inventory,Asset,US GAAP / ASPE
+1500,Property Plant and Equipment,Asset,US GAAP / ASPE
+2000,Accounts Payable,Liability,US GAAP / ASPE
+2100,Short-term Debt,Liability,US GAAP / ASPE
+2500,Deferred Tax Liability,Liability,IFRS / ASPE
+3000,Common Stock,Equity,US GAAP / ASPE
+3100,Retained Earnings,Equity,US GAAP / ASPE
+4000,Sales Revenue,Revenue,US GAAP / ASPE
+5000,Cost of Goods Sold,Expense,US GAAP / ASPE
+6000,Administrative Expenses,Expense,US GAAP / ASPE

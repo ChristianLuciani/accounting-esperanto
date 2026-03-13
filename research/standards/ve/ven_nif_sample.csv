@@ -1,0 +1,18 @@
+CÓDIGO,NOMBRE,CATEGORÍA,NATURALEZA
+101,Efectivo y equivalentes de efectivo,MONETARIA,DEUDORA
+10101,Caja,MONETARIA,DEUDORA
+10102,Bancos,MONETARIA,DEUDORA
+103,Cuentas por cobrar comerciales,MONETARIA,DEUDORA
+105,Inventarios,NO MONETARIA,DEUDORA
+10599,Inventarios - Ajuste por Inflación (R),REEXPRESIÓN,DEUDORA
+108,Propiedades Planta y Equipo,NO MONETARIA,DEUDORA
+10899,Propiedades Planta y Equipo - Ajuste por Inflación (R),REEXPRESIÓN,DEUDORA
+201,Cuentas por pagar comerciales,MONETARIA,ACREEDORA
+205,Impuesto sobre la renta por pagar,MONETARIA,ACREEDORA
+301,Capital Social,NO MONETARIA,ACREEDORA
+30199,Capital Social - Actualización por Inflación (R),REEXPRESIÓN,ACREEDORA
+305,Resultados Acumulados,NO MONETARIA,ACREEDORA
+401,Ventas,NO MONETARIA,ACREEDORA
+501,Costo de Ventas,NO MONETARIA,DEUDORA
+599,Resultado por Exposición a la Inflación (REMA),RESULTADO,VARIABLE
+601,Gastos de Administración,NO MONETARIA,DEUDORA

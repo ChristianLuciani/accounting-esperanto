@@ -1,0 +1,53 @@
+# Kontablo Localization Mapping: Argentina (RT 10 / IFRS)
+# Version: 0.1.0-draft
+# Target: Normas Contables Profesionales (RT 10 / RT 26)
+
+metadata:
+  country: ar
+  authority: FACPCE
+  standard: rt10_ifrs_mapping
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-11
+
+mappings:
+  "1.01.01":
+    name: "Caja y Bancos"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101" # Map to Cash/Banks
+    aggregation_rules: ["sum"]
+
+  "1.01.03":
+    name: "Créditos por ventas"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104" # Trade Receivables
+    aggregation_rules: ["sum"]
+
+  "1.01.05":
+    name: "Bienes de cambio"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106" # Inventories
+    aggregation_rules: ["sum"]
+
+  "2.01.01":
+    name: "Cuentas por pagar"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201" # Trade Payables
+    aggregation_rules: ["sum"]
+
+  "2.01.04":
+    name: "Cargas fiscales"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203" # Current Tax Liabilities
+    aggregation_rules: ["sum"]
+
+  "4.01.01":
+    name: "Ventas netas de bienes y servicios"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301" # Domestic Revenue
+    aggregation_rules: ["sum"]

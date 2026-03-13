@@ -1,0 +1,107 @@
+[
+    {
+        "code": "100",
+        "name": "ACTIVO",
+        "level": 1,
+        "nature": "Debit",
+        "description": null
+    },
+    {
+        "code": "101",
+        "name": "Caja",
+        "level": 1,
+        "nature": "Debit",
+        "description": null
+    },
+    {
+        "code": "101.01",
+        "name": "Caja y efectivo",
+        "level": 2,
+        "nature": "Debit",
+        "description": null
+    },
+    {
+        "code": "102",
+        "name": "Bancos",
+        "level": 1,
+        "nature": "Debit",
+        "description": null
+    },
+    {
+        "code": "103",
+        "name": "Inversiones",
+        "level": 1,
+        "nature": "Debit",
+        "description": null
+    },
+    {
+        "code": "104",
+        "name": "Clientes",
+        "level": 1,
+        "nature": "Debit",
+        "description": null
+    },
+    {
+        "code": "108",
+        "name": "Impuestos a favor",
+        "level": 1,
+        "nature": "Debit",
+        "description": null
+    },
+    {
+        "code": "108.01",
+        "name": "IVA a favor",
+        "level": 2,
+        "nature": "Debit",
+        "description": null
+    },
+    {
+        "code": "200",
+        "name": "PASIVO",
+        "level": 1,
+        "nature": "Credit",
+        "description": null
+    },
+    {
+        "code": "201",
+        "name": "Proveedores",
+        "level": 1,
+        "nature": "Credit",
+        "description": null
+    },
+    {
+        "code": "208",
+        "name": "Impuestos trasladados",
+        "level": 1,
+        "nature": "Credit",
+        "description": null
+    },
+    {
+        "code": "300",
+        "name": "CAPITAL CONTABLE",
+        "level": 1,
+        "nature": "Credit",
+        "description": null
+    },
+    {
+        "code": "400",
+        "name": "INGRESOS",
+        "level": 1,
+        "nature": "Credit",
+        "description": null
+    },
+    {
+        "code": "500",
+        "name": "COSTOS",
+        "level": 1,
+        "nature": "Debit",
+        "description": null
+    },
+    {
+        "code": "600",
+        "name": "GASTOS",
+        "level": 1,
+        "nature": "Debit",
+        "description": null
+    }
+]

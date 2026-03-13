@@ -1,0 +1,59 @@
+# Default Tree Argentina Kontablo (v0.1.0)
+# Purpose: Baseline configuration for new companies and ERP templates in Argentina.
+# Note: Based on RT 10 structure, aligned with local regulatory reporting.
+
+metadata:
+  market: Argentina
+  standard: RT 10 / IFRS
+  language: es
+  currency: ARS
+
+tree:
+  - code: "1.01"
+    name: "Activo Corriente"
+    uuid: "00000000-0000-4000-8000-000000000002"
+    children:
+      - code: "1.01.01"
+        name: "Caja y Bancos"
+        uuid: "00000000-0000-4000-8000-000000000101"
+      - code: "1.01.03"
+        name: "Créditos por Ventas"
+        uuid: "00000000-0000-4000-8000-000000000104"
+      - code: "1.01.05"
+        name: "Bienes de Cambio"
+        uuid: "00000000-0000-4000-8000-000000000106"
+
+  - code: "2.01"
+    name: "Pasivo Corriente"
+    uuid: "00000000-0000-4000-8000-000000000005"
+    children:
+      - code: "2.01.01"
+        name: "Cuentas por Pagar"
+        uuid: "00000000-0000-4000-8000-000000000201"
+      - code: "2.01.04"
+        name: "Cargas Fiscales"
+        uuid: "00000000-0000-4000-8000-000000000203"
+
+  - code: "3.01"
+    name: "Patrimonio Neto"
+    uuid: "00000000-0000-4000-8000-000000000007"
+    children:
+      - code: "3.01.01"
+        name: "Capital Suscrito"
+        uuid: "00000000-0000-4000-8000-000000000008"
+
+  - code: "4.01"
+    name: "Ingresos"
+    uuid: "00000000-0000-4000-8000-000000000009"
+    children:
+      - code: "4.01.01"
+        name: "Ventas Netas de Bienes y Servicios"
+        uuid: "00000000-0000-4000-8000-000000000301"
+
+  - code: "5.01"
+    name: "Gastos"
+    uuid: "00000000-0000-4000-8000-000000000010"
+    children:
+      - code: "5.02.01"
+        name: "Gastos de Administración y Comercialización"
+        uuid: "00000000-0000-4000-8000-000000000501"

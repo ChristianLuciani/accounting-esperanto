@@ -1,0 +1,63 @@
+# Kontablo Localization Mapping: España (PGC)
+# Version: 0.1.0-draft
+# Target: Plan General de Contabilidad (PGC 2007/2021)
+
+metadata:
+  country: es
+  authority: ICAC (Instituto de Contabilidad y Auditoría de Cuentas)
+  standard: pgc_es_mapping
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-11
+
+mappings:
+  # --- GRUPO 5 (CUENTAS FINANCIERAS) ---
+  "570":
+    name: "Caja"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101" # Cash
+
+  "572":
+    name: "Bancos"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102" # Banks
+
+  # --- GRUPO 4 (ACREEDORES Y DEUDORES) ---
+  "430":
+    name: "Clientes"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104" # Trade Receivables
+
+  "400":
+    name: "Proveedores"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201" # Trade Payables
+
+  "472":
+    name: "IVA Soportado"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "10000000-0000-4000-8000-000000000001" # Tax Credits (General)
+
+  "477":
+    name: "IVA Repercutido"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203" # Tax Liabilities (Translated)
+
+  # --- GRUPO 7 (VENTAS E INGRESOS) ---
+  "700":
+    name: "Ventas de mercaderías"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301" # Domestic Revenue
+
+  # --- GRUPO 6 (COMPRAS Y GASTOS) ---
+  "640":
+    name: "Sueldos y salarios"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501" # Deductible Expense

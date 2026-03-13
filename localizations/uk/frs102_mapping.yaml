@@ -1,0 +1,29 @@
+# Kontablo Localization Mapping: United Kingdom (FRS 102)
+# Version: 0.1.0-draft
+# Target: Financial Reporting Standard 102 (UK GAAP)
+
+metadata:
+  country: uk
+  authority: FRC (Financial Reporting Council)
+  standard: frs102_mapping
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-11
+
+mappings:
+  "1100":
+    name: "Trade Debtors"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104" # Trade Receivables
+
+  "2000":
+    name: "Trade Creditors"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201" # Trade Payables
+
+  "2200":
+    name: "Accruals and Deferred Income"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205" # Provisions / Accruals

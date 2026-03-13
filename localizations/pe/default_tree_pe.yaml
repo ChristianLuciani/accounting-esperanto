@@ -1,0 +1,59 @@
+# Default Tree Perú Kontablo (v0.1.0)
+# Purpose: Baseline configuration for new companies and ERP templates in Perú.
+# Note: Based on the PCGE 2019 structure, aligned with SUNAT reporting.
+
+metadata:
+  market: Perú
+  standard: PCGE 2019
+  language: es
+  currency: PEN
+
+tree:
+  - code: "10"
+    name: "Efectivo y Equivalentes de Efectivo"
+    uuid: "00000000-0000-4000-8000-000000000002"
+    children:
+      - code: "101"
+        name: "Caja"
+        uuid: "00000000-0000-4000-8000-000000000101"
+      - code: "104"
+        name: "Cuentas corrientes en instituciones financieras"
+        uuid: "00000000-0000-4000-8000-000000000102"
+  
+  - code: "12"
+    name: "Cuentas por Cobrar Comerciales - Terceros"
+    uuid: "00000000-0000-4000-8000-000000000104"
+
+  - code: "20"
+    name: "Mercaderías"
+    uuid: "00000000-0000-4000-8000-000000000106"
+
+  - code: "40"
+    name: "Tributos, contraprestaciones y aportes al sistema de pensiones y de salud por pagar"
+    uuid: "00000000-0000-4000-8000-000000000005"
+    children:
+      - code: "401"
+        name: "Gobierno central"
+        children:
+          - code: "4011"
+            name: "Impuesto General a las Ventas (IGV)"
+            uuid: "00000000-0000-4000-8000-000000000203"
+          - code: "4017"
+            name: "Impuesto a la Renta"
+            uuid: "00000000-0000-4000-8000-000000000204"
+
+  - code: "42"
+    name: "Cuentas por Pagar Comerciales - Terceros"
+    uuid: "00000000-0000-4000-8000-000000000201"
+
+  - code: "50"
+    name: "Capital"
+    uuid: "00000000-0000-4000-8000-000000000008"
+
+  - code: "70"
+    name: "Ventas"
+    uuid: "00000000-0000-4000-8000-000000000301"
+
+  - code: "62"
+    name: "Gastos de Personal y Directores"
+    uuid: "00000000-0000-4000-8000-000000000501"

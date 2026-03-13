@@ -1,0 +1,53 @@
+# Kontablo Localization Mapping: Chile (FECU / SII)
+# Version: 0.1.0-draft
+# Target: Ficha Estadística Codificada Uniforme (FECU) y Estándar SII
+
+metadata:
+  country: cl
+  authority: CMF / SII
+  standard: fecu_ifrs_mapping
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-11
+
+mappings:
+  "1.01.01":
+    name: "Efectivo y equivalentes de efectivo"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101" # Cash
+    aggregation_rules: ["sum"]
+
+  "1.01.04":
+    name: "Deudores comerciales y otras cuentas por cobrar corrientes"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104" # Trade Receivables
+    aggregation_rules: ["sum"]
+
+  "1.01.07":
+    name: "Inventarios"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106" # Inventories
+    aggregation_rules: ["sum"]
+
+  "2.01.03":
+    name: "Cuentas por pagar comerciales y otras cuentas por pagar"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201" # Trade Payables
+    aggregation_rules: ["sum"]
+
+  "2.01.05":
+    name: "Pasivos por impuestos corrientes"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203" # Current Tax Liabilities
+    aggregation_rules: ["sum"]
+
+  "4.01.01":
+    name: "Ingresos de actividades ordinarias"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301" # Domestic Revenue
+    aggregation_rules: ["sum"]

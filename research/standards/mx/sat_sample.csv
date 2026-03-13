@@ -1,0 +1,37 @@
+CÓDIGO AGRUPADOR,NOMBRE DE LA CUENTA Y/O SUBCUENTA,NIVEL
+100,ACTIVO,1
+101,Caja,1
+101.01,Caja y efectivo,2
+102,Bancos,1
+102.01,Bancos nacionales,2
+102.02,Bancos extranjeros,2
+103,Inversiones,1
+103.01,Inversiones a la vista,2
+104,Clientes,1
+104.01,Clientes nacionales,2
+104.02,Clientes extranjeros,2
+105,Deudores diversos,1
+105.01,Funcionarios y empleados,2
+106,Estimación de cuentas incobrables,1
+106.01,Estimación de cuentas incobrables de clientes nacionales,2
+107,Almacén,1
+108,Impuestos a favor,1
+108.01,IVA a favor,2
+108.02,ISR a favor,2
+200,PASIVO,1
+201,Proveedores,1
+201.01,Proveedores nacionales,2
+208,Impuestos trasladados,1
+208.01,IVA trasladado,2
+211,Impuestos retenidos,1
+211.01,Impuestos retenidos de ISR,2
+300,CAPITAL CONTABLE,1
+301,Capital social,1
+400,INGRESOS,1
+401,Ingresos,1
+401.01,Ventas y/o servicios gravados a la tasa general,2
+500,COSTOS,1
+501,Costo de venta y/o de servicio,1
+600,GASTOS,1
+601,Gastos generales,1
+601.01,Sueldos y salarios,2

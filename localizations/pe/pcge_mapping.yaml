@@ -1,0 +1,71 @@
+# Kontablo Localization Mapping: Perú (PCGE)
+# Version: 0.1.0-draft
+# Target: Plan Contable General Empresarial (PCGE) Modificado 2019
+
+metadata:
+  country: pe
+  authority: SUNAT / Consejo Normativo de Contabilidad
+  standard: pcge_2019_mapping
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-11
+
+mappings:
+  # --- ELEMENTO 1, 2, 3 (ACTIVO) ---
+  "101":
+    name: "Caja"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101" # Cash
+    aggregation_rules: ["sum"]
+
+  "1041":
+    name: "Cuentas corrientes operativas"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102" # Banks
+    aggregation_rules: ["sum"]
+
+  "1212":
+    name: "Cuentas por cobrar comerciales - Emitidas en cartera"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104" # Trade Receivables
+    aggregation_rules: ["sum"]
+
+  "20111":
+    name: "Mercaderías manufacturadas - Costo"
+    nature: "Debit"
+    level: 5
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106" # Inventories
+    aggregation_rules: ["sum"]
+
+  # --- ELEMENTO 4 (PASIVO) ---
+  "4212":
+    name: "Facturas, boletas y otros comprobantes por pagar - Emitidas"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201" # Trade Payables
+    aggregation_rules: ["sum"]
+
+  "40111":
+    name: "IGV - Cuenta propia"
+    nature: "Credit"
+    level: 5
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203" # Current Tax Liabilities (Translated)
+    aggregation_rules: ["sum"]
+
+  # --- ELEMENTO 7 (INGRESOS) ---
+  "70111":
+    name: "Mercaderías manufacturadas - Terceros"
+    nature: "Credit"
+    level: 5
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301" # Domestic Revenue
+    aggregation_rules: ["sum"]
+
+  # --- ELEMENTO 6 / 9 (GASTOS) ---
+  "6211":
+    name: "Sueldos y salarios"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501" # Deductible
+    aggregation_rules: ["sum"]

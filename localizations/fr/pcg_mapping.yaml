@@ -1,0 +1,71 @@
+# Kontablo Localization Mapping: France (PCG)
+# Version: 0.1.0-draft
+# Target: Plan Comptable Général (France) - El Reto Definitivo
+
+metadata:
+  country: fr
+  authority: ANC (Autorité des Normes Comptables)
+  standard: pcg_fr_mapping
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-11
+
+mappings:
+  # Class 1: Capitaux
+  "101":
+    name: "Capital"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000008"
+
+  # Class 2: Immobilisations
+  "211":
+    name: "Terrains"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101" # Fixed Assets root or specific PPE
+
+  # Class 4: Comptes de tiers
+  "411":
+    name: "Clients"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104" # Trade Receivables
+
+  "401":
+    name: "Fournisseurs"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201" # Trade Payables
+
+  "4457":
+    name: "TVA collectée"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "40000000-0000-4000-8000-000000000002" # VAT/GST Output
+
+  # Class 5: Financiers
+  "512":
+    name: "Banque"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+  
+  "53":
+    name: "Caisse"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+
+  # Class 6: Charges
+  "607":
+    name: "Achats de marchandises"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404" # COGS
+
+  # Class 7: Produits
+  "707":
+    name: "Ventes de marchandises"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301" # Revenue

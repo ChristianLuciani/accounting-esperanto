@@ -1,0 +1,29 @@
+# Kontablo Localization Mapping: UAE (Corporate Tax / VAT)
+# Version: 0.1.0-draft
+# Target: Federal Tax Authority (FTA) Compliance
+
+metadata:
+  country: ae
+  authority: FTA (Federal Tax Authority)
+  standard: uae_tax_mapping
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-11
+
+mappings:
+  "2200":
+    name: "VAT Output (5%)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "40000000-0000-4000-8000-000000000002" # VAT/GST Output (Standard)
+
+  "2300":
+    name: "Corporate Tax Provision (9%)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204" # Current Tax Liabilities (Withheld/Direct)
+
+  "4001":
+    name: "Qualifying Income (Free Zone)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301" # Revenue (Tag as Exempt in higher logic)

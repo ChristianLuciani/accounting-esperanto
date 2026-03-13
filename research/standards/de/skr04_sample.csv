@@ -1,0 +1,11 @@
+CODE,NAME_DE,NAME_EN,TYPE,NATURE
+1600,Kasse,Cash,Asset,DEBIT
+1810,Bank,Bank,Asset,DEBIT
+1200,Forderungen aus L.L.,Accounts Receivable,Asset,DEBIT
+3300,Verbindlichkeiten aus L.L.,Accounts Payable,Liability,CREDIT
+3806,Umsatzsteuer 19%,Output VAT 19%,Liability,CREDIT
+2900,Gezeichnetes Kapital,Share Capital,Equity,CREDIT
+4400,Erlöse 19% USt,Revenue 19% VAT,Revenue,CREDIT
+6020,Wareneinkauf,Cost of Goods Sold,Expense,DEBIT
+6300,Sonstige betriebliche Aufwendungen,Administrative Expenses,Expense,DEBIT
+6200,Löhne und Gehälter,Salaries and Wages,Expense,DEBIT

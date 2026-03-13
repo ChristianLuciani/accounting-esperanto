@@ -1,0 +1,85 @@
+# Kontablo Localization Mapping: Panama (DGI/SMV)
+# Version: 0.1.0-draft
+# Target: Propuesta de Estandarización para el entorno panameño
+
+metadata:
+  country: pa
+  authority: DGI / SMV
+  standard: panama_standard_proposal
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-10
+
+mappings:
+  # --- ASSETS (ACTIVO) ---
+  "1000":
+    name: "ACTIVO"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules: ["sum"]
+      
+  "1010":
+    name: "Efectivo y Equivalentes"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102" # Banks
+    aggregation_rules: ["sum"]
+
+  "1050":
+    name: "Créditos Fiscales (DGI)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "10000000-0000-4000-8000-000000000001" # Tax Credits (ITBMS/Territorial)
+    aggregation_rules: ["sum"]
+
+  # --- LIABILITIES (PASIVO) ---
+  "2000":
+    name: "PASIVO"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules: ["sum"]
+
+  "2030":
+    name: "ITBMS por Pagar (Tesoro Nacional)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203" # Translated/ITBMS
+    aggregation_rules: ["sum"]
+
+  "2040":
+    name: "Retenciones ITBMS (DGI)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204" # Withheld
+    aggregation_rules: ["sum"]
+
+  # --- REVENUE (INGRESOS) ---
+  "4010":
+    name: "Ventas Locales (Sujetas a ITBMS)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301" # Domestic Revenue
+    aggregation_rules: ["sum"]
+
+  "4020":
+    name: "Ventas de Exportación / Off-shore"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "10000000-0000-4000-8000-000000000302" # Foreign/Offshore Revenue
+    aggregation_rules: ["sum"]
+
+  # --- EXPENSES (GASTOS) ---
+  "5010":
+    name: "Gastos Deducibles (Territoriales)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501" # Deductible
+    aggregation_rules: ["sum"]
+
+  "5020":
+    name: "Gastos No Deducibles"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "10000000-0000-4000-8000-000000000502" # Non-Deductible
+    aggregation_rules: ["sum"]

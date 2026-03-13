@@ -1,0 +1,13 @@
+CODE,NAME_EN,NAME_CN,CATEGORY,NATURE
+1001,Cash on Hand,库存现金,Asset,DEBIT
+1002,Bank Deposits,银行存款,Asset,DEBIT
+1122,Accounts Receivable,应收账款,Asset,DEBIT
+1403,Raw Materials,Raw Materials,Asset,DEBIT
+1601,Fixed Assets,固定资产,Asset,DEBIT
+2202,Accounts Payable,应付账款,Liability,CREDIT
+2221,Taxes Payable,应交税费,Liability,CREDIT
+4001,Paid-in Capital,实收资本,Equity,CREDIT
+6001,Main Business Revenue,主营业务收入,Revenue,CREDIT
+6401,Main Business Cost,主营业务成本,Expense,DEBIT
+6601,Selling Expenses,销售费用,Expense,DEBIT
+6602,Administrative Expenses,管理费用,Expense,DEBIT

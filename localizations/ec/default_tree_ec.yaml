@@ -1,0 +1,78 @@
+# Default Tree Ecuador Kontablo (v0.1.0)
+# Purpose: Baseline configuration for new companies and ERP templates in Ecuador.
+
+metadata:
+  market: Ecuador
+  standard: SuperCias Mapping
+  language: es
+  currency: USD
+
+tree:
+  - code: "1"
+    name: "ACTIVO"
+    uuid: "00000000-0000-4000-8000-000000000001"
+    children:
+      - code: "1.01"
+        name: "Activo Corriente"
+        uuid: "00000000-0000-4000-8000-000000000002"
+        children:
+          - code: "1.01.01"
+            name: "Caja"
+            uuid: "00000000-0000-4000-8000-000000000101"
+          - code: "1.01.02"
+            name: "Bancos"
+            uuid: "00000000-0000-4000-8000-000000000102"
+          - code: "1.01.03"
+            name: "Clientes"
+            uuid: "00000000-0000-4000-8000-000000000104"
+          - code: "1.01.04"
+            name: "Inventarios"
+            uuid: "00000000-0000-4000-8000-000000000106"
+          - code: "1.01.05"
+            name: "IVA Compras (Crédito Fiscal)"
+            uuid: "10000000-0000-4000-8000-000000000001"
+
+  - code: "2"
+    name: "PASIVO"
+    uuid: "00000000-0000-4000-8000-000000000004"
+    children:
+      - code: "2.01"
+        name: "Pasivo Corriente"
+        uuid: "00000000-0000-4000-8000-000000000005"
+        children:
+          - code: "2.01.01"
+            name: "Proveedores"
+            uuid: "00000000-0000-4000-8000-000000000201"
+          - code: "2.01.02"
+            name: "IVA Ventas (Por Pagar)"
+            uuid: "00000000-0000-4000-8000-000000000203"
+          - code: "2.01.03"
+            name: "Retenciones de Impuestos"
+            uuid: "00000000-0000-4000-8000-000000000204"
+
+  - code: "3"
+    name: "PATRIMONIO"
+    uuid: "00000000-0000-4000-8000-000000000007"
+    children:
+      - code: "3.01"
+        name: "Capital"
+        uuid: "00000000-0000-4000-8000-000000000008"
+
+  - code: "4"
+    name: "INGRESOS"
+    uuid: "00000000-0000-4000-8000-000000000009"
+    children:
+      - code: "4.01"
+        name: "Ventas de Bienes y Servicios"
+        uuid: "00000000-0000-4000-8000-000000000301"
+
+  - code: "5"
+    name: "GASTOS"
+    uuid: "00000000-0000-4000-8000-000000000010"
+    children:
+      - code: "5.01"
+        name: "Gastos Operativos (Deducibles)"
+        uuid: "00000000-0000-4000-8000-000000000501"
+      - code: "5.02"
+        name: "Gastos No Deducibles"
+        uuid: "10000000-0000-4000-8000-000000000502"

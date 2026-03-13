@@ -1,0 +1,14 @@
+CLASSE,CODE,NOM_FR,NOM_EN,NATURE
+1,101,Capital,Share Capital,CREDIT
+2,211,Terrains,Land,DEBIT
+2,215,Installations techniques,Technical Installations,DEBIT
+3,37,Stocks de marchandises,Goods Stocks,DEBIT
+4,401,Fournisseurs,Suppliers,CREDIT
+4,411,Clients,Customers,DEBIT
+4,4457,TVA collectée,Output VAT,CREDIT
+4,4456,TVA déductible,Input VAT,DEBIT
+5,512,Banque,Bank,DEBIT
+5,53,Caisse,Cash,DEBIT
+6,607,Achats de marchandises,Purchases of Goods,DEBIT
+6,641,Rémunérations du personnel,Staff Salaries,DEBIT
+7,707,Ventes de marchandises,Sales of Goods,CREDIT

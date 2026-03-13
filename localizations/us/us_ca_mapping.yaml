@@ -1,0 +1,64 @@
+# Kontablo Localization Mapping: USA & Canada (Common Practice)
+# Version: 0.1.0-draft
+# Target: Common numeric range charts of accounts (Standard ERP defaults like QuickBooks/Xero)
+
+metadata:
+  country: us, ca
+  authority: FASB / AICPA / CPA Canada
+  standard: us_gaap_ca_aspe_common
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-11
+
+mappings:
+  # --- ASSETS (1xxx) ---
+  "1000":
+    name: "Cash and Cash Equivalents"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+
+  "1100":
+    name: "Accounts Receivable"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+
+  # --- LIABILITIES (2xxx) ---
+  "2000":
+    name: "Accounts Payable"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+
+  "2100":
+    name: "Short-term Debt"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+
+  "2300":
+    name: "Sales Tax Payable"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "30000000-0000-4000-8000-000000000002" # Sales Tax (US/Canada Specific)
+
+  # --- EQUITY (3xxx) ---
+  "3000":
+    name: "Common Stock / Capital"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000008"
+
+  # --- REVENUE (4xxx) ---
+  "4000":
+    name: "Sales Revenue"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+
+  # --- EXPENSES (5xxx-8xxx) ---
+  "5000":
+    name: "Cost of Goods Sold"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"

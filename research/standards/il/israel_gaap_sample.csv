@@ -1,0 +1,12 @@
+CODE,ACCOUNT_NAME_HE,ACCOUNT_NAME_EN,TYPE,NATURE
+1010,קופה,Cash,Asset,DEBIT
+1020,בנק,Bank,Asset,DEBIT
+1100,לקוחות,Accounts Receivable,Asset,DEBIT
+1200,מלאי,Inventory,Asset,DEBIT
+2100,ספקים,Accounts Payable,Liability,CREDIT
+2200,מע"מ תשומות,Input VAT,Asset,DEBIT
+2210,מע"מ עסקאות,Output VAT,Liability,CREDIT
+3001,הון מניות,Share Capital,Equity,CREDIT
+4001,מכירות,Sales,Revenue,CREDIT
+5001,עלות המכר,Cost of Sales,Expense,DEBIT
+6001,משכורות,Salaries,Expense,DEBIT

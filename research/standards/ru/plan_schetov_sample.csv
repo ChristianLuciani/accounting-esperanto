@@ -1,0 +1,14 @@
+CODE,NAME_RU,NAME_EN,CATEGORY,NATURE
+01,Основные средства,Fixed Assets,Asset,DEBIT
+10,Материалы,Materials,Asset,DEBIT
+20,Основное производство,Main Production,Asset/Cost,DEBIT
+41,Товары,Goods,Asset,DEBIT
+50,Касса,Cash,Asset,DEBIT
+51,Расчетные счета,Settlement Accounts (Bank),Asset,DEBIT
+60,Расчеты с поставщиками и подрядчиками,Accounts Payable (Suppliers),Liability,CREDIT
+62,Расчеты с покупателями и заказчиками,Accounts Receivable (Customers),Asset,DEBIT
+68,Расчеты по налогам и сборам,Taxes Payable,Liability,CREDIT
+70,Расчеты с персоналом по оплате труда,Salaries Payable,Liability,CREDIT
+80,Уставный капитал,Authorized Capital,Equity,CREDIT
+90,Продажи,Sales,Revenue/Result,VARIABLE
+99,Прибыли и убытки,Profits and Losses,Result,VARIABLE

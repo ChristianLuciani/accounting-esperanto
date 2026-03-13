@@ -1,0 +1,66 @@
+# Kontablo Localization Mapping: Venezuela (VEN-NIF / BA VEN-NIF)
+# Version: 0.1.0-draft
+# Target: Normas de Información Financiera de Venezuela
+
+metadata:
+  country: ve
+  authority: FCCPV / SENIAT
+  standard: ven_nif_hiper_mapping
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-11
+
+mappings:
+  # --- ASSETS (ACTIVO) ---
+  # En Venezuela la distinción entre Monetario y No Monetario es vital
+  
+  "10101":
+    name: "Caja"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    monetary_tag: true # Etiqueta personalizada para filtrado en reportes reexpresados
+
+  "10102":
+    name: "Bancos"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    monetary_tag: true
+
+  "105":
+    name: "Inventarios"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    monetary_tag: false # Requiere reexpresión vía NIC 29
+
+  "10599":
+    name: "Inventarios - Ajuste por Inflación (R)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "20000000-0000-4000-8000-000000000001" # Nuevo UUID para ajustes de reexpresión
+    aggregation_rules: ["sum"]
+    is_inflation_adjustment: true
+
+  # --- LIABILITIES (PASIVO) ---
+  "201":
+    name: "Cuentas por pagar comerciales"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    monetary_tag: true
+
+  "205":
+    name: "Impuesto sobre la renta por pagar"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    monetary_tag: true
+
+  # --- RESULTS ---
+  "599":
+    name: "Resultado por Exposición a la Inflación (REMA)"
+    nature: "Variable"
+    level: 3
+    kontablo_uuid: "20000000-0000-4000-8000-000000000002" # Nuevo UUID para cuenta de resultados por inflación
+    aggregation_rules: ["sum"]

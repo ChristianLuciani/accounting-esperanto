@@ -1,0 +1,14 @@
+CÓDIGO,NOMBRE,GRUPO,NATURALEZA
+100,Capital social,1,ACREEDORA
+210,Terrenos y bienes naturales,2,DEUDORA
+211,Construcciones,2,DEUDORA
+300,Mercaderías A,3,DEUDORA
+400,Proveedores,4,ACREEDORA
+430,Clientes,4,DEUDORA
+472,Hacienda Pública IVA soportado,4,DEUDORA
+477,Hacienda Pública IVA repercutido,4,ACREEDORA
+570,Caja euros,5,DEUDORA
+572,Bancos e instituciones de crédito c/c vista euros,5,DEUDORA
+600,Compras de mercaderías,6,DEUDORA
+640,Sueldos y salarios,6,DEUDORA
+700,Ventas de mercaderías,7,ACREEDORA

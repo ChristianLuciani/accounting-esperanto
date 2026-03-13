@@ -1,0 +1,85 @@
+# Kontablo Localization Mapping: Colombia (PUC)
+# Version: 0.1.0-draft
+# Target: Plan Único de Cuentas (PUC) - Tradicional (D2650) y Base NIIF Pymes
+
+metadata:
+  country: co
+  authority: Supersociedades / Dian (Exógena context)
+  standard: puc_2650_legacy_mapping
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-11
+
+mappings:
+  # --- ASSETS (ACTIVO) ---
+  "1":
+    name: "ACTIVO"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules: ["sum"]
+      
+  "1105":
+    name: "Caja"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101" # Cash
+    aggregation_rules: ["sum"]
+
+  "1110":
+    name: "Bancos"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102" # Banks
+    aggregation_rules: ["sum"]
+
+  "1305":
+    name: "Clientes"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104" # Trade Receivables
+    aggregation_rules: ["sum"]
+
+  # --- LIABILITIES (PASIVO) ---
+  "2":
+    name: "PASIVO"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules: ["sum"]
+
+  "22":
+    name: "Proveedores"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201" # Trade Payables
+    aggregation_rules: ["sum"]
+
+  "2408":
+    name: "Impuesto sobre las ventas por pagar (IVA)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203" # Current Tax Liabilities (Translated)
+    aggregation_rules: ["sum"]
+
+  # --- REVENUE (INGRESOS) ---
+  "4":
+    name: "INGRESOS"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000009"
+    aggregation_rules: ["sum"]
+
+  "4135":
+    name: "Comercio al por mayor y al por menor"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301" # Domestic Revenue
+    aggregation_rules: ["sum"]
+
+  # --- EXPENSES (GASTOS) ---
+  "5105":
+    name: "Gastos de personal"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501" # Deductible
+    aggregation_rules: ["sum"]

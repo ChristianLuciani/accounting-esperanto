@@ -1,0 +1,72 @@
+# Default Tree Colombia Kontablo (v0.1.0)
+# Purpose: Baseline configuration for new companies and ERP templates in Colombia.
+# Note: Based on the traditional PUC (Decree 2650) structure for ease of adoption by local CPAs.
+
+metadata:
+  market: Colombia
+  standard: PUC / NIIF Pymes
+  language: es
+  currency: COP
+
+tree:
+  - code: "1"
+    name: "ACTIVO"
+    uuid: "00000000-0000-4000-8000-000000000001"
+    children:
+      - code: "11"
+        name: "Disponible"
+        uuid: "00000000-0000-4000-8000-000000000002" # Map to Current Assets root
+        children:
+          - code: "1105"
+            name: "Caja"
+            uuid: "00000000-0000-4000-8000-000000000101"
+          - code: "1110"
+            name: "Bancos"
+            uuid: "00000000-0000-4000-8000-000000000102"
+      - code: "13"
+        name: "Deudores"
+        uuid: "00000000-0000-4000-8000-000000000104" # Trade Receivables
+      - code: "14"
+        name: "Inventarios"
+        uuid: "00000000-0000-4000-8000-000000000106"
+
+  - code: "2"
+    name: "PASIVO"
+    uuid: "00000000-0000-4000-8000-000000000004"
+    children:
+      - code: "22"
+        name: "Proveedores"
+        uuid: "00000000-0000-4000-8000-000000000201"
+      - code: "24"
+        name: "Impuesto sobre las Ventas (IVA)"
+        uuid: "00000000-0000-4000-8000-000000000203"
+      - code: "23"
+        name: "Retenciones de Impuestos"
+        uuid: "00000000-0000-4000-8000-000000000204"
+
+  - code: "3"
+    name: "PATRIMONIO"
+    uuid: "00000000-0000-4000-8000-000000000007"
+    children:
+      - code: "31"
+        name: "Capital Social"
+        uuid: "00000000-0000-4000-8000-000000000008"
+
+  - code: "4"
+    name: "INGRESOS"
+    uuid: "00000000-0000-4000-8000-000000000009"
+    children:
+      - code: "41"
+        name: "Operacionales"
+        uuid: "00000000-0000-4000-8000-000000000301"
+
+  - code: "5"
+    name: "GASTOS"
+    uuid: "00000000-0000-4000-8000-000000000010"
+    children:
+      - code: "51"
+        name: "Operacionales de Administración (Deducibles)"
+        uuid: "00000000-0000-4000-8000-000000000501"
+      - code: "5195"
+        name: "Gastos Diversos (No Deducibles)"
+        uuid: "10000000-0000-4000-8000-000000000502"

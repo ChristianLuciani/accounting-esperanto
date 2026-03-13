@@ -1,0 +1,152 @@
+# Kontablo Localization Mapping: Mexico (SAT)
+# Version: 0.1.0-draft
+# Target: SAT Anexo 24 (Código Agrupador de Cuentas)
+
+metadata:
+  country: mx
+  authority: SAT
+  standard: anexo_24
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-09
+
+mappings:
+  # --- ASSETS (ACTIVO) ---
+  "100":
+    name: "ACTIVO"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001" # Assets
+    aggregation_rules:
+      - "sum"
+      
+  "101":
+    name: "Caja"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101" # Cash
+    aggregation_rules:
+      - "sum"
+
+  "102":
+    name: "Bancos"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102" # Banks
+    aggregation_rules:
+      - "sum"
+
+  "103":
+    name: "Inversiones"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103" # Short-term Investments
+    aggregation_rules:
+      - "sum"
+
+  "104":
+    name: "Clientes"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104" # Trade Receivables
+    aggregation_rules:
+      - "sum"
+
+  "105":
+    name: "Deudores diversos"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105" # Other Receivables
+    aggregation_rules:
+      - "sum"
+
+  "106":
+    name: "Estimación de cuentas incobrables"
+    nature: "Credit" # Contra-asset
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104" # Subtracts from Trade Receivables
+    aggregation_rules:
+      - "subtract"
+
+  "107":
+    name: "Almacén"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106" # Inventories
+    aggregation_rules:
+      - "sum"
+
+  "108":
+    name: "Impuestos a favor"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107" # Current Tax Assets
+    aggregation_rules:
+      - "sum"
+
+
+  # --- LIABILITIES (PASIVO) ---
+  "200":
+    name: "PASIVO"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004" # Liabilities
+    aggregation_rules:
+      - "sum"
+
+  "201":
+    name: "Proveedores"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201" # Trade Payables
+    aggregation_rules:
+      - "sum"
+
+  "208":
+    name: "Impuestos trasladados"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203" # Current Tax Liabilities (Translated)
+    aggregation_rules:
+      - "sum"
+
+  "211":
+    name: "Impuestos retenidos"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204" # Current Tax Liabilities (Withheld)
+    aggregation_rules:
+      - "sum"
+
+
+  # --- EQUITY & OTHERS (Capital, Ingresos, Costos, Gastos) ---
+  "300":
+    name: "CAPITAL CONTABLE"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000007" # Equity
+    aggregation_rules:
+      - "sum"
+
+  "400":
+    name: "INGRESOS"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000011" # Revenue
+    aggregation_rules:
+      - "sum"
+
+  "500":
+    name: "COSTOS"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000014" # Cost of Sales
+    aggregation_rules:
+      - "sum"
+
+  "600":
+    name: "GASTOS"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000015" # Operating Expenses
+    aggregation_rules:
+      - "sum"
