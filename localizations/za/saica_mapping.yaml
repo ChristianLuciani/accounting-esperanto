@@ -1,0 +1,121 @@
+# Kontablo Localization Mapping: South Africa (SAICA / IFRS)
+# Version: 0.1.0-draft
+# Authority: South African Institute of Chartered Accountants (SAICA)
+# Standard: Full IFRS (JSE-listed) + IFRS for SMEs (unlisted)
+# Critical Notes:
+#   - JSE-listed companies must use full IFRS
+#   - B-BBEE (Black economic empowerment) creates unique equity disclosure requirements
+#   - Mining sector uses IFRS 6 + mineral rights accounting
+#   - VAT is 15% (standard rate since 2018)
+#   - Provisional Tax system creates specific prepaid tax accounts
+#   - UIF (Unemployment Insurance Fund) and SDL (Skills Development Levy) are employee cost sub-accounts
+
+metadata:
+  country: za
+  authority: SAICA / IRBA
+  standard: ifrs_za_2024
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-13
+  dominant_industry: mining_financial_services_retail
+  vat_rate: 0.15
+
+mappings:
+  # --- ASSETS ---
+  "Cash and Cash Equivalents":
+    name: "Cash and Cash Equivalents (ZAR)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+
+  "Trade Receivables":
+    name: "Trade Receivables / Debtors"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+
+  "SARS VAT Receivable":
+    name: "VAT Control Account (Input VAT)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "10000000-0000-4000-8000-000000000001"
+    research_note: "SARS = South African Revenue Service. VAT 15%. Input VAT is significant."
+
+  "Mineral Rights / E&E Assets":
+    name: "Mineral Rights & Exploration Assets (IFRS 6)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "20000000-0000-4000-8000-000000000001"
+    research_note: "South Africa is world's largest producer of platinum, gold. IFRS 6 is critical."
+
+  "Property Plant and Equipment":
+    name: "Property, Plant and Equipment"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000110"
+
+  "Right-of-Use Assets":
+    name: "Right-of-Use Assets (IFRS 16)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000111"
+
+  # --- LIABILITIES ---
+  "Trade Payables":
+    name: "Trade Payables / Creditors"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+
+  "VAT Payable":
+    name: "VAT Control Account (Output VAT 15%)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+
+  "PAYE Payable":
+    name: "PAYE (Employee Tax) Payable to SARS"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    research_note: "PAYE = Pay As You Earn. Includes PAYE + UIF (1%) + SDL (1%) contributions."
+
+  "Lease Liabilities":
+    name: "Lease Liabilities Current/Non-Current (IFRS 16)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000209"
+
+  # --- EQUITY ---
+  "B-BBEE Reserve":
+    name: "B-BBEE Equity Component (BEE transactions)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000008"
+    research_note: "UNIQUE TO SOUTH AFRICA: Black Economic Empowerment transactions."
+
+  # --- INCOME ---
+  "Revenue":
+    name: "Revenue (IFRS 15)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+
+  # --- EXPENSES ---
+  "Cost of Sales":
+    name: "Cost of Sales"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+
+  "Depreciation and Amortisation":
+    name: "Depreciation and Amortisation"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+
+  "SDL and UIF":
+    name: "Skills Development Levy (1%) + UIF Contribution (1%)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    research_note: "SDL = 1% of payroll to SETA (training). UIF = 1% employer contribution."

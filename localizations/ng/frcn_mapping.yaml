@@ -1,0 +1,107 @@
+# Kontablo Localization Mapping: Nigeria (FRCN / IFRS-NG)
+# Version: 0.1.0-draft
+# Authority: Financial Reporting Council of Nigeria (FRCN)
+# Standard: IFRS as adopted in Nigeria (full IFRS for public companies)
+# Critical Notes:
+#   - Nigeria adopted full IFRS for public companies in 2012
+#   - IFRS for SMEs adopted for smaller entities
+#   - HIGH INFLATION RISK: Naira (NGN) experienced significant devaluation
+#   - Oil & Gas sector has specific NFRS/IFRS 6 requirements (dominant industry)
+#   - Withholding Tax (WHT) is a key compliance account (5-10% rates)
+
+metadata:
+  country: ng
+  authority: FRCN (Financial Reporting Council of Nigeria)
+  standard: ifrs_ng_2024
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-13
+  inflation_risk: HIGH # Monitor for IAS 29 applicability threshold
+  dominant_industry: oil_gas_telecoms_banking
+
+mappings:
+  # --- ASSETS ---
+  "Cash and Cash Equivalents":
+    name: "Cash and Cash Equivalents (NGN + FX)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    research_note: "Dual-currency accounts common (NGN official + parallel rate). High FX risk."
+
+  "Trade and Other Receivables":
+    name: "Trade and Other Receivables"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+
+  "Withholding Tax Receivable":
+    name: "WHT (Withholding Tax) Receivable"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    research_note: "WHT at 5% (services) or 10% (rent/dividends) generates large receivable balances in Nigeria."
+
+  "Exploration and Evaluation Assets":
+    name: "E&E Assets (IFRS 6) - Oil & Gas"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "20000000-0000-4000-8000-000000000001" # Industry extension: IFRS 6
+    research_note: "Dominant for upstream oil companies. Requires IFRS 6 industry extension."
+
+  "Property Plant and Equipment":
+    name: "Property, Plant and Equipment"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000110"
+
+  # --- LIABILITIES ---
+  "Trade and Other Payables":
+    name: "Trade and Other Payables"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+
+  "VAT (Value Added Tax) Payable":
+    name: "VAT Payable (7.5%)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    research_note: "Nigeria VAT is 7.5% (increased from 5% in 2020). Different from standard 15%/20% rates."
+
+  "Withholding Tax Payable":
+    name: "WHT Payable to FIRS"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+
+  "Company Income Tax Payable":
+    name: "CIT Payable (30% large companies / 20% medium)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+
+  # --- INCOME ---
+  "Revenue":
+    name: "Revenue (IFRS 15 compliant)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+
+  # --- EXPENSES ---
+  "Cost of Sales":
+    name: "Cost of Sales"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+
+  "Operating Expenses":
+    name: "Operating Expenses"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+
+  "Foreign Exchange Loss":
+    name: "FX Loss (NGN devaluation)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    research_note: "CRITICAL for Nigeria. NGN has experienced multiple devaluations. FX losses are material."

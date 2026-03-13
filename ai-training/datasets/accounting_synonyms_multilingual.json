@@ -1,0 +1,168 @@
+{
+  "_metadata": {
+    "purpose": "Multilingual accounting synonym dataset for Kontablo Semantic Matcher fine-tuning",
+    "version": "0.1.0",
+    "date": "2026-03-13",
+    "languages": ["en", "es", "pt", "fr", "de", "ja", "zh", "ar", "he", "ru", "tr", "vi"],
+    "format": {
+      "kontablo_uuid": "The target UUID these synonyms map to",
+      "canonical_name_en": "The English canonical name in Kontablo",
+      "synonyms": "List of {lang, text, source, historical} objects"
+    }
+  },
+  "synonyms": [
+    {
+      "kontablo_uuid": "00000000-0000-4000-8000-000000000101",
+      "canonical_name_en": "Cash",
+      "synonyms": [
+        {"lang": "es", "text": "Caja", "source": "MX-SAT/CO-PUC/PA-DGI", "notes": ""},
+        {"lang": "es", "text": "Efectivo", "source": "generic", "notes": ""},
+        {"lang": "es", "text": "Caja Chica", "source": "generic", "notes": "Petty cash variant"},
+        {"lang": "es", "text": "Fondos en Caja", "source": "AR", "notes": ""},
+        {"lang": "es", "text": "Efectivo y Equivalentes de Efectivo", "source": "IFRS-es", "notes": "IFRS formal label"},
+        {"lang": "pt", "text": "Caixa", "source": "BR-SPED", "notes": ""},
+        {"lang": "pt", "text": "Caixa Geral", "source": "BR", "notes": ""},
+        {"lang": "pt", "text": "Disponibilidades", "source": "BR-old", "notes": "Historical VAS Brazil"},
+        {"lang": "fr", "text": "Caisse", "source": "FR-PCG", "notes": ""},
+        {"lang": "fr", "text": "Espèces en caisse", "source": "generic", "notes": ""},
+        {"lang": "de", "text": "Kasse", "source": "DE-SKR04", "notes": "Code 1600 in SKR04"},
+        {"lang": "de", "text": "Kassenbestand", "source": "generic", "notes": "Cash on hand"},
+        {"lang": "ja", "text": "現金", "source": "JP-JGAAP", "notes": "Genkin"},
+        {"lang": "ja", "text": "現金及び預金", "source": "JP-JGAAP", "notes": "Cash and deposits"},
+        {"lang": "zh", "text": "库存现金", "source": "CN-ASBE", "notes": "Petty cash (库存=inventory of cash)"},
+        {"lang": "zh", "text": "现金及现金等价物", "source": "CN-IFRS", "notes": "IFRS formal label in Chinese"},
+        {"lang": "ar", "text": "النقدية", "source": "SA-SOCPA", "notes": "Al-naqdiyyah"},
+        {"lang": "ar", "text": "الصندوق", "source": "generic", "notes": "Al-sunduq = cash box/till"},
+        {"lang": "he", "text": "קופה", "source": "IL", "notes": "Kupa = till/cash register"},
+        {"lang": "he", "text": "מזומן", "source": "IL", "notes": "Mezuman = cash"},
+        {"lang": "ru", "text": "Касса", "source": "RU-RAS", "notes": "Account 50 in Russian Plan Schetov"},
+        {"lang": "ru", "text": "Наличные денежные средства", "source": "generic", "notes": ""},
+        {"lang": "tr", "text": "Kasa", "source": "TR-TDHP", "notes": "Code 100 in TDHP"},
+        {"lang": "vi", "text": "Tiền mặt", "source": "VN-VAS", "notes": "Code 111 in VAS"},
+        {"lang": "en", "text": "Petty Cash", "source": "UK/US", "notes": ""},
+        {"lang": "en", "text": "Cash on Hand", "source": "US-GAAP", "notes": ""},
+        {"lang": "en", "text": "Till Money", "source": "retail-UK", "notes": "Historical/retail usage"}
+      ]
+    },
+    {
+      "kontablo_uuid": "00000000-0000-4000-8000-000000000104",
+      "canonical_name_en": "Trade Receivables",
+      "synonyms": [
+        {"lang": "en", "text": "Accounts Receivable", "source": "US-GAAP", "notes": ""},
+        {"lang": "en", "text": "Trade Debtors", "source": "UK-FRS102", "notes": "British English"},
+        {"lang": "en", "text": "Debtors", "source": "UK-old", "notes": "Historical British usage"},
+        {"lang": "en", "text": "Sundry Debtors", "source": "IN-IndAS", "notes": "Indian usage"},
+        {"lang": "es", "text": "Clientes", "source": "MX/CO/ES", "notes": "Standard Spanish"},
+        {"lang": "es", "text": "Cuentas por Cobrar", "source": "generic-LATAM", "notes": ""},
+        {"lang": "es", "text": "Deudores Comerciales", "source": "IFRS-es", "notes": ""},
+        {"lang": "es", "text": "Créditos por Ventas", "source": "AR-RT10", "notes": "Argentina specific"},
+        {"lang": "pt", "text": "Clientes", "source": "PT/BR", "notes": ""},
+        {"lang": "pt", "text": "Contas a Receber de Clientes", "source": "BR-SPED", "notes": ""},
+        {"lang": "fr", "text": "Clients", "source": "FR-PCG", "notes": "Account 411 in PCG"},
+        {"lang": "fr", "text": "Créances clients", "source": "generic", "notes": ""},
+        {"lang": "de", "text": "Forderungen aus Lieferungen und Leistungen", "source": "DE-HGB", "notes": "Full German legal name"},
+        {"lang": "de", "text": "Forderungen aus L.L.", "source": "DE-abbreviated", "notes": "Abbreviated form"},
+        {"lang": "ja", "text": "売掛金", "source": "JP-JGAAP", "notes": "Urikake-kin = sales credit"},
+        {"lang": "zh", "text": "应收账款", "source": "CN-ASBE", "notes": "Yingshou Zhangkuan"},
+        {"lang": "ar", "text": "ذمم مدينة تجارية", "source": "SA-SOCPA", "notes": ""},
+        {"lang": "he", "text": "לקוחות", "source": "IL", "notes": "Lekohot = customers"},
+        {"lang": "ru", "text": "Расчеты с покупателями", "source": "RU-RAS", "notes": "Account 62"},
+        {"lang": "tr", "text": "Alıcılar", "source": "TR-TDHP", "notes": "Account 120"},
+        {"lang": "vi", "text": "Phải thu khách hàng", "source": "VN-VAS", "notes": "Account 131"}
+      ]
+    },
+    {
+      "kontablo_uuid": "00000000-0000-4000-8000-000000000201",
+      "canonical_name_en": "Trade Payables",
+      "synonyms": [
+        {"lang": "en", "text": "Accounts Payable", "source": "US-GAAP", "notes": ""},
+        {"lang": "en", "text": "Trade Creditors", "source": "UK-FRS102", "notes": "British English"},
+        {"lang": "en", "text": "Creditors", "source": "UK-old", "notes": "Historical"},
+        {"lang": "en", "text": "Sundry Creditors", "source": "IN-IndAS", "notes": "Indian usage"},
+        {"lang": "es", "text": "Proveedores", "source": "MX/CO/ES", "notes": "Standard Spanish"},
+        {"lang": "es", "text": "Cuentas por Pagar", "source": "generic-LATAM", "notes": ""},
+        {"lang": "es", "text": "Acreedores Comerciales", "source": "IFRS-es", "notes": ""},
+        {"lang": "pt", "text": "Fornecedores", "source": "BR-SPED", "notes": "Account 220"},
+        {"lang": "fr", "text": "Fournisseurs", "source": "FR-PCG", "notes": "Account 401"},
+        {"lang": "de", "text": "Verbindlichkeiten aus Lieferungen und Leistungen", "source": "DE-HGB", "notes": ""},
+        {"lang": "ja", "text": "買掛金", "source": "JP-JGAAP", "notes": "Kaikake-kin"},
+        {"lang": "zh", "text": "应付账款", "source": "CN-ASBE", "notes": "Yingfu Zhangkuan"},
+        {"lang": "ar", "text": "ذمم دائنة تجارية", "source": "SA-SOCPA", "notes": ""},
+        {"lang": "he", "text": "ספקים", "source": "IL", "notes": "Sapakim = suppliers"},
+        {"lang": "ru", "text": "Расчеты с поставщиками", "source": "RU-RAS", "notes": "Account 60"},
+        {"lang": "tr", "text": "Satıcılar", "source": "TR-TDHP", "notes": "Account 320"},
+        {"lang": "vi", "text": "Phải trả người bán", "source": "VN-VAS", "notes": "Account 331"}
+      ]
+    },
+    {
+      "kontablo_uuid": "00000000-0000-4000-8000-000000000203",
+      "canonical_name_en": "Tax Liabilities (Output VAT / GST)",
+      "synonyms": [
+        {"lang": "en", "text": "VAT Payable", "source": "UK/EU", "notes": ""},
+        {"lang": "en", "text": "GST Payable", "source": "AU/NZ/CA/IN/SG", "notes": ""},
+        {"lang": "en", "text": "Sales Tax Payable", "source": "US-state", "notes": ""},
+        {"lang": "en", "text": "Output Tax", "source": "UK-HMRC", "notes": ""},
+        {"lang": "es", "text": "IVA por Pagar", "source": "MX/CO/EC/VE", "notes": ""},
+        {"lang": "es", "text": "ITBMS por Pagar", "source": "PA-DGI", "notes": "Impuesto de Transferencia de Bienes Muebles"},
+        {"lang": "es", "text": "IVA Repercutido", "source": "ES-PGC", "notes": "Spain: VAT charged to customers"},
+        {"lang": "es", "text": "Impuesto sobre ventas por pagar", "source": "CO-PUC", "notes": "Code 2408"},
+        {"lang": "pt", "text": "ICMS a Recolher", "source": "BR-SPED", "notes": "State-level goods tax in Brazil"},
+        {"lang": "pt", "text": "PIS a Recolher", "source": "BR-SPED", "notes": "Federal social contribution tax"},
+        {"lang": "pt", "text": "COFINS a Recolher", "source": "BR-SPED", "notes": "Federal social contribution tax - DIFFERENT UUID technically"},
+        {"lang": "fr", "text": "TVA collectée", "source": "FR-PCG", "notes": "Account 4457"},
+        {"lang": "de", "text": "Umsatzsteuer", "source": "DE-SKR04", "notes": ""},
+        {"lang": "de", "text": "Mehrwertsteuer", "source": "DE-colloquial", "notes": "Common name for VAT in German"},
+        {"lang": "ja", "text": "消費税等", "source": "JP-JGAAP", "notes": "Consumption tax 10%"},
+        {"lang": "ar", "text": "ضريبة القيمة المضافة", "source": "SA/AE/GCC", "notes": "VAT 15% (SA) / 5% (AE)"},
+        {"lang": "he", "text": "מע\"מ עסקאות", "source": "IL", "notes": "Output VAT"},
+        {"lang": "ru", "text": "НДС к уплате", "source": "RU-RAS", "notes": ""},
+        {"lang": "tr", "text": "Ödenecek KDV", "source": "TR-TDHP", "notes": "Katma Değer Vergisi = VAT"},
+        {"lang": "vi", "text": "Thuế GTGT phải nộp", "source": "VN-VAS", "notes": "Code 3331"}
+      ]
+    }
+  ],
+  "fiscal_acronyms": {
+    "BR": {
+      "PIS": {"full": "Programa de Integração Social", "type": "federal_contribution", "kontablo_uuid": "00000000-0000-4000-8000-000000000203"},
+      "COFINS": {"full": "Contribuição para o Financiamento da Seguridade Social", "type": "federal_contribution", "kontablo_uuid": "30000000-0000-4000-8000-000000000001"},
+      "CSLL": {"full": "Contribuição Social sobre o Lucro Líquido", "type": "income_tax_surcharge", "kontablo_uuid": "00000000-0000-4000-8000-000000000205"},
+      "ICMS": {"full": "Imposto sobre Circulação de Mercadorias e Serviços", "type": "state_vat", "kontablo_uuid": "00000000-0000-4000-8000-000000000203"},
+      "ISS": {"full": "Imposto Sobre Serviços", "type": "municipal_services_tax", "kontablo_uuid": "00000000-0000-4000-8000-000000000203"},
+      "CFOP": {"full": "Código Fiscal de Operações e Prestações", "type": "operation_code", "note": "Determines accounting treatment - 200+ codes"},
+      "SPED": {"full": "Sistema Público de Escrituração Digital", "type": "e_filing_system", "note": "Mandatory digital bookkeeping system"}
+    },
+    "MX": {
+      "SAT": {"full": "Servicio de Administración Tributaria", "type": "tax_authority", "note": ""},
+      "CFDI": {"full": "Comprobante Fiscal Digital por Internet", "type": "e_invoice", "note": "Version 4.0 current"},
+      "IVA": {"full": "Impuesto al Valor Agregado", "type": "vat_16pct", "kontablo_uuid": "00000000-0000-4000-8000-000000000203"},
+      "ISR": {"full": "Impuesto Sobre la Renta", "type": "income_tax_30pct", "kontablo_uuid": "00000000-0000-4000-8000-000000000205"},
+      "IEPS": {"full": "Impuesto Especial sobre Producción y Servicios", "type": "excise_tax", "kontablo_uuid": "00000000-0000-4000-8000-000000000203"}
+    },
+    "IN": {
+      "GST": {"full": "Goods and Services Tax", "type": "unified_indirect_tax", "kontablo_uuid": "00000000-0000-4000-8000-000000000203"},
+      "CGST": {"full": "Central GST", "type": "federal_gst_component", "note": "Split with SGST"},
+      "SGST": {"full": "State GST", "type": "state_gst_component", "note": "Split with CGST"},
+      "IGST": {"full": "Integrated GST", "type": "interstate_gst", "note": "For inter-state transactions"},
+      "TDS": {"full": "Tax Deducted at Source", "type": "withholding_tax", "kontablo_uuid": "00000000-0000-4000-8000-000000000204"},
+      "TCS": {"full": "Tax Collected at Source", "type": "seller_withholding", "kontablo_uuid": "00000000-0000-4000-8000-000000000204"}
+    },
+    "ZA": {
+      "SARS": {"full": "South African Revenue Service", "type": "tax_authority", "note": ""},
+      "PAYE": {"full": "Pay As You Earn", "type": "employee_income_tax", "kontablo_uuid": "00000000-0000-4000-8000-000000000204"},
+      "UIF": {"full": "Unemployment Insurance Fund", "type": "social_contribution_1pct", "kontablo_uuid": "00000000-0000-4000-8000-000000000204"},
+      "SDL": {"full": "Skills Development Levy", "type": "training_levy_1pct", "kontablo_uuid": "00000000-0000-4000-8000-000000000501"},
+      "VAT": {"full": "Value Added Tax", "type": "vat_15pct", "kontablo_uuid": "00000000-0000-4000-8000-000000000203"}
+    },
+    "SA": {
+      "ZATCA": {"full": "Zakat, Tax and Customs Authority", "type": "tax_authority", "note": ""},
+      "GOSI": {"full": "General Organization for Social Insurance", "type": "social_security", "kontablo_uuid": "00000000-0000-4000-8000-000000000204"},
+      "VAT": {"full": "Value Added Tax (ضريبة القيمة المضافة)", "type": "vat_15pct", "kontablo_uuid": "00000000-0000-4000-8000-000000000203"},
+      "Zakat": {"full": "Zakat (زكاة) - Islamic obligatory contribution", "type": "islamic_tax_2.5pct", "kontablo_uuid": "00000000-0000-4000-8000-000000000205"}
+    },
+    "PA": {
+      "DGI": {"full": "Dirección General de Ingresos", "type": "tax_authority", "note": ""},
+      "ITBMS": {"full": "Impuesto de Transferencia de Bienes Muebles y Servicios", "type": "vat_7pct", "kontablo_uuid": "00000000-0000-4000-8000-000000000203"},
+      "ISR": {"full": "Impuesto Sobre la Renta", "type": "income_tax_25pct", "kontablo_uuid": "00000000-0000-4000-8000-000000000205"}
+    }
+  }
+}

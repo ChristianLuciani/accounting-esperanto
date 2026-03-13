@@ -1,0 +1,126 @@
+# Kontablo Localization Mapping: Vietnam (VAS - Vietnam Accounting Standards)
+# Version: 0.1.0-draft
+# Authority: Ministry of Finance of Vietnam
+# Standard: VAS (Vietnam Accounting Standards) - Diverges significantly from IFRS
+# Critical Notes:
+#   - Vietnam does NOT use full IFRS. Large companies will transition to IFRS by 2035 (roadmap 2020).
+#   - VAS is based on Vietnamese Decree 200/2014/TT-BTC
+#   - MANDATORY 3-digit account code system (similar to French PCG)
+#   - VAT system: 0%, 5%, 8%, 10% rates (8% is special reduction post-COVID)
+#   - Corporate Tax: 20% standard (17% for SMEs, 32-50% for oil/gas)
+#   - Key SME challenge: Most SMEs still use VAS circular 133, NOT IFRS
+#   - No concept of OCI (Other Comprehensive Income) in traditional VAS
+
+metadata:
+  country: vn
+  authority: Ministry of Finance (MoF) - Bộ Tài chính
+  standard: vas_decree200_2014
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-13
+  currency: VND
+  ifrs_roadmap: 2035
+  mandatory_code_system: VAS_3digit
+  note: "DIVERGES FROM IFRS. No OCI concept. Specific VAS circulars override some IFRS principles."
+
+mappings:
+  # VAS Account Classes:
+  # 1xx: Cash, Receivables, Inventory, Short-term Assets
+  # 2xx: Fixed Assets, Long-term Assets
+  # 3xx: Liabilities
+  # 4xx: Owners' Equity
+  # 5xx: Revenue
+  # 6xx: COGS
+  # 7xx: Other Income
+  # 8xx: Expenses
+  # 9xx: Other Expenses (memo)
+
+  "111":
+    name: "Tiền mặt (Cash)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+
+  "112":
+    name: "Tiền gửi ngân hàng (Bank Deposits)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+
+  "131":
+    name: "Phải thu khách hàng (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+
+  "1331":
+    name: "Thuế GTGT được khấu trừ của hàng hóa dịch vụ (Input VAT)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "10000000-0000-4000-8000-000000000001"
+    research_note: "VAT rates: 0%, 5%, 8%, 10%. Input VAT refundable from state."
+
+  "152":
+    name: "Nguyên liệu, vật liệu (Raw Materials Inventory)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+
+  "211":
+    name: "Tài sản cố định hữu hình (Tangible Fixed Assets / PPE)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000110"
+
+  # --- LIABILITIES ---
+  "331":
+    name: "Phải trả người bán (Trade Payables)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+
+  "3331":
+    name: "Thuế GTGT phải nộp (Output VAT Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+
+  "3334":
+    name: "Thuế thu nhập doanh nghiệp (Corporate Income Tax Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+
+  # --- EQUITY ---
+  "411":
+    name: "Vốn điều lệ (Charter Capital / Paid-in Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000008"
+
+  # --- REVENUE ---
+  "511":
+    name: "Doanh thu bán hàng và cung cấp dịch vụ (Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+
+  # --- COGS ---
+  "632":
+    name: "Giá vốn hàng bán (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+
+  # --- EXPENSES ---
+  "642":
+    name: "Chi phí quản lý doanh nghiệp (General & Admin Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+
+  "635":
+    name: "Chi phí tài chính (Financial Expenses - includes FX loss)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    research_note: "Includes both interest expense and FX losses. Needs subaccount split for Kontablo."

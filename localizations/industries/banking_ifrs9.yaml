@@ -1,0 +1,106 @@
+# Kontablo Industry Extension: Banking & Financial Instruments (IFRS 9)
+# Version: 0.1.0-draft
+# Standard: IFRS 9 - Financial Instruments (effective January 1, 2018)
+# Authority: IASB
+# Critical Notes:
+#   - Replaced IAS 39 with a principles-based classification model
+#   - THREE measurement categories for financial assets based on business model + SPPI test
+#   - FORWARD-LOOKING Expected Credit Loss (ECL) model (vs IAS 39 incurred loss)
+#   - ECL staging: Stage 1 (12-month ECL), Stage 2 (lifetime ECL), Stage 3 (credit-impaired)
+#   - Hedge accounting aligned with risk management (more entities qualify)
+#   - CRITICAL for: banks, insurance companies, funds, any entity with significant financial assets
+
+metadata:
+  industry: banking_financial_services
+  standard: IFRS_9_2018
+  applies_to:
+    - Banks and financial institutions (primary)
+    - Any entity with material financial instruments
+    - Insurance entities (financial assets component)
+  kontablo_version: 0.1.0
+  extension_type: industry
+  last_updated: 2026-03-13
+
+mappings:
+  # === FINANCIAL ASSET CLASSIFICATIONS ===
+  "IFRS9_FA_AmortizedCost":
+    name: "Financial Assets at Amortised Cost (AC)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "40000000-0000-4000-8000-000000000001"
+    classification_test: "Business model: Hold to collect. SPPI test: PASS."
+    examples: ["Loans and receivables", "Held-to-maturity bonds"]
+
+  "IFRS9_FA_FVOCI_Debt":
+    name: "Financial Assets at FVOCI - Debt Instruments"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "40000000-0000-4000-8000-000000000002"
+    classification_test: "Business model: Hold to collect and sell. SPPI test: PASS."
+    examples: ["Available-for-sale bonds"]
+    oci_component: true
+
+  "IFRS9_FA_FVOCI_Equity":
+    name: "Financial Assets at FVOCI - Equity Instruments (irrevocable election)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "40000000-0000-4000-8000-000000000003"
+    classification_test: "Equity instrument. Irrevocable OCI designation."
+    oci_component: true
+    notes: "OCI gains/losses NEVER recycled to P&L. Dividends still in P&L."
+
+  "IFRS9_FA_FVTPL":
+    name: "Financial Assets at FVTPL (Fair Value Through Profit or Loss)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "40000000-0000-4000-8000-000000000004"
+    classification_test: "Does NOT pass AC or FVOCI criteria. Or designated FVTPL."
+    examples: ["Trading securities", "Derivatives not qualifying as hedges"]
+
+  # === EXPECTED CREDIT LOSS (ECL) PROVISIONS ===
+  "IFRS9_ECL_Stage1":
+    name: "ECL Provision - Stage 1 (12-month ECL)"
+    nature: "Credit"  # Contra-asset
+    level: 3
+    kontablo_uuid: "40000000-0000-4000-8000-000000000010"
+    ecl_stage: 1
+    notes: "For performing assets. Credit risk not significantly increased since origination."
+
+  "IFRS9_ECL_Stage2":
+    name: "ECL Provision - Stage 2 (Lifetime ECL - not credit-impaired)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "40000000-0000-4000-8000-000000000011"
+    ecl_stage: 2
+    notes: "Significant increase in credit risk since origination. Full lifetime ECL."
+
+  "IFRS9_ECL_Stage3":
+    name: "ECL Provision - Stage 3 (Lifetime ECL - credit-impaired)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "40000000-0000-4000-8000-000000000012"
+    ecl_stage: 3
+    notes: "Credit-impaired. Effective interest on net carrying amount."
+
+  "IFRS9_ECL_Expense":
+    name: "Credit Impairment Losses (ECL Charge - P&L)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "40000000-0000-4000-8000-000000000013"
+    notes: "P&L charge for movements in ECL provision stages."
+
+  # === HEDGING ===
+  "IFRS9_HedgingInstrument":
+    name: "Hedging Instrument (Derivatives designated as hedges)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "40000000-0000-4000-8000-000000000020"
+    hedge_type: ["Fair value hedge", "Cash flow hedge", "Net investment hedge"]
+
+  "IFRS9_HedgeReserve_OCI":
+    name: "Cash Flow Hedge Reserve (OCI)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "40000000-0000-4000-8000-000000000021"
+    oci_component: true
+    notes: "Effective portion of cash flow hedges recognized in OCI until hedged item affects P&L."

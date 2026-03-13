@@ -1,0 +1,142 @@
+# Kontablo ERP Compatibility Research: ERPNext / Frappe
+# Version: 0.1.0-research
+# Purpose: Map ERPNext internal account_type values to Kontablo UUIDs
+# Critical Finding: ERPNext uses a TREE model with 'is_group' flag.
+#                   Kontablo uses a GRAPH model.
+#                   Resolution: account_type field is the primary mapping lever.
+
+metadata:
+  erp_vendor: ERPNext / Frappe Framework
+  erp_version: "15.x (March 2024)"
+  source: "https://github.com/frappe/erpnext/blob/develop/erpnext/accounts/doctype/account/account.py"
+  model_type: TREE  # INCOMPATIBILITY with Kontablo GRAPH
+  tree_resolution: "Use account_type as primary key. Accept information loss on multi-dimensional classification."
+  mapping_confidence: HIGH  # account_type is well-defined and stable
+
+incompatibility_notes:
+  - issue: "ERPNext has single parent per account. Kontablo supports multi-dimensional membership."
+    workaround: "Store Kontablo UUID as a custom field in ERPNext DocType."
+    adr_reference: "Propose ADR-008"
+  - issue: "ERPNext 'is_group' accounts have no UUID equivalent in Kontablo (summary nodes)."
+    workaround: "Do not map Group accounts; only map Ledger (leaf) accounts."
+
+# ERPNext account_type enum → Kontablo UUID mapping
+# Source: erpnext/accounts/doctype/account/account.json
+erpnext_account_types:
+
+  # === ASSET TYPES ===
+  "Bank":
+    description: "Bank accounts (checking, savings)"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    confidence: 0.99
+    notes: "Direct 1:1 match."
+
+  "Cash":
+    description: "Petty cash, cash registers"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    confidence: 0.99
+
+  "Receivable":
+    description: "Accounts Receivable / Trade Debtors"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    confidence: 0.99
+
+  "Stock":
+    description: "Inventory / Stock on Hand"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    confidence: 0.98
+
+  "Fixed Asset":
+    description: "Property, Plant and Equipment (PPE)"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000110"
+    confidence: 0.98
+
+  "Accumulated Depreciation":
+    description: "Accumulated Depreciation (contra-asset)"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000112"
+    confidence: 0.97
+
+  "Tax":  # Input side
+    description: "VAT Input / Tax Recoverable"
+    kontablo_uuid: "10000000-0000-4000-8000-000000000001"
+    confidence: 0.90
+    notes: "AMBIGUOUS: 'Tax' is used for both input and output VAT in ERPNext. Resolve by checking account name."
+
+  "Temporary":
+    description: "Temporary / Suspense accounts"
+    kontablo_uuid: "SKIP"
+    confidence: 0.0
+    notes: "Do not map. Temporary accounts have no Kontablo equivalent."
+
+  # === LIABILITY TYPES ===
+  "Payable":
+    description: "Accounts Payable / Trade Creditors"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    confidence: 0.99
+
+  "Tax":  # Output side - see resolution below
+    description: "VAT Output / Tax Payable"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    confidence: 0.85
+    notes: "RESOLUTION: If account root_type='Liability', map to output VAT UUID."
+
+  "Chargeable":
+    description: "Cost center / billable accounts"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    confidence: 0.75
+    notes: "Context-dependent. Usually maps to operating expense."
+
+  "Round Off":
+    description: "Rounding difference accounts"
+    kontablo_uuid: "SKIP"
+    confidence: 0.0
+    notes: "System account. Do not map to Kontablo UUID."
+
+  # === EQUITY TYPES ===
+  "Equity":
+    description: "Share Capital, Retained Earnings"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000008"
+    confidence: 0.90
+    notes: "Need to distinguish paid-in capital vs retained earnings. Use child account name."
+
+  # === INCOME TYPES ===
+  "Income Account":
+    description: "Revenue / Sales"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    confidence: 0.95
+
+  "Other Income":
+    description: "Non-operating income (interest received, FX gains)"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    confidence: 0.85
+
+  # === EXPENSE TYPES ===
+  "Cost of Goods Sold":
+    description: "COGS / Direct Costs"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    confidence: 0.99
+
+  "Expense Account":
+    description: "Operating Expenses (general)"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    confidence: 0.90
+
+  "Expenses Included In Asset Valuation":
+    description: "Capitalized costs (for inventory)"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    confidence: 0.80
+    notes: "Maps to inventory since it becomes part of asset cost."
+
+  "Depreciation":
+    description: "Depreciation Expense"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    confidence: 0.99
+
+resolution_algorithm:
+  step1: "Get account_type from ERPNext"
+  step2: "If account_type == 'Tax', check root_type: Asset → input VAT UUID; Liability → output VAT UUID"
+  step3: "If account_type == 'Temporary' or 'Round Off' → skip"
+  step4: "Apply UUID from this mapping table"
+  step5: "Store UUID in ERPNext custom field: account.kontablo_uuid"
+
+integration_script: "scripts/erp_bridges/erpnext_kontablo_bridge.py"

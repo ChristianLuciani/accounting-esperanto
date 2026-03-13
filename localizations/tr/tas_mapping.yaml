@@ -1,0 +1,121 @@
+# Kontablo Localization Mapping: Turkey (TAS / Turkish GAAP + IFRS)
+# Version: 0.1.0-draft
+# Authority: Public Oversight, Accounting and Auditing Standards Authority (KGK)
+# Standard: TAS (Turkish Accounting Standards) = IFRS adopted 2005
+#            + Mandatory Uniform Chart of Accounts (Tek Düzen Hesap Planı - TDHP)
+# Critical Notes:
+#   *** HYPERINFLATION ALERT: IAS 29 IS MANDATORY FOR TURKEY AS OF 2022 ***
+#   - Turkey's cumulative 3-year inflation exceeded 100% in 2021-2022
+#   - All financial statements must be restated in constant purchasing power (TL)
+#   - REMA-equivalent accounts: "Finansal Varlıklara İlişkin Yeniden Değerleme Farkları"
+#   - The Tek Düzen Hesap Planı (TDHP) is a MANDATORY 3-digit code system
+#   - VAT system: KDV at 1%, 8%, 18%, 20% rates (changed in 2023)
+#   - Corporate tax: 25% (increased from 20% in 2022)
+
+metadata:
+  country: tr
+  authority: KGK (Public Oversight Board)
+  standard: tas_tdhp_2024
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-13
+  currency: TRY
+  hyperinflation: true # IAS 29 ACTIVE
+  mandatory_code_system: TDHP_3digit
+
+mappings:
+  # TDHP uses a mandatory 3-digit code system similar to France's PCG
+  # Class 1: Short-term Assets, Class 2: Long-term Assets, Class 3: Short-term Liabilities
+  # Class 4: Long-term Liabilities, Class 5: Equity, Class 6: Revenue, Class 7: COGS
+  # Class 8: Operating Expenses, Class 9: Memo accounts
+
+  # --- ASSETS (Class 1 + 2) ---
+  "100":
+    name: "Kasa (Petty Cash)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+
+  "102":
+    name: "Bankalar (Banks)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+
+  "120":
+    name: "Alıcılar (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+
+  "153":
+    name: "Ticari Mallar (Merchandise Inventory)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+
+  "191":
+    name: "İndirilecek KDV (Deductible VAT / Input KDV)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "10000000-0000-4000-8000-000000000001"
+
+  # IAS 29 Hyperinflation account
+  "698":
+    name: "Parasal Pozisyon Kazancı/Kaybı (Monetary Position Gain/Loss - IAS 29)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "50000000-0000-4000-8000-000000000002"
+    research_note: "IAS 29 CRITICAL: Turkey mandatory hyperinflation accounting. NET monetary position impact."
+
+  # --- LIABILITIES (Class 3 + 4) ---
+  "320":
+    name: "Satıcılar (Trade Payables)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+
+  "360":
+    name: "Ödenecek Vergi ve Fonlar (KDV Output + withholding taxes)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+
+  "371":
+    name: "Dönem Kârının Peşin Ödenen Vergi ve Diğ. Yükümlülükleri (Prepaid CIT)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+
+  # --- REVENUE (Class 6) ---
+  "600":
+    name: "Yurt İçi Satışlar (Domestic Sales)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+
+  "601":
+    name: "Yurt Dışı Satışlar (Export Sales)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "10000000-0000-4000-8000-000000000302"
+
+  # --- COGS (Class 7) ---
+  "621":
+    name: "Satılan Ticari Mallar Maliyeti (COGS)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+
+  # --- EXPENSES (Class 7/8) ---
+  "770":
+    name: "Genel Yönetim Giderleri (General & Admin Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+
+  "656":
+    name: "Kambiyo Zararları (Foreign Exchange Losses)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    research_note: "CRITICAL FOR TURKEY: Massive FX losses due to TRY depreciation. Kambiyo losses are material."

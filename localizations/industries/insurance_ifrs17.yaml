@@ -1,0 +1,92 @@
+# Kontablo Industry Extension: Insurance (IFRS 17)
+# Version: 0.1.0-draft
+# Standard: IFRS 17 - Insurance Contracts (effective January 1, 2023)
+# Authority: IASB
+# Critical Notes:
+#   - IFRS 17 fundamentally replaces IFRS 4 for all insurance entities
+#   - Key NEW concepts: CSM (Contractual Service Margin), Risk Adjustment, Loss Component
+#   - Premiums are NO LONGER revenue; instead: Insurance Service Revenue is recognized over time
+#   - Two measurement models: GMM (General Measurement Model) and PAA (Premium Allocation Approach)
+#   - Requires GROUPING of contracts (portfolios → annual cohorts → profitable/onerous)
+#   - These accounts DO NOT EXIST in a standard CoA; they are IFRS 17-specific
+
+metadata:
+  industry: insurance
+  standard: IFRS_17_2023
+  applies_to:
+    - Insurance companies (life, non-life, reinsurance)
+    - Captive insurers
+    - Entities with significant insurance contract portfolios
+  kontablo_version: 0.1.0
+  extension_type: industry
+  last_updated: 2026-03-13
+
+mappings:
+  # === INSURANCE CONTRACT LIABILITIES (Balance Sheet) ===
+  "IFRS17_LIC_LFRC":
+    name: "Liability for Remaining Coverage (LRC)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "30000000-0000-4000-8000-000000000001"
+    ifrs17_component: "Represents obligation for coverage not yet provided"
+    includes: ["Unearned Premium (PAA)", "CSM + BEL for GMM"]
+
+  "IFRS17_LIC_LIC":
+    name: "Liability for Incurred Claims (LIC)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "30000000-0000-4000-8000-000000000002"
+    ifrs17_component: "Fulfillment cash flows for claims already incurred"
+
+  "IFRS17_CSM":
+    name: "Contractual Service Margin (CSM)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "30000000-0000-4000-8000-000000000003"
+    ifrs17_component: "Unearned profit recognized over service period"
+    research_note: "CSM is tracked at group of contracts level. Critical disclosure item."
+
+  "IFRS17_RiskAdjustment":
+    name: "Risk Adjustment for Non-Financial Risk"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "30000000-0000-4000-8000-000000000004"
+    ifrs17_component: "Compensation for uncertainty in cash flows"
+
+  "IFRS17_LossComponent":
+    name: "Loss Component (Onerous Contract Liability)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "30000000-0000-4000-8000-000000000005"
+    ifrs17_component: "Tracks losses on onerous contracts separately from CSM"
+
+  "IFRS17_ReinsuranceHeld":
+    name: "Reinsurance Contract Assets Held"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "30000000-0000-4000-8000-000000000006"
+    ifrs17_component: "Mirror of LRC/LIC from reinsurer's perspective"
+
+  # === INCOME STATEMENT ===
+  "IFRS17_InsuranceServiceRevenue":
+    name: "Insurance Service Revenue (ISR)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "30000000-0000-4000-8000-000000000010"
+    ifrs17_component: "NOT premiums. Released from CSM + risk adjustment + expected claims."
+    research_note: "CRITICAL: Replaces premium revenue. Timing is fundamentally different from IFRS 4."
+
+  "IFRS17_InsuranceServiceExpense":
+    name: "Insurance Service Expense"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "30000000-0000-4000-8000-000000000011"
+    ifrs17_component: "Incurred claims + change in LIC"
+
+  "IFRS17_InsuranceFinanceIncome":
+    name: "Insurance Finance Income or Expenses"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "30000000-0000-4000-8000-000000000012"
+    ifrs17_component: "Unwinding of discount + effect of financial risk changes"
+    notes: "Can be split between P&L and OCI. Major source of volatility."

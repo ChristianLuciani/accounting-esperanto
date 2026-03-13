@@ -1,0 +1,118 @@
+# Kontablo Localization Mapping: Saudi Arabia (SOCPA / IFRS)
+# Version: 0.1.0-draft
+# Authority: Saudi Organization for Chartered and Professional Accountants (SOCPA)
+# Standard: IFRS as adopted in Saudi Arabia (mandatory for listed companies since 2017)
+# Critical Notes:
+#   - ZAKAT is the Islamic obligatory alms-giving; replaces or supplements corporate income tax
+#     Zakat rate: 2.5% of Zakat base (not taxable income). Major compliance account.
+#   - VAT introduced in 2018 at 5%, increased to 15% in 2020
+#   - NO personal income tax for Saudi nationals
+#   - Sharia-compliant finance: no conventional interest income/expense; uses Murabaha, Ijara, Sukuk
+#   - Employees: GOSI (General Organization for Social Insurance) = employer 12.5% (Saudi) or 2% (expat)
+#   - Vision 2030 special economic zones create territorial income exemptions (similar to Panama)
+
+metadata:
+  country: sa
+  authority: SOCPA
+  standard: ifrs_sa_2024
+  kontablo_version: 0.1.0
+  last_updated: 2026-03-13
+  currency: SAR
+  vat_rate: 0.15
+  zakat_rate: 0.025
+  sharia_compliant: true
+
+mappings:
+  # --- ASSETS ---
+  "Cash and Cash Equivalents":
+    name: "Cash and Cash Equivalents (SAR + USD)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+
+  "Trade Receivables":
+    name: "Trade Receivables (Debtors)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+
+  "Input VAT Recoverable":
+    name: "Input VAT Recoverable (15%)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "10000000-0000-4000-8000-000000000001"
+
+  "Murabaha / Islamic Finance Receivable":
+    name: "Murabaha Receivable (Sharia-Compliant Finance Asset)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    research_note: "CRITICAL: Murabaha is cost-plus financing. No interest. Maps to receivable, not interest income."
+
+  "Zakat Prepayment":
+    name: "Zakat Advance Payments to ZATCA"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    research_note: "UNIQUE TO GCC: Zakat payments are prepaid during the year."
+
+  # --- LIABILITIES ---
+  "Trade Payables":
+    name: "Trade Payables (Creditors)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+
+  "VAT Payable":
+    name: "Output VAT Payable to ZATCA (15%)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+
+  "Zakat Payable":
+    name: "Zakat Payable (2.5% of Zakat base)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    research_note: "UNIQUE: Zakat replaces CIT for Saudi national shareholders. Computed on Zakat base (equity + long-term liabilities - non-current assets)."
+
+  "GOSI Payable":
+    name: "GOSI (Social Insurance) Contributions Payable"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+
+  "Sukuk Liabilities":
+    name: "Sukuk (Islamic Bond) Obligations"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    research_note: "Sukuk = Islamic bond. No coupon/interest; profit-sharing instead. Maps to long-term debt."
+
+  # --- INCOME ---
+  "Revenue":
+    name: "Revenue from Contracts with Customers (IFRS 15)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+
+  "Murabaha / Ijara Income":
+    name: "Islamic Finance Income (Murabaha/Ijara margin)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    research_note: "NOT interest. This is the profit margin on Sharia-compliant financing. Conceptually equivalent."
+
+  # --- EXPENSES ---
+  "Cost of Revenue":
+    name: "Cost of Revenue"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+
+  "Zakat Expense":
+    name: "Zakat Expense (charged to equity per SOCPA)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    research_note: "DEBATE: Some SA entities charge Zakat to equity, others to P&L. Research required."

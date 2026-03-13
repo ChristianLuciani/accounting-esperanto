@@ -1,0 +1,167 @@
+# Kontablo ERP Compatibility Research: Zoho Books
+# Version: 0.1.0-research
+# Purpose: Map Zoho Books account_type values to Kontablo UUIDs
+# API Reference: https://www.zoho.com/books/api/v3/chart-of-accounts/
+# Critical Finding: Zoho Books has a SIMPLER flat model than ERPNext/Kontablo.
+#                   5 root types + fixed subtypes. Risk: information loss on import.
+
+metadata:
+  erp_vendor: Zoho Books
+  erp_version: "API v3 (2024)"
+  source: "Zoho Books API Documentation"
+  model_type: FLAT_HIERARCHY  # Simpler than ERPNext
+  schema_fields:
+    - account_type    # Primary classification
+    - account_name    # Human name
+    - account_code    # Optional user-defined code (up to 50 chars)
+    - description     # Free text
+  mapping_confidence: HIGH
+
+gap_analysis:
+  problem: "Zoho Books account_type enum has only ~20 values. Kontablo distinguishes 32+ UUIDs."
+  consequence: "Multiple Kontablo UUIDs map FROM the same Zoho account_type."
+  resolution: "Use account_name semantic matching to differentiate within the same account_type."
+  example: "Zoho 'Other Current Asset' covers: Input VAT, Prepaid Expenses, Employee Loans — all different UUIDs."
+
+# Zoho Books account_type → Kontablo UUID mapping
+zoho_account_types:
+
+  # === ASSET ACCOUNT TYPES ===
+  "cash":
+    zoho_label: "Cash"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    confidence: 0.99
+
+  "bank":
+    zoho_label: "Bank"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    confidence: 0.99
+
+  "other_current_asset":
+    zoho_label: "Other Current Asset"
+    kontablo_uuid: "AMBIGUOUS"
+    confidence: 0.60
+    disambiguation_rules:
+      - if_name_contains: ["VAT", "GST", "Tax Recoverable", "Input Tax"]
+        uuid: "10000000-0000-4000-8000-000000000001"  # Input VAT
+      - if_name_contains: ["Prepaid", "Advance"]
+        uuid: "00000000-0000-4000-8000-000000000108"  # Prepaid Expenses
+      - if_name_contains: ["Stock", "Inventory"]
+        uuid: "00000000-0000-4000-8000-000000000106"  # Inventory
+      - default:
+        uuid: "00000000-0000-4000-8000-000000000109"  # Other Current Assets
+
+  "accounts_receivable":
+    zoho_label: "Accounts Receivable"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    confidence: 0.99
+
+  "stock":
+    zoho_label: "Stock"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    confidence: 0.99
+
+  "fixed_asset":
+    zoho_label: "Fixed Asset"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000110"
+    confidence: 0.98
+
+  "other_asset":
+    zoho_label: "Other Asset"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000113"
+    confidence: 0.70
+    notes: "Too broad. Apply name-based disambiguation."
+
+  # === LIABILITY ACCOUNT TYPES ===
+  "accounts_payable":
+    zoho_label: "Accounts Payable"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    confidence: 0.99
+
+  "credit_card":
+    zoho_label: "Credit Card"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    confidence: 0.95
+    notes: "Maps to short-term debt / credit line."
+
+  "other_current_liability":
+    zoho_label: "Other Current Liability"
+    kontablo_uuid: "AMBIGUOUS"
+    confidence: 0.65
+    disambiguation_rules:
+      - if_name_contains: ["VAT", "GST", "Sales Tax", "Output Tax"]
+        uuid: "00000000-0000-4000-8000-000000000203"  # Output VAT
+      - if_name_contains: ["Payroll", "Salary", "Wages"]
+        uuid: "00000000-0000-4000-8000-000000000206"  # Payroll Liabilities
+      - if_name_contains: ["Deferred Revenue", "Advance from Customer"]
+        uuid: "00000000-0000-4000-8000-000000000207"  # Deferred Revenue
+      - default:
+        uuid: "00000000-0000-4000-8000-000000000208"  # Other Current Liabilities
+
+  "long_term_liability":
+    zoho_label: "Long Term Liability"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000210"
+    confidence: 0.80
+    disambiguation_rules:
+      - if_name_contains: ["Loan", "Mortgage"]
+        uuid: "00000000-0000-4000-8000-000000000210"
+      - if_name_contains: ["Lease"]
+        uuid: "00000000-0000-4000-8000-000000000209"  # IFRS 16 Lease
+
+  # === EQUITY TYPES ===
+  "equity":
+    zoho_label: "Equity"
+    kontablo_uuid: "AMBIGUOUS"
+    confidence: 0.75
+    disambiguation_rules:
+      - if_name_contains: ["Share Capital", "Paid-in", "Common Stock"]
+        uuid: "00000000-0000-4000-8000-000000000008"
+      - if_name_contains: ["Retained Earnings", "Profits"]
+        uuid: "00000000-0000-4000-8000-000000000006"
+
+  # === INCOME TYPES ===
+  "income":
+    zoho_label: "Income"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    confidence: 0.95
+
+  "other_income":
+    zoho_label: "Other Income"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    confidence: 0.90
+
+  # === EXPENSE TYPES ===
+  "cost_of_goods_sold":
+    zoho_label: "Cost of Goods Sold"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    confidence: 0.99
+
+  "expense":
+    zoho_label: "Expense"
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    confidence: 0.85
+    notes: "Broad category. The Semantic Matcher AI should refine this."
+
+  "other_expense":
+    zoho_label: "Other Expense"
+    kontablo_uuid: "AMBIGUOUS"
+    confidence: 0.70
+    disambiguation_rules:
+      - if_name_contains: ["Depreciation"]
+        uuid: "00000000-0000-4000-8000-000000000503"
+      - if_name_contains: ["FX", "Foreign Exchange", "Currency"]
+        uuid: "00000000-0000-4000-8000-000000000403"
+      - default:
+        uuid: "00000000-0000-4000-8000-000000000502"
+
+resolution_algorithm:
+  step1: "Get account_type from Zoho Books API"
+  step2: "Look up in this mapping table"
+  step3: "If kontablo_uuid == 'AMBIGUOUS', apply disambiguation_rules using account_name"
+  step4: "If disambiguation_rules also fail, fall back to Semantic Matcher AI"
+  step5: "Flag as confidence < 0.80 in MappingResponse for human review"
+
+zoho_vs_erpnext_comparison:
+  zoho_depth: "Shallower — better for SMEs, harder for granular mapping"
+  erpnext_depth: "Deeper with account_type — more reliable mapping"
+  recommendation: "Zoho mappings require the AI Semantic Matcher as secondary layer more often."
