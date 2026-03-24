@@ -1,0 +1,365 @@
+# Kontablo Industry Extension: Real Estate & Property (IAS 40 + IFRS 16 + IFRS 15 + IAS 36)
+# Version: 0.1.0-draft
+# Standard: IAS 40 - Investment Property (fair value vs cost model)
+#            IFRS 16 - Leases (lessee and lessor accounting)
+#            IFRS 15 - Revenue from real estate sales (point in time vs over time)
+#            IAS 36 - Impairment of Assets (for owner-occupied property)
+# Authority: IASB
+# Critical Notes:
+#   - IAS 40: Investment property is held to EARN RENTALS or for CAPITAL APPRECIATION
+#     (NOT for use in production/supply of goods/services or for sale in ordinary course)
+#   - CHOICE of model: Fair Value Model (FVM) OR Cost Model (CM) — entity-wide choice
+#   - FVM: Changes in fair value go to P&L (not OCI!) — requires annual professional valuation
+#   - CM: Depreciated + impairment tested; fair value disclosed in notes
+#   - IFRS 15 real estate sales: revenue recognition can be AT A POINT IN TIME (typical) or
+#     OVER TIME (if customer controls asset under construction — common in pre-sales)
+#   - KEY JURISDICTIONS: AE (Dubai), CN (property sector), BR, MX (FIBRAs/REITs), UK, DE, SG
+
+metadata:
+  industry: real_estate_property
+  standard: IAS_40_IFRS_16_IFRS_15_IAS_36
+  applies_to:
+    - Real estate investment companies (REITs / FIBRAs / SOCIMIs)
+    - Property developers and homebuilders
+    - Commercial real estate owners
+    - Hotel companies (with owned real estate)
+    - Industrial REIT operators
+    - Mixed-use property companies
+  kontablo_version: 0.1.0
+  extension_type: industry
+  last_updated: 2026-03-23
+  key_jurisdictions: ["ae", "cn", "br", "mx", "uk", "de", "sg", "us", "es", "fr", "za"]
+
+mappings:
+  # ─────────────────────────────────────────────
+  # INVESTMENT PROPERTY (IAS 40)
+  # ─────────────────────────────────────────────
+
+  "IP_CompletedFairValue":
+    name: "Investment Property — Completed (Fair Value Model)"
+    label_es: "Propiedades de Inversión — Terminadas (Modelo VR)"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "70000000-0000-4000-8000-000000000001"
+    ifrs_tag: "ifrs-full:InvestmentPropertyCompleted"
+    parent_kontablo: "asset.noncurrent.ppe"
+    measurement_model: "fair_value"
+    valuation_frequency: "annual"
+    valuation_method: "income_approach_DCF_or_comparable_sales"
+    examples:
+      - "Office towers held for rental"
+      - "Shopping malls (owned by REIT)"
+      - "Industrial warehouses leased to tenants"
+      - "Residential apartments held for rent"
+    no_depreciation: true  # Fair value model: NO depreciation charged
+    notes: |
+      IAS 40.33: Under fair value model, no depreciation.
+      IAS 40.35: Fair value gain/loss recognized directly in P&L (not OCI).
+      Annual valuation by RICS-certified valuer or equivalent required.
+      KEY: Transfer from/to owner-occupied property requires specific disclosures.
+
+  "IP_CompletedCostModel":
+    name: "Investment Property — Completed (Cost Model)"
+    label_es: "Propiedades de Inversión — Terminadas (Modelo Costo)"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "70000000-0000-4000-8000-000000000002"
+    ifrs_tag: "ifrs-full:InvestmentPropertyCompleted"
+    parent_kontablo: "asset.noncurrent.ppe"
+    measurement_model: "cost"
+    depreciation_required: true
+    impairment_tested: true
+    notes: |
+      IAS 40.56: Cost model → same as IAS 16 cost model.
+      Depreciate over useful life, test for impairment under IAS 36.
+      Fair value MUST be disclosed in notes even when cost model is used.
+
+  "IP_UnderConstruction":
+    name: "Investment Property Under Construction (IPUC)"
+    label_es: "Propiedad de Inversión en Construcción"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "70000000-0000-4000-8000-000000000003"
+    ifrs_tag: "ifrs-full:InvestmentPropertyUnderConstructionOrDevelopment"
+    parent_kontablo: "asset.noncurrent.ppe"
+    measurement_model: "fair_value_if_reliably_measurable_else_cost"
+    notes: |
+      IAS 40 amended 2008: IPUC included in IAS 40 scope (previously IAS 16).
+      If fair value of IPUC cannot be reliably measured → cost model until completion.
+      Construction costs capitalized: materials, labor, borrowing costs (IAS 23).
+      Transfer to IP_Completed when construction is substantially complete.
+
+  "IP_FairValueGainLoss":
+    name: "Fair Value Gain (Loss) on Investment Property"
+    label_es: "Ganancia (Pérdida) por Valor Razonable — Propiedades de Inversión"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "70000000-0000-4000-8000-000000000010"
+    ifrs_tag: "ifrs-full:GainLossOnFairValueAdjustmentInvestmentProperty"
+    parent_kontablo: "revenue.other"
+    volatility_flag: true
+    exclude_from_normalized_ebitda: true
+    notes: |
+      Goes to P&L (NOT OCI) — unlike the revaluation model under IAS 16.
+      Creates significant P&L volatility in real estate companies.
+      Analysts use "underlying earnings" or "FFO" (Funds From Operations) metrics that strip this out.
+      Kontablo flags this for FFO calculation.
+
+  # ─────────────────────────────────────────────
+  # OWNER-OCCUPIED PROPERTY (IAS 16)
+  # ─────────────────────────────────────────────
+
+  "OOP_OwnerOccupied":
+    name: "Owner-Occupied Property (PP&E, IAS 16)"
+    label_es: "Inmuebles de Uso Propio (PPE, NIC 16)"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "70000000-0000-4000-8000-000000000020"
+    parent_kontablo: "asset.noncurrent.ppe"
+    measurement_model: "cost_or_revaluation"
+    notes: |
+      If entity USES the property in its own operations → IAS 16 (NOT IAS 40).
+      If entity later vacates and holds for rental → transfer to IP at fair value on transfer date.
+      Transfer requires specific disclosures and any revaluation gain/loss treatment.
+
+  # ─────────────────────────────────────────────
+  # PROPERTIES FOR SALE (DEVELOPER INVENTORY, IAS 2)
+  # ─────────────────────────────────────────────
+
+  "DEV_WIPProperties":
+    name: "Properties Under Development — Inventory (Developer)"
+    label_es: "Propiedades en Desarrollo — Inventario (Desarrollador)"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "70000000-0000-4000-8000-000000000030"
+    ifrs_tag: "ifrs-full:Inventories"
+    parent_kontablo: "asset.current.inventory"
+    measurement: "lower_of_cost_or_NRV"
+    classification: "IAS_2_inventory"
+    notes: |
+      Properties HELD FOR SALE in the ordinary course of business (developer) → IAS 2, NOT IAS 40.
+      Includes: land acquired for development + construction costs + borrowing costs (IAS 23).
+      NRV = estimated selling price less costs to complete and sell.
+      KEY developer distinction: Do NOT use IAS 40 fair value model for developer inventory.
+
+  "DEV_LandBank":
+    name: "Land Bank — Held for Development"
+    label_es: "Banco de Tierra — Para Desarrollo"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "70000000-0000-4000-8000-000000000031"
+    parent_kontablo: "asset.noncurrent.investments"  # Non-current if development > 12 months
+    measurement: "lower_of_cost_or_NRV"
+    notes: |
+      Land purchased with intent to develop and sell → IAS 2 inventory.
+      Land purchased with intent to hold for capital appreciation → IAS 40 investment property.
+      Classification requires management intent documentation.
+
+  # ─────────────────────────────────────────────
+  # LESSOR ACCOUNTING (IFRS 16)
+  # ─────────────────────────────────────────────
+
+  "LEASE_FinanceLeaseReceivable":
+    name: "Finance Lease Receivable (Lessor)"
+    label_es: "Cuenta por Cobrar — Arrendamiento Financiero (Arrendador)"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "70000000-0000-4000-8000-000000000040"
+    parent_kontablo: "asset.noncurrent.investments"
+    notes: |
+      IFRS 16: Lessor classifies leases as FINANCE or OPERATING.
+      Finance lease: lessor derecognizes asset, recognizes receivable.
+      Interest income recognized using effective interest method.
+      Operating lease: see LEASE_RentalIncome below.
+
+  "LEASE_RentalIncome":
+    name: "Rental Income — Operating Leases (Lessor)"
+    label_es: "Ingresos por Rentas — Arrendamientos Operativos"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "70000000-0000-4000-8000-000000000041"
+    parent_kontablo: "revenue.operating"
+    recognition: "straight_line_over_lease_term"
+    notes: |
+      IFRS 16.81: Operating lease lessor → recognize lease payments as income on straight-line basis.
+      Lease incentives (rent-free periods, fit-out contributions) deducted from total rental income.
+      Total lease income spread evenly over lease term regardless of cash receipt pattern.
+
+  "LEASE_LeaseIncentiveLiability":
+    name: "Lease Incentive Liability (Lessor)"
+    label_es: "Pasivo por Incentivos de Arrendamiento (Arrendador)"
+    nature: "Credit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "70000000-0000-4000-8000-000000000042"
+    parent_kontablo: "liability.current.accrued"
+    notes: "Rent-free periods and upfront incentives → deferred and amortized over lease term."
+
+  "LEASE_ServiceChargeRecoveries":
+    name: "Service Charge Recoveries from Tenants"
+    label_es: "Recuperación de Gastos de Mantenimiento"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "70000000-0000-4000-8000-000000000043"
+    parent_kontablo: "revenue.operating"
+    notes: "Common in commercial RE: landlord recovers maintenance/utilities from tenants."
+
+  # ─────────────────────────────────────────────
+  # REAL ESTATE DEVELOPMENT REVENUE (IFRS 15)
+  # ─────────────────────────────────────────────
+
+  "REV_PropertySales_PointInTime":
+    name: "Revenue from Property Sales (At Point in Time)"
+    label_es: "Ingresos por Venta de Inmuebles (En Punto en el Tiempo)"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "70000000-0000-4000-8000-000000000050"
+    parent_kontablo: "revenue.operating"
+    recognition: "transfer_of_control"
+    examples:
+      - "Completed apartment sales (keys-in-hand)"
+      - "Commercial building sales (title transfers)"
+    notes: |
+      IFRS 15 Step 5: Revenue recognized at point in time when control transfers.
+      Typical for: completed property sales with title transfer.
+      Contract liabilities (deposits) recognized as revenue only on control transfer.
+
+  "REV_PropertySales_OverTime":
+    name: "Revenue from Property Sales (Over Time — Pre-sales)"
+    label_es: "Ingresos por Venta de Inmuebles (Con el Tiempo — Preventa)"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "70000000-0000-4000-8000-000000000051"
+    parent_kontablo: "revenue.operating"
+    recognition: "percentage_of_completion"
+    notes: |
+      IFRS 15.35: Revenue recognized over time if customer controls asset as created.
+      Examples: High-rise pre-sales where buyer takes risk on partially-built unit.
+      KEY JURISDICTIONS: CN (common), BR (common pre-COVID), AE (common in Dubai off-plan).
+      Method: input method (costs incurred) or output method (surveys/milestones).
+
+  "REV_ContractLiability_Deposits":
+    name: "Contract Liability — Property Deposits (Deferred Revenue)"
+    label_es: "Pasivo de Contrato — Depósitos de Compra (Ingresos Diferidos)"
+    nature: "Credit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "70000000-0000-4000-8000-000000000052"
+    parent_kontablo: "liability.current.accrued"
+    notes: |
+      Deposits received before control transfers → contract liability (deferred revenue).
+      Released to revenue when performance obligation satisfied (delivery or % completion).
+      Can be significant: AE developers may have 20-30% of future revenue as deposits.
+
+  # ─────────────────────────────────────────────
+  # REAL ESTATE SPECIFIC COSTS
+  # ─────────────────────────────────────────────
+
+  "COST_PropertyManagement":
+    name: "Property Management and Operating Costs"
+    label_es: "Costos de Administración y Operación de Propiedades"
+    nature: "Debit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "70000000-0000-4000-8000-000000000060"
+    parent_kontablo: "expense.admin"
+    examples:
+      - "Property manager fees (typically 3-5% of rent)"
+      - "Maintenance and repairs"
+      - "Insurance on properties"
+      - "Property taxes (rates)"
+
+  "COST_LeasingCommissions":
+    name: "Leasing Commissions and Letting Costs"
+    label_es: "Comisiones por Arrendamiento"
+    nature: "Debit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "70000000-0000-4000-8000-000000000061"
+    parent_kontablo: "expense.admin"
+    notes: "Costs to secure new leases. May be capitalized if they relate to obtaining a lease (IFRS 16.24)."
+
+  "COST_BorrowingCosts_Capitalized":
+    name: "Borrowing Costs Capitalized (IAS 23)"
+    label_es: "Costos de Financiamiento Capitalizados (NIC 23)"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "70000000-0000-4000-8000-000000000062"
+    parent_kontablo: "asset.noncurrent.ppe"
+    notes: |
+      IAS 23: Borrowing costs directly attributable to acquisition/construction of qualifying asset
+      must be capitalized as part of cost.
+      Qualifying asset = one that takes substantial period to get ready for intended use.
+      All real estate developments with significant construction period qualify.
+      Capitalization stops when substantially complete OR when active development suspended.
+
+aggregation_rules:
+  total_investment_property:
+    formula: "IP_CompletedFairValue + IP_CompletedCostModel + IP_UnderConstruction"
+    label_en: "Total Investment Property Portfolio"
+    ifrs_tag: "ifrs-full:InvestmentProperty"
+
+  net_rental_income:
+    formula: "LEASE_RentalIncome + LEASE_ServiceChargeRecoveries - COST_PropertyManagement"
+    label_en: "Net Rental Income (NRI)"
+    management_metric: true
+
+  funds_from_operations:
+    formula: "net_income - IP_FairValueGainLoss - BIO_FairValueGainLoss + expense.depreciation"
+    label_en: "Funds From Operations (FFO)"
+    note: "REIT industry standard metric. Strips non-cash fair value movements."
+
+  loan_to_value:
+    formula: "(liability.noncurrent.debt + liability.current.short_term_debt) / total_investment_property"
+    label_en: "Loan to Value (LTV)"
+    management_metric: true
+    note: "Lender covenant metric for REITs. Typically must remain < 40-50%."
+
+  dividend_per_share:
+    note: "Configured in entity-specific layer — requires share count parameter"
+
+validation_rules:
+  fair_value_model_no_depreciation:
+    rule: "IP_CompletedFairValue > 0 IMPLIES expense.depreciation_investment_property = 0"
+    message: "Fair value model investment property must NOT be depreciated"
+    severity: "ERROR"
+
+  ipuc_transfer_check:
+    rule: "IP_UnderConstruction_reduction > 0 IMPLIES IP_CompletedFairValue_increase >= 0"
+    message: "Reduction in IPUC should result in corresponding increase in completed IP"
+    severity: "WARNING"
+
+  contract_liability_clear:
+    rule: "REV_ContractLiability_Deposits > 0 IMPLIES project_completion_tracked"
+    message: "Contract liabilities require project completion % tracking for revenue recognition"
+    severity: "INFO"
+
+reit_specific:
+  distribution_requirement:
+    note: |
+      Most REIT regimes require distribution of 90%+ of distributable income.
+      Jurisdictions:
+      - US REITs: 90% of taxable income
+      - UK REITs: 90% of property rental profits
+      - BR FIBRAs: 95% of adjusted retained earnings
+      - MX FIBRAs: Similar to BR
+      - AE REITs: No specific distribution requirement (but market practice > 80%)
+
+  kontablo_config:
+    enable_ffo_calculation: true
+    enable_nri_calculation: true
+    enable_ltv_tracking: true
+    fair_value_model: true  # Override per entity

@@ -1,0 +1,315 @@
+# Kontablo Industry Extension: Agriculture (IAS 41 + IFRS 13 + IAS 16 + IFRS 15)
+# Version: 0.1.0-draft
+# Standard: IAS 41 - Agriculture (2001, amended 2014 for bearer plants)
+#            IFRS 13 - Fair Value Measurement (for biological assets)
+#            IAS 16 - PP&E (bearer plants post-2016)
+#            IFRS 15 - Revenue (commodity crop sales)
+# Authority: IASB
+# Critical Notes:
+#   - IAS 41 requires FAIR VALUE measurement of biological assets (animals + plants)
+#   - EXCEPTION: Bearer plants (vineyards, orchards, rubber trees) → IAS 16 (cost model)
+#   - Fair value GAIN/LOSS goes to P&L each period (NOT OCI) — creates P&L volatility!
+#   - PRODUCE (harvested crops, milk, wool) → measured at fair value at harvest → becomes inventory
+#   - Government grants for biological assets: recognized as INCOME when receivable (IAS 41.34)
+#   - KEY JURISDICTIONS: BR (soy, sugarcane), AR (beef, soy), NZ/AU (dairy, sheep), CN, ID, MX
+
+metadata:
+  industry: agriculture_agribusiness
+  standard: IAS_41_IFRS_13_IAS_16
+  applies_to:
+    - Crop farming (annual crops: wheat, corn, soybeans, rice)
+    - Livestock ranching (cattle, dairy, poultry, aquaculture)
+    - Perennial agriculture (vineyards, orchards, rubber, palm oil, coffee)
+    - Forestry and timber
+    - Agri-processors with integrated farming operations
+  kontablo_version: 0.1.0
+  extension_type: industry
+  last_updated: 2026-03-23
+  key_jurisdictions: ["br", "ar", "nz", "au", "cn", "id", "mx", "co", "pe", "cl", "ng", "za"]
+
+mappings:
+  # ─────────────────────────────────────────────
+  # BIOLOGICAL ASSETS (IAS 41)
+  # ─────────────────────────────────────────────
+
+  "BIO_LivestockCurrent":
+    name: "Biological Assets — Livestock (Current)"
+    label_es: "Activos Biológicos — Ganado (Corriente)"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "60000000-0000-4000-8000-000000000001"
+    ifrs_tag: "ifrs-full:CurrentBiologicalAssets"
+    parent_kontablo: "asset.current.inventory"
+    measurement: "fair_value_less_costs_to_sell"
+    classification_criteria: "Expected to be consumed or sold within 12 months"
+    examples:
+      - "Broiler chickens (harvest cycle < 6 weeks)"
+      - "Feeder cattle (to be sold this season)"
+      - "Pigs (< 12 month production cycle)"
+      - "Annual aquaculture (salmon, tilapia < 1 year)"
+    notes: |
+      IAS 41.12: Measured at FAIR VALUE less costs to sell.
+      EXCEPTION: If fair value cannot be reliably measured → cost method (rare, only on initial recognition).
+      Fair value change recognized in P&L each balance sheet date.
+
+  "BIO_LivestockNonCurrent":
+    name: "Biological Assets — Breeding Livestock (Non-Current)"
+    label_es: "Activos Biológicos — Ganado Reproductor (No Corriente)"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "60000000-0000-4000-8000-000000000002"
+    ifrs_tag: "ifrs-full:NonCurrentBiologicalAssets"
+    parent_kontablo: "asset.noncurrent.investments"
+    measurement: "fair_value_less_costs_to_sell"
+    examples:
+      - "Breeding bulls and cows"
+      - "Dairy cows (production life > 1 year)"
+      - "Breeding sows (multi-year production)"
+      - "Breeding stock in aquaculture"
+
+  "BIO_CropsCurrent":
+    name: "Biological Assets — Standing Crops (Current)"
+    label_es: "Activos Biológicos — Cultivos en Pie (Corriente)"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "60000000-0000-4000-8000-000000000003"
+    ifrs_tag: "ifrs-full:CurrentBiologicalAssets"
+    parent_kontablo: "asset.current.inventory"
+    measurement: "fair_value_less_costs_to_sell"
+    examples:
+      - "Unharvested wheat, corn, soybeans"
+      - "Sugar cane before harvest"
+      - "Tobacco plants before cutting"
+    notes: "Once harvested → transfers to inventory at fair value (which becomes initial cost of inventory)."
+
+  "BIO_BearerPlants":
+    name: "Bearer Plants (IAS 16 — NOT IAS 41)"
+    label_es: "Plantas Productoras (NIC 16 — NO NIC 41)"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "60000000-0000-4000-8000-000000000004"
+    ifrs_tag: "ifrs-full:BearerPlants"
+    parent_kontablo: "asset.noncurrent.ppe"
+    measurement: "cost_model_or_revaluation_per_IAS16"
+    depreciation_required: true
+    depreciation_method: "straight_line_over_productive_life"
+    examples:
+      - "Grapevines (wine) — productive life 25-40 years"
+      - "Apple, orange orchards"
+      - "Rubber trees (Hevea brasiliensis) — productive 25-30 years"
+      - "Oil palm trees — productive 25 years"
+      - "Coffee bushes"
+      - "Tea bushes"
+    notes: |
+      CRITICAL: Bearer plants are EXCLUDED from IAS 41 scope since 2016 amendment.
+      They are now accounted for under IAS 16 (PP&E) using cost or revaluation model.
+      PRODUCE growing ON bearer plants (grapes, olives, fruit) → IAS 41 until harvest.
+      After harvest → inventory under IAS 2 at fair value at date of harvest.
+
+  "BIO_ForestryTimber":
+    name: "Biological Assets — Timber / Forestry"
+    label_es: "Activos Biológicos — Madera / Silvicultura"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "60000000-0000-4000-8000-000000000005"
+    ifrs_tag: "ifrs-full:NonCurrentBiologicalAssets"
+    parent_kontablo: "asset.noncurrent.investments"
+    measurement: "fair_value_less_costs_to_sell"
+    examples:
+      - "Planted eucalyptus and pine forests (BR: Suzano, Klabin)"
+      - "Teak plantations"
+      - "Natural forest concessions"
+    notes: |
+      Key BR context: Brazil is world's largest plantation forestry market.
+      Fair value often estimated using discounted cash flow of expected harvest volumes.
+      Requires expert valuation (licensed forester / appraiser).
+
+  # ─────────────────────────────────────────────
+  # FAIR VALUE ADJUSTMENTS (IAS 41 P&L IMPACT)
+  # ─────────────────────────────────────────────
+
+  "BIO_FairValueGainLoss":
+    name: "Fair Value Gain (Loss) on Biological Assets"
+    label_es: "Ganancia (Pérdida) por Valor Razonable — Activos Biológicos"
+    nature: "Credit"  # Credit = gain, debit = loss (contra)
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "60000000-0000-4000-8000-000000000010"
+    ifrs_tag: "ifrs-full:GainLossArisingFromChangesInFairValueLessCostsToSellOfBiologicalAssetsOtherThanBearerPlants"
+    parent_kontablo: "revenue.other"
+    notes: |
+      Highly VOLATILE P&L item — changes with market prices each period.
+      Key driver of P&L volatility for large agri companies (e.g., JBS, Cargill, BRF).
+      Analysts typically strip this out when calculating "underlying" profitability.
+      Kontablo tags this account for automatic exclusion in normalized EBITDA calculations.
+    volatility_flag: true
+    exclude_from_normalized_ebitda: true
+
+  "BIO_HarvestGain":
+    name: "Farm-Gate Produce — Transfer to Inventory at Fair Value"
+    label_es: "Transferencia de Producto Cosechado a Inventario"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "60000000-0000-4000-8000-000000000011"
+    parent_kontablo: "revenue.other"
+    notes: |
+      When produce is harvested, it is transferred from biological assets to inventory.
+      The fair value at harvest date becomes the initial cost of inventory.
+      The gain recognized = fair value at harvest - carrying amount of biological asset.
+      This is NOT a cash gain — it is an accounting measurement gain.
+
+  # ─────────────────────────────────────────────
+  # AGRICULTURAL INVENTORY (IAS 2 post-harvest)
+  # ─────────────────────────────────────────────
+
+  "INV_HarvestedProduce":
+    name: "Inventory — Harvested Agricultural Produce"
+    label_es: "Inventario — Producción Agrícola Cosechada"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "60000000-0000-4000-8000-000000000020"
+    ifrs_tag: "ifrs-full:Inventories"
+    parent_kontablo: "asset.current.inventory"
+    initial_cost: "fair_value_at_harvest_date"
+    subsequent_measurement: "lower_of_cost_or_NRV"
+    examples:
+      - "Harvested wheat, corn, soybeans (in silos)"
+      - "Raw milk (in transit to dairy)"
+      - "Slaughtered beef and pork"
+      - "Harvested grapes (before crush)"
+      - "Timber logs (felled)"
+    notes: |
+      IAS 2.20: Agricultural produce at point of harvest measured at fair value less costs to sell.
+      This fair value becomes the cost for subsequent IAS 2 inventory accounting.
+
+  "INV_LivestockForSale":
+    name: "Inventory — Livestock Held for Sale"
+    label_es: "Inventario — Ganado para Venta"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "60000000-0000-4000-8000-000000000021"
+    parent_kontablo: "asset.current.inventory"
+    notes: "Livestock ready for immediate sale. For feedlot operators: cattle entering finishing phase."
+
+  # ─────────────────────────────────────────────
+  # GOVERNMENT GRANTS (IAS 41.34-35)
+  # ─────────────────────────────────────────────
+
+  "GOV_AgricultureGrant":
+    name: "Government Grant — Agricultural (Unconditional)"
+    label_es: "Subvención Gubernamental — Agrícola (Incondicional)"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "60000000-0000-4000-8000-000000000030"
+    ifrs_tag: "ifrs-full:GovernmentGrants"
+    parent_kontablo: "revenue.other"
+    recognition: "Recognized in P&L when receivable (unconditional grants)"
+    examples:
+      - "EU Common Agricultural Policy (CAP) direct payments"
+      - "USDA conservation program payments"
+      - "BR Pronaf (agricultural credit subsidy)"
+      - "AR Fondo Especial Agrario"
+    notes: |
+      IAS 41.34: Unconditional government grants related to biological assets at FVLCTS →
+      recognized in P&L when grant becomes receivable.
+      Conditional grants: recognized when conditions are met.
+      This differs from IAS 20 treatment for other government grants.
+
+  # ─────────────────────────────────────────────
+  # AGRICULTURAL REVENUE (IFRS 15)
+  # ─────────────────────────────────────────────
+
+  "REV_AgriculturalSales":
+    name: "Revenue from Agricultural Produce Sales"
+    label_es: "Ingresos por Venta de Producción Agrícola"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "60000000-0000-4000-8000-000000000040"
+    ifrs_tag: "ifrs-full:Revenue"
+    parent_kontablo: "revenue.operating"
+    recognition_point: "Transfer of control (typically upon delivery/weighing)"
+    examples:
+      - "Soybean cargo sales (CIF or FOB)"
+      - "Live cattle auction sales"
+      - "Milk sales to dairy cooperative"
+      - "Sugar sales (exchange or OTC)"
+    notes: |
+      Commodity forward sales are common — must assess:
+      (a) Is contract a financial instrument (IFRS 9) or IFRS 15 contract?
+      "Own use" exemption: if physically delivered for entity's own use → IFRS 15.
+      Net-settled or readily convertible to cash → IFRS 9 (derivative).
+
+  "REV_LivestockSales":
+    name: "Revenue from Livestock Sales"
+    label_es: "Ingresos por Venta de Ganado"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "60000000-0000-4000-8000-000000000041"
+    parent_kontablo: "revenue.operating"
+
+  # ─────────────────────────────────────────────
+  # AGRICULTURAL COSTS
+  # ─────────────────────────────────────────────
+
+  "COST_Cultivation":
+    name: "Cultivation and Growing Costs"
+    label_es: "Costos de Cultivo y Cría"
+    nature: "Debit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "60000000-0000-4000-8000-000000000050"
+    parent_kontablo: "expense.cogs"
+    examples:
+      - "Seeds, fertilizers, pesticides"
+      - "Land preparation and irrigation"
+      - "Seasonal labor"
+      - "Feed costs for livestock"
+      - "Veterinary costs"
+
+  "COST_Harvest":
+    name: "Harvesting and Collection Costs"
+    label_es: "Costos de Cosecha y Recolección"
+    nature: "Debit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "60000000-0000-4000-8000-000000000051"
+    parent_kontablo: "expense.cogs"
+
+aggregation_rules:
+  total_biological_assets:
+    formula: |
+      BIO_LivestockCurrent + BIO_LivestockNonCurrent +
+      BIO_CropsCurrent + BIO_BearerPlants + BIO_ForestryTimber
+    label_en: "Total Biological Assets (gross)"
+    ifrs_note: "IAS 41.50: disclose by asset class and by current/non-current"
+
+  agricultural_gross_margin:
+    formula: "REV_AgriculturalSales + REV_LivestockSales - COST_Cultivation - COST_Harvest"
+    label_en: "Agricultural Gross Margin"
+
+  normalized_ebitda_agri:
+    formula: "gross_profit - expense.admin - BIO_FairValueGainLoss - BIO_HarvestGain"
+    label_en: "Normalized EBITDA (excl. fair value movements)"
+    note: "Strips IAS 41 non-cash fair value gains/losses for underlying business performance"
+
+validation_rules:
+  bearer_plants_must_depreciate:
+    rule: "BIO_BearerPlants > 0 IMPLIES expense.depreciation > 0"
+    message: "Bearer plants are PP&E (IAS 16) and must be depreciated"
+    severity: "WARNING"
+
+  biological_assets_fair_value:
+    rule: "BIO_LivestockCurrent + BIO_CropsCurrent > 0 IMPLIES fair_value_measurement_disclosed"
+    message: "IAS 41 requires fair value measurement basis and observable inputs to be disclosed"
+    severity: "INFO"

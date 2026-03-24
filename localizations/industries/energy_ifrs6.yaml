@@ -1,0 +1,300 @@
+# Kontablo Industry Extension: Energy & Extractive Industries (IFRS 6 + IFRS 15 + IAS 16)
+# Version: 0.1.0-draft
+# Standard: IFRS 6 - Exploration for and Evaluation of Mineral Resources (2004)
+#            IAS 16 - PP&E (for production phase assets)
+#            IFRS 15 - Revenue Recognition (commodity contracts)
+#            IAS 37 - Decommissioning Provisions
+# Authority: IASB
+# Critical Notes:
+#   - IFRS 6 provides TEMPORARY exemption from full IASB Framework during exploration phase only
+#   - Development phase assets: capitalized under IAS 16 (tangible) or IAS 38 (intangible)
+#   - DECOMMISSIONING obligation is mandatory for oil & gas wells, mines, nuclear plants
+#   - ROYALTIES and production-sharing contracts vary significantly by jurisdiction
+#   - KEY JURISDICTIONS: SA (Aramco), BR (Petrobras), NG (NNPC), AU, CA, NO, RU
+#   - Commodity revenue: often recognize at point of delivery (pipeline, loading terminal)
+#   - Take-or-pay contracts: may create revenue recognition complexity under IFRS 15
+
+metadata:
+  industry: energy_extractive
+  standard: IFRS_6_IAS_16_IFRS_15
+  applies_to:
+    - Oil and gas companies
+    - Mining companies
+    - Utilities (power generation)
+    - Renewable energy developers
+  kontablo_version: 0.1.0
+  extension_type: industry
+  last_updated: 2026-03-23
+  key_jurisdictions: ["sa", "br", "ng", "au", "ca", "no", "ru", "us", "ar"]
+
+mappings:
+  # ─────────────────────────────────────────────
+  # EXPLORATION & EVALUATION (IFRS 6)
+  # ─────────────────────────────────────────────
+
+  "E&E_IntangibleAssets":
+    name: "Exploration & Evaluation Assets — Intangible"
+    label_es: "Activos de Exploración y Evaluación — Intangibles"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "50000000-0000-4000-8000-000000000001"
+    ifrs_tag: "ifrs-full:ExplorationAndEvaluationAssets"
+    parent_kontablo: "asset.noncurrent.intangibles"
+    examples:
+      - "Seismic survey licenses"
+      - "Drilling rights (concession agreements)"
+      - "Geological and geophysical studies"
+      - "Topographical studies"
+    impairment_trigger:
+      - "Decision to discontinue exploration"
+      - "No commercially viable reserves confirmed"
+      - "License expiry without renewal"
+    notes: |
+      IFRS 6 allows entities to develop their own accounting policy for E&E assets.
+      Entity must choose: capitalize ALL exploration costs (full cost method) OR
+      capitalize only those with probable future benefit (successful efforts method).
+      Kontablo records which method is in use via the entity localization flag.
+
+  "E&E_TangibleAssets":
+    name: "Exploration & Evaluation Assets — Tangible"
+    label_es: "Activos de Exploración y Evaluación — Tangibles"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "50000000-0000-4000-8000-000000000002"
+    ifrs_tag: "ifrs-full:ExplorationAndEvaluationAssets"
+    parent_kontablo: "asset.noncurrent.ppe"
+    examples:
+      - "Drilling equipment used in exploration"
+      - "Vehicles used in exploration phase"
+      - "Mobile facilities on exploration site"
+    notes: "Same IFRS 6 scope as intangible E&E, but physical nature → classified under PPE parent."
+
+  # ─────────────────────────────────────────────
+  # DEVELOPMENT & PRODUCTION ASSETS (IAS 16)
+  # ─────────────────────────────────────────────
+
+  "DEV_WellsAndInfrastructure":
+    name: "Producing Wells and Infrastructure (PP&E)"
+    label_es: "Pozos Productores e Infraestructura"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "50000000-0000-4000-8000-000000000010"
+    ifrs_tag: "ifrs-full:OilAndGasAssets"
+    parent_kontablo: "asset.noncurrent.ppe"
+    depreciation_method: "UOP"  # Units of Production — based on reserve volumes
+    examples:
+      - "Producing oil wells"
+      - "Gas compression stations"
+      - "Pipelines (property of the company)"
+      - "Offshore platforms"
+    notes: "Depreciated using Units of Production (UOP) method based on remaining proved reserves."
+
+  "DEV_MiningAssets":
+    name: "Mining Assets — Underground and Surface"
+    label_es: "Activos Mineros — Subterráneos y Superficiales"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "50000000-0000-4000-8000-000000000011"
+    ifrs_tag: "ifrs-full:MiningAssets"
+    parent_kontablo: "asset.noncurrent.ppe"
+    depreciation_method: "UOP"
+    examples:
+      - "Shafts and tunnels"
+      - "Mine infrastructure"
+      - "Ore processing facilities"
+
+  "DEV_AccumulatedDepletionPPE":
+    name: "Accumulated Depletion and Depreciation — Extractive"
+    label_es: "Depreciación y Agotamiento Acumulados"
+    nature: "Credit"  # Contra-asset
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "50000000-0000-4000-8000-000000000012"
+    parent_kontablo: "asset.noncurrent.ppe"
+    notes: "Contra-asset reducing net book value. Depletion = depreciation for extractive assets."
+
+  # ─────────────────────────────────────────────
+  # DECOMMISSIONING AND RESTORATION (IAS 37)
+  # ─────────────────────────────────────────────
+
+  "DECOM_ProvisionLiability":
+    name: "Decommissioning and Restoration Provision"
+    label_es: "Provisión para Abandono y Restauración"
+    nature: "Credit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "50000000-0000-4000-8000-000000000020"
+    ifrs_tag: "ifrs-full:OtherNonCurrentProvisions"
+    parent_kontablo: "liability.noncurrent.debt"
+    recognition_trigger: "Legal or constructive obligation to decommission exists"
+    measurement: "Present value of best estimate of future dismantling costs (discount at risk-free rate)"
+    notes: |
+      Mandatory under IAS 37 for oil wells, mines, nuclear plants.
+      The decommissioning cost is capitalized as part of the asset cost (IAS 16.16(c)).
+      Each period: unwind the discount (finance cost) + adjust estimate if revised.
+      Key jurisdictions: ALL oil & gas companies must recognize this.
+
+  "DECOM_AssetCapitalized":
+    name: "Decommissioning Cost — Capitalized Component"
+    label_es: "Costo de Abandono Capitalizado"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "50000000-0000-4000-8000-000000000021"
+    parent_kontablo: "asset.noncurrent.ppe"
+    notes: "Equal and opposite debit to DECOM_ProvisionLiability on initial recognition. Depreciated with the asset."
+
+  "DECOM_UnwindingDiscount":
+    name: "Finance Cost — Unwinding of Decommissioning Discount"
+    label_es: "Costo Financiero — Actualización de Provisión"
+    nature: "Debit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "50000000-0000-4000-8000-000000000022"
+    parent_kontablo: "expense.interest"
+    notes: "Annual increase in provision carrying amount due to passage of time. Charged to finance costs."
+
+  # ─────────────────────────────────────────────
+  # ROYALTIES AND PRODUCTION SHARING
+  # ─────────────────────────────────────────────
+
+  "ROYALTY_Payable":
+    name: "Royalties Payable"
+    label_es: "Regalías por Pagar"
+    nature: "Credit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "50000000-0000-4000-8000-000000000030"
+    parent_kontablo: "liability.current.accrued"
+    jurisdiction_examples:
+      sa: "Saudi Aramco pays royalty to Saudi government (20% crude, 40% gas above $5/mmbtu)"
+      br: "Petrobras royalties to ANP (5-40% depending on production)"
+      ng: "NNPC production sharing (varies 20-40%)"
+      ru: "Mineral extraction tax (MET) per tonne"
+
+  "ROYALTY_Expense":
+    name: "Royalty Expense"
+    label_es: "Gasto por Regalías"
+    nature: "Debit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "50000000-0000-4000-8000-000000000031"
+    parent_kontablo: "expense.cogs"
+    notes: "Typically included in cost of production. Some jurisdictions treat as a tax."
+
+  # ─────────────────────────────────────────────
+  # COMMODITY REVENUE (IFRS 15)
+  # ─────────────────────────────────────────────
+
+  "REV_CommoditySales":
+    name: "Revenue from Commodity Sales"
+    label_es: "Ingresos por Venta de Commodities"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "50000000-0000-4000-8000-000000000040"
+    ifrs_tag: "ifrs-full:Revenue"
+    parent_kontablo: "revenue.operating"
+    recognition_point: "Transfer of control at delivery point (pipeline, loading terminal, custody transfer)"
+    examples:
+      - "Crude oil sales (FOB terminal)"
+      - "Natural gas sales (at metering point)"
+      - "LNG cargo sales"
+      - "Copper concentrate sales (provisional pricing)"
+    notes: |
+      Provisional pricing is common in mining: initial invoice at spot, finalised on settlement date.
+      Creates embedded derivative — marked to market each period end.
+      IFRS 15 Step 5: Revenue recognized when control transfers, typically at delivery.
+
+  "REV_TakeOrPay":
+    name: "Take-or-Pay Revenue"
+    label_es: "Ingresos por Cláusula Take-or-Pay"
+    nature: "Credit"
+    statement: "balance_sheet"  # Initially as contract liability, then to income
+    level: 3
+    kontablo_uuid: "50000000-0000-4000-8000-000000000041"
+    parent_kontablo: "liability.current.accrued"  # Contract liability until volume delivered
+    notes: |
+      Customer pays minimum whether or not they take the volume.
+      Recognize as deferred revenue (contract liability) until:
+      (a) Either the volume is taken, OR
+      (b) The "make-good" period expires and no future performance obligation remains.
+
+  # ─────────────────────────────────────────────
+  # RENEWABLE ENERGY SPECIFICS
+  # ─────────────────────────────────────────────
+
+  "REN_CarbonCredits":
+    name: "Carbon Credits / Emission Rights"
+    label_es: "Créditos de Carbono / Derechos de Emisión"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "50000000-0000-4000-8000-000000000050"
+    status: "RESEARCH"  # No specific IFRS standard; IAS 38 by analogy
+    parent_kontablo: "asset.current.prepaid"  # If held < 12m; else noncurrent.intangibles
+    notes: |
+      No dedicated IFRS standard (IFRIC 3 was withdrawn 2005).
+      Common practice: IAS 38 (intangible asset) at cost.
+      EU ETS credits: government grants (IAS 20) at nominal/fair value by jurisdiction.
+      Kontablo tracks as optional account; classification depends on entity's business model.
+
+  "REN_GovernmentGrants_Capex":
+    name: "Government Grants — Capital (IAS 20)"
+    label_es: "Subvenciones Gubernamentales — Capital (NIC 20)"
+    nature: "Credit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "50000000-0000-4000-8000-000000000051"
+    ifrs_tag: "ifrs-full:GovernmentGrants"
+    parent_kontablo: "liability.noncurrent.debt"  # Or deducted from asset per IAS 20 option
+    examples:
+      - "Solar farm investment grants"
+      - "Wind farm subsidies"
+      - "Feed-in tariff upfront payments"
+    notes: |
+      IAS 20 allows two presentations:
+      (a) Deduct grant from carrying amount of related asset, OR
+      (b) Recognize as deferred income (liability) and release to P&L as asset depreciates.
+      Kontablo records the method chosen in the entity localization configuration.
+
+  # ─────────────────────────────────────────────
+  # OPERATIONAL METRICS (MANAGEMENT ACCOUNTS)
+  # ─────────────────────────────────────────────
+
+  management_metrics:
+    lifting_cost_per_boe:
+      formula: "(expense.cogs + ROYALTY_Expense) / production_volume_boe"
+      unit: "USD/BOE"
+      note: "Industry KPI — not an IFRS account; computed from Kontablo accounts"
+
+    netback_per_boe:
+      formula: "(REV_CommoditySales - ROYALTY_Expense - expense.cogs) / production_volume_boe"
+      unit: "USD/BOE"
+      note: "Net revenue received per barrel of oil equivalent produced"
+
+    depletion_rate:
+      formula: "DEV_AccumulatedDepletionPPE / (DEV_WellsAndInfrastructure + DECOM_AssetCapitalized)"
+      unit: "Percentage"
+      note: "% of asset cost recovered through depletion to date"
+
+aggregation_rules:
+  total_energy_assets:
+    formula: |
+      E&E_IntangibleAssets + E&E_TangibleAssets +
+      DEV_WellsAndInfrastructure + DEV_MiningAssets +
+      DECOM_AssetCapitalized - DEV_AccumulatedDepletionPPE
+    label_en: "Total Extractive Asset Book Value (net)"
+
+  total_energy_liabilities:
+    formula: "DECOM_ProvisionLiability + ROYALTY_Payable"
+    label_en: "Total Extractive-Specific Liabilities"
+
+  decommissioning_coverage_ratio:
+    formula: "dedicated_decom_fund / DECOM_ProvisionLiability"
+    label_en: "Decommissioning Fund Coverage Ratio"
+    note: "Regulatory requirement in some jurisdictions (e.g., UK >100%)"
