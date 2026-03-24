@@ -1,0 +1,81 @@
+CLASSE,CODE,SOUS_CODE,NOM_FR,NOM_EN,NATURE,KONTABLO_L3,IFRS_TAG,NOTES
+1,101,,Capital social,Share Capital,CREDIT,equity.capital,IssuedCapital,Capital subscrit et versé
+1,104,,Primes liées au capital social,Share Premium,CREDIT,equity.reserves,SharePremium,
+1,106,,Réserves non distribuables,Legal Non-Distributable Reserves,CREDIT,equity.reserves,OtherReserves,
+1,110,,Report à nouveau (solde créditeur),Retained Earnings,CREDIT,equity.retained,RetainedEarnings,
+1,119,,Report à nouveau (solde débiteur),Accumulated Deficit,DEBIT,equity.retained,RetainedEarnings,
+1,120,,Résultat de l'exercice (bénéfice),Net Profit for the Period,CREDIT,equity.retained,ProfitLoss,
+1,129,,Résultat de l'exercice (perte),Net Loss for the Period,DEBIT,equity.retained,ProfitLoss,
+1,130,,Subventions d'investissement,Investment Subsidies (Capital Grants),CREDIT,liability.noncurrent.debt,GovernmentGrants,IAS 20 equivalent
+1,154,,Provisions réglementées,Regulated Provisions,CREDIT,liability.noncurrent.deferred_tax,OtherNonCurrentProvisions,Tax-driven; no IFRS equivalent
+1,161,,Emprunts obligataires,Bond Loans,CREDIT,liability.noncurrent.debt,OtherNonCurrentFinancialLiabilities,Bonds issued
+1,162,,Emprunts auprès des établissements de crédit,Bank Loans (LT),CREDIT,liability.noncurrent.debt,OtherNonCurrentFinancialLiabilities,
+1,163,,Emprunts et dettes financières divers (LT),Other Financial Debt (LT),CREDIT,liability.noncurrent.debt,OtherNonCurrentFinancialLiabilities,
+1,164,,Emprunts auprès des associés (LT),Loans from Shareholders (LT),CREDIT,liability.noncurrent.debt,OtherNonCurrentFinancialLiabilities,Shareholder loans
+2,201,,Frais d'établissement,Formation Costs,DEBIT,asset.noncurrent.intangibles,IntangibleAssetsOtherThanGoodwill,Amortized over max 5 years; no IFRS equivalent
+2,203,,Frais de recherche et de développement,Research and Development Costs,DEBIT,asset.noncurrent.intangibles,IntangibleAssetsOtherThanGoodwill,IAS 38: R→expense; D→capitalize if criteria met
+2,205,,Concessions, brevets, licences et droits similaires,Patents Licenses and Similar Rights,DEBIT,asset.noncurrent.intangibles,IntangibleAssetsOtherThanGoodwill,
+2,207,,Fonds commercial,Goodwill / Commercial Goodwill,DEBIT,asset.noncurrent.goodwill,Goodwill,PCG goodwill is amortized (unlike IFRS 3 impairment-only)
+2,208,,Autres immobilisations incorporelles,Other Intangible Assets,DEBIT,asset.noncurrent.intangibles,IntangibleAssetsOtherThanGoodwill,
+2,211,,Terrains,Land,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,Not depreciated
+2,212,,Agencements et aménagements de terrains,Land Improvements,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,
+2,213,,Constructions,Buildings,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,
+2,214,,Constructions sur sol d'autrui,Buildings on Third-Party Land,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,Leasehold improvements
+2,215,,Installations techniques, matériel et outillage industriels,Technical Installations and Equipment,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,
+2,218,,Autres immobilisations corporelles,Other PPE,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,
+2,231,,Immobilisations corporelles en cours,Assets under Construction (Tangible),DEBIT,asset.noncurrent.ppe,ConstructionInProgress,
+2,238,,Avances et acomptes sur commandes d'immobilisations,Advances on Fixed Asset Orders,DEBIT,asset.noncurrent.ppe,ConstructionInProgress,
+2,261,,Titres de participation,Equity Investments (subsidiaries/associates),DEBIT,asset.noncurrent.investments,InvestmentsAccountedForUsingEquityMethod,
+2,270,,Autres immobilisations financières,Other Financial Non-Current Assets,DEBIT,asset.noncurrent.investments,OtherNonCurrentFinancialAssets,
+3,31,,Matières premières (et fournitures),Raw Materials and Supplies,DEBIT,asset.current.inventory,CurrentInventories,
+3,33,,En-cours de production de biens,WIP — Goods,DEBIT,asset.current.inventory,CurrentInventories,
+3,35,,Stocks de produits,Finished Goods,DEBIT,asset.current.inventory,CurrentInventories,
+3,37,,Stocks de marchandises,Goods Held for Resale,DEBIT,asset.current.inventory,CurrentInventories,Trading inventory
+3,39,,Dépréciations des stocks,Inventory Write-down,CREDIT,asset.current.inventory,CurrentInventories,Contra-account; NRV writedown
+4,401,,Fournisseurs,Trade Payables,CREDIT,liability.current.payables,TradeAndOtherCurrentPayables,
+4,404,,Fournisseurs d'immobilisations,Payables for Fixed Asset Purchases,CREDIT,liability.current.payables,TradeAndOtherCurrentPayables,
+4,408,,Fournisseurs — Factures non parvenues,Accrued Expenses (Invoices Not Yet Received),CREDIT,liability.current.accrued,OtherCurrentProvisions,Accruals
+4,411,,Clients,Trade Receivables,DEBIT,asset.current.receivables,TradeAndOtherCurrentReceivables,
+4,416,,Clients douteux ou litigieux,Doubtful Receivables,DEBIT,asset.current.receivables,TradeAndOtherCurrentReceivables,Bad debt provisioned
+4,419,,Clients — Avances et acomptes reçus,Contract Liabilities (Customer Advances),CREDIT,liability.current.accrued,OtherCurrentProvisions,IFRS 15 contract liabilities
+4,421,,Personnel — Rémunérations dues,Salaries Payable,CREDIT,liability.current.accrued,OtherCurrentProvisions,
+4,431,,Sécurité sociale,Social Security Payable (URSSAF),CREDIT,liability.current.accrued,OtherCurrentProvisions,Charges sociales ~42% of gross salary
+4,444,,État — Impôts sur les bénéfices,Corporate Income Tax Payable (IS),CREDIT,liability.current.tax,CurrentTaxLiabilitiesCurrent,Standard IS rate 25% (2022+); SME rate 15% up to €42k
+4,445,10,TVA collectée (taux normal 20%),Output VAT — Standard 20%,CREDIT,liability.current.vat_output,CurrentTaxLiabilitiesCurrent,
+4,445,20,TVA collectée (taux réduit 10%),Output VAT — Reduced 10%,CREDIT,liability.current.vat_output,CurrentTaxLiabilitiesCurrent,Restaurants, hotels, transport
+4,445,30,TVA collectée (taux super-réduit 5.5%),Output VAT — Super-Reduced 5.5%,CREDIT,liability.current.vat_output,CurrentTaxLiabilitiesCurrent,Food, books, disabled equipment
+4,445,60,TVA déductible (sur ABS),Input VAT — Current Acquisitions,DEBIT,asset.current.vat_input,CurrentTaxAssetsCurrent,
+4,445,66,TVA déductible (sur immobilisations),Input VAT — Fixed Asset Acquisitions,DEBIT,asset.current.vat_input,CurrentTaxAssetsCurrent,
+4,447,,Autres impôts, taxes et versements assimilés,Other Taxes Payable,CREDIT,liability.current.accrued,OtherCurrentProvisions,CFE, CVAE, taxe foncière
+4,451,,Groupe — Débiteurs,Intercompany Receivables,DEBIT,asset.current.receivables,OtherCurrentReceivables,Group accounts
+4,455,,Associés — Comptes courants,Shareholder Current Accounts,CREDIT,liability.current.accrued,OtherCurrentProvisions,Directors' loans
+4,481,,Charges à répartir sur plusieurs exercices,Deferred Charges,DEBIT,asset.current.prepaid,CurrentPrepayments,Amortized over benefit period
+4,486,,Charges constatées d'avance,Prepaid Expenses,DEBIT,asset.current.prepaid,CurrentPrepayments,
+4,487,,Produits constatés d'avance,Deferred Revenue,CREDIT,liability.current.accrued,OtherCurrentProvisions,
+5,512,,Banques,Bank Accounts,DEBIT,asset.current.bank,CashAndCashEquivalents,
+5,514,,Chèques postaux (CCP),Postal Checking Accounts,DEBIT,asset.current.bank,CashAndCashEquivalents,CCP / La Banque Postale
+5,53,,Caisse,Cash on Hand,DEBIT,asset.current.cash,CashAndCashEquivalents,
+5,581,,Virements internes,Internal Transfers in Transit,DEBIT,asset.current.cash,CashAndCashEquivalents,Bridge account for inter-bank transfers
+6,601,,Achats stockés — Matières premières,Purchases of Raw Materials,DEBIT,expense.cogs,CostOfSales,
+6,607,,Achats de marchandises,Purchases of Goods,DEBIT,expense.cogs,CostOfSales,
+6,611,,Sous-traitance générale,Sub-contracting,DEBIT,expense.cogs,CostOfSales,
+6,613,,Locations et charges locatives,Rent and Lease Charges,DEBIT,expense.admin,AdministrativeExpenses,Pre-IFRS 16 operating leases
+6,615,,Entretien et réparations,Maintenance and Repairs,DEBIT,expense.admin,AdministrativeExpenses,
+6,616,,Primes d'assurances,Insurance Premiums,DEBIT,expense.admin,AdministrativeExpenses,
+6,621,,Personnel extérieur à l'entreprise,External Staff Costs,DEBIT,expense.admin,AdministrativeExpenses,Interim labor
+6,627,,Services bancaires et assimilés,Banking Fees,DEBIT,expense.interest,FinanceCosts,
+6,641,,Rémunérations du personnel,Staff Salaries (Gross),DEBIT,expense.admin,EmployeeBenefitsExpense,
+6,645,,Charges de sécurité sociale,Social Charges (Employer),DEBIT,expense.admin,EmployeeBenefitsExpense,
+6,661,,Charges d'intérêts,Interest Expense,DEBIT,expense.interest,FinanceCosts,
+6,665,,Escomptes accordés,Discounts Given,DEBIT,expense.admin,OtherExpenses,Settlement discounts
+6,671,,Charges exceptionnelles sur opérations de gestion,Exceptional Charges — Operations,DEBIT,expense.admin,OtherExpenses,Non-recurring; PCG specific concept
+6,681,,Dotations aux amortissements — Immobilisations,Depreciation and Amortization Charge,DEBIT,expense.depreciation,DepreciationAndAmortisationExpense,
+6,695,,Impôts sur les bénéfices,Corporate Income Tax Expense,DEBIT,expense.tax,TaxIncomeExpense,
+7,701,,Ventes de produits finis,Revenue — Sales of Finished Goods,CREDIT,revenue.operating,Revenue,
+7,706,,Prestations de services,Revenue — Services Rendered,CREDIT,revenue.operating,Revenue,
+7,707,,Ventes de marchandises,Revenue — Sales of Trading Goods,CREDIT,revenue.operating,Revenue,
+7,708,,Produits des activités annexes,Revenue — Ancillary Activities,CREDIT,revenue.other,OtherIncome,
+7,753,,Quotes-parts de subventions virées au résultat,Government Grants Released to Income,CREDIT,revenue.other,OtherIncome,IAS 20 equivalent
+7,758,,Produits divers de gestion courante,Miscellaneous Operating Income,CREDIT,revenue.other,OtherIncome,
+7,761,,Produits de participations (dividendes),Dividends Received from Subsidiaries,CREDIT,revenue.other,DividendsReceived,
+7,771,,Produits exceptionnels sur opérations de gestion,Exceptional Income — Operations,CREDIT,revenue.other,OtherIncome,Non-recurring; PCG concept

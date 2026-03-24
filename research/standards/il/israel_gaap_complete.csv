@@ -1,0 +1,48 @@
+CODE,NAME_HE,NAME_EN,CATEGORY,NATURE,KONTABLO_L3,IFRS_TAG,NOTES
+10,קופה,Cash on Hand,Asset,DEBIT,asset.current.cash,CashAndCashEquivalents,Physical cash; shekel and foreign currency
+11,בנקים,Bank Accounts,Asset,DEBIT,asset.current.bank,CashAndCashEquivalents,ILS and foreign currency accounts; NIS = Israeli New Shekel
+12,השקעות לזמן קצר,Short-term Investments,Asset,DEBIT,asset.current.inventory,OtherCurrentFinancialAssets,Treasury bills; short-term bank deposits
+13,ניירות ערך סחירים,Marketable Securities (Trading),Asset,DEBIT,asset.current.inventory,OtherCurrentFinancialAssets,FVTPL under IFRS 9
+14,חייבים — לקוחות,Trade Receivables — Customers,Asset,DEBIT,asset.current.receivables,TradeAndOtherCurrentReceivables,
+15,חייבים אחרים,Other Receivables,Asset,DEBIT,asset.current.receivables,OtherCurrentReceivables,VAT refunds; employee loans; other
+16,מלאי,Inventory,Asset,DEBIT,asset.current.inventory,CurrentInventories,
+18,נכסים שוטפים אחרים,Other Current Assets,Asset,DEBIT,asset.current.prepaid,CurrentPrepayments,Prepaid expenses; government receivables
+20,קרקעות,Land,Asset,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,Not depreciated
+21,בניינים ומבנים,Buildings and Structures,Asset,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,Depreciation: 2-4% per year
+22,מכונות וציוד,Machinery and Equipment,Asset,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,Depreciation: 10-25% per year
+23,כלי רכב,Vehicles,Asset,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,Depreciation: 15% per year (accelerated depreciation for leased vehicles)
+24,ריהוט וציוד משרדי,Furniture and Office Equipment,Asset,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,Depreciation: 6-10% per year
+25,השקעות בחברות מוחזקות,Investments in Subsidiaries and Associates,Asset,DEBIT,asset.noncurrent.investments,InvestmentsAccountedForUsingEquityMethod,Israeli GAAP: carried at equity or cost
+26,נכסים בלתי מוחשיים — מוניטין,Intangible Assets — Goodwill,Asset,DEBIT,asset.noncurrent.goodwill,Goodwill,Israeli GAAP: goodwill amortized (unlike IFRS 3); IFRS adopters test for impairment
+27,נכסים בלתי מוחשיים — אחרים,Intangible Assets — Other,Asset,DEBIT,asset.noncurrent.intangibles,IntangibleAssetsOtherThanGoodwill,Software; patents; licenses
+28,נכסים בלתי שוטפים אחרים,Other Non-Current Assets,Asset,DEBIT,asset.noncurrent.investments,OtherNonCurrentFinancialAssets,Long-term deposits; retirement fund overfunding
+29,התאמות שווי הוגן,Fair Value Adjustments (Contra),Asset,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,Revaluation surplus under IAS 16
+30,ספקים ונותני שירותים,Trade Payables — Suppliers,Liability,CREDIT,liability.current.payables,TradeAndOtherCurrentPayables,
+31,התחייבויות שוטפות אחרות,Other Current Liabilities,Liability,CREDIT,liability.current.accrued,OtherCurrentProvisions,Accruals; customer advances
+32,אשראי לזמן קצר,Short-term Credit,Liability,CREDIT,liability.current.short_term_debt,CurrentBorrowings,Bank overdrafts; short-term loans
+33,מע״מ לתשלום,VAT Payable (Output),Liability,CREDIT,liability.current.vat_output,CurrentTaxLiabilitiesCurrent,Standard VAT 17%; reduced 0% for certain exports
+34,מס הכנסה לתשלום,Income Tax Payable,Liability,CREDIT,liability.current.tax,CurrentTaxLiabilitiesCurrent,Corporate tax: 23% (2022+); Individual: progressive 10-50%
+35,מס שכר עובדים לתשלום,Employee Income Tax Withholding (Nikui Mas),Liability,CREDIT,liability.current.accrued,OtherCurrentProvisions,TDS from employees; remitted to ITA monthly
+36,ביטוח לאומי לתשלום,National Insurance Payable (Bituach Leumi),Liability,CREDIT,liability.current.accrued,OtherCurrentProvisions,NII contributions: employer ~7.5%; employee ~12%
+37,הכנסות נדחות,Deferred Revenue / Contract Liabilities,Liability,CREDIT,liability.current.accrued,OtherCurrentProvisions,IFRS 15 contract liabilities
+38,הלוואות לזמן ארוך,Long-term Loans,Liability,CREDIT,liability.noncurrent.debt,OtherNonCurrentFinancialLiabilities,
+39,מס נדחה — התחייבות,Deferred Tax Liability,Liability,CREDIT,liability.noncurrent.deferred_tax,DeferredTaxLiabilities,
+40,הון מניות,Share Capital,Equity,CREDIT,equity.capital,IssuedCapital,Par value shares; ILS denominated
+41,פרמיה על מניות,Share Premium,Equity,CREDIT,equity.reserves,SharePremium,
+42,עודפים,Retained Earnings,Equity,CREDIT,equity.retained,RetainedEarnings,
+43,יתרת עודפים מועברת,Accumulated Retained Earnings,Equity,CREDIT,equity.retained,RetainedEarnings,
+44,התאמות הון,Capital Adjustments (IFRS Transition),Equity,CREDIT,equity.reserves,OtherReserves,First-time IFRS adoption adjustments
+45,הפרשי שערים מתרגום,Translation Differences (OCI),Equity,CREDIT,equity.reserves,ReserveOfExchangeDifferencesOnTranslation,OCI under IAS 21 for foreign subsidiaries
+50,מכירות,Revenue from Sales of Goods,Revenue,CREDIT,revenue.operating,Revenue,
+51,הכנסות משירותים,Revenue from Services,Revenue,CREDIT,revenue.operating,Revenue,
+52,הכנסות אחרות,Other Income,Revenue,CREDIT,revenue.other,OtherIncome,
+53,הכנסות מימון,Finance Income,Revenue,CREDIT,revenue.other,FinanceIncome,Interest income; dividend income
+60,עלות המכירות,Cost of Sales,Expense,DEBIT,expense.cogs,CostOfSales,
+61,הוצאות מכירה ושיווק,Selling and Marketing Expenses,Expense,DEBIT,expense.admin,SellingExpense,
+62,הוצאות הנהלה וכלליות,General and Administrative Expenses,Expense,DEBIT,expense.admin,AdministrativeExpenses,
+63,הוצאות מחקר ופיתוח,Research and Development Expenses,Expense,DEBIT,expense.admin,AdministrativeExpenses,IAS 38: R→expense; D→capitalize if criteria met; hi-tech sector critical
+64,פחת והפחתות,Depreciation and Amortization,Expense,DEBIT,expense.depreciation,DepreciationAndAmortisationExpense,
+65,הפסדי אשראי,Credit Losses,Expense,DEBIT,expense.admin,ImpairmentLoss,IFRS 9 ECL model
+66,הוצאות מימון,Finance Expenses,Expense,DEBIT,expense.interest,FinanceCosts,Interest expense; FX losses
+67,הוצאות אחרות,Other Expenses,Expense,DEBIT,expense.admin,OtherExpenses,
+69,מס הכנסה,Income Tax Expense,Expense,DEBIT,expense.tax,TaxIncomeExpense,

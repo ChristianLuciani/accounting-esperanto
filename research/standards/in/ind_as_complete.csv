@@ -1,0 +1,68 @@
+GROUP,CODE,NAME_EN,NAME_HI,CATEGORY,NATURE,KONTABLO_L3,IFRS_TAG,NOTES
+1,1000,Cash in Hand,हाथ में नकद,Asset,DEBIT,asset.current.cash,CashAndCashEquivalents,
+1,1010,Cash at Bank — Current Account,बैंक में नकद — चालू खाता,Asset,DEBIT,asset.current.bank,CashAndCashEquivalents,
+1,1020,Cash at Bank — Savings Account,बैंक में नकद — बचत खाता,Asset,DEBIT,asset.current.bank,CashAndCashEquivalents,
+1,1030,Cash at Bank — Fixed Deposit (< 3 months),बैंक में सावधि जमा (3 माह से कम),Asset,DEBIT,asset.current.bank,CashAndCashEquivalents,
+1,1040,Cash at Bank — Fixed Deposit (3-12 months),बैंक में सावधि जमा (3-12 माह),Asset,DEBIT,asset.current.prepaid,OtherCurrentFinancialAssets,Not cash equivalent; short-term investment
+1,1100,Trade Receivables (Sundry Debtors),व्यापारिक प्राप्य,Asset,DEBIT,asset.current.receivables,TradeAndOtherCurrentReceivables,
+1,1110,Bills Receivable,प्राप्त बिल,Asset,DEBIT,asset.current.receivables,TradeAndOtherCurrentReceivables,Promissory notes receivable
+1,1120,Advance to Suppliers,आपूर्तिकर्ता को अग्रिम,Asset,DEBIT,asset.current.prepaid,CurrentPrepayments,
+1,1130,TDS Receivable (Tax Deducted at Source),स्रोत पर कटौती कर प्राप्य,Asset,DEBIT,asset.current.vat_input,CurrentTaxAssetsCurrent,10-30% TDS from customers; offset against advance tax
+1,1140,GST Input Credit — CGST,GST इनपुट क्रेडिट — CGST,Asset,DEBIT,asset.current.vat_input,CurrentTaxAssetsCurrent,Central GST: 9% of standard rate
+1,1150,GST Input Credit — SGST,GST इनपुट क्रेडिट — SGST,Asset,DEBIT,asset.current.vat_input,CurrentTaxAssetsCurrent,State GST: 9% of standard rate
+1,1155,GST Input Credit — IGST,GST इनपुट क्रेडिट — IGST,Asset,DEBIT,asset.current.vat_input,CurrentTaxAssetsCurrent,Integrated GST for interstate transactions: 18%
+1,1160,Advance Income Tax Paid,अग्रिम आयकर भुगतान,Asset,DEBIT,asset.current.prepaid,CurrentTaxAssetsCurrent,Quarterly advance tax instalments
+1,1170,MAT Credit Entitlement,MAT क्रेडिट पात्रता,Asset,DEBIT,asset.current.prepaid,CurrentTaxAssetsCurrent,Minimum Alternate Tax credit; carry forward 15 years
+1,1200,Raw Materials,कच्चे माल,Asset,DEBIT,asset.current.inventory,CurrentInventories,
+1,1210,Work in Progress,चल कार्य,Asset,DEBIT,asset.current.inventory,CurrentInventories,
+1,1220,Finished Goods,तैयार माल,Asset,DEBIT,asset.current.inventory,CurrentInventories,
+1,1230,Stores and Spares,भंडार और पुर्जे,Asset,DEBIT,asset.current.inventory,CurrentInventories,Maintenance materials
+1,1240,Goods in Transit,पारगमन में माल,Asset,DEBIT,asset.current.inventory,CurrentInventories,
+1,1300,Prepaid Expenses,पूर्वदत्त व्यय,Asset,DEBIT,asset.current.prepaid,CurrentPrepayments,
+2,2000,Land (Freehold),भूमि (स्वामित्व),Asset,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,Not depreciated; Schedule II Companies Act
+2,2010,Buildings (Factory),कारखाना भवन,Asset,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,Depreciation: 3.34% (30-year life per Schedule II)
+2,2020,Plant and Machinery,संयंत्र और मशीनरी,Asset,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,Depreciation: 4.75-15% per Schedule II
+2,2030,Furniture and Fixtures,फर्नीचर और जुड़नार,Asset,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,Depreciation: 9.5% (10.5-year life)
+2,2040,Vehicles,वाहन,Asset,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,Depreciation: 9.5-11.31% (Motor vehicles)
+2,2050,Computers and IT Equipment,कंप्यूटर और आईटी उपकरण,Asset,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,Depreciation: 33.33% (3-year life)
+2,2060,Capital Work in Progress (CWIP),निर्माणाधीन पूंजी कार्य,Asset,DEBIT,asset.noncurrent.ppe,ConstructionInProgress,
+2,2100,Goodwill,सद्भावना,Asset,DEBIT,asset.noncurrent.goodwill,Goodwill,Ind AS 103: impairment-only (not amortized)
+2,2110,Computer Software,कंप्यूटर सॉफ्टवेयर,Asset,DEBIT,asset.noncurrent.intangibles,IntangibleAssetsOtherThanGoodwill,
+2,2120,Licenses and Franchises,लाइसेंस और फ्रेंचाइज,Asset,DEBIT,asset.noncurrent.intangibles,IntangibleAssetsOtherThanGoodwill,
+2,2130,Research and Development Costs,अनुसंधान और विकास लागत,Asset,DEBIT,asset.noncurrent.intangibles,IntangibleAssetsOtherThanGoodwill,Ind AS 38: only development costs capitalize
+2,2200,Long-term Investments — Equity (Subsidiaries),दीर्घकालिक निवेश — इक्विटी (अनुषंगी),Asset,DEBIT,asset.noncurrent.investments,InvestmentsAccountedForUsingEquityMethod,
+2,2210,Long-term Investments — Equity (Associates),दीर्घकालिक निवेश — इक्विटी (संबद्ध),Asset,DEBIT,asset.noncurrent.investments,InvestmentsAccountedForUsingEquityMethod,
+2,2220,Long-term Investments — Bonds/Debentures,दीर्घकालिक निवेश — बॉन्ड,Asset,DEBIT,asset.noncurrent.investments,OtherNonCurrentFinancialAssets,
+2,2300,Deferred Tax Asset,स्थगित कर संपत्ति,Asset,DEBIT,asset.noncurrent.investments,DeferredTaxAssets,Ind AS 12; significant in Indian companies
+3,3000,Trade Payables (Sundry Creditors — MSME),व्यापारिक देय — MSME,Liability,CREDIT,liability.current.payables,TradeAndOtherCurrentPayables,MSMED Act: must pay within 45 days
+3,3010,Trade Payables (Sundry Creditors — Others),व्यापारिक देय — अन्य,Liability,CREDIT,liability.current.payables,TradeAndOtherCurrentPayables,
+3,3020,Bills Payable,देय बिल,Liability,CREDIT,liability.current.payables,TradeAndOtherCurrentPayables,
+3,3030,Advance from Customers,ग्राहकों से अग्रिम,Liability,CREDIT,liability.current.accrued,OtherCurrentProvisions,Ind AS 115 Contract Liabilities
+3,3040,GST Payable — CGST,GST देय — CGST,Liability,CREDIT,liability.current.vat_output,CurrentTaxLiabilitiesCurrent,9% for standard-rated B2B
+3,3050,GST Payable — SGST,GST देय — SGST,Liability,CREDIT,liability.current.vat_output,CurrentTaxLiabilitiesCurrent,9% for intra-state transactions
+3,3055,GST Payable — IGST,GST देय — IGST,Liability,CREDIT,liability.current.vat_output,CurrentTaxLiabilitiesCurrent,18% for interstate transactions
+3,3060,TDS Payable (Withholding Tax),TDS देय,Liability,CREDIT,liability.current.tax,CurrentTaxLiabilitiesCurrent,Must be deposited 7th of following month
+3,3070,Provident Fund Payable,भविष्य निधि देय,Liability,CREDIT,liability.current.accrued,OtherCurrentProvisions,EPF: 12% employer + 12% employee of basic salary
+3,3080,ESI Payable,ईएसआई देय,Liability,CREDIT,liability.current.accrued,OtherCurrentProvisions,ESIC: 3.25% employer on wages ≤21,000/month
+3,3090,Income Tax Payable,आयकर देय,Liability,CREDIT,liability.current.tax,CurrentTaxLiabilitiesCurrent,Corporate: 25.17% (new regime) or 30%+surcharge+cess
+3,3100,Salaries and Wages Payable,वेतन और मजदूरी देय,Liability,CREDIT,liability.current.accrued,OtherCurrentProvisions,
+3,3200,Short-term Borrowings — Bank OD,अल्पकालिक उधार — बैंक ओडी,Liability,CREDIT,liability.current.short_term_debt,CurrentBorrowings,
+3,3210,Short-term Borrowings — Cash Credit,अल्पकालिक उधार — नकद क्रेडिट,Liability,CREDIT,liability.current.short_term_debt,CurrentBorrowings,
+3,3300,Deferred Tax Liability,स्थगित कर देयता,Liability,CREDIT,liability.noncurrent.deferred_tax,DeferredTaxLiabilities,
+3,3400,Gratuity Provision,ग्रेच्युटी प्रावधान,Liability,CREDIT,liability.noncurrent.debt,OtherNonCurrentProvisions,Payment of Gratuity Act: 15/26 × salary × years served
+3,3410,Leave Encashment Provision,अवकाश नकदीकरण प्रावधान,Liability,CREDIT,liability.noncurrent.debt,OtherNonCurrentProvisions,Ind AS 19 defined benefit obligation
+4,4000,Share Capital — Equity,शेयर पूंजी — इक्विटी,Equity,CREDIT,equity.capital,IssuedCapital,INR face value typically ₹1 or ₹10
+4,4010,Securities Premium,प्रतिभूति प्रीमियम,Equity,CREDIT,equity.reserves,SharePremium,
+4,4020,General Reserve,सामान्य आरक्षित,Equity,CREDIT,equity.reserves,OtherReserves,
+4,4030,Retained Earnings,प्रतिधारित आय,Equity,CREDIT,equity.retained,RetainedEarnings,P&L balance
+5,5000,Revenue from Operations,परिचालन से राजस्व,Revenue,CREDIT,revenue.operating,Revenue,Ind AS 115 net revenue
+5,5010,Other Income,अन्य आय,Revenue,CREDIT,revenue.other,OtherIncome,Interest; dividends; FX gains
+6,6000,Cost of Raw Materials Consumed,उपभोग की गई कच्चे माल की लागत,Expense,DEBIT,expense.cogs,CostOfSales,
+6,6010,Purchases of Traded Goods,व्यापारिक माल की खरीद,Expense,DEBIT,expense.cogs,CostOfSales,
+6,6020,Changes in Inventories,माल-सूची में परिवर्तन,Expense,DEBIT,expense.cogs,CostOfSales,Closing minus opening stock
+6,6030,Employee Benefits Expense,कर्मचारी लाभ व्यय,Expense,DEBIT,expense.admin,EmployeeBenefitsExpense,Salaries + PF + ESI + gratuity
+6,6040,Finance Costs,वित्त लागत,Expense,DEBIT,expense.interest,FinanceCosts,Interest + bank charges
+6,6050,Depreciation and Amortization,मूल्यह्रास और परिशोधन,Expense,DEBIT,expense.depreciation,DepreciationAndAmortisationExpense,Per Schedule II of Companies Act 2013
+6,6060,Other Expenses,अन्य व्यय,Expense,DEBIT,expense.admin,OtherExpenses,
+6,6070,Tax Expense — Current,कर व्यय — वर्तमान,Expense,DEBIT,expense.tax,TaxIncomeExpense,
+6,6080,Tax Expense — Deferred,कर व्यय — स्थगित,Expense,DEBIT,expense.tax,TaxIncomeExpense,Ind AS 12 deferred tax movement

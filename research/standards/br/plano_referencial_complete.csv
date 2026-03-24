@@ -1,0 +1,76 @@
+GRAU,CODE,NOME_PT,NAME_EN,CATEGORIA,NATUREZA,KONTABLO_L3,IFRS_TAG,NOTES
+1,1.1.1.01,Caixa e Equivalentes de Caixa,Cash and Cash Equivalents,Ativo,DEBIT,asset.current.cash,CashAndCashEquivalents,CPC 03 (IAS 7)
+1,1.1.1.02,Bancos — Conta Corrente,Banks — Checking Account,Ativo,DEBIT,asset.current.bank,CashAndCashEquivalents,
+1,1.1.1.03,Aplicações Financeiras de Curto Prazo,Short-term Financial Investments,Ativo,DEBIT,asset.current.bank,CashAndCashEquivalents,CDB/LCI/LCA with maturity < 90 days = cash equivalent
+1,1.1.2.01,Clientes — Duplicatas a Receber,Trade Receivables,Ativo,DEBIT,asset.current.receivables,TradeAndOtherCurrentReceivables,CPC 48 (IFRS 9 ECL model)
+1,1.1.2.02,(-) PDD — Perda Esperada de Crédito,(-) Expected Credit Loss Provision,Ativo,CREDIT,asset.current.receivables,TradeAndOtherCurrentReceivables,Contra-account; CPC 48 = IFRS 9 ECL
+1,1.1.2.03,Contas a Receber Diversas,Other Receivables,Ativo,DEBIT,asset.current.receivables,OtherCurrentReceivables,
+1,1.1.3.01,ICMS a Recuperar,ICMS to Recover (State VAT Input Credit),Ativo,DEBIT,asset.current.vat_input,CurrentTaxAssetsCurrent,ICMS: 12-25% varies by state and product
+1,1.1.3.02,PIS a Recuperar,PIS to Recover (Federal Contribution Input),Ativo,DEBIT,asset.current.vat_input,CurrentTaxAssetsCurrent,PIS: 1.65% (non-cumulative) or 0.65% (cumulative)
+1,1.1.3.03,COFINS a Recuperar,COFINS to Recover (Federal Contribution Input),Ativo,DEBIT,asset.current.vat_input,CurrentTaxAssetsCurrent,COFINS: 7.6% (non-cumulative) or 3% (cumulative)
+1,1.1.3.04,IPI a Recuperar,IPI to Recover (Excise Tax Input Credit),Ativo,DEBIT,asset.current.vat_input,CurrentTaxAssetsCurrent,IPI: varies by product classification (NCM)
+1,1.1.3.05,IRRF a Recuperar,Income Tax Withholding to Recover,Ativo,DEBIT,asset.current.vat_input,CurrentTaxAssetsCurrent,Source withholding credited against IRPJ
+1,1.1.3.06,CSLL a Recuperar,Social Contribution on Net Income to Recover,Ativo,DEBIT,asset.current.vat_input,CurrentTaxAssetsCurrent,CSLL: 9% (standard) or 15-20% (financial institutions)
+1,1.1.4.01,Estoques — Matérias-primas,Inventory — Raw Materials,Ativo,DEBIT,asset.current.inventory,CurrentInventories,CPC 16 (IAS 2); FIFO or weighted avg; LIFO forbidden
+1,1.1.4.02,Estoques — Produtos em Elaboração,Inventory — Work in Progress,Ativo,DEBIT,asset.current.inventory,CurrentInventories,
+1,1.1.4.03,Estoques — Produtos Acabados,Inventory — Finished Goods,Ativo,DEBIT,asset.current.inventory,CurrentInventories,
+1,1.1.4.04,Estoques — Mercadorias para Revenda,Inventory — Trading Goods,Ativo,DEBIT,asset.current.inventory,CurrentInventories,
+1,1.1.5.01,Despesas Antecipadas (Curto Prazo),Prepaid Expenses (Short-term),Ativo,DEBIT,asset.current.prepaid,CurrentPrepayments,
+1,1.1.5.02,Adiantamento a Fornecedores,Advances to Suppliers,Ativo,DEBIT,asset.current.prepaid,CurrentPrepayments,
+2,1.2.1.01,Imobilizado — Terrenos,PP&E — Land,Ativo,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,Not depreciated; must be separate from buildings CPC 27
+2,1.2.1.02,Imobilizado — Edifícios e Benfeitorias,PP&E — Buildings and Improvements,Ativo,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,CPC 27 (IAS 16); component depreciation required
+2,1.2.1.03,Imobilizado — Máquinas e Equipamentos,PP&E — Machinery and Equipment,Ativo,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,
+2,1.2.1.04,Imobilizado — Móveis e Utensílios,PP&E — Furniture and Utensils,Ativo,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,
+2,1.2.1.05,Imobilizado — Veículos,PP&E — Vehicles,Ativo,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,IPVA annual tax; often significant cost
+2,1.2.1.06,Imobilizado — Equipamentos de Informática,PP&E — Computer Equipment,Ativo,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,
+2,1.2.1.07,Imobilizado — Direitos de Uso (CPC 06-R2),Right-of-Use Assets (IFRS 16),Ativo,DEBIT,asset.noncurrent.rou_assets,RightOfUseAssets,CPC 06-R2 = IFRS 16; effective 2019 in Brazil
+2,1.2.1.99,(-) Depreciação Acumulada,(-) Accumulated Depreciation,Ativo,CREDIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,Contra-account
+2,1.2.2.01,Intangível — Softwares,Intangibles — Software,Ativo,DEBIT,asset.noncurrent.intangibles,IntangibleAssetsOtherThanGoodwill,CPC 04 (IAS 38)
+2,1.2.2.02,Intangível — Marcas e Patentes,Intangibles — Trademarks and Patents,Ativo,DEBIT,asset.noncurrent.intangibles,IntangibleAssetsOtherThanGoodwill,
+2,1.2.2.03,Intangível — Ágio por Rentabilidade Futura (Goodwill),Goodwill — Excess Purchase Price,Ativo,DEBIT,asset.noncurrent.goodwill,Goodwill,CPC 15 (IFRS 3); tested annually for impairment
+2,1.2.3.01,Investimentos — Participações em Controladas,Investments in Subsidiaries,Ativo,DEBIT,asset.noncurrent.investments,InvestmentsAccountedForUsingEquityMethod,Equity method in separate and consolidated FS
+2,1.2.3.02,Investimentos — Participações em Coligadas,Investments in Associates,Ativo,DEBIT,asset.noncurrent.investments,InvestmentsAccountedForUsingEquityMethod,Equity method
+2,1.2.4.01,Imposto de Renda Diferido (Ativo),Deferred Income Tax Asset,Ativo,DEBIT,asset.noncurrent.investments,DeferredTaxAssets,CPC 32 (IAS 12)
+3,2.1.1.01,Fornecedores Nacionais,Trade Payables — Domestic,Passivo,CREDIT,liability.current.payables,TradeAndOtherCurrentPayables,
+3,2.1.1.02,Fornecedores do Exterior,Trade Payables — Imported Goods,Passivo,CREDIT,liability.current.payables,TradeAndOtherCurrentPayables,FX translation required
+3,2.1.2.01,ICMS a Recolher,ICMS Payable (State VAT Output),Passivo,CREDIT,liability.current.vat_output,CurrentTaxLiabilitiesCurrent,Rate varies: SP 18%; RJ 20%; MG 18%; others
+3,2.1.2.02,PIS a Recolher,PIS Payable,Passivo,CREDIT,liability.current.vat_output,CurrentTaxLiabilitiesCurrent,Federal contribution on revenue
+3,2.1.2.03,COFINS a Recolher,COFINS Payable,Passivo,CREDIT,liability.current.vat_output,CurrentTaxLiabilitiesCurrent,
+3,2.1.2.04,ISS a Recolher,ISS Payable (Municipal Services Tax 2-5%),Passivo,CREDIT,liability.current.vat_output,CurrentTaxLiabilitiesCurrent,Municipal tax on services; no input credit
+3,2.1.2.05,IPI a Recolher,IPI Payable (Excise Tax Output),Passivo,CREDIT,liability.current.vat_output,CurrentTaxLiabilitiesCurrent,Applicable to industrialized goods
+3,2.1.3.01,IRPJ a Recolher,Corporate Income Tax Payable (IRPJ),Passivo,CREDIT,liability.current.tax,CurrentTaxLiabilitiesCurrent,15% + 10% surcharge on profit > R$240k/year; total 25%
+3,2.1.3.02,CSLL a Recolher,Social Contribution on Net Income Payable (CSLL),Passivo,CREDIT,liability.current.tax,CurrentTaxLiabilitiesCurrent,9% for general companies; 15-20% for banks
+3,2.1.4.01,Salários e Encargos a Pagar,Salaries and Payroll Taxes Payable,Passivo,CREDIT,liability.current.accrued,OtherCurrentProvisions,
+3,2.1.4.02,INSS a Recolher (Patronal),INSS Payable — Employer Contribution,Passivo,CREDIT,liability.current.accrued,OtherCurrentProvisions,20% on gross payroll (employer portion)
+3,2.1.4.03,FGTS a Recolher,FGTS Payable (Severance Fund — 8% of salary),Passivo,CREDIT,liability.current.accrued,OtherCurrentProvisions,Mandatory employee severance fund
+3,2.1.5.01,Empréstimos e Financiamentos (Curto Prazo),Short-term Borrowings and Financing,Passivo,CREDIT,liability.current.short_term_debt,CurrentBorrowings,
+3,2.1.5.02,Arrendamentos — Parcela Curto Prazo (CPC 06),Lease Liabilities — Current (IFRS 16),Passivo,CREDIT,liability.current.short_term_debt,CurrentBorrowings,
+3,2.1.6.01,Adiantamentos de Clientes,Customer Advances (Contract Liabilities),Passivo,CREDIT,liability.current.accrued,OtherCurrentProvisions,CPC 47 (IFRS 15) contract liabilities
+3,2.2.1.01,Empréstimos e Financiamentos (Longo Prazo),Long-term Borrowings and Financing,Passivo,CREDIT,liability.noncurrent.debt,OtherNonCurrentFinancialLiabilities,
+3,2.2.1.02,Debêntures,Debentures,Passivo,CREDIT,liability.noncurrent.debt,OtherNonCurrentFinancialLiabilities,Brazilian corporate bonds; common funding vehicle
+3,2.2.1.03,Arrendamentos — Parcela Longo Prazo (CPC 06),Lease Liabilities — Non-current (IFRS 16),Passivo,CREDIT,liability.noncurrent.debt,OtherNonCurrentFinancialLiabilities,
+3,2.2.2.01,Provisão para Contingências Trabalhistas,Provision for Labor Contingencies,Passivo,CREDIT,liability.noncurrent.debt,OtherNonCurrentProvisions,Brazil has very litigious labor courts; significant for large employers
+3,2.2.2.02,Provisão para Contingências Fiscais,Provision for Tax Contingencies,Passivo,CREDIT,liability.noncurrent.debt,OtherNonCurrentProvisions,Common: CARF disputes; ICMS/IPI reclassifications
+3,2.2.3.01,Imposto de Renda Diferido (Passivo),Deferred Income Tax Liability,Passivo,CREDIT,liability.noncurrent.deferred_tax,DeferredTaxLiabilities,CPC 32 (IAS 12)
+4,3.1.1.01,Capital Social,Share Capital,PL,CREDIT,equity.capital,IssuedCapital,
+4,3.1.2.01,Reserva de Capital — Ágio na Emissão de Ações,Share Premium,PL,CREDIT,equity.reserves,SharePremium,
+4,3.1.3.01,Reserva Legal (5% do lucro, até 20% do capital),Legal Reserve,PL,CREDIT,equity.reserves,OtherReserves,Lei das S/A: mandatory 5% annual until 20% of capital
+4,3.1.4.01,Reserva de Lucros,Profit Reserves,PL,CREDIT,equity.reserves,OtherReserves,Voluntary; approved by shareholders
+4,3.1.5.01,Lucros (Prejuízos) Acumulados,Accumulated Retained Earnings (Deficit),PL,CREDIT,equity.retained,RetainedEarnings,
+5,4.1.1.01,Receita Bruta de Vendas de Produtos,Gross Revenue — Products,Revenue,CREDIT,revenue.operating,Revenue,CPC 47 (IFRS 15); must be presented net of taxes
+5,4.1.1.02,Receita Bruta de Prestação de Serviços,Gross Revenue — Services,Revenue,CREDIT,revenue.operating,Revenue,Net of ISS
+5,4.1.2.01,(-) Devoluções e Abatimentos,(-) Sales Returns and Allowances,Revenue,DEBIT,revenue.operating,Revenue,
+5,4.1.2.02,(-) Impostos sobre Vendas (ICMS/PIS/COFINS/ISS),(-) Revenue Taxes (ICMS/PIS/COFINS/ISS),Revenue,DEBIT,revenue.operating,Revenue,Brazilian revenue must be presented GROSS then deducted
+5,4.2.1.01,Outras Receitas Operacionais,Other Operating Income,Revenue,CREDIT,revenue.other,OtherIncome,
+5,4.3.1.01,Receitas Financeiras,Finance Income,Revenue,CREDIT,revenue.other,FinanceIncome,Interest income; FX gains
+6,5.1.1.01,Custo dos Produtos Vendidos (CPV),Cost of Products Sold,Expense,DEBIT,expense.cogs,CostOfSales,
+6,5.1.2.01,Custo dos Serviços Prestados (CSP),Cost of Services Rendered,Expense,DEBIT,expense.cogs,CostOfSales,
+6,5.2.1.01,Despesas com Pessoal — Salários,Personnel Expenses — Salaries,Expense,DEBIT,expense.admin,EmployeeBenefitsExpense,
+6,5.2.1.02,Despesas com Pessoal — Encargos Sociais,Personnel Expenses — Social Charges,Expense,DEBIT,expense.admin,EmployeeBenefitsExpense,INSS patronal ~20%; FGTS 8%; SESI/SENAI; others
+6,5.2.2.01,Depreciação e Amortização,Depreciation and Amortization,Expense,DEBIT,expense.depreciation,DepreciationAndAmortisationExpense,
+6,5.2.3.01,Despesas Administrativas e Gerais,General and Administrative Expenses,Expense,DEBIT,expense.admin,AdministrativeExpenses,
+6,5.3.1.01,Despesas Financeiras,Finance Expenses,Expense,DEBIT,expense.interest,FinanceCosts,Interest; IOF (financial operations tax); bank fees
+6,5.3.1.02,Variações Cambiais Passivas,Foreign Exchange Losses,Expense,DEBIT,expense.fx_loss,OtherExpense,FX loss on USD/EUR debt
+6,5.4.1.01,IRPJ — Corrente,Income Tax — Current (IRPJ),Expense,DEBIT,expense.tax,TaxIncomeExpense,
+6,5.4.1.02,CSLL — Corrente,Social Contribution — Current (CSLL),Expense,DEBIT,expense.tax,TaxIncomeExpense,
+6,5.4.2.01,IRPJ — Diferido,Income Tax — Deferred (IRPJ),Expense,DEBIT,expense.tax,TaxIncomeExpense,

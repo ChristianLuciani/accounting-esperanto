@@ -1,0 +1,40 @@
+CODE,NAME_RU,NAME_EN,CATEGORY,NATURE,KONTABLO_L3,IFRS_TAG,NOTES
+01,Основные средства,Fixed Assets / PP&E,Asset,DEBIT,asset.noncurrent.ppe,PropertyPlantAndEquipment,IAS 16; depreciated over useful life
+02,Нематериальные активы,Intangible Assets,Asset,DEBIT,asset.noncurrent.intangibles,IntangibleAssetsOtherThanGoodwill,IAS 38
+03,Доходные вложения в материальные ценности,Income-Generating Leased Assets,Asset,DEBIT,asset.noncurrent.ppe,InvestmentProperty,IAS 40 equivalent; Russian lessor assets
+04,Финансовые вложения (долгосрочные),Long-term Financial Investments,Asset,DEBIT,asset.noncurrent.investments,InvestmentsAccountedForUsingEquityMethod,Includes equity in subsidiaries
+08,Вложения во внеоборотные активы,Capital Work in Progress,Asset,DEBIT,asset.noncurrent.ppe,ConstructionInProgress,Assets under construction
+10,Материалы,Materials / Raw Materials,Asset,DEBIT,asset.current.inventory,CurrentInventories,Raw materials for production
+20,Основное производство,Work in Progress — Main Production,Asset,DEBIT,asset.current.inventory,CurrentInventories,WIP — manufacturing costs
+21,Полуфабрикаты собственного производства,Semi-Finished Goods,Asset,DEBIT,asset.current.inventory,CurrentInventories,Internally manufactured components
+40,Выпуск продукции,Cost of Production Output,Result,DEBIT,expense.cogs,CostOfSales,Used in standard costing; closes to account 43
+41,Товары,Goods Held for Sale,Asset,DEBIT,asset.current.inventory,CurrentInventories,Trading inventory
+43,Готовая продукция,Finished Goods,Asset,DEBIT,asset.current.inventory,CurrentInventories,Manufactured finished goods
+45,Товары отгруженные,Goods Shipped (Not Yet Sold),Asset,DEBIT,asset.current.receivables,TradeAndOtherCurrentReceivables,Revenue recognized on delivery; this tracks goods in transit
+50,Касса,Cash on Hand,Asset,DEBIT,asset.current.cash,CashAndCashEquivalents,Petty cash and physical currency
+51,Расчетные счета,Settlement Bank Accounts (RUB),Asset,DEBIT,asset.current.bank,CashAndCashEquivalents,Main ruble bank accounts
+52,Валютные счета,Foreign Currency Bank Accounts,Asset,DEBIT,asset.current.bank,CashAndCashEquivalents,USD/EUR accounts; FX translation differences in account 91
+55,Специальные счета в банках,Special Bank Accounts,Asset,DEBIT,asset.current.prepaid,CurrentPrepayments,Escrow accounts; letters of credit; deposits with banks
+57,Переводы в пути,Transfers in Transit,Asset,DEBIT,asset.current.cash,CashAndCashEquivalents,Cash in transit between accounts
+58,Финансовые вложения (краткосрочные),Short-term Financial Investments,Asset,DEBIT,asset.current.inventory,OtherCurrentFinancialAssets,Marketable securities; short-term deposits
+60,Расчеты с поставщиками и подрядчиками,Accounts Payable — Suppliers & Contractors,Liability,CREDIT,liability.current.payables,TradeAndOtherCurrentPayables,
+62,Расчеты с покупателями и заказчиками,Accounts Receivable — Customers,Asset,DEBIT,asset.current.receivables,TradeAndOtherCurrentReceivables,
+66,Расчеты по краткосрочным кредитам и займам,Short-term Loans Payable,Liability,CREDIT,liability.current.short_term_debt,CurrentBorrowings,
+67,Расчеты по долгосрочным кредитам и займам,Long-term Loans Payable,Liability,CREDIT,liability.noncurrent.debt,OtherNonCurrentFinancialLiabilities,
+68.2,Расчеты по НДС,VAT Payable (НДС 20%),Liability,CREDIT,liability.current.vat_output,CurrentTaxLiabilitiesCurrent,Standard VAT rate 20%; reduced 10% for food/medical
+68.4,Расчеты по налогу на прибыль,Corporate Income Tax Payable (20%),Liability,CREDIT,liability.current.tax,CurrentTaxLiabilitiesCurrent,Standard CIT rate 20%
+69,Расчеты по социальному страхованию и обеспечению,Social Insurance Payable,Liability,CREDIT,liability.current.accrued,OtherCurrentProvisions,SFR contributions ~30% of payroll (PFR+FSS+FOMS)
+70,Расчеты с персоналом по оплате труда,Salaries Payable,Liability,CREDIT,liability.current.accrued,OtherCurrentProvisions,
+76,Расчеты с разными дебиторами и кредиторами,Miscellaneous Receivables and Payables,Asset/Liability,VARIABLE,asset.current.receivables,OtherCurrentReceivables,Multipurpose account; advances to employees; claims
+77,Отложенные налоговые обязательства,Deferred Tax Liabilities,Liability,CREDIT,liability.noncurrent.deferred_tax,DeferredTaxLiabilities,PBU 18/02; similar to IAS 12
+79,Внутрихозяйственные расчеты,Intra-group Settlements,Asset/Liability,VARIABLE,,IntercompanyBalances,Used for branch/division accounting; eliminated on consolidation
+80,Уставный капитал,Authorized (Charter) Capital,Equity,CREDIT,equity.capital,IssuedCapital,Minimum RUB 10k (LLC) or RUB 100k (JSC)
+82,Резервный капитал,Legal Reserve Capital,Equity,CREDIT,equity.reserves,OtherReserves,MANDATORY: ≥5% of charter capital; ≥25% of annual profit until reached
+83,Добавочный капитал,Additional Paid-in Capital,Equity,CREDIT,equity.reserves,SharePremium,Share premium + revaluation surplus
+84,Нераспределенная прибыль,Retained Earnings / Accumulated Deficit,Equity,CREDIT,equity.retained,RetainedEarnings,
+90.1,Выручка,Revenue from Sales,Revenue,CREDIT,revenue.operating,Revenue,RAS revenue recognition; closes to account 99 at year end
+90.2,Себестоимость продаж,Cost of Sales,Expense,DEBIT,expense.cogs,CostOfSales,Closes to account 99
+91,Прочие доходы и расходы,Other Income and Expenses,Result,VARIABLE,revenue.other,OtherIncome,Includes FX gains/losses from account 52
+97,Расходы будущих периодов,Deferred (Prepaid) Expenses,Asset,DEBIT,asset.current.prepaid,CurrentPrepayments,License fees; insurance premiums paid in advance
+98,Доходы будущих периодов,Deferred Revenue,Liability,CREDIT,liability.current.accrued,OtherCurrentProvisions,Government grants received; subscription revenue
+99,Прибыли и убытки,Profit and Loss (Current Year),Result,VARIABLE,,,Closes to account 84 at year-end reset

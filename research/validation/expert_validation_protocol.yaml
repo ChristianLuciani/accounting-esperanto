@@ -1,0 +1,351 @@
+# Expert Validation Protocol — Kontablo v0.2
+# Version: 1.0.0
+# Date: 2026-03-24
+# Purpose: Guide structured CPA/CFO interviews to validate Kontablo Level 3 account mappings
+# Target: 12 experts × 6 jurisdictions (MX, BR, DE, IN, ZA, SA)
+
+metadata:
+  protocol_version: "1.0.0"
+  target_completion: "2026-06-30"
+  minimum_experts: 10
+  target_experts: 12
+  jurisdictions:
+    - code: "mx"
+      name: "Mexico"
+      target_profiles: ["CPA with SAT experience", "CFO of mid-size manufacturing company"]
+    - code: "br"
+      name: "Brazil"
+      target_profiles: ["Contador with SPED experience", "CFO familiar with IRPJ/CSLL/ICMS"]
+    - code: "de"
+      name: "Germany"
+      target_profiles: ["Wirtschaftsprüfer (WP) auditor", "Steuerberater (tax advisor)"]
+    - code: "in"
+      name: "India"
+      target_profiles: ["CA (Chartered Accountant) with Ind AS experience", "CFO with GST compliance role"]
+    - code: "za"
+      name: "South Africa"
+      target_profiles: ["CA(SA) auditor", "Finance manager with IFRS adoption experience"]
+    - code: "sa"
+      name: "Saudi Arabia"
+      target_profiles: ["SOCPA-certified accountant", "CFO of IFRS-reporting entity"]
+
+  ethics:
+    consent_required: true
+    anonymization: true
+    recording_with_permission: true
+    data_storage: "encrypted; deleted after 2 years"
+
+---
+
+## SECTION 1: EXPERT PROFILE QUESTIONNAIRE
+
+### 1.1 Background
+
+Q1: What is your professional designation?
+- [ ] CPA / CA / CFA / ACCA / CMA
+- [ ] Wirtschaftsprüfer (WP)
+- [ ] SOCPA certified
+- [ ] Other: ______
+
+Q2: How many years of experience do you have in financial accounting?
+- [ ] 2–5 years
+- [ ] 6–10 years
+- [ ] 11–20 years
+- [ ] 20+ years
+
+Q3: What is your primary industry sector?
+- [ ] Manufacturing / Industrial
+- [ ] Services / Consulting
+- [ ] Financial Services / Banking
+- [ ] Technology
+- [ ] Real Estate
+- [ ] Energy / Extractive
+- [ ] Public Sector
+- [ ] Other: ______
+
+Q4: How many countries' accounting standards do you work with regularly?
+- [ ] 1 (domestic only)
+- [ ] 2–3
+- [ ] 4–10
+- [ ] 10+
+
+Q5: Have you ever worked on a multi-country financial consolidation project?
+- [ ] Yes → please describe: ______
+- [ ] No
+
+---
+
+## SECTION 2: CORE MAPPING REVIEW
+
+**Instructions:**
+For each Kontablo Level 3 account below, please:
+1. Review the proposed mapping (Kontablo ID → local code)
+2. Rate your **confidence** in the mapping: 1 (strongly disagree) to 5 (fully agree)
+3. Provide comments, corrections, or alternative mappings
+
+### 2.1 Account Mapping Review Form
+
+*Complete for your jurisdiction (pre-populated with proposed mappings)*
+
+```yaml
+jurisdiction: "[FILL IN]"
+reviewer_id: "[ASSIGNED - DO NOT SELF-IDENTIFY]"
+review_date: "[DATE]"
+
+accounts:
+  - kontablo_id: "asset.current.cash"
+    proposed_local_code: "[PRE-FILLED FROM MAPPING CSV]"
+    proposed_label: "Cash and Cash Equivalents"
+    confidence: [1-5]
+    agrees_with_mapping: [yes/no/partial]
+    comment: ""
+    suggested_correction: ""
+
+  - kontablo_id: "asset.current.receivables"
+    proposed_local_code: ""
+    confidence: [1-5]
+    agrees_with_mapping: [yes/no/partial]
+    comment: ""
+
+  - kontablo_id: "asset.current.vat_input"
+    proposed_local_code: ""
+    confidence: [1-5]
+    comment: "Note: Not applicable if jurisdiction has no VAT"
+
+  - kontablo_id: "asset.current.inventory"
+    proposed_local_code: ""
+    confidence: [1-5]
+    comment: ""
+
+  - kontablo_id: "asset.noncurrent.ppe"
+    proposed_local_code: ""
+    confidence: [1-5]
+    comment: ""
+
+  - kontablo_id: "liability.current.payables"
+    proposed_local_code: ""
+    confidence: [1-5]
+    comment: ""
+
+  - kontablo_id: "liability.current.vat_output"
+    proposed_local_code: ""
+    confidence: [1-5]
+    comment: ""
+
+  - kontablo_id: "liability.current.tax"
+    proposed_local_code: ""
+    confidence: [1-5]
+    comment: ""
+
+  - kontablo_id: "revenue.operating"
+    proposed_local_code: ""
+    confidence: [1-5]
+    comment: ""
+
+  - kontablo_id: "expense.cogs"
+    proposed_local_code: ""
+    confidence: [1-5]
+    comment: ""
+
+  - kontablo_id: "expense.admin"
+    proposed_local_code: ""
+    confidence: [1-5]
+    comment: ""
+
+  - kontablo_id: "expense.depreciation"
+    proposed_local_code: ""
+    confidence: [1-5]
+    comment: ""
+```
+
+---
+
+## SECTION 3: SEMI-STRUCTURED INTERVIEW QUESTIONS
+
+*Estimated duration: 45–60 minutes*
+*Interviewer: record responses verbatim or request permission to record audio*
+
+### 3.1 Opening (5 min)
+
+Q6: When you think about accounting standardization across countries, what is the single biggest challenge in your experience?
+
+Q7: Have you ever encountered a situation where the same economic transaction was accounted for differently in two jurisdictions, creating consolidation problems? Can you describe it?
+
+### 3.2 Kontablo Concept Review (15 min)
+
+*[Present the interviewer with the one-page Kontablo summary — `docs/manuals/kontablo_explainer.md`]*
+
+Q8: After reviewing the Kontablo concept, what is your immediate reaction?
+
+Q9: Do you believe a universal Level 3 account taxonomy (30 core accounts) could realistically cover 90%+ of routine transactions in [their jurisdiction]? Why or why not?
+
+Q10: What would you add to the 30 core accounts that you consider essential for your jurisdiction?
+
+Q11: What in the 30 core accounts do you think is NOT applicable or incorrectly mapped for [their jurisdiction]?
+
+### 3.3 Jurisdiction-Specific Deep Dive (15 min)
+
+*Adapt to jurisdiction:*
+
+**For MX:**
+Q12-MX: How do you handle the distinction between IVA trasladado (output VAT) and IVA acreditable (input VAT) in your chart of accounts? Does Kontablo's proposed mapping correctly reflect that?
+
+Q13-MX: The SAT requires CFDI electronic invoicing with specific account coding. Does Kontablo's abstraction layer create any conflicts with CFDI compliance?
+
+**For BR:**
+Q12-BR: Brazil has ICMS, PIS, COFINS, ISS, IPI — five separate tax contributions. How do you typically structure these in your chart of accounts? Does presenting them as a single `liability.current.vat_output` in Kontablo oversimplify?
+
+Q13-BR: The SPED (Sistema Público de Escrituração Digital) requires transaction-level tax event data. Can Kontablo coexist with SPED compliance, or does the abstraction create compliance gaps?
+
+**For DE:**
+Q12-DE: The HGB (Handelsgesetzbuch) requires specific accounts for differences between HGB and IFRS (e.g., Rechnungsabgrenzungsposten for deferred items). How do these interact with Kontablo's proposed accounts?
+
+Q13-DE: German SKREF or SKR03/SKR04 standard charts of accounts are widely used. Is mapping from SKR03 to Kontablo feasible in your opinion?
+
+**For IN:**
+Q12-IN: India's GST cascading system creates complex Input Tax Credit matching requirements. Does Kontablo's single `asset.current.vat_input` account adequately capture this complexity?
+
+Q13-IN: What is your experience with Ind AS adoption? Where do companies struggle most in transitioning from Indian GAAP to Ind AS?
+
+**For ZA:**
+Q12-ZA: South Africa adopted IFRS for listed companies in 2005. In your experience, what are the remaining sticking points in IFRS application for SA entities?
+
+Q13-ZA: How do small and non-listed companies (using GRAP or SA GAAP) differ from Kontablo's IFRS-anchored approach?
+
+**For SA:**
+Q12-SA: Zakat is a fundamental obligation for Saudi entities. Kontablo currently includes Zakat as a pending account (`liability.current.zakat`). How would you define the scope and calculation basis for a Zakat account in Kontablo?
+
+Q13-SA: SOCPA has moved Saudi companies toward IFRS. In your experience, what are the most significant convergence gaps remaining?
+
+### 3.4 Completeness Assessment (10 min)
+
+Q14: On a scale of 1-10, how would you rate the completeness of the 30 Kontablo Level 3 core accounts for covering routine transactions in your jurisdiction?
+
+Q15: What % of transactions in your typical client portfolio would map directly (1:1) to a Kontablo account without any customization?
+
+Q16: What are the top 3 accounts that you believe are missing from the Kontablo core?
+
+Q17: What are the top 3 industry extensions that would be most valuable for your clients?
+
+### 3.5 Practical Adoption (5 min)
+
+Q18: If Kontablo were available as an open standard today, would your firm/clients consider adopting it? What would the decision factors be?
+
+Q19: What implementation barriers would your clients face in mapping their existing chart of accounts to Kontablo?
+
+Q20: Any other feedback or suggestions?
+
+---
+
+## SECTION 4: SCORING RUBRIC
+
+### 4.1 Per-Account Confidence Score
+
+| Score | Interpretation |
+|-------|----------------|
+| 5 | Fully agree — the proposed mapping is correct and complete |
+| 4 | Mostly agree — minor clarification needed but fundamentally correct |
+| 3 | Partially agree — the mapping is approximately right but needs adjustment |
+| 2 | Mostly disagree — significant issues with the mapping |
+| 1 | Strongly disagree — the mapping is incorrect or not applicable |
+
+### 4.2 Aggregate Validation Thresholds
+
+| Threshold | Decision |
+|-----------|----------|
+| Average confidence ≥ 4.0 across all accounts | Account mapping VALIDATED ✅ |
+| Average confidence 3.0–3.9 | Account mapping NEEDS REVISION 🔄 |
+| Average confidence < 3.0 | Account mapping REJECTED — redesign needed ❌ |
+
+### 4.3 Completeness Score (Q14)
+
+| Target | Status |
+|--------|--------|
+| ≥ 8.0 / 10 average across jurisdictions | Phase 0 COMPLETE — proceed to v0.3 |
+| 6.0–7.9 | Add Level 3 accounts based on Q16 feedback |
+| < 6.0 | Fundamental redesign needed |
+
+---
+
+## SECTION 5: DATA COLLECTION AND STORAGE
+
+### 5.1 File Naming Convention
+
+```
+research/validation/interviews/
+  {jurisdiction}_{reviewer_id}_{date}_profile.yaml
+  {jurisdiction}_{reviewer_id}_{date}_mapping_review.csv
+  {jurisdiction}_{reviewer_id}_{date}_interview_notes.md
+```
+
+### 5.2 Anonymization Rules
+
+- Reviewer ID assigned by researcher on intake (RV-001 through RV-012)
+- Firm name: convert to sector descriptor (e.g., "Big 4 firm" → "B4-1")
+- Client names: never recorded; only industry sector
+- Recording: deleted after transcription; transcript reviewed by reviewer before use
+
+### 5.3 Synthesis Process
+
+After all 12 interviews:
+1. Calculate per-account confidence average across all reviewers
+2. Identify accounts with confidence < 3.0 → redesign
+3. Tabulate all Q16 suggestions → prioritize for v0.3
+4. Update `core/schemas/level3_accounts.yaml` with validated confidence scores
+5. Update `docs/papers/drafts/kontablo_paper_v01.md` Section 6 with results
+
+---
+
+## SECTION 6: INTERVIEW SCHEDULING
+
+### 6.1 Recruitment Channels
+
+- IMCP (Instituto Mexicano de Contadores Públicos) — Mexico
+- CFC (Conselho Federal de Contabilidade) — Brazil
+- AICPA / ICAEW LinkedIn network
+- ICAI (Institute of Chartered Accountants of India)
+- SAICA (South African Institute of Chartered Accountants)
+- SOCPA (Saudi Organization for Chartered and Professional Accountants)
+
+### 6.2 Incentive
+
+- Credited as a contributor in the paper acknowledgments (with consent)
+- Early access to the Kontablo v0.2 specification
+- No monetary compensation (academic research)
+
+### 6.3 Schedule Template
+
+| Week | Activity |
+|------|----------|
+| 2026-04-01 | Recruitment outreach begins |
+| 2026-04-15 | First interviews scheduled (MX, BR) |
+| 2026-05-01 | Interviews: DE, IN |
+| 2026-05-15 | Interviews: ZA, SA |
+| 2026-06-01 | Data analysis begins |
+| 2026-06-30 | Validation report complete |
+| 2026-07-15 | Paper Section 6 finalized |
+
+---
+
+## SECTION 7: CONSENT FORM TEMPLATE
+
+```markdown
+# Research Participant Consent Form
+# Kontablo Universal Accounting Ontology — Expert Validation Study
+
+I, [Reviewer Name], agree to:
+
+1. Participate in a ~60 minute interview on the topic of accounting standardization
+2. Provide professional judgment on proposed account mappings (Kontablo v0.2)
+3. Allow anonymized responses to be used in academic research
+
+I understand that:
+- My responses will be anonymized (I will be identified only by a reviewer code)
+- I may withdraw at any time without consequence
+- Audio recordings (if any) will be deleted after transcription
+- I will have the opportunity to review any direct quotes attributed to me
+
+Signature: _______________  Date: _______________
+
+Research Contact: [Researcher Name], [Institution], [Email]
+```

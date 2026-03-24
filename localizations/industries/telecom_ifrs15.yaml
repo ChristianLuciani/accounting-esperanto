@@ -1,0 +1,392 @@
+# Kontablo Industry Extension: Telecommunications (IFRS 15 + IFRS 16 + IAS 38)
+# Version: 0.1.0-draft
+# Standard: IFRS 15 - Revenue from Contracts with Customers (bundled deals, agent vs principal)
+#            IFRS 16 - Leases (tower leases as lessee; network equipment leases)
+#            IAS 38 - Intangible Assets (spectrum licenses, software)
+#            IAS 36 - Impairment (network goodwill CGUs)
+# Authority: IASB
+# Priority: HIGH (per README roadmap)
+# Critical Notes:
+#   - IFRS 15 created MAJOR changes for telecom: bundled handset+service contracts
+#     require allocation of transaction price between hardware (recognized at delivery)
+#     and service (recognized over contract period)
+#   - SPECTRUM LICENSES: IAS 38; typically finite life = license term; some perpetual
+#   - TOWER LEASES (IFRS 16): large telcos lease thousands of towers → massive ROU assets
+#   - INCREMENTAL COSTS (contract acquisition costs): capitalized and amortized under IFRS 15.91
+#   - SUBSIDIZED HANDSETS: customer pays below market price → revenue allocation issue
+#   - KEY JURISDICTIONS: US (AT&T, Verizon), UK (BT, Vodafone), MX (America Movil),
+#     BR (Claro, TIM, Vivo), IN (Jio, Airtel), CN (China Mobile), DE (Deutsche Telekom)
+
+metadata:
+  industry: telecommunications_media
+  standard: IFRS_15_IFRS_16_IAS_38
+  applies_to:
+    - Mobile network operators (MNO)
+    - Fixed-line broadband providers
+    - Cable TV companies
+    - Media and streaming companies
+    - Internet service providers (ISPs)
+    - Tower companies (TowerCos)
+  kontablo_version: 0.1.0
+  extension_type: industry
+  last_updated: 2026-03-24
+  key_jurisdictions: ["us", "uk", "mx", "br", "in", "cn", "de", "es", "fr", "ng", "sa", "za"]
+
+mappings:
+  # ─────────────────────────────────────────────
+  # SPECTRUM AND LICENSES (IAS 38)
+  # ─────────────────────────────────────────────
+
+  "SPEC_License":
+    name: "Spectrum License — Intangible Asset"
+    label_es: "Licencia de Espectro — Activo Intangible"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "80000000-0000-4000-8000-000000000001"
+    ifrs_tag: "ifrs-full:LicencesAndFranchises"
+    parent_kontablo: "asset.noncurrent.intangibles"
+    examples:
+      - "4G LTE spectrum (700 MHz, 1800 MHz, 2600 MHz)"
+      - "5G spectrum licenses"
+      - "Fixed wireless access licenses"
+      - "Satellite orbital slots"
+    amortization:
+      method: "straight_line"
+      life_basis: "Regulatory license term (typically 10-20 years)"
+      residual_value: 0
+    notes: |
+      IAS 38: License costs capitalized including initial acquisition price + legal costs.
+      Annual amortization over license term.
+      Some licenses (e.g., US FCC licenses) are classified as indefinite-life → impairment-only (no amortization).
+      CRITICAL: 5G spectrum auction costs in recent years have been multi-billion for major operators.
+      MX: IFT (telecoms regulator) concession fees; BR: ANATEL auction fees.
+
+  "SPEC_AmortizationExpense":
+    name: "Spectrum License Amortization Expense"
+    label_es: "Amortización de Licencias de Espectro"
+    nature: "Debit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "80000000-0000-4000-8000-000000000002"
+    parent_kontablo: "expense.depreciation"
+    notes: "Typically presented as part of D&A in consolidated P&L."
+
+  # ─────────────────────────────────────────────
+  # NETWORK INFRASTRUCTURE (IAS 16 + IFRS 16)
+  # ─────────────────────────────────────────────
+
+  "NET_ActiveEquipment":
+    name: "Network — Active Equipment (PP&E)"
+    label_es: "Red — Equipamiento Activo (PPE)"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "80000000-0000-4000-8000-000000000010"
+    parent_kontablo: "asset.noncurrent.ppe"
+    examples:
+      - "Base transceiver stations (BTS / NodeB / eNodeB / gNodeB)"
+      - "Core network equipment (MSCs, HLRs, EPC)"
+      - "IP/MPLS routers and switches"
+      - "Data center equipment"
+      - "Cable headend equipment"
+    depreciation:
+      method: "straight_line"
+      useful_life: "3-10 years depending on equipment type"
+    notes: "Technology obsolescence risk is high; useful lives reviewed annually."
+
+  "NET_PassiveInfrastructure":
+    name: "Network — Passive Infrastructure (PP&E)"
+    label_es: "Red — Infraestructura Pasiva (PPE)"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "80000000-0000-4000-8000-000000000011"
+    parent_kontablo: "asset.noncurrent.ppe"
+    examples:
+      - "Towers and masts (if owned)"
+      - "Fiber optic cables"
+      - "Ducts and conduits"
+      - "Power systems at tower sites"
+    depreciation:
+      method: "straight_line"
+      useful_life: "15-30 years (fiber); 10-20 years (towers)"
+    notes: "Many operators have sold towers to TowerCos and now lease back (IFRS 16)."
+
+  "NET_TowerLeaseROU":
+    name: "Tower Lease — Right-of-Use Asset (IFRS 16)"
+    label_es: "Arrendamiento de Torres — Activo por Derecho de Uso"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "80000000-0000-4000-8000-000000000012"
+    parent_kontablo: "asset.noncurrent.rou_assets"
+    min_standard_version: "IFRS_2019"
+    scale_impact: "MASSIVE — large telcos typically lease thousands of towers"
+    notes: |
+      Vodafone: £33.9 bn ROU assets (2023) — primarily tower and property leases.
+      America Movil: major ROU assets from tower sale-leaseback transactions.
+      Kontablo tracks separately from other ROU assets due to volume and materiality.
+      Lease term: typically 10-15 years with renewal options; IFRS 16 requires
+      renewal options to be included if reasonably certain to exercise.
+
+  "NET_TowerLeaseLiability":
+    name: "Tower Lease Liability (IFRS 16)"
+    label_es: "Pasivo por Arrendamiento de Torres"
+    nature: "Credit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "80000000-0000-4000-8000-000000000013"
+    parent_kontablo: "liability.noncurrent.lease"
+    notes: "Split between current (12-month) and non-current portions as required by IFRS 16."
+
+  "NET_NetworkMaintenance":
+    name: "Network Operations and Maintenance (Capex vs Opex)"
+    label_es: "Operaciones y Mantenimiento de Red"
+    nature: "Debit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "80000000-0000-4000-8000-000000000014"
+    parent_kontablo: "expense.cogs"
+    capitalization_test: |
+      Enhancements that significantly increase capacity or extend useful life → capitalize (IAS 16.10)
+      Routine maintenance, replacements of minor components → expense (IAS 16.10 footnote)
+
+  # ─────────────────────────────────────────────
+  # CUSTOMER ACQUISITION COSTS (IFRS 15.91)
+  # ─────────────────────────────────────────────
+
+  "CAC_CapitalizedAsset":
+    name: "Contract Costs — Capitalized Customer Acquisition Costs"
+    label_es: "Costos de Adquisición de Contratos Capitalizados"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "80000000-0000-4000-8000-000000000020"
+    ifrs_tag: "ifrs-full:OtherCurrentNonFinancialAssets"
+    parent_kontablo: "asset.noncurrent.intangibles"
+    amortization_basis: "Consistent with transfer of service (typically contract term 12-36 months)"
+    examples:
+      - "Sales commissions paid to distributors/dealers for new subscriber acquisition"
+      - "Activation bonuses paid to agents"
+      - "Subsidized handset cost allocated to contract asset"
+    notes: |
+      IFRS 15.91: Incremental costs of obtaining a contract that are expected to be recovered
+      shall be recognized as an asset and amortized.
+      Practical expedient: if amortization period ≤ 12 months → expense immediately.
+      US operators: AT&T capitalizes billions in sales commissions each year.
+
+  "CAC_AmortizationExpense":
+    name: "CAC Amortization — Customer Acquisition Cost"
+    label_es: "Amortización de Costos de Adquisición de Clientes"
+    nature: "Debit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "80000000-0000-4000-8000-000000000021"
+    parent_kontablo: "expense.admin"
+    notes: "Typically included in selling/distribution expenses."
+
+  # ─────────────────────────────────────────────
+  # BUNDLED CONTRACT REVENUE (IFRS 15)
+  # ─────────────────────────────────────────────
+
+  "REV_ServiceRevenue":
+    name: "Revenue — Telecommunications Service (IFRS 15)"
+    label_es: "Ingresos — Servicios de Telecomunicaciones"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "80000000-0000-4000-8000-000000000030"
+    ifrs_tag: "ifrs-full:Revenue"
+    parent_kontablo: "revenue.operating"
+    recognition: "straight_line_over_service_period"
+    examples:
+      - "Monthly mobile subscription fees"
+      - "Broadband recurring charges"
+      - "TV/cable monthly subscriptions"
+      - "Business connectivity (MPLS/Ethernet circuits)"
+    notes: |
+      Recognized over the service period (monthly subscription → straight-line by month).
+      For bundled contracts: must allocate total transaction price to each performance obligation
+      based on relative standalone selling prices (SSPs).
+
+  "REV_HardwareRevenue":
+    name: "Revenue — Handset / Hardware (IFRS 15)"
+    label_es: "Ingresos — Equipos y Handsets"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "80000000-0000-4000-8000-000000000031"
+    parent_kontablo: "revenue.operating"
+    recognition: "at_point_of_delivery"
+    notes: |
+      CRITICAL IFRS 15 change: In a bundled plan (phone + 24-month service at one price),
+      the phone revenue is recognized AT DELIVERY (not spread over contract).
+      The service revenue is recognized over 24 months.
+      Result: Revenue pulled forward from future periods to delivery date → increases Day 1 revenue.
+      Telcos must establish standalone selling prices (SSP) for both components.
+
+  "REV_ContractLiability":
+    name: "Contract Liability — Deferred Service Revenue"
+    label_es: "Pasivo por Contrato — Ingresos de Servicios Diferidos"
+    nature: "Credit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "80000000-0000-4000-8000-000000000032"
+    parent_kontablo: "liability.current.accrued"
+    examples:
+      - "Prepaid annual plans billed upfront"
+      - "Data bundles not yet consumed"
+      - "Unused loyalty points (if material)"
+    notes: "Released to revenue as service is delivered or data consumed."
+
+  "REV_ContractAsset":
+    name: "Contract Asset — Unbilled Revenue (Bundled)"
+    label_es: "Activo por Contrato — Ingresos No Facturados (Paquete)"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "80000000-0000-4000-8000-000000000033"
+    parent_kontablo: "asset.current.receivables"
+    notes: |
+      When revenue allocated to hardware exceeds the amount billed to customer (subsidized handset),
+      the excess is a contract asset (right to future consideration conditional on service delivery).
+      Assessed for impairment (ECL) under IFRS 9.
+
+  "REV_RoamingRevenue":
+    name: "Revenue — Roaming and Interconnection"
+    label_es: "Ingresos — Roaming e Interconexión"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "80000000-0000-4000-8000-000000000034"
+    parent_kontablo: "revenue.operating"
+    agent_principal_assessment: "Principal (gross) if controlling the service; Agent (net) if passing through"
+    notes: |
+      IFRS 15 principal vs agent analysis critical:
+      - Receiving operator for inbound roamers → PRINCIPAL; recognize gross revenue + cost
+      - Reseller arrangements → may be AGENT; recognize only net margin
+      International roaming revenue declining due to "Roam Like at Home" regulations (EU, ASEAN).
+
+  # ─────────────────────────────────────────────
+  # INTERCONNECTION AND WHOLESALE COSTS
+  # ─────────────────────────────────────────────
+
+  "COST_Interconnection":
+    name: "Interconnection and Access Costs"
+    label_es: "Costos de Interconexión y Acceso"
+    nature: "Debit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "80000000-0000-4000-8000-000000000040"
+    parent_kontablo: "expense.cogs"
+    examples:
+      - "Termination fees paid to other operators"
+      - "National roaming fees"
+      - "International transit fees"
+      - "Local loop unbundling (LLU) fees to incumbent"
+    notes: "Regulated by national telecoms regulator (NRA). Rates set by MTR/FTR regulations."
+
+  "COST_HandsetCOGS":
+    name: "Cost of Handsets Sold"
+    label_es: "Costo de Equipos Vendidos"
+    nature: "Debit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "80000000-0000-4000-8000-000000000041"
+    parent_kontablo: "expense.cogs"
+    notes: |
+      Must be matched to the hardware revenue recognition.
+      Subsidized handset: cost > revenue allocated at delivery → upfront loss on hardware
+      compensated by service margin over contract period.
+
+  "COST_FrequencyFees":
+    name: "Regulatory and Frequency Fees"
+    label_es: "Tarifas Regulatorias y de Frecuencia"
+    nature: "Debit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "80000000-0000-4000-8000-000000000042"
+    parent_kontablo: "expense.admin"
+    notes: "Annual spectrum usage fees paid to regulator; distinct from initial license cost."
+
+  # ─────────────────────────────────────────────
+  # TOWER COMPANY (TOWERCO) SPECIFIC
+  # ─────────────────────────────────────────────
+
+  towerco_specific:
+    note: |
+      TowerCo business model: own and maintain towers; lease to MNOs (tenants).
+      Key metrics: tenancy ratio (tenants per tower), average revenue per tower per month.
+
+    accounts:
+      "TWR_Towers_Asset":
+        name: "Tower Infrastructure — Asset (TowerCo)"
+        nature: "Debit"
+        kontablo_uuid: "80000000-0000-4000-8000-000000000050"
+        parent_kontablo: "asset.noncurrent.ppe"
+        notes: "Owned towers; depreciated over 20-30 years."
+
+      "TWR_TenantRevenue":
+        name: "Tenant Lease Revenue (Operating Leases — IFRS 16 Lessor)"
+        nature: "Credit"
+        kontablo_uuid: "80000000-0000-4000-8000-000000000051"
+        parent_kontablo: "revenue.operating"
+        recognition: "straight_line_over_lease_term"
+        notes: "IFRS 16: TowerCo as lessor → operating lease → straight-line revenue."
+
+aggregation_rules:
+  total_network_assets:
+    formula: |
+      SPEC_License + NET_ActiveEquipment + NET_PassiveInfrastructure +
+      NET_TowerLeaseROU + CAC_CapitalizedAsset
+    label_en: "Total Telecom Asset Base"
+
+  service_revenue_total:
+    formula: "REV_ServiceRevenue + REV_RoamingRevenue"
+    label_en: "Total Service Revenue"
+
+  total_revenue:
+    formula: "service_revenue_total + REV_HardwareRevenue"
+    label_en: "Total Revenue (Service + Hardware)"
+
+  ebitda_telecom:
+    formula: |
+      total_revenue - COST_Interconnection - COST_HandsetCOGS -
+      COST_FrequencyFees - expense.admin + expense.depreciation +
+      SPEC_AmortizationExpense + NET_TowerLeaseROU_depreciation +
+      CAC_AmortizationExpense
+    label_en: "EBITDA (telecom definition)"
+    note: "EBITDA in telecom often ADDS BACK lease depreciation (EBITDAaL = after leases)"
+
+  ebitdaal:
+    formula: "ebitda_telecom - NET_TowerLeaseROU_depreciation - expense.interest_leases"
+    label_en: "EBITDAaL (EBITDA after Leases — IFRS 16 KPI)"
+    note: "Introduced post-IFRS 16 to show impact of lease treatment; Vodafone, Deutsche Telekom report this"
+
+  arpu:
+    formula: "REV_ServiceRevenue / active_subscribers"
+    unit: "USD or local currency per subscriber per month"
+    label_en: "Average Revenue Per User (ARPU)"
+    management_metric: true
+
+  net_adds:
+    note: "Operational metric; not an accounting account but derived from subscriber database"
+
+validation_rules:
+  bundled_contract_balance:
+    rule: |
+      (REV_HardwareRevenue + REV_ServiceRevenue) ==
+      total_transaction_price_allocated_to_performance_obligations
+    message: "Total revenue must equal total allocated transaction price under IFRS 15"
+    severity: "ERROR"
+
+  cac_amortization_period:
+    rule: "CAC_CapitalizedAsset > 0 IMPLIES amortization_period <= contract_term"
+    message: "CAC amortization must not exceed the expected contract benefit period"
+    severity: "WARNING"
+
+  rou_tower_consistency:
+    rule: "NET_TowerLeaseROU > 0 IMPLIES NET_TowerLeaseLiability > 0"
+    message: "Tower ROU asset requires corresponding lease liability"
+    severity: "ERROR"
