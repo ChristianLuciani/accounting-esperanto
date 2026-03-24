@@ -1,0 +1,675 @@
+# Kontablo Account Schema — Level 3 (Core)
+# Version: 0.2.0
+# Date: 2026-03-23
+# Description: Definitive Level 3 account taxonomy for the Kontablo universal protocol
+# Coverage: 20+ jurisdictions, IFRS-anchored, graph-compatible
+# Status: Research Draft
+
+metadata:
+  version: "0.2.0"
+  spec_date: "2026-03-23"
+  ifrs_base: "2024"
+  total_accounts: 30
+  jurisdiction_coverage: 20
+  graph_model: true
+  uuid_format: "v4"
+  notes: |
+    Level 3 accounts are the core operational accounts used by SMEs and large companies
+    across all jurisdictions. They are IFRS-anchored but include local adaptations
+    via the localization overlay system.
+
+---
+
+## ASSETS
+
+level3:
+  # ─────────────────────────────────────────────
+  # CURRENT ASSETS
+  # ─────────────────────────────────────────────
+
+  - id: "asset.current.cash"
+    uuid: "00000000-0000-4000-8000-000000000101"
+    label_en: "Cash and Cash Equivalents"
+    label_es: "Efectivo y Equivalentes de Efectivo"
+    ifrs_tag: "ifrs-full:CashAndCashEquivalents"
+    nature: "debit"
+    statement: "balance_sheet"
+    parent: "asset.current"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "101"
+      co: "1105"
+      pa: "1.1.01"
+      br: "1.1.1.1.01-9"
+      ar: "1100"
+      ve: "101"  # Note: IAS 29 inflation adjustment required
+      us: "Cash"
+      ca: "Cash"
+      uk: "Cash"
+      de: "1000"
+      fr: "512"
+      es: "572"
+      ru: "57"
+      il: "50"
+      in: "1000"
+      jp: "111"
+      cn: "库存现金"
+      ae: "Cash"
+      ng: "Cash"
+      sa: "101"
+      tr: "102"
+      vn: "111"
+      za: "Cash"
+    hyperinflation_adjustment: true  # IAS 29 for VE, TR
+    notes: "Universal account. In Venezuela apply IAS 29 monetary restatement. TR: inflation adjustment pre-2022."
+
+  - id: "asset.current.bank"
+    uuid: "00000000-0000-4000-8000-000000000102"
+    label_en: "Bank Deposits"
+    label_es: "Depósitos Bancarios"
+    ifrs_tag: "ifrs-full:CashAndCashEquivalents"
+    nature: "debit"
+    statement: "balance_sheet"
+    parent: "asset.current"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "102"
+      co: "1110"
+      pa: "1.1.02"
+      vn: "112"
+    notes: "Often merged with cash in IFRS presentation. Separate for local reporting clarity."
+
+  - id: "asset.current.receivables"
+    uuid: "00000000-0000-4000-8000-000000000104"
+    label_en: "Trade Receivables"
+    label_es: "Cuentas por Cobrar Comerciales"
+    ifrs_tag: "ifrs-full:TradeAndOtherCurrentReceivables"
+    nature: "debit"
+    statement: "balance_sheet"
+    parent: "asset.current"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "105"
+      co: "1305"
+      pa: "1.1.05"
+      br: "1.1.1.2.01-0"
+      ar: "1130"
+      vn: "131"
+    notes: "CN requires aging schedule disclosure. Apply ECL model (IFRS 9) for impairment."
+
+  - id: "asset.current.vat_input"
+    uuid: "10000000-0000-4000-8000-000000000001"
+    label_en: "Input VAT Recoverable"
+    label_es: "IVA Acreditable / Crédito Fiscal"
+    ifrs_tag: "ifrs-full:CurrentTaxAssetsCurrent"
+    nature: "debit"
+    statement: "balance_sheet"
+    parent: "asset.current"
+    level: 3
+    is_aggregate: false
+    optional: true  # Not applicable in US, SA
+    local_codes:
+      mx: "IVA Acreditable"
+      co: "2408"
+      pa: "1.1.12"
+      fr: "445660"
+      de: "Vorsteuer"
+      ru: "68.2"
+      vn: "1331"
+      in: "GST Input Credit"
+      cn: "进项税额"
+      br: "Impostos a Recuperar"
+    not_applicable: ["us", "sa"]  # No VAT in US; SA uses Zakat
+    notes: "VAT rates vary: MX 16%, EU 20%avg, VN 0-10%, IN cascading GST. Not applicable in US (no VAT) or SA (Zakat)."
+
+  - id: "asset.current.inventory"
+    uuid: "00000000-0000-4000-8000-000000000106"
+    label_en: "Inventory"
+    label_es: "Inventarios"
+    ifrs_tag: "ifrs-full:CurrentInventories"
+    nature: "debit"
+    statement: "balance_sheet"
+    parent: "asset.current"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "151"
+      co: "1430"
+      pa: "1.1.08"
+      vn: "152"
+      de: "3100"
+      fr: "371"
+    valuation_methods: ["FIFO", "weighted_average"]  # IAS 2 (LIFO not permitted under IFRS)
+    notes: "Service companies: set to 0 or N/A. Valuation: FIFO or weighted average (LIFO prohibited under IFRS)."
+
+  - id: "asset.current.prepaid"
+    uuid: "20000000-0000-4000-8000-000000000001"
+    label_en: "Prepaid Expenses"
+    label_es: "Gastos Pagados por Anticipado"
+    ifrs_tag: "ifrs-full:CurrentPrepayments"
+    nature: "debit"
+    statement: "balance_sheet"
+    parent: "asset.current"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "122"
+      vn: "121"
+      fr: "488"
+
+  # ─────────────────────────────────────────────
+  # NON-CURRENT ASSETS
+  # ─────────────────────────────────────────────
+
+  - id: "asset.noncurrent.ppe"
+    uuid: "00000000-0000-4000-8000-000000000110"
+    label_en: "Property, Plant and Equipment"
+    label_es: "Propiedad, Planta y Equipo"
+    ifrs_tag: "ifrs-full:PropertyPlantAndEquipment"
+    nature: "debit"
+    statement: "balance_sheet"
+    parent: "asset.noncurrent"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "181"
+      co: "1516"
+      pa: "2.1.01"
+      vn: "211"
+      de: "2100"
+      fr: "211"
+    depreciation_required: true
+    notes: "Revaluation model (IAS 16) permitted in most jurisdictions except US."
+
+  - id: "asset.noncurrent.rou_assets"
+    uuid: "30000000-0000-4000-8000-000000000001"
+    label_en: "Right-of-Use Assets (IFRS 16)"
+    label_es: "Activos por Derecho de Uso (NIIF 16)"
+    ifrs_tag: "ifrs-full:RightOfUseAssets"
+    nature: "debit"
+    statement: "balance_sheet"
+    parent: "asset.noncurrent"
+    level: 3
+    is_aggregate: false
+    optional: true
+    min_standard_version: "IFRS_2019"
+    notes: "IFRS 16 effective January 2019. Many developing markets still transitioning. Separate from PPE."
+
+  - id: "asset.noncurrent.intangibles"
+    uuid: "20000000-0000-4000-8000-000000000002"
+    label_en: "Intangible Assets"
+    label_es: "Activos Intangibles"
+    ifrs_tag: "ifrs-full:IntangibleAssetsOtherThanGoodwill"
+    nature: "debit"
+    statement: "balance_sheet"
+    parent: "asset.noncurrent"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "191"
+      co: "1630"
+      pa: "2.2.01"
+      vn: "213"
+      de: "2800"
+    amortization_required: true
+
+  - id: "asset.noncurrent.goodwill"
+    uuid: "20000000-0000-4000-8000-000000000003"
+    label_en: "Goodwill"
+    label_es: "Plusvalía"
+    ifrs_tag: "ifrs-full:Goodwill"
+    nature: "debit"
+    statement: "balance_sheet"
+    parent: "asset.noncurrent"
+    level: 3
+    is_aggregate: false
+    impairment_tested_annually: true
+    notes: "IFRS 3: goodwill not amortized, tested for impairment annually. Some local GAAP still amortize."
+
+  - id: "asset.noncurrent.investments"
+    uuid: "00000000-0000-4000-8000-000000000108"
+    label_en: "Long-term Investments"
+    label_es: "Inversiones a Largo Plazo"
+    ifrs_tag: "ifrs-full:InvestmentsAccountedForUsingEquityMethod"
+    nature: "debit"
+    statement: "balance_sheet"
+    parent: "asset.noncurrent"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "161"
+      vn: "221"
+
+---
+
+## LIABILITIES
+
+  # ─────────────────────────────────────────────
+  # CURRENT LIABILITIES
+  # ─────────────────────────────────────────────
+
+  - id: "liability.current.payables"
+    uuid: "00000000-0000-4000-8000-000000000201"
+    label_en: "Trade Payables"
+    label_es: "Cuentas por Pagar Comerciales"
+    ifrs_tag: "ifrs-full:TradeAndOtherCurrentPayables"
+    nature: "credit"
+    statement: "balance_sheet"
+    parent: "liability.current"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "201"
+      co: "2205"
+      pa: "3.1.01"
+      vn: "331"
+      de: "3300"
+      fr: "401"
+
+  - id: "liability.current.vat_output"
+    uuid: "00000000-0000-4000-8000-000000000203"
+    label_en: "Output VAT Payable"
+    label_es: "IVA por Pagar"
+    ifrs_tag: "ifrs-full:CurrentTaxLiabilitiesCurrent"
+    nature: "credit"
+    statement: "balance_sheet"
+    parent: "liability.current"
+    level: 3
+    is_aggregate: false
+    optional: true
+    local_codes:
+      mx: "IVA Trasladado"
+      fr: "445710"
+      ru: "68.2"
+      vn: "3331"
+      cn: "销项税额"
+    not_applicable: ["us", "ca"]  # Sales tax is state-level in US, not VAT
+    notes: "SA: replace with Zakat base computation. US/CA: state sales tax varies (different mechanism)."
+
+  - id: "liability.current.tax"
+    uuid: "00000000-0000-4000-8000-000000000205"
+    label_en: "Income Tax Payable"
+    label_es: "Impuesto sobre la Renta por Pagar"
+    ifrs_tag: "ifrs-full:CurrentTaxLiabilitiesCurrent"
+    nature: "credit"
+    statement: "balance_sheet"
+    parent: "liability.current"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "2030"
+      vn: "3334"
+      de: "3600"
+      fr: "444"
+    notes: "Tax rates: US 21%, MX 30%, BR 34%, CN 25%, VN 20%, SA uses Zakat 2.5% of net assets."
+
+  - id: "liability.current.accrued"
+    uuid: "00000000-0000-4000-8000-000000000207"
+    label_en: "Accrued Liabilities"
+    label_es: "Pasivos Acumulados"
+    ifrs_tag: "ifrs-full:OtherCurrentProvisions"
+    nature: "credit"
+    statement: "balance_sheet"
+    parent: "liability.current"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "270"
+      vn: "333"
+      de: "3900"
+
+  - id: "liability.current.short_term_debt"
+    uuid: "00000000-0000-4000-8000-000000000209"
+    label_en: "Short-term Borrowings"
+    label_es: "Deuda a Corto Plazo"
+    ifrs_tag: "ifrs-full:CurrentBorrowings"
+    nature: "credit"
+    statement: "balance_sheet"
+    parent: "liability.current"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "211"
+      vn: "311"
+
+  # ─────────────────────────────────────────────
+  # NON-CURRENT LIABILITIES
+  # ─────────────────────────────────────────────
+
+  - id: "liability.noncurrent.debt"
+    uuid: "00000000-0000-4000-8000-000000000211"
+    label_en: "Long-term Debt"
+    label_es: "Deuda a Largo Plazo"
+    ifrs_tag: "ifrs-full:OtherNonCurrentFinancialLiabilities"
+    nature: "credit"
+    statement: "balance_sheet"
+    parent: "liability.noncurrent"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "311"
+      vn: "311"
+
+  - id: "liability.noncurrent.lease"
+    uuid: "30000000-0000-4000-8000-000000000002"
+    label_en: "Lease Liabilities (IFRS 16)"
+    label_es: "Pasivos por Arrendamiento (NIIF 16)"
+    ifrs_tag: "ifrs-full:OtherNonCurrentFinancialLiabilities"
+    nature: "credit"
+    statement: "balance_sheet"
+    parent: "liability.noncurrent"
+    level: 3
+    is_aggregate: false
+    optional: true
+    min_standard_version: "IFRS_2019"
+    notes: "IFRS 16 only. Split between current portion (12-month) and non-current."
+
+  - id: "liability.noncurrent.deferred_tax"
+    uuid: "00000000-0000-4000-8000-000000000213"
+    label_en: "Deferred Tax Liability"
+    label_es: "Pasivo por Impuesto Diferido"
+    ifrs_tag: "ifrs-full:DeferredTaxLiabilities"
+    nature: "credit"
+    statement: "balance_sheet"
+    parent: "liability.noncurrent"
+    level: 3
+    is_aggregate: false
+    not_applicable: ["vn"]  # VAS does not use deferred tax
+    notes: "VN: not applicable under VAS. US: calculated per ASC 740."
+
+---
+
+## EQUITY
+
+  - id: "equity.capital"
+    uuid: "00000000-0000-4000-8000-000000000008"
+    label_en: "Paid-in Capital"
+    label_es: "Capital Suscrito y Pagado"
+    ifrs_tag: "ifrs-full:IssuedCapital"
+    nature: "credit"
+    statement: "balance_sheet"
+    parent: "equity"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "300"
+      co: "3105"
+      pa: "5.1.01"
+      vn: "411"
+    notes: "VN: Charter Capital (Vốn điều lệ). SA: registered capital under SOCPA."
+
+  - id: "equity.retained"
+    uuid: "00000000-0000-4000-8000-000000000009"
+    label_en: "Retained Earnings"
+    label_es: "Utilidades Retenidas"
+    ifrs_tag: "ifrs-full:RetainedEarnings"
+    nature: "credit"
+    statement: "balance_sheet"
+    parent: "equity"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "305"
+      vn: "421"
+      de: "800"
+    notes: "VE/TR: restated for inflation under IAS 29. RU: mandatory legal reserve portion."
+
+  - id: "equity.reserves"
+    uuid: "00000000-0000-4000-8000-000000000010"
+    label_en: "Other Reserves"
+    label_es: "Otras Reservas"
+    ifrs_tag: "ifrs-full:OtherReserves"
+    nature: "credit"
+    statement: "balance_sheet"
+    parent: "equity"
+    level: 3
+    is_aggregate: false
+    notes: "RU: mandatory to maintain legal reserve of 5% of charter capital. SA: statutory reserves."
+
+---
+
+## INCOME STATEMENT
+
+  - id: "revenue.operating"
+    uuid: "00000000-0000-4000-8000-000000000301"
+    label_en: "Operating Revenue"
+    label_es: "Ingresos Operacionales"
+    ifrs_tag: "ifrs-full:Revenue"
+    nature: "credit"
+    statement: "income_statement"
+    parent: "revenue"
+    level: 3
+    is_aggregate: false
+    recognition_standard: "IFRS_15"
+    local_codes:
+      mx: "401"
+      co: "4135"
+      pa: "6.1.01"
+      vn: "511"
+      fr: "701"
+    notes: "IFRS 15: 5-step revenue recognition model. BR: exclude ICMS/PIS/COFINS from gross revenue."
+
+  - id: "revenue.other"
+    uuid: "00000000-0000-4000-8000-000000000303"
+    label_en: "Other Income"
+    label_es: "Otros Ingresos"
+    ifrs_tag: "ifrs-full:OtherIncome"
+    nature: "credit"
+    statement: "income_statement"
+    parent: "revenue"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "490"
+      vn: "515"
+
+  - id: "expense.cogs"
+    uuid: "00000000-0000-4000-8000-000000000404"
+    label_en: "Cost of Goods Sold"
+    label_es: "Costo de Ventas"
+    ifrs_tag: "ifrs-full:CostOfSales"
+    nature: "debit"
+    statement: "income_statement"
+    parent: "expense"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "501"
+      co: "6105"
+      pa: "7.1.01"
+      vn: "632"
+      fr: "607"
+    notes: "Service companies: typically 0 or replaced by direct labor costs."
+
+  - id: "expense.admin"
+    uuid: "00000000-0000-4000-8000-000000000501"
+    label_en: "General & Administrative Expenses"
+    label_es: "Gastos Generales y Administrativos"
+    ifrs_tag: "ifrs-full:AdministrativeExpenses"
+    nature: "debit"
+    statement: "income_statement"
+    parent: "expense"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "504"
+      co: "5205"
+      vn: "642"
+      fr: "627"
+
+  - id: "expense.depreciation"
+    uuid: "00000000-0000-4000-8000-000000000503"
+    label_en: "Depreciation and Amortization"
+    label_es: "Depreciación y Amortización"
+    ifrs_tag: "ifrs-full:DepreciationAndAmortisationExpense"
+    nature: "debit"
+    statement: "income_statement"
+    parent: "expense"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "506"
+      vn: "214"
+      fr: "681"
+    notes: "May be embedded in COGS or SG&A lines. Present separately for EBITDA calculation."
+
+  - id: "expense.interest"
+    uuid: "00000000-0000-4000-8000-000000000505"
+    label_en: "Finance Costs"
+    label_es: "Costos Financieros"
+    ifrs_tag: "ifrs-full:FinanceCosts"
+    nature: "debit"
+    statement: "income_statement"
+    parent: "expense"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "509"
+      vn: "635"
+      fr: "661"
+    notes: "VN account 635 includes BOTH interest and FX losses — needs subaccount split in Kontablo."
+
+  - id: "expense.tax"
+    uuid: "00000000-0000-4000-8000-000000000507"
+    label_en: "Income Tax Expense"
+    label_es: "Impuesto sobre la Renta"
+    ifrs_tag: "ifrs-full:TaxIncomeExpense"
+    nature: "debit"
+    statement: "income_statement"
+    parent: "expense"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "510"
+      vn: "821"
+      fr: "695"
+
+  - id: "expense.fx_loss"
+    uuid: "40000000-0000-4000-8000-000000000001"
+    label_en: "Foreign Exchange Losses"
+    label_es: "Pérdidas por Tipo de Cambio"
+    ifrs_tag: "ifrs-full:OtherExpense"
+    nature: "debit"
+    statement: "income_statement"
+    parent: "expense"
+    level: 3
+    is_aggregate: false
+    local_codes:
+      mx: "509"
+      vn: "635"
+      de: "6800"
+    notes: "Critical in VE (dual-currency system). Split from interest in VN (account 635 is combined)."
+
+---
+
+## AGGREGATION RULES
+
+aggregation_rules:
+
+  total_current_assets:
+    formula: "asset.current.cash + asset.current.bank + asset.current.receivables + asset.current.vat_input + asset.current.inventory + asset.current.prepaid"
+    ifrs_tag: "ifrs-full:CurrentAssets"
+
+  total_noncurrent_assets:
+    formula: "asset.noncurrent.ppe + asset.noncurrent.rou_assets + asset.noncurrent.intangibles + asset.noncurrent.goodwill + asset.noncurrent.investments"
+    ifrs_tag: "ifrs-full:NoncurrentAssets"
+
+  total_assets:
+    formula: "total_current_assets + total_noncurrent_assets"
+    ifrs_tag: "ifrs-full:Assets"
+
+  total_current_liabilities:
+    formula: "liability.current.payables + liability.current.vat_output + liability.current.tax + liability.current.accrued + liability.current.short_term_debt"
+    ifrs_tag: "ifrs-full:CurrentLiabilities"
+
+  total_noncurrent_liabilities:
+    formula: "liability.noncurrent.debt + liability.noncurrent.lease + liability.noncurrent.deferred_tax"
+    ifrs_tag: "ifrs-full:NoncurrentLiabilities"
+
+  total_equity:
+    formula: "equity.capital + equity.retained + equity.reserves"
+    ifrs_tag: "ifrs-full:Equity"
+
+  working_capital:
+    formula: "total_current_assets - total_current_liabilities"
+    management_metric: true
+
+  gross_profit:
+    formula: "revenue.operating - expense.cogs"
+    ifrs_tag: "ifrs-full:GrossProfit"
+
+  ebitda:
+    formula: "gross_profit - expense.admin + expense.depreciation"
+    management_metric: true
+    note: "Not an IFRS-defined metric, but universally used"
+
+  ebit:
+    formula: "gross_profit - expense.admin"
+    management_metric: true
+
+  ebt:
+    formula: "ebit - expense.interest + revenue.other + expense.fx_loss"
+    management_metric: true
+
+  net_income:
+    formula: "ebt - expense.tax"
+    ifrs_tag: "ifrs-full:ProfitLoss"
+
+---
+
+## VALIDATION RULES
+
+validation:
+
+  balance_sheet_equation:
+    rule: "total_assets == total_current_liabilities + total_noncurrent_liabilities + total_equity"
+    error_message: "Balance sheet does not balance (A ≠ L+E)"
+    severity: "ERROR"
+
+  revenue_positive:
+    rule: "revenue.operating >= 0"
+    error_message: "Operating revenue cannot be negative (use contra-account)"
+    severity: "WARNING"
+
+  ppe_depreciation_check:
+    rule: "asset.noncurrent.ppe > 0 IMPLIES expense.depreciation > 0"
+    error_message: "PP&E exists but no depreciation recorded"
+    severity: "WARNING"
+
+  rou_assets_consistency:
+    rule: "asset.noncurrent.rou_assets > 0 IMPLIES liability.noncurrent.lease > 0"
+    error_message: "ROU Asset recorded but no corresponding lease liability"
+    severity: "ERROR"
+
+---
+
+## PENDING — Level 3 Extensions (v0.3 roadmap)
+
+pending_accounts:
+  - id: "asset.current.crypto"
+    label_en: "Cryptocurrency Assets"
+    status: "RESEARCH"
+    ias_ref: "IAS 38 (treated as intangible)"
+    notes: "No specific IFRS standard. Emerging markets using it."
+
+  - id: "liability.current.zakat"
+    label_en: "Zakat Payable"
+    status: "DRAFT"
+    applicable: ["sa", "ae", "pk", "my"]
+    notes: "2.5% of qualifying net assets. SOCPA-compliant."
+
+  - id: "asset.current.carbon_credits"
+    label_en: "Carbon Credits / Emission Rights"
+    status: "RESEARCH"
+    ias_ref: "IAS 38 / IFRIC 3 (withdrawn)"
+    notes: "Growing relevance for ESG reporting."
+
+  - id: "asset.noncurrent.biological"
+    label_en: "Biological Assets"
+    status: "PLANNED"
+    ias_ref: "IAS 41"
+    applicable: ["br", "ar", "nz", "au"]
+    notes: "Agricultural companies. BR, AR are major users."
