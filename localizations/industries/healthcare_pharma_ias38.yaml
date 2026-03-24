@@ -1,0 +1,364 @@
+# Kontablo Industry Extension: Healthcare & Pharma (IAS 38 + IFRS 15 + IAS 37 + IFRS 16)
+# Version: 0.1.0-draft
+# Standard: IAS 38 - Intangible Assets (R&D, drug patents, licenses)
+#            IFRS 15 - Revenue (multiple-element arrangements, milestone payments)
+#            IAS 37 - Provisions (product liability, clinical trial obligations)
+#            IFRS 16 - Leases (lab equipment, medical devices, hospital facilities)
+#            IFRS 9 - ECL for pharma receivables (specialty distribution)
+# Authority: IASB
+# Priority: MEDIUM
+# Critical Notes:
+#   - R&D CAPITALIZATION: IAS 38 split between Research (ALWAYS expense) and
+#     Development (capitalize only when 6 criteria met). This is the single most
+#     contentious accounting issue in pharma.
+#   - MILESTONE PAYMENTS (IFRS 15): Regulatory approval milestones may be variable
+#     consideration → constrained until highly probable. Only include in transaction price
+#     when milestones are substantially achievable.
+#   - PRODUCT LIABILITY PROVISIONS (IAS 37): Major risk for pharma; Opioid litigation (US),
+#     talc claims (J&J), vaccine indemnity claims. Must provision when probable + measurable.
+#   - KEY JURISDICTIONS: US (FDA, GAAP→often ASC 606/808 for collaborations),
+#     UK, DE, CH (Big Pharma: Novartis, Roche, AstraZeneca, Bayer),
+#     IN (generic pharma: Sun, Cipla, Dr. Reddy's — royalties critical),
+#     IL (hi-tech pharma: Teva), BR (ANVISA-regulated)
+
+metadata:
+  industry: healthcare_pharma_biotech
+  standard: IAS_38_IFRS_15_IAS_37_IFRS_16
+  applies_to:
+    - Pharmaceutical manufacturers (branded and generic)
+    - Biotech companies (pre-revenue and commercial stage)
+    - Medical device manufacturers
+    - Hospital operators and healthcare providers
+    - Contract Research Organizations (CROs)
+    - Diagnostic companies
+  kontablo_version: 0.1.0
+  extension_type: industry
+  last_updated: 2026-03-24
+  key_jurisdictions: ["us", "uk", "de", "ch", "in", "il", "br", "se", "dk", "jp", "cn"]
+
+mappings:
+  # ─────────────────────────────────────────────
+  # R&D ASSETS (IAS 38)
+  # ─────────────────────────────────────────────
+
+  "RD_ResearchExpense":
+    name: "Research Costs — Expensed (IAS 38)"
+    label_es: "Costos de Investigación — Gastos (NIC 38)"
+    nature: "Debit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "90000000-0000-4000-8000-000000000001"
+    parent_kontablo: "expense.admin"
+    recognition: "ALWAYS expense as incurred"
+    notes: |
+      IAS 38.54: Research phase costs are ALWAYS expensed.
+      Cannot be capitalized even if future benefits seem likely.
+      Examples: basic research, drug target identification, early compound screening.
+      Practical note: The distinction between research and development phases
+      requires documented stage-gate decisions by management.
+
+  "RD_DevelopmentCapitalized":
+    name: "Development Costs — Capitalized Intangible Asset (IAS 38)"
+    label_es: "Costos de Desarrollo — Activo Intangible Capitalizado"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "90000000-0000-4000-8000-000000000002"
+    ifrs_tag: "ifrs-full:DevelopmentExpenditure"
+    parent_kontablo: "asset.noncurrent.intangibles"
+    capitalization_criteria:
+      - "Technical feasibility of completing the intangible asset"
+      - "Intention to complete and use/sell it"
+      - "Ability to use or sell the asset"
+      - "Probable future economic benefits"
+      - "Adequate technical, financial, and other resources available"
+      - "Reliable measurement of expenditure"
+    examples:
+      - "Phase III clinical trial costs (post-IND, when approval probable)"
+      - "Drug formulation development (tablet, injection, novel delivery)"
+      - "Generic drug validation studies (ANDA filing costs)"
+      - "Medical device final design and certification costs"
+    amortization:
+      start: "When regulatory approval received (asset available for use)"
+      method: "straight_line"
+      life: "Patent life remaining or expected product life, whichever shorter"
+    notes: |
+      CRITICAL: In practice, most pharma companies CANNOT capitalize development costs
+      because IAS 38 criteria 1 (technical feasibility) and 4 (probable benefits)
+      are not met until regulatory approval is obtained.
+      Therefore: most pre-clinical and Phase I/II costs are EXPENSED even if called 'development'.
+      Only if: compound has Clear pathway to approval, market exclusivity confirmed,
+      and management has documented assessment → potential capitalization.
+      IN pharma: Dr. Reddy's, Sun Pharma expense most R&D; capitalize only post-ANDA filing.
+
+  "RD_DrugLicensesAcquired":
+    name: "Acquired Drug Licenses and Patents"
+    label_es: "Licencias y Patentes de Medicamentos Adquiridas"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "90000000-0000-4000-8000-000000000003"
+    ifrs_tag: "ifrs-full:IntangibleAssetsOtherThanGoodwill"
+    parent_kontablo: "asset.noncurrent.intangibles"
+    amortization:
+      method: "straight_line"
+      life: "Remaining patent life (typically 20 years from filing; FDA exclusivity 5-12 years)"
+    examples:
+      - "Drug molecule patents acquired via M&A (e.g., acquisition of a specialty pharma co)"
+      - "In-licensed drug rights (upfront payment for exclusive license)"
+      - "Biosimilar molecule development rights"
+    impairment_trigger:
+      - "Clinical trial failure"
+      - "Unexpected safety signals"
+      - "Competitive product approval that erodes market"
+      - "Generic entry earlier than expected"
+    notes: |
+      SEPARATELY ACQUIRED intangibles can always be capitalized (IAS 38.25).
+      The 6-criteria requirement only applies to internally generated intangibles.
+      M&A in pharma: massive intangible values (Pfizer/Wyeth, Abbvie/Allergan).
+
+  # ─────────────────────────────────────────────
+  # PROVISIONS AND CONTINGENCIES (IAS 37)
+  # ─────────────────────────────────────────────
+
+  "PROV_ProductLiability":
+    name: "Provision for Product Liability and Litigation"
+    label_es: "Provisión para Responsabilidad de Producto y Litigios"
+    nature: "Credit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "90000000-0000-4000-8000-000000000010"
+    ifrs_tag: "ifrs-full:OtherNonCurrentProvisions"
+    parent_kontablo: "liability.noncurrent.debt"
+    recognition_criteria:
+      - "Present obligation (legal or constructive)"
+      - "Probable outflow of resources"
+      - "Reliable estimate possible"
+    examples:
+      - "Opioid litigation reserves (US: Purdue Pharma bankruptcy)"
+      - "Talc/asbestos claims (J&J spinoff of Kenvue)"
+      - "Vaccine adverse reaction claims"
+      - "Drug recall provisions"
+      - "Clinical trial participant compensation"
+    contingent_liability_note: |
+      IAS 37.28: If probable AND measurable → provision.
+      If possible but not probable → disclose as contingent liability (no provision).
+      If remote → no disclosure required.
+      MAJOR practical issue: pharma product liability often spans decades;
+      requires actuarial assessment of expected claims profile.
+
+  "PROV_ClinicalTrialObligations":
+    name: "Provision for Clinical Trial Completion Obligations"
+    label_es: "Provisión para Obligaciones de Ensayos Clínicos"
+    nature: "Credit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "90000000-0000-4000-8000-000000000011"
+    parent_kontablo: "liability.current.accrued"
+    notes: |
+      When a company commits to post-marketing studies (Phase IV) as a condition
+      of regulatory approval → constructive obligation → IAS 37 provision.
+      Also: ongoing open-label extension trial costs.
+
+  "PROV_Sales_Chargebacks":
+    name: "Provision for Sales Chargebacks and Rebates"
+    label_es: "Provisión para Devoluciones y Descuentos sobre Ventas"
+    nature: "Credit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "90000000-0000-4000-8000-000000000012"
+    parent_kontablo: "liability.current.accrued"
+    notes: |
+      Specialty pharma in the US: gross-to-net adjustments are massive.
+      Branded drugs: list price vs net price gap can be 50-80% due to:
+      - Medicaid/Medicare rebates (mandatory by law)
+      - PBM (Pharmacy Benefit Manager) rebates
+      - Patient assistance and co-pay cards
+      IFRS 15.50-53: Variable consideration must be estimated and constrained.
+      Provision equals EXPECTED rebates/chargebacks on unredeemed product.
+
+  # ─────────────────────────────────────────────
+  # PHARMA REVENUE (IFRS 15)
+  # ─────────────────────────────────────────────
+
+  "REV_DrugSalesGross":
+    name: "Drug and Product Revenue — Gross"
+    label_es: "Ingresos por Ventas de Medicamentos — Bruto"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "90000000-0000-4000-8000-000000000020"
+    parent_kontablo: "revenue.operating"
+    recognition: "Transfer of control (typically on delivery to wholesaler)"
+    notes: |
+      IFRS 15: Point-in-time recognition for most product sales.
+      BUT: if product sold with right of return → variable consideration adjustment.
+      US pharma: FIVE gross-to-net adjustments reduce gross to net revenue:
+      (1) Returns, (2) Medicaid rebates, (3) Medicare Part D gap, (4) Chargebacks, (5) GPO fees.
+
+  "REV_DrugSalesDeductions":
+    name: "(-) Gross-to-Net Revenue Deductions"
+    label_es: "(-) Deducciones de Ingresos Brutos a Netos"
+    nature: "Debit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "90000000-0000-4000-8000-000000000021"
+    parent_kontablo: "revenue.operating"
+    notes: "Contra-revenue. Net revenue = REV_DrugSalesGross - REV_DrugSalesDeductions."
+
+  "REV_RoyaltiesReceived":
+    name: "Royalty Revenue — Licensed Intellectual Property"
+    label_es: "Ingresos por Regalías — Propiedad Intelectual Licenciada"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "90000000-0000-4000-8000-000000000022"
+    parent_kontablo: "revenue.operating"
+    recognition: "Sales-based or usage-based → recognize when underlying sales occur"
+    notes: |
+      IFRS 15 exception: Sales-based royalties on licenses of IP → recognize when
+      the LATER of (a) subsequent sale/usage occurs OR (b) performance obligation satisfied.
+      Cannot accelerate recognition based on probability.
+      CRITICAL for IN pharma: Dr. Reddy's, Cipla receive royalties from US generics distribution partners.
+      IL pharma (Teva): significant royalty income on generic API licensing.
+
+  "REV_MilestonePayments":
+    name: "Revenue — Milestone and Upfront License Fees"
+    label_es: "Ingresos — Hitos y Derechos de Licencia Iniciales"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "90000000-0000-4000-8000-000000000023"
+    parent_kontablo: "revenue.operating"
+    recognition_complexity: "HIGH"
+    notes: |
+      Licensing deal structure (typical biotech-pharma collaboration):
+      - Upfront payment on signing: May be distinct performance obligation → recognize at start
+      - Clinical milestone (Phase II completion): Variable consideration → highly constrained;
+        only include when 'highly probable no reversal' (IAS 15.57)
+      - Regulatory milestone (FDA approval): Recognize when approval received (milestone met)
+      - Sales milestones: Sales-based royalty exception applies
+      Requires detailed performance obligation decomposition analysis per IFRS 15 Step 2.
+
+  "REV_ContractResearch":
+    name: "Revenue — Contract Research and CRO Services"
+    label_es: "Ingresos — Investigación por Contrato (CRO)"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "90000000-0000-4000-8000-000000000024"
+    parent_kontablo: "revenue.operating"
+    recognition: "over_time"
+    method: "input_method_costs_incurred_or_output_milestones"
+    notes: "CRO services recognized over time as patient enrollment progresses and studies complete."
+
+  # ─────────────────────────────────────────────
+  # SPECIALIZED ASSETS
+  # ─────────────────────────────────────────────
+
+  "ASSET_Inventory_ActiveIngredient":
+    name: "Inventory — Active Pharmaceutical Ingredient (API)"
+    label_es: "Inventario — Ingrediente Farmacéutico Activo (API)"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "90000000-0000-4000-8000-000000000030"
+    parent_kontablo: "asset.current.inventory"
+    valuation: "lower_of_cost_or_NRV"
+    obsolescence_risk: "HIGH (expiry dates, regulatory reclassification)"
+    notes: |
+      IAS 2: Value at cost (FIFO typically) or NRV, whichever lower.
+      Pharma inventory is complex: batch tracking required; expiry dating creates
+      'slow-moving' provisions for inventory approaching expiry.
+      API supply chain risk: many APIs are single-source; geopolitical risk (IN, CN supply).
+
+  "ASSET_ClinicalTrialMaterial":
+    name: "Clinical Trial Material — Inventory or Prepaid"
+    label_es: "Material de Ensayo Clínico"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "90000000-0000-4000-8000-000000000031"
+    parent_kontablo: "asset.current.inventory"
+    notes: |
+      Drug product manufactured for clinical trials → expense as consumed (clinical phase).
+      If development stage passes criteria (IAS 38) → may be considered part of capitalized dev cost.
+      Practically: most companies expense clinical trial material as manufactured.
+
+  "ASSET_RegulatoryDeposits":
+    name: "Regulatory Submission Costs and Deposits"
+    label_es: "Costos de Presentación Regulatoria"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "90000000-0000-4000-8000-000000000032"
+    parent_kontablo: "asset.current.prepaid"
+    notes: |
+      FDA PDUFA fees (US): Significant upfront fees ($3.6M per NDA in 2024).
+      EMA fees (EU): €149k–€369k for centralized procedure.
+      ANVISA (BR), CDSCO (IN), PMDA (JP): varied fee structures.
+      Classification: prepaid if < 12 months to decision; intangible if part of development.
+
+  # ─────────────────────────────────────────────
+  # HOSPITAL / HEALTHCARE PROVIDER SPECIFIC
+  # ─────────────────────────────────────────────
+
+  hospital_provider:
+    note: "Applicable to hospital operators and healthcare networks"
+
+    "HOSP_PatientRevenue":
+      name: "Patient Service Revenue (Net of Contractual Adjustments)"
+      label_es: "Ingresos por Servicio a Pacientes"
+      nature: "Credit"
+      statement: "income_statement"
+      kontablo_uuid: "90000000-0000-4000-8000-000000000040"
+      parent_kontablo: "revenue.operating"
+      recognition: "Over time (as services rendered)"
+      notes: |
+        Hospital billing: Gross charges → contractual adjustments (insurance) → Net revenue.
+        IFRS 15: Recognize at amounts expected to be received (variable consideration constrained).
+        Government payer (Medicare/Medicaid equivalent): significant retroactive adjustments.
+
+    "HOSP_MedicalSupplies":
+      name: "Medical Supplies and Consumables Inventory"
+      label_es: "Suministros Médicos e Inventario de Consumibles"
+      nature: "Debit"
+      statement: "balance_sheet"
+      kontablo_uuid: "90000000-0000-4000-8000-000000000041"
+      parent_kontablo: "asset.current.inventory"
+
+aggregation_rules:
+  net_revenue_pharma:
+    formula: "REV_DrugSalesGross - REV_DrugSalesDeductions"
+    label_en: "Net Product Revenue"
+    note: "Primary revenue metric for pharma companies"
+
+  total_pharma_revenue:
+    formula: "net_revenue_pharma + REV_RoyaltiesReceived + REV_MilestonePayments + REV_ContractResearch"
+    label_en: "Total Revenue"
+
+  rd_investment_rate:
+    formula: "(RD_ResearchExpense + RD_DevelopmentCapitalized) / total_pharma_revenue"
+    label_en: "R&D as % of Revenue"
+    note: "Industry benchmark: big pharma 15-20%; biotech can exceed 100% (pre-revenue)"
+
+  gross_margin_pharma:
+    formula: "(net_revenue_pharma - expense.cogs) / net_revenue_pharma"
+    label_en: "Gross Margin %"
+    note: "Branded pharma: typically 60-80%. Generic pharma: 40-60%."
+
+validation_rules:
+  no_research_capitalization:
+    rule: "RD_ResearchExpense > 0 IMPLIES NOT(RD_DevelopmentCapitalized includes research phase)"
+    message: "Research phase costs MUST be expensed under IAS 38.54 — cannot capitalize"
+    severity: "ERROR"
+
+  royalty_recognition_timing:
+    rule: "REV_RoyaltiesReceived recognition_date >= underlying_sales_date"
+    message: "Sales-based royalties recognized no earlier than when underlying sales occur (IFRS 15.B63)"
+    severity: "WARNING"
+
+  contingent_liability_documentation:
+    rule: "PROV_ProductLiability > 0 IMPLIES legal_assessment_documented"
+    message: "Product liability provision requires documented legal assessment (IAS 37)"
+    severity: "INFO"
