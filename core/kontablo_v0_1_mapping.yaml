@@ -11,19 +11,40 @@ kontablo_level_1:
         ifrs_mappings:
           - ifrs-full:AssetsCurrent
         accounts:
-          - code: 1010
-            label: Cash and Cash Equivalents
+          - code: 1011
+            uuid: 00000000-0000-4000-8000-000000000101
+            label: Cash
             ifrs_tag: ifrs-full:CashAndCashEquivalents
-          - code: 1020
-            label: Trade and Other Receivables
+          - code: 1012
+            uuid: 00000000-0000-4000-8000-000000000102
+            label: Banks
+            ifrs_tag: ifrs-full:CashAndCashEquivalents
+          - code: 1013
+            uuid: 00000000-0000-4000-8000-000000000103
+            label: Short-term Investments
+            ifrs_tag: ifrs-full:CashAndCashEquivalents
+          - code: 1021
+            uuid: 00000000-0000-4000-8000-000000000104
+            label: Trade Receivables (Customers)
             ifrs_tag: ifrs-full:TradeAndOtherReceivables
+          - code: 1022
+            uuid: 00000000-0000-4000-8000-000000000105
+            label: Other Receivables
+            ifrs_tag: ifrs-full:TradeAndOtherReceivables
+          - code: 1051
+            uuid: 10000000-0000-4000-8000-000000000001
+            label: Tax Credits (ITBMS/Territorial)
+            ifrs_tag: ifrs-full:CurrentTaxAssets
           - code: 1030
+            uuid: 00000000-0000-4000-8000-000000000106
             label: Inventories
             ifrs_tag: ifrs-full:Inventories
           - code: 1040
+            uuid: 00000000-0000-4000-8000-000000000107
             label: Current Tax Assets
             ifrs_tag: ifrs-full:CurrentTaxAssets
           - code: 1050
+            uuid: 00000000-0000-4000-8000-000000000108
             label: Prepaid Expenses
             ifrs_tag: ifrs-full:PrepaidExpenses
       - id: assets.noncurrent
@@ -60,18 +81,43 @@ kontablo_level_1:
           - ifrs-full:LiabilitiesCurrent
         accounts:
           - code: 2010
-            label: Trade and Other Payables
+            uuid: 00000000-0000-4000-8000-000000000201
+            label: Trade Payables (Suppliers)
             ifrs_tag: ifrs-full:TradeAndOtherPayables
           - code: 2020
+            uuid: 00000000-0000-4000-8000-000000000202
             label: Short-term Borrowings
             ifrs_tag: ifrs-full:CurrentBorrowings
-          - code: 2030
-            label: Current Tax Liabilities
+          - code: 2031
+            uuid: 00000000-0000-4000-8000-000000000203
+            label: Current Tax Liabilities (VAT/ITBMS/IVA/ICMS)
+            ifrs_tag: ifrs-full:CurrentTaxLiabilities
+          - code: 2032
+            uuid: 00000000-0000-4000-8000-000000000204
+            label: Current Tax Liabilities (Withheld)
+            ifrs_tag: ifrs-full:CurrentTaxLiabilities
+          - code: 2033
+            uuid: 30000000-0000-4000-8000-000000000001
+            label: PIS/COFINS (Brazil Specific)
+            ifrs_tag: ifrs-full:CurrentTaxLiabilities
+          - code: 2034
+            uuid: 30000000-0000-4000-8000-000000000002
+            label: Sales Tax Payable (US/Canada Specific)
+            ifrs_tag: ifrs-full:CurrentTaxLiabilities
+          - code: 2035
+            uuid: 40000000-0000-4000-8000-000000000001
+            label: GST India (Output) - Multi-slab (5/12/18/28)
+            ifrs_tag: ifrs-full:CurrentTaxLiabilities
+          - code: 2036
+            uuid: 40000000-0000-4000-8000-000000000002
+            label: VAT/GST Output (Standard)
             ifrs_tag: ifrs-full:CurrentTaxLiabilities
           - code: 2040
-            label: Provisions
+            uuid: 00000000-0000-4000-8000-000000000205
+            label: Provisions / Accruals (Creditors in UK)
             ifrs_tag: ifrs-full:Provisions
           - code: 2050
+            uuid: 00000000-0000-4000-8000-000000000206
             label: Contract Liabilities
             ifrs_tag: ifrs-full:ContractLiabilities
       - id: liabilities.noncurrent
@@ -159,15 +205,23 @@ kontablo_level_1:
           - ifrs-full:Revenue
         accounts:
           - code: 4010
-            label: Revenue from Contracts with Customers
+            uuid: 00000000-0000-4000-8000-000000000301
+            label: Domestic Revenue (Subject to territorial tax)
+            ifrs_tag: ifrs-full:RevenueFromContractsWithCustomers
+          - code: 4015
+            uuid: 10000000-0000-4000-8000-000000000302
+            label: Foreign/Offshore Revenue (Non-territorial)
             ifrs_tag: ifrs-full:RevenueFromContractsWithCustomers
           - code: 4020
+            uuid: 00000000-0000-4000-8000-000000000402
             label: Interest Revenue
             ifrs_tag: ifrs-full:InterestRevenue
           - code: 4030
+            uuid: 00000000-0000-4000-8000-000000000403
             label: Dividend Revenue
             ifrs_tag: ifrs-full:DividendRevenue
           - code: 4040
+            uuid: 00000000-0000-4000-8000-000000000404
             label: Royalties Revenue
             ifrs_tag: ifrs-full:RoyaltiesRevenue
 
@@ -201,15 +255,23 @@ kontablo_level_1:
           - ifrs-full:OperatingExpenses
         accounts:
           - code: 6010
-            label: Administrative Expenses
+            uuid: 00000000-0000-4000-8000-000000000501
+            label: Deductible Administrative Expenses
+            ifrs_tag: ifrs-full:AdministrativeExpenses
+          - code: 6015
+            uuid: 10000000-0000-4000-8000-000000000502
+            label: Non-Deductible Administrative Expenses
             ifrs_tag: ifrs-full:AdministrativeExpenses
           - code: 6020
+            uuid: 00000000-0000-4000-8000-000000000503
             label: Distribution Costs
             ifrs_tag: ifrs-full:DistributionCosts
           - code: 6030
+            uuid: 00000000-0000-4000-8000-000000000504
             label: Research and Development Expenses
             ifrs_tag: ifrs-full:ResearchAndDevelopmentExpense
           - code: 6040
+            uuid: 00000000-0000-4000-8000-000000000505
             label: Other Operating Expenses
             ifrs_tag: ifrs-full:OtherOperatingExpenses
 

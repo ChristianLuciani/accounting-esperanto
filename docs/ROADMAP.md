@@ -33,22 +33,35 @@
 - Validation rules
 - AI training dataset
 
-## Phase 1: Specification (Weeks 13-16)
+## Phase 1: Specification & Reference Models (Weeks 13-18)
 
-**Goal:** Published white paper
+**Goal:** Published white paper & Ready-to-use Market Templates
 
-- Draft paper (Methodology, Results)
-- Submit to Journal of Information Systems
-- Preprint on SSRN
+- **Default Tree Panama/México/Colombia Kontablo:**
+  - Creation of "Standard Reference Trees" per market.
+  - These serve as a baseline for new companies and configuration templates for commercial ERPs (Sage, QuickBooks, SAP).
+  - Used as the gold standard for automated testing of the Kontablo ontology.
+- Draft paper (Methodology, Results).
+- Submit to Journal of Information Systems / Preprint on SSRN.
 
-## Phase 2: Implementation (Weeks 17-24)
+## Phase 2: Implementation & Assisted Mapping (Weeks 19-30)
 
-**Goal:** Working API + ERPNext module
+**Goal:** Working API + Mapping MicroSaaS + ERP Connectors
 
-- REST API
-- AI classifier
-- ERPNext module
-- SDK (Python, JavaScript)
+### 2.1 Assisted Mapping Engine (MicroSaaS)
+- Build a **Mapping API/MicroSaaS** for assisted account mapping.
+- Integration of **LLM Agents** to minimize manual intervention during the Konbtalo onboarding process.
+- Automated suggestion of UUIDs based on account names and historical patterns.
+
+### 2.2 Core Infrastructure
+- REST/gRPC API for universal account resolution.
+- AI classifier for transaction tagging.
+- SDK (Python, JavaScript).
+
+### 2.3 Native Ecosystem
+- **Native ERP Integrations:** Direct connectors for main market ERPs (Sage 50, QuickBooks, Odoo, SAP Business One).
+- ERPNext module (Reference Implementation).
+- Open-source mapping UI for human-in-the-loop validation.
 
 ---
 
