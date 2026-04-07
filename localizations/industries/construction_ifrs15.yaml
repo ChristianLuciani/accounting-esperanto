@@ -1,0 +1,333 @@
+# Kontablo Industry Extension: Construction & Engineering (IFRS 15 + IAS 37 + IAS 16 + IFRS 16)
+# Version: 0.1.0-draft
+# Standard: IFRS 15 - Revenue (over-time recognition for construction contracts)
+#            IAS 37 - Provisions (warranties, onerous contracts, penalties)
+#            IAS 16 - PP&E (construction equipment, scaffolding, craneage)
+#            IFRS 16 - Leases (heavy equipment, site offices, tower cranes)
+#            IAS 23 - Borrowing Costs (property development finance)
+# Authority: IASB
+# Priority: MEDIUM
+# Critical Notes:
+#   - OVER-TIME revenue recognition is the default for construction contracts
+#     (IFRS 15.35b: customer controls asset as created/enhanced)
+#   - MEASURE OF PROGRESS: input method (costs incurred) or output method (surveys, milestones)
+#     Entity must choose method that best depicts transfer of control
+#   - ONEROUS CONTRACTS (IAS 37): If estimated total costs exceed contract revenue → immediate loss
+#   - RETENTION MONEY: Customer withholds 5-10% until completion → contract asset, not receivable
+#   - VARIATIONS/CLAIMS: Additional work authorized or expected → variable consideration (constrained)
+#   - KEY JURISDICTIONS: US, UK, DE, AU, AE (major construction markets)
+#     BR (Petrobras offshore, civil works), IN (infrastructure projects), CN (Belt & Road)
+
+metadata:
+  industry: construction_engineering_infrastructure
+  standard: IFRS_15_IAS_37_IAS_16_IFRS_16_IAS_23
+  applies_to:
+    - General contractors and subcontractors
+    - Real estate developers (construction phase)
+    - Civil engineering companies (roads, bridges, tunnels)
+    - Oil & gas EPC contractors (FEED/EPC/EPCM)
+    - Specialty contractors (mechanical, electrical, plumbing)
+    - Infrastructure PPP concession operators
+  kontablo_version: 0.1.0
+  extension_type: industry
+  last_updated: 2026-03-27
+  key_jurisdictions: ["us", "uk", "de", "au", "ae", "br", "in", "cn", "sa", "qa", "es", "fr"]
+
+mappings:
+  # ─────────────────────────────────────────────
+  # CONTRACT ASSETS AND LIABILITIES (IFRS 15)
+  # ─────────────────────────────────────────────
+
+  "CON_ContractAsset_Unbilled":
+    name: "Contract Asset — Unbilled Receivable (Work in Progress)"
+    label_es: "Activo por Contrato — Trabajo Certificado Pendiente de Facturar"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "B0000000-0000-4000-8000-000000000001"
+    ifrs_tag: "ifrs-full:ContractAssets"
+    parent_kontablo: "asset.current.receivables"
+    notes: |
+      Revenue recognized exceeds amounts billed = Contract Asset (not Trade Receivable).
+      Becomes a Trade Receivable only when an unconditional right to payment arises
+      (typically when an Application for Payment/Progress Certificate is issued and approved).
+      CRITICAL distinction: Contract Asset is subject to impairment under IFRS 9 ECL,
+      but is conditional (performance risk still exists), unlike Trade Receivable.
+
+  "CON_RetentionReceivable":
+    name: "Retention Money Receivable"
+    label_es: "Retención por Cobrar"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "B0000000-0000-4000-8000-000000000002"
+    parent_kontablo: "asset.current.receivables"
+    classification: "current_if_due_within_12m_else_noncurrent"
+    notes: |
+      Typically 5-10% of each progress payment withheld by the client until:
+      (a) Practical completion + defects liability period (typically 12 months)
+      Some retention is withheld through entire defects period → present as non-current.
+      IFRS 15: Retention is part of the transaction price; no separate discount required
+      unless there is a significant financing component (retention > 12 months).
+
+  "CON_ContractLiability_BilledAhead":
+    name: "Contract Liability — Billings in Excess of Revenue"
+    label_es: "Pasivo por Contrato — Facturación en Exceso de Ingresos"
+    nature: "Credit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "B0000000-0000-4000-8000-000000000003"
+    ifrs_tag: "ifrs-full:ContractLiabilities"
+    parent_kontablo: "liability.current.accrued"
+    notes: |
+      Amounts billed exceed revenue recognized to date = Contract Liability.
+      Common when a large upfront mobilization payment is received.
+      Released to revenue as the project progresses.
+
+  # ─────────────────────────────────────────────
+  # CONSTRUCTION CONTRACT REVENUE (IFRS 15)
+  # ─────────────────────────────────────────────
+
+  "REV_ConstructionContractRevenue":
+    name: "Construction Contract Revenue"
+    label_es: "Ingresos por Contratos de Construcción"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "B0000000-0000-4000-8000-000000000010"
+    ifrs_tag: "ifrs-full:Revenue"
+    parent_kontablo: "revenue.operating"
+    recognition: "over_time"
+    performance_obligation: "Construct asset customer controls as created"
+    measure_of_progress_options:
+      input_method:
+        basis: "Costs incurred to date / Total estimated contract costs"
+        use_when: "Direct relationship between costs and transfer of control"
+        exclude: ["Uninstalled materials", "Costs related to future satisfying"]
+      output_method:
+        basis: "Surveys, milestones, units completed"
+        use_when: "More faithful depiction of progress"
+    notes: |
+      IFRS 15.35(b): Customer controls asset as it is created = over time.
+      Revenue = % complete × Total contract revenue (at current estimate).
+      CRITICAL: Total contract cost estimates must be updated at each reporting date.
+      Estimate changes are prospective (no restatement).
+
+  "REV_Variations":
+    name: "Revenue — Variations and Change Orders"
+    label_es: "Ingresos — Variaciones y Órdenes de Cambio"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "B0000000-0000-4000-8000-000000000011"
+    parent_kontablo: "revenue.operating"
+    recognition: "Constrained variable consideration — include only when highly probable"
+    notes: |
+      IFRS 15.50-57: Variations are variable consideration.
+      Include in transaction price ONLY when highly probable no reversal.
+      Practice: approved variations included immediately; disputed variations excluded
+      until resolution (or included at constrained amount).
+
+  "REV_Claims":
+    name: "Revenue — Contract Claims"
+    label_es: "Ingresos — Reclamaciones Contractuales"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "B0000000-0000-4000-8000-000000000012"
+    parent_kontablo: "revenue.other"
+    recognition: "HIGHLY constrained — only when legally enforceable and probable"
+    notes: |
+      Claims for delays (Employer Risk Events, Force Majeure) are highly constrained
+      variable consideration. Only recognize when:
+      (a) Legal entitlement established in contract
+      (b) Evidence that client will accept the claim
+      (c) Amount can be reliably estimated
+
+  # ─────────────────────────────────────────────
+  # CONTRACT COSTS (IFRS 15.91-104)
+  # ─────────────────────────────────────────────
+
+  "COST_ContractCostsCapitalized":
+    name: "Contract Costs — Capitalized Bid and Mobilization Costs"
+    label_es: "Costos Capitalizados — Licitación y Movilización"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "B0000000-0000-4000-8000-000000000020"
+    parent_kontablo: "asset.current.prepaid"
+    amortization: "Consistent with progress of contract (input method)"
+    examples:
+      - "Bid costs for contracts where award is highly probable"
+      - "Mobilization costs (site setup) for secured contracts"
+      - "Preparatory design costs"
+    practical_expedient: "If amortization period ≤ 12 months → expense immediately"
+    notes: "IFRS 15.94: Incremental costs of obtaining a contract → capitalize if recoverable."
+
+  "COST_ContractCostsCurrent":
+    name: "Cost of Construction — Current Period"
+    label_es: "Costos de Construcción del Período"
+    nature: "Debit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "B0000000-0000-4000-8000-000000000021"
+    parent_kontablo: "expense.cogs"
+    examples:
+      - "Direct labor (site workers, supervisors)"
+      - "Direct materials (concrete, steel, MEP)"
+      - "Plant and equipment running costs"
+      - "Subcontractor costs"
+      - "Site overhead (site manager, safety officer, temporary facilities)"
+    notes: "Only direct contract costs recognized as expense in P&L; indirect overhead allocated using absorption method."
+
+  # ─────────────────────────────────────────────
+  # ONEROUS CONTRACTS AND PROVISIONS (IAS 37)
+  # ─────────────────────────────────────────────
+
+  "PROV_OnerousContract":
+    name: "Provision for Onerous Contract"
+    label_es: "Provisión para Contrato Oneroso"
+    nature: "Credit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "B0000000-0000-4000-8000-000000000030"
+    ifrs_tag: "ifrs-full:OtherCurrentProvisions"
+    parent_kontablo: "liability.current.accrued"
+    recognition: |
+      IAS 37.68: When unavoidable cost of meeting contract obligations EXCEEDS expected benefits.
+      Unavoidable cost = lower of: (a) cost to fulfill, or (b) penalties for non-fulfillment.
+    notes: |
+      CRITICAL: If updated cost estimate shows total contract costs > total contract revenue →
+      recognize the FULL expected loss IMMEDIATELY in P&L.
+      This is a departure from the over-time revenue recognition (which spreads profit over time,
+      but frontloads the full loss).
+      
+      Example: Contract value £10M, estimated total cost £12M → recognize £2M loss provision.
+      Even if project is 0% complete, the expected loss is recognized Day 1.
+
+  "PROV_Defects_Warranty":
+    name: "Provision for Defects Liability and Warranty"
+    label_es: "Provisión para Garantías y Período de Responsabilidad por Defectos"
+    nature: "Credit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "B0000000-0000-4000-8000-000000000031"
+    parent_kontablo: "liability.noncurrent.debt"
+    notes: |
+      IAS 37: At practical completion, provide for expected defects rectification costs.
+      Based on historical defect rates (% of contract value typically 0.5-2%).
+      Defects Liability Period (DLP): typically 12 months, sometimes 24 months for MEP.
+      After DLP expiry and final certificate → release provision to P&L.
+
+  "PROV_PenaltiesAndLiquidatedDamages":
+    name: "Provision for Penalties and Liquidated Damages (LDs)"
+    label_es: "Provisión para Penalidades y Daños Liquidados"
+    nature: "Credit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "B0000000-0000-4000-8000-000000000032"
+    parent_kontablo: "liability.current.accrued"
+    notes: |
+      When project is delayed and contractor is responsible → LDs accrue daily.
+      IAS 37: Recognize when probable and reliably measurable.
+      IFRS 15: Reduce transaction price for LDs expected to apply (variable consideration).
+
+  # ─────────────────────────────────────────────
+  # CONSTRUCTION EQUIPMENT (IAS 16 + IFRS 16)
+  # ─────────────────────────────────────────────
+
+  "ASSET_ConstructionPlant_Owned":
+    name: "Construction Plant and Equipment — Owned"
+    label_es: "Equipos y Maquinaria de Construcción — Propios"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "B0000000-0000-4000-8000-000000000040"
+    parent_kontablo: "asset.noncurrent.ppe"
+    examples:
+      - "Tower cranes (owned)"
+      - "Excavators, bulldozers, compactors"
+      - "Concrete mixing plants"
+      - "Scaffolding systems"
+      - "Formwork systems"
+    depreciation_method: "straight_line_or_units_of_production"
+    cost_allocation: "Cost charged to project via internal plant hire rates"
+    notes: "Plant costs typically allocated to projects using internal hire rates (market-based); margin between rate and depreciation is overhead recovery."
+
+  "ASSET_ConstructionPlant_ROU":
+    name: "Construction Plant — Right-of-Use Asset (IFRS 16)"
+    label_es: "Equipos de Construcción — Activo por Derecho de Uso"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "B0000000-0000-4000-8000-000000000041"
+    parent_kontablo: "asset.noncurrent.rou_assets"
+    examples:
+      - "Tower cranes (long-term lease)"
+      - "Temporary modular site offices"
+      - "Pumping equipment (multi-project lease)"
+    notes: "Short-term lease exemption (IFRS 16.B34): leases ≤12 months can be expensed directly — common for site-specific short rentals."
+
+  # ─────────────────────────────────────────────
+  # PPP / CONCESSION SPECIFICS (IFRIC 12)
+  # ─────────────────────────────────────────────
+
+  "PPP_FinancialAsset":
+    name: "PPP Concession — Financial Asset Model (IFRIC 12)"
+    label_es: "Concesión PPP — Modelo de Activo Financiero"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "B0000000-0000-4000-8000-000000000050"
+    parent_kontablo: "asset.noncurrent.investments"
+    applicable_when: "Grantor guarantees specified or determinable payments to operator"
+    examples:
+      - "Toll roads with government guaranteed minimum revenue"
+      - "Availability-based hospitals (PFI/PF2 UK)"
+      - "Water treatment plants with guaranteed offtake"
+    notes: "IFRIC 12: Operator does not recognize PP&E for infrastructure — instead recognizes a financial asset (right to receive cash from grantor)."
+
+  "PPP_IntangibleAsset":
+    name: "PPP Concession — Intangible Asset Model (IFRIC 12)"
+    label_es: "Concesión PPP — Modelo de Activo Intangible"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "B0000000-0000-4000-8000-000000000051"
+    parent_kontablo: "asset.noncurrent.intangibles"
+    applicable_when: "Users pay operator directly; no guaranteed payments"
+    examples:
+      - "Toll roads where cars pay operator (no floor guarantee)"
+      - "Airports with aeronautical and commercial revenues"
+      - "Port concessions"
+    notes: "IFRIC 12 intangible model: right to charge users recognized as intangible. Amortized over concession period."
+
+aggregation_rules:
+  work_in_progress_net:
+    formula: "CON_ContractAsset_Unbilled + CON_RetentionReceivable - CON_ContractLiability_BilledAhead"
+    label_en: "Net Work in Progress Position"
+    note: "Positive = under-billed (asset); Negative = over-billed (liability)"
+
+  gross_contract_margin:
+    formula: "(REV_ConstructionContractRevenue + REV_Variations + REV_Claims - COST_ContractCostsCurrent) / (REV_ConstructionContractRevenue + REV_Variations + REV_Claims)"
+    label_en: "Gross Contract Margin %"
+    note: "Industry benchmark: 8-15% gross margin for general contractors"
+
+  order_book:
+    note: "Remaining contract revenue not yet recognized. Tracked in project management system; disclosed in notes."
+
+validation_rules:
+  contract_balance_check:
+    rule: "contract_revenue_recognized <= total_contract_value"
+    message: "Cumulative recognized revenue cannot exceed total contract value"
+    severity: "ERROR"
+
+  onerous_contract_immediate_loss:
+    rule: "estimated_total_cost > contract_value IMPLIES PROV_OnerousContract >= (estimated_total_cost - contract_value)"
+    message: "Expected contract loss must be fully provisioned immediately (IAS 37.68)"
+    severity: "ERROR"
+
+  retention_classification:
+    rule: "CON_RetentionReceivable_DLP_end > 12_months IMPLIES classified_as_noncurrent"
+    message: "Retention due after 12 months from reporting date should be non-current"
+    severity: "WARNING"

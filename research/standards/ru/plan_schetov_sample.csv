@@ -1,14 +1,34 @@
 CODE,NAME_RU,NAME_EN,CATEGORY,NATURE
 01,Основные средства,Fixed Assets,Asset,DEBIT
+02,Амортизация основных средств,Accumulated Depreciation,Contra-Asset,CREDIT
+04,Нематериальные активы,Intangible Assets,Asset,DEBIT
+05,Амортизация нематериальных активов,Accumulated Amortization,Contra-Asset,CREDIT
+07,Оборудование к установке,Equipment for Installation,Asset,DEBIT
+08,Вложения во внеоборотные активы,Construction in Progress / Investments,Asset,DEBIT
 10,Материалы,Materials,Asset,DEBIT
+19,Налог на добавленную стоимость по приобретенным ценностям,VAT on Acquired Assets (Input VAT),Asset,DEBIT
 20,Основное производство,Main Production,Asset/Cost,DEBIT
+26,Общехозяйственные расходы,General Administrative Expenses,Expense,DEBIT
 41,Товары,Goods,Asset,DEBIT
+43,Готовая продукция,Finished Goods,Asset,DEBIT
+44,Расходы на продажу,Selling Expenses,Expense,DEBIT
 50,Касса,Cash,Asset,DEBIT
 51,Расчетные счета,Settlement Accounts (Bank),Asset,DEBIT
+52,Валютные счета,Foreign Currency Accounts,Asset,DEBIT
+58,Финансовые вложения,Financial Investments,Asset,DEBIT
 60,Расчеты с поставщиками и подрядчиками,Accounts Payable (Suppliers),Liability,CREDIT
 62,Расчеты с покупателями и заказчиками,Accounts Receivable (Customers),Asset,DEBIT
+66,Расчеты по краткосрочным кредитам и займам,Short-term Loans,Liability,CREDIT
+67,Расчеты по долгосрочным кредитам и займам,Long-term Loans,Liability,CREDIT
 68,Расчеты по налогам и сборам,Taxes Payable,Liability,CREDIT
+69,Расчеты по социальному страхованию и обеспечению,Social Security Payable,Liability,CREDIT
 70,Расчеты с персоналом по оплате труда,Salaries Payable,Liability,CREDIT
+71,Расчеты с подотчетными лицами,Accounts with Accountable Persons (Travel/Misc),Asset/Liability,VARIABLE
+76,Расчеты с разными дебиторами и кредиторами,Other Debtors and Creditors,Asset/Liability,VARIABLE
 80,Уставный капитал,Authorized Capital,Equity,CREDIT
+82,Резервный капитал,Reserve Capital,Equity,CREDIT
+84,Нераспределенная прибыль (непокрытый убыток),Retained Earnings,Equity,VARIABLE
 90,Продажи,Sales,Revenue/Result,VARIABLE
+91,Прочие доходы и расходы,Other Income and Expenses,Result,VARIABLE
+96,Резервы предстоящих расходов,Provisions for Future Expenses,Liability,CREDIT
 99,Прибыли и убытки,Profits and Losses,Result,VARIABLE

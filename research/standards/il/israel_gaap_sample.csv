@@ -1,12 +1,36 @@
 CODE,ACCOUNT_NAME_HE,ACCOUNT_NAME_EN,TYPE,NATURE
 1010,קופה,Cash,Asset,DEBIT
 1020,בנק,Bank,Asset,DEBIT
+1030,בנק במט"ח,Bank (Foreign Currency),Asset,DEBIT
 1100,לקוחות,Accounts Receivable,Asset,DEBIT
-1200,מלאי,Inventory,Asset,DEBIT
+1110,הפרשה לחובות מסופקים,Allowance for Doubtful Debts,Contra-Asset,CREDIT
+1200,מלאי חומרי גלם,Inventory - Raw Materials,Asset,DEBIT
+1210,מלאי מוצרים גמורים,Inventory - Finished Goods,Asset,DEBIT
+1300,רכוש קבוע,Property and Equipment,Asset,DEBIT
+1310,פחת שנצבר,Accumulated Depreciation,Contra-Asset,CREDIT
+1400,הוצאות מראש,Prepaid Expenses,Asset,DEBIT
+1500,ניכוי מס במקור מלקוחות,Withholding Tax from Customers,Asset,DEBIT
 2100,ספקים,Accounts Payable,Liability,CREDIT
-2200,מע"מ תשומות,Input VAT,Asset,DEBIT
-2210,מע"מ עסקאות,Output VAT,Liability,CREDIT
+2110,ספקים - הוצאות לשלם,Accrued Expenses,Liability,CREDIT
+2200,מע"מ תשומות,Input VAT (Ma'am),Asset,DEBIT
+2210,מע"מ עסקאות,Output VAT (Ma'am),Liability,CREDIT
+2300,מוסדות - מס הכנסה,Income Tax Authorities,Liability,CREDIT
+2310,מוסדות - ביטוח לאומי,Social Security Payable,Liability,CREDIT
+2320,ניכוי מס במקור לספקים,Withholding Tax to Suppliers,Liability,CREDIT
+2400,הלוואות לזמן קצר,Short-term Loans,Liability,CREDIT
+2500,הלוואות לזמן ארוך,Long-term Loans,Liability,CREDIT
 3001,הון מניות,Share Capital,Equity,CREDIT
-4001,מכירות,Sales,Revenue,CREDIT
+3010,פרמיה על מניות,Share Premium,Equity,CREDIT
+3020,עודפים,Retained Earnings,Equity,VARIABLE
+4001,מכירות בארץ,Sales (Domestic),Revenue,CREDIT
+4010,מכירות לחו"ל,Sales (Export),Revenue,CREDIT
+4100,הכנסות אחרות,Other Income,Revenue,CREDIT
 5001,עלות המכר,Cost of Sales,Expense,DEBIT
-6001,משכורות,Salaries,Expense,DEBIT
+6001,משכורות ונלוות,Salaries and Related Costs,Expense,DEBIT
+6010,הפרשות סוציאליות,Social Provisions (Pension/Study Fund),Expense,DEBIT
+6100,שכר דירה,Rent Expense,Expense,DEBIT
+6110,חשמל ומים,Utilities (Electricity/Water),Expense,DEBIT
+6120,אחזקת רכב,Vehicle Maintenance,Expense,DEBIT
+6200,פחת והפחתות,Depreciation and Amortization,Expense,DEBIT
+6300,הוצאות מימון,Finance Expenses,Expense,DEBIT
+6400,מס הכנסה,Income Tax Expense,Expense,DEBIT

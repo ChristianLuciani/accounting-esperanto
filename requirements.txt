@@ -6,3 +6,6 @@ uvicorn
 pydantic
 pyyaml
 python-dotenv
+pytest
+pytest-asyncio
+httpx

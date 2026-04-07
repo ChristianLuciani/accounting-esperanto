@@ -1,0 +1,403 @@
+syntax = "proto3";
+
+package kontablo.v1;
+
+option java_package = "io.kontablo.v1";
+option java_outer_classname = "KontabloProto";
+option go_package = "github.com/ChristianLuciani/accounting-esperanto/api/grpc;kontabloproto";
+
+// ─────────────────────────────────────────────
+// ACCOUNT SERVICE
+// ─────────────────────────────────────────────
+
+service AccountService {
+  // List all Kontablo accounts with optional filters
+  rpc ListAccounts(ListAccountsRequest) returns (ListAccountsResponse);
+
+  // Get a single account by its string ID
+  rpc GetAccount(GetAccountRequest) returns (KontabloAccount);
+
+  // Get all local codes for an account across jurisdictions
+  rpc GetLocalCodes(GetLocalCodesRequest) returns (LocalCodesResponse);
+}
+
+// ─────────────────────────────────────────────
+// MAPPING SERVICE
+// ─────────────────────────────────────────────
+
+service MappingService {
+  // Map a single local account code to Kontablo
+  rpc MapAccount(MapAccountRequest) returns (MapAccountResponse);
+
+  // Map a batch of local account codes (bidirectional streaming)
+  rpc MapBatch(stream MapAccountRequest) returns (stream MapAccountResponse);
+
+  // Validate a complete chart of accounts
+  rpc ValidateChart(ValidateChartRequest) returns (ValidateChartResponse);
+}
+
+// ─────────────────────────────────────────────
+// CLASSIFICATION SERVICE
+// ─────────────────────────────────────────────
+
+service ClassificationService {
+  // Classify a single transaction narration to a Kontablo account
+  rpc ClassifyTransaction(ClassifyTransactionRequest) returns (ClassifyTransactionResponse);
+
+  // Classify a batch of transactions (client streaming)
+  rpc ClassifyBatch(stream ClassifyTransactionRequest) returns (ClassifyBatchResponse);
+}
+
+// ─────────────────────────────────────────────
+// CONSOLIDATION SERVICE
+// ─────────────────────────────────────────────
+
+service ConsolidationService {
+  // Submit multi-subsidiary trial balances → get consolidated Kontablo TB
+  rpc ConsolidateTrialBalances(ConsolidationRequest) returns (ConsolidationResponse);
+
+  // Generate financial statements from a Kontablo trial balance
+  rpc GenerateFinancialStatements(FinancialStatementsRequest) returns (FinancialStatementsResponse);
+}
+
+// ─────────────────────────────────────────────
+// VALIDATION SERVICE
+// ─────────────────────────────────────────────
+
+service ValidationService {
+  // Validate balance sheet equation and integrity rules
+  rpc ValidateBalanceSheet(ValidationRequest) returns (ValidationResponse);
+
+  // Check financial statement completeness for a jurisdiction
+  rpc ValidateCompleteness(CompletenessRequest) returns (ValidationResponse);
+}
+
+// ─────────────────────────────────────────────
+// SYNONYM SERVICE
+// ─────────────────────────────────────────────
+
+service SynonymService {
+  // Search accounting synonyms across languages
+  rpc SearchSynonyms(SynonymSearchRequest) returns (SynonymSearchResponse);
+
+  // Add or update synonyms in the corpus (admin only)
+  rpc UpsertSynonym(UpsertSynonymRequest) returns (UpsertSynonymResponse);
+}
+
+// ─────────────────────────────────────────────
+// MESSAGE DEFINITIONS
+// ─────────────────────────────────────────────
+
+// ── Shared Enums ──
+
+enum Nature {
+  NATURE_UNSPECIFIED = 0;
+  NATURE_DEBIT = 1;
+  NATURE_CREDIT = 2;
+}
+
+enum Statement {
+  STATEMENT_UNSPECIFIED = 0;
+  STATEMENT_BALANCE_SHEET = 1;
+  STATEMENT_INCOME_STATEMENT = 2;
+  STATEMENT_CASH_FLOW = 3;
+}
+
+enum MatchMethod {
+  MATCH_UNSPECIFIED = 0;
+  MATCH_EXACT_LOOKUP = 1;
+  MATCH_SEMANTIC_AI = 2;
+  MATCH_FUZZY_STRING = 3;
+  MATCH_NOT_FOUND = 4;
+}
+
+enum Severity {
+  SEVERITY_UNSPECIFIED = 0;
+  SEVERITY_ERROR = 1;
+  SEVERITY_WARNING = 2;
+  SEVERITY_INFO = 3;
+}
+
+// ── Core Types ──
+
+message KontabloAccount {
+  string id = 1;               // e.g., "asset.current.receivables"
+  string uuid = 2;             // e.g., "00000000-0000-4000-8000-000000000104"
+  string label_en = 3;
+  string label_es = 4;
+  string ifrs_tag = 5;
+  Nature nature = 6;
+  Statement statement = 7;
+  int32 level = 8;             // 1, 2, or 3
+  string parent = 9;           // Parent account ID
+  bool is_aggregate = 10;
+  bool optional = 11;
+}
+
+message LocalCode {
+  string jurisdiction = 1;     // ISO 3166-1 alpha-2
+  string code = 2;
+  string label = 3;
+  string standard = 4;         // e.g., "SAT", "PUC", "PCG", "RAS"
+}
+
+// ── Account Service Messages ──
+
+message ListAccountsRequest {
+  int32 level = 1;             // 0 = all levels
+  Nature nature = 2;           // 0 = all natures
+  Statement statement = 3;     // 0 = all statements
+  string parent = 4;           // empty = all parents
+}
+
+message ListAccountsResponse {
+  repeated KontabloAccount accounts = 1;
+  int32 total = 2;
+}
+
+message GetAccountRequest {
+  string account_id = 1;
+}
+
+message GetLocalCodesRequest {
+  string account_id = 1;
+  string jurisdiction = 2;     // empty = all jurisdictions
+}
+
+message LocalCodesResponse {
+  string account_id = 1;
+  repeated LocalCode codes = 2;
+}
+
+// ── Mapping Service Messages ──
+
+message MapAccountRequest {
+  string local_code = 1;
+  string local_name = 2;
+  string jurisdiction = 3;
+  Nature nature = 4;
+  string industry = 5;
+}
+
+message MapAccountResponse {
+  string local_code = 1;
+  string kontablo_id = 2;
+  string kontablo_uuid = 3;
+  string label_en = 4;
+  float confidence_score = 5;
+  MatchMethod match_method = 6;
+  string justification = 7;
+  repeated AlternativeMapping alternatives = 8;
+}
+
+message AlternativeMapping {
+  string kontablo_id = 1;
+  float confidence_score = 2;
+}
+
+message ValidateChartRequest {
+  string jurisdiction = 1;
+  repeated MapAccountRequest accounts = 2;
+}
+
+message ValidateChartResponse {
+  float coverage_pct = 1;
+  repeated MapAccountResponse mapped = 2;
+  repeated MapAccountRequest unmapped = 3;
+  repeated string duplicate_warnings = 4;
+  repeated string compliance_warnings = 5;
+  float complexity_score = 6;
+}
+
+// ── Classification Service Messages ──
+
+message ClassifyTransactionRequest {
+  string narration = 1;
+  float amount = 2;
+  string currency = 3;
+  string jurisdiction = 4;
+  Nature debit_or_credit = 5;
+  string industry = 6;
+  string company_size = 7;     // micro, sme, large, enterprise
+}
+
+message ClassifyTransactionResponse {
+  string narration = 1;
+  string kontablo_id = 2;
+  string kontablo_uuid = 3;
+  string label_en = 4;
+  float confidence_score = 5;
+  repeated AlternativeMapping alternatives = 6;
+}
+
+message ClassifyBatchResponse {
+  repeated ClassifyTransactionResponse results = 1;
+  int32 processing_time_ms = 2;
+}
+
+// ── Consolidation Service Messages ──
+
+message TrialBalanceEntry {
+  string local_code = 1;
+  string local_name = 2;
+  double debit = 3;
+  double credit = 4;
+}
+
+message SubsidiaryTrialBalance {
+  string subsidiary_id = 1;
+  string jurisdiction = 2;
+  string currency = 3;
+  string reporting_date = 4;   // ISO 8601: YYYY-MM-DD
+  repeated TrialBalanceEntry entries = 5;
+  double fx_rate_to_target = 6;
+  double ownership_pct = 7;    // 0.0–1.0
+}
+
+message IntercompanyElimination {
+  string from_subsidiary = 1;
+  string to_subsidiary = 2;
+  double amount = 3;
+  string kontablo_id = 4;
+}
+
+message ConsolidationRequest {
+  string parent_company_id = 1;
+  string target_currency = 2;
+  string reporting_date = 3;
+  repeated SubsidiaryTrialBalance subsidiaries = 4;
+  repeated IntercompanyElimination eliminations = 5;
+}
+
+message ConsolidatedEntry {
+  string kontablo_id = 1;
+  string label_en = 2;
+  double debit = 3;
+  double credit = 4;
+  double net = 5;
+}
+
+message ConsolidationResponse {
+  string parent_company_id = 1;
+  string target_currency = 2;
+  string reporting_date = 3;
+  repeated ConsolidatedEntry trial_balance = 4;
+  int32 eliminations_applied = 5;
+  repeated string warnings = 6;
+}
+
+message KontabloTrialBalanceEntry {
+  string kontablo_id = 1;
+  double net_balance = 2;
+}
+
+message FinancialStatementsRequest {
+  repeated KontabloTrialBalanceEntry trial_balance = 1;
+  string target_currency = 2;
+  repeated string industry_extensions = 3;
+  string jurisdiction = 4;
+}
+
+message FinancialStatementLineItem {
+  string kontablo_id = 1;
+  string label_en = 2;
+  double amount = 3;
+  int32 level = 4;
+}
+
+message BalanceSheet {
+  double total_assets = 1;
+  double total_liabilities = 2;
+  double total_equity = 3;
+  double current_assets = 4;
+  double noncurrent_assets = 5;
+  double current_liabilities = 6;
+  double noncurrent_liabilities = 7;
+  repeated FinancialStatementLineItem line_items = 8;
+}
+
+message IncomeStatement {
+  double revenue = 1;
+  double gross_profit = 2;
+  double ebitda = 3;
+  double ebit = 4;
+  double net_income = 5;
+  repeated FinancialStatementLineItem line_items = 6;
+}
+
+message KeyRatios {
+  double working_capital = 1;
+  double current_ratio = 2;
+  double debt_to_equity = 3;
+  double gross_margin_pct = 4;
+  double ebitda_margin_pct = 5;
+}
+
+message FinancialStatementsResponse {
+  BalanceSheet balance_sheet = 1;
+  IncomeStatement income_statement = 2;
+  KeyRatios key_ratios = 3;
+}
+
+// ── Validation Service Messages ──
+
+message ValidationRequest {
+  string jurisdiction = 1;
+  repeated TrialBalanceEntry entries = 2;
+  string currency = 3;
+}
+
+message CompletenessRequest {
+  string jurisdiction = 1;
+  repeated string present_account_ids = 2;
+  repeated string industry_extensions = 3;
+}
+
+message ValidationError {
+  string code = 1;
+  string message = 2;
+  Severity severity = 3;
+  repeated string accounts_affected = 4;
+}
+
+message ValidationResponse {
+  bool is_valid = 1;
+  repeated ValidationError errors = 2;
+  double balance_difference = 3;   // A - (L+E); should be 0.0
+}
+
+// ── Synonym Service Messages ──
+
+message SynonymSearchRequest {
+  string query = 1;
+  string lang = 2;             // ISO 639-1, empty = all languages
+  string jurisdiction = 3;     // empty = all jurisdictions
+  int32 max_results = 4;       // default 10
+}
+
+message SynonymMatch {
+  string text = 1;
+  string lang = 2;
+  string kontablo_uuid = 3;
+  string canonical_name_en = 4;
+  string source = 5;
+  float confidence = 6;
+}
+
+message SynonymSearchResponse {
+  repeated SynonymMatch results = 1;
+  int32 total_found = 2;
+}
+
+message UpsertSynonymRequest {
+  string kontablo_uuid = 1;
+  string lang = 2;
+  string text = 3;
+  string source = 4;
+  string notes = 5;
+}
+
+message UpsertSynonymResponse {
+  bool success = 1;
+  string message = 2;
+}

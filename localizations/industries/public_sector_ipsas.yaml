@@ -1,0 +1,411 @@
+# Kontablo Industry Extension: Public Sector / Government (IPSAS)
+# Version: 0.1.0-draft
+# Standard: IPSAS (International Public Sector Accounting Standards) — IPSASB
+#            Equivalent to IFRS but adapted for government and public entities
+#            Key differences from IFRS:
+#            - No "profit" concept; replaced by "surplus/deficit"
+#            - Tax revenues: IPSAS 23 (non-exchange transactions)
+#            - Social benefits: IPSAS 42
+#            - Intangibles include internally developed software + heritage assets
+#            - Budget accounting: IPSAS 24 (comparison of budget vs actual)
+# Authority: IPSASB (International Public Sector Accounting Standards Board)
+# Priority: MEDIUM
+# Key Jurisdictions:
+#   - Brazil: Normas Brasileiras de Contabilidade Aplicadas ao Setor Público (NBCASP)
+#   - Mexico: Normas para Información Financiera Gubernamental (NIFG)
+#   - Colombia: Marco Normativo Entidades de Gobierno
+#   - South Africa: Modified Cash Basis → GRAP (Generally Recognised Accounting Practice)
+#   - UK: FReM (Financial Reporting Manual) = UK-adapted IFRS
+#   - EU Institutions: EU Accounting Rules (EAR) = IPSAS-based
+#   - UN/World Bank/IMF: IPSAS adopted
+#   - Australia/NZ: AASB/XRB = IFRS-based; specific IPSAS-equivalent standards for PBEs
+
+metadata:
+  industry: public_sector_government
+  standard: IPSAS_2023
+  applies_to:
+    - National and federal governments
+    - State/provincial governments
+    - Municipalities and local authorities
+    - Public hospitals and health authorities
+    - State-owned enterprises (SOEs) / Government-linked companies
+    - Multilateral organizations (UN, World Bank, IMF)
+    - Central banks (partial application)
+  kontablo_version: 0.1.0
+  extension_type: industry
+  last_updated: 2026-03-27
+  key_jurisdictions: ["br", "mx", "co", "za", "uk", "au", "nz", "ph", "ke", "gh"]
+
+mappings:
+  # ─────────────────────────────────────────────
+  # REVENUE — NON-EXCHANGE TRANSACTIONS (IPSAS 23)
+  # ─────────────────────────────────────────────
+
+  "GOV_TaxRevenue":
+    name: "Tax Revenue (Non-Exchange)"
+    label_es: "Ingresos Tributarios (Transacción Sin Contraprestación)"
+    label_pt: "Receita Tributária"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "A0000000-0000-4000-8000-000000000001"
+    ipsas_ref: "IPSAS 23"
+    parent_kontablo: "revenue.operating"
+    recognition: "When taxable event occurs and asset can be reliably measured"
+    examples:
+      - "Income tax (IRPF/ISR/ISLR)"
+      - "Corporate income tax"
+      - "Value added tax (net of refunds)"
+      - "Customs and import duties"
+      - "Property tax (IPTU/predial)"
+      - "Stamp duty"
+    notes: |
+      IPSAS 23: Tax is a non-exchange transaction (government receives without giving equivalent value).
+      Revenue recognized when taxable event occurs AND is reliably measurable.
+      Key challenge: tax creditor/debtor recognition timing (assessed vs collected basis).
+      Many developing countries use CASH basis; IPSAS requires ACCRUAL.
+
+  "GOV_TransfersReceived":
+    name: "Transfers and Grants Received (Non-Exchange)"
+    label_es: "Transferencias y Subvenciones Recibidas"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "A0000000-0000-4000-8000-000000000002"
+    ipsas_ref: "IPSAS 23"
+    parent_kontablo: "revenue.operating"
+    examples:
+      - "Intergovernmental fiscal transfers"
+      - "Conditional grants from central government"
+      - "Foreign aid (ODA)"
+      - "EU structural funds"
+    notes: |
+      IPSAS 23.44: Stipulated conditions in grants → recognize as liability until conditions met.
+      Unconditional grants → revenue immediately on receipt.
+      Extremely common in decentralized governments (LATAM federal transfers: COLPART, FPM, etc.).
+
+  "GOV_SocialContributions":
+    name: "Social Contributions Revenue"
+    label_es: "Contribuciones Sociales Recibidas"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "A0000000-0000-4000-8000-000000000003"
+    parent_kontablo: "revenue.operating"
+    examples:
+      - "Social security contributions (IMSS contributions — MX)"
+      - "Pension fund contributions"
+      - "Health insurance levies"
+
+  "GOV_FeeRevenue_Exchange":
+    name: "Fee and Service Revenue (Exchange Transaction)"
+    label_es: "Ingresos por Tasas y Servicios (Transacción de Intercambio)"
+    nature: "Credit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "A0000000-0000-4000-8000-000000000004"
+    ipsas_ref: "IPSAS 9"
+    parent_kontablo: "revenue.operating"
+    recognition: "IPSAS 9: Same as IFRS 15 for exchange transactions"
+    examples:
+      - "Hospital fees charged to patients"
+      - "Passport/visa application fees"
+      - "Parking fees"
+      - "University tuition fees"
+      - "Port and airport charges"
+
+  # ─────────────────────────────────────────────
+  # ASSETS — PUBLIC SECTOR SPECIFIC
+  # ─────────────────────────────────────────────
+
+  "ASSET_HeritageAssets":
+    name: "Heritage Assets"
+    label_es: "Activos de Patrimonio Histórico y Cultural"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "A0000000-0000-4000-8000-000000000010"
+    ipsas_ref: "IPSAS 17"
+    parent_kontablo: "asset.noncurrent.ppe"
+    measurement: "cost_if_available_otherwise_fair_value_on_first_recognition"
+    no_depreciation_rationale: "Value maintained or increases; replacement not planned"
+    examples:
+      - "Museum collections and archaeological artifacts"
+      - "Historic buildings and monuments"
+      - "National parks and protected areas"
+      - "National archives and library collections"
+      - "War memorials and public statues"
+    notes: |
+      IPSAS 17: Heritage assets may be measured at cost only.
+      Some countries exempt heritage assets entirely (disclosure-only approach).
+      Depreciation: typically NOT depreciated if maintained indefinitely and appreciating.
+      BUT: if heritage asset has finite life (e.g., biological heritage) → depreciate.
+
+  "ASSET_InfrastructureAssets":
+    name: "Infrastructure Assets (Roads, Bridges, Water Networks)"
+    label_es: "Activos de Infraestructura (Vías, Puentes, Redes)"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "A0000000-0000-4000-8000-000000000011"
+    ipsas_ref: "IPSAS 17"
+    parent_kontablo: "asset.noncurrent.ppe"
+    depreciation_method: "component_approach_or_straight_line"
+    examples:
+      - "National road network"
+      - "Bridges and flyovers"
+      - "Water and sewerage networks"
+      - "Electricity transmission lines (state-owned)"
+      - "Airport runways"
+    notes: |
+      Often the largest government asset class by value.
+      Component approach preferred (road surface vs base vs bridges as separate components).
+      Many developing countries struggle with reliable valuation of legacy infrastructure.
+      Can use: reconstruction cost, depreciated replacement cost if historical cost unavailable.
+
+  "ASSET_MilitaryEquipment":
+    name: "Military and Defense Equipment"
+    label_es: "Equipos Militares y de Defensa"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "A0000000-0000-4000-8000-000000000012"
+    parent_kontablo: "asset.noncurrent.ppe"
+    notes: |
+      IPSAS 17: Military assets recognized if they meet the definition of PP&E.
+      Classified information may affect presentation detail.
+      Depreciated over expected service life.
+      Weapons systems: some jurisdictions expense immediately on national security grounds.
+
+  "ASSET_TaxReceivable":
+    name: "Tax Receivable (Government — IPSAS 23)"
+    label_es: "Tributos por Cobrar"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "A0000000-0000-4000-8000-000000000013"
+    parent_kontablo: "asset.current.receivables"
+    impairment: "ECL or specific provision for uncollectable taxes"
+    notes: |
+      Tax assessed but not yet collected.
+      Impairment required: government tax arrears often have collection uncertainty.
+      Must distinguish: current (due within 12m) vs non-current (payment plans > 12m).
+
+  "ASSET_SocialBenefitAssets_Advance":
+    name: "Prepaid Social Benefits (Advance Payments)"
+    label_es: "Beneficios Sociales Prepagados"
+    nature: "Debit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "A0000000-0000-4000-8000-000000000014"
+    parent_kontablo: "asset.current.prepaid"
+    notes: "Benefits paid in advance of entitlement period; e.g., pension advance payments."
+
+  # ─────────────────────────────────────────────
+  # LIABILITIES — PUBLIC SECTOR SPECIFIC
+  # ─────────────────────────────────────────────
+
+  "LIAB_SocialBenefits_Payable":
+    name: "Social Benefits Payable (IPSAS 42)"
+    label_es: "Beneficios Sociales por Pagar"
+    nature: "Credit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "A0000000-0000-4000-8000-000000000020"
+    ipsas_ref: "IPSAS 42"
+    parent_kontablo: "liability.current.accrued"
+    examples:
+      - "Unemployment benefit payments due"
+      - "Disability benefit payments"
+      - "Child benefit payments"
+      - "Housing assistance"
+    notes: |
+      IPSAS 42 (2019): First dedicated IPSAS for social benefits.
+      Social benefits are non-exchange expenditures meeting eligibility criteria.
+      Recognize liability when eligibility criteria met and payment is probable.
+      DIFFERENT from insurance contracts (IFRS 17) — social benefits are government obligations.
+
+  "LIAB_PensionObligations_Gov":
+    name: "Government Employee Pension Obligations"
+    label_es: "Obligaciones Pensionales con Empleados del Gobierno"
+    nature: "Credit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "A0000000-0000-4000-8000-000000000021"
+    ipsas_ref: "IPSAS 39"  # Employee benefits (= IAS 19 equivalent)
+    parent_kontablo: "liability.noncurrent.debt"
+    notes: |
+      IPSAS 39 = IPSAS equivalent of IAS 19.
+      Government defined benefit pension schemes are typically the largest liability.
+      Actuarial valuation required annually.
+      Discount rate: government bond yield in IPSAS (same logic as IFRS).
+      Many governments have UNFUNDED defined benefit schemes → massive off-balance-sheet liabilities
+      (SA, BR, IN — legacy civil service pension schemes).
+
+  "LIAB_Debt_Sovereign":
+    name: "Government Borrowings — Sovereign Debt"
+    label_es: "Deuda Soberana del Gobierno"
+    nature: "Credit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "A0000000-0000-4000-8000-000000000022"
+    parent_kontablo: "liability.noncurrent.debt"
+    examples:
+      - "Treasury bonds (Tesoro Nacional, Bonos del Estado, OTs)"
+      - "IMF standby arrangements"
+      - "World Bank development loans"
+      - "Bilateral concessional loans"
+    notes: |
+      IPSAS 29/41: Financial instruments; measured at amortized cost using EIR.
+      Foreign currency debt → retranslated at closing rate; FX differences in surplus/deficit.
+      Sovereign debt is often disclosed separately from commercial borrowings (transparency).
+
+  "LIAB_BudgetaryCarryovers":
+    name: "Unspent Budget Appropriations — Carry-Over"
+    label_es: "Apropiaciones Presupuestarias No Ejecutadas"
+    nature: "Credit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "A0000000-0000-4000-8000-000000000023"
+    parent_kontablo: "liability.current.accrued"
+    notes: |
+      In some jurisdictions, unspent appropriations carry forward as a liability.
+      IPSAS 24: Budget comparison presentation is a REQUIRED disclosure (not optional).
+      Significant departure from IFRS which has no budget comparison requirement.
+
+  # ─────────────────────────────────────────────
+  # EQUITY — NET ASSETS (PUBLIC SECTOR)
+  # ─────────────────────────────────────────────
+
+  "EQ_AccumulatedSurplusDeficit":
+    name: "Accumulated Surplus / (Deficit)"
+    label_es: "Superávit (Déficit) Acumulado"
+    nature: "Credit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "A0000000-0000-4000-8000-000000000030"
+    parent_kontablo: "equity.retained"
+    notes: |
+      Public sector equivalent of retained earnings.
+      "Surplus" not "profit" — governments do not aim to maximize profit.
+      Persistent deficits → accumulated deficit (common in developing countries).
+
+  "EQ_ContributedCapital":
+    name: "Contributed Capital (Public Sector)"
+    label_es: "Capital Aportado (Sector Público)"
+    nature: "Credit"
+    statement: "balance_sheet"
+    level: 3
+    kontablo_uuid: "A0000000-0000-4000-8000-000000000031"
+    parent_kontablo: "equity.capital"
+    notes: "For SOEs: capital injected by government owner. For government entities: not applicable."
+
+  # ─────────────────────────────────────────────
+  # EXPENDITURE — PUBLIC SECTOR
+  # ─────────────────────────────────────────────
+
+  "EXP_SocialBenefitsExpense":
+    name: "Social Benefits Expense"
+    label_es: "Gasto en Beneficios Sociales"
+    nature: "Debit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "A0000000-0000-4000-8000-000000000040"
+    ipsas_ref: "IPSAS 42"
+    parent_kontablo: "expense.admin"
+    examples:
+      - "State pension payments"
+      - "Unemployment insurance benefits"
+      - "Healthcare subsidies to population"
+      - "Housing allowances"
+      - "Child benefits"
+    notes: "Often the single largest government expenditure line."
+
+  "EXP_GrantsAndSubsidiesPaid":
+    name: "Grants and Subsidies Paid"
+    label_es: "Subvenciones y Transferencias Pagadas"
+    nature: "Debit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "A0000000-0000-4000-8000-000000000041"
+    parent_kontablo: "expense.admin"
+    examples:
+      - "Agricultural subsidies"
+      - "Industrial development grants"
+      - "Intergovernmental fiscal transfers paid"
+      - "Foreign aid disbursements"
+
+  "EXP_PersonnelCosts_Gov":
+    name: "Government Personnel and Compensation"
+    label_es: "Gastos de Personal del Gobierno"
+    nature: "Debit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "A0000000-0000-4000-8000-000000000042"
+    parent_kontablo: "expense.admin"
+    notes: "Typically 30-50% of government expenditure. Includes defined benefit pension service cost."
+
+  "EXP_DebtService":
+    name: "Debt Service — Interest on Sovereign Debt"
+    label_es: "Servicio de Deuda — Intereses de Deuda Soberana"
+    nature: "Debit"
+    statement: "income_statement"
+    level: 3
+    kontablo_uuid: "A0000000-0000-4000-8000-000000000043"
+    parent_kontablo: "expense.interest"
+    notes: |
+      Critical for highly indebted nations (BR, IT, GR, AR): interest can exceed 10% of GDP.
+      Sovereign interest expense presented separately from operating expenses.
+      Currency risk: foreign-currency debt service creates FX exposure.
+
+aggregation_rules:
+  fiscal_surplus_deficit:
+    formula: "GOV_TaxRevenue + GOV_TransfersReceived + GOV_SocialContributions + GOV_FeeRevenue_Exchange - EXP_SocialBenefitsExpense - EXP_GrantsAndSubsidiesPaid - EXP_PersonnelCosts_Gov - EXP_DebtService - expense.depreciation"
+    label_en: "Overall Fiscal Surplus / (Deficit)"
+    note: "Equivalent to government sector net income; target varies by country fiscal framework"
+
+  primary_balance:
+    formula: "fiscal_surplus_deficit + EXP_DebtService"
+    label_en: "Primary Balance (before interest)"
+    note: "IMF/World Bank fiscal sustainability indicator"
+
+  total_public_debt:
+    formula: "LIAB_Debt_Sovereign + liability.noncurrent.debt"
+    label_en: "Total Public Debt"
+
+  debt_to_gdp:
+    note: "GDP figure from external source; Kontablo provides debt numerator"
+
+validation_rules:
+  budget_comparison_required:
+    rule: "ALWAYS"
+    message: "IPSAS 24: Budget vs actual comparison is MANDATORY in public sector financial statements"
+    severity: "INFO"
+
+  heritage_assets_disclosure:
+    rule: "ASSET_HeritageAssets > 0 IMPLIES notes_disclosure_of_valuation_method"
+    message: "Heritage assets require disclosure of measurement basis and whether fair value is determinable"
+    severity: "INFO"
+
+  pension_actuarial_required:
+    rule: "LIAB_PensionObligations_Gov > 0 IMPLIES actuarial_valuation_date <= reporting_date"
+    message: "Government pension obligations require actuarial valuation (IPSAS 39)"
+    severity: "WARNING"
+
+country_specific:
+  br:
+    standard: "NBCASP (Normas Brasileiras de Contabilidade Aplicadas ao Setor Público)"
+    notes: "Full IPSAS convergence targeted; cash vs accrual mix still exists at municipal level"
+    sinacofi_system: true
+  mx:
+    standard: "LGCG (Ley General de Contabilidad Gubernamental) + CONAC guidance"
+    notes: "Harmonized accounting framework across federal, state, and municipal levels since 2009"
+  co:
+    standard: "Marco Normativo Entidades de Gobierno (CGN)"
+    notes: "Convergence to IPSAS completed for national government; local governments still transitioning"
+  za:
+    standard: "GRAP (Generally Recognised Accounting Practice) — modified IPSAS"
+    notes: "Different standards for national (IFRS), state entities (modified cash), municipalities (GRAP)"
+  uk:
+    standard: "FReM (Financial Reporting Manual) = IFRS-based with public sector adaptations"
+    notes: "UK closest to full IPSAS adoption; Whole of Government Accounts uses FReM"

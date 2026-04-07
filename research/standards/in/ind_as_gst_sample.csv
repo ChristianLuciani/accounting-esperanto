@@ -1,13 +1,41 @@
 CODE,ACCOUNT_NAME,TYPE,GST_TAG,NATURE
 1001,Cash on Hand,Asset,N/A,DEBIT
 1002,Bank Account (HDFC),Asset,N/A,DEBIT
+1003,Fixed Deposits with Banks,Asset,N/A,DEBIT
 1100,Trade Receivables,Asset,N/A,DEBIT
+1101,Allowance for Doubtful Debts (ECL),Contra-Asset,N/A,CREDIT
+1200,Inventory - Raw Materials,Asset,GST_INPUT,DEBIT
+1201,Inventory - Work in Progress,Asset,N/A,DEBIT
+1202,Inventory - Finished Goods,Asset,GST_OUTPUT,DEBIT
+1300,Property, Plant and Equipment (PPE),Asset,N/A,DEBIT
+1301,Accumulated Depreciation on PPE,Contra-Asset,N/A,CREDIT
+1302,Capital Work-in-Progress,Asset,N/A,DEBIT
+1400,Input CGST,Asset,GST_INPUT,DEBIT
+1401,Input SGST,Asset,GST_INPUT,DEBIT
+1402,Input IGST,Asset,GST_INPUT,DEBIT
+1500,Prepaid Expenses,Asset,N/A,DEBIT
 2100,Trade Payables,Liability,N/A,CREDIT
-2201,Output CGST @ 9%,Liability,GST,CREDIT
-2202,Output SGST @ 9%,Liability,GST,CREDIT
-2203,Output IGST @ 18%,Liability,GST,CREDIT
-2204,Output GST @ 5%,Liability,GST,CREDIT
+2201,Output CGST,Liability,GST_OUTPUT,CREDIT
+2202,Output SGST,Liability,GST_OUTPUT,CREDIT
+2203,Output IGST,Liability,GST_OUTPUT,CREDIT
+2300,Short-term Borrowings,Liability,N/A,CREDIT
+2301,Current Maturities of Long-term Debt,Liability,N/A,CREDIT
+2400,Statutory Dues Payable (PF/ESI/PT),Liability,N/A,CREDIT
+2500,Provision for Income Tax,Liability,N/A,CREDIT
 3001,Equity Share Capital,Equity,N/A,CREDIT
-4001,Sale of Services (18% GST),Revenue,GST_REQUIRED,CREDIT
-5001,COGS - Materials,Expense,N/A,DEBIT
-6001,Salaries and Staff Welfare,Expense,N/A,DEBIT
+3002,Other Equity (Retained Earnings),Equity,N/A,CREDIT
+3003,Securities Premium,Equity,N/A,CREDIT
+4001,Sale of Goods (Local),Revenue,GST_OUTPUT,CREDIT
+4002,Sale of Goods (Inter-state),Revenue,GST_OUTPUT,CREDIT
+4003,Sale of Services,Revenue,GST_OUTPUT,CREDIT
+4004,Other Operating Income,Revenue,N/A,CREDIT
+5001,Cost of Materials Consumed,Expense,N/A,DEBIT
+5002,Purchase of Stock-in-Trade,Expense,GST_INPUT,DEBIT
+6001,Salaries and Wages,Expense,N/A,DEBIT
+6002,Contribution to Provident and Other Funds,Expense,N/A,DEBIT
+6003,Staff Welfare Expenses,Expense,N/A,DEBIT
+7001,Power and Fuel,Expense,GST_INPUT,DEBIT
+7002,Rent,Expense,GST_INPUT,DEBIT
+7003,Repairs and Maintenance,Expense,GST_INPUT,DEBIT
+8001,Finance Costs (Interest),Expense,N/A,DEBIT
+8002,Depreciation and Amortization Expense,Expense,N/A,DEBIT

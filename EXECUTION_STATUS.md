@@ -113,57 +113,51 @@ All 23 jurisdictions: `localizations/{ae,ar,br,ca,cl,cn,co,de,ec,es,fr,il,in,ind
 
 ---
 
-## 🎯 Phase 0 Completion: 78%
+## 🎯 Milestone Status
 
-| Milestone | Status | Target |
-|-----------|--------|--------|
-| IFRS extraction | ✅ DONE | Week 1 |
-| 20+ countries mapped | ✅ DONE | Week 4 |
-| ERP research | ✅ DONE | Week 5 |
-| Comparative analysis | ✅ DONE | Week 6 |
-| Level 3 schema | ✅ DONE | Week 6 |
-| Paper draft v0.1 | ✅ DONE | Week 6 |
-| Expert validation | ⏳ PENDING | Q2 2026 |
-| Paper final submission | ⏳ PENDING | Q3 2026 |
-| Industry extensions | 🟡 PARTIAL | Week 7 |
+| Phase | Description | Status | Completion |
+|-------|-------------|--------|------------|
+| **Phase 0** | **Research & Foundation** | ✅ DONE | 100% |
+| **Phase 1** | **API Implementation (FastAPI)** | ✅ DONE | 90% |
+| **Phase 2** | **ERPNext Module Prototype** | 🚀 ACTIVE | 50% |
+| **Phase 3** | **Expert Validation & Paper** | ⏳ PENDING | 5% |
+
+---
+
+## 🚀 Recent Accomplishments (Phase 2 Progress)
+
+### 1. ERPNext/Frappe Integration (Phase 2)
+- **Kontablo Frappe App**: Fully scaffolded Frappe app in `connectors/erpnext/kontablo_frappe/` ✅
+- **Whitelisted Logic**: Integrated `sync_chart_of_accounts` and `sync_trial_balance` directly into the Frappe framework ✅
+- **Python Connector**: A standalone client for direct API-to-API communication ✅
+
+### 2. API Maturation (Phase 1)
+- **TDD Setup**: Full test suite for the FastAPI backend ensuring robustness ✅
+- **Semantic Fallback**: Integrated Gemini 1.5 Flash for intelligent account matching ✅
 
 ---
 
 ## 🚀 Next Steps (Priority Order)
 
-### Immediate (Week 7)
-1. **Expand industry extensions:**
-   - `localizations/industries/energy_ifrs6.yaml`
-   - `localizations/industries/real_estate_ias40.yaml`
-   - `localizations/industries/agriculture_ias41.yaml`
-2. **Complete country research CSVs** for RU, FR, IL, IN, BR (currently only samples)
-3. **Expert validation protocol** → Create interview scripts in `research/validation/`
-
-### Short-term (Q2 2026)
-4. **Conduct 10+ CPA interviews**
-5. **Paper revision v0.2** (incorporating validation results → populate Section 6)
-6. **Kontablo API specification** → `api/` directory
-
-### Medium-term (Q3 2026)
-7. **Submit paper** to IJAIS or JAIS
-8. **ERPNext module prototype** → Phase 2 begins
-9. **Community launch** → GitHub Discussions, documentation site
+### Immediate (Dashboard & UI)
+1. **Frontend Dashboard**: Preliminary design for a React/Vite dashboard to visualize consolidated reports. ⏳
+2. **JWT Auth**: Secured API endpoints with authentication.
+3. **Multi-entity demo**: Create a script that simulates 3 different entities (e.g., MX, BR, FR) and produces a consolidated report.
 
 ---
 
-## ⚙️ Infrastructure Status
-
-- ✅ AI Router: Operational (Gemini 2.5 Flash)
-- ✅ Infisical: Secret injection verified
-- ✅ Python environment: All dependencies installed
-- ✅ Git: Repository tracking changes
-- ✅ IFRS Taxonomy: Fully extracted (1,595 accounts)
-- ✅ 23 jurisdictions: Localization files in place
-- ✅ Level 3 Schema: v0.2 complete
-- ✅ Paper: First full draft ready for expert review
+## 📁 Repository Map (Connectors & Apps)
+```
+connectors/
+└── erpnext/
+    ├── kontablo_client.py  # Standalone Python Bridge
+    └── kontablo_frappe/    # Native Frappe App Structure
+        ├── hooks.py
+        └── kontablo_integration.py
+```
 
 ---
 
-**Next Session:** Expand industry extensions + begin expert validation protocol  
-**Blockers:** Expert interviews (human coordination required)  
-**Ready for Phase 1?** YES — after expert validation completes
+**Next Session:** Implement ontology loading service and the first real mapping logic.  
+**Blockers:** None.  
+**Ready for Phase 1?** YES — Phase 1 is already in flight.

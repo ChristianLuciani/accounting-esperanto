@@ -1,14 +1,42 @@
 CLASSE,CODE,NOM_FR,NOM_EN,NATURE
 1,101,Capital,Share Capital,CREDIT
+1,106,Réserves,Reserves,CREDIT
+1,12,Résultat de l'exercice (bénéfice ou perte),Net Income,VARIABLE
+1,164,Emprunts auprès des établissements de crédit,Bank Loans,CREDIT
+2,201,Frais d'établissement,Establishment Costs,DEBIT
+2,205,Logiciels,Software,DEBIT
 2,211,Terrains,Land,DEBIT
+2,213,Constructions,Buildings,DEBIT
 2,215,Installations techniques,Technical Installations,DEBIT
+2,218,Autres immobilisations corporelles,Other Tangible Assets,DEBIT
+2,28,Amortissements des immobilisations,Accumulated Amortization,CREDIT
+3,31,Stocks de matières premières,Raw Materials Stocks,DEBIT
+3,35,Stocks de produits finis,Finished Goods Stocks,DEBIT
 3,37,Stocks de marchandises,Goods Stocks,DEBIT
 4,401,Fournisseurs,Suppliers,CREDIT
+4,408,Fournisseurs - Factures non parvenues,Accrued Payables,CREDIT
 4,411,Clients,Customers,DEBIT
-4,4457,TVA collectée,Output VAT,CREDIT
-4,4456,TVA déductible,Input VAT,DEBIT
+4,418,Clients - Produits à recevoir,Accrued Revenue,DEBIT
+4,421,Personnel - Rémunérations dues,Salaries Payable,CREDIT
+4,43,Organismes sociaux,Social Security Payable,CREDIT
+4,444,État - Impôts sur les bénéfices,Corporate Tax Payable,CREDIT
+4,44566,TVA sur autres biens et services (déductible),Input VAT,DEBIT
+4,44571,TVA collectée,Output VAT,CREDIT
+4,447,Autres impôts, taxes et versements assimilés,Other Taxes Payable,CREDIT
+4,455,Associés - Comptes courants,Partners' Current Accounts,VARIABLE
 5,512,Banque,Bank,DEBIT
-5,53,Caisse,Cash,DEBIT
+5,530,Caisse,Cash,DEBIT
+6,601,Achats de matières premières,Purchases of Raw Materials,DEBIT
+6,606,Achats non stockés de matières et fournitures,Supplies / Small Equipment,DEBIT
 6,607,Achats de marchandises,Purchases of Goods,DEBIT
-6,641,Rémunérations du personnel,Staff Salaries,DEBIT
+6,61,Services extérieurs,External Services,DEBIT
+6,62,Autres services extérieurs,Other External Services (Rent/Travel),DEBIT
+6,63,Impôts, taxes et versements assimilés,Taxes Expense,DEBIT
+6,64,Charges de personnel,Personnel Costs,DEBIT
+6,66,Charges financières,Finance Costs,DEBIT
+6,68,Dotations aux amortissements et provisions,Depreciation & Provisions,DEBIT
+7,701,Ventes de produits finis,Sales of Finished Goods,CREDIT
+7,706,Prestations de services,Services Revenue,CREDIT
 7,707,Ventes de marchandises,Sales of Goods,CREDIT
+7,708,Produits des activités annexes,Other Operating Income,CREDIT
+7,76,Produits financiers,Finance Income,CREDIT

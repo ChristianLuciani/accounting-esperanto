@@ -1,0 +1,1035 @@
+openapi: "3.1.0"
+
+info:
+  title: Kontablo Universal Accounting API
+  description: |
+    The Kontablo API provides universal accounting account mapping, transaction
+    classification, and cross-jurisdiction financial consolidation capabilities.
+
+    ## Core Capabilities
+    - **Account Mapping**: Map local ERP account codes to the universal Kontablo ontology
+    - **Transaction Classification**: Classify raw transactions (journal entries) to Kontablo accounts  
+    - **Consolidation**: Aggregate multi-jurisdiction financial data into a unified Kontablo statement
+    - **Validation**: Validate financial statement integrity (balance sheet equation, IAS compliance)
+    - **Synonyms**: Query the multilingual accounting synonym corpus
+
+    ## Authentication
+    All endpoints require a Bearer JWT token obtained from `/auth/token`.
+
+    ## Rate Limits
+    - Free tier: 100 requests/day
+    - Pro tier: 10,000 requests/day
+    - Enterprise: unlimited
+
+    ## Versioning
+    This is API version `v1`. Breaking changes will increment to `v2`.
+
+  version: "1.0.0"
+  contact:
+    name: Kontablo Open Standard
+    url: https://github.com/ChristianLuciani/accounting-esperanto
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: https://api.kontablo.io/v1
+    description: Production
+  - url: https://staging-api.kontablo.io/v1
+    description: Staging
+  - url: http://localhost:8000/v1
+    description: Local development
+
+security:
+  - BearerAuth: []
+
+tags:
+  - name: accounts
+    description: Account ontology — query Level 1-3 accounts
+  - name: mapping
+    description: Map local ERP codes to Kontablo UUIDs
+  - name: classification
+    description: AI-powered transaction classification
+  - name: consolidation
+    description: Multi-jurisdiction financial consolidation
+  - name: validation
+    description: Financial statement integrity validation
+  - name: synonyms
+    description: Multilingual accounting synonym corpus
+  - name: auth
+    description: Authentication
+
+paths:
+  # ─────────────────────────────────────────────
+  # AUTH
+  # ─────────────────────────────────────────────
+
+  /auth/token:
+    post:
+      tags: [auth]
+      summary: Obtain API access token
+      operationId: authGetToken
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [client_id, client_secret]
+              properties:
+                client_id:
+                  type: string
+                  example: "client_abc123"
+                client_secret:
+                  type: string
+                  example: "secret_xyz789"
+      responses:
+        "200":
+          description: JWT access token
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TokenResponse"
+        "401":
+          $ref: "#/components/responses/Unauthorized"
+
+  # ─────────────────────────────────────────────
+  # ACCOUNTS — ONTOLOGY QUERIES
+  # ─────────────────────────────────────────────
+
+  /accounts:
+    get:
+      tags: [accounts]
+      summary: List all Kontablo accounts
+      operationId: accountsList
+      parameters:
+        - name: level
+          in: query
+          schema:
+            type: integer
+            enum: [1, 2, 3]
+          description: Filter by ontology level (1=top-level, 3=operational)
+        - name: nature
+          in: query
+          schema:
+            type: string
+            enum: [debit, credit]
+        - name: statement
+          in: query
+          schema:
+            type: string
+            enum: [balance_sheet, income_statement, cash_flow]
+        - name: parent
+          in: query
+          schema:
+            type: string
+          description: Filter by parent account ID (e.g., "asset.current")
+      responses:
+        "200":
+          description: List of Kontablo accounts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                  accounts:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/KontabloAccount"
+
+  /accounts/{account_id}:
+    get:
+      tags: [accounts]
+      summary: Get a specific Kontablo account by ID
+      operationId: accountsGet
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: "asset.current.receivables"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/KontabloAccount"
+          description: Account details
+        "404":
+          $ref: "#/components/responses/NotFound"
+
+  /accounts/{account_id}/local-codes:
+    get:
+      tags: [accounts]
+      summary: Get all local codes mapped to a Kontablo account
+      operationId: accountsGetLocalCodes
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          schema:
+            type: string
+          example: "asset.current.receivables"
+        - name: jurisdiction
+          in: query
+          schema:
+            type: string
+          description: "Filter by jurisdiction (ISO 3166-1 alpha-2)"
+          example: "mx"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/LocalCodesResponse"
+          description: Local codes for this account
+
+  # ─────────────────────────────────────────────
+  # MAPPING
+  # ─────────────────────────────────────────────
+
+  /mapping/account:
+    post:
+      tags: [mapping]
+      summary: Map a single local account code to Kontablo
+      operationId: mappingMapAccount
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SingleMappingRequest"
+            example:
+              local_code: "411"
+              local_name: "Clientes"
+              jurisdiction: "fr"
+              industry: null
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SingleMappingResponse"
+          description: Mapping result with confidence score
+
+  /mapping/batch:
+    post:
+      tags: [mapping]
+      summary: Map a batch of local account codes to Kontablo
+      operationId: mappingMapBatch
+      description: |
+        Map up to 500 local account codes in a single request.
+        Uses the AI semantic matcher for accounts with no direct lookup match.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BatchMappingRequest"
+            example:
+              company_id: "empresa_mx_001"
+              jurisdiction: "mx"
+              industry: "manufacturing"
+              accounts:
+                - local_code: "101"
+                  local_name: "Caja"
+                  nature: "debit"
+                - local_code: "105"
+                  local_name: "Clientes"
+                  nature: "debit"
+                - local_code: "201"
+                  local_name: "Proveedores"
+                  nature: "credit"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BatchMappingResponse"
+          description: Batch mapping results
+
+  /mapping/validate-chart:
+    post:
+      tags: [mapping]
+      summary: Validate a complete chart of accounts against Kontablo
+      operationId: mappingValidateChart
+      description: |
+        Submit a full chart of accounts. Returns:
+        - Coverage % (how many accounts map to Kontablo)
+        - Unmapped accounts list
+        - Duplicate mapping warnings
+        - Jurisdiction-specific compliance check
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ChartValidationRequest"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChartValidationResponse"
+          description: Chart validation report
+
+  # ─────────────────────────────────────────────
+  # TRANSACTION CLASSIFICATION
+  # ─────────────────────────────────────────────
+
+  /classification/transaction:
+    post:
+      tags: [classification]
+      summary: Classify a single journal entry transaction
+      operationId: classifyTransaction
+      description: |
+        Given a transaction description (narration) + amount + context,
+        returns the most probable Kontablo account mapping with confidence score.
+        Uses multilingual semantic matching (supports 12 languages).
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TransactionClassificationRequest"
+            example:
+              narration: "Pago a proveedor Acme S.A. por materias primas"
+              amount: 15000.00
+              currency: "MXN"
+              jurisdiction: "mx"
+              debit_or_credit: "credit"
+              context:
+                industry: "manufacturing"
+                company_size: "sme"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TransactionClassificationResponse"
+          description: Classification result
+
+  /classification/batch:
+    post:
+      tags: [classification]
+      summary: Classify a batch of transactions (up to 1000)
+      operationId: classifyBatch
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                transactions:
+                  type: array
+                  maxItems: 1000
+                  items:
+                    $ref: "#/components/schemas/TransactionClassificationRequest"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/TransactionClassificationResponse"
+                  processing_time_ms:
+                    type: integer
+          description: Batch classification results
+
+  # ─────────────────────────────────────────────
+  # CONSOLIDATION
+  # ─────────────────────────────────────────────
+
+  /consolidation/trial-balance:
+    post:
+      tags: [consolidation]
+      summary: Consolidate multi-jurisdiction trial balances into Kontablo
+      operationId: consolidateTrialBalance
+      description: |
+        Submit trial balances from multiple subsidiaries (each with its own jurisdiction
+        and local chart of accounts). Returns a consolidated Kontablo trial balance.
+        
+        **Process:**
+        1. Map each subsidiary's accounts to Kontablo UUIDs
+        2. Convert amounts to target currency (at provided exchange rates)
+        3. Eliminate intercompany balances (based on provided intercompany matrix)
+        4. Aggregate to produce consolidated Kontablo trial balance
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ConsolidationRequest"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ConsolidationResponse"
+          description: Consolidated trial balance in Kontablo format
+
+  /consolidation/financial-statements:
+    post:
+      tags: [consolidation]
+      summary: Generate consolidated IFRS financial statements from Kontablo trial balance
+      operationId: consolidateFinancialStatements
+      description: |
+        Given a Kontablo trial balance (can be pre-consolidated via /consolidation/trial-balance),
+        apply Kontablo aggregation rules to generate:
+        - Balance Sheet
+        - Income Statement
+        - Key ratios (EBITDA, working capital, LTV)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FinancialStatementsRequest"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FinancialStatementsResponse"
+          description: IFRS-compliant financial statement output
+
+  # ─────────────────────────────────────────────
+  # VALIDATION
+  # ─────────────────────────────────────────────
+
+  /validation/balance-sheet:
+    post:
+      tags: [validation]
+      summary: Validate balance sheet equation (A = L + E)
+      operationId: validateBalanceSheet
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ValidationRequest"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationResponse"
+          description: Validation result with errors, warnings, and info
+
+  /validation/completeness:
+    post:
+      tags: [validation]
+      summary: Check financial statement completeness
+      operationId: validateCompleteness
+      description: |
+        Check that all required Kontablo accounts are present and that
+        jurisdiction-specific mandatory accounts are populated.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                jurisdiction:
+                  type: string
+                trial_balance:
+                  $ref: "#/components/schemas/TrialBalance"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ValidationResponse"
+          description: Completeness report
+
+  # ─────────────────────────────────────────────
+  # SYNONYMS
+  # ─────────────────────────────────────────────
+
+  /synonyms/search:
+    get:
+      tags: [synonyms]
+      summary: Search accounting synonyms in any language
+      operationId: synonymsSearch
+      parameters:
+        - name: q
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Accounting term to search
+          example: "Deudores"
+        - name: lang
+          in: query
+          schema:
+            type: string
+          description: Language code (ISO 639-1). Omit to search all languages.
+          example: "es"
+        - name: jurisdiction
+          in: query
+          schema:
+            type: string
+          description: Narrow to a specific jurisdiction
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  results:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/SynonymMatch"
+          description: Synonym search results
+
+# ─────────────────────────────────────────────
+# COMPONENTS
+# ─────────────────────────────────────────────
+
+components:
+
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  responses:
+    Unauthorized:
+      description: Authentication required
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    ValidationError:
+      description: Request validation failed
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+
+  schemas:
+
+    # ── Core types ──
+
+    KontabloAccount:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "asset.current.receivables"
+        uuid:
+          type: string
+          format: uuid
+          example: "00000000-0000-4000-8000-000000000104"
+        label_en:
+          type: string
+          example: "Trade Receivables"
+        label_es:
+          type: string
+          example: "Cuentas por Cobrar Comerciales"
+        ifrs_tag:
+          type: string
+          example: "ifrs-full:TradeAndOtherCurrentReceivables"
+        nature:
+          type: string
+          enum: [debit, credit]
+        statement:
+          type: string
+          enum: [balance_sheet, income_statement, cash_flow]
+        level:
+          type: integer
+          enum: [1, 2, 3]
+        parent:
+          type: string
+          nullable: true
+          example: "asset.current"
+        is_aggregate:
+          type: boolean
+        optional:
+          type: boolean
+          default: false
+
+    LocalCodesResponse:
+      type: object
+      properties:
+        account_id:
+          type: string
+        local_codes:
+          type: array
+          items:
+            type: object
+            properties:
+              jurisdiction:
+                type: string
+              code:
+                type: string
+              label:
+                type: string
+              standard:
+                type: string
+
+    # ── Mapping types ──
+
+    SingleMappingRequest:
+      type: object
+      required: [local_code, local_name, jurisdiction]
+      properties:
+        local_code:
+          type: string
+        local_name:
+          type: string
+        jurisdiction:
+          type: string
+          description: ISO 3166-1 alpha-2
+        nature:
+          type: string
+          enum: [debit, credit]
+          nullable: true
+        industry:
+          type: string
+          nullable: true
+
+    SingleMappingResponse:
+      type: object
+      properties:
+        local_code:
+          type: string
+        kontablo_id:
+          type: string
+        kontablo_uuid:
+          type: string
+          format: uuid
+        label_en:
+          type: string
+        confidence_score:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 1
+        match_method:
+          type: string
+          enum: [exact_lookup, semantic_ai, fuzzy_string, not_found]
+        justification:
+          type: string
+
+    BatchMappingRequest:
+      type: object
+      required: [company_id, jurisdiction, accounts]
+      properties:
+        company_id:
+          type: string
+        jurisdiction:
+          type: string
+        industry:
+          type: string
+          nullable: true
+        accounts:
+          type: array
+          maxItems: 500
+          items:
+            type: object
+            required: [local_code, local_name]
+            properties:
+              local_code:
+                type: string
+              local_name:
+                type: string
+              nature:
+                type: string
+                enum: [debit, credit]
+                nullable: true
+
+    BatchMappingResponse:
+      type: object
+      properties:
+        company_id:
+          type: string
+        jurisdiction:
+          type: string
+        total_accounts:
+          type: integer
+        mapped_count:
+          type: integer
+        unmapped_count:
+          type: integer
+        coverage_pct:
+          type: number
+          format: float
+        mappings:
+          type: array
+          items:
+            $ref: "#/components/schemas/SingleMappingResponse"
+
+    ChartValidationRequest:
+      type: object
+      required: [jurisdiction, accounts]
+      properties:
+        jurisdiction:
+          type: string
+        accounts:
+          type: array
+          items:
+            type: object
+            required: [local_code, local_name]
+            properties:
+              local_code:
+                type: string
+              local_name:
+                type: string
+              nature:
+                type: string
+
+    ChartValidationResponse:
+      type: object
+      properties:
+        coverage_pct:
+          type: number
+        unmapped_accounts:
+          type: array
+          items:
+            type: object
+        duplicate_mappings:
+          type: array
+          items:
+            type: object
+        compliance_warnings:
+          type: array
+          items:
+            type: string
+        mapping_complexity_score:
+          type: number
+          description: "1-10 score per the Kontablo complexity methodology"
+
+    # ── Classification types ──
+
+    TransactionClassificationRequest:
+      type: object
+      required: [narration, jurisdiction]
+      properties:
+        narration:
+          type: string
+          description: Transaction description / memo in any language
+          maxLength: 500
+        amount:
+          type: number
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        jurisdiction:
+          type: string
+        debit_or_credit:
+          type: string
+          enum: [debit, credit]
+          nullable: true
+        context:
+          type: object
+          properties:
+            industry:
+              type: string
+            company_size:
+              type: string
+              enum: [micro, sme, large, enterprise]
+
+    TransactionClassificationResponse:
+      type: object
+      properties:
+        narration:
+          type: string
+        kontablo_id:
+          type: string
+        kontablo_uuid:
+          type: string
+          format: uuid
+        label_en:
+          type: string
+        confidence_score:
+          type: number
+          format: float
+        alternative_accounts:
+          type: array
+          items:
+            type: object
+            properties:
+              kontablo_id:
+                type: string
+              confidence_score:
+                type: number
+
+    # ── Consolidation types ──
+
+    TrialBalance:
+      type: object
+      properties:
+        subsidiary_id:
+          type: string
+        jurisdiction:
+          type: string
+        currency:
+          type: string
+        reporting_date:
+          type: string
+          format: date
+        entries:
+          type: array
+          items:
+            type: object
+            required: [local_code, debit, credit]
+            properties:
+              local_code:
+                type: string
+              local_name:
+                type: string
+              debit:
+                type: number
+              credit:
+                type: number
+
+    ConsolidationRequest:
+      type: object
+      required: [parent_company_id, target_currency, reporting_date, subsidiaries]
+      properties:
+        parent_company_id:
+          type: string
+        target_currency:
+          type: string
+          example: "USD"
+        reporting_date:
+          type: string
+          format: date
+        subsidiaries:
+          type: array
+          items:
+            type: object
+            properties:
+              subsidiary_id:
+                type: string
+              trial_balance:
+                $ref: "#/components/schemas/TrialBalance"
+              fx_rate_to_target:
+                type: number
+                description: Exchange rate to convert to target currency
+              ownership_pct:
+                type: number
+                description: Parent ownership percentage (for minority interest)
+        intercompany_eliminations:
+          type: array
+          items:
+            type: object
+            properties:
+              from_subsidiary:
+                type: string
+              to_subsidiary:
+                type: string
+              amount:
+                type: number
+              kontablo_id:
+                type: string
+
+    ConsolidationResponse:
+      type: object
+      properties:
+        parent_company_id:
+          type: string
+        target_currency:
+          type: string
+        reporting_date:
+          type: string
+          format: date
+        consolidated_trial_balance:
+          type: array
+          items:
+            type: object
+            properties:
+              kontablo_id:
+                type: string
+              label_en:
+                type: string
+              debit:
+                type: number
+              credit:
+                type: number
+              net:
+                type: number
+        eliminations_applied:
+          type: integer
+        warnings:
+          type: array
+          items:
+            type: string
+
+    FinancialStatementsRequest:
+      type: object
+      required: [trial_balance_entries, target_currency]
+      properties:
+        trial_balance_entries:
+          type: array
+          items:
+            type: object
+            properties:
+              kontablo_id:
+                type: string
+              net_balance:
+                type: number
+        target_currency:
+          type: string
+        industry_extensions:
+          type: array
+          items:
+            type: string
+          description: "Activate industry-specific accounts (e.g., 'real_estate_ias40')"
+        jurisdiction:
+          type: string
+          nullable: true
+
+    FinancialStatementsResponse:
+      type: object
+      properties:
+        balance_sheet:
+          type: object
+          properties:
+            total_assets:
+              type: number
+            total_liabilities:
+              type: number
+            total_equity:
+              type: number
+            current_assets:
+              type: number
+            noncurrent_assets:
+              type: number
+            current_liabilities:
+              type: number
+            noncurrent_liabilities:
+              type: number
+            line_items:
+              type: array
+              items:
+                type: object
+        income_statement:
+          type: object
+          properties:
+            revenue:
+              type: number
+            gross_profit:
+              type: number
+            ebitda:
+              type: number
+            ebit:
+              type: number
+            net_income:
+              type: number
+            line_items:
+              type: array
+              items:
+                type: object
+        key_ratios:
+          type: object
+          properties:
+            working_capital:
+              type: number
+            current_ratio:
+              type: number
+            debt_to_equity:
+              type: number
+            gross_margin_pct:
+              type: number
+            ebitda_margin_pct:
+              type: number
+
+    # ── Validation types ──
+
+    ValidationRequest:
+      type: object
+      properties:
+        trial_balance:
+          $ref: "#/components/schemas/TrialBalance"
+        jurisdiction:
+          type: string
+          nullable: true
+
+    ValidationResponse:
+      type: object
+      properties:
+        is_valid:
+          type: boolean
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              message:
+                type: string
+              severity:
+                type: string
+                enum: [ERROR, WARNING, INFO]
+              accounts_affected:
+                type: array
+                items:
+                  type: string
+        balance_difference:
+          type: number
+          description: "Difference between total assets and total liabilities + equity"
+
+    # ── Synonym types ──
+
+    SynonymMatch:
+      type: object
+      properties:
+        text:
+          type: string
+        lang:
+          type: string
+        kontablo_uuid:
+          type: string
+          format: uuid
+        canonical_name_en:
+          type: string
+        source:
+          type: string
+        confidence:
+          type: number
+
+    # ── Auth types ──
+
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        token_type:
+          type: string
+          example: "bearer"
+        expires_in:
+          type: integer
+          description: Token validity in seconds
+          example: 86400
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        request_id:
+          type: string
