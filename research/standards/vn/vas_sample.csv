@@ -1,0 +1,6 @@
+CODE,ACCOUNT_NAME,NATURE
+111,Tiền mặt,DEBIT
+112,Tiền gửi Ngân hàng,DEBIT
+131,Phải thu của khách hàng,DEBIT
+152,Nguyên liệu vật liệu,DEBIT
+331,Phải trả cho người bán,CREDIT

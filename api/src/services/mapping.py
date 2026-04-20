@@ -1,6 +1,6 @@
-import pandas as pd
+import csv
 import os
-from typing import List, Optional
+from typing import List, Optional, Dict
 from ..models.kontablo import SingleMappingRequest, SingleMappingResponse
 from uuid import UUID
 from .ontology import OntologyService
@@ -11,7 +11,7 @@ class MappingService:
         self.standards_dir = standards_dir
         self.ontology_service = ontology_service
         self.ai_service = ai_service
-        self.cached_mappings = {}
+        self.cached_mappings: Dict[str, List[Dict]] = {}
 
     def get_standard_path(self, jurisdiction: str) -> Optional[str]:
         path_map = {
@@ -27,7 +27,7 @@ class MappingService:
             return None
         return os.path.join(self.standards_dir, rel_path)
 
-    def load_mapping_df(self, jurisdiction: str) -> Optional[pd.DataFrame]:
+    def load_mapping_data(self, jurisdiction: str) -> Optional[List[Dict]]:
         jurisdiction = jurisdiction.lower()
         if jurisdiction in self.cached_mappings:
             return self.cached_mappings[jurisdiction]
@@ -37,11 +37,11 @@ class MappingService:
             return None
         
         try:
-            # Handle different CSV formats (encoding, separators)
-            # Mexican SAT sample uses CÓDIGO
-            df = pd.read_csv(path, dtype={"CÓDIGO": str, "Code": str, "Code PCG": str})
-            self.cached_mappings[jurisdiction] = df
-            return df
+            with open(path, mode='r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                data = list(reader)
+                self.cached_mappings[jurisdiction] = data
+                return data
         except Exception as e:
             print(f"Error loading mapping for {jurisdiction}: {e}")
             return None
@@ -50,7 +50,19 @@ class MappingService:
         # Create a compact summary for the LLM
         return "\n".join([f"- {a.id}: {a.label_en} ({a.nature})" for a in self.ontology_service.accounts])
 
+
     async def map_account(self, request: SingleMappingRequest) -> SingleMappingResponse:
+        response = await self._perform_mapping(request)
+        
+        # 5. Global Co-responsibility Check for ALL mapped results
+        if response.kontablo_id != "unknown":
+            k_account = self.ontology_service.get_account(response.kontablo_id)
+            if k_account:
+                self.validate_co_responsibility(request, response, k_account)
+        
+        return response
+
+    async def _perform_mapping(self, request: SingleMappingRequest) -> SingleMappingResponse:
         # 1. Check in YAML ontology first (direct mapping)
         jurisdiction = request.jurisdiction.lower()
         for account in self.ontology_service.accounts:
@@ -66,23 +78,24 @@ class MappingService:
                 )
 
         # 2. Then check in jurisdiction research CSV
-        df = self.load_mapping_df(request.jurisdiction)
-        if df is not None:
+        data = self.load_mapping_data(request.jurisdiction)
+        if data:
             code_cols = ["CÓDIGO", "Code", "Code PCG", "CONTA"]
             match = None
-            for col in code_cols:
-                if col in df.columns:
-                    match = df[df[col].astype(str) == str(request.local_code)]
-                    if not match.empty:
+            for row in data:
+                for col in code_cols:
+                    if col in row and str(row[col]) == str(request.local_code):
+                        match = row
                         break
+                if match:
+                    break
             
-            if match is not None and not match.empty:
-                # We assume the CSV match is high confidence, even without a linked Kontablo ID yet.
+            if match:
                 # In reality, the CSV would map to a core ID.
                 return SingleMappingResponse(
                     local_code=request.local_code,
                     kontablo_id="asset.current.receivables", # Placeholder
-                    kontablo_uuid=UUID("00000000-0000-4000-8000-000000000104"),
+                    kontablo_uuid=self.ontology_service.get_account("asset.current.receivables").uuid,
                     label_en="Trade Receivables",
                     confidence_score=0.8,
                     match_method="fuzzy_string",
@@ -113,9 +126,31 @@ class MappingService:
         return SingleMappingResponse(
             local_code=request.local_code,
             kontablo_id="unknown",
-            kontablo_uuid=UUID("00000000-0000-4000-0000-000000000000"),
+            kontablo_uuid=UUID("00000000-0000-4000-b000-000000000000"),
             label_en="Unmapped Account",
             confidence_score=0.0,
             match_method="not_found",
             justification="No mapping found through lookup or AI fallback."
         )
+    def validate_co_responsibility(self, request: SingleMappingRequest, response: SingleMappingResponse, k_account):
+        """
+        Implements the Co-responsibility Architecture.
+        Checks if the mapping violates the deterministic rules of the Kontablo Graph.
+        """
+        inconsistencies = []
+        
+        # Rule 1: Nature Mismatch (Debit vs Credit)
+        if request.nature and request.nature != k_account.nature:
+            # We allow it, but we FLAG it as a major inconsistency
+            inconsistencies.append(f"Nature Mismatch: Account is {request.nature} but target node {k_account.id} is {k_account.nature}.")
+        
+        # Rule 2: Deterministic Boundary Violation (Example: Cash vs Non-Current)
+        if "cash" in request.local_name.lower() or "bank" in request.local_name.lower():
+            if "noncurrent" in k_account.id:
+                inconsistencies.append("Deterministic Violation: A liquid asset (Cash/Bank) is being mapped to a Non-Current node.")
+
+        if inconsistencies:
+            response.inconsistency_flag = True
+            response.inconsistency_note = " | ".join(inconsistencies)
+            response.confidence_score = min(response.confidence_score, 0.3) # Penality for inconsistency
+

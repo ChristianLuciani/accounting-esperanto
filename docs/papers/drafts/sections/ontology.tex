@@ -1,0 +1,55 @@
+\section{The Kontablo Ontology: Bridging the Divide}
+
+\subsection{Graph Architecture vs. Rigid Trees}
+Kontablo's fundamental departure from existing commercial ERP parameters is its graph-based metadata model. Extant commercial and statutory systems (NetSuite, Mexico's SAT, France's PCG) use rigid tree hierarchies which fundamentally fail at massive multi-jurisdiction mappings.
+
+When a company attempts to map its Mexican subsidiary (with 5-digit SAT codes) to its French holding company (with 3-digit PCG codes) within a traditional ERP, it encounters a 1:N or N:M mapping problem that can only be resolved via labor-intensive manual overrides. Kontablo resolves this by abstracting the transaction outside of a local country's tree; it becomes an incoming edge to a **Universal Graph Node** which serves as the absolute pivot point.
+
+\begin{figure}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+    >=Latex,
+    node distance=1.8cm and 3cm,
+    localnode/.style={draw, rectangle, rounded corners, align=center, fill=red!10, text width=4cm, font=\small},
+    kontablo/.style={draw, circle, align=center, minimum size=4cm, fill=blue!15, font=\bfseries},
+    target/.style={draw, diamond, aspect=2, align=center, fill=green!15, font=\small\bfseries},
+    agent/.style={draw, rectangle, rounded corners, align=center, fill=purple!15, font=\small}
+]
+
+% Local Nodes
+\node[localnode] (mx) {Mexico (SAT)\\ \texttt{101.01 Caja}};
+\node[localnode, below=1.2cm of mx] (fr) {France (PCG)\\ \texttt{531 Caisse}};
+\node[localnode, below=1.2cm of fr] (vn) {Vietnam (VAS)\\ \texttt{111 Tien mat}};
+
+% Kontablo Node
+\node[kontablo, right=4cm of fr] (kcash) {asset.current.cash\\[0.5em] \tiny{Universal Kontablo ID}};
+
+% Edges from local to Kontablo
+\draw[->, thick, dashed] (mx.east) to[out=0, in=140] node[above, sloped, font=\scriptsize] {Exact Lookup} (kcash.140);
+\draw[->, thick, dashed] (fr.east) to node[above, font=\scriptsize] {Exact Lookup} (kcash.180);
+\draw[->, thick, dashed] (vn.east) to[out=0, in=220] node[below, sloped, font=\scriptsize] {AI Semantic Fallback} (kcash.220);
+
+% IFRS Target
+\node[target, right=4cm of kcash] (ifrs) {IFRS Taxonomy\\ \texttt{CashEq}};
+\draw[->, ultra thick] (kcash.east) to node[above, font=\scriptsize] {1:1 Standardized} (ifrs.west);
+
+% Agent Integration
+\node[agent, above=3cm of kcash] (mcp) {Autonomous AI Agent\\ (via AP2 Protocol Intent Mandate)};
+\draw[->, ultra thick, red] (mcp.south) to node[right, align=left, font=\scriptsize] {API Write Access\\ (Language-Agnostic\\ Subledger Entry)} (kcash.north);
+
+\end{tikzpicture}%
+}
+\vspace{0.8em}
+\caption{The Kontablo Universal Bridge. Localized tree structures from disparate jurisdictions (Mexico, France, Vietnam) are abstracted into the unified \texttt{asset.current.cash} universal node. This deterministic graph serves as a stable mapping target for both IFRS compliance (right) and autonomous high-frequency M2M transactions (top).}
+\label{fig:multibridge}
+\end{figure}
+
+\subsection{AI Validation and the Co-responsibility Architecture}
+Kontablo maps 1:N cardinality disruptions via a strictly defined \textbf{Co-responsibility Architecture}. In this model, the integrated AI models (Gemini Ultra/Flash 2.5) act as augmentative auditors that propose mappings and verify human overrides. 
+
+If a human accountant makes a selection that contradicts the deterministic boundary of a node (e.g., mapping a physical cash account to a non-current asset node), the system generates an \textbf{Inconsistency Flag}. This flag, accompanied by a machine-generated audit note, is permanently attached to the transaction. This ensures that while the human remains the final authority (``AI proposes, Human disposes''), the system enforces a digital trail of accountability that simplifies future forensic audits. Final accountability is thus shared: the human for the choice, and the AI for the verification and warning.
+
+
+\subsection{Standard Hierarchy: The Level 3 Minimum Core}
+Based on a comparative analysis of 23 jurisdictions, we identify 18 Level 3 accounts present in 100\% of analyzed standards (e.g., cash, receivables, trade payables, share capital). An additional 12 accounts (e.g., Input VAT, Zakat Provision, Deferred Tax) are classified as ``Jurisdiction-Specific Overlays,'' which are toggled based on the entity's regulatory environment metadata.

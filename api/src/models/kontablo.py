@@ -1,5 +1,6 @@
 from pydantic import BaseModel, Field, UUID4
-from typing import List, Optional, Enum, Dict
+from typing import List, Optional, Dict
+from enum import Enum
 from datetime import date
 from uuid import UUID
 
@@ -47,6 +48,8 @@ class SingleMappingResponse(BaseModel):
     confidence_score: float = Field(..., ge=0, le=1)
     match_method: str = Field(..., description="Method used: exact_lookup, semantic_ai, fuzzy_string, not_found")
     justification: Optional[str] = None
+    inconsistency_flag: bool = Field(False, description="True if a human-provided mapping contradicts a deterministic AI boundary")
+    inconsistency_note: Optional[str] = Field(None, description="Detailed warning or explanation left by the AI/Human for audit trails")
 
 class BatchMappingResponse(BaseModel):
     company_id: str
@@ -64,6 +67,7 @@ class TransactionClassificationRequest(BaseModel):
     currency: Optional[str] = None
     debit_or_credit: Optional[AccountNature] = None
     context: Optional[dict] = None
+    agent_id: Optional[str] = Field(None, description="Optional ID for M2M executed transactions under AP2/A2A protocols for liability auditing")
 
 class TrialBalanceEntry(BaseModel):
     local_code: str
@@ -77,6 +81,7 @@ class TrialBalance(BaseModel):
     currency: str
     reporting_date: date
     entries: List[TrialBalanceEntry]
+    exchange_rate: Optional[float] = None  # Custom override for complex FX cases
 
 class ConsolidationRequest(BaseModel):
     target_currency: str = "USD"

@@ -39,18 +39,24 @@
 
 ---
 
-## 4. Mexico-Specific Questions (15 min)
-- **VAT Distinction:** "How do you handle the distinction between **IVA trasladado** (output VAT) and **IVA acreditable** (input VAT) in your chart of accounts? Does Kontablo's simple 'asset' vs 'liability' split handle the cash-basis VAT requirement in Mexico?"
-- **CFDI Compliance:** "The SAT requires CFDI electronic invoicing with specific code grouping. Does Kontablo's high-level abstraction layer (e.g., 'asset.current.receivables') lose critical information required for SAT reporting?"
-- **Chart of Accounts Grouping:** "Most ERPs in Mexico use the 'Código Agrupador del SAT'. Is mapping from this agrupador to Kontablo feasible for automated reporting?"
+## 4. Co-responsibility & AI Governance (10 min)
+- **Concept Presentation:** "In Kontablo, we use a 'Co-responsibility Architecture'. If an AI proposes a mapping that violates deterministic rules (e.g. mapping cash to a non-current asset), the system allows the human to override it but leaves an 'Inconsistency Flag' and an audit note. What is your opinion on this approach for reducing ledger corruption?"
+- **Trust:** "Does having an AI 'monitor' human entries for logical consistency increase your confidence in the resulting financial statements, or do you feel it undermines the accountant's authority?"
+- **Audit Value:** "For a tax audit by the SAT, do you think having these 'AI warnings' documented on problematic entries would be beneficial or harmful for the company?"
 
 ---
 
-## 5. Qualitative Discussion (10 min)
+## 5. Agentic Economy & M2M (10 min)
+- **M2M Transactions:** "Are you seeing any rise in autonomous or high-frequency digital transactions (API-driven payments)? How would you record 10,000 micro-transactions per day if they were executed by an autonomous AI agent?"
+- **Kontablo ID as Subledger:** "Kontablo proposes a universal ID (`asset.current.cash`) as the target for these AI agents, bypassing local tax codes in the initial booking. Does this separation between 'Agentic Execution' and 'Statutory Reporting' make sense for your workflow?"
+
+---
+
+## 6. Qualitative Discussion & Future Work (5 min)
 - **Feasibility:** "Does a 30-account taxonomy cover most Routine operations for an SME in Mexico?"
 - **Inflation Accounting:** "Although currently low, do you see a need for inflation adjustments (B-10) in this mapping standard?"
 
 ---
 
-## 6. Closing (5 min)
+## 7. Closing (5 min)
 (Standard closure)

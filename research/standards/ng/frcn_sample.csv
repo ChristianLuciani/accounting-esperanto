@@ -1,0 +1,7 @@
+ACCOUNT_CODE,DESCRIPTION,TYPE
+10000,Cash and Bank Balances,ASSET
+11000,Trade and Other Receivables,ASSET
+12000,Inventories,ASSET
+20000,Trade and Other Payables,LIABILITY
+21000,Current Tax Liabilities,LIABILITY
+30000,Share Capital,EQUITY

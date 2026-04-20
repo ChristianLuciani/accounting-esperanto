@@ -1,0 +1,47 @@
+\section{Deterministic Boundaries for AI Agents}
+
+\subsection{Standardizing the Universal ID Definition}
+For an AI agent to execute a transaction autonomously, it must have clear, binary boundaries for each node. Any ambiguity leads to halluncination or misclassification. 
+
+\textbf{Kontablo solves this by providing a "Selection Definition Library" for each universal node.} Every Level 3 ID (like \texttt{asset.current.cash}) is assigned a single, binary deterministic question. 
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+    >=Latex,
+    node distance=1.2cm and 2cm,
+    qnode/.style={draw, diamond, aspect=2, align=center, fill=orange!10, font=\small},
+    anode/.style={draw, rectangle, rounded corners, align=center, fill=green!10, text width=3cm, font=\small},
+    targetnode/.style={draw, circle, align=center, fill=blue!10, minimum size=2.5cm, font=\bfseries}
+]
+
+% Question Flow
+\node[qnode] (q1) {Is it physical currency or\\ legal tender at a bank?};
+\node[qnode, below=of q1] (q2) {Is it redeemable at par\\ in less than 90 days?};
+
+% Decisions
+\node[anode, right=of q1] (a1) {YES};
+\node[anode, right=of q2] (a2) {YES};
+
+% Final Node
+\node[targetnode, right=of a1] (kcash) {asset.current.cash};
+
+% Flow Edges
+\draw[->] (q1) -- (a1);
+\draw[->] (a1) -- (kcash);
+\draw[->] (q1) -- node[left] {NO} (q2);
+\draw[->] (q2) -- (a2);
+\draw[-] (a2) -| (kcash);
+\draw[->] (q2) -- node[left] {OUT} +(0,-2) node[below] {Map to Investment/Other};
+
+\end{tikzpicture}
+\caption{Deterministic node selection boundaries for AI agents. By reducing universal accounting concepts to binary decision flows, Kontablo ensures AI mapping accuracy remains near 100\% while maintaining a human-auditable logical trail.}
+\label{fig:deterministic}
+\end{figure}
+
+For example, for the node \texttt{asset.current.cash}, the deterministic question is: \textit{``Is this physical money or legal tender available for immediate use?''} This explicitly excludes restricted cash (like escrows) or volatile cryptocurrencies, which are routed into different graph nodes.
+
+\subsection{Cross-Jurisdiction Semantic Bridge}
+Imagine a multinational with two accountants: one in Mexico who names the cash account ``Caja Revolvente'' and one in Brazil who uses ``Caixa Geral.'' To a human ERP manager, these are different. In the Kontablo Graph, both accountants’ local entries hit the same node because they both satisfy the deterministic criteria for `asset.current.cash`.
+
+This allows a corporate headquarters to have a \textbf{Unified Single-target Ledger} where the name of the local account is irrelevant to the consolidated analytical truth. The consolidation occurs at the graph layer, not the string/label layer.

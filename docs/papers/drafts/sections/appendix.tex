@@ -1,0 +1,31 @@
+\section*{Appendix A: Kontablo Level 3 Universal Accounts}
+
+\begin{table}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllc}
+\toprule
+\textbf{Kontablo ID} & \textbf{IFRS Tag Cross-Ref} & \textbf{Description} & \textbf{Universality} \\ \midrule
+asset.current.cash & CashAndCashEquivalents & Cash on hand, bank deposits. & 100\% \\
+asset.current.receivables & TradeAndOtherReceivables & Trade debt from customers. & 100\% \\
+asset.current.inventory & Inventories & Finished goods, WIP, and materials. & 100\% \\
+asset.noncurrent.ppe & PropertyPlantAndEquipment & Fixed assets at cost minus depr. & 100\% \\
+liab.current.payables & TradeAndOtherPayables & Trade debt to suppliers. & 100\% \\
+liab.current.tax\_payable & CurrentTaxLiabilities & Income tax owed to state. & 100\% \\
+equity.capital.paid\_in & IssuedCapital & Nominal value of shares. & 100\% \\
+equity.earnings.retained & RetainedEarnings & Accumulated profits/losses. & 100\% \\
+rev.operating.sales & RevenueFromContractWithCust & Principal operating revenue. & 100\% \\
+exp.operating.cogs & CostOfSales & Direct production/purchase costs. & 100\% \\
+exp.operating.ga & AdministrativeExpenses & General office and staff expenses. & 100\% \\
+liab.current.vat\_out & CurrentTaxLiabilities (VAT) & Output VAT collected (Optional). & 91\% \\
+asset.current.vat\_in & OtherReceivables (VAT) & Input VAT recoverable (Optional). & 91\% \\
+\bottomrule
+\end{tabular}
+}
+\caption{The core universal Level 3 taxonomy of the Kontablo Graph. Note that 18 of the 30 accounts maintain 100\% universality, while 12 accounts (like VAT) are toggled as optional overlays depending on the tax jurisdiction profile.}
+\label{tab:accounts}
+\end{table}
+
+\section*{Appendix B: Jurisdiction Data Availability}
+
+The research analyzed 23 jurisdictions across four economic clusters. Primary machine-readable data sources include the \textbf{Mexican SAT Chart of Accounts (2023)}, the \textbf{French PCG (2022)}, and the \textbf{Brazilian Plano Referencial (2024)}. Vietnamese (VAS) and Saudi Arabian (SOCPA) data were analyzed using bilingual AI-assisted semantic mapping to reconcile non-Latin nomenclatures.

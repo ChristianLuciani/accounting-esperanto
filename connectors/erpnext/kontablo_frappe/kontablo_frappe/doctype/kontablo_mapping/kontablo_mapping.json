@@ -1,0 +1,78 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "allow_rename": 1,
+ "autoname": "field:erp_account",
+ "creation": "2026-04-08 00:00:00.000000",
+ "docstatus": 0,
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "fields": [
+  {
+   "fieldname": "erp_account",
+   "fieldtype": "Link",
+   "label": "ERP Account",
+   "options": "Account",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "kontablo_id",
+   "fieldtype": "Data",
+   "label": "Kontablo Universal ID",
+   "reqd": 1
+  },
+  {
+   "fieldname": "confidence_score",
+   "fieldtype": "Percent",
+   "label": "Confidence Score",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Suggested\nConfirmed\nFlagged",
+   "default": "Suggested"
+  },
+  {
+   "fieldname": "inconsistency_flag",
+   "fieldtype": "Check",
+   "label": "Inconsistency Flag",
+   "read_only": 1
+  },
+  {
+   "fieldname": "audit_note",
+   "fieldtype": "Small Text",
+   "label": "Audit Note (Co-responsibility)"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-04-08 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Kontablo Frappe",
+ "name": "Kontablo Mapping",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "read": 1,
+   "role": "Accounts User"
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,20 @@
+\section{AI Governance: The Co-responsibility Paradigm}
+
+\subsection{Beyond Human-in-the-Loop}
+The term ``Human-in-the-Loop'' (HITL) often implies a passive human confirmation of an automated outcome. In financial systems, where legal liability and fiduciary duty are paramount, HITL is insufficient. Kontablo introduces the \textbf{Co-responsibility Architecture} (CRA). 
+
+CRA is an operational framework where accountability is technically shared and audited across the human-machine boundary. It is inspired by the Shared Responsibility Models emerging in AI ethics (ISACA, 2024; EU AI Act, 2025) but moves from policy to \textbf{deterministic verification}.
+
+\subsection{Mechanism: The Inconsistency Flagging Protocol}
+In the Kontablo Graph, every universal node (e.g., \texttt{asset.current.cash}) is governed by a deterministic boundary (see Section 4). If a human accountant attempts to override an AI suggestion with a choice that violates these boundaries, the system does not simply block the action (respecting human authority), but it triggers an \textbf{Inconsistency Flag}.
+
+\begin{itemize}
+    \item \textbf{AI Proposes:} The system suggests a mapping based on graph logic.
+    \item \textbf{Human Disposes:} The accountant makes the final selection.
+    \item \textbf{Auditable Warning:} If the human selection violates the node’s boundary, the AI attaches an immutable \texttt{inconsistency\_note} explaining the logical breach.
+\end{itemize}
+
+\subsection{Anti-Corruption and Institutional Integrity}
+This paradigm is a powerful tool against institutional corruption. In traditional systems, a human can manually reclassify a "Physical Cash" entry into an "Opaque Expense" to hide embezzlement. In Kontablo, such an action would trigger an automatic, permanent flag in the ledger that no single human can erase without an audit trail. 
+
+For governmental organizations and NGOs, this creates a \textbf{Digitally-Enforced Integrity Layer}. It reduces the trust required in any single individual by ensuring that the AI acts as a 24/7, incorruptible witness to every accounting deviation.

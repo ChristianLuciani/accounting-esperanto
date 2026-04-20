@@ -1,0 +1,16 @@
+\section{Accounting for the Autonomous Agent Economy}
+
+\subsection{The Next Infrastructure Tier: AI Agents as Entities}
+In the impending Machine-to-Machine (M2M) Agent Economy—driven by frameworks like Google’s \textit{Agent2Agent} (A2A) and the \textit{Agent Payments Protocol} (AP2)—AI agents act as autonomous economic actors. These agents negotiate, authorize, and execute high-frequency financial payments using cryptographically signed digital mandates.
+
+A major risk in this transition is \textbf{High-Frequency Accounting Failure}. If an AI agent executes a cross-border procurement mandate (e.g., purchasing compute from a Vietnam-based cloud platform), it cannot manually resolve how that expense should be categorized in its employer’s German SAP instance. The absence of a universal, deterministic vocabulary would force these agents into a reconciliation nightmare.
+
+\subsection{Kontablo as a Universal Subledger for AP2}
+Kontablo serves as the foundational accounting layer (Subledger) for the AP2-governed ecosystem:
+\begin{enumerate}
+    \item \textbf{Model Context Protocol (MCP) Server Integration:} By exposing the Kontablo Graph via an MCP server, any authorized AI agent (Anthropic Claude, Google Gemini, OpenAI GPT) can query the corporate enterprise’s unified ledger semantics in real-time. This allows the agent to ``know'' exactly how it must label an incoming transaction without human intervention.
+    \item \textbf{Deterministic Agent Booking:} When an AP2 ``Intent Mandate'' clears, Kontablo’s API receives the transaction payload and enriches it with the initiating \texttt{Agent\_ID}. This ensures that while the transaction is swallowed into the General Ledger (GL) standardly, a verifiable audit trail exists to track which agent was responsible for the spend.
+    \item \textbf{Micro-Transaction Aggregation:} Kontablo provides the structural perimeter to batch thousands of M2M API micropayments (e.g., payments of \$0.005) into consolidated, IFRS-compliant journal entries—an impossible feat under today’s rigid, transaction-by-transaction localization codes.
+\end{enumerate}
+
+By providing a stable API ingestion layer that abstracts away the tax-code-specific labels of 23 jurisdictions, Kontablo effectively creates a ``Financial Universal Service Bus'' (USB) for autonomous agentic commerce. This allows agents to operate with zero friction across national borders while maintaining 100\% statutory auditability for human CPAs.

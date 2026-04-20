@@ -26,9 +26,17 @@ class ConsolidationService:
                 
                 k_id = mapping_res.kontablo_id
                 
-                # 2. Currency Conversion (Stub - assumes 1:1 for now or needs FX service)
-                # In a real implementation, we would fetch FX rates for tb.currency -> target_currency
-                fx_rate = 1.0 
+                # 2. Currency Conversion
+                # Priority: 1. Manual override (tb.exchange_rate), 2. Rate map, 3. Default (1.0)
+                rate_map = {
+                    ("VES", "USD"): 0.027, # Hyper-extreme case: 36.5 official vs market
+                    ("EUR", "USD"): 1.08,
+                    ("BRL", "USD"): 0.20,
+                    ("MXN", "USD"): 0.058
+                }
+                
+                fx_key = (tb.currency.upper(), target_currency.upper())
+                fx_rate = tb.exchange_rate or rate_map.get(fx_key, 1.0)
                 
                 debit_val = entry.debit * fx_rate
                 credit_val = entry.credit * fx_rate
