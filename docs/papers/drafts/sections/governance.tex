@@ -1,20 +1,61 @@
 \section{AI Governance: The Co-responsibility Paradigm}
 
-\subsection{Beyond Human-in-the-Loop}
-The term ``Human-in-the-Loop'' (HITL) often implies a passive human confirmation of an automated outcome. In financial systems, where legal liability and fiduciary duty are paramount, HITL is insufficient. Kontablo introduces the \textbf{Co-responsibility Architecture} (CRA). 
+\section{Ontology Governance and the Co-responsibility Paradigm}
 
-CRA is an operational framework where accountability is technically shared and audited across the human-machine boundary. It is inspired by the Shared Responsibility Models emerging in AI ethics (ISACA, 2024; EU AI Act, 2025) but moves from policy to \textbf{deterministic verification}.
+\subsection{The Co-responsibility Architecture (CRA)}
+To prevent ``AI-only audit loops''—where automated systems silently hide booking errors or fraud from human supervisors—Kontablo implements a **Co-responsibility Architecture (CRA)**. This architecture formalizes the governance boundary between human operators and AI models, ensuring that neither party can modify financial records without leaving a verifiable audit trail.
 
-\subsection{Mechanism: The Inconsistency Flagging Protocol}
-In the Kontablo Graph, every universal node (e.g., \texttt{asset.current.cash}) is governed by a deterministic boundary (see Section 4). If a human accountant attempts to override an AI suggestion with a choice that violates these boundaries, the system does not simply block the action (respecting human authority), but it triggers an \textbf{Inconsistency Flag}.
+The CRA operates as a multi-stage control loop:
+\begin{enumerate}
+    \item \textbf{AI Proposes:} The semantic mapping engine analyzes incoming transactions and proposes a Level 3 target node ($V_{\text{universal}}$), attaching a confidence score ($\theta$) and a natural language justification.
+    \item \textbf{Human Disposes:} A human accountant or domain expert reviews the proposal. The human has the authority to approve the proposed mapping or override it with a different Level 3 classification.
+    \item \textbf{Rule Engine Evaluates:} If the human overrides the proposal, the deterministic rule engine verifies whether the new mapping violates any core ontology constraints (e.g., nature consistency, statement boundaries, or liquidity limits). If a violation is detected, the engine does not block the transaction—which would halt business operations—but instead forces the human to enter a justification.
+\end{enumerate}
 
+\begin{figure}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+    >=Latex,
+    node distance=2cm,
+    block/.style={draw, rectangle, rounded corners, fill=blue!5, text width=3.5cm, align=center, minimum height=1.2cm, font=\small},
+    decision/.style={draw, diamond, aspect=2, fill=yellow!10, text width=3cm, align=center, font=\small},
+    database/.style={draw, cylinder, shape border rotate=90, fill=gray!15, text width=2.5cm, align=center, minimum height=1.5cm, font=\small}
+]
+
+% Nodes
+\node[block] (ai_propose) {\textbf{1. AI Proposes}\\ Generates mapping proposal and confidence score};
+\node[block, right=1.5cm of ai_propose] (human_override) {\textbf{2. Human Disposes}\\ Accountant reviews or overrides mapping};
+\node[decision, below=1cm of human_override] (rule_check) {\textbf{3. Rule Engine}\\ Validates deterministic boundaries};
+
+\node[block, left=2.3cm of rule_check] (flag_record) {\textbf{4. Inconsistency Flagged}\\ Set \texttt{inconsistency\_flag} = True \& write audit note};
+\node[database, below=1cm of flag_record] (db) {\textbf{Audit Ledger}\\ Persist signed transactional metadata};
+
+% Paths
+\draw[->, thick] (ai_propose) -- (human_override);
+\draw[->, thick] (human_override) -- (rule_check);
+\draw[->, thick] (rule_check) -- node[above] {Violation} (flag_record);
+\draw[->, thick] (rule_check) -- node[right] {Valid} (db);
+\draw[->, thick] (flag_record) -- (db);
+
+\end{tikzpicture}%
+}
+\caption{The Co-responsibility Architecture (CRA) feedback loop. An AI-proposed mapping is reviewed by a human accountant. If the human override violates deterministic ontology rules (e.g., changing cash nature), the system forces the entry of an explanation, flags the transaction, and writes it to the immutable ledger for future auditor review.}
+\label{fig:cra_loop}
+\end{figure}
+
+\subsection{Database Persistence and Flagging Mechanics}
+The outputs of the CRA are persisted directly within the database schema of the ERP integration (e.g., as custom fields in Frappe/ERPNext's \texttt{Journal Entry Account} DocType or SAP B1's user-defined fields). 
+
+Two key metadata fields are appended to every mapped transaction record:
 \begin{itemize}
-    \item \textbf{AI Proposes:} The system suggests a mapping based on graph logic.
-    \item \textbf{Human Disposes:} The accountant makes the final selection.
-    \item \textbf{Auditable Warning:} If the human selection violates the node’s boundary, the AI attaches an immutable \texttt{inconsistency\_note} explaining the logical breach.
+    \item \texttt{inconsistency\_flag}: A boolean field that is set to \texttt{true} if the mapping violates a deterministic rule.
+    \item \texttt{inconsistency\_note}: A text field containing the specific rule violation description (e.g., ``Nature Mismatch: local debit account mapped to credit node \texttt{equity.capital}'') concatenated with the human operator's written justification for the override.
 \end{itemize}
 
-\subsection{Anti-Corruption and Institutional Integrity}
-This paradigm is a powerful tool against institutional corruption. In traditional systems, a human can manually reclassify a "Physical Cash" entry into an "Opaque Expense" to hide embezzlement. In Kontablo, such an action would trigger an automatic, permanent flag in the ledger that no single human can erase without an audit trail. 
+Once written, these fields are cryptographically hashed and sealed as part of the transaction block. This makes it impossible for an internal user to change a mapping post-facto to cover up irregularities without triggering a hash mismatch in the audit ledger.
 
-For governmental organizations and NGOs, this creates a \textbf{Digitally-Enforced Integrity Layer}. It reduces the trust required in any single individual by ensuring that the AI acts as a 24/7, incorruptible witness to every accounting deviation.
+\subsection{Anti-Corruption and Embezzlement Mitigation}
+In legacy corporate environments, fraud often occurs through the collusion of internal accounting staff who ``rubber-stamp'' misclassified journal entries (e.g., booking personal expenditures as business-related ``Administrative Expenses'' or masking asset withdrawals as ``Intercompany Receivables''). 
+
+By inserting the CRA between the general ledger database and the user interface, Kontablo establishes an automated, independent ``witness.'' Because the deterministic rules cannot be bribed or pressured, any fraudulent mapping override will automatically flag itself in the audit database. When external auditors perform their review, they do not need to sample thousands of transactions randomly; they simply query for all records where \texttt{inconsistency\_flag == true}. This structural transparency dramatically increases the difficulty of internal embezzlement and enforces compliance at the database write-in layer.

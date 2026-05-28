@@ -1,15 +1,16 @@
 \section{Conclusion and Future Work}
 
-The key finding is that despite the wide disparity in local accounting tree structures across 23 national jurisdictions, a \textbf{minimum universal core of 18 accounts} (Level 3 nodes) anchors all analyzed statutory systems. Building Kontablo around this core—rather than attempting a politically-negotiated compromise—offers a practical path toward the ultimate goal: a 99\%-automatable global accounting protocol, heavily supervised and ultimately authorized by human expert oversight.
+In this paper, we presented Kontablo, an open-source, IFRS-anchored universal accounting ontology designed to resolve the semantic fragmentation of localized ledger systems (the ``Accounting Babel'' problem). By representing the financial universe as a directed multi-dimensional property graph rather than a rigid tree hierarchy, Kontablo provides a stable, jurisdiction-agnostic subledger for both multinational ERP consolidation and the high-frequency Machine-to-Machine (M2M) Agentic Economy.
 
-Our analysis demonstrates that the 30 Level 3 accounts cover **92\% of routine business transactions by empirical volume (count)**—as benchmarked against thousands of generic SME ledger exports—validating that extreme ledger granularity in national standards is mostly reserved for rare statistical or bureaucratic edge cases.
+To enable secure, automated translation, we introduced a three-tier mapping resolution strategy (exact lookup, disambiguation rules, and semantic AI fallback) and bound it to a Co-responsibility Architecture (CRA). The CRA ensures that human override authority is preserved while automatically auditing deviations through immutable database inconsistency flags. We validated this framework using a mass-consolidation engine across 9 jurisdictions, demonstrating that a minimum core of 30 Level 3 accounts can represent 92\% of routine transactions while dynamically managing hyperinflation restatements (IAS 29) and local overlays (such as VAT and Zakat).
 
-Future work for Kontablo includes: 
+Future research and development will focus on the following roadmap areas:
 \begin{enumerate}
-    \item \textbf{Expert Validation Phase (Q2 2026):} Conducting a series of structured validation interviews with 15 expert CPAs from diverse OECD and non-OECD nations.
-    \item \textbf{Industry-Specific Extensions:} Developing specialized ontology overlays for banking (IFRS 9/7), insurance (IFRS 17), and agriculture (IAS 41).
-    \item \textbf{Deployment of Universal ERP Connectors:} Deploying production-grade two-way API connectors for the 10 primary commercial systems evaluated in section 5.6 (SAP, NetSuite, Dynamics 365, etc.).
-    \item \textbf{High-Frequency Agentic Tracking:} Standardizing \texttt{Agent\_ID} fields and batching mechanisms within the Kontablo Graph to track liability and authorization trails for the burgeoning autonomous internet commerce economy.
+    \item \textbf{Global Expert Validation Phase:} Conducting structured validation interviews with CPAs and accounting standard-setters across OECD and non-OECD nations to refine the Level 3 core.
+    \item \textbf{Production ERP Connectors:} Building production-grade, two-way sync connectors for NetSuite and SAP S/4HANA using the Tree-to-Graph linearization protocol.
+    \item \textbf{AP2 and A2A Protocol Standards:} Formulating the official RFC specification for embedding Kontablo Level 3 UUIDs within the transactional payloads of the Agent Payments Protocol (AP2).
+    \item \textbf{Specialized Industry Overlays:} Expanding the ontology with specialized Level 3/4 overlays for banking (IFRS 9), insurance (IFRS 17), and agriculture (IAS 41).
+    \item \textbf{High-Frequency Agentic Tracking:} Standardizing \texttt{Agent\_ID} fields and micro-transaction batching mechanisms within the Kontablo Graph.
 \end{enumerate}
 
 The Kontablo Universal Accounting Ontology is currently published as an open-source project under an MIT license, with the full research data, mass-consolidation engine, and AI mapping services available for public auditing and collaborative extension.
