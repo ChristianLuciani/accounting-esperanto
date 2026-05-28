@@ -1,3 +1,5 @@
+> **Historical snapshot — 2026-01-28.** Research workflow status from Phase 0/Phase 1. Current project state: see [EXECUTION_STATUS.md](../../EXECUTION_STATUS.md).
+
 # Research Workflow Status
 
 **Last Updated:** 2026-01-28T00:35:31.384358

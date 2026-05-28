@@ -50,6 +50,6 @@ We have successfully completed the foundational research, jurisdictional expansi
 ---
 
 ## 📄 Key Repository Documents
-- **Whitepaper PDF:** [kontablo_preprint_modular.pdf](file:///Users/eva/PROJECTOS/GitHub/ChristianLuciani/accounting-esperanto/docs/papers/drafts/kontablo_preprint_modular.pdf)
-- **ADR 008 (Co-responsibility):** [ADR 008](file:///Users/eva/PROJECTOS/GitHub/ChristianLuciani/accounting-esperanto/docs/adr/008_co_responsibility_governance.md)
-- **Node Definitions:** [ontology_definitions.md](file:///Users/eva/PROJECTOS/GitHub/ChristianLuciani/accounting-esperanto/research/ontology_definitions.md)
+- **Whitepaper PDF:** [kontablo_preprint_modular.pdf](docs/papers/drafts/kontablo_preprint_modular.pdf)
+- **ADR 008 (Co-responsibility):** [ADR 008](docs/adr/008-co-responsibility-governance.md)
+- **Node Definitions:** [ontology_definitions.md](research/ontology_definitions.md)
