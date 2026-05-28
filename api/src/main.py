@@ -5,7 +5,8 @@ import os
 from typing import List, Optional
 from .models.kontablo import (
     KontabloAccount, SingleMappingRequest, SingleMappingResponse,
-    BatchMappingRequest, BatchMappingResponse
+    BatchMappingRequest, BatchMappingResponse,
+    TransactionClassificationRequest, ConsolidationRequest
 )
 from .services.mapping import MappingService
 from .services.ontology import OntologyService

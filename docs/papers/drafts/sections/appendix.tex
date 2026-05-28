@@ -1,0 +1,44 @@
+\section{Appendix: Level 3 Account Catalog}
+
+The following table lists a comprehensive selection of the core Level 3 accounts defined in the Kontablo v0.2.0 schema, illustrating the mapping of localized codes from five representative jurisdictions (Mexico SAT, Colombia PUC, Panama DGI, Vietnam VAS, France PCG).
+
+\begin{table}[H]
+\centering
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{l|l|c|l|p{6.5cm}}
+\hline
+\textbf{Level 3 ID} & \textbf{UUID} & \textbf{Nature} & \textbf{IFRS Tag} & \textbf{Local Code Mappings (MX, CO, PA, VN, FR)} \\ \hline
+\texttt{asset.current.cash} & \texttt{...0101} & Debit & \texttt{CashAndCashEquivalents} & MX: 101, CO: 1105, PA: 1.1.01, VN: 111, FR: 512 \\
+\texttt{asset.current.bank} & \texttt{...0102} & Debit & \texttt{CashAndCashEquivalents} & MX: 102, CO: 1110, PA: 1.1.02, VN: 112, FR: 512 \\
+\texttt{asset.current.receivables} & \texttt{...0104} & Debit & \texttt{TradeAndOtherReceivables} & MX: 105, CO: 1305, PA: 1.1.05, VN: 131, FR: 411 \\
+\texttt{asset.current.vat\_input} & \texttt{...0001} & Debit & \texttt{CurrentTaxAssetsCurrent} & MX: IVA Acred., CO: 2408, PA: 1.1.12, VN: 1331, FR: 445660 \\
+\texttt{asset.current.inventory} & \texttt{...0106} & Debit & \texttt{CurrentInventories} & MX: 151, CO: 1430, PA: 1.1.08, VN: 152, FR: 371 \\
+\texttt{asset.current.prepaid} & \texttt{...0001} & Debit & \texttt{CurrentPrepayments} & MX: 122, CO: 1705, PA: 1.1.10, VN: 121, FR: 488 \\
+\texttt{asset.noncurrent.ppe} & \texttt{...0110} & Debit & \texttt{PropertyPlantAndEquipment} & MX: 181, CO: 1516, PA: 2.1.01, VN: 211, FR: 211 \\
+\texttt{asset.noncurrent.rou\_assets} & \texttt{...0001} & Debit & \texttt{RightOfUseAssets} & MX: N/A, CO: N/A, PA: Lease Asset, VN: N/A, FR: 215 \\
+\texttt{asset.noncurrent.intangibles} & \texttt{...0002} & Debit & \texttt{IntangibleAssetsOtherThanGW} & MX: 191, CO: 1630, PA: 2.2.01, VN: 213, FR: 2800 \\
+\texttt{asset.noncurrent.goodwill} & \texttt{...0003} & Debit & \texttt{Goodwill} & MX: N/A, CO: 1605, PA: Goodwill, VN: N/A, FR: 207 \\
+\texttt{liability.current.payables} & \texttt{...0201} & Credit & \texttt{TradeAndOtherPayables} & MX: 201, CO: 2205, PA: 3.1.01, VN: 331, FR: 401 \\
+\texttt{liability.current.vat\_output} & \texttt{...0203} & Credit & \texttt{CurrentTaxLiabilities} & MX: IVA Trasl., CO: 2408, PA: N/A, VN: 3331, FR: 445710 \\
+\texttt{liability.current.tax} & \texttt{...0205} & Credit & \texttt{CurrentTaxLiabilities} & MX: 2030, CO: 2404, PA: 3.1.05, VN: 3334, FR: 444 \\
+\texttt{liability.current.accrued} & \texttt{...0207} & Credit & \texttt{OtherCurrentProvisions} & MX: 270, CO: 2805, PA: 3.1.08, VN: 333, FR: 3900 \\
+\texttt{liability.noncurrent.debt} & \texttt{...0211} & Credit & \texttt{OtherNonCurrentFinLiabilities} & MX: 311, CO: 2105, PA: 4.1.01, VN: 311, FR: 164 \\
+\texttt{equity.capital} & \texttt{...0008} & Credit & \texttt{IssuedCapital} & MX: 300, CO: 3105, PA: 5.1.01, VN: 411, FR: 101 \\
+\texttt{equity.retained} & \texttt{...0009} & Credit & \texttt{RetainedEarnings} & MX: 305, CO: 3705, PA: 5.1.05, VN: 421, FR: 110 \\
+\texttt{revenue.operating} & \texttt{...0301} & Credit & \texttt{Revenue} & MX: 401, CO: 4135, PA: 6.1.01, VN: 511, FR: 701 \\
+\texttt{expense.cogs} & \texttt{...0404} & Debit & \texttt{CostOfSales} & MX: 501, CO: 6105, PA: 7.1.01, VN: 632, FR: 607 \\
+\texttt{expense.admin} & \texttt{...0501} & Debit & \texttt{AdministrativeExpenses} & MX: 504, CO: 5205, PA: 7.2.01, VN: 642, FR: 627 \\
+\texttt{expense.depreciation} & \texttt{...0503} & Debit & \texttt{DepreciationExpense} & MX: 506, CO: 5160, PA: 7.2.05, VN: 214, FR: 681 \\
+\texttt{expense.interest} & \texttt{...0505} & Debit & \texttt{FinanceCosts} & MX: 509, CO: 5305, PA: 7.3.01, VN: 635, FR: 661 \\
+\texttt{expense.tax} & \texttt{...0507} & Debit & \texttt{TaxExpense} & MX: 510, CO: 5405, PA: 7.4.01, VN: 821, FR: 695 \\
+\hline
+\end{tabular}%
+}
+\caption{Comprehensive list of Level 3 Accounts showing mapped local codes across representative jurisdictions.}
+\label{tab:l3_accounts}
+\end{table}
+
+\section*{Appendix B: Jurisdiction Data Availability}
+
+The research analyzed 23 jurisdictions across four economic clusters. Primary machine-readable data sources include the \textbf{Mexican SAT Chart of Accounts (2023)}, the \textbf{French PCG (2022)}, and the \textbf{Brazilian Plano Referencial (2024)}. Vietnamese (VAS) and Saudi Arabian (SOCPA) data were analyzed using bilingual AI-assisted semantic mapping to reconcile non-Latin nomenclatures.

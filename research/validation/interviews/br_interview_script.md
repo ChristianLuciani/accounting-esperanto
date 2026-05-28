@@ -2,7 +2,7 @@
 
 ## Overview
 - **Interviewer:** [Name]
-- **Participant ID:** [RV-XXX]
+- **Participant ID:** [RV-BR-XXX]
 - **Jurisdiction:** Brazil
 - **Date:** [YYYY-MM-DD]
 - **Duration:** 45-60 minutes
@@ -15,40 +15,36 @@
 ---
 
 ## 2. Professional Profile (5 min)
-- "Briefly describe your experience with **CPC (Comitê de Pronunciamentos Contábeis)** and **SPED (ECD/ECF)** compliance?"
-- "What is your experience with indirect tax calculations (ICMS/PIS/COFINS/ISS)?"
+- "Could you briefly describe your experience with **SPED (Sistema Público de Escrituração Digital)** and the Brazilian Reference Chart of Accounts (Plano de Contas Referencial)?"
+- "What is your primary ERP for tax calculation in Brazil (Sankhya, TOTVS, SAP S/4HANA)?"
 
 ---
 
 ## 3. Core Mapping Review (20 min)
 (Review standard Plano Referencial codes to Kontablo mapping)
 
-| Kontablo ID | Plano Referencial | Label (PT-BR) | Confidence (1-5) | Comments/Corrections |
-|-------------|-------------------|---------------|------------------|----------------------|
-| asset.current.cash | 1.01.01 | Caixa e Equivalentes | | |
-| asset.current.receivables| 1.01.03 | Contas a Receber | | |
-| asset.current.vat_input| 1.01.04 | Tributos a Recuperar | | |
-| asset.current.inventory | 1.01.02 | Estoques | | |
-| asset.noncurrent.ppe | 1.02.04 | Imobilizado | | |
-| liability.current.payables| 2.01.02 | Fornecedores | | |
-| liability.current.vat_output| 2.01.05 | Obrigações Tributárias| | |
-| liability.current.tax | 2.01.05.06 | IRPJ e CSLL a Pagar | | |
-| revenue.operating | 4.01.01 | Venda de Mercadorias | | |
-| expense.cogs | 5.01 | Custo das Mercadorias | | |
-| expense.admin | 5.02.02 | Despesas Adm | | |
+| Kontablo ID | Label (PT) | Confidence (1-5) | Comments/Corrections |
+|-------------|------------|------------------|----------------------|
+| asset.current.cash | Caixa / Bancos | | |
+| asset.current.receivables| Duplicatas a Receber | | |
+| asset.current.tax_asset| Impostos a Recuperar (PIS/COFINS)| | |
+| asset.current.inventory | Estoques | | |
+| liability.current.payables| Fornecedores | | |
+| liability.current.tax_liab| Impostos a Recolher (ICMS/ISS)| | |
+| liability.current.labor | Salários e Encargos | | |
+| revenue.operating | Receita Bruta de Vendas | | |
+| expense.cogs | Custo das Mercadorias Vendidas (CMV)| | |
 
 ---
 
 ## 4. Brazil-Specific Questions (15 min)
-- **Tax Complexity:** "Brazil has five major tax contributions (ICMS, PIS, COFINS, ISS, IPI). How do you typically structure these in your chart of accounts? Does Kontablo's single 'vat_output' and 'vat_input' oversimplify?"
-- **SPED Integration:** "Can Kontablo coexist with SPED requirements, or does the abstraction create mapping gaps (e.g., related to 'registros' like the 0150 or I150)?"
-- **Accounting Reconciliation:** "Most companies keep separate accounts for 'Credit at harvest' vs 'Credit on sales'. Is this distinction handled adequately?"
+- **Extreme Tax Complexity:** "In Brazil, PIS, COFINS, ICMS, and IPI have complex credit/debit logic. Does Kontablo's simple 'asset.current.tax_asset' vs 'liability.current.tax_liability' node capture enough detail for a Brazilian multinational, or is it too high-level?"
+- **SPED ECF/ECD Reconciliation:** "Every year, companies must reconcile their corporate books with the SPED Reference Chart. Does Kontablo's ontology speed up this reconciliation process?"
 
 ---
 
-## 5. Qualitative Discussion (10 min)
-- **Feasibility:** "Does a 30-account taxonomy cover most Routine operations for a company in Brazil (Lucro Real or Lucro Presumido)?"
-- **Inflationary Adjustments:** "While not currently used, do you see value in the 'historical-cost vs constant-currency' mapping?"
+## 5. Co-responsibility & AI Governance (5 min)
+- "Brazil has one of the world's most advanced digital audit systems (SPED). Does a 'Co-responsibility' model (AI warning the accountant about inconsistencies) provide a useful second layer of protection before the submission of the SPED file?"
 
 ---
 

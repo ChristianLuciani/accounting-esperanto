@@ -1,0 +1,7 @@
+ID,NAME_AR,NAME_EN,NATURE
+101,النقد,Cash on Hand,DEBIT
+102,البنك,Bank Balances,DEBIT
+105,العملاء,Trade Receivables,DEBIT
+201,الموردين,Trade Payables,CREDIT
+205,مخصص الزكاة,Zakat Provision,CREDIT
+301,رأس المال,Share Capital,CREDIT

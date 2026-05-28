@@ -1,0 +1,31 @@
+{
+ "charts": [],
+ "content": "[{\"type\": \"header\", \"label\": \"Kontablo Global Consolidation\", \"width\": \"Full\"}, {\"type\": \"shortcut\", \"label\": \"Kontablo Settings\", \"link_to\": \"Kontablo Settings\", \"icon\": \"settings\"}, {\"type\": \"shortcut\", \"label\": \"Mapping Results\", \"link_to\": \"Kontablo Mapping\", \"icon\": \"list\"}, {\"type\": \"card\", \"label\": \"Sync Progress\", \"content\": \"Monitor your global mapping status and inconsistency flags here.\"}]",
+ "creation": "2026-04-08 00:00:00.000000",
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "icon": "account",
+ "indicator_color": "blue",
+ "label": "Kontablo",
+ "links": [
+  {
+   "label": "Accounting",
+   "type": "Link",
+   "link_to": "Kontablo Mapping"
+  },
+  {
+   "label": "Settings",
+   "type": "Link",
+   "link_to": "Kontablo Settings"
+  }
+ ],
+ "modified": "2026-04-08 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Kontablo Frappe",
+ "name": "Kontablo",
+ "owner": "Administrator",
+ "parent_page": "Accounting",
+ "public": 1,
+ "sequence_id": 1,
+ "shortcuts": []
+}

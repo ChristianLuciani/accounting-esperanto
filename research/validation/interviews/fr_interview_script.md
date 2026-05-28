@@ -2,7 +2,7 @@
 
 ## Overview
 - **Interviewer:** [Name]
-- **Participant ID:** [RV-XXX]
+- **Participant ID:** [RV-FR-XXX]
 - **Jurisdiction:** France
 - **Date:** [YYYY-MM-DD]
 - **Duration:** 45-60 minutes
@@ -15,39 +15,36 @@
 ---
 
 ## 2. Professional Profile (5 min)
-- "Could you briefly describe your experience with **PCG (Plan Comptable Général)** and **FEC (Fichier des Écritures Comptables)** compliance?"
-- "What is your primary industry sector in France?"
+- "Could you briefly describe your experience with **PCG (Plan Comptable Général)** and the standard FEC (Fichier des Écritures Comptables) for audits?"
+- "What ERPs are you most familiar with in the French market (Sage 100, Cegid, SAP Business One, ERPNext)?"
 
 ---
 
 ## 3. Core Mapping Review (20 min)
-(Review PCG classes to Kontablo mapping)
+(Review standard PCG codes to Kontablo mapping)
 
-| Kontablo ID | PCG Code | Label (FR) | Confidence (1-5) | Comments/Corrections |
-|-------------|----------|------------|------------------|----------------------|
-| asset.current.cash | 512/53 | Banque / Caisse | | |
+| Kontablo ID | PCG Code | Label (FR) | {line_number}: {original_line} | Comments/Corrections |
+|-------------|----------|------------|---------------------------------|----------------------|
+| asset.current.cash | 512 | Banques | | |
 | asset.current.receivables| 411 | Clients | | |
-| asset.current.vat_input| 44566 | TVA Déductible | | |
-| asset.current.inventory | 37 | Stocks | | |
-| asset.noncurrent.ppe | 215/218 | Installations / Immos | | |
+| asset.current.vat_input| 44566 | TVA déductible sur ABS | | |
+| asset.current.inventory | 31-37 | Stocks et en-cours | | |
 | liability.current.payables| 401 | Fournisseurs | | |
-| liability.current.vat_output| 44571 | TVA Collectée | | |
-| liability.current.tax | 444 | Impôts sur les bénéfices| | |
-| revenue.operating | 707 | Ventes de marchandises | | |
-| expense.cogs | 607 | Achats de marchandises | | |
-| expense.admin | 641 | Rémunérations | | |
+| liability.current.vat_output| 44571 | TVA collectée | | |
+| revenue.operating | 701-707 | Ventes de produits/services | | |
+| expense.cogs | 601-607 | Achats stockés | | |
+| expense.admin | 61-62 | Services extérieurs | | |
 
 ---
 
 ## 4. France-Specific Questions (15 min)
-- **FEC Compliance:** "France requires the FEC (Audit File). Does Kontablo's high-level mapping create any challenges for future FEC audits?"
-- **Social Charges:** "France has complex social security charges (*Charges sociales*). Is '641' + '43' enough, or should we break down social charges further in Kontablo for French entities?"
-- **Chart of Accounts Rigidity:** "French accounting is very standardized via the PCG. How easy is it to map your typical SME's chart of accounts to the Kontablo 'Level 3' taxonomy?"
+- **FEC Audit Standard:** "The French FEC is one of the most rigorous audit file formats in Europe. Does our graph-based approach to mapping (Level 3 Minimum Core) risk missing granular data points required for a FEC audit?"
+- **Chart of Accounts Rigidity:** "The French PCG is very rigid. Do you think French CAs (Experts-Comptables) would trust an AI-driven mapping from PCG to a universal ontology, or would they prefer an 'Exact Lookup' table only?"
 
 ---
 
-## 5. Qualitative Discussion (10 min)
-- **Feasibility:** "Does a 30-account core cover most routine transactions for a French TPE/PME?"
+## 5. Co-responsibility & AI Governance (5 min)
+- "The 'Co-responsibility' architecture ensures that if a human deviates from PCG-IFRS logic, it is flagged. In a context of potential tax avoidance audits (DGFIP), do you see this as an asset to the accountant's professional defense?"
 
 ---
 
