@@ -1,3 +1,5 @@
+> **Historical snapshot — January 28, 2026.** Research phase setup notes from Phase 0. Current project state: see [EXECUTION_STATUS.md](../../EXECUTION_STATUS.md).
+
 # ✅ Research Phase Complete Setup
 
 **Date:** January 28, 2026  
