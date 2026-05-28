@@ -3,7 +3,7 @@
 > The protocol layer for AI-native, multi-jurisdictional accounting
 
 [![Status](https://img.shields.io/badge/status-research-yellow)]()
-[![License](https://img.shields.io/badge/license-MIT-blue)]()
+[![License](https://img.shields.io/badge/license-BSL%201.1-orange)]()
 [![AI-Ready](https://img.shields.io/badge/AI-ready-purple)]()
 
 ## 🎯 Vision
@@ -56,7 +56,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ## 📄 License
 
-MIT License - See [LICENSE](LICENSE)
+BSL 1.1 (Business Source License) — converts to Apache 2.0 after 4 years.
+Open-source ERP connectors (ERPNext/Frappe, Odoo) are licensed Apache 2.0.
+See [LICENSE](LICENSE) and [LICENSING.md](LICENSING.md) for details.
 
 ---
 

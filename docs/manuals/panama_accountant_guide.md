@@ -291,4 +291,4 @@ R: Los UUIDs son internos a su sistema contable y a cualquier herramienta de rep
 
 ---
 
-*Manual producido en el marco del proyecto Accounting Esperanto / Kontablo v0.1.0. Licencia MIT. Para reportar errores o sugerir mejoras, abrir un Issue en el repositorio del proyecto.*
+*Manual producido en el marco del proyecto Accounting Esperanto / Kontablo v0.1.0. Licencia BSL 1.1 (núcleo); Apache 2.0 (conectores a ERPs open-source). Para reportar errores o sugerir mejoras, abrir un Issue en el repositorio del proyecto.*

@@ -198,4 +198,4 @@ La adopción de Kontablo se propone como un proceso de tres etapas no invasivas,
 
 ---
 
-*Documento producido en el marco del proyecto de investigación Accounting Esperanto / Kontablo v0.1.0. Licencia MIT. Para sugerencias y correcciones, abrir un Issue en el repositorio del proyecto.*
+*Documento producido en el marco del proyecto de investigación Accounting Esperanto / Kontablo v0.1.0. Licencia BSL 1.1 (núcleo); Apache 2.0 (conectores a ERPs open-source). Para sugerencias y correcciones, abrir un Issue en el repositorio del proyecto.*
