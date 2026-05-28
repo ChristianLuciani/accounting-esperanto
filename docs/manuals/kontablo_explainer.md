@@ -72,7 +72,7 @@ Kontablo defines **30 universal "Level 3" accounts** that exist in some form in 
 | "It replaces IFRS" | No — it's **anchored to IFRS**, extending its reach |
 | "Only for multinationals" | No — even a local SME benefits from standardized AI bookkeeping |
 | "A tax compliance tool" | No — it maps to local tax codes but doesn't replace tax compliance |
-| "A software product" | Not yet — currently an **open specification** (MIT license) |
+| "A software product" | Not yet — currently an **open specification** (BSL 1.1 license) |
 
 ---
 
@@ -117,9 +117,9 @@ Your feedback directly shapes the Kontablo v0.3 specification and will be cited 
 
 ---
 
-## Open Source
+## Licensing
 
-All Kontablo specifications, research data, and this paper are available under MIT license:  
+Kontablo is published under the **Business Source License 1.1 (BSL 1.1)**, converting to Apache 2.0 after four years. Connectors to open-source ERP platforms (ERPNext/Frappe, Odoo) are licensed Apache 2.0. The ontology specification and research data are available for public auditing and collaborative extension:  
 **https://github.com/ChristianLuciani/accounting-esperanto**
 
 Questions? Contact: [researcher email] | LinkedIn: [profile]

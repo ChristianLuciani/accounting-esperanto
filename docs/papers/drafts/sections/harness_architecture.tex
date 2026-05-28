@@ -1,0 +1,284 @@
+% ============================================================
+% Section: The Kontablo Agent — Harness Architecture and
+%          the Locus of Error
+% Placement: after deterministic_logic.tex, before agentic_economy.tex
+% Status: new section added Phase 2.5 pre-publication pass
+% Epistemic notes:
+%   - Claims marked [VERIFICAR] require a literature check before
+%     final submission. Do not remove the marker; replace it with
+%     a confirmed citation or remove the claim.
+%   - Claims marked [PROPUESTA ORIGINAL] are design contributions
+%     without prior literature support identified. They must be
+%     defended as such in peer review, not presented as established
+%     facts.
+% ============================================================
+
+\section{The Kontablo Agent: Harness Architecture and the Locus of Error}
+\label{sec:harness}
+
+\subsection{The Model--Harness Distinction}
+\label{subsec:model_harness}
+
+A common framing of AI reliability in critical systems asks:
+\emph{``How do we prevent the LLM from hallucinating?''}
+This question, while intuitive, addresses the wrong architectural layer.
+It locates the reliability problem inside the model, where the design levers
+available to system architects are limited and where the state of the art
+offers no near-term guarantees suitable for ledger-grade accuracy.
+
+A more productive framing asks:
+\emph{``How do we design the system around the model so that the
+decision space the model can influence is constrained to valid outputs,
+and anything outside coverage escalates to a human rather than being
+confabulated?''} This reframe is the starting point of harness-centric
+agent design.
+
+The \textbf{model} is the stochastic component: the Large Language Model that
+performs semantic interpretation, natural-language matching, and
+open-ended reasoning over unstructured input. The \textbf{harness} is the
+deterministic scaffold surrounding it: the tool definitions and schemas
+that structure its output, the ontological constraints that bound the valid
+output space, the validation layers that reject structurally invalid proposals
+before they reach the ledger, and the escalation protocols that route
+out-of-coverage cases to human review.
+
+The core practical insight is that the reliability of an agentic system in a
+critical domain is determined far more by the harness than by the model's
+intrinsic accuracy. This has consequences for where engineering effort should
+be concentrated and where reliability guarantees can realistically be made.
+Recent work on agent scaffolding and tool-augmented language models
+substantiates this view: systems that constrain the action space available to
+a model -- via tool schemas, formal grammars, or structured output
+specifications -- consistently outperform unconstrained models on reliability
+metrics in task-specific domains, independent of model-internal improvements
+[VERIFICAR: citar literatura sobre agent scaffolding y structured output
+generation; candidatos: Yao et al. 2023 ReAct ICLR; Schick et al. 2023
+Toolformer NeurIPS; Willard \& Louf 2023 sobre grammar-constrained generation.
+Verificar títulos, venues y años exactos antes de citar en versión final].
+
+\subsection{Ontology-as-Constraint: Eliminating the Classical Accounting
+Hallucination Class}
+\label{subsec:ontology_constraint}
+
+In the absence of a harness, an LLM deployed for transaction classification
+can hallucinate in an accounting-specific way: it may propose an account code
+or name that \emph{sounds} plausible but does not correspond to any account in
+the client's chart of accounts, or it may classify a transaction to the wrong
+node with high expressed confidence and no observable uncertainty signal.
+
+The asymmetry with information retrieval is severe. A 95\% classification
+accuracy is acceptable in search; in a general ledger, the 5\% of
+misclassified transactions introduces systematic distortions that compound
+across reporting periods, survive into audited financial statements, and --
+in the presence of the Three-Tier Resolution pipeline -- would do so
+\emph{silently}, with no inconsistency flag raised, because an unconstrained
+model emitting a plausible-looking but wrong UUID would pass surface validation.
+
+Kontablo addresses this through what we term \textbf{ontology-as-constraint}:
+the agent's tool interface (exposed via the MCP server) accepts only Kontablo
+Level 3 UUIDs as valid account identifiers. The set of valid UUIDs is finite,
+enumerable, and maintained in the ontology graph. The harness rejects any
+proposed UUID that does not exist in the graph at validation time, before
+the value reaches the ledger write path.
+
+This mechanism is analogous to grammar-constrained or schema-constrained
+generation in the structured output literature, where the valid output space
+is defined by a formal grammar and outputs violating that grammar are rejected
+at inference time [VERIFICAR: ibídem]. In Kontablo's case the ``grammar'' is
+the ontology itself: the closed set of valid account UUIDs, each carrying its
+nature (debit/credit), IFRS tag, and deterministic boundary predicates from
+the Deterministic Boundary Library.
+
+The consequence is that the \emph{classical accounting hallucination class} --
+the emission of arbitrary account identifiers that do not exist in the
+ontology -- is architecturally eliminated at the harness level.
+This is not a probabilistic reduction in hallucination rate; it is a
+categorical elimination of a specific error class within the constrained
+output space. The model can still be wrong within the set of valid UUIDs
+(mapping a transaction to \texttt{expense.admin} when \texttt{expense.cogs}
+is correct), but it cannot emit a non-existent account.
+
+\textbf{Implementation dependency:} This guarantee holds only if the harness
+enforcement is strict and complete -- no code path allows a UUID to reach the
+ledger write step without a graph-membership check. This is a design
+requirement, not an automatic consequence of using an LLM with tool
+definitions. Any deployment that bypasses the validation layer for performance
+or convenience reasons loses this guarantee.
+
+\subsection{The Relocation of Residual Error}
+\label{subsec:residual_error}
+
+Eliminating the classical hallucination class does not eliminate error; it
+\emph{relocates} it. The residual error population, after ontology-as-constraint
+is applied, concentrates at a specific and identifiable location: the
+\textbf{boundary of semantic coverage}.
+
+\begin{figure}[ht]
+\centering
+\begin{tikzpicture}[
+    >=Latex,
+    node distance=1.5cm,
+    region/.style={draw, rounded corners, minimum width=5.5cm, minimum height=1.1cm, align=center, font=\small},
+    error/.style={draw, rounded corners, fill=red!10, text width=4.8cm, align=center, minimum height=1.0cm, font=\small},
+    eliminated/.style={draw, rounded corners, fill=green!10, text width=4.8cm, align=center, minimum height=1.0cm, font=\small},
+    label/.style={font=\footnotesize\itshape}
+]
+\node[region, fill=blue!5] (bounded) {Ontology-bounded decision space\\(30 Level 3 UUIDs)};
+\node[region, fill=gray!8, below=0.7cm of bounded] (boundary) {Semantic coverage boundary\\(unmapped types, jurisdictional gaps, ambiguous cases)};
+\node[region, fill=gray!15, below=0.7cm of boundary] (outside) {Outside ontology coverage\\(routed to human via CRA)};
+
+\node[eliminated, right=1.5cm of bounded] (e1) {Classical hallucination class\\ \textbf{eliminated} by harness};
+\node[error, right=1.5cm of boundary] (e2) {Residual error population\\ \textbf{relocated here}};
+\node[eliminated, right=1.5cm of outside] (e3) {No silent error:\\ escalated to human co-signer};
+
+\draw[->, thick] (bounded) -- (e1);
+\draw[->, thick] (boundary) -- (e2);
+\draw[->, thick] (outside) -- (e3);
+\end{tikzpicture}
+\caption{Locus of error before and after ontology-as-constraint is applied.
+Classical hallucination (arbitrary invalid outputs) is eliminated at the harness
+layer. Residual errors relocate to the semantic coverage boundary: unmapped
+transaction types, incomplete jurisdictional rules, and semantically ambiguous
+cases within valid UUID space. Cases outside coverage are escalated to human
+review rather than silently committed.}
+\label{fig:locus_of_error}
+\end{figure}
+
+Errors at the semantic coverage boundary take three forms:
+
+\begin{enumerate}
+    \item \textbf{Unmapped transaction types.} A transaction type not yet
+    represented in the ontology has no valid UUID. The Three-Tier Resolution
+    Pipeline routes it to Tier 3 (semantic AI fallback); if confidence remains
+    below the threshold (Section~6), it is flagged for human review rather than
+    forcing a low-confidence posting. The error is not confabulated -- it is
+    escalated and made observable.
+
+    \item \textbf{Jurisdictional edge cases.} A jurisdictional rule not yet
+    encoded in the Deterministic Boundary Library may allow a semantically
+    plausible UUID to pass boundary validation while violating an implicit
+    local constraint. These errors are attributable to incomplete rule coverage,
+    not to model hallucination. They are also correctable through ordinary
+    ontology maintenance as cases are discovered.
+
+    \item \textbf{Semantic ambiguity within coverage.} Some transactions
+    satisfy the boundary predicates of more than one Level 3 node. In these
+    cases Tier 3 may produce a defensible but suboptimal mapping. The
+    Co-responsibility Architecture (Section~10) manages this residual by
+    requiring human review for low-confidence Tier 3 outputs.
+\end{enumerate}
+
+This relocation is architecturally significant because boundary errors are
+\textbf{observable}: they manifest as flagged inconsistencies, low-confidence
+outputs, and unmapped-transaction queues -- all instrumentable signals.
+Stochastic interior errors from an unconstrained model are, by contrast,
+\textbf{silent}: a confident-but-wrong classification produces no observable
+artifact beyond the wrong posting itself, invisible to the audit trail unless
+a human catches it retrospectively.
+
+\textbf{[PROPUESTA ORIGINAL: La formulación de ``relocalización del error''
+como categoría analítica distinta de ``reducción de la tasa de error'' no
+tiene, a nuestro conocimiento, correlato directo en la literatura existente
+sobre agentes LLM en sistemas críticos. Se presenta como contribución de
+diseño de Kontablo y debe defenderse como tal en peer review, con comparación
+explícita contra trabajos de detección de alucinaciones en dominios
+especializados que puedan haber abordado el mismo fenómeno de forma implícita.
+Realizar búsqueda bibliográfica antes de la versión final.]}
+
+\subsection{The Engineering Reframe: From Intractable to Tractable}
+\label{subsec:reframe}
+
+The classical framing -- ``how do we stop the model from hallucinating?'' --
+is not only intractable as stated, but directs engineering effort at the wrong
+target. Hallucination in the general sense is an active area of model research
+with no near-term resolution that guarantees the classification accuracy a
+ledger requires across all inputs and distribution shifts.
+
+The productive reframe, which Kontablo's architecture instantiates, is:
+
+\begin{quote}
+\emph{How do we design the harness so that (a) the output space the agent
+can emit is bounded by the ontology, making confabulation of non-existent
+accounts architecturally impossible; (b) decisions within the bounded space
+that can be resolved by deterministic logic are resolved without inference;
+and (c) cases outside coverage or below confidence threshold are escalated
+to a human co-signer rather than silently committed?}
+\end{quote}
+
+This is a tractable engineering problem with identifiable components:
+
+\begin{itemize}
+    \item Schema-constrained tool interfaces that enforce UUID membership
+    \item The Three-Tier Resolution Pipeline (Section~6), which maximizes
+    the proportion of decisions resolved deterministically before reaching
+    the model
+    \item The Deterministic Boundary Library (Section~6.3), which validates
+    even Tier 3 proposals against ontological predicates before ledger write
+    \item The Co-responsibility Architecture (Section~10), which governs
+    the out-of-coverage escalation path
+\end{itemize}
+
+Kontablo's architectural principle~5 -- ``determinism over stochasticity
+wherever movable'' (ADR-009) -- formalizes this reframe as a standing design
+driver: whenever a decision can be migrated from stochastic inference to
+deterministic logic, it must be. The harness is the system-level
+implementation of this principle. The ontology-as-constraint is its primary
+instrument.
+
+\subsection{The Co-responsibility Architecture as Residual Error
+Management}
+\label{subsec:cra_as_error_management}
+
+The Co-responsibility Architecture (ADR-008, Section~10) is commonly
+presented as a governance mechanism for human oversight. In the context of
+the harness architecture, it plays a more specific functional role: it is the
+\textbf{residual error management layer}.
+
+Where the three-tier pipeline and the Deterministic Boundary Library resolve
+decisions within coverage, the CRA governs what happens at and beyond the
+coverage boundary. When the harness cannot deterministically resolve a
+transaction -- because no Tier 1 or Tier 2 rule matches, and Tier 3 returns
+confidence below threshold -- the CRA routes the transaction to human review,
+enforces justification logging, and records the outcome with an immutable
+audit trail.
+
+The human accountant in this design is not a rubber-stamp approver of AI
+output. They are the \textbf{resolver of the residual error population}: the
+cases that are genuinely beyond automated coverage and require human judgment.
+The CRA's inconsistency flagging mechanism ensures that every such resolution
+is recorded and attributable, operationalizing the ISACA shared-responsibility
+model and the EU AI Act's requirements for high-risk AI systems in financial
+contexts (ISACA, 2024; EU AI Act, 2025).
+
+This framing implies a property of the system over time: as the ontology
+expands -- more jurisdictions mapped, more transaction types covered, more
+boundary predicates encoded -- the population of out-of-coverage cases
+shrinks and the human review load decreases. The CRA, operating on a
+shrinking residual, becomes progressively less burdened without ever being
+removed. The coverage boundary never reaches zero; there will always be novel
+transactions, regulatory changes, and jurisdictional edge cases that require
+human judgment. The design accepts this reality and manages it, rather than
+claiming to eliminate it.
+
+\subsection{Future Extension: Per-Client Determinism (ADR-011)}
+\label{subsec:adr011_preview}
+
+The harness principle admits a natural extension to the per-client layer.
+A Client-Specific Determinism Agent (proposed in ADR-011) would observe an
+individual client's transaction history, identify recurring patterns currently
+resolved via Tier 3 inference, and propose client-specific Tier 1 or Tier 2
+rules for those patterns. This extends the harness locally, without modifying
+the shared ontology.
+
+The same co-responsibility constraint applies: no client-specific rule is
+activated without explicit human co-signature from the client's designated
+accountant. The same data sovereignty constraint applies: the agent operates
+entirely on client infrastructure.
+
+ADR-011 is explicitly deferred to Phase~3+ and is documented here to
+establish its architectural lineage: it is an application of the same harness
+design principle at a finer (per-client) granularity, not a new concept.
+The iterative loop of ADR-009 -- continuously identifying decisions that can
+be migrated from inference to deterministic logic -- extends naturally and
+explicitly to the client layer once production deployments provide the
+empirical base required.

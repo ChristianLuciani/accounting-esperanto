@@ -4,7 +4,7 @@ description: "An open-source, graph-based universal accounting ontology anchored
 keywords: ["Kontablo", "Accounting Ontology", "IFRS Standardization", "Agentic Economy", "A2A Protocol", "AP2 Protocol", "Model Context Protocol", "Co-responsibility Architecture", "ERP Interoperability", "Real-Time Auditing"]
 author: "Christian Luciani"
 version: "1.75"
-license: "MIT"
+license: "BSL-1.1"
 date: "2026-04-28"
 category: "Fintech & AI Governance"
 schema:
@@ -378,7 +378,7 @@ Future research and development will focus on the following roadmap areas:
 4. **Specialized Industry Overlays:** Expanding the ontology with specialized Level 3/4 overlays for banking (IFRS 9), insurance (IFRS 17), and agriculture (IAS 41).
 5. **High-Frequency Agentic Tracking:** Standardizing `Agent_ID` fields and micro-transaction batching mechanisms within the Kontablo Graph.
 
-The Kontablo Universal Accounting Ontology is currently published as an open-source project under an MIT license, with the full research data, mass-consolidation engine, and AI mapping services available for public auditing and collaborative extension at: https://github.com/ChristianLuciani/accounting-esperanto
+The Kontablo Universal Accounting Ontology is published under the Business Source License 1.1 (BSL 1.1), converting to Apache 2.0 after four years; connectors to open-source ERP platforms (ERPNext/Frappe, Odoo) are licensed Apache 2.0. The full research data, mass-consolidation engine, and AI mapping services are available for public auditing and collaborative extension at: https://github.com/ChristianLuciani/accounting-esperanto
 
 ---
 

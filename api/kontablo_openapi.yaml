@@ -29,8 +29,8 @@ info:
     name: Kontablo Open Standard
     url: https://github.com/ChristianLuciani/accounting-esperanto
   license:
-    name: MIT
-    url: https://opensource.org/licenses/MIT
+    name: BSL-1.1
+    url: https://mariadb.com/bsl11/
 
 servers:
   - url: https://api.kontablo.io/v1
