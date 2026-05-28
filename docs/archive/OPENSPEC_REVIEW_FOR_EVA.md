@@ -1,3 +1,5 @@
+> **Historical snapshot — January 27, 2026.** Internal review note from Phase 0. Current project state: see [EXECUTION_STATUS.md](../../EXECUTION_STATUS.md).
+
 # 📋 OPENSPEC ALIGNMENT REVIEW - SUMMARY FOR EVA
 
 **Completed:** January 27, 2026  

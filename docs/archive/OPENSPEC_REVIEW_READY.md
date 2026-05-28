@@ -1,3 +1,5 @@
+> **Historical snapshot — January 2026.** Completion notice from Phase 0 OpenSpec review. Current project state: see [EXECUTION_STATUS.md](../../EXECUTION_STATUS.md).
+
 # ✅ OpenSpec Alignment Check - Complete
 
 **Status:** Analysis Complete - Waiting for Your Input  

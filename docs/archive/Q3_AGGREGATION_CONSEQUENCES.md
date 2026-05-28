@@ -1,3 +1,5 @@
+> **Historical snapshot — Phase 0.** Analysis of aggregation rule complexity trade-offs during early design. Current architecture decisions: see [docs/adr/](../adr/).
+
 # Q3: Aggregation Rule Complexity - Consequences Explained
 
 **Your Question:** What are the consequences of choosing each aggregation rule complexity level?

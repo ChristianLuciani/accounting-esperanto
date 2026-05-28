@@ -1,3 +1,5 @@
+> **Historical snapshot — January 28, 2026.** This document reflects Phase 0 completion. Current project state: see [EXECUTION_STATUS.md](../../EXECUTION_STATUS.md).
+
 # ✅ Phase 0: Complete + Research Phase Started
 
 **Date:** January 28, 2026  

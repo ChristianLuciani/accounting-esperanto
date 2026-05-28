@@ -1,3 +1,5 @@
+> **Historical snapshot — January 27, 2026.** Internal working document from Phase 0. Current project state: see [EXECUTION_STATUS.md](../../EXECUTION_STATUS.md).
+
 # 📋 OpenSpec Alignment Analysis for Kontablo
 
 **Date:** January 27, 2026  

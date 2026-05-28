@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.benchmarks/
 .venv/
 venv/
 
@@ -24,26 +25,27 @@ coverage.html
 dist/
 build/
 
-# Infisical
+# Secrets / config references
 .infisical.json
 .env
 .env.local
-
-
-# Infisical
-.infisical.json
-.env
-.env.local
-
-
-# Infisical
-.infisical.json
-.env
-.env.local
-
+.env.*.local
 
 # JS
 node_modules/
-dist/
-.env.local
-.env.*.local
+
+# LaTeX build artifacts
+*.aux
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+missfont.log
+docs/papers/drafts/*.log
+
+# AI / LLM usage caches
+.cache/
+
+# Claude Code internal directories
+.claude/worktrees/
+.claude/settings.local.json
