@@ -23,18 +23,21 @@ Concrete state at last update:
 
 ## Strategic posture (decided May 27, 2026)
 
-Open-core via **BSL 1.1** (Business Source License) with conversion to Apache 2.0 after 4 years. Public layer includes preprint, ontology, spec, mapping methodology, dashboard as demo. Reserved for Praxia: production NetSuite/SAP S/4HANA connectors, validated+tested mapping artifacts (vs methodology), consolidation simulation engine if commercially viable, implementation services. ERPNext connector: tentatively Apache 2.0 to gain ERPNext community adoption — confirm before publication.
+Open-core via **BSL 1.1** (Business Source License) with conversion to Apache 2.0 after 4 years. Public layer includes preprint, ontology, spec, mapping methodology, dashboard as demo. Reserved for Praxia: production NetSuite/SAP S/4HANA connectors, validated+tested mapping artifacts (vs methodology), consolidation simulation engine if commercially viable, implementation services.
 
-**Rationale:** option to migrate from (b) commercial entity to (a) pure research is easy; reverse is not. BSL preserves optionality.
+**Connector licensing policy (decided May 28, 2026):** connectors to open-source ERP/accounting projects (ERPNext/Frappe, Odoo, and similar) are licensed **Apache 2.0**, not BSL. Rationale: the open-source community is averse to non-OSI licenses; an Apache connector maximizes adoption in ecosystems that will not pay commercial license anyway, and serves as a credibility-building loss leader. The protectable commercial assets are the validated ontology, implementation services, and connectors to expensive proprietary ERPs (NetSuite, SAP) — those stay BSL/proprietary. General principle: **open the interface (APIs, well-documented contracts) to grow the ecosystem; protect the implementation behind it with BSL.** A large commercial ERP will build its own version if Kontablo becomes strategic regardless of license — licensing cannot prevent that; it only prevents free incorporation of *our* code. The real moat is first-mover citability, jurisdictional depth (23 mapped), hyperinflation expertise, and Praxia's execution speed — not the license.
+
+**Rationale (route b):** option to migrate from (b) commercial entity to (a) pure research is easy; reverse is not. BSL preserves optionality.
 
 ## Architectural principles (do not violate without explicit decision)
 
 1. **Graph, not tree** — accounts exist in multiple dimensions simultaneously. No 1:1 mappings assumed.
 2. **UUID as truth** — codes are visual labels; UUIDs are canonical identifiers. Codes can collide across jurisdictions; UUIDs cannot.
 3. **Logic-based mapping** — aggregation via deterministic scripts, never hardcoded.
-4. **API-first** — designed for machine consumption (LLM agents, ERPs, DeFi). Human UIs are downstream.
-5. **Immutable versioning** — semantic versioning, blockchain-anchored version hashes for spec releases.
-6. **Post-quantum readiness** — see Security section below.
+4. **API-first at the data layer, agent-native at the access layer** — the canonical interface is a machine-consumable API (REST/gRPC). On top of it, Kontablo exposes an agent-native layer for the agentic economy via MCP (Model Context Protocol, for LLM/agent tool consumption), A2A (Agent2Agent, for agent-to-agent interoperation), and AP2 (Agent Payments Protocol, for settlement). The API is the body; the agent protocols are the face. An ERP or bank consumes the API directly; an autonomous agent consumes the agent-native layer. Do NOT subordinate one to the other. The agent-native layer is protocol-pluggable by design: Kontablo will adopt and add any agentic protocol that gains meaningful traction, so the architecture names the *category* (agent-native) rather than betting on a single protocol.
+5. **Determinism over stochasticity wherever movable** — whenever a decision can be moved from stochastic inference (an LLM call) to deterministic logic (a rule, a constraint, a graph lookup), it must be. This is a standing design driver, not a one-time choice. Justification is threefold: (a) *certainty* — deterministic decisions are verifiable and reproducible; (b) *resource economy* — every decision resolved by a rule instead of an inference call avoids token cost, latency, and energy expenditure, and Kontablo deliberately demonstrates awareness of inference-cost consequences; (c) *downstream relevance* — an early stochastic error contaminates every subsequent pipeline step, whereas an early deterministic guarantee is inherited cleanly. The ontology-as-constraint is the primary instrument: the agent cannot propose an account UUID that does not exist in the graph. Frame energy efficiency as a *consequence* of this principle, not as a marketing banner.
+6. **Immutable versioning** — semantic versioning, blockchain-anchored version hashes for spec releases.
+7. **Post-quantum readiness** — see Security section below.
 
 ## Security posture
 
@@ -79,8 +82,19 @@ These are known debts. Do not publish without resolving:
 4. `PHASE_0_COMPLETE.md` — move to `docs/archive/` with header note. Do not delete (audit trail).
 5. Status documents proliferation (`OPENSPEC_REVIEW_*`, `OPENSPEC_ALIGNMENT_*`, `Q3_AGGREGATION_CONSEQUENCES.md`) — consolidate or move to `docs/`.
 6. `LICENSE` file — currently MIT in README badge. Replace with BSL 1.1 text from mariadb.com/bsl11/ before any public commit.
-7. `LICENSING.md` — new file explaining the BSL choice, additional use grant, and any per-submodule exceptions (ERPNext connector if Apache 2.0).
+7. `LICENSING.md` — new file explaining the BSL choice, additional use grant, and the connector licensing policy (open-source ERP connectors = Apache 2.0; core = BSL; see Strategic posture).
 8. `SECURITY.md` — new file with PQC roadmap, vulnerability disclosure policy, and threat model summary.
+
+## Pending conceptual work for the preprint (NOT hygiene — needs a dedicated session)
+
+The preprint was conceived before agentic concepts were mature. Two conceptual updates are queued, with a HARD scope rule: if the combined update fits in ≤2 Claude Code sessions, it enters the v1 release; if it requires more, it ships as explicitly-labeled future work in v1 and becomes the v2 preprint. The publication date governs — do not let conceptual expansion reactivate the "one more thing before publishing" pattern.
+
+1. **New section: "The Kontablo Agent: Harness Architecture and the Locus of Error."** Distinguishes the *model* (stochastic, hallucinates) from the *harness* (context, tools, validation, source-grounding, constraints that make output reliable). Core argument: the ontology-as-constraint eliminates the *classical* class of accounting hallucination (the agent cannot emit a non-existent account UUID), so the residual error relocates to the *boundary of semantic coverage* — a transaction type not yet mapped, an undocumented jurisdictional rule, an unanticipated edge case. The reframe: the problem shifts from "how do we stop the LLM hallucinating" (intractable) to "how do we design the harness so the decision space is ontology-bounded and out-of-coverage cases escalate to a human rather than being confabulated" (tractable engineering). Connect to the co-responsibility governance architecture (ADR 008) as the mechanism that manages residual error: the harness defines when the agent decides alone, when it requires human co-signature, and when it escalates. This ties directly to architectural principle #5 (determinism over stochasticity).
+2. **Reconcile any existing hallucination discussion** currently framed only in the classical LLM sense — audit where it appears before deciding surgical vs structural rewrite. Do NOT rewrite blindly; first locate all instances.
+
+## Pending strategy artifact (separate document, separate session)
+
+A launch playbook (`docs/strategy/launch-playbook.md`) is needed but does NOT yet exist — do not scatter it as bullets in this file. It must cover: (a) **citation strategy** — which foundational works/authors to cite to improve discoverability and situate the work in citable lineages; (b) **technical-influencer DM strategy** — identifying and reaching technical influencers who could amplify (one mention can be decisive); (c) **social media strategy** — coordinated multi-channel release. Build this in a dedicated session, grounded in the prepare-for-publication skill (Step 8 territory).
 
 ## Anti-patterns specific to this repo
 
