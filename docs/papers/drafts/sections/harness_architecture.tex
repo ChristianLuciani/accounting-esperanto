@@ -113,36 +113,7 @@ Eliminating the classical hallucination class does not eliminate error; it
 is applied, concentrates at a specific and identifiable location: the
 \textbf{boundary of semantic coverage}.
 
-\begin{figure}[ht]
-\centering
-\begin{tikzpicture}[
-    >=Latex,
-    node distance=1.5cm,
-    region/.style={draw, rounded corners, minimum width=5.5cm, minimum height=1.1cm, align=center, font=\small},
-    error/.style={draw, rounded corners, fill=red!10, text width=4.8cm, align=center, minimum height=1.0cm, font=\small},
-    eliminated/.style={draw, rounded corners, fill=green!10, text width=4.8cm, align=center, minimum height=1.0cm, font=\small},
-    label/.style={font=\footnotesize\itshape}
-]
-\node[region, fill=blue!5] (bounded) {Ontology-bounded decision space\\(30 Level 3 UUIDs)};
-\node[region, fill=gray!8, below=0.7cm of bounded] (boundary) {Semantic coverage boundary\\(unmapped types, jurisdictional gaps, ambiguous cases)};
-\node[region, fill=gray!15, below=0.7cm of boundary] (outside) {Outside ontology coverage\\(routed to human via CRA)};
-
-\node[eliminated, right=1.5cm of bounded] (e1) {Classical hallucination class\\ \textbf{eliminated} by harness};
-\node[error, right=1.5cm of boundary] (e2) {Residual error population\\ \textbf{relocated here}};
-\node[eliminated, right=1.5cm of outside] (e3) {No silent error:\\ escalated to human co-signer};
-
-\draw[->, thick] (bounded) -- (e1);
-\draw[->, thick] (boundary) -- (e2);
-\draw[->, thick] (outside) -- (e3);
-\end{tikzpicture}
-\caption{Locus of error before and after ontology-as-constraint is applied.
-Classical hallucination (arbitrary invalid outputs) is eliminated at the harness
-layer. Residual errors relocate to the semantic coverage boundary: unmapped
-transaction types, incomplete jurisdictional rules, and semantically ambiguous
-cases within valid UUID space. Cases outside coverage are escalated to human
-review rather than silently committed.}
-\label{fig:locus_of_error}
-\end{figure}
+\input{figures/fig_locus_of_error}
 
 Errors at the semantic coverage boundary take three forms:
 

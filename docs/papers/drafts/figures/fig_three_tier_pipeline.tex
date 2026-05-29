@@ -1,0 +1,43 @@
+% Figure: Three-Tier Resolution Pipeline
+% Source: originally in sections/deterministic_logic.tex (first figure)
+% Depicts: Unmapped account → Tier 1 exact → Tier 2 regex → Tier 3 semantic AI →
+%          confidence check → CRA pre-authorized review OR flag for human review.
+\begin{figure}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+    >=Latex,
+    node distance=1.8cm,
+    block/.style={draw, rectangle, rounded corners, fill=blue!5, text width=3.5cm, align=center, minimum height=1.2cm, font=\small},
+    decision/.style={draw, diamond, aspect=2, fill=yellow!10, text width=2.5cm, align=center, font=\small},
+    flag/.style={draw, rectangle, rounded corners, fill=red!10, text width=3cm, align=center, minimum height=1.2cm, font=\small\bfseries}
+]
+
+% Nodes
+\node[block] (input) {Unmapped Account \\ (Code, Name, Type, Nature)};
+\node[decision, below=0.8cm of input] (tier1) {Tier 1: Exact Code Match?};
+\node[block, right=1.5cm of tier1] (t1_success) {Map Direct \\ (Conf = 1.0)};
+
+\node[decision, below=0.8cm of tier1] (tier2) {Tier 2: Regex / Rule Match?};
+\node[block, right=1.5cm of tier2] (t2_success) {Map Rule \\ (Conf = 0.8 - 0.9)};
+
+\node[block, below=0.8cm of tier2] (tier3) {Tier 3: Semantic AI \\ (LLM Embedding Match)};
+\node[decision, below=0.8cm of tier3] (conf_check) {Confidence $\ge 0.80$?};
+\node[block, right=1.5cm of conf_check] (t3_success) {Propose AI Mapping \\ (Conf = 0.5--0.85)\\ $\rightarrow$ CRA pre-authorized review};
+\node[flag, below=0.8cm of conf_check] (human_review) {Flag for Human Review \\ (Inconsistency Flag = True)};
+
+% Paths
+\draw[->, thick] (input) -- (tier1);
+\draw[->, thick] (tier1) -- node[above] {Yes} (t1_success);
+\draw[->, thick] (tier1) -- node[right] {No} (tier2);
+\draw[->, thick] (tier2) -- node[above] {Yes} (t2_success);
+\draw[->, thick] (tier2) -- node[right] {No} (tier3);
+\draw[->, thick] (tier3) -- (conf_check);
+\draw[->, thick] (conf_check) -- node[above] {Yes} (t3_success);
+\draw[->, thick] (conf_check) -- node[right] {No} (human_review);
+
+\end{tikzpicture}%
+}
+\caption{The Three-Tier Resolution Pipeline. Local ERP accounts pass through exact code checks (Tier 1) and rule-based regex parsing (Tier 2) before falling back to Semantic AI (Tier 3). All outputs enter the Co-responsibility Architecture (CRA): high-confidence proposals ($\ge 0.80$) are queued for pre-authorized review with audit logging; low-confidence or boundary-violating proposals require explicit human co-signature before ledger write-in. In no case does the agent commit a mapping to the ledger without a human-authorized or human-pre-authorized pathway.}
+\label{fig:three_tier_pipeline}
+\end{figure}

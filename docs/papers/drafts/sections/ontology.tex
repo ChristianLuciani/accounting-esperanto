@@ -5,44 +5,7 @@ Kontablo's fundamental departure from existing commercial ERP parameters is its 
 
 When a company attempts to map its Mexican subsidiary (with 5-digit SAT codes) to its French holding company (with 3-digit PCG codes) within a traditional ERP, it encounters a 1:N or N:M mapping problem that can only be resolved via labor-intensive manual overrides. Kontablo resolves this by abstracting the transaction outside of a local country's tree; it becomes an incoming edge to a **Universal Graph Node** which serves as the absolute pivot point.
 
-\begin{figure}[ht]
-\centering
-\resizebox{\textwidth}{!}{%
-\begin{tikzpicture}[
-    >=Latex,
-    node distance=1.8cm and 3cm,
-    localnode/.style={draw, rectangle, rounded corners, align=center, fill=red!10, text width=4cm, font=\small},
-    kontablo/.style={draw, circle, align=center, minimum size=4cm, fill=blue!15, font=\bfseries},
-    target/.style={draw, diamond, aspect=2, align=center, fill=green!15, font=\small\bfseries},
-    agent/.style={draw, rectangle, rounded corners, align=center, fill=purple!15, font=\small}
-]
-
-% Local Nodes
-\node[localnode] (mx) {Mexico (SAT)\\ \texttt{101.01 Caja}};
-\node[localnode, below=1.2cm of mx] (fr) {France (PCG)\\ \texttt{531 Caisse}};
-\node[localnode, below=1.2cm of fr] (vn) {Vietnam (VAS)\\ \texttt{111 Tien mat}};
-
-% Kontablo Node
-\node[kontablo, right=4cm of fr] (kcash) {asset.current.cash\\[0.5em] \tiny{Universal Kontablo ID}};
-
-% Edges from local to Kontablo
-\draw[->, thick, dashed] (mx.east) to[out=0, in=140] node[above, sloped, font=\scriptsize] {Exact Lookup} (kcash.140);
-\draw[->, thick, dashed] (fr.east) to node[above, font=\scriptsize] {Exact Lookup} (kcash.180);
-\draw[->, thick, dashed] (vn.east) to[out=0, in=220] node[below, sloped, font=\scriptsize] {AI Semantic Fallback} (kcash.220);
-
-% IFRS Target
-\node[target, right=4cm of kcash] (ifrs) {IFRS Taxonomy\\ \texttt{CashEq}};
-\draw[->, ultra thick] (kcash.east) to node[above, font=\scriptsize] {1:1 Standardized} (ifrs.west);
-
-% Agent Integration
-\node[agent, above=3cm of kcash] (mcp) {Autonomous AI Agent\\ (via AP2 Protocol Intent Mandate)};
-\draw[->, thick, dotted] (mcp.south) -- (kcash.north) node[midway, right, font=\scriptsize] {Direct Query/Write};
-
-\end{tikzpicture}%
-}
-\caption{The Kontablo Ontology Architecture: bridging local accounting nodes to the universal ontology via exact lookup or semantic fallback.}
-\label{fig:kontablo_graph_architecture}
-\end{figure}
+\input{figures/fig_kontablo_graph_architecture}
 
 \section{The Ontological Bridge: Tree to Graph}
 
@@ -61,18 +24,7 @@ Where:
     \item $\mu: E \rightarrow \mathcal{P}$ is an edge-property mapping function. For transactional edges, $\mathcal{P}$ defines properties such as $\{ \text{amount}, \text{timestamp}, \text{initiating\_Agent\_ID} \}$. For mapping edges, $\mathcal{P}$ contains $\{ \text{confidence\_score}, \text{match\_method}, \text{audit\_flags} \}$.
 \end{itemize}
 
-\begin{figure}[ht]
-\centering
-\begin{tikzpicture}[node distance=2cm, every node/.style={draw, fill=blue!10, rounded corners, font=\small}]
-    \node (local) [align=center] {Local Account \\ (e.g., SAT 101.01)};
-    \node (bridge) [right of=local, node distance=4.5cm, align=center] {Kontablo Mapping Edge \\ $\mu(e) = \{ \text{confidence}, \text{method} \}$};
-    \node (ifrs) [right of=bridge, node distance=4.5cm, align=center] {Universal Node \\ (e.g., \texttt{asset.current.cash})};
-    \draw[->, thick] (local) -- (bridge);
-    \draw[->, thick] (bridge) -- (ifrs);
-\end{tikzpicture}
-\caption{The Kontablo mapping bridge connects localized statutory account nodes to standardized IFRS classifications.}
-\label{fig:kontablo_bridge}
-\end{figure}
+\input{figures/fig_kontablo_bridge}
 
 \subsection{Level 3 Minimum Core Taxonomy}
 The core of the Kontablo protocol is the \textbf{Level 3 account specification}, which maps the minimum viable set of accounts required to express the financial position of any enterprise, regardless of its industry or country. Level 3 accounts act as universal semantic anchors in $V_{\text{universal}}$. 
