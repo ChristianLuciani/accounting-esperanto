@@ -1,0 +1,38 @@
+Business Source License 1.1
+
+Parameters
+
+Licensor:             Christian Luciani
+                      (IP to be assigned to Praxia S.A.S., Cuenca, Ecuador, upon incorporation)
+
+Licensed Work:        Kontablo — Universal Accounting Ontology
+                      (The Licensed Work is the accounting-esperanto repository and all files
+                      therein, as of each respective commit date.)
+                      The Licensed Work was first made publicly available on or about
+                      May 28, 2026.
+
+Additional Use Grant: You may make production use of the Licensed Work, provided such use
+                      does not include offering a multi-jurisdictional accounting semantic
+                      mapping, ontology-bridging, or consolidation service to third parties
+                      as a commercial product or service. Internal business use, academic
+                      use, research, and evaluation are permitted without restriction.
+                      Open-source ERP and accounting software projects may use the Licensed
+                      Work to build integrations without restriction.
+
+Change Date:          May 28, 2030
+
+Change License:       Apache License, Version 2.0
+
+-----------------------------------------------------------------------------
+
+INSTRUCTIONS TO COMPLETE THIS FILE (remove this block before publishing):
+
+Append the full canonical BSL 1.1 legal text below this line.
+The canonical text is available at: https://mariadb.com/bsl11/
+Copy everything from "Business Source License 1.1" (the legal body)
+through the end of the document and paste it here.
+
+The parameters above are already filled in and correct for this project.
+Do not modify them — only add the canonical body text.
+
+-----------------------------------------------------------------------------

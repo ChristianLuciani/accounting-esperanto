@@ -1,0 +1,15 @@
+Apache License
+Version 2.0, January 2004
+
+This connector (connectors/erpnext/) is licensed under the Apache License, Version 2.0.
+
+Copyright 2026 Christian Luciani
+
+INSTRUCTIONS TO COMPLETE THIS FILE (remove this block before publishing):
+
+Append the full canonical Apache License 2.0 legal text below this line.
+The canonical text is available at: https://www.apache.org/licenses/LICENSE-2.0.txt
+Copy the full text and paste it here.
+
+Note: This connector uses Apache 2.0 (not BSL 1.1) by design.
+Rationale: see LICENSING.md at the repository root.
