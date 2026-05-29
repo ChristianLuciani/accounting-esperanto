@@ -177,7 +177,7 @@ Multi-lingual semantic mapping is operational for Spanish, French, Arabic, and V
   year         = {2026},
   note         = {Preprint. SSRN/Zenodo submission pending. Available at
                   \url{https://github.com/ChristianLuciani/accounting-esperanto}},
-  institution  = {Praxia, Cuenca, Ecuador},
+  institution  = {Independent Researcher , Cuenca, Ecuador},
   orcid        = {0000-0002-6955-5384}
 }
 ```
@@ -194,7 +194,7 @@ https://github.com/ChristianLuciani/accounting-esperanto
 
 ## Who develops Kontablo?
 
-**Christian Luciani**
+**_Christian Luciani_** 
 Independent Researcher · Cuenca, Ecuador
 [ORCID 0000-0002-6955-5384](https://orcid.org/0000-0002-6955-5384)
 Contact: cluciani@gmail.com
