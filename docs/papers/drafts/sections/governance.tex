@@ -1,7 +1,7 @@
 \section{Ontology Governance and the Co-responsibility Paradigm}
 
 \subsection{The Co-responsibility Architecture (CRA)}
-To prevent ``AI-only audit loops''—where automated systems silently hide booking errors or fraud from human supervisors—Kontablo implements a **Co-responsibility Architecture (CRA)**. This architecture formalizes the governance boundary between human operators and AI models, ensuring that neither party can modify financial records without leaving a verifiable audit trail.
+To prevent ``AI-only audit loops''—where automated systems silently hide booking errors or fraud from human supervisors—Kontablo implements a \textbf{Co-responsibility Architecture (CRA)}. This architecture formalizes the governance boundary between human operators and AI models, ensuring that neither party can modify financial records without leaving a verifiable audit trail.
 
 The CRA operates as a multi-stage control loop:
 \begin{enumerate}
@@ -18,7 +18,7 @@ The outputs of the CRA are persisted directly within the database schema of the 
 Two key metadata fields are appended to every mapped transaction record:
 \begin{itemize}
     \item \texttt{inconsistency\_flag}: A boolean field that is set to \texttt{true} if the mapping violates a deterministic rule.
-    \item \texttt{inconsistency\_note}: A text field containing the specific rule violation description (e.g., ``Nature Mismatch: local debit account mapped to credit node \texttt{equity.capital}'') concatenated with the human operator's written justification for the override.
+    \item {\sloppy\texttt{inconsistency\_note}: A text field containing the specific rule violation description (e.g., ``Nature Mismatch: local debit account mapped to credit node \texttt{equity.capital}'') concatenated with the human operator's written justification for the override.\par}
 \end{itemize}
 
 Once written, these fields are cryptographically hashed and sealed as part of the transaction block. This makes it impossible for an internal user to change a mapping post-facto to cover up irregularities without triggering a hash mismatch in the audit ledger.
