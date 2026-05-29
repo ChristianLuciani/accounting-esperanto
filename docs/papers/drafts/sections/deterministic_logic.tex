@@ -33,7 +33,7 @@ To achieve high automation without risking hallucinated mappings, Kontablo imple
 
 \node[block, below=0.8cm of tier2] (tier3) {Tier 3: Semantic AI \\ (LLM Embedding Match)};
 \node[decision, below=0.8cm of tier3] (conf_check) {Confidence $\ge 0.80$?};
-\node[block, right=1.5cm of conf_check] (t3_success) {Map AI \\ (Conf = 0.5 - 0.85)};
+\node[block, right=1.5cm of conf_check] (t3_success) {Propose AI Mapping \\ (Conf = 0.5--0.85)\\ $\rightarrow$ CRA pre-authorized review};
 \node[flag, below=0.8cm of conf_check] (human_review) {Flag for Human Review \\ (Inconsistency Flag = True)};
 
 % Paths
@@ -48,7 +48,7 @@ To achieve high automation without risking hallucinated mappings, Kontablo imple
 
 \end{tikzpicture}%
 }
-\caption{The Three-Tier Resolution Pipeline. Local ERP accounts pass through exact code checks (Tier 1) and rule-based regex parsing (Tier 2) before falling back to Semantic AI (Tier 3). If the AI mapping returns a confidence score below 0.80, or if it violates deterministic boundaries, it is flagged for manual review.}
+\caption{The Three-Tier Resolution Pipeline. Local ERP accounts pass through exact code checks (Tier 1) and rule-based regex parsing (Tier 2) before falling back to Semantic AI (Tier 3). All outputs enter the Co-responsibility Architecture (CRA): high-confidence proposals ($\ge 0.80$) are queued for pre-authorized review with audit logging; low-confidence or boundary-violating proposals require explicit human co-signature before ledger write-in. In no case does the agent commit a mapping to the ledger without a human-authorized or human-pre-authorized pathway.}
 \label{fig:three_tier_pipeline}
 \end{figure}
 
