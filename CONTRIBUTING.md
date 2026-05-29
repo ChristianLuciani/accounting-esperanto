@@ -12,9 +12,8 @@ To allow contributions to be incorporated into both the open and commercial laye
 **all contributors must sign a Contributor License Agreement** before their first
 pull request is merged.
 
-The CLA grants Praxia (and its predecessor entity, Christian Luciani) the right to
-use your contribution under any license, including commercial ones, while you retain
-copyright over your contribution.
+The CLA grants Christian Luciani the right to use your contribution under any license,
+including commercial ones, while you retain copyright over your contribution.
 
 To sign the CLA, email **cluciani@gmail.com** with the subject line
 `CLA — Kontablo — [your GitHub username]`. A template will be provided on request.

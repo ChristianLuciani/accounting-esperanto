@@ -195,12 +195,13 @@ https://github.com/ChristianLuciani/accounting-esperanto
 ## Who develops Kontablo?
 
 **Christian Luciani**
-Founder, Praxia · Cuenca, Ecuador
+Independent Researcher · Cuenca, Ecuador
 [ORCID 0000-0002-6955-5384](https://orcid.org/0000-0002-6955-5384)
 Contact: cluciani@gmail.com
 
-Praxia is an Ecuadorian technology firm (in incorporation as of May 2026) specializing
-in financial data infrastructure for emerging markets and the agentic economy.
+This is a personal publication. Praxia — a planned Ecuadorian technology firm
+specializing in financial data infrastructure — is the intended commercial vehicle
+for Kontablo's production layer but does not yet exist as a legal entity.
 
 ---
 

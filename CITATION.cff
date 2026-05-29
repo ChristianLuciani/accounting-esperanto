@@ -13,7 +13,7 @@ authors:
   - family-names: Luciani
     given-names: Christian
     orcid: "https://orcid.org/0000-0002-6955-5384"
-    affiliation: "Praxia, Cuenca, Ecuador"
+    affiliation: "Independent Researcher, Cuenca, Ecuador"
     email: cluciani@gmail.com
 repository-code: "https://github.com/ChristianLuciani/accounting-esperanto"
 license: BUSL-1.1
@@ -41,7 +41,7 @@ preferred-citation:
     - family-names: Luciani
       given-names: Christian
       orcid: "https://orcid.org/0000-0002-6955-5384"
-      affiliation: "Praxia, Cuenca, Ecuador"
+      affiliation: "Independent Researcher, Cuenca, Ecuador"
   year: 2026
   notes: "Preprint. SSRN/Zenodo submission pending. DOI will be added upon publication."
   url: "https://github.com/ChristianLuciani/accounting-esperanto"
