@@ -12,45 +12,7 @@ To achieve high automation without risking hallucinated mappings, Kontablo imple
     \item \textbf{Tier 3: Semantic AI Fallback (Probabilistic Matching):} If both Tier 1 and Tier 2 fail, the engine activates the Semantic Matcher AI. The engine generates a vector embedding of the account's name, type, and description, comparing it against the embeddings of the 30 Level 3 universal accounts. The model outputs a mapping proposal along with a confidence score ($0.50$ to $0.85$). 
 \end{enumerate}
 
-\begin{figure}[ht]
-\centering
-\resizebox{\textwidth}{!}{%
-\begin{tikzpicture}[
-    >=Latex,
-    node distance=1.8cm,
-    block/.style={draw, rectangle, rounded corners, fill=blue!5, text width=3.5cm, align=center, minimum height=1.2cm, font=\small},
-    decision/.style={draw, diamond, aspect=2, fill=yellow!10, text width=2.5cm, align=center, font=\small},
-    flag/.style={draw, rectangle, rounded corners, fill=red!10, text width=3cm, align=center, minimum height=1.2cm, font=\small\bfseries}
-]
-
-% Nodes
-\node[block] (input) {Unmapped Account \\ (Code, Name, Type, Nature)};
-\node[decision, below=0.8cm of input] (tier1) {Tier 1: Exact Code Match?};
-\node[block, right=1.5cm of tier1] (t1_success) {Map Direct \\ (Conf = 1.0)};
-
-\node[decision, below=0.8cm of tier1] (tier2) {Tier 2: Regex / Rule Match?};
-\node[block, right=1.5cm of tier2] (t2_success) {Map Rule \\ (Conf = 0.8 - 0.9)};
-
-\node[block, below=0.8cm of tier2] (tier3) {Tier 3: Semantic AI \\ (LLM Embedding Match)};
-\node[decision, below=0.8cm of tier3] (conf_check) {Confidence $\ge 0.80$?};
-\node[block, right=1.5cm of conf_check] (t3_success) {Propose AI Mapping \\ (Conf = 0.5--0.85)\\ $\rightarrow$ CRA pre-authorized review};
-\node[flag, below=0.8cm of conf_check] (human_review) {Flag for Human Review \\ (Inconsistency Flag = True)};
-
-% Paths
-\draw[->, thick] (input) -- (tier1);
-\draw[->, thick] (tier1) -- node[above] {Yes} (t1_success);
-\draw[->, thick] (tier1) -- node[right] {No} (tier2);
-\draw[->, thick] (tier2) -- node[above] {Yes} (t2_success);
-\draw[->, thick] (tier2) -- node[right] {No} (tier3);
-\draw[->, thick] (tier3) -- (conf_check);
-\draw[->, thick] (conf_check) -- node[above] {Yes} (t3_success);
-\draw[->, thick] (conf_check) -- node[right] {No} (human_review);
-
-\end{tikzpicture}%
-}
-\caption{The Three-Tier Resolution Pipeline. Local ERP accounts pass through exact code checks (Tier 1) and rule-based regex parsing (Tier 2) before falling back to Semantic AI (Tier 3). All outputs enter the Co-responsibility Architecture (CRA): high-confidence proposals ($\ge 0.80$) are queued for pre-authorized review with audit logging; low-confidence or boundary-violating proposals require explicit human co-signature before ledger write-in. In no case does the agent commit a mapping to the ledger without a human-authorized or human-pre-authorized pathway.}
-\label{fig:three_tier_pipeline}
-\end{figure}
+\input{figures/fig_three_tier_pipeline}
 
 \subsection{The Deterministic Questions Library}
 To prevent LLM mapping proposals from silently corrupting the ledger, all outputs from Tier 3 must pass through a strict library of deterministic boundary rules. Rather than letting the LLM decide a mapping in a single step, the system forces the mapping through a sequence of deterministic questions based on the target node's metadata. 
@@ -64,24 +26,7 @@ For example, if the AI proposes mapping a local account ``Petty Cash Fund'' to t
 
 If any validation returns a mismatch (e.g., if the AI attempts to map a restricted-use cash account to a standard cash node, or maps a liquid account to a non-current asset node like PPE), the engine overrides the confidence score, setting it to a penalized value of $0.3$, and raises an anomaly flag, forcing manual human-in-the-loop review.
 
-\begin{figure}[ht]
-\centering
-\begin{tikzpicture}[node distance=2.5cm, every node/.style={draw, fill=gray!10, rounded corners, font=\small}]
-    \node (step1) {AI Proposed Mapping};
-    \node (step2) [below of=step1] {Debit/Credit Check};
-    \node (step3) [below of=step2] {Liquidity Boundary};
-    \node (success) [right of=step3, node distance=4cm] {Approved};
-    \node (fail) [left of=step3, node distance=4.5cm] {Raise Audit Flag};
-
-    \draw[->] (step1) -- (step2);
-    \draw[->] (step2) -- node[right] {Pass} (step3);
-    \draw[->] (step3) -- node[above] {Pass} (success);
-    \draw[->] (step2) -| node[above] {Fail} (fail);
-    \draw[->] (step3) -- node[above] {Fail} (fail);
-\end{tikzpicture}
-\caption{The deterministic boundary checklist verifies AI-proposed mappings prior to ledger write-in.}
-\label{fig:deterministic_checklist}
-\end{figure}
+\input{figures/fig_deterministic_checklist}
 
 \subsection{Cross-Jurisdiction Semantic Bridge}
 Imagine a multinational with two accountants: one in Mexico who names the cash account ``Caja Revolvente'' and one in Brazil who uses ``Caixa Geral.'' To a human ERP manager, these are different. In the Kontablo Graph, both accountants’ local entries hit the same node because they both satisfy the deterministic criteria for `asset.current.cash`.

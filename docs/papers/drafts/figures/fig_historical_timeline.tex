@@ -1,0 +1,48 @@
+% Figure: Historical evolution of financial standards
+% Source: originally in sections/precedents.tex
+% Depicts: Timeline 1937 → present; reporting and payment standardization vs.
+%          persistent execution-layer fragmentation, resolved by Kontablo.
+\begin{figure}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+    >=Latex,
+    node distance=1.5cm and 2.2cm,
+    timeline/.style={draw, rectangle, fill=blue!5, minimum width=2.5cm, align=center, font=\small},
+    milestone/.style={circle, fill=blue, draw, inner sep=2pt},
+    descnode/.style={draw, rectangle, rounded corners, fill=gray!10, text width=4.5cm, align=left, font=\scriptsize}
+]
+
+% Timeline line
+\draw[thick, ->] (0,0) -- (15,0) node[right, font=\small\bfseries] {Present};
+
+% Year markers & nodes
+\node[milestone] (m1) at (1,0) {};
+\node[above=0.2cm of m1, font=\bfseries\small] {1937 / 1947};
+\node[descnode, below=0.3cm of m1] (d1) {\textbf{National Chart-of-Accounts}\\%
+German \textit{Gemeinschaftsrahmen} (1937), French \textit{Plan Comptable} (1947). Established localized, rigid ledger trees.};
+
+\node[milestone] (m2) at (4.5,0) {};
+\node[above=0.2cm of m2, font=\bfseries\small] {Late 1990s};
+\node[descnode, below=0.3cm of m2] (d2) {\textbf{Electronic Invoicing (EDI)}\\%
+UN/EDIFACT structures standardize invoice data transport, but fail to specify ledger account mapping rules.};
+
+\node[milestone] (m3) at (8,0) {};
+\node[above=0.2cm of m3, font=\bfseries\small] {2001 / 2004};
+\node[descnode, below=0.3cm of m3] (d3) {\textbf{Reporting Focus (XBRL)}\\%
+Regulator-focused financial statement tagging. Excludes transaction-level mapping or execution semantics.};
+
+\node[milestone] (m4) at (11.5,0) {};
+\node[above=0.2cm of m4, font=\bfseries\small] {2004 / 2013};
+\node[descnode, below=0.3cm of m4] (d4) {\textbf{Payment Messaging (ISO 20022)}\\%
+Standardizes bank-to-bank messaging but leaves ERP general ledger posting and statutory mapping unaddressed.};
+
+\node[milestone] (m5) at (14.5,0) {};
+\node[descnode, below=0.3cm of m5] (d5) {\textbf{The Graph-Based Subledger (Kontablo)}\\%
+Unifies reporting and execution layers for ERPs and autonomous AI agents in a single API.};
+
+\end{tikzpicture}%
+}
+\caption{Historical evolution of financial standards. While communication (payment messaging) and disclosure (XBRL) have standardized over time, the execution layer (general ledger chart-of-accounts mappings) remained fragmented at the national tree level until the introduction of Kontablo's graph ontology.}
+\label{fig:historical_timeline}
+\end{figure}

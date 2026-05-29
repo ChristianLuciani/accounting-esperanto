@@ -1,0 +1,42 @@
+% Figure: Kontablo Ontology Architecture
+% Source: originally in sections/ontology.tex
+% Depicts: Local accounting nodes (MX/FR/VN) → Kontablo universal node → IFRS target;
+%           autonomous AI agent writing via AP2.
+\begin{figure}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+    >=Latex,
+    node distance=1.8cm and 3cm,
+    localnode/.style={draw, rectangle, rounded corners, align=center, fill=red!10, text width=4cm, font=\small},
+    kontablo/.style={draw, circle, align=center, minimum size=4cm, fill=blue!15, font=\bfseries},
+    target/.style={draw, diamond, aspect=2, align=center, fill=green!15, font=\small\bfseries},
+    agent/.style={draw, rectangle, rounded corners, align=center, fill=purple!15, font=\small}
+]
+
+% Local Nodes
+\node[localnode] (mx) {Mexico (SAT)\\ \texttt{101.01 Caja}};
+\node[localnode, below=1.2cm of mx] (fr) {France (PCG)\\ \texttt{531 Caisse}};
+\node[localnode, below=1.2cm of fr] (vn) {Vietnam (VAS)\\ \texttt{111 Tien mat}};
+
+% Kontablo Node
+\node[kontablo, right=4cm of fr] (kcash) {asset.current.cash\\[0.5em] \tiny{Universal Kontablo ID}};
+
+% Edges from local to Kontablo
+\draw[->, thick, dashed] (mx.east) to[out=0, in=140] node[above, sloped, font=\scriptsize] {Exact Lookup} (kcash.140);
+\draw[->, thick, dashed] (fr.east) to node[above, font=\scriptsize] {Exact Lookup} (kcash.180);
+\draw[->, thick, dashed] (vn.east) to[out=0, in=220] node[below, sloped, font=\scriptsize] {AI Semantic Fallback} (kcash.220);
+
+% IFRS Target
+\node[target, right=4cm of kcash] (ifrs) {IFRS Taxonomy\\ \texttt{CashEq}};
+\draw[->, ultra thick] (kcash.east) to node[above, font=\scriptsize] {1:1 Standardized} (ifrs.west);
+
+% Agent Integration
+\node[agent, above=3cm of kcash] (mcp) {Autonomous AI Agent\\ (via AP2 Protocol Intent Mandate)};
+\draw[->, thick, dotted] (mcp.south) -- (kcash.north) node[midway, right, font=\scriptsize] {Direct Query/Write};
+
+\end{tikzpicture}%
+}
+\caption{The Kontablo Ontology Architecture: bridging local accounting nodes to the universal ontology via exact lookup or semantic fallback.}
+\label{fig:kontablo_graph_architecture}
+\end{figure}

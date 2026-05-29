@@ -1,5 +1,3 @@
-\section{AI Governance: The Co-responsibility Paradigm}
-
 \section{Ontology Governance and the Co-responsibility Paradigm}
 
 \subsection{The Co-responsibility Architecture (CRA)}
@@ -12,37 +10,7 @@ The CRA operates as a multi-stage control loop:
     \item \textbf{Rule Engine Evaluates:} If the human overrides the proposal, the deterministic rule engine verifies whether the new mapping violates any core ontology constraints (e.g., nature consistency, statement boundaries, or liquidity limits). If a violation is detected, the engine does not block the transaction—which would halt business operations—but instead forces the human to enter a justification.
 \end{enumerate}
 
-\begin{figure}[ht]
-\centering
-\resizebox{\textwidth}{!}{%
-\begin{tikzpicture}[
-    >=Latex,
-    node distance=2cm,
-    block/.style={draw, rectangle, rounded corners, fill=blue!5, text width=3.5cm, align=center, minimum height=1.2cm, font=\small},
-    decision/.style={draw, diamond, aspect=2, fill=yellow!10, text width=3cm, align=center, font=\small},
-    database/.style={draw, cylinder, shape border rotate=90, fill=gray!15, text width=2.5cm, align=center, minimum height=1.5cm, font=\small}
-]
-
-% Nodes
-\node[block] (ai_propose) {\textbf{1. AI Proposes}\\ Generates mapping proposal and confidence score};
-\node[block, right=1.5cm of ai_propose] (human_override) {\textbf{2. Human Disposes}\\ Accountant reviews or overrides mapping};
-\node[decision, below=1cm of human_override] (rule_check) {\textbf{3. Rule Engine}\\ Validates deterministic boundaries};
-
-\node[block, left=2.3cm of rule_check] (flag_record) {\textbf{4. Inconsistency Flagged}\\ Set \texttt{inconsistency\_flag} = True \& write audit note};
-\node[database, below=1cm of flag_record] (db) {\textbf{Audit Ledger}\\ Persist signed transactional metadata};
-
-% Paths
-\draw[->, thick] (ai_propose) -- (human_override);
-\draw[->, thick] (human_override) -- (rule_check);
-\draw[->, thick] (rule_check) -- node[above] {Violation} (flag_record);
-\draw[->, thick] (rule_check) -- node[right] {Valid} (db);
-\draw[->, thick] (flag_record) -- (db);
-
-\end{tikzpicture}%
-}
-\caption{The Co-responsibility Architecture (CRA) feedback loop. An AI-proposed mapping is reviewed by a human accountant. If the human override violates deterministic ontology rules (e.g., changing cash nature), the system forces the entry of an explanation, flags the transaction, and writes it to the immutable ledger for future auditor review.}
-\label{fig:cra_loop}
-\end{figure}
+\input{figures/fig_cra_loop}
 
 \subsection{Database Persistence and Flagging Mechanics}
 The outputs of the CRA are persisted directly within the database schema of the ERP integration (e.g., as custom fields in Frappe/ERPNext's \texttt{Journal Entry Account} DocType or SAP B1's user-defined fields). 
