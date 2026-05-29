@@ -14,7 +14,10 @@ As autonomous software agents begin to negotiate, authorize, and execute transac
 
 Kontablo acts as the foundational subledger layer for the emerging \textbf{Agent Payments Protocol (AP2)} and \textbf{Agent2Agent (A2A)} networks. When an autonomous agent issues a purchase order or executes a micropayment, the transactional payload is enriched with the target Kontablo Level 3 UUID:
 
-\[ \text{Payload} = \{ \text{Tx\_ID}, \text{Amount}, \text{Currency}, \text{Sender\_Agent\_ID}, \text{Recipient\_Agent\_ID}, \text{Kontablo\_UUID} \} \]
+\begin{align*}
+\text{Payload} = \{\ &\text{Tx\_ID},\ \text{Amount},\ \text{Currency},\\
+                     &\text{Sender\_Agent\_ID},\ \text{Recipient\_Agent\_ID},\ \text{Kontablo\_UUID}\ \}
+\end{align*}
 
 This metadata ensures that the ERP systems of the buyer, the vendor, and the financial intermediary record the event identically and instantaneously. It eliminates the need for post-transaction bank reconciliation, as the payment message contains the exact posting coordinates for both general ledgers.
 

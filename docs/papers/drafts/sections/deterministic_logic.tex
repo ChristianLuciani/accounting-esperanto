@@ -8,7 +8,7 @@ To achieve high automation without risking hallucinated mappings, Kontablo imple
 
 \begin{enumerate}
     \item \textbf{Tier 1: Exact Lookup (Direct Mapping):} The engine queries the central Level 3 YAML schema. If the local account code matches a pre-mapped standard code for that jurisdiction (e.g., Mexican SAT code \texttt{101} matches \texttt{asset.current.cash} directly), a link is created. This tier produces an exact match with a confidence score of $1.0$ and requires zero inference latency.
-    \item \textbf{Tier 2: Disambiguation Rules (Rule-Based Regex):} If Tier 1 fails, the engine applies keyword and regular expression rules to the account type and name. For example, if a Zoho Books account has a type of \texttt{other\_current\_liability} and a name containing ``VAT'' or ``IVA'', rule-based matching resolves it to \texttt{liability.current.vat\_output} (confidence score of $0.80$ to $0.90$).
+    \item {\sloppy\textbf{Tier 2: Disambiguation Rules (Rule-Based Regex):} If Tier 1 fails, the engine applies keyword and regular expression rules to the account type and name. For example, a Zoho Books account of type \texttt{other\_current\_liability} with a name containing ``VAT'' or ``IVA'' resolves to \texttt{liability.current.vat\_output} (confidence $0.80$--$0.90$).\par}
     \item \textbf{Tier 3: Semantic AI Fallback (Probabilistic Matching):} If both Tier 1 and Tier 2 fail, the engine activates the Semantic Matcher AI. The engine generates a vector embedding of the account's name, type, and description, comparing it against the embeddings of the 30 Level 3 universal accounts. The model outputs a mapping proposal along with a confidence score ($0.50$ to $0.85$). 
 \end{enumerate}
 
