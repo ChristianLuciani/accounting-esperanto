@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+message: "If you use Kontablo in your research or software, please cite it as below."
+type: software
+title: "Kontablo — Universal Accounting Ontology"
+abstract: >
+  Kontablo is a graph-based, UUID-keyed universal accounting ontology that bridges
+  local jurisdictional chart-of-accounts standards, international reporting frameworks
+  (IFRS/XBRL), the agentic economy (MCP, A2A, AP2), and blockchain/DeFi protocols.
+  It enables deterministic, machine-verifiable financial data exchange across
+  23 jurisdictions through a Tree-to-Graph Universal Bridge and a Deterministic
+  Boundary Library that eliminates the classical class of accounting hallucination.
+authors:
+  - family-names: Luciani
+    given-names: Christian
+    orcid: "https://orcid.org/0000-0002-6955-5384"
+    affiliation: "Independent Researcher, Cuenca, Ecuador"
+    email: cluciani@gmail.com
+repository-code: "https://github.com/ChristianLuciani/accounting-esperanto"
+license: BUSL-1.1
+version: "0.1.0"
+date-released: "2026-05-28"
+keywords:
+  - accounting
+  - ontology
+  - multi-jurisdictional
+  - IFRS
+  - XBRL
+  - graph database
+  - agentic economy
+  - MCP
+  - financial interoperability
+  - UUID
+  - post-quantum cryptography
+  - open-core
+preferred-citation:
+  type: unpublished
+  title: >
+    Kontablo: A Graph-Based Universal Accounting Ontology
+    for Multi-Jurisdictional Financial Integration
+  authors:
+    - family-names: Luciani
+      given-names: Christian
+      orcid: "https://orcid.org/0000-0002-6955-5384"
+      affiliation: "Independent Researcher, Cuenca, Ecuador"
+  year: 2026
+  notes: "Preprint. SSRN/Zenodo submission pending. DOI will be added upon publication."
+  url: "https://github.com/ChristianLuciani/accounting-esperanto"
