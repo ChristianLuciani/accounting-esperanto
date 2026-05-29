@@ -85,10 +85,33 @@ traction — the architecture names the category, not a single protocol.
 ### What is the Co-responsibility Governance Architecture?
 
 Defined in [ADR 008](docs/adr/008-co-responsibility-governance.md), this mechanism
-governs residual error after deterministic constraints are applied. It defines three
-decision modes: agent decides alone (high-confidence, ontology-bounded), agent requires
-human co-signature (medium confidence, boundary-adjacent), agent escalates to human
-(out-of-coverage). The harness — not the model — enforces these boundaries.
+establishes that **the human is always the ultimate legal principal** in any
+Kontablo-mediated transaction. Accountability cannot be transferred to an agent.
+
+The architecture has two non-negotiable properties:
+
+- **Full auditability.** Every transaction, agent decision, and confidence score is
+  recorded with an immutable audit trail. Zero-corruption is an explicit design goal:
+  Kontablo implements everything technically possible to make financial flows observable,
+  traceable, and verifiable.
+- **Human veto power.** The human retains the right to review and reverse any agent
+  decision at any time. If an agent produces an incorrect or fraudulent transaction,
+  the human can correct it — and the audit trail preserves both the original action
+  and the correction.
+
+Within these constraints, co-responsibility defines three participation modes that
+govern *automation convenience*, not accountability:
+
+| Mode | Condition | Human role |
+|---|---|---|
+| Auto-approval | High confidence, ontology-bounded | Pre-authorized; receives audit record |
+| Co-signature | Medium confidence, boundary-adjacent | Explicit approval required before execution |
+| Escalation | Out-of-coverage | Full human decision; agent presents options only |
+
+In M2M scenarios (agent-to-agent without a human in the real-time loop), co-responsibility
+is embedded in the pre-configured protocol rules. The human set those rules and retains
+retroactive veto over any transaction the automated process produced. The harness —
+not the model — enforces these boundaries.
 
 ---
 
@@ -191,10 +214,11 @@ in financial data infrastructure for emerging markets and the agentic economy.
   [NIST FIPS 203](https://csrc.nist.gov/pubs/fips/203/final) /
   [NIST FIPS 204](https://csrc.nist.gov/pubs/fips/204/final))
   on spec version hashes.
+- Jurisdiction expansion toward comprehensive global coverage (23 jurisdictions mapped
+  at v1; full global scale is the long-term target).
 
-**What is not on the roadmap:**
-- Hosted SaaS offering (not planned).
-- Jurisdiction expansion beyond 23 before Phase 3 validation completes.
+Commercial API hosting, SaaS, and implementation services are out of scope for
+this repository. See [LICENSING.md](LICENSING.md) for commercial use options.
 
 ---
 
