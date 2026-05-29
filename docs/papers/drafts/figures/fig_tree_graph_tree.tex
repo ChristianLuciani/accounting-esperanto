@@ -1,0 +1,181 @@
+% Figure: Tree → 3D Graph (Kontablo) → Tree
+% Concept: Local ERP flat tree enters Kontablo's multi-dimensional graph;
+%          the graph is linearized back into a flat IFRS output tree.
+% The "3D" effect is achieved with two offset node layers (front/back)
+% and three edge colors representing independent graph dimensions.
+% Status: Appendix figure — not yet integrated into a section.
+\begin{figure}[p]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+    >=Latex,
+    % ---- Input tree (orange palette) ----
+    troot/.style={draw, rectangle, rounded corners=4pt,
+        fill=orange!25, text width=2.1cm, align=center,
+        font=\scriptsize\bfseries, minimum height=0.7cm},
+    tnode/.style={draw, rectangle, rounded corners=4pt,
+        fill=orange!10, text width=2.1cm, align=center,
+        font=\scriptsize, minimum height=0.65cm},
+    tedge/.style={->, thick, orange!60!black},
+    % ---- Output tree (green palette) ----
+    oroot/.style={draw, rectangle, rounded corners=4pt,
+        fill=green!22, text width=2.1cm, align=center,
+        font=\scriptsize\bfseries, minimum height=0.7cm},
+    onode/.style={draw, rectangle, rounded corners=4pt,
+        fill=green!8, text width=2.1cm, align=center,
+        font=\scriptsize, minimum height=0.65cm},
+    oedge/.style={->, thick, green!55!black},
+    % ---- Graph nodes (blue palette) ----
+    gnode/.style={draw, circle, fill=blue!18, thick,
+        font=\scriptsize\bfseries, minimum size=1.05cm, align=center},
+    gback/.style={draw=gray!35, circle, fill=blue!4,
+        font=\scriptsize, minimum size=1.05cm, align=center, dashed},
+    % ---- Edge dimensions ----
+    % Blue  = IFRS / Balance Sheet dimension
+    % Red   = Tax / Regulatory dimension
+    % Violet= Functional / Cost-Centre dimension
+    edgeIFRS/.style={->, thick, blue!65},
+    edgeTax/.style={->, thick, red!55, dashed},
+    edgeFun/.style={->, thick, violet!60, dotted, line width=1.2pt},
+    % ---- Transition arrows ----
+    bigarrow/.style={->, line width=4pt, gray!45}
+]
+
+%% ================================================================
+%% 1.  INPUT TREE  (x ≈ 0..3.4)
+%% ================================================================
+\node[troot] (L0)  at (1.7,  0.0) {Assets\\(local ERP)};
+\node[tnode] (L1a) at (0.6, -1.5) {Current\\Assets};
+\node[tnode] (L1b) at (2.8, -1.5) {Non-current\\Assets};
+\node[tnode] (L2a) at (-0.3,-3.1) {\texttt{101}\\Cash};
+\node[tnode] (L2b) at ( 1.1,-3.1) {\texttt{105}\\Receivables};
+\node[tnode] (L2c) at ( 2.4,-3.1) {\texttt{151}\\Inventory};
+\node[tnode] (L2d) at ( 3.8,-3.1) {\texttt{181}\\PP\&E};
+
+\draw[tedge] (L0)  -- (L1a);
+\draw[tedge] (L0)  -- (L1b);
+\draw[tedge] (L1a) -- (L2a);
+\draw[tedge] (L1a) -- (L2b);
+\draw[tedge] (L1a) -- (L2c);
+\draw[tedge] (L1b) -- (L2d);
+
+% label
+\node[font=\small\bfseries, text=orange!75!black] at (1.7, 0.85) {Local ERP Tree};
+\node[font=\scriptsize\itshape, text=gray!65]     at (1.7, 0.40) {one parent per account};
+
+%% ================================================================
+%% 2.  TRANSITION ARROW  left → center
+%% ================================================================
+\draw[bigarrow] (4.4,-1.55) -- (5.7,-1.55);
+\node[font=\scriptsize\bfseries, text=gray!60] at (5.05,-1.1)  {Tree-to-Graph};
+\node[font=\scriptsize\itshape,  text=gray!55] at (5.05,-2.05) {(import)};
+
+%% ================================================================
+%% 3.  KONTABLO MULTI-DIMENSIONAL GRAPH  (center, x ≈ 6..11.4)
+%%     Two node layers simulate 3-D depth.
+%%     Back layer: offset (+0.45, +0.35) relative to front layer.
+%%     Three edge colors = three independent graph dimensions.
+%% ================================================================
+
+% --- background panel (suggests a volume / cube face) ---
+\draw[draw=blue!20, fill=blue!3, rounded corners=10pt]
+    (5.8, 1.15) -- (11.5, 1.15) -- (11.5,-4.3) -- (5.8,-4.3) -- cycle;
+
+% subtle depth-face top and right (isometric suggestion)
+\draw[draw=blue!12, fill=blue!6, rounded corners=4pt]
+    (6.2, 1.15) -- (11.9, 1.15) -- (11.9, 0.75) -- (6.2, 0.75) -- cycle;
+\draw[draw=blue!12, fill=blue!6, rounded corners=4pt]
+    (11.5, 1.15) -- (11.9, 0.75) -- (11.9,-3.9) -- (11.5,-4.3) -- cycle;
+
+% --- BACK layer nodes (ghost / depth suggestion) ---
+%   absolute coords = front coords + (0.45, +0.35)
+\node[gback] (Bc) at (7.55, -0.95) {};   % cash back
+\node[gback] (Br) at (9.15, -1.45) {};   % recv back
+\node[gback] (Bi) at (8.05, -3.05) {};   % inv  back
+\node[gback] (Bp) at (10.25,-3.15) {};   % ppe  back
+
+% back-layer edges (IFRS dim, ghosted)
+\draw[->, dashed, gray!30, thick] (Bc) -- (Br);
+\draw[->, dashed, gray!30, thick] (Br) -- (Bp);
+
+% --- depth connectors (front → back dashed lines) ---
+\draw[dotted, gray!30] (7.10,-1.30) -- (7.55,-0.95);
+\draw[dotted, gray!30] (8.70,-1.80) -- (9.15,-1.45);
+\draw[dotted, gray!30] (7.60,-3.40) -- (8.05,-3.05);
+\draw[dotted, gray!30] (9.80,-3.50) -- (10.25,-3.15);
+
+% --- FRONT layer nodes ---
+\node[gnode] (Fc) at (7.10,-1.30) {\texttt{cash}};
+\node[gnode] (Fr) at (8.70,-1.80) {\texttt{recv}};
+\node[gnode] (Fi) at (7.60,-3.40) {\texttt{inv}};
+\node[gnode] (Fp) at (9.80,-3.50) {\texttt{ppe}};
+
+% IFRS dimension edges (blue solid)
+\draw[edgeIFRS] (Fc) -- (Fr);
+\draw[edgeIFRS] (Fr) to[bend right=12] (Fp);
+
+% Tax dimension edges (red dashed)
+\draw[edgeTax] (Fc) to[bend left=25]  (Fi);
+\draw[edgeTax] (Fi) -- (Fp);
+
+% Functional dimension edges (violet dotted)
+\draw[edgeFun] (Fc) to[out=300, in=170] (Fp);
+\draw[edgeFun] (Fr) to[bend left=10]  (Fi);
+
+% --- graph title + UUID note ---
+\node[font=\small\bfseries, text=blue!70!black] at (8.85, 0.85)
+    {Kontablo Universal Graph};
+\node[font=\scriptsize\itshape, text=blue!50] at (8.85, 0.45)
+    {UUID-keyed nodes $\cdot$ context-free multi-dimensional edges};
+
+% --- dimension legend (bottom of panel) ---
+\node[draw=blue!25, fill=white, rounded corners=3pt,
+      font=\scriptsize, inner sep=4pt, align=left] at (9.15,-4.75)
+    {\textcolor{blue!65}{\textbf{---}} IFRS / Balance Sheet dim.\quad
+     \textcolor{red!55}{\textbf{- -}} Tax / Regulatory dim.\quad
+     \textcolor{violet!60}{\textbf{$\cdots$}} Functional / Cost Centre dim.};
+
+%% ================================================================
+%% 4.  TRANSITION ARROW  center → right
+%% ================================================================
+\draw[bigarrow] (11.8,-1.55) -- (13.1,-1.55);
+\node[font=\scriptsize\bfseries, text=gray!60] at (12.45,-1.1)  {Graph-to-Tree};
+\node[font=\scriptsize\itshape,  text=gray!55] at (12.45,-2.05) {(linearize)};
+
+%% ================================================================
+%% 5.  OUTPUT TREE  (x ≈ 13.5..17.3, IFRS Balance Sheet)
+%% ================================================================
+\node[oroot] (R0)  at (15.3,  0.0) {Balance Sheet\\(IFRS)};
+\node[onode] (R1a) at (14.1, -1.5) {Current\\Assets};
+\node[onode] (R1b) at (16.5, -1.5) {Non-current\\Assets};
+\node[onode] (R2a) at (13.0, -3.1) {Cash \&\\Equivalents};
+\node[onode] (R2b) at (14.5, -3.1) {Trade\\Receivables};
+\node[onode] (R2c) at (15.9, -3.1) {Inventories};
+\node[onode] (R2d) at (17.3, -3.1) {PP\&E};
+
+\draw[oedge] (R0)  -- (R1a);
+\draw[oedge] (R0)  -- (R1b);
+\draw[oedge] (R1a) -- (R2a);
+\draw[oedge] (R1a) -- (R2b);
+\draw[oedge] (R1a) -- (R2c);
+\draw[oedge] (R1b) -- (R2d);
+
+% label
+\node[font=\small\bfseries, text=green!60!black] at (15.3, 0.85) {IFRS Output Tree};
+\node[font=\scriptsize\itshape, text=gray!65]    at (15.3, 0.40) {linearized for reporting};
+
+\end{tikzpicture}%
+}
+\caption{Tree-to-Graph-to-Tree: the Kontablo linearization protocol.
+A local ERP chart of accounts (left, orange) is imported into the Kontablo
+Universal Graph (centre, blue), where each account node carries a UUID and
+participates simultaneously in multiple independent graph dimensions ---
+IFRS/Balance Sheet (solid blue), Tax/Regulatory (dashed red), and
+Functional/Cost-Centre (dotted violet). Ghost nodes and connectors at the
+back layer suggest the three-dimensional nature of the graph space.
+For reporting or ERP export, the graph is linearized (Graph-to-Tree)
+by selecting a single dimension as the primary axis, producing a clean
+IFRS output tree (right, green) without loss of the multi-dimensional
+data held in the graph.}
+\label{fig:tree_graph_tree}
+\end{figure}
