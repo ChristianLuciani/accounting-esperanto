@@ -1,0 +1,57 @@
+\section{Related Problems and Convergent Prior Art}
+
+The translation mechanism of the previous section is not unique to accounting. Several
+mature fields solve the same problem --- reconcile two structures that share no common
+coordinate system --- by the same move: lift to a richer intermediate structure, operate
+there, project back. We position Kontablo against this prior art at three explicit strengths
+of claim, so that a rigorous instance is never mistaken for a suggestive metaphor.
+
+\subsection{Foundation: constructions Kontablo instantiates}
+Three bodies of work supply the actual machinery and are cited as ground truth: functorial
+data migration (Spivak, 2012) and ologs (Spivak \& Kent, 2012) for the schema-to-schema
+translation; cellular-sheaf cohomology for data fusion (Robinson, 2017; Curry, 2014;
+Hansen \& Ghrist, 2019) for the local-to-global reconciliation obstruction; and the Pacioli
+group with its multi-dimensional generalization (Ellerman, 2014) for the accounting-native
+algebra. These are not analogies --- Kontablo's import/export and reconciliation are
+instances of them.
+
+\subsection{Sibling: fields solving the same problem the same way}
+Ontology and schema matching in the semantic web (Thiéblin et al., 2020) target precisely
+the heterogeneity Kontablo calls Babel, and the Ontology Alignment Evaluation Initiative
+provides standardized benchmarks worth borrowing for evaluation. The most literal twin is
+\emph{phylogenetic reconciliation}: a gene tree and a species tree, distinct in topology, are
+reconciled by embedding one into the other and explaining the discordance by discrete events
+(duplication, loss, transfer), with a rich complexity theory of when the reconciliation is
+tractable (e.g., Hasić \& Tannier, 2019). This is the tree-to-tree-via-richer-structure
+problem with a different vocabulary, and its cost models are a direct precedent for
+quantifying linearization loss. Interlingua machine translation (Vauquois, 1968) supplies the
+pivot architecture itself.
+
+\subsection{Machine learning: structural alignment as optimization}
+A direct line of machine-learning work attacks the same alignment problem and is the most
+likely source of practical leverage. Gromov--Wasserstein optimal transport (Mémoli, 2011;
+Xu et al., 2019) aligns two relational structures that live in \emph{incomparable} spaces by
+matching their internal distance structure alone, without any shared feature coordinates ---
+exactly the situation of two charts of accounts with no common key. It yields a coupling
+between the nodes of a source structure and a target structure as the solution of a
+well-posed optimization problem.
+
+Its role in Kontablo is deliberately bounded and subordinate to ADR~009. Gromov--Wasserstein
+alignment is a candidate for \emph{mapping-proposal generation under sparse labels}: an
+optimization-based, reproducible alternative to stochastic language-model guessing when no
+deterministic rule yet exists for a given account. It is never the mapping authority. The
+optimal coupling is a proposal that must pass the deterministic boundary and human
+disposition; production mapping remains deterministic and auditable.
+
+\subsection{Open accounting problems the same mechanism addresses}
+Framing the mechanism formally widens its surface of application. Three open problems in
+global accounting reduce to the same lift--reconcile--project pattern. \textbf{Consolidation
+and intercompany elimination} is a gluing of local ledgers into a global one --- the precise
+scenario for which the sheaf-cohomological obstruction $H^{1}$ was introduced, so a failed
+consolidation has a computable, localizable cause. \textbf{Multi-GAAP reconciliation}
+(IFRS~$\leftrightarrow$~US~GAAP~$\leftrightarrow$~local) is span completion through the
+universal pivot, with the residual obstruction marking which reconciliations are impossible
+without loss. \textbf{Chart-of-accounts versioning and provenance} is functorial migration
+across time: a schema mapping between an old and a new chart induces the migration functors
+that move historical data and queries consistently (Spivak, 2012). Each is a candidate
+spin-out result rather than a claim the present paper proves.

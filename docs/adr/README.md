@@ -29,6 +29,16 @@ Each ADR follows this structure:
 | [008](008_co_responsibility_governance.md) | Co-Responsibility Governance ⚠️ NUMBER COLLISION with erp-tree-to-graph | Accepted | 2026 |
 | [009](009-determinism-over-stochasticity.md) | Determinism Over Stochasticity (Code Over Inference) | Accepted | 2026-05-28 |
 | [010](010-agent-native-and-connector-licensing.md) | Agent-Native Access Layer & Connector Licensing | Accepted | 2026-05-28 |
+| [011](011-client-specific-determinism-agent.md) | Client-Specific Determinism Agent | Proposed | 2026-05-28 |
+| [012](012-mathematical-foundations-and-prior-art.md) | Mathematical Foundations and Prior-Art Positioning | Proposed | 2026-05-29 |
+| [013](013-erp-tree-to-graph-compatibility.md) | Tree-to-Graph Compatibility Protocol for ERP Integration | Proposed | 2026-03-13 |
+| [014](014-postgresql.md) | PostgreSQL | Proposed | 2026-01-27 |
+
+> ⚠️ **Header/filename mismatch (renumbering debt):** files `013-erp-tree-to-graph-compatibility.md`
+> and `014-postgresql.md` still carry their pre-renumbering internal headers (`013` reads
+> "ADR-008", `014` reads "ADR 005"). This is why `docs/papers/.../ontology.tex` cites "ADR-008"
+> for the tree-to-graph protocol. Reconcile filenames and internal headers in a single dedicated
+> session — do not fix ad hoc, as other documents reference the current filenames.
 
 > ⚠️ **Known debt:** ADR numbers 005 and 008 each have two files (collision). Resolve by renumbering in a dedicated session before public release — do not renumber ad hoc, as other documents may reference the current filenames.
 
