@@ -1,0 +1,86 @@
+# Mathematical Foundations — source manifest
+# Companion to mathematical_foundations.bib, ADR 012, and the preprint sections.
+# APA 7 citations live in the preprint's Selected Bibliography; this file tracks
+# acquisition + licensing so a download pass knows what is safe to fetch.
+
+download_policy:
+  open_ok: "Fetch the PDF into this folder (arXiv, PLoS/OA, or author-hosted copy)."
+  paywalled: "DO NOT download the publisher PDF. Store the citation + link only;
+    fetch only a legitimately open preprint/author copy if one exists."
+  note: "Downloading any file requires explicit human authorization per the
+    operating rules. This manifest only declares what would be permissible."
+
+sources:
+  - id: spivak2012fdm
+    tier: F
+    access: open_arxiv
+    url: https://arxiv.org/abs/1009.1166
+    relevance: "Import/export as adjoint data-migration functors (the round trip)."
+  - id: spivak2012ologs
+    tier: F
+    access: open_oa
+    url: https://doi.org/10.1371/journal.pone.0024274
+    license: "CC-BY (PLoS ONE)"
+    relevance: "Categorical knowledge representation; ologs ~ chart-of-accounts semantics."
+  - id: ellerman2014deb
+    tier: F
+    access: author_copy
+    url: https://arxiv.org/abs/1407.1898
+    license: "Journal paywalled (Accounting Education); arXiv + ellerman.org open."
+    relevance: "Accounting-native anchor: Pacioli group + multi-dimensional vector accounting."
+  - id: robinson2017sheaves
+    tier: F
+    access: paywalled
+    url: https://doi.org/10.1016/j.inffus.2016.12.002
+    license: "Elsevier paywalled; check for author/arXiv preprint before fetching."
+    relevance: "Sheaves as the canonical structure for fusing heterogeneous local data."
+  - id: curry2014sheaves
+    tier: F
+    access: open_arxiv
+    url: https://arxiv.org/abs/1303.3255
+    relevance: "Sheaf/cosheaf foundations; cohomology as obstruction to global gluing."
+  - id: hansen2019spectral
+    tier: F
+    access: open_arxiv
+    url: https://arxiv.org/abs/1808.01513
+    relevance: "Sheaf Laplacian / spectral diagnostics; quantitative inconsistency measures."
+  - id: thieblin2020ontology
+    tier: S
+    access: paywalled
+    url: https://doi.org/10.3233/SW-190366
+    license: "Semantic Web Journal often posts an open accepted version; verify."
+    relevance: "Ontology/schema matching = the Babel problem in the semantic web; OAEI benchmark."
+  - id: vauquois1968mt
+    tier: S
+    access: locate
+    url: ""
+    license: "1968 IFIP proceedings; historical, may need a library/secondary source."
+    relevance: "Interlingua pivot architecture (lift to language-independent representation)."
+  - id: hasic2019reconciliation
+    tier: S
+    access: open_arxiv
+    url: https://arxiv.org/abs/1703.08950
+    relevance: "Literal twin: gene-tree/species-tree reconciliation via embedding + event costs."
+  - id: memoli2011gw
+    tier: S
+    access: paywalled
+    url: https://doi.org/10.1007/s10208-011-9093-5
+    license: "Springer paywalled; author preprint likely on Mémoli's page."
+    relevance: "Gromov-Wasserstein: align structures in incomparable spaces (no shared key)."
+  - id: xu2019gwlearning
+    tier: S
+    access: open_arxiv
+    url: https://arxiv.org/abs/1901.06003
+    relevance: "Implemented GW graph matching; candidate for sparse-label mapping proposals."
+  - id: cover1965separability
+    tier: A
+    access: author_copy
+    url: https://isl.stanford.edu/~cover/papers/paper2.pdf
+    license: "IEEE paywalled; open author copy at the Stanford URL."
+    relevance: "Principle (analogy only): lifting dimension turns the intractable tractable."
+
+recommended_not_yet_cited:
+  - note: "Ghrist & Cooperband — cellular sheaf cohomology for physical structures (trusses);
+      the bridge to the conduction/flow-network reading of double-entry. Verify exact cite."
+  - note: "OAEI (Ontology Alignment Evaluation Initiative) — benchmark suite worth borrowing
+      for evaluation methodology."

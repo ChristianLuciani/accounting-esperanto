@@ -1,0 +1,96 @@
+\section{Mathematical Foundations of the Translation Mechanism}
+
+The tree-to-graph-to-tree pipeline of Section~\ref{sec:ontology-bridge} is not an ad hoc
+engineering convenience; it is an instance of a construction that recurs, under different
+names, across category theory, applied topology, and computational linguistics. Making the
+construction explicit serves two purposes: it shows \emph{why} the round trip resolves the
+N:M mappings that defeat direct tree-to-tree approaches, and it makes the frontier of the
+method legible --- it tells us exactly where deterministic guarantees hold and where
+irreducible reconciliation loss begins.
+
+\subsection{The Babel Problem, Stated Formally}
+Let a localized statutory chart of accounts be a rooted tree $T_s$ and a target statutory
+chart be a rooted tree $T_t$, each carrying the single-parent constraint of
+Section~\ref{sec:ontology-bridge}. The ``Accounting Babel'' is the observation that there is
+in general \emph{no faithful structure-preserving map} $T_s \rightarrow T_t$: an account in
+$T_s$ may correspond to several accounts in $T_t$ and vice versa (the $1{:}N$ and $N{:}M$
+cardinalities), and the multi-dimensional roles an account plays (statutory, fiscal,
+functional, consolidated) cannot be expressed inside a single-parent hierarchy at all. The
+direct approach fails because the two trees do not share a common coordinate system.
+
+\subsection{Lift, Pivot, Project: an Adjoint Pair}
+Kontablo resolves this exactly as machine translation resolves the analogous problem between
+natural languages: rather than mapping $T_s$ directly to $T_t$, it analyses $T_s$ up into a
+jurisdiction-independent intermediate representation and then generates $T_t$ down from it.
+In machine translation this intermediate is the \textit{interlingua} at the apex of the
+Vauquois triangle (Vauquois, 1968); in Kontablo it is the Level~3 universal node set
+$V_{\text{universal}}$, which serves as the absolute pivot.
+
+This pivot construction has a precise categorical reading. Following Spivak (2012), a
+database schema is a small category and an instance is a set-valued functor on it; a schema
+mapping $F: \mathcal{S} \rightarrow \mathcal{T}$ then induces three canonical
+\emph{data-migration functors}. Two of them are exactly Kontablo's import and export
+streams:
+\[
+\Sigma_F : \mathcal{S}\text{-Inst} \rightarrow \mathcal{T}\text{-Inst}
+\qquad\text{(import / lift: tree}\rightarrow\text{graph)}
+\]
+\[
+\Delta_F : \mathcal{T}\text{-Inst} \rightarrow \mathcal{S}\text{-Inst}
+\qquad\text{(export / project: graph}\rightarrow\text{tree)}
+\]
+where $\Sigma_F$ is left adjoint to $\Delta_F$. The import stream enriches each leaf of the
+local tree with a mapping edge to a universal node and lifts it into the multi-dimensional
+graph $G$; the export stream linearizes $G$ back to a single-parent tree. Because the pair is
+adjoint, the round trip is \emph{canonical} rather than arbitrary: it is the universal way to
+move data and queries between the two schemas. The Kontablo import/export is therefore an
+instance of functorial data migration, and the universal node set is the colimit-like object
+through which both legs factor.
+
+\subsection{Why Lifting the Dimension Resolves the Mapping}
+The intuition that a problem unsolvable in a low-dimensional structure becomes solvable once
+lifted into a richer one is formalized, in a different setting, by Cover's theorem
+(Cover, 1965): a classification that is not separable in a low-dimensional space becomes
+separable, with high probability, once mapped nonlinearly into a higher-dimensional space.
+We invoke this only as an analogy of \emph{principle} --- Cover's setting is geometric
+separability, not structure-preserving translation --- but the shared moral is exact: the
+$N{:}M$ entanglement that cannot be resolved inside a single-parent tree is resolved once the
+account is re-expressed as an edge into a multi-dimensional graph, where membership in
+several analytical dimensions is no longer in conflict.
+
+\subsection{The Cost of the Return Trip: a Reconciliation Obstruction}
+The return trip is lossy by construction. Linearization selects a primary reporting
+dimension and discards the secondary analytical edges
+(Section~\ref{sec:ontology-bridge}); the discarded content is precisely the failure of the
+graph $G$ to be a tree. The natural question --- \emph{when can the local ledgers of many
+jurisdictions be glued into one globally consistent account, and what obstructs it?} --- is
+the question that sheaf cohomology was built to answer.
+
+Assign to the mapping graph a cellular sheaf whose stalks carry the local ledger data and
+whose restriction maps encode the consistency conditions on shared (overlapping) accounts
+(Robinson, 2017; Curry, 2014; Hansen \& Ghrist, 2019). Then the degree-zero cohomology
+$H^{0}$ is the space of \emph{globally consistent reconciliations} --- the data that patches
+together across all jurisdictions --- while a non-trivial degree-one class, $H^{1} \neq 0$,
+is the exact obstruction to such gluing: it measures, and localizes, the inconsistency that
+no choice of mapping can remove.
+
+This gives two of Kontablo's operational notions a precise referent. A node's
+\emph{deterministic boundary} (ADR~009) is a sheaf restriction map: it constrains which
+local sections are admissible. The \emph{Inconsistency Flag} of the co-responsibility
+architecture is then not a heuristic warning but the detection of a local section that fails
+to extend --- a witness to a non-zero cohomology class. Determinism and reconciliation thus
+speak one language: the deterministic scaffolding defines the restriction maps, and
+cohomology reports where global consistency is mathematically impossible and a human must
+dispose.
+
+\subsection{The Accounting-Native Anchor: the Pacioli Group}
+None of this is foreign to accounting's own mathematics. Ellerman (2014) shows that
+double-entry bookkeeping is, exactly, the \emph{group of differences} construction (the
+``Pacioli group'') on unsigned T-account pairs, and --- crucially for Kontablo --- that this
+construction \emph{generalizes naturally to multi-dimensional vector accounting}, in which
+scalar money amounts are replaced by vectors recording distinct types of property or
+analytical dimension. Kontablo's multi-dimensional property graph is the data-structure
+realization of precisely that generalization. The contribution is therefore not to invent a
+new algebra of accounting, but to operationalize, as a deterministic protocol over a
+property graph, a multi-dimensional generalization that has been latent in the mathematics of
+double-entry bookkeeping since its first formal treatment.
