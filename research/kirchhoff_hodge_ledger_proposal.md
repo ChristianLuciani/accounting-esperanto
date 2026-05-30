@@ -125,3 +125,40 @@ consolidation protocol) could be a companion note for an accounting-information-
   KCL claim merely poetic. The worked example exists to force precision.
 - Novelty is unconfirmed; treat the whole proposal as Sibling/Foundation-grade *pending* the
   literature sweep above. Do not assert priority until then.
+
+## Novelty sweep — findings (2026-05-29)
+A first literature search materially changes the picture. Record before any priority claim.
+
+### Preempted — cite, do not claim
+- **Hodge/Helmholtz decomposition of money-flow / transaction networks is established.**
+  Potential flow vs circular (loop) flow, with loop flow used for laundering/arbitrage
+  detection. See Fujiwara et al. (2021, *EPJ Data Science*, "Money flow network among firms'
+  accounts in a regional bank of Japan"); Hodge decomposition of Bitcoin and XRP money flow
+  (2020, 2023); and the foundational combinatorial Hodge theory of Jiang, Lim, Yao & Ye
+  (2011) and Lim (2015, "Hodge Laplacians on graphs"). **This preempts §2 of this proposal.**
+  Reframe §2 as *applying an established method* to the double-entry / property-graph
+  setting, not as new.
+- **Category-theoretic ledgers and micro→macro accounting consistency already exist.**
+  Nester (2020, "A Foundation for Ledger Structures", Tokenomics/OASIcs) builds ledger
+  structures via resource theories and string diagrams; Menéndez & Winschel (categorical
+  MoMaT, 2025, arXiv:2508.14132) compose microeconomic double-entry systems and explicitly
+  "lift micro accounting consistency to the macro level" with category theory. Adjacent to
+  S1 and to the "compose local ledgers into a consistent global" idea. **Must be read in
+  full before claiming the consolidation framing is new.**
+
+### Still open — candidate novelty (verify against full texts above)
+The **cellular-sheaf model of multi-jurisdiction consolidation**: stalks = local statutory
+ledgers, restriction maps = the deterministic COA→universal mapping, `H⁰` = consolidations,
+`H¹` = localized intercompany-elimination obstruction, plus a **deterministic reconciliation
+operator** (C2). The money-flow Hodge work is single-network (potential/circulation), not a
+sheaf reconciling heterogeneous local ledgers; categorical MoMaT lifts consistency but (per
+abstract) does not use sheaf cohomology or a spectral obstruction. So the likely-novel core
+is **C1 + C2 as a sheaf-cohomological consolidation/reconciliation result tied to functorial
+COA translation**.
+
+### Verdict
+S2's headline is no longer "Hodge for accounting" — that is taken. The defensible
+contribution narrows to the **sheaf consolidation theorem + deterministic reconciliation
+operator (C1/C2)**. Before committing a venue, read Menéndez & Winschel (2025) and Nester
+(2020) in full and re-scope the claim accordingly. Hodge decomposition stays in the paper as
+*applied prior method*, with circulation/loop detection cited to Fujiwara et al.
