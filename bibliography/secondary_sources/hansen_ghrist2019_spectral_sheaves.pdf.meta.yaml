@@ -1,0 +1,13 @@
+source_id: "hansen2019spectral"
+type: "secondary_academic"
+title: "Toward a Spectral Theory of Cellular Sheaves"
+author: "Hansen, Jakob; Ghrist, Robert"
+publication_date: "2019"
+url: "https://arxiv.org/abs/1808.01513"
+access_date: "2026-05-29"
+license: "arXiv preprint (open access)"
+file: "hansen_ghrist2019_spectral_sheaves.pdf"
+file_hash_sha256: "4185dec93ca1eba5317376a8c8f7743bd79601ab1652f523fd83ced08d79ee05"
+relevance: "Sheaf Laplacian and spectral diagnostics; effective resistance; quantitative inconsistency."
+citation: |
+  Hansen, J., & Ghrist, R. (2019). Toward a spectral theory of cellular sheaves. Journal of Applied and Computational Topology, 3. arXiv:1808.01513.

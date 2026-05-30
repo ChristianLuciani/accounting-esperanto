@@ -1,0 +1,13 @@
+source_id: "spivak2012fdm"
+type: "secondary_academic"
+title: "Functorial Data Migration"
+author: "Spivak, David I."
+publication_date: "2012"
+url: "https://arxiv.org/abs/1009.1166"
+access_date: "2026-05-29"
+license: "arXiv preprint (open access; author license)"
+file: "spivak2012_functorial_data_migration.pdf"
+file_hash_sha256: "0b4adddb4cc5701c3ce6dcabaf79367b42134f3baab0d368b9f3a6fcefd70009"
+relevance: "Import/export as adjoint data-migration functors (the tree->graph->tree round trip)."
+citation: |
+  Spivak, D. I. (2012). Functorial data migration. Information and Computation. arXiv:1009.1166.

@@ -1,0 +1,13 @@
+source_id: "xu2019gwlearning"
+type: "secondary_academic"
+title: "Gromov-Wasserstein Learning for Graph Matching and Node Embedding"
+author: "Xu, Hongteng; Luo, Dixin; Zha, Hongyuan; Carin, Lawrence"
+publication_date: "2019"
+url: "https://arxiv.org/abs/1901.06003"
+access_date: "2026-05-29"
+license: "arXiv preprint (open access; ICML 2019)"
+file: "xu2019_gromov_wasserstein_graph_matching.pdf"
+file_hash_sha256: "102718f4fc087fd42b6f42c6d926fce544c781f8555abf4ee7b38321d349093f"
+relevance: "Implemented GW graph matching; candidate for sparse-label mapping proposals (subordinate to ADR 009)."
+citation: |
+  Xu, H., Luo, D., Zha, H., & Carin, L. (2019). Gromov-Wasserstein learning for graph matching and node embedding. ICML. arXiv:1901.06003.

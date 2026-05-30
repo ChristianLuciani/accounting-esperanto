@@ -1,0 +1,13 @@
+source_id: "curry2014sheaves"
+type: "secondary_academic"
+title: "Sheaves, Cosheaves and Applications"
+author: "Curry, Justin"
+publication_date: "2014"
+url: "https://arxiv.org/abs/1303.3255"
+access_date: "2026-05-29"
+license: "arXiv preprint (open access)"
+file: "curry2014_sheaves_cosheaves.pdf"
+file_hash_sha256: "82e95395b95777063dad315bcaa8501beb2b07afde8591fd736e6642927cc912"
+relevance: "Sheaf/cosheaf foundations; cohomology as the obstruction to global gluing."
+citation: |
+  Curry, J. (2014). Sheaves, cosheaves and applications (PhD thesis). arXiv:1303.3255.

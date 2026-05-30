@@ -1,0 +1,13 @@
+source_id: "spivak2012ologs"
+type: "secondary_academic"
+title: "Ologs: A Categorical Framework for Knowledge Representation"
+author: "Spivak, David I.; Kent, Robert E."
+publication_date: "2012"
+url: "https://doi.org/10.1371/journal.pone.0024274"
+access_date: "2026-05-29"
+license: "CC-BY (PLoS ONE, open access)"
+file: "spivak_kent2012_ologs.pdf"
+file_hash_sha256: "a18a73cf2be31f0f125a8e45c2483ec16f07178caeaa53258b60fac53ab04f58"
+relevance: "Categorical knowledge representation; ologs as a model for chart-of-accounts semantics."
+citation: |
+  Spivak, D. I., & Kent, R. E. (2012). Ologs: A categorical framework for knowledge representation. PLoS ONE, 7(1), e24274.

@@ -1,0 +1,13 @@
+source_id: "cover1965separability"
+type: "secondary_academic"
+title: "Geometrical and Statistical Properties of Systems of Linear Inequalities with Applications in Pattern Recognition"
+author: "Cover, Thomas M."
+publication_date: "1965"
+url: "https://isl.stanford.edu/~cover/papers/paper2.pdf"
+access_date: "2026-05-29"
+license: "Author copy (IEEE version paywalled)"
+file: "cover1965_separability.pdf"
+file_hash_sha256: "5b4e859e05be369af9c1936c3e7bfb32e150b47c062a6e6814152ffc9bb7d0ba"
+relevance: "Analogy only: lifting dimension turns an inseparable problem separable."
+citation: |
+  Cover, T. M. (1965). Geometrical and statistical properties of systems of linear inequalities with applications in pattern recognition. IEEE Trans. Electron. Comput., EC-14(3), 326-334.

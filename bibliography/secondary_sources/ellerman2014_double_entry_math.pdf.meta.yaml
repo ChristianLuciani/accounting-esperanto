@@ -1,0 +1,13 @@
+source_id: "ellerman2014deb"
+type: "secondary_academic"
+title: "On Double-Entry Bookkeeping: The Mathematical Treatment"
+author: "Ellerman, David"
+publication_date: "2014"
+url: "https://arxiv.org/abs/1407.1898"
+access_date: "2026-05-29"
+license: "arXiv preprint (journal version paywalled: Accounting Education)"
+file: "ellerman2014_double_entry_math.pdf"
+file_hash_sha256: "711476ac1f4ed76cdc6229f07c81b97296ba6467419b43b6bef0485c2cbf0d9f"
+relevance: "Accounting-native anchor: Pacioli group and multi-dimensional vector accounting."
+citation: |
+  Ellerman, D. (2014). On double-entry bookkeeping: The mathematical treatment. Accounting Education, 23(5), 483-501.
