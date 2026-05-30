@@ -29,7 +29,7 @@ mappings:
     kontablo_uuid: "00000000-0000-4000-8000-000000000201"
 
   "2210":
-    name: "מע"מ עסקאות (Output VAT)"
+    name: 'מע"מ עסקאות (Output VAT)'
     nature: "Credit"
     level: 4
     kontablo_uuid: "40000000-0000-4000-8000-000000000002"

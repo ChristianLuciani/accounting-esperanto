@@ -75,17 +75,31 @@ async def get_account(account_id: str):
         raise HTTPException(status_code=404, detail="Account not found")
     return account
 
+@app.get("/accounts/{account_id}/local-codes", tags=["accounts"])
+async def get_local_codes(account_id: str, jurisdiction: Optional[str] = None):
+    """Return jurisdiction-specific local codes mapped to a Kontablo account ID."""
+    account = ontology_service.get_account(account_id)
+    if not account:
+        raise HTTPException(status_code=404, detail="Account not found")
+    local_codes_map = getattr(account, "local_codes", {}) or {}
+    if jurisdiction:
+        code = local_codes_map.get(jurisdiction.lower())
+        codes = [{"jurisdiction": jurisdiction.lower(), "code": code}] if code else []
+    else:
+        codes = [{"jurisdiction": jur, "code": code} for jur, code in local_codes_map.items()]
+    return {"account_id": account_id, "local_codes": codes}
+
 # ─────────────────────────────────────────────
 # MAPPING
 # ─────────────────────────────────────────────
 
 @app.post("/mapping/account", response_model=SingleMappingResponse, tags=["mapping"])
 async def map_account(request: SingleMappingRequest):
-    return mapping_service.map_account(request)
+    return await mapping_service.map_account(request)
 
 @app.post("/mapping/batch", response_model=BatchMappingResponse, tags=["mapping"])
 async def map_batch(request: BatchMappingRequest):
-    results = [mapping_service.map_account(acc) for acc in request.accounts]
+    results = [await mapping_service.map_account(acc) for acc in request.accounts]
     mapped_count = sum(1 for r in results if r.match_method != "not_found")
     
     return BatchMappingResponse(
