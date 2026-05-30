@@ -1,0 +1,13 @@
+source_id: "hasic2019reconciliation"
+type: "secondary_academic"
+title: "Gene Tree Species Tree Reconciliation"
+author: "Hasic, Damir; Tannier, Eric"
+publication_date: "2019"
+url: "https://arxiv.org/abs/1703.08950"
+access_date: "2026-05-29"
+license: "arXiv preprint (open access)"
+file: "hasic_tannier2019_reconciliation.pdf"
+file_hash_sha256: "da73de6f21546e026486d0e1867033428380922e917e3f682fce7fb5ee92ec92"
+relevance: "Literal twin: reconciling two distinct trees via embedding plus discrete event costs."
+citation: |
+  Hasic, D., & Tannier, E. (2019). Gene tree species tree reconciliation. arXiv:1703.08950.
