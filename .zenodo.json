@@ -1,0 +1,45 @@
+{
+  "title": "Kontablo: A Graph-Based Universal Accounting Ontology for the M2M Agentic Economy",
+  "description": "Kontablo is an open, graph-based universal accounting ontology anchored to International Financial Reporting Standards (IFRS) and empirically validated across 23 global jurisdictions, providing a deterministic, jurisdiction-agnostic subledger for both multinational ERP consolidation and the Machine-to-Machine (M2M) Agentic Economy. The global accounting ecosystem remains fragmented across incompatible national standards — an \"Accounting Babel\" that costs multinational enterprises billions in manual reconciliation and poses a structural barrier to high-frequency autonomous transactions. As AI agents begin to execute financial operations via Agent Payments (AP2) and Agent2Agent (A2A) protocols, they require a semantic execution layer that existing reporting standards (XBRL) and payment messaging protocols (ISO 20022) do not provide. Kontablo addresses this gap through three core contributions: (1) a Level 3 minimum-core taxonomy of 30 universal accounts empirically covering 92% of routine transaction volume across all tested jurisdictions; (2) a Three-Tier Resolution Strategy combining deterministic exact-code lookups and regex-based disambiguation rules with a confidence-scored semantic AI fallback, bounded by a Deterministic Boundary Library that eliminates the classical accounting hallucination class at the harness level; and (3) a Co-responsibility Architecture (CRA) that pairs every AI mapping proposal with a mandatory human review pathway and an immutable inconsistency audit trail, ensuring legal accountability rests with the human operator in all cases. We validate the framework using a mass-consolidation engine across 10 entities in 9 countries, including a dual-currency hyperinflation stress test under IAS 29 (Venezuela). Kontablo is published under the Business Source License 1.1, converting to Apache 2.0 after four years.",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "Luciani, Christian",
+      "affiliation": "Independent Researcher, Cuenca, Ecuador",
+      "orcid": "0000-0002-6955-5384"
+    }
+  ],
+  "license": "other-open",
+  "access_right": "open",
+  "keywords": [
+    "accounting ontology",
+    "multi-jurisdictional",
+    "IFRS",
+    "XBRL",
+    "graph database",
+    "agentic economy",
+    "MCP",
+    "A2A",
+    "AP2",
+    "financial interoperability",
+    "UUID",
+    "open-core",
+    "Kontablo",
+    "deterministic boundary library",
+    "co-responsibility architecture",
+    "hyperinflation",
+    "ERP consolidation"
+  ],
+  "related_identifiers": [
+    {
+      "relation": "isDocumentedBy",
+      "identifier": "https://github.com/ChristianLuciani/accounting-esperanto/blob/main/docs/papers/drafts/kontablo_preprint_modular.pdf",
+      "resource_type": "publication-preprint"
+    }
+  ],
+  "communities": [
+    {"identifier": "zenodo"},
+    {"identifier": "software"}
+  ],
+  "notes": "Preprint available at the repository. SSRN DOI will be linked once assigned. Source License: Business Source License 1.1, converting to Apache 2.0 on 2030-06-01."
+}
