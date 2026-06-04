@@ -1,0 +1,434 @@
+# Kontablo Localization Mapping: Austria (UGB / RLG — Austrian GAAP)
+# Version: 0.1.0-draft
+# Authority: KWT (Kammer der Wirtschaftstreuhänder) / Fachsenat für Unternehmensrecht und Revision
+# Standard: Austrian GAAP under UGB (Unternehmensgesetzbuch) §§ 189-283; supplemented by
+#           AFRAC (Austrian Financial Reporting and Auditing Committee) standards
+# Critical Notes:
+#   Austria does not mandate a specific chart of accounts, but the Kontenrahmen (KR) published
+#   by the WKO (Wirtschaftskammer Österreich) is the de-facto standard. The most common variant
+#   is the Einheitskontenrahmen (EKR) or the DATEV-compatible Österreichischer Kontenrahmen (ÖKR).
+#   The codes below follow the ÖKR structure commonly used in Austrian SME practice.
+#   Listed companies apply IFRS as adopted by EU.
+#   UGB requires preparation of annual financial statements; GmbH and AG must file with
+#   the Firmenbuch (commercial register).
+#   VAT (USt — Umsatzsteuer): standard rate 20%; reduced 10% (food, books, passenger transport,
+#   rents for residential purposes); reduced 13% (cultural events, plants, some food).
+#   Corporate income tax (KSt — Körperschaftsteuer): 24% (2023), 23% (2024 onward).
+#   Minimum corporate tax (Mindestkörperschaftsteuer) applies even in loss years (€500 GmbH / €3,500 AG).
+#   Kommunalsteuer (local payroll tax): 3% of wages; paid to municipality.
+#   Dienstgeberbeitrag (DB) + Dienstgeberzuschlag (DZ): payroll-related social contributions.
+
+metadata:
+  country: AT
+  authority: KWT / AFRAC / WKO (Wirtschaftskammer Österreich)
+  standard: oekr_ugb_gaap
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: EUR
+
+mappings:
+  # === KLASSE 0: ANLAGEVERMÖGEN (Fixed Assets) ===
+
+  "010":
+    name: "Immaterielle Vermögensgegenstände — selbst erstellt (Internally-generated Intangibles)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "020":
+    name: "Konzessionen, gewerbliche Schutzrechte und ähnliche Rechte (Concessions, IPR, Licences)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "030":
+    name: "Firmenwert (Goodwill — purchased)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "100":
+    name: "Unbebaute Grundstücke (Undeveloped Land)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "110":
+    name: "Bebaute Grundstücke und Gebäude (Land with Buildings)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "120":
+    name: "Technische Anlagen und Maschinen (Technical Plant and Machinery)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "130":
+    name: "Andere Anlagen, Betriebs- und Geschäftsausstattung (Other Plant, Business Equipment)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "140":
+    name: "Kraftfahrzeuge (Motor Vehicles)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "079":
+    name: "Kumulierte Abschreibungen — immaterielle Anlagen (Accumulated Amortisation — Intangibles, contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "179":
+    name: "Kumulierte Abschreibungen — Sachanlagen (Accumulated Depreciation — PPE, contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "200":
+    name: "Anteile an verbundenen Unternehmen (Investments in Subsidiaries)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "210":
+    name: "Beteiligungen (Equity Participations / Associates)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  # === KLASSE 1: VORRÄTE (Inventories) ===
+
+  "310":
+    name: "Roh-, Hilfs- und Betriebsstoffe (Raw, Auxiliary and Operating Materials)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "360":
+    name: "Fertige Erzeugnisse und Waren (Finished Goods and Merchandise)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  # === KLASSE 2: FORDERUNGEN UND SONSTIGE VERMÖGENSGEGENSTÄNDE (Receivables) ===
+
+  "200_frd":
+    name: "Forderungen aus Lieferungen und Leistungen (Trade Receivables)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "240":
+    name: "Vorsteuer (Input VAT Receivable)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "250":
+    name: "Steuerliche Forderungen (Tax Receivables — KSt prepaid, other)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "290":
+    name: "Aktive Rechnungsabgrenzungsposten (Prepaid Expenses and Accrued Income)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  # === KLASSE 2/3: LIQUIDE MITTEL (Cash and Bank) ===
+
+  "280":
+    name: "Kassenbestand (Cash on Hand)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "283":
+    name: "Guthaben bei Kreditinstituten (Bank Account Balances)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  # === EIGENKAPITAL (Equity) ===
+
+  "900":
+    name: "Gezeichnetes Kapital / Stammkapital (Issued Share Capital / GmbH Stammkapital)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "910":
+    name: "Kapitalrücklagen (Capital Reserves / Share Premium)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "920":
+    name: "Gewinnrücklagen — gesetzliche Rücklage (Legal Profit Reserve)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "960":
+    name: "Bilanzergebnis — Gewinn-/Verlustvortrag (Retained Earnings / Accumulated Losses)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "970":
+    name: "Ergebnis des Geschäftsjahres (Net Profit / Loss for the Year)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  # === RÜCKSTELLUNGEN (Provisions) ===
+
+  "510":
+    name: "Rückstellungen für Abfertigungen (Provisions for Severance — Austrian Abfertigungsrecht)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: Austrian Abfertigung (statutory severance) is similar to Italian TFR —
+    # a defined statutory obligation (or transferred to MV-Kasse/BMVG fund since 2003).
+    # For companies using the old system, it remains a provision. BMVG = new portable system.
+
+  "520":
+    name: "Rückstellungen für Pensionen (Pension Provisions)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  "530":
+    name: "Steuerrückstellungen (Tax Provisions — KSt)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  "590":
+    name: "Sonstige Rückstellungen (Other Provisions)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  # === VERBINDLICHKEITEN (Liabilities) ===
+
+  "400":
+    name: "Verbindlichkeiten gegenüber Kreditinstituten — langfristig (Long-term Bank Liabilities)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "430":
+    name: "Verbindlichkeiten gegenüber Kreditinstituten — kurzfristig (Short-term Bank / Overdraft)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "440":
+    name: "Verbindlichkeiten aus Lieferungen und Leistungen (Trade Payables)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "460":
+    name: "Umsatzsteuer-Schuld (Output VAT Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "470":
+    name: "Körperschaftsteuer- und sonstige Steuerschulden (Corporate Tax Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "480":
+    name: "Verbindlichkeiten gegenüber Sozialversicherungsträgern (Social Insurance Payable — ASVG, DB, DZ)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "490":
+    name: "Passive Rechnungsabgrenzungsposten (Deferred Income and Accrued Expenses)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  # === AUFWAND UND ERTRAG (Expenses and Revenue) ===
+
+  "4000":
+    name: "Umsatzerlöse (Revenue from Sales and Services)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4800":
+    name: "Sonstige betriebliche Erträge (Other Operating Income)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Materialaufwand / Wareneinsatz (Material Costs / COGS)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "6000":
+    name: "Personalaufwand (Personnel Costs)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "6020":
+    name: "Dienstgeberbeitrag und Dienstgeberzuschlag (DB + DZ — Employer Payroll Tax)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: DB (Dienstgeberbeitrag) = 3.9% of wages to Family Burden Equalisation Fund (FLAF);
+    # DZ (Dienstgeberzuschlag) = cantonal supplement (0% in some Länder, ~0.36% in others).
+    # Both are Austrian-specific employer payroll taxes with no direct IFRS equivalent.
+
+  "6040":
+    name: "Kommunalsteuer (Communal / Municipal Payroll Tax — 3% of wages)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7000":
+    name: "Abschreibungen (Depreciation and Amortisation)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "Mietaufwand (Rent and Lease Expense)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "Sonstiger betrieblicher Aufwand (Other Operating Expenses)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "8100":
+    name: "Zinsen und ähnliche Aufwendungen (Interest Expense and Similar Financial Charges)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "8200":
+    name: "Zinsen und ähnliche Erträge (Interest and Financial Income)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "8600":
+    name: "Körperschaftsteueraufwand (Corporate Income Tax Expense — KSt)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

@@ -1,0 +1,503 @@
+# Kontablo Localization Mapping: Philippines (PFRS — Philippine Financial Reporting Standards)
+# Version: 0.1.0-draft
+# Authority: FRSC (Financial Reporting Standards Council) under the PRC (Professional Regulation
+#            Commission). SEC (Securities and Exchange Commission Philippines) mandates PFRS for
+#            covered entities. BSP (Bangko Sentral ng Pilipinas) for banks.
+# Standard: PFRS = IFRS as adopted by the FRSC without modification for public-interest entities.
+#           PFRS for SMEs for smaller entities. Governed by: Revised Corporation Code (R.A. 11232),
+#           Securities Regulation Code (R.A. 8799), and related SEC Memorandum Circulars.
+# Critical Notes:
+#   No mandatory national chart of accounts for private-sector companies.
+#   Codes below reflect common practice consistent with PFRS and Philippine CPA board exam materials.
+#   EVAT (Expanded Value Added Tax): 12% standard rate (R.A. 9337 as amended).
+#     Exempt: agriculture, education, books, senior citizens, PWDs (R.A. 10963 TRAIN Law).
+#     Zero-rated: exports, BPO services to non-residents.
+#   Corporate Income Tax (CIT): 25% standard rate (CREATE Act, R.A. 11534, effective July 2020).
+#     MSME rate: 20% if net taxable income ≤ PHP 5M and total assets ≤ PHP 100M.
+#     MCIT (Minimum Corporate Income Tax): 2% of gross income (suspended per CREATE Act then reinstated).
+#   Withholding Tax (BIR — Bureau of Internal Revenue): expanded withholding varies by income type.
+#   SSS (Social Security System): employer ~9.5%, employee ~4.5% (2023 schedule).
+#   PhilHealth: employer 2.5%, employee 2.5% (income-based, total 5%).
+#   Pag-IBIG (HDMF): employer PHP 100/month, employee PHP 100/month (standard).
+#   Currency: PHP (Philippine Peso).
+# VERIFY: CIT rate — CREATE Act reduced from 30% to 25%; confirm no further amendments in 2026.
+# VERIFY: SSS contribution schedule — graduated increases per R.A. 11199; confirm 2026 rate.
+# VERIFY: EVAT zero-rating scope — RMC 24-2022 expansions; confirm current BIR issuances.
+
+metadata:
+  country: PH
+  authority: FRSC / SEC Philippines / BIR
+  standard: PFRS_IFRS_adoption_current
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: PHP
+
+mappings:
+  # === ASSETS ===
+  "1000":
+    name: "Current Assets"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Cash and Cash Equivalents"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "Petty Cash Fund"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1120":
+    name: "Cash in Bank — Philippine Peso (PHP Deposit Accounts)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1130":
+    name: "Cash in Bank — Foreign Currency (USD/Other)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1140":
+    name: "Short-term Investments (Time Deposits / Money Market)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Trade and Other Receivables"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1210":
+    name: "Trade Receivables (Accounts Receivable — Trade)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1215":
+    name: "Allowance for Doubtful Accounts (contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1220":
+    name: "Notes Receivable"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1230":
+    name: "BIR — Input VAT / EVAT Receivable"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Inventories"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1310":
+    name: "Merchandise Inventory"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1320":
+    name: "Raw Materials Inventory"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Prepaid Expenses"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "Non-current Assets"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1510":
+    name: "Property, Plant and Equipment (at cost)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1511":
+    name: "Land (at cost)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1512":
+    name: "Building and Improvements"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1513":
+    name: "Furniture, Fixtures and Equipment"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1519":
+    name: "Accumulated Depreciation (contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1520":
+    name: "Intangible Assets (net)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1530":
+    name: "Right-of-Use Assets (PFRS 16)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  # === LIABILITIES ===
+  "2000":
+    name: "Current Liabilities"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Trade and Other Payables"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2110":
+    name: "Accounts Payable — Trade"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2120":
+    name: "BIR — Output VAT / EVAT Payable"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2130":
+    name: "BIR — Expanded Withholding Tax Payable"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2140":
+    name: "BIR — Income Tax Payable (CIT)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2150":
+    name: "SSS / PhilHealth / Pag-IBIG Contributions Payable"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2160":
+    name: "Accrued Expenses Payable"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "2170":
+    name: "Deferred Revenue (Unearned Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Short-term Loans Payable"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2500":
+    name: "Non-current Liabilities"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2510":
+    name: "Long-term Loans Payable"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2520":
+    name: "Lease Liability — Long-term (PFRS 16)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "2530":
+    name: "Deferred Tax Liability"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  # === EQUITY ===
+  "3000":
+    name: "Stockholders' Equity"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Share Capital (Authorized, Issued and Paid-up)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Additional Paid-in Capital (Share Premium)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Retained Earnings (Deficit)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "Net Income (Loss) for the Period"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  # === REVENUE ===
+  "4000":
+    name: "Revenue"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "Sales Revenue (Net of Returns and Discounts)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4200":
+    name: "Service Revenue"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "4300":
+    name: "Interest Income"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "4400":
+    name: "Other Income"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  # === EXPENSES ===
+  "5000":
+    name: "Expenses"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Cost of Goods Sold / Cost of Sales"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Salaries and Wages Expense"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5210":
+    name: "SSS / PhilHealth / Pag-IBIG Employer Contributions"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5300":
+    name: "Depreciation and Amortization Expense"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "5400":
+    name: "Rent Expense"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "5500":
+    name: "Utilities Expense (Electricity, Water, Telecoms)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "5600":
+    name: "Marketing and Advertising Expense"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "5700":
+    name: "Interest Expense and Bank Charges"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "5800":
+    name: "Income Tax Expense (CIT / MCIT)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "5900":
+    name: "Other Operating Expenses"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

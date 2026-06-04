@@ -1,0 +1,445 @@
+# Kontablo Localization Mapping: Norway (Norwegian Accounting Act / Regnskapsloven)
+# Version: 0.1.0-draft
+# Authority: NRS (Norsk RegnskapsStiftelse — Norwegian Accounting Standards Board)
+# Standard: Norwegian Accounting Act (Regnskapsloven — rskl., LOV-1998-07-17-56 with amendments);
+#           NRS standards; Norwegian GAAP for SMEs (NRS 8)
+# Critical Notes:
+#   Norway does not mandate a specific chart of accounts. The Norsk Standard Kontoplan (NS 4102)
+#   is the de-facto standard published by Standard Norge. Supported by Visma, Tripletex, and
+#   Fiken (the leading Norwegian cloud accounting platform). 4-digit codes.
+#   Norway is NOT in the EU but is in the EEA; listed companies on Oslo Børs apply IFRS.
+#   Norwegian GAAP (NGAAP) is the domestic standard for unlisted entities.
+#   VAT (Merverdiavgift — MVA): standard rate 25%; reduced 15% (food); 12% (passenger transport,
+#   hotel accommodation, cinema). Norwegian VAT Act (merverdiavgiftsloven).
+#   Corporate income tax (Selskapsskatt / Skatt på alminnelig inntekt): 22% (since 2019).
+#   Petroleum sector taxed at 78% (special petroleum tax). Financial sector: 25%.
+#   Employer social contributions (Arbeidsgiveravgift): graduated by geographic zone,
+#   from 0% (northernmost counties — Finnmark, Troms/Finnmark parts) to 14.1% (standard).
+#   OTP (Obligatorisk tjenestepensjon — mandatory occupational pension): minimum 2% of salary.
+
+metadata:
+  country: NO
+  authority: NRS (Norsk RegnskapsStiftelse) / Standard Norge (NS 4102)
+  standard: norsk_standard_kontoplan_ns4102
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: NOK
+
+mappings:
+  # === KLASSE 1: ANLEGGSMIDLER (Fixed Assets) ===
+
+  "1000":
+    name: "Forskning og utvikling (Research and Development — capitalised)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1020":
+    name: "Patenter, lisenser og varemerker (Patents, Licences and Trademarks)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1070":
+    name: "Goodwill"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Tomter, bygninger og annen fast eiendom (Land, Buildings and Other Real Property)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "Tomter og annen fast eiendom (Land and Property)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1120":
+    name: "Bygninger (Buildings)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Maskiner og anlegg (Machinery and Plant)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1230":
+    name: "Inventar og løsøre (Fixtures, Fittings and Movables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1260":
+    name: "Personbiler (Company Cars)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1299":
+    name: "Akkumulerte avskrivninger — varige driftsmidler (Accumulated Depreciation — PPE, contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Investeringer i datterselskaper (Investments in Subsidiaries)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "1350":
+    name: "Investeringer i tilknyttede selskaper (Investments in Associates)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  # === KLASSE 1 (continued): OMLØPSMIDLER (Current Assets) ===
+
+  "1400":
+    name: "Råvarer og innkjøpte halvfabrikata (Raw Materials and Purchased Semi-finished Goods)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1460":
+    name: "Ferdig tilvirkede varer og handelsvarer (Finished Goods and Merchandise)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "Kundefordringer (Trade Receivables / Accounts Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1509":
+    name: "Avsetning for tap på fordringer (Allowance for Doubtful Receivables — contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1570":
+    name: "Inngående MVA (Input VAT Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1580":
+    name: "Forskuddsbetalt skatt (Prepaid Corporate Tax)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "1590":
+    name: "Andre kortsiktige fordringer og forskuddsbetalte kostnader (Other ST Receivables and Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1900":
+    name: "Bankinnskudd (Bank Deposits / Current Accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1910":
+    name: "Kassebeholdning (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1920":
+    name: "Skattetrekkskonto (Payroll Tax Withholding Account — dedicated bank account)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: Norwegian law requires employers to hold withheld payroll tax in a separate
+    # dedicated bank account (skattetrekkskonto). This is a unique Norwegian legal requirement.
+
+  # === KLASSE 2: EGENKAPITAL OG GJELD (Equity and Liabilities) ===
+
+  "2000":
+    name: "Aksjekapital / Selskapskapital (Share Capital / AS Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "2020":
+    name: "Overkursfond (Share Premium Reserve)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "2050":
+    name: "Opptjent egenkapital / Annen egenkapital (Retained Earnings / Other Equity)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "2060":
+    name: "Udisponert årsresultat (Undistributed Net Profit for the Year)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "2290":
+    name: "Avsetninger for forpliktelser (Provisions for Obligations)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  "2310":
+    name: "Gjeld til kredittinstitusjoner — langsiktig (Long-term Bank Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2410":
+    name: "Gjeld til kredittinstitusjoner — kortsiktig (Short-term Bank Loans / Overdrafts)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2400":
+    name: "Leverandørgjeld (Trade Payables / Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2700":
+    name: "Utgående MVA — høy sats 25% (Output VAT 25% Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2710":
+    name: "Utgående MVA — middels sats 15% (Output VAT 15% Payable — food)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2720":
+    name: "Utgående MVA — lav sats 12% (Output VAT 12% Payable — transport, hotels)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2770":
+    name: "Skyldig skattekostnad (Corporate Tax Payable — Selskapsskatt 22%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2600":
+    name: "Skattetrekk og arbeidsgiveravgift (Payroll Tax Withheld + Employer National Insurance)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2910":
+    name: "Påløpte kostnader og forskuddsbetalt inntekt (Accrued Expenses and Deferred Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  # === KLASSE 3: SALGSINNTEKTER (Revenue) ===
+
+  "3000":
+    name: "Salgsinntekter — varer (Sales Revenue — Goods)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Salgsinntekter — tjenester (Sales Revenue — Services)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "3900":
+    name: "Andre driftsinntekter (Other Operating Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  # === KLASSE 4: VAREKOSTNAD (Cost of Goods) ===
+
+  "4000":
+    name: "Innkjøp av varer og råvarer (Purchases of Goods and Raw Materials)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  # === KLASSE 5: LØNN OG PERSONALKOSTNADER (Personnel Costs) ===
+
+  "5000":
+    name: "Lønn og honorarer (Wages, Salaries and Fees)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5400":
+    name: "Arbeidsgiveravgift (National Insurance Contributions — Employer)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5420":
+    name: "Pensjonskostnader — OTP (Occupational Pension Costs — OTP minimum 2%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  # === KLASSE 6-7: ANDRE DRIFTSKOSTNADER (Other Operating Expenses) ===
+
+  "6000":
+    name: "Av- og nedskrivninger (Depreciation, Amortisation and Impairment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "6300":
+    name: "Leie av lokaler (Premises Rent)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "6900":
+    name: "Markedsføring og reklame (Marketing and Advertising)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "7000":
+    name: "Kontorkostnader og administrasjon (Office and Administrative Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  # === KLASSE 8: FINANSINNTEKTER OG -KOSTNADER OG SKATT (Financial Items and Tax) ===
+
+  "8050":
+    name: "Renteinntekter (Interest Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "8150":
+    name: "Rentekostnader (Interest Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "8300":
+    name: "Skattekostnad (Income Tax Expense — Selskapsskatt 22%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

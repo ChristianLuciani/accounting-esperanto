@@ -1,0 +1,435 @@
+# Kontablo Localization Mapping: Netherlands (RJ / Dutch GAAP)
+# Version: 0.1.0-draft
+# Authority: RJ (Raad voor de Jaarverslaggeving — Dutch Accounting Standards Board)
+# Standard: Dutch GAAP (BW2 Titel 9 / RJ-bundel); NL-GAAP SME framework (RJk)
+# Critical Notes:
+#   The Netherlands does not mandate a specific chart of accounts. The dominant practice
+#   in Dutch SME software (Exact, Twinfield, Unit4, Snelstart) uses a 4-digit numeric
+#   range broadly aligned with BW2 Titel 9 balance sheet presentation.
+#   Listed companies and large entities apply IFRS as adopted by EU (Wft art. 5:25c).
+#   RJk (Richtlijnen voor kleine rechtspersonen) governs micro and small entities.
+#   VAT (BTW — Belasting over de Toegevoegde Waarde): standard rate 21%; reduced 9% (food,
+#   books, medicines, public transport); 0% for export and intra-EU supplies.
+#   Corporate income tax (Vpb — Vennootschapsbelasting): 19% (first €200k, 2024) / 25.8% above.
+#   Dutch chart of accounts codes below follow Exact Globe / Twinfield default ranges.
+
+metadata:
+  country: NL
+  authority: RJ (Raad voor de Jaarverslaggeving) / BW2 Titel 9
+  standard: rj_nl_gaap
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: EUR
+
+mappings:
+  # === VASTE ACTIVA (Fixed Assets) ===
+
+  "1010":
+    name: "Immateriële vaste activa — software en licenties (Intangible Assets — Software and Licences)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1020":
+    name: "Goodwill"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "Bedrijfsgebouwen (Business Buildings)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1120":
+    name: "Terreinen (Land)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1130":
+    name: "Machines en installaties (Machinery and Plant)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1140":
+    name: "Inventaris en kantoorinrichting (Fixtures and Office Furniture)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1150":
+    name: "Bedrijfsauto's en transportmiddelen (Company Vehicles)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1159":
+    name: "Cumulatieve afschrijvingen materiële vaste activa (Accumulated Depreciation — PPE, contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1210":
+    name: "Deelnemingen (Equity Investments / Participations)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  # === VLOTTENDE ACTIVA (Current Assets) ===
+
+  "1310":
+    name: "Voorraden grondstoffen (Inventories — Raw Materials)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1340":
+    name: "Voorraden handelsgoederen (Inventories — Merchandise / Finished Goods)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Debiteuren (Trade Receivables / Accounts Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1405":
+    name: "Voorziening dubieuze debiteuren (Allowance for Doubtful Receivables — contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1460":
+    name: "Te vorderen BTW (VAT Receivable / Input VAT)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1470":
+    name: "Te vorderen vennootschapsbelasting (Vpb Receivable / Corporate Tax Prepaid)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "1490":
+    name: "Overige vorderingen en overlopende activa (Other Receivables and Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1800":
+    name: "Bankrekening (Bank Current Account)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1810":
+    name: "Spaarrekening (Savings / Deposit Account)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1820":
+    name: "Kas (Cash on Hand / Petty Cash)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  # === EIGEN VERMOGEN (Equity) ===
+
+  "2010":
+    name: "Geplaatst en gestort aandelenkapitaal (Issued and Paid-up Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "2020":
+    name: "Agioreserve (Share Premium Reserve)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "2060":
+    name: "Overige reserves (Other Reserves / General Reserve)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "2070":
+    name: "Onverdeeld resultaat voorgaande jaren (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "2080":
+    name: "Resultaat boekjaar (Net Profit / Loss — Current Year)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  # === VOORZIENINGEN (Provisions) ===
+
+  "2210":
+    name: "Voorziening voor pensioenverplichtingen (Pension Obligations Provision)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  "2250":
+    name: "Overige voorzieningen (Other Provisions)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  # === LANGLOPENDE SCHULDEN (Long-term Liabilities) ===
+
+  "2310":
+    name: "Langlopende bankleningen (Long-term Bank Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2360":
+    name: "Financiële leasing verplichtingen — langlopend (Finance Lease Liabilities — long-term)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  # === KORTLOPENDE SCHULDEN (Current Liabilities) ===
+
+  "2410":
+    name: "Kortlopend deel langlopende leningen (Current Portion of Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2430":
+    name: "Crediteuren (Trade Payables / Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2450":
+    name: "Te betalen BTW 21% (Output VAT 21% Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2452":
+    name: "Te betalen BTW 9% (Output VAT 9% Payable — reduced rate)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2460":
+    name: "Te betalen vennootschapsbelasting (Corporate Tax Payable — Vpb)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2470":
+    name: "Te betalen loonheffingen (Payroll Tax and Social Contributions Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2490":
+    name: "Overige schulden en overlopende passiva (Other Liabilities and Accrued Expenses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000308"
+    aggregation_rules:
+      - "sum"
+
+  # === NETTO-OMZET (Revenue) ===
+
+  "4000":
+    name: "Netto-omzet — goederenverkoop (Net Revenue — Goods Sales)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4010":
+    name: "Netto-omzet — dienstenverlening (Net Revenue — Services)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "Overige bedrijfsopbrengsten (Other Operating Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  # === BEDRIJFSKOSTEN (Operating Expenses) ===
+
+  "5000":
+    name: "Inkoopwaarde van de omzet / kostprijs (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "6000":
+    name: "Lonen en salarissen (Wages and Salaries)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "6010":
+    name: "Sociale lasten werkgever (Employer Social Charges — ZW, WW, WAO/WIA)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "6020":
+    name: "Pensioenlasten (Pension Contributions — Employer)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "Huurlasten (Rent Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Afschrijvingen (Depreciation and Amortisation)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "6300":
+    name: "Verkoopkosten en marketing (Selling and Marketing Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "6400":
+    name: "Algemene beheerskosten (General and Administrative Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  # === FINANCIËLE BATEN EN LASTEN (Financial Income/Expense) ===
+
+  "7100":
+    name: "Rentebaten (Interest Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "Rentelasten (Interest Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  # === VENNOOTSCHAPSBELASTING (Corporate Tax) ===
+
+  "8000":
+    name: "Vennootschapsbelasting (Corporate Income Tax Expense — Vpb)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

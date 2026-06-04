@@ -1,0 +1,385 @@
+# Kontablo Localization Mapping: Belgium (Belgian GAAP / MAR)
+# Version: 0.1.0-draft
+# Authority: CBN/CNC (Commissie voor Boekhoudkundige Normen / Commission des Normes Comptables)
+# Standard: Belgian GAAP under the Wetboek van Vennootschappen en Verenigingen (WVV) /
+#           Code des Sociétés et des Associations (CSA); KB/AR of 29 April 2019
+# Critical Notes:
+#   Belgium has a MANDATORY standardised chart of accounts (Minimum Algemeen Rekeningenstelsel /
+#   Minimum Normalisé des Comptes — MAR/MNC) for entities required to file annual accounts
+#   with the NBB (National Bank of Belgium). This is unusual among EU member states.
+#   The MAR uses a 6-class structure with 2-digit primary codes expandable to 6 digits.
+#   Classes: 1=Equity/Long-term liabilities, 2=Fixed Assets, 3=Inventories, 4=Receivables/
+#   Payables, 5=Financial instruments, 6=Expenses, 7=Income.
+#   Listed companies apply IFRS as adopted by EU.
+#   Belgium is officially bilingual (NL/FR). Account names given in Dutch with French translation.
+#   VAT (BTW/TVA): standard 21%; reduced 12% (restaurants, coal), 6% (food, pharma, books),
+#   and 0% (newspapers). Federal and regional tax rates apply.
+#   Corporate income tax (Ven.B./I.Soc.): 25% standard (2024); reduced 20% for qualifying SMEs
+#   on first €100k profit.
+
+metadata:
+  country: BE
+  authority: CBN/CNC (Commissie voor Boekhoudkundige Normen / Commission des Normes Comptables)
+  standard: mar_mnc_belgian_gaap
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: EUR
+
+mappings:
+  # === KLASSE 1: EIGEN VERMOGEN, VOORZIENINGEN EN UITGESTELDE BELASTINGEN
+  #     CLASSE 1: CAPITAUX PROPRES, PROVISIONS ET IMPÔTS DIFFÉRÉS ===
+
+  "10":
+    name: "Kapitaal / Capital (Issued Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "11":
+    name: "Uitgiftepremies / Primes d'émission (Share Premium)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "13":
+    name: "Reserves / Réserves (Legal, Statutory and Available Reserves)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "14":
+    name: "Overgedragen winst of verlies / Résultat reporté (Retained Earnings or Accumulated Losses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "15":
+    name: "Kapitaalsubsidies / Subsides en capital (Capital Investment Grants)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "16":
+    name: "Voorzieningen en uitgestelde belastingen / Provisions et impôts différés (Provisions and Deferred Tax)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  "17":
+    name: "Schulden op meer dan één jaar / Dettes à plus d'un an (Long-term Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "170":
+    name: "Achtergestelde leningen — meer dan 1 jaar / Emprunts subordonnés (Subordinated Loans — LT)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "173":
+    name: "Kredietinstellingen — meer dan 1 jaar / Établissements de crédit (Bank Loans — LT)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  # === KLASSE 2: OPRICHTINGSKOSTEN, VASTE ACTIVA EN VORDERINGEN OP MEER DAN ÉÉN JAAR
+  #     CLASSE 2: FRAIS D'ÉTABLISSEMENT, ACTIFS IMMOBILISÉS ET CRÉANCES À PLUS D'UN AN ===
+
+  "21":
+    name: "Immateriële vaste activa / Immobilisations incorporelles (Intangible Fixed Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "22":
+    name: "Goodwill"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "23":
+    name: "Materiële vaste activa / Immobilisations corporelles (Property, Plant and Equipment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "230":
+    name: "Terreinen en gebouwen / Terrains et constructions (Land and Buildings)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "231":
+    name: "Installaties, machines en uitrusting / Installations, machines et outillage (Plant, Machinery and Equipment)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "232":
+    name: "Meubilair en rollend materieel / Mobilier et matériel roulant (Furniture and Vehicles)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "239":
+    name: "Geboekte afschrijvingen / Amortissements et réductions de valeur (Accumulated Depreciation — contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "28":
+    name: "Financiële vaste activa / Immobilisations financières (Long-term Financial Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  # === KLASSE 3: VOORRADEN EN BESTELLINGEN IN UITVOERING
+  #     CLASSE 3: STOCKS ET COMMANDES EN COURS D'EXÉCUTION ===
+
+  "30":
+    name: "Handelsgoederen / Marchandises (Merchandise Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "31":
+    name: "Grondstoffen / Matières premières (Raw Materials)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "35":
+    name: "Gereed product / Produits finis (Finished Goods)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  # === KLASSE 4: VORDERINGEN EN SCHULDEN BINNEN ÉÉN JAAR
+  #     CLASSE 4: CRÉANCES ET DETTES À UN AN AU PLUS ===
+
+  "40":
+    name: "Handelsvorderingen / Créances commerciales (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "44":
+    name: "Handelsschulden / Dettes commerciales (Trade Payables)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "451":
+    name: "Te ontvangen BTW / TVA à récupérer (Input VAT Receivable)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "453":
+    name: "Te betalen BTW / TVA à payer (Output VAT Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "454":
+    name: "Te betalen belastingen / Impôts et taxes à payer (Taxes Payable — Ven.B./I.Soc.)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "455":
+    name: "Te betalen bezoldigingen en sociale lasten / Rémunérations et charges sociales à payer (Payroll Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "49":
+    name: "Overlopende rekeningen / Comptes de régularisation (Accruals and Deferrals)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  # === KLASSE 5: GELDBELEGGINGEN EN LIQUIDE MIDDELEN
+  #     CLASSE 5: PLACEMENTS DE TRÉSORERIE ET VALEURS DISPONIBLES ===
+
+  "55":
+    name: "Kredietinstellingen / Établissements de crédit (Bank Accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "57":
+    name: "Kassen / Caisses (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  # === KLASSE 6: KOSTEN / CLASSE 6: CHARGES ===
+
+  "60":
+    name: "Handelsgoederen, grond- en hulpstoffen / Marchandises, matières premières et auxiliaires (COGS / Materials)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "61":
+    name: "Diensten en diverse goederen / Services et biens divers (External Services and Sundries)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "612":
+    name: "Huur, erfpacht, vruchtgebruik / Loyers, locations (Rent and Lease Expense)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "62":
+    name: "Bezoldigingen, sociale lasten en pensioenen / Rémunérations, charges sociales et pensions (Personnel Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "63":
+    name: "Afschrijvingen, waardeverminderingen en voorzieningen / Amortissements, réductions de valeur et provisions (D&A and Provisions)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "65":
+    name: "Andere bedrijfskosten / Autres charges d'exploitation (Other Operating Charges)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "67":
+    name: "Financiële kosten / Charges financières (Financial Charges — interest, bank fees)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "69":
+    name: "Belasting op het resultaat / Impôts sur le résultat (Income Tax Expense — Ven.B./I.Soc.)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  # === KLASSE 7: OPBRENGSTEN / CLASSE 7: PRODUITS ===
+
+  "70":
+    name: "Omzet / Chiffre d'affaires (Turnover / Net Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "74":
+    name: "Andere bedrijfsopbrengsten / Autres produits d'exploitation (Other Operating Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "75":
+    name: "Subsidies in kapitaal en in exploitatie / Subsides en capital et en exploitation (Grants)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "76":
+    name: "Niet-recurrente bedrijfsopbrengsten / Produits non-récurrents d'exploitation (Non-recurring Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "75_fin":
+    name: "Financiële opbrengsten / Produits financiers (Financial Income — interest, dividends)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: Belgian MAR class 7 does not have a standalone code for financial income at
+    # the 2-digit level; financial income typically appears within extended codes under 75/76.
+    # This entry uses a synthetic key for Kontablo mapping purposes.

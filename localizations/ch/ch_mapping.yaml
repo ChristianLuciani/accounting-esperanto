@@ -1,0 +1,441 @@
+# Kontablo Localization Mapping: Switzerland (Swiss GAAP FER / OR)
+# Version: 0.1.0-draft
+# Authority: FER (Fachempfehlungen zur Rechnungslegung) / SER (Swiss GAAP FER);
+#           Obligationenrecht (OR) art. 957-963b for statutory requirements
+# Standard: Swiss GAAP FER (full) and Swiss GAAP FER for SMEs (Kern-FER);
+#           OR-Rechnungslegung for micro and small entities
+# Critical Notes:
+#   Switzerland does not mandate a specific chart of accounts. The dominant practice follows
+#   the Kontenrahmen KMU (SME chart, published by veb.ch/Swiss CPA Association) for SMEs
+#   and the Kontenrahmen Käfer for larger entities. Codes below follow KMU practice.
+#   Swiss GAAP FER is the principal Swiss-specific standard; listed SIX companies apply IFRS.
+#   Switzerland is multilingual: accounts given in German (CH-DE) — the dominant business language —
+#   with French (CH-FR) and English in comments where useful.
+#   VAT (MWST/TVA/IVA): standard rate 8.1% (since 1 Jan 2024); reduced 2.6% (food, books,
+#   medicines); special rate 3.8% (lodging). Switzerland is not in the EU VAT area.
+#   Corporate income tax: federal rate 8.5% on profit (effective ~7.83%); total effective
+#   rate including cantonal/communal taxes varies from ~12% (Zug, Nidwalden) to ~24% (Geneva).
+#   CHF is the functional currency; EUR and USD accounts common in export-oriented entities.
+#   Pillar Two global minimum tax (15%) applicable to large multinationals from 2024.
+
+metadata:
+  country: CH
+  authority: FER (Fachempfehlungen zur Rechnungslegung) / veb.ch / OR art. 957
+  standard: swiss_gaap_fer_kmu
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: CHF
+
+mappings:
+  # === KLASSE 1: UMLAUFVERMÖGEN (Current Assets) ===
+
+  "1000":
+    name: "Kasse (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1020":
+    name: "Postcheck (Swiss Post / PostFinance Current Account)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: PostFinance is a major payment provider in Switzerland; the Postcheck account
+    # is analogous to a bank current account but held with Swiss Post.
+
+  "1021":
+    name: "Bankkonto (Bank Current Account)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1022":
+    name: "Bankkonto Fremdwährung (Foreign Currency Bank Account)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1060":
+    name: "Wertschriften (Short-term Securities / Marketable Securities)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Debitoren (Trade Receivables / Accounts Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1109":
+    name: "Delkredere (Allowance for Doubtful Receivables — contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1170":
+    name: "Vorsteuer MWST (Input VAT Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1175":
+    name: "Verrechnungssteuer (Withholding Tax Receivable — Swiss Verrechnungssteuer 35%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: Swiss Verrechnungssteuer (35% withholding on interest and dividends) is a
+    # tax-specific Swiss concept. Refundable by Swiss residents; partially refundable by treaty.
+
+  "1180":
+    name: "Direkte Steuern — Guthaben (Direct Taxes Receivable / Prepaid Corporate Tax)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Vorräte Handelswaren (Merchandise Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1210":
+    name: "Vorräte Rohstoffe (Raw Materials Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Aktive Rechnungsabgrenzungen (Prepaid Expenses and Accrued Income)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  # === KLASSE 2: ANLAGEVERMÖGEN (Fixed Assets) ===
+
+  "2000":
+    name: "Mobile Sachanlagen — Maschinen und Einrichtungen (Machinery and Equipment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2009":
+    name: "Wertberichtigung Maschinen (Accumulated Depreciation — Machinery, contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "2020":
+    name: "Fahrzeuge (Vehicles)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2029":
+    name: "Wertberichtigung Fahrzeuge (Accumulated Depreciation — Vehicles, contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Immobile Sachanlagen — Liegenschaften (Real Estate / Land and Buildings)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2400":
+    name: "Immaterielle Werte (Intangible Assets — patents, licences, software)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "2409":
+    name: "Wertberichtigung immaterielle Werte (Accumulated Amortisation — Intangibles, contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "2700":
+    name: "Beteiligungen (Equity Investments / Long-term Financial Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  # === KLASSE 3: VERBINDLICHKEITEN (Liabilities) ===
+
+  "3200":
+    name: "Kreditoren (Trade Payables / Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "Kontokorrent Bank (Bank Overdraft / Current Account Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "3500":
+    name: "MWST-Schuld (Output VAT Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "3600":
+    name: "Direkte Steuern — Schuld (Corporate Tax Payable — federal and cantonal)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "3700":
+    name: "Sozialversicherungsverbindlichkeiten — AHV/IV/EO/ALV (Social Insurance Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: Swiss social insurance (AHV/IV/EO/ALV/BVG) has distinct components.
+    # AHV = old-age/survivors; IV = disability; EO = loss of earnings; ALV = unemployment;
+    # BVG = occupational pension (2nd pillar). All mapped to social contributions payable.
+
+  "3710":
+    name: "BVG-Beiträge (Occupational Pension Contributions Payable — 2nd Pillar)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "3800":
+    name: "Passive Rechnungsabgrenzungen (Accrued Expenses and Deferred Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "3900":
+    name: "Rückstellungen (Provisions)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Langfristige Bankdarlehen (Long-term Bank Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "4500":
+    name: "Hypotheken (Mortgage Loans on Real Estate)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  # === KLASSE 5: EIGENKAPITAL (Equity) ===
+
+  "5000":
+    name: "Aktienkapital / Stammkapital (Share Capital / Equity Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Gesetzliche Kapitalreserve (Statutory Capital Reserve / Share Premium)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "5210":
+    name: "Gesetzliche Gewinnreserve (Statutory Profit Reserve — minimum 20% of capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "5900":
+    name: "Gewinnvortrag / Verlustvortrag (Retained Earnings / Accumulated Losses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5910":
+    name: "Jahresgewinn / Jahresverlust (Net Profit / Loss for the Year)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  # === KLASSE 6: AUFWAND (Expenses) ===
+
+  "6000":
+    name: "Handelswarenaufwand / Materialaufwand (COGS / Material Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "Personalaufwand (Personnel Costs — wages, salaries, AHV/BVG contributions)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Raumaufwand (Premises / Rent and Facility Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "6500":
+    name: "Verwaltungs- und Informatikaufwand (G&A and IT Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "6600":
+    name: "Werbeaufwand (Marketing and Advertising Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "6800":
+    name: "Abschreibungen auf Sachanlagen (Depreciation — PPE)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "6810":
+    name: "Abschreibungen auf immateriellen Werten (Amortisation — Intangibles)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "6900":
+    name: "Finanzaufwand (Financial Charges — interest, bank fees, FX losses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "6950":
+    name: "Direkte Steuern (Direct Tax Expense — federal + cantonal corporate taxes)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  # === KLASSE 7: ERTRAG (Revenue and Income) ===
+
+  "3000":
+    name: "Betriebsertrag aus Lieferungen und Leistungen (Operating Revenue — Sales)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: In Swiss KMU Kontenrahmen revenue is in class 3 (not 7). Class 3 is income;
+    # Class 6 is expenses. This departs from the typical European convention. Confirmed.
+
+  "3200":
+    name: "Dienstleistungsertrag (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "Sonstiger Betriebsertrag (Other Operating Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "3500":
+    name: "Finanzertrag (Financial Income — interest, dividends, FX gains)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"

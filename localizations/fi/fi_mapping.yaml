@@ -1,0 +1,430 @@
+# Kontablo Localization Mapping: Finland (Finnish Accounting Act / KPL)
+# Version: 0.1.0-draft
+# Authority: KILA (Kirjanpitolautakunta — Accounting Board) / Työ- ja elinkeinoministeriö (TEM)
+# Standard: Finnish Accounting Act (Kirjanpitolaki — KPL, 1336/1997 with amendments);
+#           Finnish Accounting Ordinance (Kirjanpitoasetus — KPA, 1339/1997)
+# Critical Notes:
+#   Finland does not mandate a specific chart of accounts. The dominant SME practice follows
+#   the Tilikartta published by Taloushallintoliitto (Finnish Accounting Firm Association)
+#   and supported by Procountor, Netvisor, and Fennoa. The standard uses 4-digit codes.
+#   Finland adopted EU Directive 2013/34 via the Accounting Act reform (2016).
+#   Listed companies apply IFRS as adopted by EU.
+#   VAT (ALV — Arvonlisävero): standard rate 25.5% (since Sep 2024; was 24%); reduced 14%
+#   (food, animal feed, restaurant services); 10% (books, medicines, passenger transport,
+#   cultural/sporting events).
+#   Corporate income tax (Yhteisövero): 20% (since 2014).
+#   Employer social contributions include TyEL (earnings-related pension), SoVa (social
+#   insurance, sickness, unemployment), and tapaturmavakuutus (accident insurance).
+#   Account codes follow Taloushallintoliitto / Procountor default ranges.
+
+metadata:
+  country: FI
+  authority: KILA (Kirjanpitolautakunta) / Taloushallintoliitto
+  standard: kpl_tilikartta
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: EUR
+
+mappings:
+  # === PYSYVÄT VASTAAVAT (Fixed Assets) ===
+
+  "1010":
+    name: "Aineettomat hyödykkeet — kehittämismenot (Intangible Assets — Development Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1020":
+    name: "Aineettomat hyödykkeet — patentit, lisenssit, tavaramerkit (Patents, Licences, Trademarks)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1030":
+    name: "Liikearvo (Goodwill)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Maa- ja vesialueet (Land and Water Areas)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "Rakennukset ja rakennelmat (Buildings and Structures)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1120":
+    name: "Koneet ja kalusto (Machinery and Equipment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1130":
+    name: "Muut aineelliset hyödykkeet (Other Tangible Assets — furniture, IT, vehicles)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1199":
+    name: "Kertyneet poistot — aineelliset käyttöomaisuuserät (Accumulated Depreciation — PPE, contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1210":
+    name: "Osuudet saman konsernin yrityksissä (Investments in Group Companies)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  # === VAIHTUVAT VASTAAVAT (Current Assets) ===
+
+  "1310":
+    name: "Aineet ja tarvikkeet (Raw Materials and Supplies)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1340":
+    name: "Tavarat (Merchandise / Finished Goods)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Myyntisaamiset (Trade Receivables / Accounts Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1440":
+    name: "ALV-saamiset (Input VAT Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1450":
+    name: "Tuloveroennakko (Prepaid Corporate Income Tax)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "1490":
+    name: "Siirtosaamiset ja muut lyhytaikaiset saamiset (Prepaid Expenses, Accrued Income, Other ST Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1800":
+    name: "Pankkitili (Bank Current Account)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1820":
+    name: "Kassa (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  # === OMA PÄÄOMA (Equity) ===
+
+  "2010":
+    name: "Osakepääoma (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "2020":
+    name: "Ylikurssirahasto (Share Premium Reserve)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "2060":
+    name: "Muut rahastot (Other Funds and Reserves)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "2070":
+    name: "Edellisten tilikausien voitto tai tappio (Retained Earnings / Accumulated Losses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "2080":
+    name: "Tilikauden voitto tai tappio (Net Profit / Loss for the Period)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  # === TILINPÄÄTÖSSIIRTOJEN KERTYMÄ (Accumulated Appropriations — Finnish tax-specific) ===
+
+  "2100":
+    name: "Poistoero (Accelerated Depreciation Difference — Finnish tax reserve)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: Finnish tax accounting allows higher depreciation rates than accounting standards.
+    # The 'poistoero' is the cumulative difference — a tax-specific reserve unique to Finnish GAAP.
+    # No direct IFRS equivalent; closest is deferred tax liability, but Finnish GAAP treats it
+    # separately without splitting out deferred tax.
+
+  "2110":
+    name: "Vapaaehtoiset varaukset (Voluntary Tax Reserves)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  # === PAKOLLISET VARAUKSET (Mandatory Provisions) ===
+
+  "2210":
+    name: "Eläkevaraukset (Pension Provisions)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  "2250":
+    name: "Muut pakolliset varaukset (Other Mandatory Provisions)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  # === VIERAS PÄÄOMA (Liabilities) ===
+
+  "2310":
+    name: "Pitkäaikaiset pankkilainat (Long-term Bank Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2410":
+    name: "Lyhytaikaiset pankkilainat ja tililuotot (Short-term Bank Loans and Overdrafts)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2430":
+    name: "Ostovelat (Trade Payables / Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2450":
+    name: "ALV-velka (Output VAT Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2460":
+    name: "Tuloverovelka (Corporate Tax Payable — Yhteisövero)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2470":
+    name: "Ennakonpidätykset ja sosiaalivakuutusmaksut (Payroll Tax Withheld + Social Insurance Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: Finnish employer obligations include TyEL (earnings-related pension), SoVa
+    # (health insurance, unemployment insurance), and accident insurance. Employee withholding
+    # (ennakonpidätys) is also held in this account until remitted to Verohallinto (Tax Admin).
+
+  "2490":
+    name: "Siirtovelat ja muut lyhytaikaiset velat (Accrued Expenses, Deferred Income, Other CL)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000308"
+    aggregation_rules:
+      - "sum"
+
+  # === LIIKEVAIHTO JA MUUT TUOTOT (Revenue and Other Income) ===
+
+  "3000":
+    name: "Liikevaihto — tavaramyynti (Revenue — Goods Sales)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "3010":
+    name: "Liikevaihto — palvelumyynti (Revenue — Service Sales)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Liiketoiminnan muut tuotot (Other Operating Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  # === KULUT (Expenses) ===
+
+  "4000":
+    name: "Ostot tilikauden aikana — aineet, tarvikkeet ja tavarat (Purchases — Materials and Goods)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Palkat ja palkkiot (Wages, Salaries and Fees)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5010":
+    name: "Työnantajan sosiaaliturvamaksut (Employer Social Security Contributions)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5020":
+    name: "TyEL-eläkemaksut (TyEL Earnings-related Pension Contributions — employer share)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "6000":
+    name: "Vuokrat (Rent and Premises Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Poistot ja arvonalentumiset (Depreciation, Amortisation and Impairment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "6400":
+    name: "Markkinointi ja myyntikulut (Marketing and Sales Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "6600":
+    name: "Hallinto- ja muut liiketoimintakulut (G&A and Other Business Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  # === RAHOITUSERÄT (Financial Items) ===
+
+  "7100":
+    name: "Korkotuotot ja muut rahoitustuotot (Interest and Other Financial Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "Korkokulut ja muut rahoituskulut (Interest Expense and Other Financial Charges)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  # === TULOVEROT (Income Taxes) ===
+
+  "8000":
+    name: "Tuloverot (Income Tax Expense — Yhteisövero 20%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

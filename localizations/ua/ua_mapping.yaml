@@ -1,0 +1,590 @@
+# Kontablo Localization Mapping: Ukraine (P(S)BO — National Accounting Standards /
+#   План рахунків бухгалтерського обліку)
+# Version: 0.1.0-draft
+# Authority: Міністерство фінансів України (Ministry of Finance of Ukraine).
+#            НБУ (Національний банк України / National Bank of Ukraine) for banks.
+#            НКЦПФР (National Securities and Stock Market Commission) for listed entities.
+# Standard: П(С)БО — Положення (стандарти) бухгалтерського обліку (National Accounting
+#           Standards), per Law of Ukraine "On Accounting and Financial Reporting in Ukraine"
+#           No. 996-XIV of July 16, 1999 (as amended).
+#           Ukraine has a MANDATORY Plan of Accounts (План рахунків бухгалтерського обліку
+#           підприємств), approved by Order of MoF No. 291 of November 30, 1999 (as amended).
+#           IFRS is mandatory for: public-interest entities, banks, listed companies
+#           (Law No. 996-XIV as amended by Law No. 2585-VIII of 2018).
+# Critical Notes:
+#   Ukraine has a MANDATORY chart of accounts with 9 classes, 2-digit class codes,
+#   3-digit account codes. Codes below are official mandatory Ukrainian Plan of Accounts codes.
+#   NOTE: Context of Russian invasion (February 24, 2022). Wartime legal/tax environment:
+#     - Martial law suspended certain P(S)BO requirements; specific wartime accounting
+#       rules apply (MoF Order No. 82 of March 18, 2022 and subsequent amendments).
+#     - Destruction of assets: special write-off and loss recognition rules apply.
+#     - UAH (hryvnia) has experienced significant depreciation; FX controls in place per NBU.
+#     - Supply disruptions and business continuity issues affect inventory valuation.
+#   VAT (ПДВ — Податок на додану вартість): 20% standard rate (Tax Code of Ukraine,
+#     Section V). Reduced rate 7% for: medicine, healthcare services, books. Zero-rated: exports.
+#   Corporate Income Tax (Податок на прибуток підприємств): 18% standard rate (Tax Code,
+#     Section III). Financial sector: 25%. Wartime surcharges may apply — VERIFY.
+#   Single Social Contribution (ЄСВ — Єдиний соціальний внесок): 22% employer rate on
+#     gross salary (Law No. 2464-VI of July 8, 2010 as amended). During martial law:
+#     minimum rate maintained even for suspended operations in certain cases.
+#   PAYE: personal income tax 18% + military levy 1.5% (suspended during martial law for
+#     some categories — VERIFY current status).
+#   Currency: UAH (Ukrainian Hryvnia).
+# VERIFY: All accounts confirmed from MoF Order No. 291/1999 as amended through 2021.
+#         Wartime amendments (2022-2026) may have introduced temporary modifications;
+#         confirm current applicable version with Ukrainian MoF or licensed Ukrainian auditor.
+# VERIFY: Corporate income tax surcharge — draft legislation for wartime profit tax discussed;
+#         confirm final applicable rate for fiscal year 2025/2026.
+# VERIFY: Military levy — 1.5% on income confirmed; rate increase proposals discussed in 2024.
+
+metadata:
+  country: UA
+  authority: Міністерство фінансів України (Ministry of Finance of Ukraine) / НБУ
+  standard: PSBO_Plan_Rakhunkiv_MoF_291_1999
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: UAH
+
+mappings:
+  # === КЛАС 1 — НЕОБОРОТНІ АКТИВИ (Non-current Assets) ===
+  "10":
+    name: "Основні засоби (Property, Plant and Equipment)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "100":
+    name: "Інвестиційна нерухомість (Investment Property)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "101":
+    name: "Земельні ділянки (Land Plots)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "102":
+    name: "Капітальні витрати на поліпшення земель (Capital Improvements to Land)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "103":
+    name: "Будинки та споруди (Buildings and Structures)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "104":
+    name: "Машини та обладнання (Machinery and Equipment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "105":
+    name: "Транспортні засоби (Vehicles)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "106":
+    name: "Інструменти, прилади та інвентар (Tools, Instruments, Inventory)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "131":
+    name: "Знос основних засобів (Accumulated Depreciation — PPE, contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "12":
+    name: "Нематеріальні активи (Intangible Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "133":
+    name: "Накопичена амортизація нематеріальних активів (Acc. Amortization — Intangibles, contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "14":
+    name: "Довгострокові фінансові інвестиції (Long-term Financial Investments)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "15":
+    name: "Капітальні інвестиції (Capital Investments / Construction in Progress)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "16":
+    name: "Довгострокова дебіторська заборгованість (Long-term Receivables)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  # === КЛАС 2 — ЗАПАСИ (Inventories) ===
+  "20":
+    name: "Виробничі запаси (Production Inventories / Raw Materials)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "22":
+    name: "Малоцінні та швидкозношувані предмети (Low-value and Short-lived Items)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "26":
+    name: "Готова продукція (Finished Goods)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "28":
+    name: "Товари (Merchandise for Resale)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  # === КЛАС 3 — КОШТИ, РОЗРАХУНКИ ТА ІНШІ АКТИВИ (Current Assets — Cash and Receivables) ===
+  "30":
+    name: "Готівка (Cash on Hand)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "301":
+    name: "Каса в національній валюті (UAH Cash)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "302":
+    name: "Каса в іноземній валюті (Foreign Currency Cash)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "31":
+    name: "Рахунки в банках (Bank Accounts)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "311":
+    name: "Поточні рахунки в національній валюті (UAH Current Accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "312":
+    name: "Поточні рахунки в іноземній валюті (Foreign Currency Current Accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "35":
+    name: "Поточні фінансові інвестиції (Short-term Investments)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "36":
+    name: "Розрахунки з покупцями та замовниками (Trade Receivables — Customers)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "37":
+    name: "Розрахунки з різними дебіторами (Other Receivables)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "38":
+    name: "Резерв сумнівних боргів (Allowance for Doubtful Accounts — contra)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "39":
+    name: "Витрати майбутніх періодів (Prepaid / Deferred Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  # === КЛАС 4 — ВЛАСНИЙ КАПІТАЛ ТА ЗАБЕЗПЕЧЕННЯ ЗОБОВ'ЯЗАНЬ (Equity and Provisions) ===
+  "40":
+    name: "Зареєстрований (пайовий) капітал (Registered / Share Capital)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "42":
+    name: "Додатковий капітал (Additional Capital / Share Premium + Revaluation)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "43":
+    name: "Резервний капітал (Reserve Capital / Statutory Reserve)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "44":
+    name: "Нерозподілені прибутки (непокриті збитки) (Retained Earnings / Accumulated Deficit)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "441":
+    name: "Прибуток нерозподілений (Undistributed Profit)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "442":
+    name: "Непокриті збитки (Uncovered Losses — contra)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "45":
+    name: "Вилучений капітал (Withdrawn Capital / Treasury Shares — contra)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000505"
+    aggregation_rules:
+      - "sum"
+
+  "47":
+    name: "Забезпечення майбутніх витрат і платежів (Provisions for Future Expenditures)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  "48":
+    name: "Цільове фінансування і цільові надходження (Targeted Financing / Grants)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  # === КЛАС 5 — ДОВГОСТРОКОВІ ЗОБОВ'ЯЗАННЯ (Long-term Liabilities) ===
+  "50":
+    name: "Довгострокові позики (Long-term Loans)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "51":
+    name: "Довгострокові векселі видані (Long-term Notes Payable)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "53":
+    name: "Відстрочені податкові зобов'язання (Deferred Tax Liability)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  # === КЛАС 6 — ПОТОЧНІ ЗОБОВ'ЯЗАННЯ (Current Liabilities) ===
+  "60":
+    name: "Короткострокові позики (Short-term Loans / Bank Overdraft)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "62":
+    name: "Короткострокові векселі видані (Short-term Notes Payable)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "63":
+    name: "Розрахунки з постачальниками та підрядниками (Trade Payables — Suppliers)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "641":
+    name: "Розрахунки за податками (Tax Payable — general tax accounts)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "6411":
+    name: "ПДВ до сплати (VAT Payable — Output Tax 20%)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "6412":
+    name: "ПДВ до відшкодування (VAT Receivable — Input Tax, contra in account 64)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "6414":
+    name: "Податок на прибуток до сплати (Corporate Income Tax Payable — 18%)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "651":
+    name: "Розрахунки за пенсійним забезпеченням / ЄСВ (Single Social Contribution — ESV Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "661":
+    name: "Розрахунки за заробітною платою (Salaries Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "681":
+    name: "Розрахунки за авансами одержаними (Customer Advances / Deferred Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "69":
+    name: "Доходи майбутніх періодів (Deferred Income)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  # === КЛАС 7 — ДОХОДИ І РЕЗУЛЬТАТИ ДІЯЛЬНОСТІ (Revenue and Results) ===
+  "70":
+    name: "Доходи від реалізації (Revenue from Sales)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "701":
+    name: "Дохід від реалізації готової продукції (Revenue from Finished Goods)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "702":
+    name: "Дохід від реалізації товарів (Revenue from Merchandise Sales)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "703":
+    name: "Дохід від реалізації робіт і послуг (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "71":
+    name: "Інший операційний дохід (Other Operating Income)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "73":
+    name: "Інші фінансові доходи (Other Financial Income / Interest Income)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "74":
+    name: "Інші доходи (Other Income — non-operating)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000605"
+    aggregation_rules:
+      - "sum"
+
+  # === КЛАС 9 — ВИТРАТИ ДІЯЛЬНОСТІ (Expenses) ===
+  "90":
+    name: "Собівартість реалізації (Cost of Sales)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "92":
+    name: "Адміністративні витрати (Administrative Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "93":
+    name: "Витрати на збут (Selling Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "94":
+    name: "Інші витрати операційної діяльності (Other Operating Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "95":
+    name: "Фінансові витрати (Finance Costs / Interest Expense)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "98":
+    name: "Податок на прибуток (Income Tax Expense — 18%)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "99":
+    name: "Надзвичайні витрати (Extraordinary Expenses — wartime asset losses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  # NOTE: Class 8 (Витрати за елементами — Expenses by Element) is an optional
+  # alternative presentation to Class 9 for SMEs. Accounts 80-84 cover:
+  # 80 Матеріальні витрати, 81 Витрати на оплату праці, 82 Відрахування на соціальні
+  # заходи (ESV), 83 Амортизація, 84 Інші операційні витрати.
+  # Class 8 accounts are excluded here as they are alternatives to Class 9, not additive.
+  # VERIFY: Whether the entity uses Class 8 or Class 9 presentation.

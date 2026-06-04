@@ -1,0 +1,466 @@
+# Kontablo Localization Mapping: Tanzania (TFRS — Tanzania Financial Reporting Standards)
+# Version: 0.1.0-draft
+# Authority: NBAA (National Board of Accountants and Auditors of Tanzania), established by
+#            Auditors and Accountants (Registration) Act, Cap. 286 R.E. 2002.
+#            TRA (Tanzania Revenue Authority) for tax compliance.
+#            CMSA (Capital Markets and Securities Authority) for listed entities.
+# Standard: TFRS (Tanzania Financial Reporting Standards) = IFRS as adopted by NBAA.
+#           Full IFRS for Tier 1 entities (listed, banks, insurance, large SOEs).
+#           IFRS for SMEs for Tier 2. Financial Reporting (No. 2) Act 2018 governs.
+# Critical Notes:
+#   No mandatory national chart of accounts for private-sector entities.
+#   Codes below follow common practice consistent with NBAA guidance.
+#   Tanzania mainland and Zanzibar have separate tax administrations (ZRB for Zanzibar).
+#   VAT: 18% standard rate (Value Added Tax Act Cap. 148 R.E. 2019, as amended).
+#     Zero-rated: exports, agricultural inputs (TRA guidelines).
+#     Exempt: financial services, unprocessed foodstuffs, medical services.
+#   Corporate Income Tax (CIT): 30% standard rate (Income Tax Act 2004, Cap. 332 R.E. 2019).
+#     Manufacturing sector: 25% for first 5 years on investments > USD 50M (VERIFY).
+#     New exploration companies: additional profits tax applies.
+#   Skills Development Levy (SDL): 4% of gross salaries (SDL Act Cap. 246).
+#   NSSF (National Social Security Fund): employer 10%, employee 10% of gross salary.
+#   Workers Compensation Fund (WCF): employer contribution rate varies by risk class.
+#   Currency: TZS (Tanzanian Shilling).
+#   Note: Tanzania Mainland uses Tanzanian Shilling; Zanzibar uses same but ZRB administers tax.
+# VERIFY: CIT rate — 30% confirmed as standard; manufacturing incentive rates vary by investment
+#         agreement; confirm for 2026.
+# VERIFY: NSSF rate — 10%+10% confirmed; verify whether PSSSF (public sector) rates apply.
+# VERIFY: SDL rate — 4% confirmed per SDL Act; verify no 2026 amendment.
+
+metadata:
+  country: TZ
+  authority: NBAA (National Board of Accountants and Auditors of Tanzania) / TRA
+  standard: TFRS_IFRS_adoption_FRA2018
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: TZS
+
+mappings:
+  # === ASSETS ===
+  "1000":
+    name: "Non-current Assets"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Property, Plant and Equipment (at cost)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "Freehold Land"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1120":
+    name: "Right of Occupancy — Land Lease (99-year leasehold)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  "1130":
+    name: "Buildings and Civil Works"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1140":
+    name: "Plant, Machinery and Equipment"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1150":
+    name: "Motor Vehicles"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1160":
+    name: "Furniture and Office Equipment"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1170":
+    name: "Accumulated Depreciation (contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Intangible Assets (net)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Long-term Investments"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Current Assets"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Inventories"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "2110":
+    name: "Stock of Goods for Resale"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "2120":
+    name: "Raw Materials and Work-in-Progress"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Trade Receivables"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "2205":
+    name: "Allowance for Expected Credit Losses (ECL — TFRS 9 / IFRS 9, contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "2300":
+    name: "Other Receivables and Prepayments"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "2400":
+    name: "VAT Receivable (Input Tax — 18%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "2500":
+    name: "Cash and Cash Equivalents"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "2510":
+    name: "Petty Cash"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "2520":
+    name: "Bank Accounts — TZS"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "2530":
+    name: "Bank Accounts — Foreign Currency"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  # === LIABILITIES ===
+  "3000":
+    name: "Non-current Liabilities"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Long-term Borrowings (Bank Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Deferred Tax Liability"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Finance Lease Liability — Long-term (TFRS 16)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Current Liabilities"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "Trade and Other Payables"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "4200":
+    name: "Accrued Expenses"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "4300":
+    name: "VAT Payable (Output Tax — 18%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "4400":
+    name: "Corporate Income Tax Payable (CIT 30%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "4500":
+    name: "Salaries, NSSF and WCF Payable"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "4510":
+    name: "Skills Development Levy Payable (SDL 4%)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "4600":
+    name: "Short-term Borrowings / Bank Overdraft"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  # === EQUITY ===
+  "5000":
+    name: "Shareholders' Equity"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Share Capital"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Share Premium"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5300":
+    name: "Retained Earnings"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5400":
+    name: "Net Profit / (Loss) for the Period"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  # === REVENUE ===
+  "6100":
+    name: "Revenue from Contracts with Customers (TFRS 15)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Service Revenue"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "6300":
+    name: "Other Operating Income"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "6400":
+    name: "Finance Income"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  # === EXPENSES ===
+  "7100":
+    name: "Cost of Sales"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "Staff Costs (Salaries, NSSF employer, SDL)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7300":
+    name: "Depreciation and Amortization"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "Rent Expense"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "7500":
+    name: "Utilities"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "7600":
+    name: "Marketing and Advertising"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "7700":
+    name: "Finance Costs (Interest Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "7800":
+    name: "Income Tax Expense (CIT 30%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "7900":
+    name: "Other Operating Expenses"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

@@ -1,0 +1,435 @@
+# Kontablo Localization Mapping: Portugal (SNC — Sistema de Normalização Contabilística)
+# Version: 0.1.0-draft
+# Authority: CNC (Comissão de Normalização Contabilística) / Decreto-Lei n.º 158/2009
+# Standard: SNC (Sistema de Normalização Contabilística) — Portuguese GAAP
+# Critical Notes:
+#   SNC replaced the old POC (Plano Oficial de Contabilidade) in 2010. SNC is strongly
+#   influenced by IFRS/IAS, adapted for the Portuguese legal and tax framework.
+#   SNC has three levels: NCRF (full, 28 standards), NCRF-PE (simplified for SMEs),
+#   NC-ME (micro-entities). Listed companies apply IFRS as adopted by EU.
+#   SNC uses a 2-digit class system: 1=Meios Financeiros, 2=Contas a Receber/Pagar,
+#   3=Inventários, 4=Investimentos, 5=Capital Próprio, 6=Gastos, 7=Rendimentos, 8=Results.
+#   VAT (IVA — Imposto sobre o Valor Acrescentado): standard rate 23% (continental); 18%
+#   (Madeira); 16% (Azores). Reduced rates: 13%/12%/10% and 6%/5%/4%.
+#   Corporate income tax (IRC — Imposto sobre o Rendimento das Pessoas Coletivas): 21%
+#   general rate (2024); reduced rate 17% on first €50k for SMEs.
+#   AT (Autoridade Tributária e Aduaneira) supervises tax compliance.
+#   SAF-T (Standard Audit File for Tax) is mandatory in Portugal since 2008.
+
+metadata:
+  country: PT
+  authority: CNC (Comissão de Normalização Contabilística) / AT (Autoridade Tributária)
+  standard: snc_ncrf
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: EUR
+
+mappings:
+  # === CONTA 1: MEIOS FINANCEIROS LÍQUIDOS (Cash and Cash Equivalents) ===
+
+  "11":
+    name: "Caixa (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "12":
+    name: "Depósitos à ordem (Bank Current Accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "13":
+    name: "Outros depósitos bancários (Other Bank Deposits — term deposits)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  # === CONTA 2: CONTAS A RECEBER E A PAGAR (Receivables and Payables) ===
+
+  "21":
+    name: "Clientes (Trade Receivables — Customers)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "22":
+    name: "Fornecedores (Trade Payables — Suppliers)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "23":
+    name: "Pessoal (Employee-related Payables and Receivables)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "241":
+    name: "Imposto sobre o rendimento — corrente (Income Tax Payable — IRC current)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2432":
+    name: "IVA — dedutível (Input VAT Receivable)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "2433":
+    name: "IVA — liquidado (Output VAT Payable)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2434":
+    name: "IVA — regularizações (VAT Adjustments)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: IVA regularizações covers both favourable and unfavourable adjustments;
+    # nature depends on transaction. Debit is more common for net receivable position.
+
+  "2441":
+    name: "Segurança Social — entidade empregadora (Social Security — Employer Contributions Payable)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "25":
+    name: "Financiamentos obtidos — correntes (Short-term Borrowings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "26":
+    name: "Accionistas / Sócios (Shareholder Accounts)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: SNC conta 26 can be debit or credit depending on shareholder loan direction.
+
+  "27":
+    name: "Outras contas a receber e a pagar (Other Receivables and Payables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "28":
+    name: "Diferimentos (Deferred Items — prepaid expenses and deferred income)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "29":
+    name: "Provisões (Provisions)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  # === CONTA 3: INVENTÁRIOS E ATIVOS BIOLÓGICOS (Inventories) ===
+
+  "31":
+    name: "Compras — mercadorias (Purchases — Merchandise)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "32":
+    name: "Compras — matérias-primas, subsidiárias e consumo (Purchases — Raw Materials)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "33":
+    name: "Matérias-primas, subsidiárias e consumo — stock (Raw Materials — Inventory balance)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "34":
+    name: "Produtos acabados e intermédios (Finished and Intermediate Goods — stock)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "38":
+    name: "Reclassificação e regularização de inventários (Inventory Adjustments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  # === CONTA 4: INVESTIMENTOS (Non-current Assets) ===
+
+  "41":
+    name: "Investimentos financeiros (Financial Investments — subsidiaries, associates)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "43":
+    name: "Ativos fixos tangíveis — custo (Property, Plant and Equipment — cost)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "438":
+    name: "Depreciações acumuladas — ativos fixos tangíveis (Accumulated Depreciation — PPE, contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "44":
+    name: "Ativos intangíveis (Intangible Assets — patents, software, goodwill)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "448":
+    name: "Amortizações acumuladas — ativos intangíveis (Accumulated Amortisation — Intangibles, contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "45":
+    name: "Investimentos em curso (Assets Under Construction)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "47":
+    name: "Ativos por impostos diferidos (Deferred Tax Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "48":
+    name: "Passivos por impostos diferidos (Deferred Tax Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  # === CONTA 5: CAPITAL PRÓPRIO (Equity) ===
+
+  "51":
+    name: "Capital realizado (Paid-up Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "53":
+    name: "Outros instrumentos de capital próprio (Other Equity Instruments)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "55":
+    name: "Reservas (Legal, Statutory and Other Reserves)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "56":
+    name: "Resultados transitados (Retained Earnings / Accumulated Losses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "818":
+    name: "Resultado líquido do período (Net Profit / Loss for the Period)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  # === CONTA 6: GASTOS (Expenses) ===
+
+  "61":
+    name: "Custo das mercadorias vendidas e das matérias consumidas (COGS / Materials Consumed)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "62":
+    name: "Fornecimentos e serviços externos (External Supplies and Services)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "621":
+    name: "Subcontratos (Subcontracting Costs)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "622":
+    name: "Serviços especializados (Specialised Services — legal, audit, consulting)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "625":
+    name: "Rendas e alugueres (Rents and Leases)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "63":
+    name: "Gastos com o pessoal (Personnel Costs — wages, social security, other)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "64":
+    name: "Gastos de depreciação e de amortização (Depreciation and Amortisation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "65":
+    name: "Perdas por imparidade (Impairment Losses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "68":
+    name: "Outros gastos e perdas (Other Operating Costs and Losses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "691":
+    name: "Imposto sobre o rendimento do período — corrente (Current Income Tax Expense — IRC)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  # === CONTA 7: RENDIMENTOS (Revenue and Other Income) ===
+
+  "71":
+    name: "Vendas (Revenue from Goods Sales)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "72":
+    name: "Prestações de serviços (Revenue from Services)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "75":
+    name: "Subsídios à exploração (Operating Subsidies / Grants)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "78":
+    name: "Outros rendimentos e ganhos (Other Income and Gains)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "79":
+    name: "Juros e rendimentos similares obtidos (Interest Income and Similar)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
