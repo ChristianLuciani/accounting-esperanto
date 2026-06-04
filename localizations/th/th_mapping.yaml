@@ -1,0 +1,476 @@
+# Kontablo Localization Mapping: Thailand (TFRS — Thai Financial Reporting Standards)
+# Version: 0.1.0-draft
+# Authority: FAP (Federation of Accounting Professions under the Royal Patronage of H.M. the King)
+# Standard: TFRS (Thai Financial Reporting Standards), TFRS for NPAEs (Non-Publicly Accountable Entities)
+# Critical Notes:
+#   Thailand has two tiers: TFRS (for PAEs — listed companies and financial institutions, aligned
+#   with IFRS with limited carve-outs) and TFRS for NPAEs (simplified, for non-listed entities).
+#   FAP does not prescribe a mandatory chart of accounts; codes below reflect the widely-used
+#   Thai practice taught by FAP and used in the Revenue Department e-filing (e-Tax Invoice).
+#   VAT (ภาษีมูลค่าเพิ่ม, Phasi Mulkha Phoeam): standard rate 7% (temporarily reduced from 10%;
+#   renewed annually — currently extended through September 2025, status for 2026 needs verification).
+#   Corporate income tax: 20% standard rate; SMEs benefit from reduced rates.
+#   WHT (Withholding Tax) is extensive and creates additional receivable/payable accounts.
+# VERIFY: 7% VAT rate renewal for 2026 should be confirmed with Thai Revenue Department.
+
+metadata:
+  country: TH
+  authority: FAP (Federation of Accounting Professions)
+  standard: TFRS_2023
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-01
+  currency: THB
+
+mappings:
+  # === ASSETS (สินทรัพย์ — Sinthrap) ===
+  "1":
+    name: "สินทรัพย์ (Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "11":
+    name: "สินทรัพย์หมุนเวียน (Current Assets — Sinthrap Munwian)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1101":
+    name: "เงินสด (Cash — Ngoen Sot)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1102":
+    name: "เงินฝากธนาคาร (Bank Deposits — Ngoen Fak Thanakhan)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1103":
+    name: "เงินลงทุนระยะสั้น (Short-term Investments)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1111":
+    name: "ลูกหนี้การค้า (Trade Receivables — Luk Ni Kan Kha)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1112":
+    name: "ค่าเผื่อหนี้สงสัยจะสูญ (Allowance for Doubtful Accounts — contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1121":
+    name: "ลูกหนี้อื่น (Other Receivables)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1131":
+    name: "สินค้าคงเหลือ (Inventories — Sinkha Khong Luea)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1141":
+    name: "ค่าใช้จ่ายจ่ายล่วงหน้า (Prepaid Expenses)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1151":
+    name: "ภาษีมูลค่าเพิ่มรอเครดิต (Input VAT Receivable — 7%)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1161":
+    name: "ภาษีหัก ณ ที่จ่าย (Withholding Tax Receivable)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "12":
+    name: "สินทรัพย์ไม่หมุนเวียน (Non-current Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1211":
+    name: "ที่ดิน (Land — Thidi)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1212":
+    name: "อาคาร (Buildings — Akhan)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1213":
+    name: "ค่าเสื่อมราคาสะสม — อาคาร (Accumulated Depreciation — Buildings, contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1214":
+    name: "เครื่องจักรและอุปกรณ์ (Machinery and Equipment)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1215":
+    name: "ค่าเสื่อมราคาสะสม — เครื่องจักร (Accumulated Depreciation — Machinery, contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1221":
+    name: "สินทรัพย์ไม่มีตัวตน (Intangible Assets)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1231":
+    name: "เงินลงทุนระยะยาว (Long-term Investments)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "1241":
+    name: "สินทรัพย์สิทธิการใช้ (Right-of-Use Assets — TFRS 16)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  # === LIABILITIES (หนี้สิน — Ni Sin) ===
+  "2":
+    name: "หนี้สิน (Liabilities)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "21":
+    name: "หนี้สินหมุนเวียน (Current Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2111":
+    name: "เจ้าหนี้การค้า (Trade Payables — Chao Ni Kan Kha)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2121":
+    name: "เงินกู้ยืมระยะสั้น (Short-term Loans Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2131":
+    name: "ภาษีมูลค่าเพิ่มค้างจ่าย (VAT Payable — Output VAT)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2132":
+    name: "ภาษีเงินได้นิติบุคคลค้างจ่าย (Corporate Income Tax Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2141":
+    name: "เงินเดือนค้างจ่าย (Salaries Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2151":
+    name: "ค่าใช้จ่ายค้างจ่าย (Accrued Expenses)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "2161":
+    name: "รายได้รับล่วงหน้า (Deferred Revenue)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "22":
+    name: "หนี้สินไม่หมุนเวียน (Non-current Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2211":
+    name: "เงินกู้ยืมระยะยาว (Long-term Loans Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2221":
+    name: "หนี้สินตามสัญญาเช่า (Lease Liabilities — TFRS 16)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "2231":
+    name: "ภาษีเงินได้รอตัดบัญชี (Deferred Tax Liability)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  "2241":
+    name: "ผลประโยชน์พนักงานระยะยาว (Long-term Employee Benefits — Provident Fund / Severance)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  # === EQUITY (ส่วนของผู้ถือหุ้น — Suan Khong Phu Thue Hun) ===
+  "3":
+    name: "ส่วนของผู้ถือหุ้น (Equity)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "3101":
+    name: "ทุนจดทะเบียนและชำระแล้ว (Registered and Paid-up Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3201":
+    name: "ส่วนเกินมูลค่าหุ้น (Share Premium)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3301":
+    name: "กำไรสะสม (Retained Earnings — Kamprai Sasm)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3401":
+    name: "กำไร (ขาดทุน) สำหรับงวด (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "3501":
+    name: "องค์ประกอบอื่นของส่วนของผู้ถือหุ้น (Other Components of Equity / OCI)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  # === REVENUE (รายได้ — Rai Dai) ===
+  "4":
+    name: "รายได้ (Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "4101":
+    name: "รายได้จากการขาย (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4201":
+    name: "รายได้จากการให้บริการ (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "4301":
+    name: "รายได้ดอกเบี้ย (Interest Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "4401":
+    name: "รายได้อื่น (Other Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  # === EXPENSES (ค่าใช้จ่าย — Kha Chai Chai) ===
+  "5":
+    name: "ค่าใช้จ่าย (Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "5101":
+    name: "ต้นทุนขาย (Cost of Goods Sold — Ton Thun Khai)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "5201":
+    name: "เงินเดือนและค่าจ้าง (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5301":
+    name: "ค่าเสื่อมราคา (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "5401":
+    name: "ค่าเช่า (Rent Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "5501":
+    name: "ค่าสาธารณูปโภค (Utilities)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "5601":
+    name: "ค่าโฆษณาและส่งเสริมการขาย (Advertising and Sales Promotion)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "5701":
+    name: "ดอกเบี้ยจ่าย (Interest Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "5801":
+    name: "ภาษีเงินได้นิติบุคคล (Corporate Income Tax Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "5901":
+    name: "ค่าใช้จ่ายอื่น (Other Operating Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

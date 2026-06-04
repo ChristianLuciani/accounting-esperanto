@@ -1,0 +1,618 @@
+# Kontablo Localization Mapping: Uruguay (NIIF / NIFCS — IFRS as adopted)
+# Version: 0.1.0-draft
+# Authority: AIN (Auditoría Interna de la Nación) — issues accounting standards for all entities.
+#            BCU (Banco Central del Uruguay) for financial entities.
+#            IRAE administered by DGI (Dirección General Impositiva).
+# Standard: Decreto 291/014 (2014) — adopts NIIF (IFRS) as the mandatory accounting framework
+#            for all entities above size thresholds; smaller entities use NIFCS (Normas de
+#            Información Financiera para Compañías Simplificadas) which is IFRS for SMEs.
+#            The framework is formally called "NIIF adoptadas en Uruguay" / NIFCS.
+# Critical Notes:
+#   Uruguay adopted IFRS (as NIIF) via Decreto 291/014, effective for fiscal years beginning
+#   January 1, 2015. Mandatory for companies exceeding threshold: assets > UI 30,000,000 or
+#   revenues > UI 100,000,000 (UI = Unidades Indexadas). Smaller entities use NIFCS.
+#   There is NO mandatory chart of accounts prescribed by AIN; the codes below reflect the
+#   widely-used Uruguayan convention consistent with professional training (CCEAU, IUACUA).
+#   IVA (Impuesto al Valor Agregado / VAT): basic rate 22%; minimum rate 10% (food, medicines,
+#   certain services); zero rate for exports. Administered by DGI.
+#   IRAE (Impuesto a las Rentas de las Actividades Económicas / Corporate Income Tax): 25% rate.
+#   IRPF (Impuesto a la Renta de las Personas Físicas): employee income tax, progressive.
+#   BPS (Banco de Previsión Social): social security contributions — employer ~7.5% + FONASA.
+#   Uruguay uses Unidades Indexadas (UI) and Unidades Reajustables (UR) for inflation indexing;
+#   however, Uruguay does NOT currently qualify as a hyperinflationary economy under IAS 29
+#   (unlike neighboring Argentina and Venezuela). IAS 29 monitoring is nonetheless warranted
+#   given regional context.
+#   The Uruguayan peso (UYU) has experienced moderate but persistent inflation; entities with
+#   USD-denominated assets/liabilities must apply IAS 21 translation.
+# VERIFY: Codes are industry approximations; AIN does not mandate specific account numbering.
+# VERIFY: UI threshold amounts for mandatory NIIF application — update annually.
+
+metadata:
+  country: UY
+  authority: AIN (Auditoría Interna de la Nación)
+  standard: NIIF_adoptadas_Uruguay_Decreto_291_014
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-01
+  currency: UYU
+
+mappings:
+  # === ACTIVO (Assets) ===
+  "1":
+    name: "ACTIVO (Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1.1":
+    name: "Activo Corriente (Current Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.1":
+    name: "Caja y equivalentes de efectivo (Cash and Cash Equivalents)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.1.1":
+    name: "Caja (Petty Cash — in UYU)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.1.2":
+    name: "Caja en moneda extranjera (Cash in Foreign Currency — USD, EUR)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.1.3":
+    name: "Bancos — cuentas corrientes (Bank Current Accounts)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.1.4":
+    name: "Bancos — cuentas en moneda extranjera (Bank Accounts — Foreign Currency)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.2":
+    name: "Inversiones temporarias (Short-term Investments)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.3":
+    name: "Créditos por ventas (Trade Receivables)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.3.1":
+    name: "Clientes (Customers / Trade Debtors)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.3.2":
+    name: "Previsión para deudores incobrables (Allowance for Doubtful Accounts — contra)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.4":
+    name: "Otros créditos (Other Receivables)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.5":
+    name: "Inventarios (Inventories)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.5.1":
+    name: "Mercaderías (Merchandise)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.5.2":
+    name: "Materias primas (Raw Materials)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.6":
+    name: "Gastos pagados por adelantado (Prepaid Expenses)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.7":
+    name: "IVA crédito fiscal (VAT Receivable / Input IVA)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.8":
+    name: "Otros activos corrientes (Other Current Assets)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "1.2":
+    name: "Activo No Corriente (Non-current Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1.2.1":
+    name: "Propiedad, planta y equipo (Property, Plant and Equipment — gross)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1.2.1.1":
+    name: "Terrenos (Land)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1.2.1.2":
+    name: "Edificios (Buildings)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1.2.1.3":
+    name: "Maquinaria y equipo (Machinery and Equipment)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1.2.1.4":
+    name: "Vehículos (Vehicles)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1.2.1.9":
+    name: "Depreciación acumulada (Accumulated Depreciation — contra)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1.2.2":
+    name: "Activos intangibles (Intangible Assets)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1.2.3":
+    name: "Inversiones financieras a largo plazo (Long-term Financial Investments)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "1.2.4":
+    name: "Activos por derecho de uso (Right-of-Use Assets — NIIF 16)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  # === PASIVO (Liabilities) ===
+  "2":
+    name: "PASIVO (Liabilities)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2.1":
+    name: "Pasivo Corriente (Current Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2.1.1":
+    name: "Proveedores (Accounts Payable / Trade Creditors)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2.1.2":
+    name: "Préstamos bancarios a corto plazo (Short-term Bank Loans)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2.1.3":
+    name: "IVA débito fiscal (VAT Payable / Output IVA)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2.1.4":
+    name: "IRAE a pagar (Corporate Income Tax Payable — DGI)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2.1.5":
+    name: "Remuneraciones y cargas sociales a pagar (Payroll and Social Security Liabilities)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2.1.5.1":
+    name: "Sueldos y salarios a pagar (Salaries Payable)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2.1.5.2":
+    name: "BPS a pagar — aportes patronales (BPS — Employer Social Security Contributions)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2.1.5.3":
+    name: "IRPF retenido a empleados (IRPF Withheld — Employee Income Tax)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2.1.6":
+    name: "Gastos devengados a pagar (Accrued Expenses)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "2.1.7":
+    name: "Ingresos diferidos (Deferred Revenue)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "2.1.8":
+    name: "Otros pasivos corrientes (Other Current Liabilities)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000308"
+    aggregation_rules:
+      - "sum"
+
+  "2.2":
+    name: "Pasivo No Corriente (Non-current Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2.2.1":
+    name: "Préstamos bancarios a largo plazo (Long-term Bank Loans)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2.2.2":
+    name: "Pasivos por arrendamiento financiero (Finance Lease Liabilities — NIIF 16)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "2.2.3":
+    name: "Pasivo por impuesto diferido (Deferred Tax Liability)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  "2.2.4":
+    name: "Previsión para indemnizaciones laborales (Severance / Employee Benefits Provision)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  # === PATRIMONIO (Equity) ===
+  "3":
+    name: "PATRIMONIO NETO (Equity / Net Worth)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "3.1":
+    name: "Capital integrado (Paid-in Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3.2":
+    name: "Prima de emisión (Share Premium)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3.3":
+    name: "Resultados acumulados (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3.4":
+    name: "Resultado del ejercicio (Current Year Net Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "3.5":
+    name: "Otros resultados integrales (Other Comprehensive Income — OCI)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "3.6":
+    name: "Reservas legales y estatutarias (Legal and Statutory Reserves)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  # === INGRESOS (Revenue) ===
+  "4":
+    name: "INGRESOS (Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "4.1":
+    name: "Ventas de bienes (Sales of Goods)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4.2":
+    name: "Ingresos por servicios (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "4.3":
+    name: "Ingresos financieros e intereses (Financial Income / Interest Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "4.4":
+    name: "Diferencias de cambio favorables (Favorable FX Exchange Gains — IAS 21)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "4.5":
+    name: "Otros ingresos (Other Operating Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  # === EGRESOS / COSTOS Y GASTOS (Expenses) ===
+  "5":
+    name: "COSTOS Y GASTOS (Costs and Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "5.1":
+    name: "Costo de ventas (Cost of Goods Sold / Cost of Sales)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "5.2":
+    name: "Sueldos y salarios (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5.2.1":
+    name: "Sueldos nominales (Gross Salaries)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5.2.2":
+    name: "Cargas sociales — aporte patronal BPS (Employer BPS Contributions)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5.3":
+    name: "Depreciación y amortización (Depreciation and Amortisation)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "5.4":
+    name: "Arrendamientos (Rent Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "5.5":
+    name: "Servicios (Utilities — UTE electricidad, OSE agua, ANTEL telecomunicaciones)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "5.6":
+    name: "Publicidad y mercadeo (Advertising and Marketing)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "5.7":
+    name: "Gastos financieros e intereses (Finance Costs / Interest Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "5.7.1":
+    name: "Diferencias de cambio desfavorables (Unfavorable FX Exchange Losses — IAS 21)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "5.8":
+    name: "IRAE (Impuesto a las Rentas de las Actividades Económicas — Corporate Tax Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "5.9":
+    name: "Otros gastos operativos (Other Operating Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

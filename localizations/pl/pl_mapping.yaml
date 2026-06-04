@@ -1,0 +1,482 @@
+# Kontablo Localization Mapping: Poland (Ustawa o rachunkowości — Accounting Act)
+# Version: 0.1.0-draft
+# Authority: MF (Ministerstwo Finansów — Ministry of Finance) / KSR (Krajowe Standardy Rachunkowości)
+# Standard: Ustawa o rachunkowości z dnia 29 września 1994 r. (consolidated text), KSR 2023
+# Critical Notes:
+#   Poland has a MANDATORY chart of accounts structure defined in the Accounting Act and the
+#   Regulation on the accounting principles (rozporządzenie). The Act prescribes the class
+#   structure (classes 0-8) that all entities must follow. Within classes, specific account
+#   numbers are recommended but companies may adapt the sub-account level. The class structure
+#   presented here is the mandatory framework; sub-accounts follow KSR guidance and common practice.
+#   VAT (Podatek od towarów i usług / PTU): standard rate 23%; reduced rates 8%, 5%, 0%.
+#   Poland uses Split Payment Mechanism (MPP — Mechanizm Podzielonej Płatności) for B2B VAT
+#   above PLN 15,000, creating dedicated VAT bank accounts (separate from operating accounts).
+#   CIT (podatek dochodowy od osób prawnych): 19% standard; 9% reduced rate for small taxpayers.
+#   The Accounting Act requires entities to maintain a Zakładowy Plan Kont (Company Chart of Accounts)
+#   that complies with the mandatory class structure. Codes below are the standard industry chart.
+
+metadata:
+  country: PL
+  authority: MF (Ministerstwo Finansów) / KSR (Komitet Standardów Rachunkowości)
+  standard: Ustawa_o_rachunkowosci_1994_tekst_jednolity_2023
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-01
+  currency: PLN
+
+mappings:
+  # === CLASS 0: AKTYWA TRWAŁE (Non-current Assets) ===
+  "010":
+    name: "Środki trwałe (Property, Plant and Equipment — gross)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "011":
+    name: "Grunty (Land)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "013":
+    name: "Budynki i lokale (Buildings and Premises)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "014":
+    name: "Maszyny i urządzenia techniczne (Machinery and Technical Equipment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "015":
+    name: "Środki transportu (Vehicles / Transport Means)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "070":
+    name: "Umorzenie środków trwałych (Accumulated Depreciation — PP&E, contra)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "020":
+    name: "Wartości niematerialne i prawne (Intangible Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "021":
+    name: "Koszty zakończonych prac rozwojowych (Capitalised Development Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "022":
+    name: "Wartość firmy (Goodwill — Wartość firmy)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "026":
+    name: "Prawa majątkowe (Proprietary Rights / Software Licences)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "030":
+    name: "Długoterminowe aktywa finansowe (Long-term Financial Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "040":
+    name: "Prawo do użytkowania aktywów (Right-of-Use Assets — KSR 5 / IFRS 16 equivalent)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASS 1: ŚRODKI PIENIĘŻNE I RACHUNKI BANKOWE (Cash and Bank) ===
+  "100":
+    name: "Kasa (Cash — petty cash)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "130":
+    name: "Rachunki bankowe (Bank Accounts)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "131":
+    name: "Rachunek bankowy — rachunek VAT (VAT Bank Account — Split Payment / MPP)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "140":
+    name: "Krótkoterminowe aktywa finansowe (Short-term Financial Investments)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASS 2: ROZRACHUNKI I ROSZCZENIA (Receivables / Payables) ===
+  "200":
+    name: "Rozrachunki z odbiorcami (Trade Receivables — from customers)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "201":
+    name: "Rozrachunki z dostawcami (Trade Payables — to suppliers)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "220":
+    name: "Rozrachunki z budżetem — VAT należny (VAT Payable / Output VAT)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "221":
+    name: "VAT naliczony (VAT Receivable / Input VAT)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "225":
+    name: "Rozrachunki z urzędem skarbowym — CIT (Income Tax Payable / Receivable)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "230":
+    name: "Rozrachunki z pracownikami (Payroll Liabilities — employee settlements)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "240":
+    name: "Pozostałe rozrachunki (Other Receivables / Payables)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "245":
+    name: "Rozliczenia międzyokresowe kosztów czynne (Prepaid Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "250":
+    name: "Rozliczenia międzyokresowe kosztów bierne — Rezerwy na koszty (Accrued Expenses)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "840":
+    name: "Rozliczenia międzyokresowe przychodów (Deferred Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASS 3: MATERIAŁY I TOWARY (Inventories) ===
+  "310":
+    name: "Materiały (Raw Materials)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "330":
+    name: "Towary (Merchandise / Trading Goods)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASS 5: KOSZTY WEDŁUG RODZAJU (Expenses by Nature) ===
+  "401":
+    name: "Amortyzacja (Depreciation and Amortisation Expense)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "402":
+    name: "Zużycie materiałów i energii (Materials and Energy Consumption)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "403":
+    name: "Usługi obce (External Services / Outsourced Services)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "404":
+    name: "Podatki i opłaty (Taxes and Fees — excluding CIT and VAT)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "405":
+    name: "Wynagrodzenia (Salaries and Wages)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "406":
+    name: "Ubezpieczenia społeczne i inne świadczenia (Social Insurance and Benefits)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "407":
+    name: "Koszty reprezentacji i reklamy (Representation and Advertising Costs)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "409":
+    name: "Pozostałe koszty rodzajowe (Other Operating Costs by Nature)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASS 5 — Functional cost accounts ===
+  "500":
+    name: "Koszty działalności podstawowej (Cost of Core Operating Activity / COGS)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "527":
+    name: "Koszty sprzedaży (Selling and Distribution Costs)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "550":
+    name: "Koszty ogólnego zarządu (General and Administrative Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASS 6: PRODUKTY I ROZLICZENIA MIĘDZYOKRESOWE (WIP / Finished Goods) ===
+  "600":
+    name: "Produkty gotowe (Finished Goods)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "620":
+    name: "Odchylenia od cen ewidencyjnych (Inventory Price Variances)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASS 7: PRZYCHODY I KOSZTY ICH OSIĄGNIĘCIA (Revenue and Related Costs) ===
+  "700":
+    name: "Sprzedaż produktów (Sales Revenue — Products)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "701":
+    name: "Koszt sprzedanych produktów (Cost of Products Sold)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "730":
+    name: "Sprzedaż towarów (Sales Revenue — Merchandise)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "731":
+    name: "Wartość sprzedanych towarów w cenie zakupu (Cost of Merchandise Sold)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "750":
+    name: "Przychody finansowe (Financial Income — interest, dividends, FX gains)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "751":
+    name: "Koszty finansowe (Financial Expenses — interest, FX losses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "760":
+    name: "Pozostałe przychody operacyjne (Other Operating Income)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "761":
+    name: "Pozostałe koszty operacyjne (Other Operating Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASS 8: KAPITAŁY, FUNDUSZE WŁASNE, REZERWY, WYNIK FINANSOWY (Equity & P&L) ===
+  "800":
+    name: "Kapitał (fundusz) podstawowy (Share Capital / Registered Capital)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "812":
+    name: "Kapitał zapasowy (Supplementary Capital / Share Premium)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "820":
+    name: "Rozliczenie wyniku finansowego (Retained Earnings / Prior Year P&L Settlement)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "860":
+    name: "Wynik finansowy (Current Year Net Profit/Loss)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "870":
+    name: "Podatek dochodowy (Income Tax Expense — CIT)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "851":
+    name: "Rezerwy (Provisions / Long-term Liabilities)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  "842":
+    name: "Inne długoterminowe zobowiązania finansowe (Long-term Financial Liabilities)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
