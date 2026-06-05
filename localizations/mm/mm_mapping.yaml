@@ -1,0 +1,237 @@
+# Kontablo Localization Mapping: Myanmar (MAS — Myanmar Accounting Standards)
+# Version: 0.1.0-draft
+# Authority: Myanmar Accountancy Council (MAC)
+# Standard: MAS (Myanmar Accounting Standards) — IFRS-aligned, adopted since 2012
+# Critical Notes:
+#   No standard VAT system; Commercial Tax (CT) at 5% applies to most goods/services
+#   Corporate tax (CIT): 25% for local companies; 35% for foreign companies (VERIFY — rates
+#   may have changed post-2021 military coup)
+#   Currency: MMK (Myanmar Kyat) — significant depreciation post-coup; parallel exchange rates exist
+#   Political instability since February 2021 coup affects enforcement and compliance
+#   IFRS adoption was underway; implementation may have been disrupted post-coup
+#   VERIFY: MAC operational status and MAS enforcement post-2021
+
+metadata:
+  country: MM
+  authority: Myanmar Accountancy Council (MAC)
+  standard: MAS_IFRS_ALIGNED
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: MMK
+
+mappings:
+  "1001":
+    name: "Cash on Hand (လက်ငင်းငွေ)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1002":
+    name: "Bank Accounts (ဘဏ်အကောင့်)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Trade Receivables (ကုန်သွယ်ရေးဆိုင်ရာပေးရန်ငွေ)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Other Receivables (အခြားပေးရန်ငွေ)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Inventories (လက်ကျန်ပစ္စည်း)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Prepaid Expenses (ကြိုတင်ပေးချေသောအသုံးစရိတ်)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "Commercial Tax Receivable — 5% (စီးပွားကူးသန်းရောင်းဝယ်အခွန်ပေးရန်)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Property, Plant and Equipment — Gross (အဆောက်အဦ၊ ယန္တရားနှင့်ပစ္စည်းများ)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2001":
+    name: "Accumulated Depreciation (စုပေါင်းတန်ဖိုးကျဆင်းမှု)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Intangible Assets (မသိမ်းမသောပိုင်ဆိုင်မှု)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "3000":
+    name: "Accounts Payable (ပေးဆပ်ရန်ငွေ)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Commercial Tax Payable — 5% (စီးပွားကူးသန်းရောင်းဝယ်အခွန်ပေးရန်)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Income Tax Payable — 25% (ဝင်ငွေအခွန်ပေးရန်)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Payroll Liabilities (လုပ်ခနှင့်ဆိုင်သောတာဝန်)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Long-term Debt (ရေရှည်ငွေချေးတာဝန်)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Share Capital (မတည်ငွေရင်း)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Retained Earnings (သိုလှောင်ထားသောအမြတ်)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Current Year Profit/Loss (လက်ရှိနှစ်အမြတ်/အရှုံး)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "6000":
+    name: "Sales Revenue (ရောင်းရငွေ)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "Service Revenue (ဝန်ဆောင်မှုဝင်ငွေ)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Financial Income (ငွေကြေးဆိုင်ရာဝင်ငွေ)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "7000":
+    name: "Cost of Goods Sold (ရောင်းသောကုန်ပစ္စည်းကုန်ကျစရိတ်)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "7100":
+    name: "Salaries and Wages (လုပ်ခနှင့်ရပ်ခ)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "Depreciation Expense (တန်ဖိုးကျဆင်းမှုကုန်ကျစရိတ်)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7300":
+    name: "Financial Expenses (ငွေကြေးဆိုင်ရာကုန်ကျစရိတ်)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "Income Tax Expense — 25% (ဝင်ငွေအခွန်ကုန်ကျစရိတ်)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "7500":
+    name: "Other Operating Expenses (အခြားလည်ပတ်မှုကုန်ကျစရိတ်)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

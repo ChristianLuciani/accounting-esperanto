@@ -1,0 +1,310 @@
+# Kontablo Localization Mapping: Moldova (SNC — Standarde Naționale de Contabilitate)
+# Version: 0.1.0-draft
+# Authority: Ministry of Finance of the Republic of Moldova (Ministerul Finanțelor)
+# Standard: SNC Moldova (National Accounting Standards, Law 287/2017); IFRS for public interest entities
+# Critical Notes:
+#   VAT: 20% standard; 8% reduced (bread, milk, medicines, gas); 0% for exports
+#   Corporate income tax: 12%
+#   Currency: MDL (Moldovan Leu)
+#   Mandatory chart of accounts: General Plan of Accounts (Plan general de conturi) approved by MF
+#   Structure: classes 1-9 with 3-4 digit account codes
+#   Class 1: Long-term assets; Class 2: Current assets; Class 3: Equity; Class 4: Long-term liabilities
+#   Class 5: Current liabilities; Class 6: Revenue; Class 7: Expenses; Class 8: Management accounts
+#   VERIFY: Codes follow the Plan general de conturi approved by MF Order 119/2013 (amended)
+
+metadata:
+  country: MD
+  authority: MF_MOLDOVA
+  standard: SNC_MOLDOVA_287_2017
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: MDL
+
+mappings:
+  "123":
+    name: "Mijloace fixe — Clădiri (Fixed Assets — Buildings)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "124":
+    name: "Mașini, utilaje, instalații (Machinery and Equipment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "124.1":
+    name: "Uzura mijloacelor fixe (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "111":
+    name: "Active nemateriale (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "141":
+    name: "Investiții financiare pe termen lung (Long-term Financial Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "126":
+    name: "Drepturi de utilizare a activelor (Right-of-Use Assets — IFRS 16)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  "211":
+    name: "Materiale (Raw Materials)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "217":
+    name: "Mărfuri (Merchandise)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "261":
+    name: "Creanțe comerciale (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "234":
+    name: "Alte creanțe curente (Other Current Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "251":
+    name: "Cheltuieli anticipate curente (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "534.4":
+    name: "TVA de recuperat (VAT Receivable)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "241":
+    name: "Casa (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "242":
+    name: "Conturi curente în valută națională (Bank Accounts — MDL)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "521":
+    name: "Datorii comerciale (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "511":
+    name: "Credite bancare pe termen scurt (Short-term Bank Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "534.3":
+    name: "TVA de plată (VAT Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "534.1":
+    name: "Impozit pe venit de plată (Income Tax Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "531":
+    name: "Datorii față de personal (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "515":
+    name: "Venituri anticipate (Deferred Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "411":
+    name: "Credite bancare pe termen lung (Long-term Bank Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "423":
+    name: "Datorii din leasing financiar (Finance Lease Liability)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "425":
+    name: "Datorii privind impozitul amânat (Deferred Tax Liability)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  "311":
+    name: "Capital social (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "332":
+    name: "Profit nerepartizat (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "333":
+    name: "Profit/pierdere al perioadei curente (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "611":
+    name: "Venituri din vânzări (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "612":
+    name: "Venituri din servicii prestate (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "621":
+    name: "Venituri din dobânzi (Interest Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "711":
+    name: "Costul vânzărilor (Cost of Sales)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "713":
+    name: "Cheltuieli cu personalul — salarii (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "722":
+    name: "Uzura și amortizarea — cheltuieli (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "712":
+    name: "Cheltuieli de chirie (Rent Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "714":
+    name: "Cheltuieli pentru utilități (Utilities)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "722.1":
+    name: "Cheltuieli cu dobânzile (Interest Expense)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "731":
+    name: "Cheltuieli privind impozitul pe venit (Income Tax Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

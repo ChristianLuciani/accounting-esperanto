@@ -1,0 +1,287 @@
+# Kontablo Localization Mapping: Belarus (НСБУ — Национальные стандарты бухгалтерского учёта)
+# Version: 0.1.0-draft
+# Authority: Ministry of Finance of the Republic of Belarus (Министерство финансов РБ)
+# Standard: НСБУ (National Accounting Standards of Belarus); Instruction on Chart of Accounts 50/2011
+# Critical Notes:
+#   VAT: 20% standard; 10% reduced (food, medical products, children's goods)
+#   Corporate income tax: 20%
+#   Currency: BYN (Belarusian Ruble; new denomination since 2016, 1 BYN = 10,000 old BYR)
+#   SANCTIONS CONTEXT: Belarus subject to EU/US/UK/international sanctions since 2020-2022
+#   IFRS adoption is limited; mandatory plan счетов (Plan of Accounts) from Soviet tradition
+#   Plan of Accounts: Instruction approved by MF Resolution 50/2011 (amended), classes 0-9
+#   Class 0: Non-current assets; Class 1: Inventories; Class 2: Cost items; Class 3: Manufacturing costs
+#   Class 4: Cash & settlements; Class 5-6: Source of funds; Class 7-8: Revenue & expenses; Class 9: Off-balance
+#   VERIFY: Codes follow the official Plan schotov (Plan of Accounts) per MF Instruction 50/2011
+
+metadata:
+  country: BY
+  authority: MF_BELARUS
+  standard: NSBU_PLAN_SCHOTOV_50_2011
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: BYN
+
+mappings:
+  "01":
+    name: "Основные средства (Fixed Assets / PPE)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "02":
+    name: "Амортизация основных средств (Accumulated Depreciation — PPE)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "04":
+    name: "Нематериальные активы (Intangible Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "06":
+    name: "Долгосрочные финансовые вложения (Long-term Financial Investments)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "10":
+    name: "Материалы (Raw Materials)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "41":
+    name: "Товары (Merchandise)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "50":
+    name: "Касса (Cash on Hand)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "51":
+    name: "Расчётные счета (Bank Settlement Accounts)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "52":
+    name: "Валютные счета (Foreign Currency Accounts)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "58":
+    name: "Краткосрочные финансовые вложения (Short-term Investments)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "62":
+    name: "Расчёты с покупателями и заказчиками (Trade Receivables)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "76":
+    name: "Расчёты с разными дебиторами и кредиторами (Other Receivables/Payables)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "97":
+    name: "Расходы будущих периодов (Prepaid Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "18":
+    name: "НДС к вычету (VAT Receivable / Input VAT)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "60":
+    name: "Расчёты с поставщиками и подрядчиками (Accounts Payable)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "66":
+    name: "Краткосрочные кредиты и займы (Short-term Loans)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "68.2":
+    name: "НДС к уплате (VAT Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "68.3":
+    name: "Налог на прибыль к уплате (Income Tax Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "70":
+    name: "Расчёты с персоналом по оплате труда (Payroll Liabilities)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "98":
+    name: "Доходы будущих периодов (Deferred Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "67":
+    name: "Долгосрочные кредиты и займы (Long-term Loans)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "76.1":
+    name: "Обязательства по финансовой аренде (Finance Lease Liability)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "65":
+    name: "Отложенные налоговые обязательства (Deferred Tax Liability)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  "80":
+    name: "Уставный фонд (Share Capital / Charter Fund)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "84":
+    name: "Нераспределённая прибыль (Retained Earnings)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "99":
+    name: "Прибыли и убытки (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "90.1":
+    name: "Выручка от реализации (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "91.1":
+    name: "Прочие доходы — проценты (Other Income / Interest)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "90.2":
+    name: "Себестоимость реализации (Cost of Sales)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "44":
+    name: "Расходы на реализацию — зарплата (Salaries and Wages)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "25.1":
+    name: "Амортизация — расходы (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "91.2":
+    name: "Прочие расходы — проценты (Interest Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "99.1":
+    name: "Налог на прибыль (Income Tax Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

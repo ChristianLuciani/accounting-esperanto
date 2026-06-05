@@ -1,0 +1,237 @@
+# Kontablo Localization Mapping: Uzbekistan (NAS / NSBU + IFRS in progress)
+# Version: 0.1.0-draft
+# Authority: Ministry of Finance of the Republic of Uzbekistan
+# Standard: NAS (National Accounting Standards) / NSBU (Национальные стандарты бухгалтерского учёта)
+# Critical Notes:
+#   IFRS adoption is progressing: mandatory for banks and listed companies; in progress for others
+#   VAT: 12% standard rate (reduced from 20% in 2019 tax reform)
+#   Corporate tax (CIT): 15% standard rate (reformed 2019)
+#   Currency: UZS (Uzbekistani Som)
+#   Significant economic reforms since 2016 under President Mirziyoyev
+#   NAS follows a chart-of-accounts structure influenced by Soviet-era accounting
+#   VERIFY: exact NAS account codes — Uzbekistan uses a state-mandated chart
+
+metadata:
+  country: UZ
+  authority: Ministry of Finance Uzbekistan
+  standard: NAS_UZ
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: UZS
+
+mappings:
+  "0100":
+    name: "Основные средства — первоначальная стоимость (Property, Plant and Equipment — Gross)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "0200":
+    name: "Износ основных средств (Accumulated Depreciation — PPE)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "0400":
+    name: "Нематериальные активы (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "0600":
+    name: "Долгосрочные инвестиции (Long-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "1000":
+    name: "Товарно-материальные запасы (Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Расходы будущих периодов (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "4800":
+    name: "НДС к возмещению — 12% (VAT Receivable — 12%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Касса (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Расчётный счёт (Bank Settlement Account)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "5500":
+    name: "Краткосрочные инвестиции (Short-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "4010":
+    name: "Дебиторская задолженность покупателей (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "4900":
+    name: "Прочая дебиторская задолженность (Other Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "6010":
+    name: "Кредиторская задолженность поставщикам (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "6410":
+    name: "НДС к уплате — 12% (VAT Payable — 12%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "6420":
+    name: "Налог на прибыль к уплате — 15% (Income Tax Payable — 15%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "6710":
+    name: "Задолженность по заработной плате (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "7810":
+    name: "Долгосрочные кредиты банков (Long-term Bank Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "8300":
+    name: "Уставный капитал (Charter / Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "8700":
+    name: "Нераспределённая прибыль (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "9110":
+    name: "Выручка от реализации продукции (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "9210":
+    name: "Доходы от оказания услуг (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "9530":
+    name: "Прочие финансовые доходы (Financial Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "9000":
+    name: "Себестоимость реализованной продукции (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "9400":
+    name: "Расходы по оплате труда (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "9430":
+    name: "Амортизация (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "9610":
+    name: "Финансовые расходы (Financial Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "9810":
+    name: "Налог на прибыль — 15% (Income Tax Expense — 15%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

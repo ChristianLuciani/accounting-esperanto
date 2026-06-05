@@ -1,0 +1,260 @@
+# Kontablo Localization Mapping: Azerbaijan (IFRS as adopted)
+# Version: 0.1.0-draft
+# Authority: Chamber of Auditors of the Republic of Azerbaijan
+# Standard: IFRS as adopted (mandatory for banks and large entities since 2003)
+# Critical Notes:
+#   VAT (ƏDV — Əlavə Dəyər Vergisi): 18% standard rate
+#   Corporate tax (Mənfəət vergisi): 20%
+#   Currency: AZN (Azerbaijani Manat) — pegged to USD since 2015 (re-pegged after devaluation)
+#   Oil/gas sector dominates; SOCAR (state oil company) follows IFRS
+#   Non-oil sector increasingly adopting IFRS; smaller entities may use national standards
+#   VERIFY: Current mandatory IFRS scope — may have expanded since 2020
+
+metadata:
+  country: AZ
+  authority: Chamber of Auditors of the Republic of Azerbaijan
+  standard: IFRS_AZ
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: AZN
+
+mappings:
+  "1001":
+    name: "Kassa (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1002":
+    name: "Bank hesabları (Bank Accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1003":
+    name: "Qısamüddətli investisiyalar (Short-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Ticarət debitorları (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Digər debitor borcları (Other Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Ehtiyatlar (Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Avans ödənmiş xərclər (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "ƏDV alınacaq — 18% (VAT Receivable — 18%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Əsas vəsaitlər — ümumi (Property, Plant and Equipment — Gross)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2001":
+    name: "Yığılmış amortizasiya (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Qeyri-maddi aktivlər (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Uzunmüddətli investisiyalar (Long-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "3000":
+    name: "Ticarət kreditorları (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "ƏDV ödəniləcək — 18% (VAT Payable — 18%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Mənfəət vergisi ödəniləcək — 20% (Income Tax Payable — 20%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Əmək haqqı öhdəlikləri (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "Hesablanmış xərclər (Accrued Expenses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Uzunmüddətli borclar (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Nizamnamə kapitalı (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Bölüşdürülməmiş mənfəət (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Cari il mənfəəti/zərəri (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "6000":
+    name: "Satış gəlirləri (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "Xidmət gəlirləri (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Maliyyə gəlirləri (Financial Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "7000":
+    name: "Satılan malların dəyəri (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "7100":
+    name: "Əmək haqqı xərcləri (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "Amortizasiya xərcləri (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7300":
+    name: "Maliyyə xərcləri (Financial Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "Mənfəət vergisi xərci — 20% (Income Tax Expense — 20%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "7500":
+    name: "Digər əməliyyat xərcləri (Other Operating Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

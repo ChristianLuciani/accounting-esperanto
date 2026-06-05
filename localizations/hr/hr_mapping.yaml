@@ -1,0 +1,310 @@
+# Kontablo Localization Mapping: Croatia (ZOR + HSFI)
+# Version: 0.1.0-draft
+# Authority: HANFA (Croatian Financial Services Supervisory Agency) / MF (Ministarstvo financija)
+# Standard: Zakon o računovodstvu (ZOR); HSFI (Hrvatski standardi financijskog izvještavanja)
+# Critical Notes:
+#   VAT (PDV): 25% standard; 13% reduced (accommodation, newspapers); 5% super-reduced (books, medicines)
+#   Corporate income tax: 18% (revenue > 1M EUR); 10% (revenue ≤ 1M EUR)
+#   Currency: EUR (adopted 1 January 2023; formerly HRK)
+#   Mandatory chart of accounts (računski plan): classes 0-9
+#   Class 0: Non-current assets; Class 1: Inventories; Class 2: Claims, investments, cash
+#   Class 3: Short-term liabilities; Class 4: Operating expenses; Class 6: Revenues
+#   Class 9: Cost accounting (internal)
+#   VERIFY: 4-digit codes follow the RiF (Računski plan) published by RRIF; confirm with MF
+
+metadata:
+  country: HR
+  authority: MF_CROATIA
+  standard: ZOR_HSFI
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: EUR
+
+mappings:
+  "0210":
+    name: "Građevinski objekti (Buildings)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "0220":
+    name: "Postrojenja i oprema (Plant and Equipment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "0291":
+    name: "Ispravak vrijednosti građevinskih objekata (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "0100":
+    name: "Nematerijalna imovina (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "0600":
+    name: "Dugoročni financijski instrumenti (Long-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "0270":
+    name: "Imovina s pravom korištenja — MSFI 16 (Right-of-Use Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Roba (Merchandise Inventory)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Sirovine i materijal (Raw Materials)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "2500":
+    name: "Blagajna (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "2400":
+    name: "Žiroračun i tekući računi (Bank Accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Kupci (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Ostali potraživanja (Other Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1900":
+    name: "Plaćeni troškovi budućeg razdoblja (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "2700":
+    name: "Pretporez (VAT Receivable / Input VAT)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "3000":
+    name: "Dobavljači (Accounts Payable / Suppliers)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "Kratkoročni krediti (Short-term Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2702":
+    name: "PDV obveza (VAT Payable / Output VAT)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "3700":
+    name: "Obveze za porez na dobit (Income Tax Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Obveze za plaće (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "3900":
+    name: "Odgođeni prihodi (Deferred Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "9500":
+    name: "Dugoročni krediti (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "9600":
+    name: "Obveze po financijskom leasingu (Finance Lease Liability)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "9700":
+    name: "Odgođena porezna obveza (Deferred Tax Liability)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  "9000":
+    name: "Temeljni kapital (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "9100":
+    name: "Zadržana dobit (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "9200":
+    name: "Dobit/gubitak tekuće godine (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "7500":
+    name: "Prihodi od prodaje robe (Sales Revenue — Goods)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "7550":
+    name: "Prihodi od pružanja usluga (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "7700":
+    name: "Financijski prihodi — kamate (Financial / Interest Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "Nabavna vrijednost prodane robe (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "4200":
+    name: "Troškovi osoblja — plaće (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "4300":
+    name: "Amortizacija (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "4400":
+    name: "Troškovi najma (Rent Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "4500":
+    name: "Troškovi električne energije i komunalnih usluga (Utilities)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "7800":
+    name: "Financijski rashodi — kamate (Interest Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "8100":
+    name: "Porez na dobit (Income Tax Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

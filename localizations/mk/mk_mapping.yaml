@@ -1,0 +1,293 @@
+# Kontablo Localization Mapping: North Macedonia (МСС/МСФИ — Macedonian Accounting Standards / IFRS)
+# Version: 0.1.0-draft
+# Authority: Institute of Certified Auditors of North Macedonia (Институт на овластени ревизори)
+# Standard: Macedonian Accounting Standards (МСС); IFRS for listed and public interest entities
+# Critical Notes:
+#   VAT (ДДВ — данок на додадена вредност): 18% standard; 5% reduced (food, medicines, agricultural inputs)
+#   Corporate income tax: 10% (flat rate)
+#   Currency: MKD (Macedonian Denar), pegged to EUR
+#   Mandatory chart of accounts: classes 0-9, Yugoslav-influenced structure
+#   Class 0: Non-current assets; Class 1: Inventories; Class 2: Cash and receivables
+#   Class 3: Capital; Class 4: Costs; Class 5: Cost of sales; Class 6: Revenue; Class 7: Expenses
+#   VERIFY: Codes follow the Сметковниот план (Smetkovniot plan) prescribed by Ministry of Finance MK
+
+metadata:
+  country: MK
+  authority: INSTITUTE_CERTIFIED_AUDITORS_MK
+  standard: MAS_IFRS_NORTH_MACEDONIA
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: MKD
+
+mappings:
+  "022":
+    name: "Градежни објекти (Buildings)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "023":
+    name: "Постројувања и опрема (Plant and Equipment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "029":
+    name: "Исправка на вредноста (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "010":
+    name: "Нематеријални средства (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "060":
+    name: "Долгорочни финансиски вложувања (Long-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "100":
+    name: "Материјали (Raw Materials)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "130":
+    name: "Стока (Merchandise)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "200":
+    name: "Купувачи (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "209":
+    name: "Останати побарувања (Other Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "241":
+    name: "Благајна (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "243":
+    name: "Тековна сметка во банка (Bank Current Account)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "270":
+    name: "Претходно платени трошоци (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "235":
+    name: "ДДВ побарување (VAT Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "300":
+    name: "Добавувачи (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "231":
+    name: "Краткорочни кредити (Short-term Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "471":
+    name: "ДДВ обврска (VAT Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "450":
+    name: "Данок на добивка (Income Tax Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "330":
+    name: "Обврски кон вработени (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "290":
+    name: "Одложени приходи (Deferred Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "414":
+    name: "Долгорочни кредити (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "415":
+    name: "Обврски по финансиски лизинг (Finance Lease Liability)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "350":
+    name: "Основна главнина (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "340":
+    name: "Задржана добивка (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "342":
+    name: "Добивка/загуба на тековната година (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "600":
+    name: "Приходи од продажба на стоки (Sales Revenue — Goods)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "601":
+    name: "Приходи од услуги (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "662":
+    name: "Приходи од камати (Interest Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "500":
+    name: "Набавна вредност на продадена стока (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "520":
+    name: "Трошоци за плати (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "540":
+    name: "Амортизација (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "510":
+    name: "Трошоци за закуп (Rent Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "515":
+    name: "Трошоци за комуналии (Utilities)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "561":
+    name: "Расходи за камати (Interest Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "721":
+    name: "Данок на добивка (Income Tax Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

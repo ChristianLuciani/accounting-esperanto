@@ -1,0 +1,324 @@
+# Kontablo Localization Mapping: Bolivia (PGC Bolivia / NIIF)
+# Version: 0.1.0-draft
+# Authority: CTNC (Consejo Técnico Nacional de Auditoría y Contabilidad)
+# Standard: PGC Bolivia / NIIF adoptadas
+# Critical Notes:
+#   IVA (VAT) 13% — flat rate, included in price (régimen integrado)
+#   IUE (Impuesto a las Utilidades de las Empresas) 25% corporate tax
+#   IT (Impuesto a las Transacciones) 3% — gross-revenue transaction tax, credits against IUE
+#   Mandatory 4-digit chart influenced by PCGE structure
+#   Currency: BOB (Boliviano); dual-currency reporting sometimes in USD for large corps
+#   NIIF full adoption mandated for regulated entities; NIIF PYME for SMEs
+
+metadata:
+  country: BO
+  authority: CTNC
+  standard: PGC-BO-NIIF
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: BOB
+
+mappings:
+  "1000":
+    name: "Activo (Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Caja y Bancos (Cash and Cash Equivalents)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "Caja (Petty Cash)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1120":
+    name: "Bancos (Bank Accounts)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1130":
+    name: "Inversiones Temporarias (Short-term Investments)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Cuentas por Cobrar Comerciales (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1210":
+    name: "Deudores por Ventas (Accounts Receivable — Sales)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1220":
+    name: "Otras Cuentas por Cobrar (Other Receivables)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Inventarios (Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Pagos Anticipados (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "Crédito Fiscal IVA (VAT Tax Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1600":
+    name: "Activo Fijo (Property, Plant & Equipment — gross)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1610":
+    name: "Depreciación Acumulada (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1700":
+    name: "Activos Intangibles (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1800":
+    name: "Inversiones a Largo Plazo (Long-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Pasivo (Liabilities)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Cuentas por Pagar Comerciales (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Deudas Financieras a Corto Plazo (Short-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2300":
+    name: "Débito Fiscal IVA (VAT Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2310":
+    name: "IT por Pagar (Transaction Tax Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2400":
+    name: "IUE por Pagar (Income Tax Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2500":
+    name: "Obligaciones Laborales (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2600":
+    name: "Gastos Acumulados por Pagar (Accrued Expenses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "2700":
+    name: "Deudas a Largo Plazo (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "3000":
+    name: "Patrimonio Neto (Equity)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Capital Social (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Reservas y Resultados Acumulados (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Resultado de la Gestión (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Ingresos (Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "Ventas (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4200":
+    name: "Ingresos por Servicios (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "4300":
+    name: "Ingresos Financieros (Financial Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Gastos (Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Costo de Ventas (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Sueldos y Salarios (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5300":
+    name: "Depreciaciones y Amortizaciones (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "5400":
+    name: "Gastos Financieros (Financial Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "5500":
+    name: "IUE (Income Tax Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

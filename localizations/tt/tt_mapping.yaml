@@ -1,0 +1,358 @@
+# Kontablo Localization Mapping: Trinidad and Tobago (IFRS adopted)
+# Version: 0.1.0-draft
+# Authority: ICATT (Institute of Chartered Accountants of Trinidad and Tobago)
+# Standard: IFRS as adopted by ICATT
+# Critical Notes:
+#   VAT 12.5% — standard rate; some zero-rated and exempt supplies (basic food, exports)
+#   Corporation Tax 30% general; 35% for petrochemical companies (energy sector)
+#   Petroleum Profits Tax (PPT) for upstream oil/gas — separate regime, not covered here
+#   Business Levy 0.2% on gross revenue (minimum tax floor)
+#   Green Fund Levy 0.3% on gross revenue
+#   Currency: TTD (Trinidad and Tobago Dollar); significant USD use in energy transactions
+#   BIR (Board of Inland Revenue) is the tax authority
+#   Fiscal year: calendar year (January 1 – December 31)
+
+metadata:
+  country: TT
+  authority: ICATT
+  standard: IFRS-TT
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: TTD
+
+mappings:
+  "1000":
+    name: "Assets"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Current Assets"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "Cash and Cash Equivalents"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1120":
+    name: "Bank Accounts"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1130":
+    name: "Short-term Investments"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1140":
+    name: "Trade Receivables"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1150":
+    name: "Other Receivables"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1160":
+    name: "Inventories"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1170":
+    name: "Prepaid Expenses"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1180":
+    name: "VAT Input Tax Receivable"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Non-current Assets"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1210":
+    name: "Property, Plant & Equipment (gross)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1220":
+    name: "Accumulated Depreciation (contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1230":
+    name: "Intangible Assets"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1240":
+    name: "Long-term Investments"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "1250":
+    name: "Right-of-Use Assets (IFRS 16)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Liabilities"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Current Liabilities"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2110":
+    name: "Accounts Payable"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2120":
+    name: "Short-term Borrowings"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2130":
+    name: "VAT Output Tax Payable"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2140":
+    name: "Corporation Tax Payable"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2150":
+    name: "Payroll Liabilities (NIS, Health Surcharge)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2160":
+    name: "Accrued Expenses"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "2170":
+    name: "Business Levy and Green Fund Levy Payable"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000308"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Non-current Liabilities"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2210":
+    name: "Long-term Debt"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2220":
+    name: "Finance Lease Liability (IFRS 16)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "3000":
+    name: "Equity"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Share Capital"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Retained Earnings"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Current Year Profit/Loss"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Revenue"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "Sales Revenue / Operating Revenue"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4200":
+    name: "Service Revenue"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "4300":
+    name: "Interest and Investment Income"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Expenses"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Cost of Sales"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Staff Costs — Salaries and Wages"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5300":
+    name: "Depreciation and Amortisation"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "5400":
+    name: "Finance Costs"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "5500":
+    name: "Corporation Tax Expense"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

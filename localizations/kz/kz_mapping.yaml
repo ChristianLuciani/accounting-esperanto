@@ -1,0 +1,326 @@
+# Kontablo Localization Mapping: Kazakhstan (IFRS / KAS — Kazakhstani Accounting Standards)
+# Version: 0.1.0-draft
+# Authority: Ministry of Finance of the Republic of Kazakhstan (Министерство финансов РК)
+# Standard: IFRS (mandatory for public interest entities since 2005); KAS for SMEs
+# Critical Notes:
+#   VAT (ҚҚС — қосылған құн салығы): 12% standard (one of lowest globally); no reduced rates
+#   Corporate income tax (КПН): 20% standard; 10% for agricultural producers
+#   Currency: KZT (Kazakhstani Tenge)
+#   KZT has experienced significant volatility (oil-linked economy)
+#   Mandatory Plan of Accounts for budget organizations; IFRS-based for commercial entities
+#   Commercial entity chart follows international groupings with 4-digit codes
+#   IFRS adoption mandatory for: banks, insurance, pension funds, listed companies, large companies
+#   VERIFY: Account codes below follow the Standard Plan of Accounts approved by MF RK Order 562/2007
+
+metadata:
+  country: KZ
+  authority: MF_KAZAKHSTAN
+  standard: IFRS_KAS_MF_562_2007
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: KZT
+
+mappings:
+  "2410":
+    name: "Жер, ғимараттар және құрылыстар (Land, Buildings and Structures)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2420":
+    name: "Машиналар мен жабдықтар (Machinery and Equipment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2490":
+    name: "Жинақталған тозу — МН (Accumulated Depreciation — PPE)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "2730":
+    name: "Материалдық емес активтер (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "2040":
+    name: "Ұзақ мерзімді инвестициялар (Long-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "2440":
+    name: "Пайдалану құқығы активтері — ХҚЕС 16 (Right-of-Use Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  "1310":
+    name: "Шикізаттар мен материалдар (Raw Materials)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1330":
+    name: "Тауарлар (Merchandise)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1210":
+    name: "Сатып алушылардың дебиторлық берешегі (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1280":
+    name: "Өзге дебиторлық берешек (Other Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1620":
+    name: "Алдын ала төленген шығыстар (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1420":
+    name: "ҚҚС — өтеуге арналған (VAT Receivable / Recoverable ҚҚС)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1010":
+    name: "Кассадағы ақша қаражаттары (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1030":
+    name: "Банктік шоттардағы ақша қаражаттары (Bank Accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1120":
+    name: "Қысқа мерзімді инвестициялар (Short-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "3310":
+    name: "Жеткізушілерге кредиторлық берешек (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "3010":
+    name: "Қысқа мерзімді банктік несиелер (Short-term Bank Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "3130":
+    name: "ҚҚС — төленуге тиіс (VAT Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "3110":
+    name: "Корпоративтік табыс салығы (Income Tax Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "3350":
+    name: "Еңбекақы бойынша міндеттемелер (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "3430":
+    name: "Есептелген шығыстар (Accrued Expenses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "3510":
+    name: "Кейінге қалдырылған кірістер (Deferred Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "4010":
+    name: "Ұзақ мерзімді банктік несиелер (Long-term Bank Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "4150":
+    name: "Қаржылық жалдау бойынша міндеттемелер (Finance Lease Liability)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "4310":
+    name: "Кейінге қалдырылған салық міндеттемесі (Deferred Tax Liability)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  "5010":
+    name: "Жарғылық капитал (Share Capital / Charter Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5420":
+    name: "Бөлінбеген пайда (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5430":
+    name: "Есепті жылдың таза пайдасы/залалы (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "6010":
+    name: "Тауарлар сатудан түскен кіріс (Sales Revenue — Goods)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "6020":
+    name: "Қызметтер көрсетуден кіріс (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "6110":
+    name: "Сыйақы кірісі (Interest Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "7010":
+    name: "Сатылған тауарлардың өзіндік құны (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "7110":
+    name: "Еңбекақы шығыстары (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7120":
+    name: "Тозу шығыстары (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7140":
+    name: "Жалдам шығыстары (Rent Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "7150":
+    name: "Коммуналдық қызметтер шығыстары (Utilities)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "7310":
+    name: "Сыйақы шығыстары (Interest Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "7710":
+    name: "Корпоративтік табыс салығы шығысы (Income Tax Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

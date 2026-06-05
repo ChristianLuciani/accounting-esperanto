@@ -1,0 +1,261 @@
+# Kontablo Localization Mapping: Cambodia (CIFRS)
+# Version: 0.1.0-draft
+# Authority: KICPAA (Kampuchea Institute of Certified Public Accountants and Auditors)
+# Standard: CIFRS (Cambodian International Financial Reporting Standards) — IFRS as adopted
+# Critical Notes:
+#   VAT: 10% standard rate
+#   Corporate tax (ToP — Tax on Profit): 20% standard; 5% for QIP (Qualified Investment Project)
+#   Currency: KHR (Cambodian Riel) — USD is WIDELY USED as de-facto parallel currency
+#   Dual-currency environment: most business transactions in USD; KHR used for retail
+#   Financial statements may be prepared in USD by entities using USD as functional currency
+#   Minimum tax: 1% of annual turnover (applicable when ToP would be lower)
+#   CIFRS adopted in stages since 2009; full IFRS alignment ongoing
+
+metadata:
+  country: KH
+  authority: KICPAA
+  standard: CIFRS
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: KHR
+
+mappings:
+  "1001":
+    name: "Cash on Hand — KHR (ប្រាក់ក្នុងដៃ)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1002":
+    name: "Cash on Hand — USD (ប្រាក់ក្នុងដៃ — ដុល្លារ)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1010":
+    name: "Bank Accounts (គណនីធនាគារ)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Trade Receivables (គណនីត្រូវទទួល — ពាណិជ្ជកម្ម)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Other Receivables (គណនីត្រូវទទួលផ្សេងៗ)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Inventories (ទំនិញស្ដុកទុក)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Prepaid Expenses (ការចំណាយបង់ជាមុន)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "VAT Receivable — 10% (អាករបន្ថែម ដែលត្រូវបានទទួល)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Property, Plant and Equipment — Gross (អចលនទ្រព្យ រោងចក្រ និងឧបករណ៍)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2001":
+    name: "Accumulated Depreciation (រំលស់ប្រមូលផ្តុំ)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Intangible Assets (ទ្រព្យសកម្មអរូបី)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Long-term Investments (វិនិយោគរយៈពេលវែង)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "3000":
+    name: "Accounts Payable (គណនីត្រូវបង់)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "VAT Payable — 10% (អាករបន្ថែម ដែលត្រូវបង់)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "ToP Payable — 20% (ពន្ធលើប្រាក់ចំណេញ)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Payroll Liabilities (បំណុលប្រាក់ខែ)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "Minimum Tax Payable — 1% of turnover (ពន្ធអប្បបរមា)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000308"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Long-term Debt (បំណុលរយៈពេលវែង)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Share Capital (ទុនភាគហ៊ុន)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Retained Earnings (ប្រាក់ចំណេញដែលបានរក្សាទុក)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Current Year Profit/Loss (ប្រាក់ចំណេញ/ខាតឆ្នាំបច្ចុប្បន្ន)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "6000":
+    name: "Sales Revenue (ចំណូលពីការលក់)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "Service Revenue (ចំណូលពីសេវាកម្ម)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Financial Income (ចំណូលហិរញ្ញវត្ថុ)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "7000":
+    name: "Cost of Goods Sold (ថ្លៃទំនិញដែលបានលក់)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "7100":
+    name: "Salaries and Wages (ប្រាក់ខែ និងប្រាក់ឈ្នួល)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "Depreciation Expense (ការរំលស់)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7300":
+    name: "Financial Expenses (ចំណាយហិរញ្ញវត្ថុ)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "Income Tax Expense — ToP 20% (ចំណាយពន្ធលើប្រាក់ចំណេញ)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "7500":
+    name: "Other Operating Expenses (ចំណាយប្រតិបត្តិការផ្សេងៗ)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

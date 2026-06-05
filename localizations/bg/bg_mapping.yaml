@@ -1,0 +1,308 @@
+# Kontablo Localization Mapping: Bulgaria (НСС — Национални стандарти за финансови отчети)
+# Version: 0.1.0-draft
+# Authority: ICPA Bulgaria (Институт на дипломираните експерт-счетоводители)
+# Standard: NAS (Национални счетоводни стандарти) for SMEs; IFRS for listed companies
+# Critical Notes:
+#   VAT (ДДС): 20% standard; 9% reduced (tourism, books, medicines from 2023)
+#   Corporate income tax: 10% (one of lowest flat rates in EU)
+#   Currency: BGN (Bulgarian Lev), pegged to EUR at 1.95583 BGN = 1 EUR
+#   Currency board arrangement in place since 1997; EUR adoption planned post-2025
+#   Mandatory chart of accounts: classes 1-9 (Soviet-influenced structure)
+#   VERIFY: Specific account codes follow the Национален сметкоплан; confirm with ICPA
+
+metadata:
+  country: BG
+  authority: ICPA_BULGARIA
+  standard: NAS_BULGARIA
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: BGN
+
+mappings:
+  "203":
+    name: "Сгради и конструкции (Buildings and Structures)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "204":
+    name: "Машини, съоръжения, оборудване (Machinery and Equipment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "241":
+    name: "Амортизация на дълготрайни материални активи (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "201":
+    name: "Продукти от развойна дейност / Нематериални активи (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "220":
+    name: "Дългосрочни финансови активи (Long-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "303":
+    name: "Стоки (Merchandise Inventory)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "302":
+    name: "Материали (Raw Materials)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "501":
+    name: "Каса (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "503":
+    name: "Разплащателна сметка (Bank Current Account)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "511":
+    name: "Краткосрочни финансови активи (Short-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "411":
+    name: "Вземания от клиенти (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "419":
+    name: "Други вземания (Other Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "401":
+    name: "Разходи за бъдещи периоди (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "4531":
+    name: "ДДС за възстановяване (VAT Receivable)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "401.1":
+    name: "Задължения към доставчици (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "151":
+    name: "Краткосрочни заеми (Short-term Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "4532":
+    name: "ДДС за внасяне (VAT Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "452":
+    name: "Данък върху дохода на корпорации (Income Tax Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "421":
+    name: "Задължения към персонала (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "499":
+    name: "Приходи за бъдещи периоди (Deferred Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "152":
+    name: "Дългосрочни заеми (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "161":
+    name: "Задължения по финансов лизинг (Finance Lease Liability)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "161.1":
+    name: "Отсрочени данъчни задължения (Deferred Tax Liability)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  "101":
+    name: "Основен капитал (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "121":
+    name: "Неразпределена печалба (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "123":
+    name: "Печалба/загуба от текущата година (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "701":
+    name: "Приходи от продажба на стоки (Sales Revenue — Goods)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "703":
+    name: "Приходи от услуги (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "721":
+    name: "Приходи от лихви (Interest Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "601":
+    name: "Разходи за материали / COGS (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "603":
+    name: "Разходи за заплати (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "604":
+    name: "Разходи за амортизации (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "612":
+    name: "Разходи за наем (Rent Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "613":
+    name: "Разходи за енергия и вода (Utilities)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "621":
+    name: "Разходи за лихви (Interest Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "651":
+    name: "Разходи за данъци (Income Tax Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

@@ -1,0 +1,262 @@
+# Kontablo Localization Mapping: Armenia (IFRS for PIEs / Armenian Accounting Standards)
+# Version: 0.1.0-draft
+# Authority: Chamber of Auditors of the Republic of Armenia
+# Standard: IFRS mandatory for PIEs; Armenian Accounting Standards (AAS) for others
+# Critical Notes:
+#   VAT (ԱԱՀ — Ավելացված Արժեքի Հարկ): 20%
+#   Corporate tax (Շահութահարկ): 18%
+#   Currency: AMD (Armenian Dram)
+#   IFRS mandatory for banks, insurance companies, and listed companies since 2013
+#   Small and medium entities may use simplified AAS
+#   Turnover tax option for micro-enterprises (5% on turnover instead of CIT)
+#   Armenia member of EAEU (Eurasian Economic Union); tax alignment with Russia/Kazakhstan
+#   VERIFY: exact IFRS adoption scope — Chamber of Auditors website is authoritative
+
+metadata:
+  country: AM
+  authority: Chamber of Auditors of the Republic of Armenia
+  standard: IFRS_AM
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: AMD
+
+mappings:
+  "1001":
+    name: "Դրամարկղ (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1002":
+    name: "Բանկային հաշիվներ (Bank Accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1003":
+    name: "Կարճաժամկետ ներդրումներ (Short-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Առևտրային դեբիտորական պարտքեր (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Այլ դեբիտորական պարտքեր (Other Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Ապրանքանյութական արժեքներ (Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Կանխավճարված ծախսեր (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "ԱԱՀ ստանալու ենթակա — 20% (VAT Receivable — 20%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Հիմնական միջոցներ — բրուտտո (Property, Plant and Equipment — Gross)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2001":
+    name: "Կուտակված մաշվածություն (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Ոչ նյութական ակտիվներ (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Երկարաժամկետ ներդրումներ (Long-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "3000":
+    name: "Առևտրային կրեդիտորական պարտքեր (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "ԱԱՀ վճարման ենթակա — 20% (VAT Payable — 20%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Շահութահարկ վճարման ենթակա — 18% (Income Tax Payable — 18%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Աշխատավարձի պարտավորություններ (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "Հաշվարկային ծախսեր (Accrued Expenses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Երկարաժամկետ փոխառություններ (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Կանոնադրական կապիտալ (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Չբաշխված շահույթ (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Ընթացիկ տարվա շահույթ/վնաս (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "6000":
+    name: "Վաճառքից հասույթ (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "Ծառայություններից հասույթ (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Ֆինանսական եկամուտ (Financial Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "7000":
+    name: "Վաճառված ապրանքների ինքնարժեք (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "7100":
+    name: "Աշխատավարձ և հատուցումներ (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "Մաշվածության ծախս (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7300":
+    name: "Ֆինանսական ծախսեր (Financial Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "Շահութահարկի ծախս — 18% (Income Tax Expense — 18%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "7500":
+    name: "Այլ գործառնական ծախսեր (Other Operating Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

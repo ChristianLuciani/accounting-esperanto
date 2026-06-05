@@ -1,0 +1,256 @@
+# Kontablo Localization Mapping: Iraq (IFRS as adopted — post-2003 transition)
+# Version: 0.1.0-draft
+# Authority: Iraqi Board of Accounting and Auditing Standards (IBAAS)
+# Standard: IFRS as adopted (transition ongoing since 2003)
+# Critical Notes:
+#   VAT: NOT YET IMPLEMENTED as of 2024 (VERIFY — Iraq has no general VAT; sales tax exists
+#   in limited form; a VAT system has been discussed but not enacted)
+#   Corporate tax (CIT): 15% standard; 35% for oil and gas companies
+#   Currency: IQD (Iraqi Dinar)
+#   Oil-dominated economy: >90% of government revenue from oil; significant PSA (Production
+#   Sharing Agreements) accounting is sector-specific
+#   RECONSTRUCTION CONTEXT: significant infrastructure and institutional rebuilding
+#   Kurdish Regional Government (KRG) has semi-autonomous tax administration in Kurdistan Region
+#   VERIFY: IBAAS current operational status and exact IFRS adoption scope
+#   USD widely used for large transactions alongside IQD
+
+metadata:
+  country: IQ
+  authority: Iraqi Board of Accounting and Auditing Standards (IBAAS)
+  standard: IFRS_IQ
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: IQD
+
+mappings:
+  "1001":
+    name: "النقد في الصندوق (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1002":
+    name: "الحسابات المصرفية (Bank Accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "الذمم المدينة التجارية (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "الذمم المدينة الأخرى (Other Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "المخزون (Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "المصروفات المدفوعة مقدماً (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "ضرائب أخرى مستحقة القبض (Other Tax Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "الممتلكات والمنشآت والمعدات — الإجمالي (Property, Plant and Equipment — Gross)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2001":
+    name: "مجمع الاستهلاك (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "الأصول غير الملموسة (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "الاستثمارات طويلة الأجل (Long-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "3000":
+    name: "الذمم الدائنة التجارية (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "ضريبة الدخل المستحقة — 15% (Income Tax Payable — 15%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "مستحقات الرواتب والأجور (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "المصروفات المستحقة (Accrued Expenses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "الإيرادات المؤجلة (Deferred Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "القروض طويلة الأجل (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "رأس المال المدفوع (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "الأرباح المحتجزة (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "صافي ربح/خسارة السنة الحالية (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "6000":
+    name: "إيرادات المبيعات (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "إيرادات الخدمات (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "الدخل المالي (Financial Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "7000":
+    name: "تكلفة البضائع المباعة (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "7100":
+    name: "الرواتب والأجور (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "مصروف الاستهلاك (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7300":
+    name: "المصروفات المالية (Financial Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "مصروف ضريبة الدخل — 15% (Income Tax Expense — 15%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "7500":
+    name: "مصاريف تشغيلية أخرى (Other Operating Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

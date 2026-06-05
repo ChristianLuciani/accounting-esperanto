@@ -1,0 +1,268 @@
+# Kontablo Localization Mapping: Zambia (IFRS as adopted)
+# Version: 0.1.0-draft
+# Authority: ZICA (Zambia Institute of Chartered Accountants)
+# Standard: IFRS as adopted by Zambia
+# Critical Notes:
+#   VAT: 16% standard rate
+#   Corporate tax: 30% standard; mining sector has different rates (VERIFY — varies by mineral)
+#   Currency: ZMW (Zambian Kwacha) — rebased 2013 (old kwacha divided by 1000)
+#   Copper mining dominates economy; significant mining-specific accounting rules apply
+#   ZICA follows IFRS for PIEs; IFRS for SMEs for smaller entities
+#   Withholding tax 20% on dividends; 20% on interest (non-residents)
+
+metadata:
+  country: ZM
+  authority: ZICA
+  standard: IFRS_ZM
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: ZMW
+
+mappings:
+  "1001":
+    name: "Cash on Hand (Ndalama ku Manja)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1002":
+    name: "Bank Accounts (Akaonti ya Banki)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1003":
+    name: "Short-term Investments (Ndalama Zotsekemera Kwakanthawi)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Trade Receivables (Ngongole za Malonda)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Other Receivables (Ngongole Zina)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Inventories (Katundu wa Nsanja)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Prepaid Expenses (Ndalama Zalipidwa Patsogolo)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "VAT Receivable — 16% (Ndalama za VAT Yobwezeretsedwa)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Property, Plant and Equipment — Gross (Katundu wa Nthaka — Wathunthu)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2001":
+    name: "Accumulated Depreciation (Kuchepa kwa Mtengo Wokwanirira)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Intangible Assets (Katundu Wosaboneka)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Long-term Investments (Ndalama Zotsekemera Kwanthawi Yayitali)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "3000":
+    name: "Accounts Payable (Ngongole kwa Ogulitsa)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Short-term Debt (Ngongole Yapafupi)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "VAT Payable — 16% (Ndalama za VAT Yolipidwa)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Income Tax Payable — 30% (Ndalama za Msonkho wa Malipiro)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "Payroll Liabilities (Ngongole za Malipiro a Ogwira Ntchito)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "3500":
+    name: "Accrued Expenses (Zowona Zakwaniriratu)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Long-term Debt (Ngongole Yayitali)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Share Capital (Ndalama za Udziwe)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Retained Earnings (Phindu Losungidwa)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Current Year Profit/Loss (Phindu/Mlandu wa Chaka Chino)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "6000":
+    name: "Sales Revenue (Ndalama za Kugulitsa)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "Service Revenue (Ndalama za Ntchito)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Financial Income (Ndalama za Chuma)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "7000":
+    name: "Cost of Goods Sold (Mtengo wa Katundu Wagulitsidwa)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "7100":
+    name: "Salaries and Wages (Malipiro a Ogwira Ntchito)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "Depreciation Expense (Mtengo wa Kuchepa kwa Katundu)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7300":
+    name: "Financial Expenses (Mtengo wa Ndalama za Chuma)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "Income Tax Expense — 30% (Mtengo wa Msonkho wa Malipiro)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "7500":
+    name: "Other Operating Expenses (Mtengo Wina wa Bizinesi)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

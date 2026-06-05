@@ -1,0 +1,323 @@
+# Kontablo Localization Mapping: Dominican Republic (NIIF / IFRS adopted)
+# Version: 0.1.0-draft
+# Authority: ICPARD (Instituto de Contadores Públicos Autorizados de la República Dominicana)
+# Standard: NIIF adoptadas por ICPARD
+# Critical Notes:
+#   ITBIS (Impuesto a la Transferencia de Bienes Industrializados y Servicios) — VAT equivalent — 18%
+#   ISR (Impuesto sobre la Renta) — corporate tax 27%
+#   Currency: DOP (Dominican Peso); significant USD parallel usage in commercial transactions
+#   Large informal sector; formal accounting primarily for regulated and listed entities
+#   Fiscal year generally calendar year (Jan–Dec)
+
+metadata:
+  country: DO
+  authority: ICPARD
+  standard: NIIF-DO
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: DOP
+
+mappings:
+  "1":
+    name: "Activo (Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "11":
+    name: "Efectivo y Equivalentes de Efectivo (Cash and Cash Equivalents)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "111":
+    name: "Caja (Cash on Hand)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "112":
+    name: "Bancos (Bank Accounts)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "113":
+    name: "Inversiones a Corto Plazo (Short-term Investments)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "12":
+    name: "Cuentas por Cobrar Comerciales (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "121":
+    name: "Clientes (Customers — Trade Receivables)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "122":
+    name: "Otras Cuentas por Cobrar (Other Receivables)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "13":
+    name: "Inventarios (Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "14":
+    name: "Gastos Pagados por Anticipado (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "15":
+    name: "Crédito ITBIS (VAT Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "16":
+    name: "Propiedad, Planta y Equipo (Property, Plant & Equipment — gross)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "161":
+    name: "Depreciación Acumulada (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "17":
+    name: "Activos Intangibles (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "18":
+    name: "Inversiones a Largo Plazo (Long-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "2":
+    name: "Pasivo (Liabilities)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "21":
+    name: "Cuentas por Pagar Comerciales (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "22":
+    name: "Préstamos a Corto Plazo (Short-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "23":
+    name: "ITBIS por Pagar (VAT Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "24":
+    name: "ISR por Pagar (Income Tax Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "25":
+    name: "Nómina por Pagar (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "26":
+    name: "Gastos Acumulados (Accrued Expenses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "27":
+    name: "Ingresos Diferidos (Deferred Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "28":
+    name: "Préstamos a Largo Plazo (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "3":
+    name: "Patrimonio (Equity)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "31":
+    name: "Capital Social (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "32":
+    name: "Utilidades Retenidas (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "33":
+    name: "Utilidad / Pérdida del Ejercicio (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "4":
+    name: "Ingresos (Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "41":
+    name: "Ventas Netas (Net Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "42":
+    name: "Ingresos por Servicios (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "43":
+    name: "Ingresos Financieros (Financial / Interest Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "5":
+    name: "Gastos (Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "51":
+    name: "Costo de Ventas (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "52":
+    name: "Sueldos y Salarios (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "53":
+    name: "Depreciación y Amortización (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "54":
+    name: "Gastos Financieros (Financial Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "55":
+    name: "ISR (Income Tax Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

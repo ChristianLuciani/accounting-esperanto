@@ -1,0 +1,290 @@
+# Kontablo Localization Mapping: Uganda (IFRS as adopted)
+# Version: 0.1.0-draft
+# Authority: ICPAU (Institute of Certified Public Accountants of Uganda)
+# Standard: IFRS as adopted by Uganda
+# Critical Notes:
+#   VAT: 18% standard rate
+#   Corporate tax: 30%
+#   Currency: UGX (Ugandan Shilling)
+#   Withholding tax widely applied; ICPAU adopted IFRS for SMEs separately
+
+metadata:
+  country: UG
+  authority: ICPAU
+  standard: IFRS_UG
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: UGX
+
+mappings:
+  "1000":
+    name: "Assets (Rasilimali)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Cash and Cash Equivalents (Pesa Taslimu na Mashauri Yanayofanana na Pesa)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "Cash on Hand (Pesa Mkononi)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1120":
+    name: "Bank Accounts (Akaunti za Benki)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1130":
+    name: "Mobile Money Accounts (Akaunti za Pesa za Simu)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Trade Receivables (Madai ya Biashara)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Other Receivables (Madai Mengine)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Inventories (Hifadhi)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "Prepaid Expenses (Gharama Zilizolipwa Mapema)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1600":
+    name: "VAT Receivable (Madai ya VAT)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Property, Plant and Equipment — Gross (Mali Isiyohamishika — Jumla)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Accumulated Depreciation (Upungufu wa Thamani Uliokusanyika)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Intangible Assets (Mali Zisizo na Mwili)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "3000":
+    name: "Liabilities (Madeni)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Accounts Payable (Madeni ya Wanunuzi)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "VAT Payable (Deni la VAT)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Income Tax Payable (Deni la Kodi ya Mapato)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "Payroll Liabilities (Madeni ya Mishahara)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "3500":
+    name: "Accrued Expenses (Gharama Zilizokusanyika)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Long-term Debt (Madeni ya Muda Mrefu)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Equity (Usawa wa Hisa)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Share Capital (Mtaji wa Hisa)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Retained Earnings (Faida Iliyohifadhiwa)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5300":
+    name: "Current Year Profit/Loss (Faida/Hasara ya Mwaka wa Sasa)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "6000":
+    name: "Revenue (Mapato)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "Sales Revenue (Mapato ya Mauzo)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Service Revenue (Mapato ya Huduma)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "6300":
+    name: "Financial Income (Mapato ya Fedha)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "7000":
+    name: "Expenses (Gharama)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "7100":
+    name: "Cost of Goods Sold (Gharama za Bidhaa Zilizouzwa)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "Salaries and Wages (Mishahara na Ujira)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7300":
+    name: "Depreciation Expense (Gharama ya Upungufu wa Thamani)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "Income Tax Expense (Gharama ya Kodi ya Mapato)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "7500":
+    name: "Other Operating Expenses (Gharama Nyingine za Uendeshaji)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

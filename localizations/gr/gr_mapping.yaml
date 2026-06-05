@@ -1,0 +1,308 @@
+# Kontablo Localization Mapping: Greece (ΕΛΠ — Ελληνικά Λογιστικά Πρότυπα)
+# Version: 0.1.0-draft
+# Authority: ELTE (Επιτροπή Λογιστικής Τυποποίησης και Ελέγχων)
+# Standard: Greek GAAP (ΕΛΠ) — Law 4308/2014; IFRS for listed companies
+# Critical Notes:
+#   VAT (ΦΠΑ): 24% standard; 13% reduced (food, hotels); 6% super-reduced (medicines, books)
+#   Corporate income tax: 22%
+#   Currency: EUR
+#   Mandatory chart of accounts: classes 1-8 (similar to French PCG structure)
+#   Class 9 (cost accounting) optional but commonly used
+#   VERIFY: Specific 4-digit codes below follow ΕΛΠ Appendix B; confirm against official ELTE publication
+
+metadata:
+  country: GR
+  authority: ELTE
+  standard: ELP_4308_2014
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: EUR
+
+mappings:
+  "10":
+    name: "Ακινητοποιήσεις (Fixed Assets — class header)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "11":
+    name: "Ενσώματα πάγια στοιχεία (Tangible Fixed Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "11.00":
+    name: "Αποσβέσεις ενσώματων παγίων (Accumulated Depreciation — tangible)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "18":
+    name: "Άυλα στοιχεία (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "19":
+    name: "Δικαιώματα χρήσης — ΔΠΧΑ 16 (Right-of-Use Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  "20":
+    name: "Εμπορεύματα (Merchandise Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "25":
+    name: "Αναλώσιμα υλικά (Consumables / Raw Materials)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "30":
+    name: "Πελάτες (Trade Receivables / Customers)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "33":
+    name: "Χρεώστες διάφοροι (Sundry Debtors / Other Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "36":
+    name: "Προκαταβολές και έσοδα εισπρακτέα (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "54.00":
+    name: "ΦΠΑ εισροών εκπιπτόμενος (Deductible Input VAT)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "38":
+    name: "Χρηματικά διαθέσιμα (Cash and Cash Equivalents)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "38.00":
+    name: "Ταμείο (Cash on Hand)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "38.03":
+    name: "Καταθέσεις όψεως (Bank Current Accounts)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "40":
+    name: "Κεφάλαιο (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "41":
+    name: "Αποθεματικά (Reserves / Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "42":
+    name: "Αποτελέσματα εις νέον (Profit / Loss Carried Forward)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "45":
+    name: "Μακροπρόθεσμες δανειακές υποχρεώσεις (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "50":
+    name: "Προμηθευτές (Trade Creditors / Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "52":
+    name: "Τράπεζες — βραχυπρόθεσμες υποχρεώσεις (Short-term Bank Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "54.01":
+    name: "ΦΠΑ εκροών (Output VAT Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "54.09":
+    name: "Φόρος εισοδήματος πληρωτέος (Income Tax Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "55":
+    name: "Υποχρεώσεις από ασφάλιση προσωπικού (Payroll / Social Insurance Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "56":
+    name: "Μεταβατικοί λογαριασμοί παθητικού (Accrued Expenses / Deferred Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "70":
+    name: "Πωλήσεις εμπορευμάτων (Sales Revenue — Goods)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "71":
+    name: "Πωλήσεις προϊόντων / υπηρεσιών (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "75":
+    name: "Έσοδα από συμμετοχές και επενδύσεις (Financial / Investment Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "76":
+    name: "Πιστωτικοί τόκοι και συναφή έσοδα (Interest Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "20.XX":
+    name: "Κόστος πωληθέντων (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "60":
+    name: "Αμοιβές και έξοδα προσωπικού (Salaries and Personnel Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "66":
+    name: "Αποσβέσεις (Depreciation and Amortisation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "61":
+    name: "Αμοιβές τρίτων — ενοίκια (Rent Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "62":
+    name: "Παροχές τρίτων — ΔΕΗ/ΟΤΕ (Utilities)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "64":
+    name: "Διάφορα έξοδα (Marketing and Other Operating Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "65":
+    name: "Χρεωστικοί τόκοι και συναφή έξοδα (Interest Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "68":
+    name: "Φόρος εισοδήματος (Income Tax Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

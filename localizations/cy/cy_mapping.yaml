@@ -1,0 +1,301 @@
+# Kontablo Localization Mapping: Cyprus (IFRS as adopted by EU)
+# Version: 0.1.0-draft
+# Authority: ICPAC (Institute of Certified Public Accountants of Cyprus)
+# Standard: IFRS as adopted by EU (mandatory for all companies); Companies Law Cap. 113
+# Critical Notes:
+#   VAT (ΦΠΑ): 19% standard; 9% reduced (restaurants, accommodation, passenger transport); 5% super-reduced
+#   Corporate income tax: 12.5% (one of lowest in EU)
+#   IP Box regime: 2.5% on qualifying IP income
+#   Currency: EUR (member since 2008)
+#   No mandatory uniform chart; IFRS structure followed; UK accounting influence historically
+#   Special Defence Contribution (SDC) applies to passive income for Cyprus tax residents
+#   VERIFY: Account codes below follow common IFRS practice in Cyprus; no mandatory nacional plan
+
+metadata:
+  country: CY
+  authority: ICPAC
+  standard: IFRS_EU_CYPRUS
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: EUR
+
+mappings:
+  "1100":
+    name: "Property, Plant and Equipment — Cost"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1190":
+    name: "Accumulated Depreciation — PPE"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Intangible Assets (including IP Box assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Long-term Investments"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Right-of-Use Assets (IFRS 16)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Inventories / Stock"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Trade and Other Receivables (Εισπρακτέα)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "2210":
+    name: "Other Receivables"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "2300":
+    name: "Prepayments and Accrued Income"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "2400":
+    name: "VAT Receivable (ΦΠΑ εισροών)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "2500":
+    name: "Cash on Hand (Ταμείο)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "2510":
+    name: "Bank Accounts (Τραπεζικοί λογαριασμοί)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Trade and Other Payables (Πληρωτέα)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Short-term Borrowings"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "VAT Payable (ΦΠΑ εκροών)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "Income Tax Payable (Φόρος εισοδήματος)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "3500":
+    name: "Payroll Liabilities (Social Insurance etc.)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "3600":
+    name: "Accrued Expenses"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "3700":
+    name: "Deferred Revenue"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "Long-term Bank Loans"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "4200":
+    name: "Finance Lease Liability (IFRS 16)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "4300":
+    name: "Deferred Tax Liability"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Share Capital (Μετοχικό κεφάλαιο)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Retained Earnings (Αποθεματικά)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5300":
+    name: "Profit / Loss for the Year"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "Revenue from Sale of Goods"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Revenue from Services"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "6300":
+    name: "Interest and Investment Income"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "7100":
+    name: "Cost of Sales"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "Staff Costs and Salaries"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7300":
+    name: "Depreciation and Amortisation"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "Rent and Property Charges"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "7500":
+    name: "Utilities"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "7600":
+    name: "Interest Expense"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "7700":
+    name: "Income Tax Expense"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
