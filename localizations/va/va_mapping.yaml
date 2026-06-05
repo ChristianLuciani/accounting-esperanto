@@ -1,0 +1,214 @@
+# Kontablo Localization Mapping: Vatican City / Holy See (Italian GAAP / Vatican special regulations)
+# Version: 0.1.0-draft
+# Authority: Secretariat for the Economy (Segreteria per l'Economia) / APSA (Amministrazione del Patrimonio della Sede Apostolica)
+# Standard: Italian GAAP (OIC) with Vatican-specific regulations (Regolamento Generale della Curia Romana)
+# Critical Notes:
+#   VERIFY: All entries in this file require verification against Vatican-specific regulations
+#   Currency: EUR (uses euro; Eurozone monetary agreement)
+#   Unique triple-nature entity: sovereign state + religious institution + charitable organization
+#   IOR (Istituto per le Opere di Religione / Vatican Bank) has its own separate regulatory framework and is NOT covered here
+#   APSA manages Holy See's patrimony; Secretariat for the Economy oversees financial reporting reforms (post-2013)
+#   No VAT; no income tax in the conventional sense
+#   Significant reform post-2013 under Pope Francis; external auditors engaged — VERIFY current status
+#   Obolo di San Pietro (Peter's Pence) and donations are a primary revenue source
+
+metadata:
+  country: VA
+  authority: Secretariat for the Economy (Holy See)
+  standard: Italian_GAAP_VA_special
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: EUR
+
+mappings:
+  "C.IV.1":
+    name: "Depositi bancari e postali (Cash at Bank) — VERIFY"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "C.IV.3":
+    name: "Denaro e valori in cassa (Cash on Hand) — VERIFY"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "C.III":
+    name: "Attività finanziarie a breve termine (Short-term Investments) — VERIFY"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "C.II.1":
+    name: "Crediti verso enti (Receivables from entities) — VERIFY"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "C.II.5":
+    name: "Crediti verso altri (Other Receivables) — VERIFY"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "C.I":
+    name: "Rimanenze (Inventories — publications, etc.) — VERIFY"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "D.att":
+    name: "Ratei e risconti attivi (Prepaid Expenses) — VERIFY"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "B.II":
+    name: "Immobilizzazioni materiali brute (PP&E, gross — incl. Vatican buildings) — VERIFY"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "B.II.fondo":
+    name: "Fondo ammortamento (Accumulated Depreciation) — VERIFY"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "B.I":
+    name: "Immobilizzazioni immateriali (Intangible Assets — intellectual property, media licenses) — VERIFY"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "B.III":
+    name: "Immobilizzazioni finanziarie (Long-term Investments — APSA portfolio) — VERIFY"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "D.7":
+    name: "Debiti verso fornitori (Accounts Payable) — VERIFY"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "D.4":
+    name: "Debiti finanziari a breve (Short-term Debt) — VERIFY"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "D.13":
+    name: "Debiti verso istituti previdenziali (Payroll Liabilities) — VERIFY"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "E.pass":
+    name: "Ratei e risconti passivi (Accrued Expenses) — VERIFY"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "D.6":
+    name: "Acconti ricevuti (Deferred Revenue — advance donations, etc.) — VERIFY"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "D.4-L":
+    name: "Debiti finanziari a lungo termine (Long-term Debt) — VERIFY"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "A.I":
+    name: "Fondo patrimonio (Patrimony / Equity equivalent) — VERIFY; concept differs from commercial equity"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "A.VIII":
+    name: "Avanzo (disavanzo) portato a nuovo (Retained Surplus/Deficit) — VERIFY"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "A.1":
+    name: "Entrate istituzionali e donazioni (Institutional Revenue and Donations incl. Peter's Pence) — VERIFY"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "A.5":
+    name: "Proventi finanziari (Financial Income) — VERIFY"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "B.9":
+    name: "Costo del personale (Salaries and Wages) — VERIFY"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "B.10":
+    name: "Ammortamenti (Depreciation Expense) — VERIFY"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "B.misc":
+    name: "Altre spese operative (Other Operating Expenses) — VERIFY"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

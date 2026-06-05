@@ -1,0 +1,214 @@
+# Kontablo Localization Mapping: Equatorial Guinea / Guinée Équatoriale (SYSCOHADA-influenced / Local)
+# Version: 0.1.0-draft
+# Authority: Ministère des Finances et du Budget — République de Guinée Équatoriale
+# Standard: SYSCOHADA-influenced / Local CEMAC standards
+# Critical Notes:
+#   VAT: 15% standard rate (VERIFY: rate and operational implementation in oil sector)
+#   Corporate tax (IS): 35% (highest in CEMAC zone)
+#   Currency: Central African CFA Franc (XAF); issued by BEAC
+#   CEMAC member; oil dominant (>90% of GDP and exports); one of Africa's highest per-capita income
+#   Spanish and French are both official languages (unique bilingual context in Central Africa)
+#   VERIFY: Equatorial Guinea's OHADA membership and actual SYSCOHADA implementation depth
+#   Oil company accounting often governed by Production Sharing Agreements (PSAs) with distinct reporting
+#   Small non-oil private sector; significant state enterprise presence
+
+metadata:
+  country: GQ
+  authority: Ministère des Finances et du Budget — République de Guinée Équatoriale
+  standard: SYSCOHADA_INFLUENCED_CEMAC
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: XAF
+
+mappings:
+  "10":
+    name: "Capital social (Share Capital / Capital Social)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "11":
+    name: "Réserves / Reservas (Reserves)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "12":
+    name: "Report à nouveau / Resultado acumulado (Retained Earnings)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "13":
+    name: "Résultat net / Resultado del ejercicio (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "16":
+    name: "Emprunts / Préstamos LP (Long-term Debt)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "20":
+    name: "Immobilisations incorporelles / Activos intangibles (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "21":
+    name: "Terrains / Terrenos (Land)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "22":
+    name: "Bâtiments / Edificios (Buildings)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "24":
+    name: "Matériel / Equipos (Equipment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "28":
+    name: "Amortissements / Depreciación acumulada (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "31":
+    name: "Marchandises / Mercaderías (Merchandise)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "40":
+    name: "Fournisseurs / Proveedores (Accounts Payable)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "41":
+    name: "Clients / Clientes (Trade Receivables)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "44":
+    name: "TVA / IVA a pagar (VAT Payable — 15%)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "45":
+    name: "Organismes sociaux / Seguridad Social (Payroll Liabilities)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "51":
+    name: "Banque / Banco (Bank Accounts)"
+    nature: "Debit"
+    level: 5
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "52":
+    name: "Caisse / Caja (Cash)"
+    nature: "Debit"
+    level: 5
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "60":
+    name: "Achats / Compras (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 6
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "61":
+    name: "Services extérieurs / Servicios externos (External Services)"
+    nature: "Debit"
+    level: 6
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "64":
+    name: "Charges de personnel / Gastos de personal (Salaries and Wages)"
+    nature: "Debit"
+    level: 6
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "66":
+    name: "Charges financières / Gastos financieros (Financial Expenses)"
+    nature: "Debit"
+    level: 6
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "70":
+    name: "Ventes / Ventas (Sales Revenue)"
+    nature: "Credit"
+    level: 7
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "75":
+    name: "Autres produits / Otros ingresos (Other Revenue)"
+    nature: "Credit"
+    level: 7
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "77":
+    name: "Produits exceptionnels / Ingresos extraordinarios (Extraordinary Income)"
+    nature: "Credit"
+    level: 7
+    kontablo_uuid: "00000000-0000-4000-8000-000000000605"
+    aggregation_rules:
+      - "sum"

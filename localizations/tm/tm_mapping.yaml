@@ -1,0 +1,289 @@
+# Kontablo Localization Mapping: Turkmenistan (National Accounting Standards — Soviet-influenced)
+# Version: 0.1.0-draft
+# Authority: Ministry of Finance of Turkmenistan
+# Standard: National Accounting Standards (NAS) — Soviet Plan Schyotov-derived; IFRS adoption minimal.
+# Critical Notes:
+#   VERIFY ALL ENTRIES — Turkmenistan is a closed, state-controlled economy with very limited
+#   public financial transparency. Official accounting standards are not publicly available in
+#   English. This mapping is based on available secondary sources and regional analogues.
+#   Currency: TMT (Turkmenistani Manat; redenominated 2009, 1 TMT = 5000 old TMM).
+#   VAT (НДС): 15% standard rate. VERIFY — rate and administration opacity.
+#   Corporate income tax: 8% (one of the lowest globally). VERIFY — preferential rates for
+#   gas sector likely differ; state enterprise treatment opaque.
+#   Economy: natural gas (dominant; ~70% of export revenues via state-owned Turkmengaz),
+#   cotton, state-controlled trade. Private sector extremely limited.
+#   IFRS adoption status: formally committed in principle but implementation not verifiable.
+#   Sources: IMF Article IV consultations (limited); ADB assessments; World Bank reports.
+
+metadata:
+  country: TM
+  authority: Ministry of Finance of Turkmenistan
+  standard: NAS_TM_SOVIET_INFLUENCED
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: TMT
+
+mappings:
+  "1000":
+    name: "Aktiva (Assets / Активы)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Denezhnyye sredstva (Cash and Cash Equivalents)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — dual exchange rate system historically; official vs market rate"
+
+  "1110":
+    name: "Raschetnyy schet (Bank Current Account)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — state bank dominance; Central Bank of Turkmenistan"
+
+  "1120":
+    name: "Kassa (Cash in Hand)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Debitorskaya zadolzhennost (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Zapasy (Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Raskhody budushchikh periodov (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "NDS k vozmeshcheniyu (VAT Receivable — 15% VERIFY)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — VAT rate and reclaim mechanism in state-dominated economy"
+
+  "1600":
+    name: "Osnovnyye sredstva (Property, Plant and Equipment — gross)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1610":
+    name: "Nakaplennyy iznos (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1700":
+    name: "Nematerialnyye aktivy (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1800":
+    name: "Gaz i neftegazovyye aktivy (Gas and Oil Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — Turkmengaz assets; production-sharing agreement accounting if applicable"
+
+  "2000":
+    name: "Obyazatelstva (Liabilities / Обязательства)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Kreditorskaya zadolzhennost (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "NDS k uplate (VAT Payable — 15% VERIFY)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2300":
+    name: "Nalog na pribyl k uplate (Income Tax Payable — 8% VERIFY)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — 8% for private sector; state enterprises may follow different regime"
+
+  "2400":
+    name: "Zadolzhennost po zarplate (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2500":
+    name: "Prochiye tekushchiye obyazatelstva (Other Current Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000308"
+    aggregation_rules:
+      - "sum"
+
+  "2600":
+    name: "Dolgosrochnyy dolg (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — external debt primarily China CNPC-linked; limited public data"
+
+  "3000":
+    name: "Kapital (Equity / Капитал)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Ustavnyy kapital (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — predominant form is state equity; private company framework limited"
+
+  "3200":
+    name: "Neraspredelennaya pribyl (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Pribyl/ubytok goda (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Vyruchka (Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "Vyruchka ot prodazhi gaza (Gas Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — primary revenue type for Turkmengaz; transfer pricing with CNPC"
+
+  "4200":
+    name: "Prochaya vyruchka (Other Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Raskhody (Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Sebestoimost (Cost of Goods Sold / Production Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Raskhody na oplatu truda (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5300":
+    name: "Amortizatsiya (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "5400":
+    name: "Nalog na pribyl (Income Tax Expense — 8% VERIFY)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "5500":
+    name: "Prochiye operatsionnyye raskhody (Other Operating Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

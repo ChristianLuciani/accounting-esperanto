@@ -1,0 +1,244 @@
+# Kontablo Localization Mapping: San Marino (Italian GAAP / OIC with local adaptations)
+# Version: 0.1.0-draft
+# Authority: Collegio dei Revisori Legali (San Marino)
+# Standard: Italian GAAP (OIC — Organismo Italiano di Contabilità) with San Marino local adaptations
+# Critical Notes:
+#   No VAT on imports from EU (special customs status); local IGST (Imposta Generale sulle Entrate)
+#   IGST rate varies by category — VERIFY current rates (historically around 17% standard)
+#   Corporate income tax (IGR — Imposta Generale sui Redditi): 17% — VERIFY current rate
+#   Currency: EUR (uses euro; not an EU member but monetary agreement with EU since 2012)
+#   Enclave entirely within Italy; strong Italian accounting influence
+#   Italian OIC codex account codes apply with minor adaptations
+
+metadata:
+  country: SM
+  authority: Collegio dei Revisori Legali
+  standard: OIC_SM
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: EUR
+
+mappings:
+  "C.IV.1":
+    name: "Depositi bancari e postali (Cash at Bank)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "C.IV.3":
+    name: "Denaro e valori in cassa (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "C.III":
+    name: "Attività finanziarie a breve termine (Short-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "C.II.1":
+    name: "Crediti verso clienti (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "C.II.5":
+    name: "Crediti verso altri (Other Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "C.I":
+    name: "Rimanenze (Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "D.att":
+    name: "Ratei e risconti attivi (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "C.II.4-bis":
+    name: "Crediti tributari / IGST a credito (Tax/IGST Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "B.II":
+    name: "Immobilizzazioni materiali — valore lordo (PP&E, gross)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "B.II.fondo":
+    name: "Fondo ammortamento (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "B.I":
+    name: "Immobilizzazioni immateriali (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "B.III":
+    name: "Immobilizzazioni finanziarie (Long-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "D.7":
+    name: "Debiti verso fornitori (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "D.4":
+    name: "Debiti verso banche a breve (Short-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "D.12":
+    name: "Debiti tributari / IGST a debito (Tax/IGST Payable) — VERIFY rate"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "D.12-bis":
+    name: "Debiti per imposte correnti / IGR (Income Tax Payable, ~17%) — VERIFY"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "D.13":
+    name: "Debiti verso istituti previdenziali (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "E.pass":
+    name: "Ratei e risconti passivi (Accrued Expenses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "D.6":
+    name: "Acconti da clienti (Deferred Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "D.4-L":
+    name: "Debiti verso banche a lungo termine (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "A.I":
+    name: "Capitale sociale (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "A.VIII":
+    name: "Utili (perdite) portati a nuovo (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "A.IX":
+    name: "Utile (perdita) dell'esercizio (Current Year P&L)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "A.1":
+    name: "Ricavi delle vendite e delle prestazioni (Sales and Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "B.6":
+    name: "Costi per materie prime e merci (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "B.9":
+    name: "Costo del personale (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "B.10":
+    name: "Ammortamenti e svalutazioni (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "22":
+    name: "Imposte sul reddito (Income Tax Expense, IGR ~17%) — VERIFY"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

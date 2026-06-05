@@ -1,0 +1,229 @@
+# Kontablo Localization Mapping: Sudan (Local Standards / IFRS in progress)
+# Version: 0.1.0-draft
+# Authority: Sudanese Council of Certified Accountants (SCCA)
+# Standard: Sudanese Accounting Standards (SAS) — IFRS adoption in progress
+# Critical Notes:
+#   No VAT; zakat-based fiscal system (Zakat Chamber levies apply to Muslim businesses)
+#   Corporate profit tax: ~35% (VERIFY: rate structure may vary by sector)
+#   Currency: Sudanese Pound (SDG); subject to significant inflation and parallel exchange rates
+#   Islamic finance system; interest (riba) prohibited; murabaha, musharakah instruments used
+#   Sanctions context (US OFAC sanctions partially lifted 2017; situation evolving — VERIFY current status)
+#   VERIFY: Exact mapping of Islamic finance instruments to Kontablo standard accounts requires domain expert review
+#   Gold and oil export economy; post-South Sudan separation (2011) restructuring ongoing
+
+metadata:
+  country: SD
+  authority: Sudanese Council of Certified Accountants (SCCA)
+  standard: SAS_IFRS_IN_PROGRESS
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: SDG
+
+mappings:
+  "1000":
+    name: "Fixed Assets (Property, Plant & Equipment)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Accumulated Depreciation"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Intangible Assets"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Long-term Investments"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Cash (Sundooq / النقد)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Bank Accounts (Hisab Masrafi / حساب مصرفي)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Trade Receivables (Debtors / المدينون)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "2300":
+    name: "Inventories (Makhzoon / المخزون)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "2400":
+    name: "Prepaid Expenses"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "3000":
+    name: "Share Capital (Ra's al-Mal / رأس المال)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Reserves (Ihtiyatiyat / الاحتياطيات)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Retained Earnings (Arbaah Muhtajaza / أرباح محتجزة)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Current Year Profit/Loss"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Accounts Payable (Da'inoon / الدائنون)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "Short-term Financing (Murabaha / مرابحة) — VERIFY: Islamic instrument classification"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "4200":
+    name: "Zakat Payable (Zakah / الزكاة)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "4300":
+    name: "Payroll Liabilities"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "4400":
+    name: "Long-term Debt / Musharakah Financing — VERIFY"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Sales Revenue (Iradaat / الإيرادات)"
+    nature: "Credit"
+    level: 5
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Service Revenue"
+    nature: "Credit"
+    level: 5
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Other Revenue"
+    nature: "Credit"
+    level: 5
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "6000":
+    name: "Cost of Goods Sold (Taklifat / التكاليف)"
+    nature: "Debit"
+    level: 6
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "Salaries and Wages (Rawatib / الرواتب)"
+    nature: "Debit"
+    level: 6
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Depreciation Expense"
+    nature: "Debit"
+    level: 6
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "6300":
+    name: "Other Operating Expenses"
+    nature: "Debit"
+    level: 6
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "6400":
+    name: "Income Tax Expense / Profit Tax"
+    nature: "Debit"
+    level: 6
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

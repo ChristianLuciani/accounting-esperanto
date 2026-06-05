@@ -1,0 +1,268 @@
+# Kontablo Localization Mapping: Kosovo (IFRS as adopted — Law No. 04/L-014)
+# Version: 0.1.0-draft
+# Authority: Kosovo Society of Certified Accountants and Auditors (SHKCA — Shoqata e Kontabilistëve dhe Auditorëve të Çertifikuar të Kosovës)
+# Standard: IFRS as adopted under Law No. 04/L-014 on Accounting, Financial Reporting and Auditing
+# Critical Notes:
+#   TVSH (Tatimi mbi Vlerën e Shtuar — VAT) 18% standard rate; 8% reduced rate on certain goods
+#   Corporate income tax (TAK — Tatimi i Ardhurave të Korporatave) 10%
+#   Currency: EUR (unilateral euroization; not EU member)
+#   Partially recognized state (recognized by ~100 UN member states as of 2026)
+#   Uses EUR like Montenegro; no own central bank monetary policy
+#   XK is not an official ISO 3166-1 code (Kosovo lacks UN membership); used by EU institutions and provisionally by financial systems
+
+metadata:
+  country: XK
+  authority: SHKCA (Kosovo Society of Certified Accountants and Auditors)
+  standard: IFRS_XK
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: EUR
+
+mappings:
+  "1010":
+    name: "Cash and Cash Equivalents (Mjete monetare)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1020":
+    name: "Bank Accounts (Llogari bankare)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1030":
+    name: "Short-term Investments (Investime afatshkurtra)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Trade Receivables (Llogaritë e arkëtueshme)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "Other Receivables (Të arkëtueshme të tjera)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Inventories (Inventarët / Stoqet)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1210":
+    name: "Prepaid Expenses (Shpenzimet e parapaguara)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1220":
+    name: "TVSH e zbritshme / VAT Receivable (18% / 8%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1230":
+    name: "Other Current Assets (Aktive të tjera rrjedhëse)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "Property, Plant and Equipment, gross (Prona, impiantet dhe pajisjet — bruto)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1510":
+    name: "Accumulated Depreciation (Amortizimi i akumuluar)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1520":
+    name: "Intangible Assets (Aktive jomateriale)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1530":
+    name: "Long-term Investments (Investime afatgjata)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "1540":
+    name: "Right-of-Use Assets (Aktive të drejtës së përdorimit — IFRS 16)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Accounts Payable (Llogaritë e pagueshme)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2010":
+    name: "Short-term Borrowings (Huamarrjet afatshkurtra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2020":
+    name: "TVSH e pagueshme / VAT Payable (18%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2030":
+    name: "Income Tax Payable (Tatimi mbi të ardhurat e korporatave — 10%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2040":
+    name: "Payroll Liabilities (Detyrimet ndaj punonjësve)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2050":
+    name: "Accrued Expenses (Shpenzimet e përllogaritura)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "2060":
+    name: "Deferred Revenue (Të ardhura të shtyra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "2500":
+    name: "Long-term Debt (Huamarrjet afatgjata)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2510":
+    name: "Finance Lease Liability (Detyrimi i qiramarrjes financiare)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "3000":
+    name: "Share Capital (Kapitali aksionar)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Retained Earnings (Fitimi i mbajtur)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Sales Revenue (Të ardhura nga shitjet)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "Service Revenue (Të ardhura nga shërbimet)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Cost of Goods Sold (Kostoja e mallrave të shitura)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Salaries and Wages (Pagat dhe rrogat)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Depreciation Expense (Amortizimi)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "5300":
+    name: "Income Tax Expense (Shpenzimi i tatimit mbi të ardhura — 10%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

@@ -1,0 +1,207 @@
+# Kontablo Localization Mapping: Somalia (Minimal formal standards / IFRS aspiration)
+# Version: 0.1.0-draft
+# Authority: No functioning national accounting authority; Central Bank of Somalia (CBS) has limited oversight
+# Standard: No enacted national standard; IFRS aspirational for formal sector
+# Critical Notes:
+#   VERIFY: All entries — Somalia has no functioning formal accounting standards body
+#   VERIFY: VAT system not operational nationally; some indirect taxes may apply in Mogadishu
+#   VERIFY: Corporate tax rate — approximate 15-30% reportedly applied; enforcement minimal
+#   Currency: Somali Shilling (SOS); USD is the de-facto transaction currency in most formal commerce
+#   Somaliland (self-declared republic, unrecognized) uses Somaliland Shilling separately
+#   Puntland and Jubaland have semi-autonomous administrations with separate revenue collection
+#   Islamic finance norms apply; interest-based accounts are uncommon in formal banking
+#   Hawala (xawilaad) money transfer system dominant for remittances
+#   Use this mapping only for NGO/UN/formal-sector entities operating under ad-hoc IFRS frameworks
+
+metadata:
+  country: SO
+  authority: Central Bank of Somalia (CBS) — no formal accounting standards body
+  standard: IFRS_ASPIRATIONAL
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: SOS
+
+mappings:
+  "1000":
+    name: "Property, Plant & Equipment — VERIFY"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1010":
+    name: "Accumulated Depreciation (contra) — VERIFY"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1020":
+    name: "Intangible Assets — VERIFY"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Cash (USD functional) — VERIFY"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "Bank Accounts — VERIFY"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1120":
+    name: "Trade Receivables — VERIFY"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1130":
+    name: "Inventories — VERIFY"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1140":
+    name: "Prepaid Expenses — VERIFY"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Share Capital / Paid-in Capital — VERIFY"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "2010":
+    name: "Retained Earnings — VERIFY"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "2020":
+    name: "Current Year Profit/Loss — VERIFY"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "3000":
+    name: "Accounts Payable — VERIFY"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "3010":
+    name: "Short-term Borrowings — VERIFY"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "3020":
+    name: "Accrued Expenses — VERIFY"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "3030":
+    name: "Payroll Liabilities — VERIFY"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Long-term Debt — VERIFY"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Sales Revenue — VERIFY"
+    nature: "Credit"
+    level: 5
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4010":
+    name: "Service Revenue — VERIFY"
+    nature: "Credit"
+    level: 5
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "4020":
+    name: "Other Revenue — VERIFY"
+    nature: "Credit"
+    level: 5
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Cost of Goods Sold — VERIFY"
+    nature: "Debit"
+    level: 6
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "5010":
+    name: "Salaries and Wages — VERIFY"
+    nature: "Debit"
+    level: 6
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5020":
+    name: "Depreciation Expense — VERIFY"
+    nature: "Debit"
+    level: 6
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "5030":
+    name: "Other Operating Expenses — VERIFY"
+    nature: "Debit"
+    level: 6
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
