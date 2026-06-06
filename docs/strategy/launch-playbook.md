@@ -52,7 +52,7 @@ gh release create v0.1.0 \
 | 2 | **Swyx** (@swyx) | AI infra, latent space podcast | La harness architecture como marco de análisis de agentes — buen ángulo para Latent Space |
 | 3 | **Lilian Weng** (@lilianweng, OpenAI) | LLM agents, tool use, hallucination | Co-responsibility Architecture como solución al problema de accountability en agentes financieros |
 | 4 | **Yohei Nakajima** (@yoheinakajima) | Babyagi, agentic frameworks | AP2/A2A integration — cómo una ontología contable es infraestructura para agentes económicos |
-| 5 | **Phil Wainewright** (@philww) | ERP/SaaS analyst, diginomica | 23 jurisdicciones, multi-estándar — exactamente el problema que cubre en análisis de ERP |
+| 5 | **Phil Wainewright** (@philww) | ERP/SaaS analyst, diginomica | 195 jurisdicciones soberanas, multi-estándar — exactamente el problema que cubre en análisis de ERP |
 | 6 | **Dennis Howlett** (@dahowlett) | Accounting tech analyst, diginomica | Ángulo contable: "Accounting Babel" y la fragmentación de estándares nacionales |
 | 7 | **Sebastien Bubeck** (Microsoft Research) | LLM reasoning, grounding | Determinism over stochasticity como principio de diseño — cierra con trabajo en grounding |
 | 8 | **XBRL International** (cuenta oficial) | Estándares XBRL | Kontablo como capa semántica sobre XBRL — complementario, no competidor |
@@ -66,7 +66,7 @@ gh release create v0.1.0 \
 | 11 | **Florian Ederer** (Yale SOM) | Economía de plataformas | Kontablo como protocolo estándar con externalidades de red — relevante para su trabajo |
 | 12 | **Barr Moses** (@barrmoses) | Data observability, Monte Carlo | Deterministic validation en pipelines de datos financieros |
 | 13 | **Santiago Valdarrama** (@svpino) | ML engineering, applied AI | Harness architecture y el determinism principle — ángulo pragmático de MLOps |
-| 14 | **IASB / IFRS Foundation** (cuenta oficial) | Estándares IFRS | Validación empírica de 23 jurisdicciones — dato citable en sus análisis |
+| 14 | **IASB / IFRS Foundation** (cuenta oficial) | Estándares IFRS | Validación empírica de 195 jurisdicciones soberanas — dato citable en sus análisis |
 | 15 | **Andrej Karpathy** (@karpathy) | LLMs, agents | Solo si hay conexión genuina con un post/trabajo específico suyo |
 | 16 | **Comunidad ERPNext/Frappe** (foro oficial) | Open-source ERP | Conector Apache 2.0 disponible — post técnico en su foro |
 
@@ -93,7 +93,7 @@ gh release create v0.1.0 \
 ```
 [1/15]
 Hoy publico Kontablo v0.1.0 — una ontología contable universal, graph-based,
-validada en 23 jurisdicciones, con una capa nativa para el agentic economy.
+validada en 195 jurisdicciones soberanas (cobertura global completa), con una capa nativa para el agentic economy.
 
 HILO 🧵
 [repo] [preprint DOI]
@@ -122,7 +122,7 @@ Un UUID por cada concepto contable universal. Inamovible.
 [4/15]
 El grafo tiene 30 cuentas core (Nivel 3).
 Esas 30 cubren el 92% del volumen de transacciones rutinarias
-en las 23 jurisdicciones probadas.
+en las 195 jurisdicciones soberanas probadas.
 
 No es un número redondo — es el resultado de la validación empírica.
 
@@ -206,9 +206,9 @@ y los sistemas que los consumen.
 ---
 
 [12/15]
-23 jurisdicciones mapeadas hasta hoy:
-MX, BR, FR, VE (IAS 29 hiperinflación), SA, VN, NG, AR, CO, PE,
-CL, GT, EC, UK, DE, JP, IN, CN, AU, ZA, IL, RU, EE.
+195 jurisdicciones soberanas mapeadas — cobertura global completa.
+Contextos especiales: IAS 29 hiperinflación (VE, LB, ZW), finanzas islámicas (SA, QA, KW),
+CIT distribución-solo (EE, LV, GE), SYSCOHADA (15 países OHADA).
 
 ---
 
@@ -245,7 +245,7 @@ Kontablo existe porque el mundo financiero no puede permitirse que los agentes a
 ### LinkedIn post (~600 palabras, audiencia contable/ERP)
 
 ```
-Hoy publico Kontablo — una ontología contable universal validada en 23 jurisdicciones.
+Hoy publico Kontablo — una ontología contable universal validada en 195 jurisdicciones soberanas.
 
 El problema que resuelve es uno que todo contador internacional conoce:
 México usa SAT, Brasil usa SPED, Francia usa PCG, Venezuela usa IAS 29 con hiperinflación.
@@ -260,7 +260,7 @@ como un diccionario universal que asigna un UUID inamovible a cada concepto cont
 independientemente de cómo lo llame cada jurisdicción.
 
 La arquitectura core es un grafo de 30 cuentas universales (Nivel 3) que cubre
-el 92% del volumen de transacciones rutinarias en las 23 jurisdicciones validadas.
+el 92% del volumen de transacciones rutinarias en las 195 jurisdicciones soberanas validadas.
 Sobre ese grafo, una lógica determinista de resolución en tres niveles:
 primero busca por código exacto, luego por reglas de desambiguación,
 y solo como último recurso usa un fallback semántico con IA.
@@ -300,7 +300,7 @@ Christian Luciani | ORCID 0000-0002-6955-5384 | Cuenca, Ecuador
 3. Lo que intenté primero y por qué no alcanza (XBRL como solución parcial)
 4. La arquitectura de Kontablo — el grafo, los UUIDs, el Deterministic Boundary Library
 5. Por qué el agentic economy lo necesita hoy
-6. El resultado: 23 jurisdicciones, 92% coverage, stress test hiperinflación
+6. El resultado: 195 jurisdicciones soberanas, 92% coverage, stress test hiperinflación
 7. Lo que Kontablo no es (gestión de expectativas)
 8. Cómo contribuir / cómo usarlo
 
@@ -314,11 +314,11 @@ Christian Luciani | ORCID 0000-0002-6955-5384 | Cuenca, Ecuador
 
 ### What's in this release
 
-- **Ontology**: 30 universal accounts (Level 3 minimum-core), UUID-keyed, validated across 23 jurisdictions
+- **Ontology**: 30 universal accounts (Level 3 minimum-core), UUID-keyed, validated across 195 sovereign jurisdictions
 - **API**: FastAPI reference implementation (`api/`) with mapping, batch consolidation, and transaction classification endpoints
 - **Connectors**: ERPNext/Frappe connector (Apache 2.0 license)
 - **Preprint**: Full academic paper at [DOI — to be filled post-deposit]
-- **Localizations**: YAML mapping files for 23 jurisdictions
+- **Localizations**: YAML mapping files for 195 sovereign jurisdictions
 
 ### Known limitations
 
