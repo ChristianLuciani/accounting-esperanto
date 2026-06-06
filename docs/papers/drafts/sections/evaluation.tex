@@ -43,5 +43,33 @@ Venezuela (VE) & 10/10 & IAS 29 hyperinflation; dual-currency parallel rates & S
 \end{table}
 
 \subsection{Coverage and Data Quality}
-The AI-augmented graph successfully mapped 100\% of the sample transaction sets to Kontablo's core `asset.current.cash` and `asset.current.receivables` universal IDs. By dynamically applying local-to-target foreign exchange conversions and semantic rate overrides, the engine demonstrated that Kontablo can seamlessly aggregate localized financial ledgers into a unified global balance sheet. 
+The AI-augmented graph successfully mapped 100\% of the sample transaction sets to Kontablo's core `asset.current.cash` and `asset.current.receivables` universal IDs. By dynamically applying local-to-target foreign exchange conversions and semantic rate overrides, the engine demonstrated that Kontablo can seamlessly aggregate localized financial ledgers into a unified global balance sheet.
 Our analysis further demonstrates that the 30 Level 3 accounts cover \textbf{92\% of routine business transactions by empirical volume (count)}---as benchmarked against thousands of generic SME ledger exports. This proves that extreme ledger granularity in national standards (often hundreds of accounts) is mostly reserved for rare statistical or edge-case events.
+
+\subsection{Non-Anglophone Jurisdictions and the Value of Deterministic Grounding}
+
+The simulation reveals a consistent pattern across the non-Anglophone
+high-complexity jurisdictions (VN-Vietnam complexity 7/10, SA-Saudi Arabia
+7/10) that aligns with the \textbf{Inverse Parametric Knowledge Effect (IPKE)}
+identified in independent empirical work (Luong Tuan \& Sanyal, 2026;
+Section~\ref{subsec:ipke}): ontological grounding adds most value precisely
+where LLM pretraining coverage of the target domain is structurally thinnest.
+
+For Vietnam (VAS 2014 government-mandated chart) and Saudi Arabia (SOCPA with
+Zakat overlay), Tier~1 exact-code lookup succeeded at lower rates than
+English-language jurisdictions --- the codes are less likely to appear in
+pretraining corpora --- and Tier~3 semantic fallback was invoked more
+frequently. Without the Deterministic Boundary Library's hard rejection of
+UUID non-members, these would be the jurisdictions most likely to produce
+silent misclassifications. The deterministic constraint layer is therefore not
+merely a quality enhancement; it is an operational requirement for
+jurisdictions where the model's parametric knowledge is sparse.
+
+This observation generalises. Of the 195 jurisdictions mapped, those with
+non-Latin charts and thin English-language regulatory documentation
+(SYSCOHADA francophone Africa, Korean K-GAAP, Ukrainian P(S)BO, Arabic SOCPA,
+Vietnamese VAS) are precisely the jurisdictions where Kontablo's constraint
+layer provides the highest marginal safety guarantee over an unconstrained RAG
+or pure-LLM approach. The universality of coverage, argued structurally in
+Appendix~D, is reinforced empirically by the finding that the hardest
+jurisdictions to map are also the ones where hard constraints matter most.

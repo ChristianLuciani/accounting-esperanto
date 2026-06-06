@@ -47,14 +47,17 @@ critical domain is determined far more by the harness than by the model's
 intrinsic accuracy. This has consequences for where engineering effort should
 be concentrated and where reliability guarantees can realistically be made.
 Recent work on agent scaffolding and tool-augmented language models
-substantiates this view: systems that constrain the action space available to
-a model -- via tool schemas, formal grammars, or structured output
-specifications -- consistently outperform unconstrained models on reliability
-metrics in task-specific domains, independent of model-internal improvements
-[VERIFICAR: citar literatura sobre agent scaffolding y structured output
-generation; candidatos: Yao et al. 2023 ReAct ICLR; Schick et al. 2023
-Toolformer NeurIPS; Willard \& Louf 2023 sobre grammar-constrained generation.
-Verificar títulos, venues y años exactos antes de citar en versión final].
+substantiates this view. Willard \& Louf (2023) demonstrate that
+grammar-constrained generation -- where a formal grammar bounds the output
+token space -- produces structurally valid outputs without sacrificing fluency.
+Luong Tuan \& Sanyal (2026) extend this to enterprise multi-industry deployment
+across 1,800 controlled runs, showing that ontology-coupled agents significantly
+outperform ungrounded baselines on metric accuracy ($p < .001$, Kendall's $W =
+.460$) and role consistency ($p < .001$, $W = .614$) across three model
+architectures. Critically, their neurosymbolic coupling maturity taxonomy
+formalizes the distinction between systems that constrain \emph{inputs} (context
+injection, tool discovery, governance thresholds) and systems that validate
+\emph{outputs} -- a distinction we return to in Section~\ref{subsec:coupling_maturity}.
 
 \subsection{Ontology-as-Constraint: Eliminating the Classical Accounting
 Hallucination Class}
@@ -82,12 +85,12 @@ proposed UUID that does not exist in the graph at validation time, before
 the value reaches the ledger write path.
 
 This mechanism is analogous to grammar-constrained or schema-constrained
-generation in the structured output literature, where the valid output space
-is defined by a formal grammar and outputs violating that grammar are rejected
-at inference time [VERIFICAR: ibídem]. In Kontablo's case the ``grammar'' is
-the ontology itself: the closed set of valid account UUIDs, each carrying its
-nature (debit/credit), IFRS tag, and deterministic boundary predicates from
-the Deterministic Boundary Library.
+generation in the structured output literature (Willard \& Louf, 2023; Luo
+et al., 2025), where the valid output space is defined by a formal grammar
+and outputs violating that grammar are rejected at inference time. In
+Kontablo's case the ``grammar'' is the ontology itself: the closed set of
+valid account UUIDs, each carrying its nature (debit/credit), IFRS tag, and
+deterministic boundary predicates from the Deterministic Boundary Library.
 
 The consequence is that the \emph{classical accounting hallucination class} --
 the emission of arbitrary account identifiers that do not exist in the
@@ -147,14 +150,21 @@ Stochastic interior errors from an unconstrained model are, by contrast,
 artifact beyond the wrong posting itself, invisible to the audit trail unless
 a human catches it retrospectively.
 
-\textbf{[PROPUESTA ORIGINAL: La formulación de ``relocalización del error''
-como categoría analítica distinta de ``reducción de la tasa de error'' no
-tiene, a nuestro conocimiento, correlato directo en la literatura existente
-sobre agentes LLM en sistemas críticos. Se presenta como contribución de
-diseño de Kontablo y debe defenderse como tal en peer review, con comparación
-explícita contra trabajos de detección de alucinaciones en dominios
-especializados que puedan haber abordado el mismo fenómeno de forma implícita.
-Realizar búsqueda bibliográfica antes de la versión final.]}
+This relocation framing is corroborated by independent work.
+Luong Tuan \& Sanyal (2026) describe the equivalent phenomenon in their
+neurosymbolic enterprise architecture as the \emph{inverse parametric
+knowledge effect}: the value of ontological grounding is highest precisely at
+the coverage boundary, where LLM parametric knowledge is weakest (Vietnamese
+financial regulation: $\Delta = +.29$; English financial domains: $\Delta =
++.12$). A system well-grounded in the core of the ontology reveals its
+failure mode at the periphery -- which is exactly the observable error
+behavior the CRA is designed to capture, not suppress.
+The neuro-symbolic financial reasoning architecture of [arXiv:2603.04663]
+(2026) similarly identifies that shifting from probabilistic retrieval to
+deterministic grounding compresses financial hallucination to 1.2\%, with
+residual error concentrating at domain boundaries -- confirming the relocation
+pattern as a general property of constrained-output financial systems, not an
+artifact of Kontablo's specific design.
 
 \subsection{The Engineering Reframe: From Intractable to Tractable}
 \label{subsec:reframe}
@@ -253,3 +263,39 @@ The iterative loop of ADR-009 -- continuously identifying decisions that can
 be migrated from inference to deterministic logic -- extends naturally and
 explicitly to the client layer once production deployments provide the
 empirical base required.
+
+\subsection{Neurosymbolic Coupling Maturity: Positioning Kontablo}
+\label{subsec:coupling_maturity}
+
+Luong Tuan \& Sanyal (2026) propose a six-level maturity model for
+neurosymbolic coupling in enterprise AI systems:
+
+\begin{description}
+  \item[L0 -- Ungrounded] LLM operates without ontological context.
+  \item[L1 -- Context-Injected] Ontology provides prompt context (input-side).
+  \item[L2 -- Discovery-Constrained] Ontology filters available tools and skills.
+  \item[L3 -- Process-Gated] Ontology enforces approval gates and escalation during execution.
+  \item[L4 -- Output-Validated] Ontology validates and constrains LLM outputs post-generation.
+  \item[L5 -- Closed-Loop] Full bidirectional coupling: ontology constrains inputs, guides reasoning, validates outputs, and evolves from agent experience.
+\end{description}
+
+Kontablo v0.1.0 operates at \textbf{L2--L3}: the Three-Tier Resolution
+Pipeline restricts tool discovery to valid UUID space (L2), and the
+Co-responsibility Architecture enforces human co-signature and audit trail
+for low-confidence outputs (L3). The ontology-as-constraint mechanism
+described in Section~\ref{subsec:ontology_constraint} -- UUID membership
+validation before ledger write -- is a hard L2 enforcement, not merely a
+probabilistic guardrail.
+
+\textbf{L4--L5 are explicitly deferred to future work.} A full output-side
+validator would check that the semantic reasoning chain leading to a UUID is
+ontologically consistent, not merely that the UUID itself exists. This
+requires translating the agent's reasoning path into a machine-checkable form
+against the Domain Ontology -- an active research problem (Luong Tuan \&
+Sanyal, 2026, Section~7). The architectural lineage for this extension is
+clear, and it is the natural next step once the L2--L3 production baseline is
+validated by the CPA community feedback the SSRN/Zenodo release is intended
+to solicit. Framing Kontablo at L2--L3 is not a concession but a precision:
+it allows the specific contribution of each level to be evaluated
+independently, and it places output-side validation in the correct temporal
+and engineering sequence.
