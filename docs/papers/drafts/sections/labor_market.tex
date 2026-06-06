@@ -1,0 +1,174 @@
+% ============================================================
+% Section: Labor Market Implications — The Accountant
+%          Recomposition Hypothesis
+% Placement: after evaluation.tex, before conclusion.tex
+% Status: added Phase 2.5 pre-publication pass
+% Epistemic standard: all quantitative claims carry source
+%   and year; figures not independently verified by the author
+%   are cited with attribution and marked as reported values.
+% ============================================================
+
+\section{Labor Market Implications: The Accountant Recomposition Hypothesis}
+\label{sec:labor_market}
+
+A complete account of Kontablo's implications cannot ignore its effects on
+the human practitioners it interacts with. This section addresses a question
+that the architecture raises but does not answer by design: does a system
+that automates transaction classification and batch reconciliation reduce the
+demand for accountants? The answer, grounded in labor-market evidence, is
+more precise than a binary yes or no.
+
+\subsection{The Intra-Occupation Split}
+\label{subsec:occupation_split}
+
+The most commonly cited concern --- that AI threatens the accounting
+profession --- conflates two occupations that the U.S. Bureau of Labor
+Statistics (BLS) tracks and projects separately. The BLS Occupational
+Outlook Handbook (2025 edition) projects \emph{accountants and auditors}
+at $+5\%$ employment growth from 2024 to 2034, with 124,200 annual job
+openings and a 2.0\% unemployment rate --- strong by any labour-market
+standard. It projects \emph{bookkeeping, accounting, and auditing clerks}
+at $-6\%$ over the same period, explicitly attributing the decline to
+automation of routine data-entry and reconciliation tasks (BLS, 2025a;
+BLS, 2025b).
+
+The World Economic Forum Future of Jobs Report (2025) corroborates the
+split at a global scale: accounting and bookkeeping clerks rank seventh
+among the fastest-declining occupations worldwide, with an estimated
+decline of approximately 20\% by 2030 (WEF, 2025). The same report
+categorises accountants and auditors --- the judgment-intensive tier ---
+as stable or growing.
+
+This intra-occupation split is the empirically grounded starting point for
+understanding Kontablo's labor-market position. Kontablo's Tier~1 and
+Tier~2 automation directly targets the task set that drives clerk-level
+decline: exact-code lookup, regex-based disambiguation, and batch
+reconciliation. These are the tasks the BLS and WEF identify as automation-
+susceptible. The CPA-level tasks --- cross-jurisdictional interpretation,
+regulatory judgment, AI output oversight, and advisory work --- are
+precisely those that Tier~3 cannot resolve deterministically and the
+Co-responsibility Architecture escalates to human review.
+
+\subsection{The Co-responsibility Architecture as a Structural Demand Signal}
+\label{subsec:cra_demand}
+
+The Co-responsibility Architecture (CRA, Section~10) carries a labor-market
+implication that is architectural rather than incidental. The CRA is not an
+optional human-review layer added for optics; it is the mechanism that
+manages the residual error population (Section~\ref{subsec:cra_as_error_management})
+--- the transactions that are genuinely beyond automated resolution. Every
+escalation through the CRA invokes a human accountant who must exercise
+substantive judgment: interpreting a flagged inconsistency in the context
+of local regulatory rules, overriding a low-confidence Tier~3 mapping with
+documented justification, or resolving a jurisdictional edge case for which
+no Tier~1 or Tier~2 rule yet exists.
+
+This is the architectural mechanism underlying what we term the
+\textbf{Accountant Recomposition Hypothesis}: Kontablo does not reduce the
+accounting profession --- it recomposes it. The system automates what is
+automatable (Tier~1/2 execution tasks) and structurally requires human
+expertise for what is not (the CRA residual). The minimum competency for
+the role that remains is higher, not lower.
+
+This claim is consistent with field evidence. The Inverse Parametric
+Knowledge Effect (Section~\ref{subsec:ipke}) implies that the hardest
+jurisdictions --- VAS-Vietnam, SOCPA-Saudi Arabia, SYSCOHADA-francophone
+Africa, IAS~29 hyperinflationary contexts --- generate the highest Tier~3
+escalation rates and therefore the greatest demand for accountants with
+genuine multi-jurisdictional expertise. The universality of Kontablo's
+195-jurisdiction coverage does not flatten this demand; it exposes and
+concentrates it at the boundary.
+
+\subsection{Empirical Support: What the Market is Signalling}
+\label{subsec:market_signals}
+
+Several independent data sources are consistent with the recomposition
+hypothesis as of mid-2026.
+
+\textbf{Skill premium and complementarity.} The PwC AI Jobs Barometer
+(2025) analysed job postings across 15 countries and found a 56\% wage
+premium for roles requiring AI-complementary skills, and a 7.5\%
+year-on-year growth in postings requiring such skills in finance-adjacent
+functions. Mäkelä \& Stephany (2024) analysed 12 million job vacancies
+and found that AI-exposed roles are twice as likely to require
+complementary cognitive and interpersonal skills, with a measurable spillover
+effect elevating skill requirements even in roles not directly AI-augmented
+(arXiv:2412.19754). These findings support the interpretation that
+automation at one layer of the task stack raises the value of the cognitive
+skills above it --- the pattern Kontablo's architecture instantiates by design.
+
+\textbf{Acute CPA shortage.} Robert Half's 2026 Accounting and Finance
+Hiring Guide reports that CPA-level roles take an average of 73 days to
+fill, 41\% longer than in prior survey periods, with respondents describing
+the market for experienced accountants as ``acutely constrained'' (Robert
+Half, 2026). The AICPA Trends in the Supply of Accounting Graduates (2025)
+confirms strong hiring intent across firms of all sizes, with the pipeline
+challenge described as structural (reduced CPA-exam sitting rates) rather
+than AI-driven (AICPA, 2025).
+
+\textbf{Practitioner-level evidence.} ICAEW's May 2026 survey of 500 UK
+accounting firms found that 68\% of respondents believed AI would reduce
+demand for some early-career accounting roles, but 83\% stated it would
+not result in fewer roles overall, and 71\% reported that AI had enabled
+their teams to move up the value chain toward advisory and strategic work
+(ICAEW, 2026). This pattern --- automation compressing entry-level execution
+while expanding senior-level advisory demand --- is the recomposition
+dynamic at the firm level.
+
+\subsection{The Honest Tension: Long-Run Residual Shrinkage}
+\label{subsec:honest_tension}
+
+Epistemic integrity requires naming a structural tension in the recomposition
+hypothesis. The CRA operates on the population of cases that automated
+tiers cannot resolve. As stated in Section~\ref{subsec:cra_as_error_management}:
+``as the ontology expands --- more jurisdictions mapped, more transaction
+types covered, more boundary predicates encoded --- the population of
+out-of-coverage cases shrinks and the human review load decreases.'' If
+Kontablo's deterministic coverage expands without bound, the CRA residual
+converges to zero. A fully converged ontology would require less, not more,
+high-level human review.
+
+The empirical counter to this is that the coverage boundary is not static.
+New regulatory regimes emerge --- Turkey adopted IAS~29 hyperinflation
+accounting in 2022; Lebanon in 2020; Argentina's restatements under
+\textit{NIC 29} continue to evolve (PwC, 2026; EY, 2025). New agentic
+economy instruments (tokenised securities, CBDC settlement, multi-agent
+payment rails) generate transaction types for which no Tier~1 or Tier~2
+rule yet exists (Davidovic \& Tourpe, 2026; AP2, 2026). The acute CPA
+shortage (Robert Half, 2026) is direct evidence that the existing human
+capacity for judgment-intensive accounting work is already insufficient to
+meet demand --- \emph{before} the Kontablo-level abstraction layer expands
+the frontier of addressable jurisdictions and instruments.
+
+The recomposition hypothesis is therefore not falsified by the long-run
+shrinkage argument: the residual renews structurally. The claim is not that
+Kontablo is a net job creator, but that it is a task-level recomposer that
+raises the floor of required competency and concentrates demand at the
+expertise tier the labour market is already unable to supply.
+
+\subsection{Implications for Professional Development}
+\label{subsec:professional_development}
+
+The recomposition hypothesis, if correct, has a normative implication for
+accounting education and certification. Competency frameworks that train
+practitioners primarily for Tier~1/2 execution tasks --- routine
+classification, reconciliation, journal entry processing --- will prepare
+graduates for the portion of the profession that Kontablo and equivalent
+systems automate. Competency frameworks that train for multi-jurisdictional
+interpretation, AI-output oversight, and boundary-case resolution will
+prepare graduates for the residual that the CRA requires.
+
+This is consistent with decisions already visible in the market: the ACCA
+has updated its syllabus to include AI ethics and sustainability as core
+competencies from 2024 (ACCA, 2024); ICAEW's 2026 survey shows 71\% of
+firms moving practitioners toward advisory work. The architectural design
+of Kontablo's CRA makes the same implication concrete at the system level:
+the accountant who interacts with the system is not reviewing routine
+postings but resolving the cases that are genuinely hard --- and that role
+requires the expertise tier that is currently in shortage.
+
+The design intent of the CRA is not to create employment. It is to ensure
+that every automated decision with a non-trivial confidence distribution
+is resolved by a qualified human, with immutable attribution. The labor-market
+consequence --- that this structural requirement sustains demand for high-level
+practitioners --- is a property of the architecture, not an aspirational claim.
