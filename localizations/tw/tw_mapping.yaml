@@ -1,0 +1,551 @@
+# Kontablo Localization Mapping: Taiwan (TIFRS / Taiwan-IFRSs)
+# Version: 0.1.0-draft
+# Authority: FSC (Financial Supervisory Commission) / ARDF (Accounting Research and Development Foundation)
+# Standard: TIFRS (Taiwan International Financial Reporting Standards), effective 2013 for listed companies
+# Critical Notes:
+#   - Currency: TWD (New Taiwan Dollar)
+#   - Business Tax (VAT): 5% uniform rate (one of lowest in Asia)
+#   - Corporate Income Tax: 20%
+#   - Undistributed Earnings Surtax: 5% on retained earnings not distributed within 2 years
+#   - Chart of accounts class structure: 1=Assets, 2=Liabilities, 3=Equity, 4=Revenue,
+#     5=Cost of Sales, 6=Operating Expenses, 7=Non-operating, 8=Income Tax, 9=Memoranda
+#   - Mandatory payroll: Labor Pension (勞工退休金) 6% employer contribution; Labor Insurance (勞工保險)
+#   - Account names in Traditional Chinese; Taiwan uses ISO 3166-1 alpha-2 TW (not a UN member)
+#   - Non-listed companies may use SFAS or Taiwan-IFRS for SMEs instead of TIFRS
+
+metadata:
+  country: TW
+  authority: FSC / ARDF
+  standard: TIFRS-2013
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: TWD
+
+mappings:
+  # ── CLASS 1: ASSETS (資產) ────────────────────────────────────────────────
+
+  "1100":
+    name: "現金及約當現金 (Cash and Cash Equivalents)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "庫存現金 (Petty Cash / Cash on Hand)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1120":
+    name: "銀行存款 (Bank Deposits)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1130":
+    name: "短期投資 (Short-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1150":
+    name: "應收票據 (Notes Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1160":
+    name: "應收帳款 (Accounts Receivable / Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1161":
+    name: "備抵呆帳 (Allowance for Doubtful Accounts — contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1170":
+    name: "其他應收款 (Other Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1180":
+    name: "進項稅額 (Input Business Tax / VAT Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "存貨 (Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1210":
+    name: "原料 (Raw Materials)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1220":
+    name: "在製品 (Work-in-Process)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1230":
+    name: "製成品 (Finished Goods)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1280":
+    name: "預付款項 (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1290":
+    name: "其他流動資產 (Other Current Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "不動產、廠房及設備 (Property, Plant and Equipment — gross)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1510":
+    name: "土地 (Land)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1520":
+    name: "房屋及建築 (Buildings)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1530":
+    name: "機械設備 (Machinery and Equipment)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1590":
+    name: "累計折舊 (Accumulated Depreciation — contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1600":
+    name: "無形資產 (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1610":
+    name: "商譽 (Goodwill)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1700":
+    name: "使用權資產 (Right-of-Use Assets — TIFRS 16)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  "1800":
+    name: "長期投資 (Long-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  # ── CLASS 2: LIABILITIES (負債) ──────────────────────────────────────────
+
+  "2100":
+    name: "應付票據 (Notes Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2110":
+    name: "應付帳款 (Accounts Payable / Trade Payables)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2120":
+    name: "短期借款 (Short-term Borrowings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2130":
+    name: "銷項稅額 (Output Business Tax / VAT Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2140":
+    name: "應付所得稅 (Income Tax Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2150":
+    name: "應付薪資 (Salaries Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2155":
+    name: "應付勞工退休金 (Labor Pension Payable — 6% employer)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2156":
+    name: "應付勞工保險費 (Labor Insurance Premium Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2157":
+    name: "應付全民健康保險費 (National Health Insurance Premium Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2160":
+    name: "應計費用 (Accrued Expenses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "2170":
+    name: "預收款項 (Deferred Revenue / Advances from Customers)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "2190":
+    name: "其他流動負債 (Other Current Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000308"
+    aggregation_rules:
+      - "sum"
+
+  "2300":
+    name: "長期借款 (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2310":
+    name: "租賃負債 (Lease Liability — TIFRS 16)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "2350":
+    name: "遞延所得稅負債 (Deferred Tax Liability)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  # ── CLASS 3: EQUITY (權益) ────────────────────────────────────────────────
+
+  "3100":
+    name: "股本 (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "資本公積 (Additional Paid-in Capital / Capital Surplus)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "保留盈餘 (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3310":
+    name: "法定盈餘公積 (Legal Reserve — 10% of annual profit, mandatory)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3320":
+    name: "未分配盈餘 (Unappropriated Retained Earnings)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "本期損益 (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "3500":
+    name: "其他綜合損益 (Other Comprehensive Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "3600":
+    name: "庫藏股票 (Treasury Shares — contra)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000505"
+    aggregation_rules:
+      - "sum"
+
+  # ── CLASS 4: REVENUE (收入) ───────────────────────────────────────────────
+
+  "4100":
+    name: "銷貨收入 (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4110":
+    name: "銷貨退回及折讓 (Sales Returns and Allowances — contra)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4200":
+    name: "勞務收入 (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "4700":
+    name: "利息收入 (Interest Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "4800":
+    name: "其他營業收入 (Other Operating Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  # ── CLASS 5: COST OF SALES (銷貨成本) ────────────────────────────────────
+
+  "5100":
+    name: "銷貨成本 (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  # ── CLASS 6: OPERATING EXPENSES (營業費用) ───────────────────────────────
+
+  "6100":
+    name: "薪資費用 (Salaries and Wages Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "6110":
+    name: "勞工退休金費用 (Labor Pension Contribution Expense)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "6120":
+    name: "勞保及健保費用 (Labor and Health Insurance Expense)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "折舊費用 (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "6300":
+    name: "租金費用 (Rent Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "6400":
+    name: "水電瓦斯費 (Utilities Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "6500":
+    name: "廣告費 (Marketing and Advertising Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "6900":
+    name: "其他營業費用 (Other Operating Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  # ── CLASS 7: NON-OPERATING (營業外收支) ──────────────────────────────────
+
+  "7100":
+    name: "利息費用 (Interest Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  # ── CLASS 8: INCOME TAX (所得稅) ─────────────────────────────────────────
+
+  "8100":
+    name: "所得稅費用 (Income Tax Expense — 20% CIT)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "8110":
+    name: "未分配盈餘加徵稅 (Undistributed Earnings Surtax — 5%)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

@@ -1,0 +1,623 @@
+# Kontablo Localization Mapping: Timor-Leste / East Timor (IFRS / transitional)
+# Version: 0.1.0-draft
+# Authority: Ministry of Finance (Ministério das Finanças) / CGA (Câmara dos Revisores Oficiais de Contas)
+# Standard: IFRS as adopted (aspirational for large entities); Portuguese-influenced transitional standards
+#            for smaller entities. Accounting infrastructure still developing.
+# Critical Notes:
+#   - Currency: USD (official currency since independence 2002; centavo coins exist but rarely used)
+#     No domestic currency issued; USD eliminates exchange rate risk domestically
+#   - Corporate Income Tax (IRTS — Imposto sobre o Rendimento de Pessoas Coletivas): 10%
+#     One of the lowest corporate tax rates in Southeast Asia
+#   - Withholding Tax (Retenção na Fonte): applies to wages, services, dividends
+#   - VAT equivalent: ISC (Imposto de Serviços e Consumo) — limited implementation in practice
+#   - Petroleum Fund (Fundo Petrolífero): sovereign wealth fund fed by petroleum revenues (Bayu-Undan,
+#     Greater Sunrise); critical for government accounting; governed by Petroleum Fund Law 9/2005
+#   - Economy heavily dependent on petroleum revenues (Timor Sea); Bayu-Undan field winding down;
+#     Greater Sunrise development in negotiation with Australia
+#   - Official languages: Tetum and Portuguese; Indonesian and English also used commercially
+#   - Independence: May 20, 2002 — one of the world's newest nations
+#   - Large entities include: TIMOR GAP (national oil company), EDTL (electricity), BNU (banking)
+#   - Account labels in Portuguese (primary official accounting language) with English translation
+
+metadata:
+  country: TL
+  authority: Ministry of Finance / CGA
+  standard: IFRS-adopted-transitional
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: USD
+
+mappings:
+  # ── ATIVO / ASSETS ────────────────────────────────────────────────────────
+
+  "1100":
+    name: "Meios Financeiros Líquidos (Cash and Cash Equivalents)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1101":
+    name: "Caixa (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1102":
+    name: "Depósitos à Ordem (Bank Demand Deposits)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1103":
+    name: "Depósitos a Prazo (Term Deposits)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1104":
+    name: "Fundo de Adiantamento (Petty Cash Fund)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Aplicações Financeiras de Curto Prazo (Short-term Financial Investments)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Clientes / Contas a Receber (Trade Receivables)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1301":
+    name: "Clientes Nacionais (Domestic Customers)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1302":
+    name: "Clientes Estrangeiros (Foreign Customers)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1303":
+    name: "Provisão para Créditos Incobráveis (Allowance for Doubtful Accounts — contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1304":
+    name: "Receitas Petrolíferas a Receber (Petroleum Revenue Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Outras Contas a Receber (Other Receivables)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1401":
+    name: "IRS Retido a Recuperar / ISC a Recuperar (Tax Refund Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "Adiantamentos e Despesas Antecipadas (Prepayments and Prepaid Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1600":
+    name: "Existências / Inventários (Inventories)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1601":
+    name: "Mercadorias (Merchandise)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1602":
+    name: "Matérias-Primas (Raw Materials)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1700":
+    name: "Outros Ativos Correntes (Other Current Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "1800":
+    name: "Ativos Fixos Tangíveis — Bruto (Property, Plant and Equipment — gross)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1801":
+    name: "Terrenos (Land)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1802":
+    name: "Edifícios e Construções (Buildings and Constructions)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1803":
+    name: "Equipamento de Exploração Petrolífera (Petroleum Exploration Equipment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1804":
+    name: "Equipamento Agrícola e de Café (Agricultural / Coffee Processing Equipment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1805":
+    name: "Equipamento de Informática e Escritório (IT and Office Equipment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1890":
+    name: "Depreciações Acumuladas (Accumulated Depreciation — contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1900":
+    name: "Ativos Intangíveis (Intangible Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1901":
+    name: "Licenças de Exploração Petrolífera (Petroleum Exploration Licenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1902":
+    name: "Goodwill / Trespasse (Goodwill)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1950":
+    name: "Ativos de Direito de Uso (Right-of-Use Assets — IFRS 16)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  "1980":
+    name: "Investimentos Financeiros de Longo Prazo (Long-term Investments)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "1981":
+    name: "Participação no Fundo Petrolífero (Petroleum Fund Contribution / Sovereign Wealth Fund)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  # ── PASSIVO / LIABILITIES ─────────────────────────────────────────────────
+
+  "2100":
+    name: "Fornecedores / Contas a Pagar (Accounts Payable)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2101":
+    name: "Fornecedores Nacionais (Domestic Suppliers)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2102":
+    name: "Fornecedores Estrangeiros (Foreign Suppliers)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Empréstimos de Curto Prazo (Short-term Borrowings)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2300":
+    name: "IRTS a Pagar (Corporate Income Tax Payable — 10%)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2310":
+    name: "ISC a Pagar (ISC Consumption/Service Tax Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2320":
+    name: "Retenções na Fonte a Pagar (Withholding Tax Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2400":
+    name: "Remunerações a Pagar (Payroll Liabilities)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2401":
+    name: "Salários e Vencimentos a Pagar (Salaries and Wages Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2402":
+    name: "Contribuições para Segurança Social a Pagar (Social Security Contributions)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2500":
+    name: "Acréscimos de Custos (Accrued Expenses)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "2600":
+    name: "Proveitos Diferidos (Deferred Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "2700":
+    name: "Outros Passivos Correntes (Other Current Liabilities)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000308"
+    aggregation_rules:
+      - "sum"
+
+  "2800":
+    name: "Empréstimos de Longo Prazo (Long-term Debt)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2801":
+    name: "Empréstimos do Banco Mundial / ADB (World Bank / ADB Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2850":
+    name: "Passivos de Locação (Lease Liabilities — IFRS 16)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "2900":
+    name: "Passivos por Impostos Diferidos (Deferred Tax Liability)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  # ── CAPITAL PRÓPRIO / EQUITY ──────────────────────────────────────────────
+
+  "3100":
+    name: "Capital Social (Share Capital / Paid-in Capital)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Reservas (Reserves)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3201":
+    name: "Reserva Legal (Legal Reserve)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Resultados Transitados (Retained Earnings)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "Resultado Líquido do Período (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "3500":
+    name: "Outro Rendimento Integral (Other Comprehensive Income)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  # ── PROVEITOS / REVENUE ───────────────────────────────────────────────────
+
+  "7100":
+    name: "Vendas de Mercadorias (Sales Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "7110":
+    name: "Exportação de Café (Coffee Export Revenue — key non-oil export)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "Prestações de Serviços (Service Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "7300":
+    name: "Receitas Petrolíferas (Petroleum Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "7310":
+    name: "Royalties Petrolíferas (Petroleum Royalties — Bayu-Undan / Greater Sunrise)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "Rendimentos Financeiros / Juros (Interest and Financial Income)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "7900":
+    name: "Outros Proveitos Operacionais (Other Operating Income)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  # ── CUSTOS / EXPENSES ─────────────────────────────────────────────────────
+
+  "8100":
+    name: "Custo das Mercadorias Vendidas e Matérias Consumidas (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "8200":
+    name: "Custos com o Pessoal (Personnel Costs)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "8201":
+    name: "Remunerações do Pessoal (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "8202":
+    name: "Encargos Sociais — Segurança Social (Social Security Contributions)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "8300":
+    name: "Depreciações e Amortizações (Depreciation and Amortisation)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "8400":
+    name: "Rendas e Alugueres (Rent Expense)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "8500":
+    name: "Energia, Água e Telecomunicações (Utilities)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "8600":
+    name: "Publicidade e Propaganda (Marketing and Advertising)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "8700":
+    name: "Custos Financeiros / Juros (Interest Expense / Finance Costs)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "8800":
+    name: "Imposto sobre o Rendimento (Income Tax Expense — IRTS 10%)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "8900":
+    name: "Outros Custos e Perdas Operacionais (Other Operating Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "8910":
+    name: "Custos de Capacitação e Formação (Training and Capacity Building Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

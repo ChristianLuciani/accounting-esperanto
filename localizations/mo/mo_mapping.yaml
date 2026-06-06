@@ -1,0 +1,580 @@
+# Kontablo Localization Mapping: Macau SAR (MFRS / Macau Financial Reporting Standards)
+# Version: 0.1.0-draft
+# Authority: DSEC (Direcção dos Serviços de Estatística e Censos) / MSAR Government
+# Standard: MFRS — influenced by Portuguese GAAP (POC/SNC) and IFRS; IFRS adopted for large entities
+# Critical Notes:
+#   - Currency: MOP (Macanese Pataca — pegged to HKD at ~1.03; HKD widely accepted)
+#   - Complementary Tax (Imposto Complementar de Rendimentos — ICR): 12% for Group A (large companies)
+#     Group B (smaller companies): assessed on presumed profit, different regime
+#   - Gaming Revenue Tax: 39% of Gross Gaming Revenue — applies to the 6 concessionaires
+#     (SJM, Galaxy, Sands China, Wynn Macau, MGM China, Melco Resorts)
+#   - NO VAT — Macau has no general indirect consumption tax
+#   - Industrial Tax (Imposto Industrial): annual fixed tax on business activity (minor)
+#   - Tourism Tax on hotel stays: 5% MOP per room per night (minor)
+#   - Official languages: Portuguese and Chinese (Cantonese)
+#   - Economy dominated by gaming (~80% of government revenue pre-COVID) and tourism
+#   - Special accounting rules apply to gaming concessionaires under Law 16/2001
+#   - Portuguese accounting terminology used; English translation provided
+
+metadata:
+  country: MO
+  authority: DSEC / MSAR Government
+  standard: MFRS-IFRS-aligned
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: MOP
+
+mappings:
+  # ── ATIVO / ASSETS ────────────────────────────────────────────────────────
+
+  "11":
+    name: "Meios Financeiros Líquidos (Cash and Cash Equivalents)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1101":
+    name: "Caixa (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1102":
+    name: "Depósitos à Ordem (Bank Current Accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1103":
+    name: "Depósitos a Prazo (Fixed-term Deposits)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1104":
+    name: "Chips de Casino (Gaming Chips Float — gaming entities only)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "12":
+    name: "Investimentos Financeiros de Curto Prazo (Short-term Investments)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "21":
+    name: "Clientes / Contas a Receber (Trade Receivables)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "2101":
+    name: "Clientes — Vendas de Mercadorias (Customers — Merchandise Sales)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "2102":
+    name: "Créditos de Jogo (Gaming Credits Receivable — VIP junket markers)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "2103":
+    name: "Provisão para Créditos de Cobrança Duvidosa (Allowance for Doubtful Accounts — contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "22":
+    name: "Outras Contas a Receber (Other Receivables)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "2201":
+    name: "Adiantamentos a Fornecedores (Prepayments to Suppliers)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "2202":
+    name: "Despesas Antecipadas (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "32":
+    name: "Existências / Inventários (Inventories)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "3201":
+    name: "Mercadorias (Merchandise)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "3202":
+    name: "Matérias-primas e Subsidiárias (Raw Materials)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "3203":
+    name: "Fichas e Material de Jogo (Gaming Consumables — chips, cards)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "41":
+    name: "Ativos Fixos Tangíveis (Property, Plant and Equipment — gross)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "4101":
+    name: "Terrenos e Recursos Naturais (Land and Natural Resources)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "4102":
+    name: "Edifícios e Outras Construções (Buildings)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "4103":
+    name: "Equipamento de Casino (Casino Equipment — slot machines, tables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "4104":
+    name: "Equipamento Administrativo (Administrative Equipment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "4190":
+    name: "Depreciações Acumuladas (Accumulated Depreciation — contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "42":
+    name: "Ativos Intangíveis (Intangible Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "4201":
+    name: "Concessão de Jogo (Gaming Concession License)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "4202":
+    name: "Goodwill (Goodwill)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "43":
+    name: "Ativos de Direito de Uso (Right-of-Use Assets — IFRS 16)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  "44":
+    name: "Investimentos Financeiros (Long-term Investments)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  # ── PASSIVO / LIABILITIES ─────────────────────────────────────────────────
+
+  "51":
+    name: "Fornecedores / Contas a Pagar (Accounts Payable)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "52":
+    name: "Empréstimos de Curto Prazo (Short-term Borrowings)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "5301":
+    name: "Imposto Complementar a Pagar — ICR (Complementary Tax Payable — 12%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "5302":
+    name: "Imposto sobre o Jogo a Pagar (Gaming Tax Payable — 39% GGR)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "5303":
+    name: "Imposto Industrial a Pagar (Industrial Tax Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "54":
+    name: "Remunerações a Pagar (Payroll Liabilities)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "5401":
+    name: "Salários a Pagar (Salaries Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "5402":
+    name: "Contribuições para Fundo de Pensões (Pension/Retirement Fund Contributions)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "55":
+    name: "Acréscimos e Diferimentos — Passivo (Accrued Expenses)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "56":
+    name: "Proveitos Diferidos (Deferred Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "57":
+    name: "Outros Passivos Correntes (Other Current Liabilities)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000308"
+    aggregation_rules:
+      - "sum"
+
+  "61":
+    name: "Empréstimos de Longo Prazo (Long-term Debt)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "62":
+    name: "Passivos de Locação (Lease Liabilities — IFRS 16)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "63":
+    name: "Passivos por Impostos Diferidos (Deferred Tax Liability)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  # ── CAPITAL PRÓPRIO / EQUITY ──────────────────────────────────────────────
+
+  "71":
+    name: "Capital Social (Share Capital)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "72":
+    name: "Reservas (Reserves)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "7201":
+    name: "Reserva Legal (Legal Reserve)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "73":
+    name: "Resultados Transitados (Retained Earnings)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "74":
+    name: "Resultado Líquido do Exercício (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "75":
+    name: "Outro Rendimento Integral (Other Comprehensive Income)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  # ── PROVEITOS / REVENUE ───────────────────────────────────────────────────
+
+  "81":
+    name: "Receitas de Jogo Brutas (Gross Gaming Revenue — GGR)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "8101":
+    name: "GGR — Jogo de Mesa VIP (VIP Table Games GGR)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "8102":
+    name: "GGR — Jogo de Mesa Mass Market (Mass Market Table Games GGR)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "8103":
+    name: "GGR — Slots e Máquinas Eletrónicas (Electronic Gaming Machines GGR)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "82":
+    name: "Receitas de Hotelaria e Restauração (Hotel and F&B Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "83":
+    name: "Receitas de Entretenimento (Entertainment Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "84":
+    name: "Receitas Financeiras / Juros (Interest and Financial Income)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "85":
+    name: "Outros Proveitos Operacionais (Other Operating Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  # ── CUSTOS / EXPENSES ─────────────────────────────────────────────────────
+
+  "91":
+    name: "Custo das Mercadorias Vendidas (Cost of Sales)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "92":
+    name: "Custos com Pessoal (Personnel Costs)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "9201":
+    name: "Remunerações (Salaries)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "9202":
+    name: "Encargos Sociais (Social Charges)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "93":
+    name: "Depreciações e Amortizações (Depreciation and Amortisation)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "94":
+    name: "Rendas e Alugueres (Rent Expense)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "95":
+    name: "Fornecimentos e Serviços Externos (Utilities and External Services)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "96":
+    name: "Marketing e Publicidade (Marketing and Advertising)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "97":
+    name: "Custos Financeiros / Juros (Interest Expense)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "98":
+    name: "Imposto Complementar — ICR (Complementary Tax Expense — 12%)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "9801":
+    name: "Imposto sobre o Jogo (Gaming Tax Expense — 39% of GGR)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "99":
+    name: "Outros Custos Operacionais (Other Operating Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

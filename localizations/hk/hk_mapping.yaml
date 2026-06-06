@@ -1,0 +1,522 @@
+# Kontablo Localization Mapping: Hong Kong SAR (HKFRS)
+# Version: 0.1.0-draft
+# Authority: HKICPA (Hong Kong Institute of Certified Public Accountants)
+# Standard: HKFRS (Hong Kong Financial Reporting Standards), substantially identical to IFRS
+# Critical Notes:
+#   - Currency: HKD (Hong Kong Dollar — pegged to USD, band 7.75–7.85)
+#   - Profits Tax: 16.5% (corporations) / 15% (unincorporated businesses)
+#   - Two-tiered Profits Tax: first HKD 2M at 8.25% (corporations), remainder at 16.5%
+#   - NO VAT / NO GST — key differentiator; no indirect tax on business transactions
+#   - No capital gains tax
+#   - MPF (Mandatory Provident Fund): 5% employer + 5% employee, capped at HKD 1,500/month each
+#   - Salaries Tax: levied on individuals separately, not corporate P&L
+#   - HKFRS maintained separately by HKICPA but virtually identical to IFRS
+#   - One Country, Two Systems: HK has own legal/accounting system independent of mainland China
+#   - Account names in English and Traditional Chinese
+
+metadata:
+  country: HK
+  authority: HKICPA
+  standard: HKFRS-2023
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: HKD
+
+mappings:
+  # ── ASSETS ───────────────────────────────────────────────────────────────
+
+  "1000":
+    name: "Cash and Cash Equivalents / 現金及現金等價物"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1010":
+    name: "Cash on Hand / 庫存現金"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1020":
+    name: "Bank Current Accounts / 銀行往來帳戶"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1030":
+    name: "Fixed Deposits (< 3 months) / 定期存款（三個月內）"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Short-term Investments / 短期投資"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Trade Receivables / 應收貿易賬款"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1210":
+    name: "Allowance for Impairment of Receivables / 應收賬款減值撥備 (contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1220":
+    name: "Bills Receivable / 應收票據"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Other Receivables / 其他應收款"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1310":
+    name: "Deposits Paid / 已付按金"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1320":
+    name: "Prepayments / 預付款項"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Inventories / 存貨"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1410":
+    name: "Merchandise Inventory / 商品存貨"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "Other Current Assets / 其他流動資產"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "1600":
+    name: "Property, Plant and Equipment (gross) / 物業、廠房及設備（原值）"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1610":
+    name: "Land and Buildings / 土地及樓宇"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1620":
+    name: "Leasehold Improvements / 租用物業裝修"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1630":
+    name: "Furniture, Fixtures and Equipment / 傢俬、裝置及設備"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1640":
+    name: "Computer Equipment / 電腦設備"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1690":
+    name: "Accumulated Depreciation / 累計折舊 (contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1700":
+    name: "Intangible Assets / 無形資產"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1710":
+    name: "Goodwill / 商譽"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1750":
+    name: "Right-of-Use Assets (HKFRS 16) / 使用權資產"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  "1800":
+    name: "Long-term Investments / 長期投資"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  # ── LIABILITIES ───────────────────────────────────────────────────────────
+
+  "2100":
+    name: "Trade Payables / 應付貿易賬款"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2110":
+    name: "Bills Payable / 應付票據"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Short-term Bank Borrowings / 短期銀行借款"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2300":
+    name: "Profits Tax Payable / 應付利得稅"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2310":
+    name: "Provisional Profits Tax / 暫繳利得稅"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2400":
+    name: "Payroll Liabilities / 薪酬負債"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2410":
+    name: "Salaries and Wages Payable / 應付薪金及工資"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2420":
+    name: "MPF Contributions Payable / 應付強積金供款 (employer 5%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2500":
+    name: "Accrued Expenses / 應計費用"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "2510":
+    name: "Accrued Audit and Professional Fees / 應計審計及專業費"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "2600":
+    name: "Deferred Revenue / 預收收入"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "2700":
+    name: "Deposits Received / 已收按金"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000308"
+    aggregation_rules:
+      - "sum"
+
+  "2800":
+    name: "Other Current Liabilities / 其他流動負債"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000308"
+    aggregation_rules:
+      - "sum"
+
+  "2900":
+    name: "Long-term Bank Loans / 長期銀行貸款"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2910":
+    name: "Lease Liability (HKFRS 16) / 租賃負債"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "2950":
+    name: "Deferred Tax Liability / 遞延稅項負債"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  # ── EQUITY ────────────────────────────────────────────────────────────────
+
+  "3100":
+    name: "Share Capital / 股本"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Share Premium / 股份溢價"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Retained Profits / 保留盈利"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "Profit/Loss for the Year / 本年度損益"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "3500":
+    name: "Other Comprehensive Income Reserves / 其他全面收益儲備"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  # ── REVENUE ───────────────────────────────────────────────────────────────
+
+  "4100":
+    name: "Turnover / Sales Revenue / 營業額"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4200":
+    name: "Service Fee Income / 服務費收入"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "4300":
+    name: "Interest Income / 利息收入"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "4400":
+    name: "Rental Income / 租金收入"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "4900":
+    name: "Other Income / 其他收入"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  # ── EXPENSES ──────────────────────────────────────────────────────────────
+
+  "5100":
+    name: "Cost of Sales / 銷售成本"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "Staff Costs / 員工成本"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "6110":
+    name: "Salaries and Wages / 薪金及工資"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "6120":
+    name: "MPF Contributions (Employer) / 強積金供款（僱主）"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Depreciation / 折舊"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "6300":
+    name: "Rental and Rates / 租金及差餉"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "6400":
+    name: "Utilities / 水電煤氣費"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "6500":
+    name: "Marketing and Promotion / 市場推廣費"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "6600":
+    name: "Finance Costs / Interest Expense / 財務費用"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "6700":
+    name: "Profits Tax Expense / 利得稅費用 (16.5% / 8.25% two-tiered)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "6900":
+    name: "Other Operating Expenses / 其他營業費用"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

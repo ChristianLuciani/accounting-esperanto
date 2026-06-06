@@ -1,0 +1,605 @@
+# Kontablo Localization Mapping: Brunei Darussalam (BDSAS / IFRS-aligned)
+# Version: 0.1.0-draft
+# Authority: Registrar of Companies / BICPA (Brunei Darussalam Institute of Certified Public Accountants)
+# Standard: BDSAS (Brunei Darussalam Standards on Auditing and Accounting) — IFRS-aligned
+# Critical Notes:
+#   - Currency: BND (Brunei Dollar — pegged 1:1 to SGD under Currency Interchangeability Agreement since 1967)
+#     SGD is accepted as legal tender in Brunei; BND accepted in Singapore
+#   - Corporate Income Tax: 18.5% (reduced from 22% in 2014); preferential rates for SMEs
+#   - No personal income tax
+#   - No GST / No VAT
+#   - Oil and gas sector dominated by Brunei Shell Petroleum (BSP) and Petroleum Brunei (BNPC)
+#     Special petroleum income tax applies to upstream oil and gas: 55% on petroleum profits
+#   - Islamic Finance: prevalent — Takaful (Islamic insurance), Murabaha (cost-plus financing),
+#     Ijarah (Islamic leasing), Musharakah (partnership) accounts are standard
+#   - Zakat: mandatory religious levy for Muslim employees; employer deducts and remits to Tabung Amanah Islam Brunei (TAIB)
+#   - Halal certification costs may be a significant operating expense
+#   - MoF (Ministry of Finance and Economy) maintains accounting regulations
+#   - Malay (Bahasa Melayu) is official language; English widely used in business
+
+metadata:
+  country: BN
+  authority: Registrar of Companies / BICPA
+  standard: BDSAS-IFRS-aligned
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: BND
+
+mappings:
+  # ── ASSETS ───────────────────────────────────────────────────────────────
+
+  "1000":
+    name: "Cash and Cash Equivalents / Wang Tunai dan Setara Tunai"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1001":
+    name: "Cash on Hand / Wang Tunai di Tangan"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1002":
+    name: "Bank Current Accounts (Conventional) / Akaun Semasa Bank Konvensional"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1003":
+    name: "Islamic Bank Accounts (Wadiah / Qard) / Akaun Bank Islam"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1004":
+    name: "Fixed Deposits (Conventional) / Simpanan Tetap"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1005":
+    name: "Islamic Fixed Deposits (Mudharabah) / Simpanan Tetap Islam"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Short-term Investments / Pelaburan Jangka Pendek"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Trade Receivables / Penghutang Perdagangan"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1210":
+    name: "Murabaha Receivables / Penghutang Murabahah (cost-plus sale receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1220":
+    name: "Allowance for Doubtful Debts / Peruntukan Hutang Ragu (contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Other Receivables / Penghutang Lain"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1310":
+    name: "Petroleum Royalties Receivable / Royalti Petroleum Boleh Terima"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1320":
+    name: "Deposits Paid / Deposit Dibayar"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1330":
+    name: "Prepaid Expenses / Perbelanjaan Prabayar"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Inventories / Inventori"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1410":
+    name: "Crude Oil and Condensate Inventory / Inventori Minyak Mentah"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1420":
+    name: "Merchandise Inventory / Inventori Barangan"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "Other Current Assets / Aset Semasa Lain"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "1600":
+    name: "Property, Plant and Equipment (gross) / Hartanah, Loji dan Peralatan (kasar)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1610":
+    name: "Land and Buildings / Tanah dan Bangunan"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1620":
+    name: "Oil and Gas Extraction Equipment / Peralatan Pengekstrakan Minyak dan Gas"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1630":
+    name: "Motor Vehicles / Kenderaan Bermotor"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1640":
+    name: "Office Equipment and Computers / Peralatan Pejabat dan Komputer"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1690":
+    name: "Accumulated Depreciation / Susut Nilai Terkumpul (contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1700":
+    name: "Intangible Assets / Aset Tidak Ketara"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1710":
+    name: "Oil and Gas Exploration Licenses / Lesen Penerokaan Minyak dan Gas"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1720":
+    name: "Goodwill / Muhibah"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1750":
+    name: "Right-of-Use Assets / Aset Hak Guna (IFRS 16)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  "1760":
+    name: "Ijarah Assets (Islamic Leased Assets) / Aset Ijarah"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  "1800":
+    name: "Long-term Investments / Pelaburan Jangka Panjang"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  # ── LIABILITIES ───────────────────────────────────────────────────────────
+
+  "2100":
+    name: "Trade Payables / Pemiutang Perdagangan"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Short-term Borrowings (Conventional) / Pinjaman Jangka Pendek"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2210":
+    name: "Murabaha Financing Payable / Pembiayaan Murabahah Belum Bayar"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2300":
+    name: "Corporate Income Tax Payable / Cukai Pendapatan Syarikat Belum Bayar (18.5%)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2310":
+    name: "Petroleum Income Tax Payable / Cukai Pendapatan Petroleum Belum Bayar (55%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2400":
+    name: "Payroll Liabilities / Liabiliti Gaji"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2410":
+    name: "Salaries and Wages Payable / Gaji dan Upah Belum Bayar"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2420":
+    name: "Zakat Payable (TAIB) / Zakat Belum Bayar — mandatory for Muslim employees"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2430":
+    name: "Takaful Contributions Payable / Caruman Takaful Belum Bayar (Islamic insurance)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2500":
+    name: "Accrued Expenses / Perbelanjaan Terakru"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "2600":
+    name: "Deferred Revenue / Hasil Tertangguh"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "2700":
+    name: "Other Current Liabilities / Liabiliti Semasa Lain"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000308"
+    aggregation_rules:
+      - "sum"
+
+  "2800":
+    name: "Long-term Debt (Conventional) / Hutang Jangka Panjang"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2810":
+    name: "Sukuk Payable (Islamic Bond Liability) / Sukuk Belum Bayar"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2820":
+    name: "Ijarah Lease Liability / Liabiliti Pajakan Ijarah (IFRS 16 equivalent)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "2900":
+    name: "Deferred Tax Liability / Liabiliti Cukai Tertangguh"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  # ── EQUITY ────────────────────────────────────────────────────────────────
+
+  "3100":
+    name: "Share Capital / Modal Saham"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Retained Earnings / Pendapatan Tertahan"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Current Year Profit/Loss / Keuntungan/Kerugian Tahun Semasa"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "Other Comprehensive Income / Pendapatan Komprehensif Lain"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  # ── REVENUE ───────────────────────────────────────────────────────────────
+
+  "4100":
+    name: "Sales Revenue / Hasil Jualan"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4110":
+    name: "Petroleum and Gas Sales Revenue / Hasil Jualan Petroleum dan Gas"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4200":
+    name: "Service Revenue / Hasil Perkhidmatan"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "4300":
+    name: "Interest / Profit Income (Conventional + Islamic) / Pendapatan Faedah/Keuntungan"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "4310":
+    name: "Mudarabah / Musharakah Profit / Keuntungan Mudarabah / Musyarakah"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "4900":
+    name: "Other Operating Income / Pendapatan Operasi Lain"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  # ── EXPENSES ──────────────────────────────────────────────────────────────
+
+  "5100":
+    name: "Cost of Sales / Kos Jualan"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "5110":
+    name: "Petroleum Production Costs / Kos Pengeluaran Petroleum"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "Staff Costs / Kos Kakitangan"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "6110":
+    name: "Salaries and Wages / Gaji dan Upah"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "6120":
+    name: "Zakat Expense / Perbelanjaan Zakat"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "6130":
+    name: "Takaful Premium Expense / Perbelanjaan Premium Takaful"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Depreciation / Susut Nilai"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "6300":
+    name: "Rent / Ijarah Payments / Sewa / Bayaran Ijarah"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "6400":
+    name: "Utilities / Utiliti"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "6500":
+    name: "Marketing and Advertising / Pemasaran dan Pengiklanan"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "6600":
+    name: "Finance Costs / Interest / Profit Rate Expense / Kos Kewangan"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "6700":
+    name: "Corporate Income Tax Expense / Perbelanjaan Cukai Pendapatan (18.5%)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "6710":
+    name: "Petroleum Income Tax Expense / Perbelanjaan Cukai Pendapatan Petroleum (55%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "6900":
+    name: "Other Operating Expenses / Perbelanjaan Operasi Lain"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "6910":
+    name: "Halal Certification Costs / Kos Pensijilan Halal"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
