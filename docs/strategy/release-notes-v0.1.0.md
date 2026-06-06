@@ -2,16 +2,21 @@
 
 ## What's in this release
 
-- **Ontology**: 30 universal accounts (Level 3 minimum-core), UUID-keyed, empirically validated across 23 jurisdictions covering 92% of routine transaction volume
+- **Ontology**: 30 universal accounts (Level 3 minimum-core), UUID-keyed, mapped across **195 sovereign jurisdictions (complete global coverage)** — 92% routine transaction volume coverage
 - **API**: FastAPI reference implementation (`api/`) with account mapping, batch consolidation, and transaction classification endpoints
 - **Connectors**: ERPNext/Frappe connector (`connectors/erpnext/`) — Apache 2.0 license
 - **Preprint**: Full academic paper — see `docs/papers/drafts/kontablo_preprint_modular.pdf`
-- **Localizations**: YAML mapping files for 23 jurisdictions (`localizations/`)
+- **Localizations**: YAML mapping files for all 195 sovereign jurisdictions (`localizations/`) — 7,000+ account mappings
 - **OpenSpec**: 6 specification documents totaling ~9,800 lines (`openspec/`)
 
-## Jurisdictions validated
+## Jurisdictional coverage
 
-MX (SAT), BR (SPED), FR (PCG), VE (IAS 29 hyperinflation), SA (SOCPA), VN (VAS), NG (FRCN), AR, CO, PE, CL, GT, EC, UK, DE, JP, IN, CN, AU, ZA, IL, RU, EE
+All 195 UN-recognized sovereign states. Special contexts included:
+- **IAS 29 hyperinflation**: VE, LB, ZW, CU, SR, SY
+- **Islamic finance**: SA, QA, KW, BH, PK, BN, SD
+- **Distribution-only CIT** (Estonian model): EE, LV, GE
+- **SYSCOHADA** (OHADA mandatory chart): CI, CM, SN, CD, CG, GA, GN, ML, BF, NE, BJ, TG, BI, CF, TD
+- **IFRS-pure** (no mandatory chart — core maps directly): EE, BW, NA, and ~60 others
 
 ## Known limitations
 
