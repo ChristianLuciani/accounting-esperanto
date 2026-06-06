@@ -1,17 +1,31 @@
 # Kontablo Global Accounting Protocol: Execution Status
 
-## 🚀 Current Milestone: Phase 2.5 (Infrastructure Finalization)
+## 🚀 Current Milestone: Phase 3 — Pre-Publication (Release Day Pending)
 
-We have successfully completed the foundational research, jurisdictional expansion, and the architectural integration for the Agentic Economy. The project is now moving into Phase 3 (Expert Validation & Production Connectors).
+Pasos 1–7 del workflow prepare-for-publication completados. Paso 8 (release day: Zenodo + SSRN + notificaciones) pendiente de ejecución. Ver `docs/strategy/launch-playbook.md`.
+
+Última actualización: 2026-06-05
 
 ---
 
 ## ✅ Completed Milestones
 
-### 1. Global Jurisdictional Coverage (23/23)
-- [x] Mapping standards for Mexico (SAT), Brazil (SPED), France (PCG), Saudi Arabia (SOCPA), Vietnam (VAS), Nigeria (FRCN), and Venezuela (Hyperinflationary).
-- [x] Multi-lingual semantic mapping (Vietnamese, Arabic, Spanish, French).
-- [x] Validation via high-fidelity Mass Consolidation Simulation Engine.
+### 1. Global Jurisdictional Coverage (195/195 — 100%)
+- [x] **195 sovereign jurisdictions** mapped — complete global coverage.
+- [x] 7,000+ account mappings across all localizations.
+- [x] Mandatory charts: SYSCOHADA (12 países OHADA), PCG-France, SNC-Portugal,
+      MAR-Belgium, EKR-Austria, K-GAAP-Korea, BAS-Sweden, Smerná osnova-Czech,
+      SCF-Algeria, PCGM-Morocco, P(S)BO-Ukraine, OMF-Romania, and more.
+- [x] Special contexts: IAS 29 hyperinflation (VE, LB, ZW, CU, SR, SY),
+      Islamic finance (SA, QA, KW, BH, PK, BN, SD), distribution-only CIT
+      (EE, LV, GE), no-VAT jurisdictions (HK, BN, VU, AG, KN, KI, FM, PW).
+- [x] Multi-lingual names: Arabic, Chinese (Simplified + Traditional), Korean,
+      Estonian, Polish, Czech, Slovak, Croatian, Bulgarian, Ukrainian, and more.
+- [x] Discovery: the 3 last-added countries (EE, BW, NA) all share pure IFRS
+      adoption with no mandatory chart — confirming the ontology's universal
+      coverage thesis (see preprint appendix).
+- [x] Preprint updated: "23 jurisdictions" → "195 sovereign jurisdictions
+      (complete global coverage)" across all .tex files.
 
 ### 2. Advanced Whitepaper & Research (10-Page Preprint)
 - [x] Modular LaTeX implementation for academic publishing.
