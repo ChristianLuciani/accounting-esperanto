@@ -1,0 +1,354 @@
+# Kontablo Localization Mapping: Lebanon (Lebanese GAAP / Code de Commerce / IFRS for listed)
+# Version: 0.1.0-draft
+# Authority: LACPA (Lebanese Association of Certified Public Accountants)
+# Standard: Lebanese GAAP (Code de Commerce influence) / IFRS for listed entities
+# Critical Notes:
+#   SEVERE HYPERINFLATION CONTEXT — IAS 29 "Financial Reporting in Hyperinflationary Economies"
+#   APPLIES as of 2019 economic collapse; cumulative inflation exceeded 100% threshold
+#   Lebanese Pound (LBP) has collapsed: from ~1,500 LBP/USD (pre-2019 peg) to >85,000+ LBP/USD (2024)
+#   Multiple exchange rates coexisted: official peg (defunct), Sayrafa rate, parallel/black market rate
+#   USD de-facto standard for large transactions, real estate, commercial contracts
+#   Many entities now maintain books in USD; dual-currency reporting is common
+#   VAT (TVA) 11% — introduced 2002; collection and enforcement severely impaired post-2019
+#   Corporate income tax 17% (pre-crisis nominal rate; effective enforcement collapsed)
+#   IAS 29 treatment: restate non-monetary items using general price index; gain/loss on net monetary
+#   position recognized in P&L; comparative periods also restated
+#   Banking sector accounts use separate regulatory framework (Banque du Liban circulars)
+#   This mapping uses USD as functional currency (de-facto standard post-2019); note in metadata
+
+metadata:
+  country: LB
+  authority: LACPA
+  standard: LB-GAAP-IAS29
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: USD
+
+mappings:
+  "1":
+    name: "الأصول / Actif (Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "11":
+    name: "الأصول المتداولة / Actifs Courants (Current Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1101":
+    name: "نقد وأرصدة مصرفية — دولار أمريكي / Caisse et Banques USD (Cash — USD de-facto)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1102":
+    name: "أرصدة مصرفية محلية — ليرة / Comptes Bancaires LBP (Bank Accounts — LBP)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1103":
+    name: "استثمارات قصيرة الأجل (Short-term Investments)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1104":
+    name: "الذمم المدينة التجارية / Clients (Trade Receivables)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1105":
+    name: "ذمم مدينة أخرى / Autres Débiteurs (Other Receivables)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1106":
+    name: "المخزون / Stocks (Inventories — IAS 29 restated)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1107":
+    name: "مصاريف مدفوعة مسبقاً / Charges Payées d'Avance (Prepaid Expenses)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1108":
+    name: "TVA Déductible (VAT Receivable — 11%)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "12":
+    name: "الأصول غير المتداولة / Actifs Non Courants (Non-current Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1201":
+    name: "الممتلكات والمعدات / Immobilisations Corporelles (PP&E — IAS 29 restated gross)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1202":
+    name: "مجمع الاستهلاك / Amortissements Cumulés (Accumulated Depreciation — contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1203":
+    name: "الأصول غير الملموسة / Immobilisations Incorporelles (Intangible Assets)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1204":
+    name: "استثمارات طويلة الأجل / Participations (Long-term Investments)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "2":
+    name: "الالتزامات / Passif (Liabilities)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "21":
+    name: "الالتزامات المتداولة / Passifs Courants (Current Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2101":
+    name: "الذمم الدائنة / Fournisseurs (Accounts Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2102":
+    name: "قروض قصيرة الأجل / Dettes Bancaires CT (Short-term Loans)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2103":
+    name: "TVA Collectée (VAT Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2104":
+    name: "ضريبة الدخل / Impôt sur les Sociétés à Payer (Income Tax Payable — 17%)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2105":
+    name: "رواتب وضمان اجتماعي / Salaires et CNSS à Payer (Payroll Liabilities — CNSS)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2106":
+    name: "مصاريف مستحقة / Charges à Payer (Accrued Expenses)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "22":
+    name: "الالتزامات غير المتداولة / Passifs Non Courants (Non-current Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2201":
+    name: "قروض طويلة الأجل / Dettes Financières LT (Long-term Debt)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "3":
+    name: "حقوق الملكية / Capitaux Propres (Equity)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "31":
+    name: "رأس المال / Capital Social (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "32":
+    name: "الأرباح المبقاة / Bénéfices Reportés (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "33":
+    name: "ربح / خسارة السنة / Résultat de l'Exercice (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "34":
+    name: "احتياطي إعادة التقييم — IAS 29 / Réserve de Réévaluation IAS 29 (Revaluation Reserve)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "4":
+    name: "الإيرادات / Produits (Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "41":
+    name: "إيرادات المبيعات / Ventes (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "42":
+    name: "إيرادات الخدمات / Prestations de Services (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "43":
+    name: "إيرادات مالية / Produits Financiers (Financial Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "44":
+    name: "ربح صافي المركز النقدي — IAS 29 / Gain Position Monétaire Nette IAS 29 (Net Monetary Position Gain)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000605"
+    aggregation_rules:
+      - "sum"
+
+  "5":
+    name: "المصاريف / Charges (Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "51":
+    name: "تكلفة البضاعة المباعة / Coût des Ventes (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "52":
+    name: "رواتب وأجور / Salaires et Charges (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "53":
+    name: "استهلاك / Dotations aux Amortissements (Depreciation Expense — IAS 29 adjusted)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "54":
+    name: "مصاريف مالية / Charges Financières (Finance Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "55":
+    name: "ضريبة الدخل / Impôt sur les Bénéfices (Income Tax Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

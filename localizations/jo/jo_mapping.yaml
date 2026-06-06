@@ -1,0 +1,358 @@
+# Kontablo Localization Mapping: Jordan (IFRS adopted)
+# Version: 0.1.0-draft
+# Authority: JAA (Jordanian Association of Accountants) / JBA (Jordan Bar Association for CPAs)
+# Standard: IFRS as adopted; regulated by Ministry of Industry and Trade
+# Critical Notes:
+#   GST (General Sales Tax) 16% general rate; 0% for basic food, medicine, exports
+#   Reduced rates for specific sectors (tourism, hotels 8%)
+#   Corporate Income Tax: 20% general; 35% banking and financial institutions; 24% telecom/insurance
+#   Currency: JOD (Jordanian Dinar) — pegged to USD at JOD 0.709 = USD 1.00 since 1995
+#   JOD peg is stable; USD widely accepted; financial statements often maintained in JOD
+#   Income Tax Department (ITD) under Ministry of Finance is the tax authority
+#   Jordan also applies withholding tax (WHT) on dividends, interest, royalties
+#   Fiscal year: calendar year (January 1 – December 31)
+
+metadata:
+  country: JO
+  authority: JAA
+  standard: IFRS-JO
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: JOD
+
+mappings:
+  "1":
+    name: "الأصول (Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "11":
+    name: "الأصول المتداولة (Current Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1101":
+    name: "النقد وما في حكمه (Cash and Cash Equivalents)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1102":
+    name: "الحسابات المصرفية (Bank Accounts)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1103":
+    name: "الاستثمارات قصيرة الأجل (Short-term Investments)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1104":
+    name: "الذمم المدينة التجارية (Trade Receivables)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1105":
+    name: "ذمم مدينة أخرى (Other Receivables)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1106":
+    name: "المخزون (Inventories)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1107":
+    name: "المصاريف المدفوعة مسبقاً (Prepaid Expenses)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1108":
+    name: "ضريبة المبيعات المدفوعة مسبقاً (GST Input Tax Receivable)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "12":
+    name: "الأصول غير المتداولة (Non-current Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1201":
+    name: "الممتلكات والآلات والمعدات (Property, Plant & Equipment — gross)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1202":
+    name: "مجمع الاستهلاك (Accumulated Depreciation — contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1203":
+    name: "الأصول غير الملموسة (Intangible Assets)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1204":
+    name: "الاستثمارات طويلة الأجل (Long-term Investments)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "1205":
+    name: "أصول حق الاستخدام — IFRS 16 (Right-of-Use Assets)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  "2":
+    name: "الالتزامات (Liabilities)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "21":
+    name: "الالتزامات المتداولة (Current Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2101":
+    name: "الذمم الدائنة التجارية (Accounts Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2102":
+    name: "قروض قصيرة الأجل (Short-term Loans)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2103":
+    name: "ضريبة المبيعات المستحقة (GST Output Tax Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2104":
+    name: "ضريبة الدخل المستحقة (Income Tax Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2105":
+    name: "رواتب وأجور مستحقة (Payroll Liabilities — SSC)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2106":
+    name: "مصاريف مستحقة (Accrued Expenses)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "22":
+    name: "الالتزامات غير المتداولة (Non-current Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2201":
+    name: "قروض طويلة الأجل (Long-term Debt)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2202":
+    name: "التزامات التأجير التمويلي (Finance Lease Liability)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "2203":
+    name: "الضريبة المؤجلة — التزام (Deferred Tax Liability)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  "3":
+    name: "حقوق الملكية (Equity)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "31":
+    name: "رأس المال المدفوع (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "32":
+    name: "الأرباح المبقاة (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "33":
+    name: "ربح / خسارة السنة الحالية (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "4":
+    name: "الإيرادات (Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "41":
+    name: "إيرادات المبيعات (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "42":
+    name: "إيرادات الخدمات (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "43":
+    name: "الإيرادات المالية / الفوائد (Financial / Interest Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "5":
+    name: "المصاريف (Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "51":
+    name: "تكلفة المبيعات (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "52":
+    name: "الرواتب والأجور (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "53":
+    name: "الاستهلاك والإطفاء (Depreciation and Amortisation)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "54":
+    name: "المصاريف المالية / الفوائد (Finance Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "55":
+    name: "ضريبة الدخل (Income Tax Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

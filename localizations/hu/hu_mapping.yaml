@@ -1,0 +1,460 @@
+# Kontablo Localization Mapping: Hungary (Hungarian Accounting Act / Számviteli törvény)
+# Version: 0.1.0-draft
+# Authority: Pénzügyminisztérium (Ministry of Finance, Hungary) / NAV (Nemzeti Adó- és Vámhivatal)
+# Standard: Hungarian Accounting Act (2000. évi C. törvény a számvitelről — Szt.) with implementing
+#           decrees; Hungarian GAAP (HAS — Hungarian Accounting Standards)
+# Critical Notes:
+#   Hungary has a prescribed chart of accounts structure (Számlatükör) under the Accounting Act.
+#   The Egységes számlatükör (Unified Chart of Accounts) is mandatory for business entities.
+#   It uses a class-based structure: 1=Fixed assets, 2=Inventories, 3=Cash and receivables,
+#   4=Liabilities and equity, 5=Cost by nature, 8=Expenses by function, 9=Revenue.
+#   Hungarian GAAP differs from IFRS: cost model for most assets, specific accrual rules,
+#   and a mandatory small business tax option (KIVA).
+#   Listed companies apply IFRS as adopted by EU (mandatory for consolidated statements of
+#   certain categories since 2016, adopted via separate Hungarian IFRS adoption decree).
+#   VAT (ÁFA — Általános forgalmi adó): standard rate 27% — the highest standard VAT rate in
+#   the EU. Reduced rates: 18% (some food items, accommodation) and 5% (medicines, books,
+#   restaurant services, newly built housing).
+#   Corporate income tax (TAO — Társasági adó): 9% — the lowest in the EU.
+#   KIVA (Kisvállalati adó — small business tax): flat 10% on payroll + dividends (alternative
+#   to TAO + employer social contributions for qualifying SMEs).
+#   Employer social contribution (Szociális hozzájárulási adó — Szocho): 13% of gross wages.
+#   HUF is the functional currency; EUR accounts common.
+
+metadata:
+  country: HU
+  authority: Pénzügyminisztérium / NAV (Nemzeti Adó- és Vámhivatal)
+  standard: szamviteli_torveny_egységes_szamlatukor
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: HUF
+
+mappings:
+  # === 1. BEFEKTETETT ESZKÖZÖK (Fixed Assets) ===
+
+  "11":
+    name: "Immateriális javak (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "111":
+    name: "Alapítás-átszervezés aktivált értéke (Formation and Reorganisation Costs — capitalised)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: Hungarian GAAP permits capitalisation of formation costs; IFRS does not.
+
+  "113":
+    name: "Vagyoni értékű jogok (Valuable Rights — concessions, licences, leaseholds)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "114":
+    name: "Szellemi termékek (Intellectual Property — patents, software, trademarks)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "115":
+    name: "Goodwill"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "119":
+    name: "Immateriális javak értékhelyesbítése (Revaluation Surplus — Intangibles)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "129":
+    name: "Immateriális javak terv szerinti értékcsökkenése (Accumulated Amortisation — Intangibles, contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "12":
+    name: "Tárgyi eszközök (Tangible Fixed Assets / PPE)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "121":
+    name: "Ingatlanok és kapcsolódó vagyoni értékű jogok (Real Property and Related Rights)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "122":
+    name: "Műszaki berendezések, gépek, járművek (Technical Equipment, Machinery, Vehicles)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "123":
+    name: "Egyéb berendezések, felszerelések, járművek (Other Equipment, Fixtures, Vehicles)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "129_ppe":
+    name: "Tárgyi eszközök terv szerinti értékcsökkenése (Accumulated Depreciation — PPE, contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "13":
+    name: "Befektetett pénzügyi eszközök (Long-term Financial Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "131":
+    name: "Tartós részesedés kapcsolt vállalkozásban (Long-term Investment in Related Parties)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  # === 2. KÉSZLETEK (Inventories) ===
+
+  "21":
+    name: "Anyagok (Materials — raw materials and supplies)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "25":
+    name: "Áruk (Merchandise / Trading Goods)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "26":
+    name: "Késztermékek (Finished Goods)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  # === 3. KÖVETELÉSEK, PÉNZESZKÖZÖK (Receivables and Cash) ===
+
+  "31":
+    name: "Követelések áruszállításból és szolgáltatásból (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "36":
+    name: "Különféle egyéb követelések (Other Receivables — VAT, tax prepaid, other)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "361":
+    name: "ÁFA-követelés (Input VAT Receivable)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "37":
+    name: "Aktív időbeli elhatárolások (Prepaid Expenses and Accrued Income)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "38":
+    name: "Pénzeszközök (Cash and Bank)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "381":
+    name: "Pénztár és csekkek (Cash on Hand and Cheques)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "384":
+    name: "Bankbetétek (Bank Deposits — current and other accounts)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  # === 4. SAJÁT TŐKE, CÉLTARTALÉKOK, KÖTELEZETTSÉGEK (Equity, Provisions, Liabilities) ===
+
+  "41":
+    name: "Saját tőke (Equity)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "411":
+    name: "Jegyzett tőke (Registered Capital)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "413":
+    name: "Tőketartalék (Capital Reserve / Share Premium)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "414":
+    name: "Eredménytartalék (Retained Earnings / Profit Reserve)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "419":
+    name: "Mérleg szerinti eredmény (Net Profit/Loss per Balance Sheet)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "42":
+    name: "Céltartalékok (Provisions)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  "43":
+    name: "Hosszú lejáratú kötelezettségek (Long-term Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "431":
+    name: "Hosszú lejáratú hitelek (Long-term Bank Loans)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "44":
+    name: "Rövid lejáratú kötelezettségek (Current Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "441":
+    name: "Rövid lejáratú hitelek (Short-term Bank Loans)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "454":
+    name: "Kötelezettségek áruszállításból és szolgáltatásból (Trade Payables)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "462":
+    name: "ÁFA-kötelezettség (Output VAT Payable — Általános forgalmi adó)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "461":
+    name: "Társasági adó kötelezettség (Corporate Tax Payable — TAO)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "471":
+    name: "Munkavállalókkal szembeni kötelezettségek (Employee Payables — wages payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "472":
+    name: "Szociális hozzájárulási adó és járulékok (Employer Social Contribution Payable — Szocho 13%)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "48":
+    name: "Passzív időbeli elhatárolások (Deferred Income and Accrued Expenses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  # === 5. KÖLTSÉGNEMEK (Costs by Nature) ===
+
+  "51":
+    name: "Anyagjellegű ráfordítások (Material-type Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "511":
+    name: "Anyagköltség (Raw Material Costs)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "52":
+    name: "Személyi jellegű ráfordítások (Personnel Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "521":
+    name: "Bérköltség (Wage and Salary Costs)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "522":
+    name: "Személyi jellegű egyéb kifizetések (Other Personnel Payments)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "523":
+    name: "Bérjárulékok (Employer Social Contributions — Szocho + Szochó)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "53":
+    name: "Értékcsökkenési leírás (Depreciation and Amortisation)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  # === 8-9. BEVÉTELEK ÉS RÁFORDÍTÁSOK (Revenue and Expenses) ===
+
+  "91":
+    name: "Belföldi értékesítés nettó árbevétele (Domestic Net Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "92":
+    name: "Export értékesítés nettó árbevétele (Export Net Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "96":
+    name: "Pénzügyi bevételek (Financial Income — interest, dividends)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "86":
+    name: "Pénzügyi ráfordítások (Financial Expenses — interest, FX losses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "89":
+    name: "Adófizetési kötelezettség (Income Tax Expense — TAO 9%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

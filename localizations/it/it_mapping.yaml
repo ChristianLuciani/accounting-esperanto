@@ -1,0 +1,402 @@
+# Kontablo Localization Mapping: Italy (Piano dei Conti / OIC)
+# Version: 0.1.0-draft
+# Authority: OIC (Organismo Italiano di Contabilità) / Codice Civile art. 2423-2435
+# Standard: Italian GAAP (Principi Contabili OIC); Codice Civile IV Directive implementation
+# Critical Notes:
+#   Italy uses a flexible chart of accounts; the structure below follows the most common
+#   Italian SME practice aligned with the Codice Civile balance sheet format (art. 2424).
+#   Balance sheet classes: B=Immobilizzazioni, C=Attivo Circolante, D=Ratei/Risconti (assets);
+#   A=Patrimonio Netto, B=Fondi Rischi, C=TFR, D=Debiti, E=Ratei (liabilities/equity).
+#   Listed companies apply IFRS as adopted by EU (D.Lgs. 38/2005).
+#   VAT (IVA — Imposta sul Valore Aggiunto): standard rate 22%; reduced 10% and 4%.
+#   Corporate income tax: IRES 24% + IRAP 3.9% (regional; varies by sector/region).
+#   TFR (Trattamento di Fine Rapporto): Italian statutory employee severance fund — no direct
+#   IFRS equivalent; closest mapping is defined-benefit obligation (IAS 19).
+#   Account codes below follow the most common Italian ERP default (SAP, Zucchetti, TeamSystem).
+
+metadata:
+  country: IT
+  authority: OIC (Organismo Italiano di Contabilità) / Ministero dell'Economia
+  standard: oic_piano_dei_conti
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: EUR
+
+mappings:
+  # === IMMOBILIZZAZIONI (Fixed Assets — Class B) ===
+
+  "B.I.1":
+    name: "Costi di impianto e di ampliamento (Formation and Development Costs)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: OIC 24 treats these as intangible assets to be amortised within 5 years.
+    # No IFRS equivalent (IAS 38 prohibits capitalisation of most formation costs).
+
+  "B.I.3":
+    name: "Diritti di brevetto industriale e diritti di utilizzazione delle opere d'ingegno (Patents and IP)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "B.I.4":
+    name: "Concessioni, licenze, marchi e diritti simili (Concessions, Licences, Trademarks)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "B.I.5":
+    name: "Avviamento (Goodwill)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "B.II.1":
+    name: "Terreni e fabbricati (Land and Buildings)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "B.II.2":
+    name: "Impianti e macchinario (Plant and Machinery)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "B.II.3":
+    name: "Attrezzature industriali e commerciali (Industrial and Commercial Equipment)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "B.II.4":
+    name: "Altri beni (Other Tangible Assets — furniture, vehicles, IT)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "B.II.5":
+    name: "Immobilizzazioni in corso e acconti (Assets Under Construction)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "B.III.1":
+    name: "Partecipazioni in imprese controllate (Investments in Subsidiaries)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  # === ATTIVO CIRCOLANTE (Current Assets — Class C) ===
+
+  "C.I.1":
+    name: "Materie prime, sussidiarie e di consumo (Raw Materials and Consumables)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "C.I.4":
+    name: "Prodotti finiti e merci (Finished Goods and Merchandise)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "C.II.1":
+    name: "Crediti verso clienti (Trade Receivables — Customers)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "C.II.5":
+    name: "Crediti tributari (Tax Receivables — IRES/IRPEF prepaid, VAT refundable)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "C.II.5b":
+    name: "Crediti IVA (VAT Receivable / Input VAT to recover)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "C.IV.1":
+    name: "Depositi bancari e postali (Bank and Post Office Deposits)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "C.IV.3":
+    name: "Denaro e valori in cassa (Cash on Hand)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  # === RATEI E RISCONTI ATTIVI (Prepaid Expenses and Accrued Income) ===
+
+  "D_attivo":
+    name: "Ratei attivi e risconti attivi (Accrued Income and Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  # === PATRIMONIO NETTO (Equity — Class A) ===
+
+  "A.I":
+    name: "Capitale sociale (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "A.IV":
+    name: "Riserva legale (Legal Reserve — mandatory 20% of share capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "A.VII":
+    name: "Utili (perdite) portati a nuovo (Retained Earnings / Accumulated Losses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "A.IX":
+    name: "Utile (perdita) dell'esercizio (Net Profit / Loss for the Year)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  # === FONDI PER RISCHI E ONERI (Provisions — Class B liabilities) ===
+
+  "B_pens":
+    name: "Fondi per trattamento di quiescenza e obblighi simili (Pension Fund Provisions)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  "B_imp":
+    name: "Fondi per imposte, anche differite (Tax Provisions and Deferred Tax)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  # === TFR — TRATTAMENTO DI FINE RAPPORTO ===
+
+  "C_tfr":
+    name: "Trattamento di fine rapporto di lavoro subordinato (Employee Severance Provision — TFR)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: TFR is a defined statutory obligation; OIC 31. Under IFRS it maps to IAS 19
+    # defined-benefit obligation. UUID 000000000404 (Provisions) is the closest match.
+
+  # === DEBITI (Liabilities — Class D) ===
+
+  "D.4":
+    name: "Debiti verso banche (Bank Liabilities — overdrafts and loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "D.6":
+    name: "Acconti da clienti (Customer Advances / Deferred Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "D.7":
+    name: "Debiti verso fornitori (Trade Payables)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "D.12":
+    name: "Debiti tributari (Tax Payables — IRES, IRAP, withholding)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "D.12b":
+    name: "IVA a debito (VAT Payable — Output VAT)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "D.13":
+    name: "Debiti verso istituti di previdenza e sicurezza sociale (Social Security Payable — INPS/INAIL)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "D.14":
+    name: "Altri debiti (Other Liabilities — accrued salaries, employee withholding)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000308"
+    aggregation_rules:
+      - "sum"
+
+  # === CONTO ECONOMICO: RICAVI (Income Statement — Revenue, Class A) ===
+
+  "A.1":
+    name: "Ricavi delle vendite e delle prestazioni (Revenue from Sales and Services)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "A.5":
+    name: "Altri ricavi e proventi (Other Operating Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  # === CONTO ECONOMICO: COSTI (Income Statement — Expenses) ===
+
+  "B.6":
+    name: "Costi per materie prime, sussidiarie, di consumo e di merci (Raw Materials and Merchandise Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "B.7":
+    name: "Costi per servizi (Service Costs / Outsourced Services)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "B.8":
+    name: "Costi per godimento di beni di terzi (Leases and Rental Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "B.9":
+    name: "Costi per il personale (Personnel Costs — salaries, social contributions, TFR accrual)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "B.10":
+    name: "Ammortamenti e svalutazioni (Depreciation, Amortisation and Impairment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "B.14":
+    name: "Oneri diversi di gestione (Other Operating Charges)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  # === PROVENTI E ONERI FINANZIARI (Financial Income/Expense) ===
+
+  "C.15":
+    name: "Proventi da partecipazioni (Income from Investments / Dividends)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "C.16":
+    name: "Altri proventi finanziari — interessi attivi (Other Financial Income — Interest Received)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "C.17":
+    name: "Interessi e altri oneri finanziari (Interest Expense and Financial Charges)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  # === IMPOSTE (Tax) ===
+
+  "22":
+    name: "Imposte sul reddito dell'esercizio (Income Tax Expense — IRES + IRAP)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

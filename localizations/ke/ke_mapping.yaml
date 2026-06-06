@@ -1,0 +1,548 @@
+# Kontablo Localization Mapping: Kenya (IFRS as adopted / Companies Act 2015)
+# Version: 0.1.0-draft
+# Authority: ICPAK (Institute of Certified Public Accountants of Kenya) / CMA (Capital Markets Authority)
+# Standard: IFRS (full) for listed / public interest entities; IFRS for SMEs for smaller entities.
+#            Governed by: Companies Act No. 17 of 2015, Accountants Act Cap. 531.
+# Critical Notes:
+#   Kenya adopts full IFRS for public interest entities (PIEs) and listed companies.
+#   ICPAK is the competent authority issuing financial reporting standards.
+#   No mandatory national chart of accounts exists; codes below reflect widely-used practice
+#   consistent with ICPAK guidance and Kenyan accounting education (KCA, Strathmore).
+#   VAT: standard rate 16% (VAT Act Cap. 476, revised 2020). Zero-rated and exempt categories exist.
+#   Corporate income tax: 30% for resident companies; 37.5% for non-resident branches.
+#   PAYE (Pay As You Earn): progressive rates up to 35% for employees.
+#   NSSF (National Social Security Fund) and NHIF (National Health Insurance Fund) contributions
+#   create additional payroll liability accounts; NSSF Act 2013 rates are significant.
+#   KRA (Kenya Revenue Authority) administers tax; eTIMS (electronic Tax Invoice Management System)
+#   is mandatory for VAT-registered taxpayers since 2023.
+# VERIFY: Codes are industry approximations; ICPAK does not mandate a chart of accounts.
+
+metadata:
+  country: KE
+  authority: ICPAK (Institute of Certified Public Accountants of Kenya)
+  standard: IFRS_full_2023_Kenya_adoption
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-01
+  currency: KES
+
+mappings:
+  # === ASSETS ===
+  "1000":
+    name: "Current Assets"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Cash and Cash Equivalents"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "Petty Cash"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1120":
+    name: "Bank Current Account"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1130":
+    name: "Mobile Money — M-Pesa / Airtel Money (Kenya-specific)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: Mobile money wallets (M-Pesa) are routinely classified as cash equivalents in
+    # Kenyan practice given their immediate liquidity; IFRS does not specifically address this.
+
+  "1140":
+    name: "Fixed Deposits and Short-term Investments"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Trade and Other Receivables"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1210":
+    name: "Trade Receivables (Debtors)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1215":
+    name: "Provision for Bad and Doubtful Debts (contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1220":
+    name: "Other Receivables"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1230":
+    name: "VAT Recoverable / Input VAT (16%)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1240":
+    name: "Withholding Tax Recoverable (WHT)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Inventories / Stock"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1310":
+    name: "Raw Materials"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1320":
+    name: "Finished Goods"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Prepayments and Accrued Income"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Non-current Assets"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Property, Plant and Equipment (gross)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2110":
+    name: "Land and Buildings"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2120":
+    name: "Motor Vehicles"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2130":
+    name: "Furniture and Equipment"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2190":
+    name: "Accumulated Depreciation — PP&E (contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Intangible Assets (Software, Goodwill)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "2300":
+    name: "Long-term Investments"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "2400":
+    name: "Right-of-Use Assets (IFRS 16)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  # === LIABILITIES ===
+  "3000":
+    name: "Current Liabilities"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Trade and Other Payables (Creditors)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Bank Overdraft / Short-term Borrowings"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "VAT Payable / Output VAT (16%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "Income Tax Payable (Corporation Tax — KRA)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "3500":
+    name: "PAYE Payable (Pay As You Earn — KRA)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "3510":
+    name: "NSSF Contributions Payable (National Social Security Fund)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "3520":
+    name: "NHIF / SHIF Contributions Payable (National Health Insurance Fund / SHA)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: As of Oct 2023, NHIF was transitioning to SHA (Social Health Authority); confirm
+    # applicable fund name and rates for 2026.
+
+  "3600":
+    name: "Accrued Expenses"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "3700":
+    name: "Deferred Revenue"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "3800":
+    name: "Other Current Liabilities"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000308"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Non-current Liabilities"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "Long-term Borrowings (Bank Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "4200":
+    name: "Lease Liabilities — long-term (IFRS 16)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "4300":
+    name: "Deferred Tax Liability"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  "4400":
+    name: "Gratuity / Staff End-of-Service Benefit Provision"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  # === EQUITY ===
+  "5000":
+    name: "Equity / Shareholders' Funds"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Share Capital (Ordinary Shares)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Share Premium"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5300":
+    name: "Retained Earnings / (Accumulated Deficit)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5400":
+    name: "Current Year Profit / (Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "5500":
+    name: "Other Reserves (Revaluation Reserve, Translation Reserve)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  # === REVENUE ===
+  "6000":
+    name: "Revenue / Turnover"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "Sales of Goods"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Service Income"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "6300":
+    name: "Interest and Investment Income"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "6400":
+    name: "Other Income (grants, rental income, gain on disposal)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  # === EXPENSES ===
+  "7000":
+    name: "Expenses"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "7100":
+    name: "Cost of Sales / Cost of Goods Sold"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "Staff Costs"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7210":
+    name: "Salaries and Wages"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7220":
+    name: "NSSF — Employer Contribution"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7300":
+    name: "Depreciation and Amortisation"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "Rent and Rates"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "7500":
+    name: "Utilities (Electricity — KPLC, Water)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "7600":
+    name: "Marketing and Advertising"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "7700":
+    name: "Finance Costs (Interest on Loans)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "7800":
+    name: "Income Tax Expense (Corporation Tax)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "7900":
+    name: "Other Operating Expenses (general and admin)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

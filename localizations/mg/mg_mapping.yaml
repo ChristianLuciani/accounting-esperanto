@@ -1,0 +1,285 @@
+# Kontablo Localization Mapping: Madagascar (Plan Comptable Général Malgache / SYSCOHADA-influenced)
+# Version: 0.1.0-draft
+# Authority: Ordre des Experts Comptables et Financiers de Madagascar (OECFM)
+# Standard: Plan Comptable Général Malgache (PCGM) — SYSCOHADA-influenced, not a full OHADA member
+# Critical Notes:
+#   Currency: MGA (Malagasy Ariary). 1 Ariary = 5 Iraimbilanja.
+#   TVA (VAT): 20% standard rate. Authority: Direction Générale des Impôts (DGI).
+#   Corporate income tax (IR / Impôt sur les Revenus): 20% standard rate.
+#   SYSCOHADA account codes (Class 1-8) used as base; Madagascar is not a full OHADA member
+#   but follows SYSCOHADA plan closely since 2005 reform.
+#   VERIFY: Madagascar's formal adoption status vs OHADA; some sources classify it as
+#   influenced but not member. Official OHADA membership list does not include Madagascar.
+
+metadata:
+  country: MG
+  authority: Ordre des Experts Comptables et Financiers de Madagascar (OECFM)
+  standard: PCGM_SYSCOHADA_INFLUENCED
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: MGA
+
+mappings:
+  "2":
+    name: "Classe 2 — Actifs immobilisés (Non-current Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "21":
+    name: "Immobilisations incorporelles (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "22":
+    name: "Terrains (Land)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "23":
+    name: "Bâtiments (Buildings)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "24":
+    name: "Matériel et outillage (Equipment and Tools)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "28":
+    name: "Amortissements (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "3":
+    name: "Classe 3 — Stocks (Inventories)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "31":
+    name: "Marchandises (Merchandise Inventory)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "32":
+    name: "Matières premières (Raw Materials)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "4":
+    name: "Classe 4 — Tiers (Receivables and Payables)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "401":
+    name: "Fournisseurs (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "411":
+    name: "Clients (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "421":
+    name: "Personnel — rémunérations dues (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "443":
+    name: "TVA collectée (VAT Payable — 20%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "445":
+    name: "TVA déductible (VAT Receivable — 20%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "447":
+    name: "Impôts et taxes à payer (Income Tax Payable — 20%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "5":
+    name: "Classe 5 — Trésorerie (Cash and Bank)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "521":
+    name: "Banques (Bank Accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "571":
+    name: "Caisse (Cash in Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1":
+    name: "Classe 1 — Ressources durables (Long-term Liabilities and Equity)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "101":
+    name: "Capital social (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "111":
+    name: "Réserves (Retained Earnings / Reserves)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "131":
+    name: "Résultat de l'exercice (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "16":
+    name: "Emprunts et dettes financières (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "7":
+    name: "Classe 7 — Revenus (Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "701":
+    name: "Ventes de marchandises (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "706":
+    name: "Prestations de services (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "76":
+    name: "Produits financiers (Financial Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "6":
+    name: "Classe 6 — Charges (Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "601":
+    name: "Achats de marchandises (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "641":
+    name: "Charges de personnel (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "681":
+    name: "Dotations aux amortissements (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "695":
+    name: "Impôt sur les bénéfices (Income Tax Expense — 20%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

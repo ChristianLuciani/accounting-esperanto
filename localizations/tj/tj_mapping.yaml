@@ -1,0 +1,318 @@
+# Kontablo Localization Mapping: Tajikistan (IFRS for PIEs / National Accounting Standards)
+# Version: 0.1.0-draft
+# Authority: Ministry of Finance of the Republic of Tajikistan
+# Standard: IFRS for Public Interest Entities (PIEs); National Accounting Standards (NAS) for SMEs.
+#   IFRS adoption for PIEs mandated; SMEs follow NAS which is IFRS-aligned but simplified.
+#   Soviet-era chart of accounts (Plan schyotov) formally replaced but influence persists.
+# Critical Notes:
+#   Currency: TJS (Tajikistani Somoni).
+#   VAT (НДС): 15% standard rate. Authority: Tax Committee under Government of Tajikistan.
+#   Corporate income tax (Налог на прибыль): 18% standard rate.
+#   Economy: hydropower, aluminium (TALCO), cotton, remittances from Russia/Kazakhstan.
+#   TALCO (Tajik Aluminium Company) is dominant state enterprise; sector-specific accounts relevant.
+#   Russian is widely used in business; Tajik (Cyrillic) is official.
+
+metadata:
+  country: TJ
+  authority: Ministry of Finance of the Republic of Tajikistan
+  standard: IFRS_PIE_NAS_TJ
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: TJS
+
+mappings:
+  "1000":
+    name: "Aktiva (Assets / Активы)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Denezhnyye sredstva (Cash and Cash Equivalents / Денежные средства)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "Raschetnyy schet (Bank Current Account / Расчётный счёт)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1120":
+    name: "Kassa (Cash in Hand / Касса)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1130":
+    name: "Kratkosrochnyye investitsii (Short-term Investments)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Debitorskaya zadolzhennost (Trade Receivables / Дебиторская задолженность)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1210":
+    name: "Prochaya debitorskaya zadolzhennost (Other Receivables)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Zapasy (Inventories / Запасы)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Raskhody budushchikh periodov (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "NDS k vozmeshcheniyu (VAT Receivable — 15%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1600":
+    name: "Osnovnyye sredstva (Property, Plant and Equipment — gross)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1610":
+    name: "Nakaplennyy iznos (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1700":
+    name: "Nematerialnyye aktivy (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1800":
+    name: "Pravo polzovaniya aktivom (Right-of-Use Assets — IFRS 16)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  "1900":
+    name: "Dolgosrochnyye finansovyye vlozheniya (Long-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Obyazatelstva (Liabilities / Обязательства)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Kreditorskaya zadolzhennost (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "NDS k uplate (VAT Payable — 15%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2300":
+    name: "Nalog na pribyl k uplate (Income Tax Payable — 18%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2400":
+    name: "Zadolzhennost po zarabotnoy plate (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2500":
+    name: "Nachislennyye raskhody (Accrued Expenses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "2600":
+    name: "Dolgosrochnyy dolg (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2700":
+    name: "Otlozhennoye nalogovoye obyazatelstvo (Deferred Tax Liability)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  "3000":
+    name: "Kapital (Equity / Капитал)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Ustavnyy kapital (Share Capital / Уставный капитал)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Neraspredelennaya pribyl (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Pribyl/ubytok tekushchego goda (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Vyruchka (Revenue / Выручка)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "Vyruchka ot prodazh (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4200":
+    name: "Vyruchka ot uslug (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "4300":
+    name: "Protsenty k polucheniyu (Interest Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Raskhody (Expenses / Расходы)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Sebestoimost prodazh (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Raskhody na oplatu truda (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5300":
+    name: "Amortizatsiya (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "5400":
+    name: "Nalog na pribyl (Income Tax Expense — 18%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "5500":
+    name: "Prochiye operatsionnyye raskhody (Other Operating Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

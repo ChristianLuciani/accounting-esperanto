@@ -1,0 +1,452 @@
+# Kontablo Localization Mapping: Algeria (Système Comptable Financier — SCF)
+# Version: 0.1.0-draft
+# Authority: CNC Algérie (Conseil National de la Comptabilité)
+#            Source law: Loi n° 07-11 du 25 novembre 2007 portant système comptable financier.
+#            Implementation decree: Décret exécutif n° 08-156 du 26 mai 2008.
+# Standard: SCF (Système Comptable Financier), effective January 1, 2010.
+#           Replaced the PCN (Plan Comptable National) of 1975.
+#           SCF is substantially IFRS-aligned with a mandatory 7-class chart of accounts.
+# Critical Notes:
+#   Algeria has a MANDATORY chart of accounts (Plan des Comptes SCF).
+#   Official structure: 7 classes with 2-digit root codes, 3-digit sub-accounts, up to 6 digits.
+#   Class 1: Capital accounts. Class 2: Fixed assets. Class 3: Stocks.
+#   Class 4: Third-party accounts. Class 5: Financial accounts.
+#   Class 6: Expenses. Class 7: Revenue.
+#   Arabic is the official language of the state (Constitution 2020, Art. 4).
+#   All official accounting documents must be in Arabic; French is widely used in practice.
+#   VAT (TVA — Taxe sur la Valeur Ajoutée): standard rate 19% (Loi de Finances 2017);
+#     reduced rate 9% on certain goods/services. Source: Code des Taxes sur le Chiffre
+#     d'Affaires (TCA), Articles 1-90.
+#   Corporate Income Tax (IBS — Impôt sur les Bénéfices des Sociétés): 19% for
+#     manufacturing/agriculture, 23% for construction/tourism, 26% for trade/services
+#     (Loi de Finances 2015 rates; VERIFY for 2026).
+#   TAP (Taxe sur l'Activité Professionnelle): 2% on turnover (local business activity tax).
+#   Currency: DZD (Algerian Dinar).
+# VERIFY: IBS rates — confirm applicable bands for fiscal year 2026 (subject to annual LF).
+# VERIFY: TAP rate — 2% confirmed for most activities; verify 2026 LF amendments.
+# VERIFY: Sub-account codes below 4 digits are author-generated consistent with SCF structure;
+#         the mandatory 3-digit level is reproduced where officially published.
+
+metadata:
+  country: DZ
+  authority: CNC Algérie (Conseil National de la Comptabilité)
+  standard: SCF_2010
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: DZD
+
+mappings:
+  # === CLASSE 1 — COMPTES DE CAPITAUX (Capital and Long-term Financing) ===
+  "101":
+    name: "Capital émis — رأس المال المُصدَر (Issued Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "104":
+    name: "Primes liées au capital — علاوات الإصدار (Share Premiums)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "106":
+    name: "Réserves — الاحتياطيات (Reserves)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "110":
+    name: "Report à nouveau — الأرباح المرحّلة (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "120":
+    name: "Résultat de l'exercice — نتيجة الدورة (Current Year Result)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "142":
+    name: "Provisions réglementées — مؤونات تنظيمية (Regulated Provisions)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "160":
+    name: "Emprunts et dettes assimilées — قروض وديون مماثلة (Long-term Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "162":
+    name: "Emprunts auprès des établissements de crédit (Loans from Credit Institutions)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "168":
+    name: "Autres dettes non courantes (Other Non-current Liabilities)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASSE 2 — COMPTES D'ACTIFS NON COURANTS (Non-current Assets) ===
+  "204":
+    name: "Logiciels et droits similaires — برامج معلوماتية (Software / Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "207":
+    name: "Ecarts d'acquisition — الشهرة (Goodwill)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "211":
+    name: "Terrains — أراضي (Land)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "213":
+    name: "Constructions — مباني (Buildings)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "215":
+    name: "Installations techniques, matériel et outillage — تجهيزات إنتاج (Plant and Equipment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "218":
+    name: "Autres immobilisations corporelles — أصول ثابتة أخرى (Other Fixed Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "280":
+    name: "Amortissements des immobilisations incorporelles (Accumulated Amort. — Intangibles, contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "281":
+    name: "Amortissements des immobilisations corporelles (Accumulated Depreciation — PPE, contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "261":
+    name: "Titres de participation — أسهم المساهمة (Equity Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASSE 3 — COMPTES DE STOCKS (Inventories) ===
+  "300":
+    name: "Stocks de marchandises — بضاعة (Merchandise Inventory)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "310":
+    name: "Matières premières et fournitures — مواد أولية (Raw Materials)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "350":
+    name: "Produits finis — منتجات تامة الصنع (Finished Goods)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASSE 4 — COMPTES DE TIERS (Third-party / Current Accounts) ===
+  "400":
+    name: "Fournisseurs et comptes rattachés — موردون (Trade Payables)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "401":
+    name: "Fournisseurs (Supplier Accounts)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "411":
+    name: "Clients — عملاء (Trade Receivables / Customers)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "416":
+    name: "Créances douteuses — مشكوك في تحصيلها (Doubtful Receivables)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "430":
+    name: "Personnel — مستحقات الأجراء (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "440":
+    name: "État — Impôts et taxes (Tax Payable — General)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "444":
+    name: "État — TVA collectée (VAT Payable / Output TVA)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "445":
+    name: "État — TVA récupérable (VAT Receivable / Input TVA)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "447":
+    name: "État — IBS (Income Tax Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "486":
+    name: "Charges constatées d'avance (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "487":
+    name: "Produits constatés d'avance (Deferred Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASSE 5 — COMPTES FINANCIERS (Cash and Short-term Financial Instruments) ===
+  "512":
+    name: "Banques — بنوك (Bank Accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "520":
+    name: "Dépôts à terme — ودائع لأجل (Term Deposits)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "530":
+    name: "Caisse — صندوق (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASSE 6 — COMPTES DE CHARGES (Expenses) ===
+  "600":
+    name: "Achats de marchandises vendues (Cost of Merchandise Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "601":
+    name: "Matières premières et consommables (Raw Material Purchases)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "621":
+    name: "Locations — إيجارات (Rent Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "623":
+    name: "Publicité et communications (Marketing and Advertising)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "626":
+    name: "Frais postaux et de communication (Utilities / Communications)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "630":
+    name: "Impôts, taxes et versements assimilés (Taxes and Duties)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "640":
+    name: "Charges de personnel — أجور وعلاوات (Personnel Costs / Salaries)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "681":
+    name: "Dotations aux amortissements (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "661":
+    name: "Charges d'intérêts (Interest Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "693":
+    name: "Impôts sur les bénéfices (Income Tax Expense — IBS)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASSE 7 — COMPTES DE PRODUITS (Revenue) ===
+  "700":
+    name: "Ventes de marchandises — مبيعات بضاعة (Sales of Merchandise)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "701":
+    name: "Ventes de produits fabriqués (Sales of Manufactured Goods)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "706":
+    name: "Prestations de services (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "708":
+    name: "Produits des activités annexes (Other Operating Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "762":
+    name: "Produits des autres créances — فوائد مستحقة (Interest Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "765":
+    name: "Escomptes obtenus (Cash Discounts Received)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"

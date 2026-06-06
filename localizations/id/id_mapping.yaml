@@ -1,0 +1,468 @@
+# Kontablo Localization Mapping: Indonesia (PSAK — Pernyataan Standar Akuntansi Keuangan)
+# Version: 0.1.0-draft
+# Authority: IAI (Ikatan Akuntan Indonesia — Indonesian Institute of Accountants)
+# Standard: PSAK (IFRS-converged), 2023 revision
+# Critical Notes:
+#   Indonesia adopted IFRS-converged PSAK progressively since 2012. The framework does NOT
+#   mandate specific account codes; the numbering below reflects the widely-used de-facto
+#   industry standard chart (Bagan Akun Standar / BAS) published by the Ministry of Finance
+#   for state-owned enterprises (BUMN) and commonly adopted by private companies.
+#   PPN (Pajak Pertambahan Nilai / VAT) rate: 11% (increased from 10% effective April 2022).
+#   PPh (Pajak Penghasilan / Income Tax) rates vary by entity size.
+#   PSAK 72 (Revenue Recognition, IFRS 15 equivalent) and PSAK 73 (Leases, IFRS 16 equivalent)
+#   are effective. SMEs may use SAK EMKM (simplified standard).
+# VERIFY: Account codes are BAS-inspired; private companies may use different numbering.
+
+metadata:
+  country: ID
+  authority: IAI (Ikatan Akuntan Indonesia)
+  standard: PSAK_IFRS_converged_2023
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-01
+  currency: IDR
+
+mappings:
+  # === ASSETS (ASET) ===
+  "1":
+    name: "ASET (Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1.1":
+    name: "Aset Lancar (Current Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.1":
+    name: "Kas dan Setara Kas (Cash and Cash Equivalents)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.2":
+    name: "Kas di Bank (Bank Accounts)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.3":
+    name: "Investasi Jangka Pendek (Short-term Investments)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.4":
+    name: "Piutang Usaha (Trade Receivables)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.4.1":
+    name: "Cadangan Kerugian Piutang (Allowance for Doubtful Accounts — contra)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.5":
+    name: "Piutang Lain-lain (Other Receivables)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.6":
+    name: "Persediaan (Inventories)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.7":
+    name: "Biaya Dibayar di Muka (Prepaid Expenses)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.8":
+    name: "PPN Masukan (VAT Receivable / Input VAT)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1.1.9":
+    name: "Aset Lancar Lainnya (Other Current Assets)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "1.2":
+    name: "Aset Tidak Lancar (Non-current Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1.2.1":
+    name: "Aset Tetap — Tanah (Property, Plant & Equipment — Land)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1.2.2":
+    name: "Aset Tetap — Bangunan (Property, Plant & Equipment — Buildings)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1.2.3":
+    name: "Akumulasi Penyusutan Aset Tetap (Accumulated Depreciation — contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1.2.4":
+    name: "Aset Tak Berwujud (Intangible Assets)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1.2.5":
+    name: "Investasi Jangka Panjang (Long-term Investments)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "1.2.6":
+    name: "Aset Hak Guna (Right-of-Use Assets — PSAK 73)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  # === LIABILITIES (LIABILITAS) ===
+  "2":
+    name: "LIABILITAS (Liabilities)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2.1":
+    name: "Liabilitas Jangka Pendek (Current Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2.1.1":
+    name: "Utang Usaha (Accounts Payable / Trade Payables)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2.1.2":
+    name: "Utang Bank Jangka Pendek (Short-term Bank Loans)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2.1.3":
+    name: "PPN Keluaran (VAT Payable / Output VAT)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2.1.4":
+    name: "Utang Pajak Penghasilan (Income Tax Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2.1.5":
+    name: "Utang Gaji dan Upah (Payroll Liabilities)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2.1.6":
+    name: "Beban Masih Harus Dibayar (Accrued Expenses)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "2.1.7":
+    name: "Pendapatan Diterima di Muka (Deferred Revenue)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "2.1.8":
+    name: "Liabilitas Jangka Pendek Lainnya (Other Current Liabilities)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000308"
+    aggregation_rules:
+      - "sum"
+
+  "2.2":
+    name: "Liabilitas Jangka Panjang (Non-current Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2.2.1":
+    name: "Utang Bank Jangka Panjang (Long-term Bank Loans)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2.2.2":
+    name: "Liabilitas Sewa Pembiayaan (Finance Lease Liability — PSAK 73)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "2.2.3":
+    name: "Liabilitas Pajak Tangguhan (Deferred Tax Liability)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  "2.2.4":
+    name: "Liabilitas Imbalan Pasca-Kerja (Post-Employment Benefit Liability / Pension)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  # === EQUITY (EKUITAS) ===
+  "3":
+    name: "EKUITAS (Equity)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "3.1":
+    name: "Modal Saham (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3.2":
+    name: "Tambahan Modal Disetor (Additional Paid-in Capital / Agio Saham)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3.3":
+    name: "Saldo Laba (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3.4":
+    name: "Laba (Rugi) Tahun Berjalan (Current Year Net Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "3.5":
+    name: "Penghasilan Komprehensif Lain (Other Comprehensive Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  # === REVENUE (PENDAPATAN) ===
+  "4":
+    name: "PENDAPATAN (Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "4.1":
+    name: "Pendapatan Penjualan (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4.2":
+    name: "Pendapatan Jasa (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "4.3":
+    name: "Pendapatan Bunga (Interest Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "4.4":
+    name: "Pendapatan Lain-lain (Other Operating Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  # === EXPENSES (BEBAN) ===
+  "5":
+    name: "BEBAN (Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "5.1":
+    name: "Harga Pokok Penjualan (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "5.2":
+    name: "Beban Gaji dan Tunjangan (Salaries, Wages and Benefits)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5.3":
+    name: "Beban Penyusutan (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "5.4":
+    name: "Beban Sewa (Rent Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "5.5":
+    name: "Beban Utilitas (Utilities — listrik, air, telepon)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "5.6":
+    name: "Beban Pemasaran dan Iklan (Marketing and Advertising)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "5.7":
+    name: "Beban Bunga (Interest Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "5.8":
+    name: "Beban Pajak Penghasilan (Income Tax Expense — PPh Badan)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "5.9":
+    name: "Beban Operasional Lainnya (Other Operating Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

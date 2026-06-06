@@ -1,0 +1,488 @@
+# Kontablo Localization Mapping: Bangladesh (BFRS — Bangladesh Financial Reporting Standards)
+# Version: 0.1.0-draft
+# Authority: ICAB (Institute of Chartered Accountants of Bangladesh) adopts BFRS.
+#            BSEC (Bangladesh Securities and Exchange Commission) mandates compliance for
+#            listed companies. Bangladesh Bank (central bank) for financial institutions.
+#            Financial Reporting Act 2015 established FRC (Financial Reporting Council).
+# Standard: BFRS = IFRS as adopted by ICAB. Bangladesh has adopted IFRS Standards with
+#           minimal modifications. Source: Financial Reporting Act 2015 (Act No. 16 of 2015).
+# Critical Notes:
+#   No mandatory national chart of accounts for private companies.
+#   Codes below follow common practice consistent with BFRS/ICAB educational materials.
+#   VAT: 15% standard rate (Value Added Tax and Supplementary Duty Act 2012, effective 2019).
+#     Reduced rates exist for certain services (truncated base method).
+#     VAT return: Mushak forms (Mushak-9.1 for general taxpayers).
+#   Corporate Income Tax (ITO 1984, Income Tax Act 2023 replacing ITO 1984):
+#     Listed companies: 20-22.5% (various schedules). Unlisted: 27.5%.
+#     Banks and financial institutions: 37.5-40%.
+#     The Income Tax Act 2023 (Act 13 of 2023) replaced the ITO 1984 — VERIFY current rates.
+#   Source Tax (Withholding): extensive; on payments for services, rent, dividends.
+#   Provident Fund: mandatory for many employers; BEPZA (export zones) has own rules.
+#   Gratuity: mandatory after 5 years of service (Labor Act 2006, Section 26-27).
+#   Currency: BDT (Bangladeshi Taka). Managed float vs USD.
+# VERIFY: Corporate income tax rates — Income Tax Act 2023 significantly restructured rates;
+#         confirm applicable rates for fiscal year 2025-2026.
+# VERIFY: VAT truncated base rates — sector-specific deviations are extensive; verify for
+#         specific industries (garments/RMG have special VAT treatment).
+
+metadata:
+  country: BD
+  authority: ICAB / BSEC / Bangladesh Bank / FRC
+  standard: BFRS_IFRS_adoption_current
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: BDT
+
+mappings:
+  # === ASSETS ===
+  "1000":
+    name: "Non-current Assets"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Property, Plant and Equipment (at cost / revalued amount)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "Land and Land Development"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1120":
+    name: "Factory Building and Civil Works"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1130":
+    name: "Plant, Machinery and Equipment"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1140":
+    name: "Furniture, Fixtures and Office Equipment"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1150":
+    name: "Vehicles and Transport Equipment"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1160":
+    name: "Accumulated Depreciation (contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Capital Work-in-Progress"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Intangible Assets (net)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Long-term Investments"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Current Assets"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Inventories"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "2110":
+    name: "Raw Materials"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "2120":
+    name: "Work-in-Process"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "2130":
+    name: "Finished Goods"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Trade Receivables (Accounts Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "2205":
+    name: "Provision for Bad and Doubtful Debts (contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "2210":
+    name: "Advance, Deposits and Prepayments"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "2220":
+    name: "VAT Receivable (Input Tax / Mushak)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "2230":
+    name: "Advance Income Tax (AIT / Source Tax Paid)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "2300":
+    name: "Cash and Cash Equivalents"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "2310":
+    name: "Cash in Hand"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "2320":
+    name: "Cash at Bank (Current Accounts)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "2330":
+    name: "Short-term FDR / Term Deposits"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  # === LIABILITIES ===
+  "3000":
+    name: "Non-current Liabilities"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Long-term Loan (Bank and Financial Institutions)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Deferred Tax Liability"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Gratuity / Retirement Benefit Obligation"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Current Liabilities"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "Trade Payables (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "4200":
+    name: "Accrued Expenses"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "4300":
+    name: "VAT Payable (Output Tax)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "4400":
+    name: "Income Tax Payable"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "4500":
+    name: "Salary and Wages Payable"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "4600":
+    name: "Short-term Borrowings (Overdraft / CC Limit)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  # === EQUITY ===
+  "5000":
+    name: "Shareholders' Equity"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Share Capital (Authorized, Issued and Paid-up)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Share Premium"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5300":
+    name: "General Reserve"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "5400":
+    name: "Retained Earnings"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5500":
+    name: "Net Profit / (Loss) for the Year"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  # === REVENUE ===
+  "6000":
+    name: "Revenue"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "Sales / Turnover (Net)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Service Income"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "6300":
+    name: "Other Income"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "6400":
+    name: "Finance Income (Interest on FDR / Bank)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  # === EXPENSES ===
+  "7000":
+    name: "Cost of Goods Sold / Cost of Production"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "7100":
+    name: "Selling and Distribution Expenses"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "General and Administrative Expenses"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "7210":
+    name: "Salaries, Wages and Allowances"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7220":
+    name: "Depreciation"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7230":
+    name: "Rent and Rates"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "7240":
+    name: "Utilities (Electricity, Gas, Water)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "7300":
+    name: "Finance Costs (Interest on Loans / CC)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "Income Tax Expense"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

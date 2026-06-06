@@ -1,0 +1,308 @@
+# Kontablo Localization Mapping: Yemen (IFRS adoption minimal / local standards — conflict-disrupted)
+# Version: 0.1.0-draft
+# Authority: Yemeni Association of Certified Public Accountants (YACPA)
+#   Note: YACPA operates under significant constraint; dual-authority context (recognized
+#   Government of Yemen / Aden vs Houthi movement / Sanaa) affects all formal institutions.
+# Standard: Yemen had adopted IFRS in principle for listed entities; implementation minimal.
+#   Local accounting standards (based on pre-2015 framework) used in practice.
+# Critical Notes:
+#   VERIFY ALL ENTRIES — Yemen is in active civil war (2014/15–present). Dual-authority
+#   economic structure creates two parallel fiscal systems (GoY in Aden/south and Houthi
+#   in Sanaa/north). Formal accounting infrastructure severely disrupted.
+#   Currency: YER (Yemeni Rial). Dual-authority context has led to separate monetary
+#   policies; the official exchange rate diverges significantly between north and south.
+#   IAS 29 hyperinflation criteria met — cumulative inflation exceeds 100% over 3 years.
+#   USD widely used for trade and savings; SAR (Saudi Riyal) used in border areas.
+#   Corporate income tax: pre-war rate was approximately 20%. Current enforcement
+#   depends on which authority controls the entity's location. VERIFY.
+#   Sales/VAT: General Sales Tax was approximately 5% pre-war under Ministry of Finance.
+#   Current tax administration status uncertain. VERIFY.
+#   This mapping reflects the pre-2015 legal framework as a historical baseline.
+#   Do NOT use for active compliance without jurisdiction-specific legal advice.
+#   Sources: IMF Yemen reports (last pre-2015); World Bank Yemen Economic Monitor;
+#   YACPA documentation (pre-war).
+
+metadata:
+  country: YE
+  authority: Yemeni Association of Certified Public Accountants (YACPA) — VERIFY operational status
+  standard: IFRS_MINIMAL_LOCAL_YE_PRE2015
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: YER
+
+mappings:
+  "1":
+    name: "الأصول (Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "11":
+    name: "النقد وما في حكمه (Cash and Cash Equivalents)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — dual monetary systems (GoY/Houthi); parallel exchange rates; USD and SAR used"
+
+  "111":
+    name: "الأرصدة المصرفية (Bank Accounts — YER)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — Central Bank of Yemen bifurcated; Aden (GoY) vs Sanaa (Houthi) CBY branches"
+
+  "112":
+    name: "الصندوق (Cash in Hand)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "113":
+    name: "حسابات بالعملات الأجنبية (Foreign Currency Accounts — USD/SAR)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — IAS 21 and IAS 29 hyperinflation apply; USD/SAR commonly used"
+
+  "12":
+    name: "الذمم المدينة التجارية (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — significant credit risk; IFRS 9 ECL provisioning required"
+
+  "13":
+    name: "المخزون (Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "14":
+    name: "المصروفات المدفوعة مسبقاً (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "15":
+    name: "ضريبة المبيعات العامة المستردة (GST Receivable — ~5% pre-war VERIFY)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — General Sales Tax ~5% pre-war; current administration by either authority unclear"
+
+  "16":
+    name: "الأصول الثابتة - الإجمالي (Property, Plant and Equipment — gross)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — IAS 36 impairment testing critical given conflict damage and infrastructure destruction"
+
+  "17":
+    name: "مجمع الاستهلاك (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "18":
+    name: "الأصول غير الملموسة (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "2":
+    name: "الخصوم (Liabilities)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "21":
+    name: "الذمم الدائنة التجارية (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "22":
+    name: "ضريبة المبيعات المستحقة (Sales Tax Payable — VERIFY)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — dual tax administration depending on entity location (GoY/Houthi controlled area)"
+
+  "23":
+    name: "ضريبة الدخل المستحقة (Income Tax Payable — ~20% pre-war VERIFY)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — pre-2015 rate approximately 20%; current enforcement depends on controlling authority"
+
+  "24":
+    name: "مستحقات الرواتب والتأمينات الاجتماعية (Payroll and Social Insurance Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "25":
+    name: "مصروفات مستحقة (Accrued Expenses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "26":
+    name: "ديون طويلة الأجل (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — oil revenue-backed debt disputed; IMF/World Bank programs suspended"
+
+  "3":
+    name: "حقوق الملكية (Equity)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "31":
+    name: "رأس المال المدفوع (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "32":
+    name: "الأرباح المحتجزة (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — IAS 29 hyperinflation restatement of retained earnings required"
+
+  "33":
+    name: "نتيجة العام الجاري (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "4":
+    name: "الإيرادات (Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "41":
+    name: "إيرادات المبيعات (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "42":
+    name: "إيرادات النفط والغاز (Oil and Gas Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — oil sector production and revenue sharing disputed between GoY and Houthi"
+
+  "43":
+    name: "إيرادات الخدمات (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "5":
+    name: "المصروفات (Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "51":
+    name: "تكلفة البضاعة المباعة (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "52":
+    name: "الرواتب والأجور (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "53":
+    name: "الاستهلاك (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "54":
+    name: "مصروف ضريبة الدخل (Income Tax Expense — VERIFY)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — approximately 20% pre-war; current enforcement depends on territorial control"
+
+  "55":
+    name: "مصروفات تشغيلية أخرى (Other Operating Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

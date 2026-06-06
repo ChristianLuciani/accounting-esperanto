@@ -1,0 +1,254 @@
+# Kontablo Localization Mapping: Laos / Lao PDR (Lao Accounting Standards + IFRS in progress)
+# Version: 0.1.0-draft
+# Authority: Department of Accounting, Ministry of Finance (Lao PDR)
+# Standard: Lao PDR Accounting Law (2013) + IFRS adoption in progress
+# Critical Notes:
+#   VAT: 10% standard rate
+#   Corporate tax (CIT): 20% standard; 5% for qualifying agricultural/manufacturing sectors
+#   Currency: LAK (Lao Kip) — significant depreciation pressure; THB and USD widely used
+#   IFRS adoption is progressing but not yet fully mandated as of 2024
+#   Lao accounting standards are influenced by French and Vietnamese traditions
+#   VERIFY: current IFRS adoption status — large entities may be required to use IFRS
+#   Natural resources (mining, hydropower) dominate; special sector rules apply
+#   Lao script used; French and English also used in commercial contexts
+
+metadata:
+  country: LA
+  authority: Department of Accounting, Ministry of Finance Lao PDR
+  standard: LAO_ACCOUNTING_LAW_2013
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: LAK
+
+mappings:
+  "1001":
+    name: "ເງິນສົດ (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1002":
+    name: "ບັນຊີທະນາຄານ (Bank Accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "ລູກໜີ້ການຄ້າ (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "ລູກໜີ້ອື່ນໆ (Other Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "ສິນຄ້າຄົງຄ້າງ (Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "ຄ່າໃຊ້ຈ່າຍຈ່າຍລ່ວງໜ້າ (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "ອາກອນມູນຄ່າເພີ່ມຄ້າງຮັບ — 10% (VAT Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "ສິນຊັບຖາວອນ — ລວມ (Property, Plant and Equipment — Gross)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2001":
+    name: "ຄ່າເສື່ອມລາຄາສະສົມ (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "ສິນຊັບບໍ່ມີຕົວຕົນ (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "ການລົງທຶນໄລຍະຍາວ (Long-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "3000":
+    name: "ເຈົ້າໜີ້ການຄ້າ (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "ອາກອນມູນຄ່າເພີ່ມຄ້າງຈ່າຍ — 10% (VAT Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "ອາກອນລາຍໄດ້ຄ້າງຈ່າຍ — 20% (Income Tax Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "ໜີ້ສິນເງິນເດືອນ (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "ຄ່າໃຊ້ຈ່າຍຄ້າງຈ່າຍ (Accrued Expenses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "ໜີ້ສິນໄລຍະຍາວ (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "ທຶນຮອງຫຸ້ນ (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "ກຳໄລສະສົມ (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "ກຳໄລ/ຂາດທຶນປີປັດຈຸບັນ (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "6000":
+    name: "ລາຍໄດ້ຈາກການຂາຍ (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "ລາຍໄດ້ຈາກການໃຫ້ບໍລິການ (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "ລາຍໄດ້ທາງການເງິນ (Financial Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "7000":
+    name: "ຕົ້ນທຶນສິນຄ້າຂາຍ (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "7100":
+    name: "ເງິນເດືອນແລະຄ່າແຮງງານ (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "ຄ່າເສື່ອມລາຄາ (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7300":
+    name: "ຄ່າໃຊ້ຈ່າຍທາງການເງິນ (Financial Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "ຄ່າໃຊ້ຈ່າຍອາກອນລາຍໄດ້ — 20% (Income Tax Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "7500":
+    name: "ຄ່າໃຊ້ຈ່າຍດຳເນີນງານອື່ນໆ (Other Operating Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

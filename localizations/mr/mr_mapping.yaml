@@ -1,0 +1,294 @@
+# Kontablo Localization Mapping: Mauritania (SYSCOHADA)
+# Version: 0.1.0-draft
+# Authority: Direction Générale des Impôts de Mauritanie / Ordre des Experts Comptables
+# Standard: SYSCOHADA (OHADA Uniform Act on Accounting and Financial Information — AUDCIF 2017)
+# Critical Notes:
+#   Currency: MRU (Mauritanian Ouguiya; redenominated January 2018; 1 MRU = 10 old MRO).
+#   TVA (VAT): 16% standard rate. Authority: Direction Générale des Impôts.
+#   Corporate income tax (IS — Impôt sur les Sociétés): 25% standard rate.
+#   Mining sector dominant (iron ore via SNIM; gold; copper). Sector-specific royalty accounts relevant.
+#   Official languages: Arabic (official) and French (administrative/commercial).
+#   SYSCOHADA class codes 1-8 apply; Arabic transliteration of account names noted where available.
+
+metadata:
+  country: MR
+  authority: Direction Générale des Impôts / Ordre des Experts Comptables de Mauritanie
+  standard: SYSCOHADA_AUDCIF_2017
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: MRU
+
+mappings:
+  "2":
+    name: "Classe 2 — Actifs immobilisés / أصول ثابتة (Non-current Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "21":
+    name: "Immobilisations incorporelles (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "22":
+    name: "Terrains (Land)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "23":
+    name: "Bâtiments (Buildings)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "24":
+    name: "Matériel et outillage (Equipment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "25":
+    name: "Matériel minier (Mining Equipment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+    notes: "Sector-specific; SNIM and mining concession assets"
+
+  "28":
+    name: "Amortissements (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "3":
+    name: "Classe 3 — Stocks / مخزون (Inventories)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "31":
+    name: "Marchandises (Merchandise Inventory)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "32":
+    name: "Matières premières (Raw Materials — ores)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "4":
+    name: "Classe 4 — Tiers / أطراف ثالثة (Receivables and Payables)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "401":
+    name: "Fournisseurs (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "411":
+    name: "Clients (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "421":
+    name: "Personnel — rémunérations dues (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "443":
+    name: "TVA collectée (VAT Payable — 16%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "445":
+    name: "TVA déductible (VAT Receivable — 16%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "447":
+    name: "IS à payer (Income Tax Payable — 25%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "5":
+    name: "Classe 5 — Trésorerie / خزينة (Cash and Bank)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "521":
+    name: "Banques (Bank Accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "571":
+    name: "Caisse (Cash in Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1":
+    name: "Classe 1 — Ressources durables / موارد دائمة (Long-term Liabilities and Equity)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "101":
+    name: "Capital social (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "111":
+    name: "Réserves (Retained Earnings / Reserves)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "131":
+    name: "Résultat de l'exercice (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "16":
+    name: "Emprunts et dettes à long terme (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "7":
+    name: "Classe 7 — Revenus / إيرادات (Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "701":
+    name: "Ventes de marchandises (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "706":
+    name: "Prestations de services (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "703":
+    name: "Revenus miniers / redevances (Mining Royalty Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — royalty revenue classification; SNIM state enterprise rules may differ"
+
+  "6":
+    name: "Classe 6 — Charges / مصروفات (Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "601":
+    name: "Achats de marchandises (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "641":
+    name: "Charges de personnel (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "681":
+    name: "Dotations aux amortissements (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "695":
+    name: "IS — Impôt sur les Sociétés (Income Tax Expense — 25%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

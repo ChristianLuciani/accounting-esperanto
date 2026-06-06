@@ -1,0 +1,444 @@
+# Kontablo Localization Mapping: Malaysia (MFRS — Malaysian Financial Reporting Standards)
+# Version: 0.1.0-draft
+# Authority: MASB (Malaysian Accounting Standards Board)
+# Standard: MFRS (IFRS-identical for public interest entities), MPERS (for private entities), 2023
+# Critical Notes:
+#   Malaysia has two tracks: MFRS (mandatory for listed entities and public interest entities,
+#   word-for-word adoption of IFRS since 2012) and MPERS (Malaysian Private Entities Reporting
+#   Standard, based on IFRS for SMEs). Account codes are NOT mandated; the numbering below
+#   follows widely-used Malaysian practice consistent with the CTIM/MIA recommended chart.
+#   GST was abolished in 2018; SST (Sales and Service Tax) was reinstated. SST comprises:
+#     Sales Tax: 5% or 10% on manufactured goods
+#     Service Tax: 8% (increased from 6% effective March 2024) on taxable services
+#   There is no unified VAT number; SST input credit is not universally available (unlike VAT).
+# VERIFY: Codes are industry-standard approximations; MASB does not publish a mandatory chart.
+
+metadata:
+  country: MY
+  authority: MASB (Malaysian Accounting Standards Board)
+  standard: MFRS_2023
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-01
+  currency: MYR
+
+mappings:
+  # === ASSETS ===
+  "1000":
+    name: "Current Assets"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Cash and Bank Balances"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "Cash on Hand (Tunai di Tangan)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1120":
+    name: "Bank Accounts (Akaun Bank)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Short-term Investments (Pelaburan Jangka Pendek)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Trade Receivables (Penghutang Dagangan)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1310":
+    name: "Allowance for Impairment of Receivables — contra (Peruntukan Kemerosotan Nilai)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Other Receivables (Penghutang Lain)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "Inventories (Inventori)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1600":
+    name: "Prepaid Expenses (Belanja Prabayar)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1700":
+    name: "SST Receivable — Input Tax (Cukai Input SST)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Non-current Assets (Aset Bukan Semasa)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Property, Plant and Equipment — gross (Harta Tanah, Loji dan Peralatan)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2190":
+    name: "Accumulated Depreciation — contra (Susut Nilai Terkumpul)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Intangible Assets (Aset Tidak Ketara)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "2300":
+    name: "Long-term Investments (Pelaburan Jangka Panjang)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "2400":
+    name: "Right-of-Use Assets (Aset Hak-Guna — MFRS 16)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  # === LIABILITIES ===
+  "3000":
+    name: "Current Liabilities (Liabiliti Semasa)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Trade Payables (Pemiutang Dagangan)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Short-term Borrowings (Pinjaman Jangka Pendek)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "SST Payable — Output Tax (Cukai Output SST)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "Income Tax Payable (Cukai Pendapatan Kena Bayar)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "3500":
+    name: "Accrued Employee Costs (Kos Pekerja Terakru)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "3600":
+    name: "Accrued Liabilities (Liabiliti Terakru)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "3700":
+    name: "Deferred Revenue (Pendapatan Tertangguh)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "3800":
+    name: "Other Current Liabilities (Liabiliti Semasa Lain)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000308"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Non-current Liabilities (Liabiliti Bukan Semasa)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "Long-term Borrowings (Pinjaman Jangka Panjang)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "4200":
+    name: "Finance Lease Liabilities (Liabiliti Pajakan Kewangan — MFRS 16)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "4300":
+    name: "Deferred Tax Liability (Liabiliti Cukai Tertangguh)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  "4400":
+    name: "Employee Benefit Obligations (Obligasi Faedah Pekerja)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  # === EQUITY ===
+  "5000":
+    name: "Equity (Ekuiti Pemegang Saham)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Share Capital (Modal Saham)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Retained Earnings (Keuntungan Terkumpul)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5300":
+    name: "Current Year Profit/Loss (Keuntungan/(Kerugian) Tahun Semasa)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "5400":
+    name: "Other Reserves / OCI (Rizab Lain)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  # === REVENUE ===
+  "6000":
+    name: "Revenue (Hasil)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "Sales Revenue (Hasil Jualan)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Service Revenue (Hasil Perkhidmatan)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "6300":
+    name: "Interest Income (Pendapatan Faedah)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "6400":
+    name: "Other Income (Pendapatan Lain)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  # === EXPENSES ===
+  "7000":
+    name: "Expenses (Perbelanjaan)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "7100":
+    name: "Cost of Sales / Cost of Goods Sold (Kos Jualan)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "Staff Costs — Salaries and Wages (Kos Kakitangan — Gaji dan Upah)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7210":
+    name: "EPF Employer Contribution (Caruman Majikan KWSP)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7300":
+    name: "Depreciation and Amortisation (Susut Nilai dan Pelunasan)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "Rental Expense (Sewa)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "7500":
+    name: "Utilities (Utiliti — elektrik, air, telefon)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "7600":
+    name: "Marketing and Advertising (Pemasaran dan Pengiklanan)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "7700":
+    name: "Finance Costs / Interest Expense (Kos Kewangan)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "7800":
+    name: "Income Tax Expense (Perbelanjaan Cukai Pendapatan)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "7900":
+    name: "Other Operating Expenses (Perbelanjaan Operasi Lain)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

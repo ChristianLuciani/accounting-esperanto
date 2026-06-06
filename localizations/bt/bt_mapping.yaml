@@ -1,0 +1,326 @@
+# Kontablo Localization Mapping: Bhutan (Bhutan Accounting Standards — IFRS-aligned)
+# Version: 0.1.0-draft
+# Authority: Royal Institute of Chartered Accountants of Bhutan (RICAB) / Ministry of Finance
+# Standard: Bhutan Accounting Standards (BAS) — IFRS-aligned since 2013 adoption.
+#   BAS issued by the Ministry of Finance; largely mirrors IFRS with Bhutan-specific adaptations.
+# Critical Notes:
+#   Currency: BTN (Bhutanese Ngultrum), pegged 1:1 to INR. INR is also legal tender in Bhutan.
+#   Both BTN and INR may appear in accounts; IAS 21 does not strictly apply between them
+#   due to peg, but separate tracking recommended for INR/BTN liquidity.
+#   Sales Tax (ST): multiple rates (0%, 5%, 10%, 25%, 100% for luxury/tobacco/alcohol).
+#   VERIFY current rate schedule — Bhutan Revenue and Customs administers.
+#   Corporate income tax (CIT): 30% standard rate for companies.
+#   GNH (Gross National Happiness) policy may affect certain reporting disclosures.
+#   Hydropower is the dominant export revenue stream; DGPC (Druk Green Power Corporation)
+#   accounts for significant state enterprise activity.
+#   Rupee-Ngultrum peg managed by Royal Monetary Authority (RMA).
+
+metadata:
+  country: BT
+  authority: Royal Institute of Chartered Accountants of Bhutan (RICAB) / Ministry of Finance
+  standard: BAS_IFRS_ALIGNED_2013
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: BTN
+
+mappings:
+  "1000":
+    name: "Assets"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Cash and Cash Equivalents"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "Cash at Bank (BTN)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1115":
+    name: "Cash at Bank (INR)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+    notes: "INR also legal tender; 1:1 peg with BTN; separate sub-account for INR liquidity monitoring"
+
+  "1120":
+    name: "Cash in Hand"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1130":
+    name: "Short-term Investments"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Trade Receivables"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1210":
+    name: "Hydropower Tariff Receivables"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+    notes: "Hydropower exports to India; receivables from PGCIL/Indian utilities"
+
+  "1220":
+    name: "Other Receivables"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Inventories"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Prepaid Expenses"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "Sales Tax Receivable"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — Sales Tax Act; rate depends on goods category (0-100%)"
+
+  "1600":
+    name: "Property, Plant and Equipment (gross)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1610":
+    name: "Accumulated Depreciation"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1700":
+    name: "Intangible Assets"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1800":
+    name: "Right-of-Use Assets"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  "1900":
+    name: "Long-term Investments"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Liabilities"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Accounts Payable"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Sales Tax Payable"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2300":
+    name: "Corporate Income Tax Payable (30%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2400":
+    name: "Payroll Liabilities (NPPF contributions)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+    notes: "NPPF = National Pension and Provident Fund; employee 10% + employer 10% VERIFY"
+
+  "2500":
+    name: "Accrued Expenses"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "2600":
+    name: "Long-term Debt (India hydropower loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+    notes: "Significant GoI (Government of India) project loans for hydropower construction"
+
+  "3000":
+    name: "Equity"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Share Capital"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Retained Earnings"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Current Year Profit/Loss"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Revenue"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "Sales Revenue"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4200":
+    name: "Hydropower Export Revenue"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Expenses"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Cost of Goods Sold"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Salaries and Wages"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5300":
+    name: "Depreciation Expense"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "5400":
+    name: "Corporate Income Tax Expense (30%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "5500":
+    name: "Other Operating Expenses"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

@@ -1,0 +1,487 @@
+# Kontablo Localization Mapping: Qatar (QFRS — Qatar Financial Reporting Standards)
+# Version: 0.1.0-draft
+# Authority: QFCA (Qatar Financial Centre Authority) for QFC-licensed entities.
+#            Ministry of Commerce and Industry (MOCI) for onshore Qatar entities.
+#            Qatar Central Bank (QCB) for financial institutions.
+#            Qatar Stock Exchange (QSE) for listed companies.
+# Standard: QFRS = IFRS as adopted. QFCA Rule Book Chapter 7 (Financial Reporting) requires
+#           IFRS for all QFC-licensed entities. MOCI requires IFRS for listed Qatari companies.
+#           Commercial Companies Law No. 11 of 2015 governs corporate reporting.
+# Critical Notes:
+#   No mandatory national chart of accounts.
+#   Codes below follow common practice consistent with QFRS/IFRS and Big-4 practice in Qatar.
+#   NO VALUE ADDED TAX in Qatar as of 2026. Qatar has not ratified the GCC VAT framework.
+#     (GCC VAT Agreement 2017: Saudi Arabia, UAE, Bahrain have implemented; Qatar has not.)
+#   Corporate Income Tax: 10% on net profits of foreign-owned entities (Income Tax Law
+#     No. 24 of 2018, amended by Decree-Law No. 11 of 2021). Qatari and GCC nationals:
+#     exempt from corporate tax on business income.
+#   Withholding Tax (WHT): 5% on dividends, royalties, interest, and technical fees paid to
+#     non-residents (Article 9, Income Tax Law No. 24 of 2018 as amended).
+#   No personal income tax on individuals in Qatar.
+#   Social Insurance: Qatar General Retirement and Social Insurance Authority (GRSIA):
+#     Qatari nationals — employer 10%, employee 5% (Law No. 24 of 2002 as amended).
+#     Expatriates: not covered; employers typically provide EOSB (End of Service Benefit)
+#     = minimum 3 weeks per year for first 5 years, 4 weeks thereafter (Labor Law No. 14/2004
+#     as amended by Law No. 17/2020 re: domestic workers).
+#   Islamic Finance: Qatar Islamic Bank (QIB), Masraf Al Rayan, Qatar International Islamic Bank
+#     operate under Islamic banking principles. Qard Hasan, Murabaha, Musharakah, Ijara, Sukuk
+#     accounts are relevant. AAOIFI standards may supplement IFRS for Islamic institutions.
+#   Currency: QAR (Qatari Riyal). Pegged to USD at QAR 3.64 per USD since 1980.
+# VERIFY: Corporate income tax — 10% rate confirmed under Law 24/2018 as amended by Law 11/2021;
+#         petroleum and petrochemicals sector subject to different rate (35% — VERIFY).
+# VERIFY: EOSB calculation — Law 17/2020 introduced wage protection; Labor Law amendments
+#         ongoing; confirm current EOSB formula in 2026.
+
+metadata:
+  country: QA
+  authority: QFCA / MOCI / Qatar Central Bank / QSE
+  standard: QFRS_IFRS_adoption_current
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: QAR
+
+mappings:
+  # === ASSETS ===
+  "1000":
+    name: "Non-current Assets"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Property, Plant and Equipment (at cost)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "Land and Land Improvements"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1120":
+    name: "Buildings"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1130":
+    name: "Plant, Machinery and Equipment"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1140":
+    name: "Furniture, Fixtures and IT Equipment"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1150":
+    name: "Vehicles"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1160":
+    name: "Accumulated Depreciation (contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Right-of-Use Assets (IFRS 16)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Intangible Assets (net)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Investment Properties (at fair value or cost)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "Long-term Investments (FVOCI / FVTPL)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Current Assets"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Inventories"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Trade Receivables (net of ECL provision)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "2210":
+    name: "Expected Credit Loss Allowance (IFRS 9 — contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "2300":
+    name: "Advance Payments and Prepaid Expenses"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "2400":
+    name: "Other Receivables"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "2500":
+    name: "Short-term Investments / Murabaha Deposits (Islamic)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "2600":
+    name: "Cash and Cash Equivalents"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "2610":
+    name: "Cash in Hand"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "2620":
+    name: "Bank Balances — QAR"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "2630":
+    name: "Bank Balances — Foreign Currency"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  # === LIABILITIES ===
+  "3000":
+    name: "Non-current Liabilities"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Long-term Borrowings (Bank Loans / Islamic Finance — Murabaha/Ijara)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Lease Liability — Long-term (IFRS 16)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "End-of-Service Benefits Provision (EOSB)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "Deferred Tax Liability (for foreign-owned entities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Current Liabilities"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "Trade and Other Payables"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "4200":
+    name: "Accrued Expenses and Other Liabilities"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "4300":
+    name: "Income Tax Payable (10% CIT — foreign entities only)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "4400":
+    name: "Withholding Tax Payable (5% on payments to non-residents)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "4500":
+    name: "Salaries and GRSIA Contributions Payable (Qatari nationals)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "4600":
+    name: "Short-term Borrowings / Bank Overdraft"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  # === EQUITY ===
+  "5000":
+    name: "Shareholders' Equity"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Share Capital"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Legal Reserve (10% of net profit until 50% of capital — Commercial Companies Law)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "5300":
+    name: "Retained Earnings"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5400":
+    name: "Net Profit / (Loss) for the Year"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "5500":
+    name: "Other Comprehensive Income Reserves (FVOCI / Hedging)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  # === REVENUE ===
+  "6100":
+    name: "Revenue from Contracts with Customers (IFRS 15)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Service Revenue"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "6300":
+    name: "Finance Income / Murabaha Income (Islamic)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "6400":
+    name: "Investment Income (Dividends, Fair Value Gains)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "6500":
+    name: "Other Income"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  # === EXPENSES ===
+  "7100":
+    name: "Cost of Goods Sold / Cost of Services"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "Staff Costs (Salaries, EOSB charge, GRSIA employer contributions)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7300":
+    name: "Depreciation and Amortization"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "Rent and Occupancy Costs"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "7500":
+    name: "Utilities (Electricity, Water, Telecom)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "7600":
+    name: "Marketing and Advertising"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "7700":
+    name: "Finance Costs (Interest on conventional / profit rate on Islamic financing)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "7800":
+    name: "Income Tax Expense (10% CIT — applicable to foreign-owned entities)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "7900":
+    name: "Other Operating Expenses"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

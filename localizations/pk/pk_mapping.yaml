@@ -1,0 +1,475 @@
+# Kontablo Localization Mapping: Pakistan (IFRS as adopted by ICAP / SECP)
+# Version: 0.1.0-draft
+# Authority: ICAP (Institute of Chartered Accountants of Pakistan) issues pronouncements.
+#            SECP (Securities and Exchange Commission of Pakistan) mandates compliance for
+#            public companies under Companies Act 2017. SBP (State Bank of Pakistan) for banks.
+# Standard: IFRS as adopted by ICAP. Full IFRS required for listed companies and public
+#           interest entities. IFRS for SMEs for smaller entities.
+#           Source: Companies Act 2017 (Act No. XIX of 2017), 4th Schedule (for listed companies).
+# Critical Notes:
+#   No mandatory national chart of accounts for private companies.
+#   Codes below follow common practice consistent with ICAP/SECP requirements.
+#   Sales Tax: Federal General Sales Tax (GST) 17% standard rate (Sales Tax Act 1990).
+#     Provincial sales tax on services (varies: SRB Sindh 13%, PRA Punjab 16%, etc.)
+#     Islamic finance (Murabaha, Musharakah, Ijarah, Diminishing Musharakah) is material;
+#     Islamic banking is ~25% of total banking assets in Pakistan (SBP Islamic Banking Bulletin).
+#     Dedicated accounts for Murabaha receivables, Musharakah investments are required by
+#     SBP Shariah Governance Framework for banks; shown here as VERIFY items.
+#   Corporate Income Tax: 29% standard rate (Income Tax Ordinance 2001, as amended by
+#     Finance Acts). Banking companies: 35%. Super Tax: 10% additional on income > PKR 300M
+#     (Finance Act 2022). VERIFY for 2026.
+#   Withholding Tax (WHT): extensive system under ITO 2001 — payable on salary, dividends,
+#     profit on debt, contracts, imports, exports.
+#   EOBI (Employees' Old-Age Benefits Institution): employer 5%, employee 1% of minimum wage.
+#   PESSI/SESSI (Social Security): varies by province.
+#   Currency: PKR (Pakistani Rupee). Subject to significant depreciation and inflation.
+# VERIFY: Corporate tax rate — super tax may change in annual Finance Act; confirm 2026 rate.
+# VERIFY: GST rate — 17% confirmed; provincial service tax rates vary and change annually.
+# VERIFY: Islamic finance accounts — SBP IFAS (Islamic Financial Accounting Standards) require
+#         specialized accounts; entities not under SBP jurisdiction may use simplified treatment.
+
+metadata:
+  country: PK
+  authority: ICAP / SECP / SBP
+  standard: IFRS_ICAP_adoption_current
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: PKR
+
+mappings:
+  # === ASSETS ===
+  "1000":
+    name: "Non-current Assets"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Property, Plant and Equipment (at cost)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "Land and Buildings"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1120":
+    name: "Plant and Machinery"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1130":
+    name: "Furniture, Fixtures and Office Equipment"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1140":
+    name: "Vehicles"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1150":
+    name: "Accumulated Depreciation (contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1160":
+    name: "Capital Work-in-Progress (CWIP)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Intangible Assets (net)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Long-term Investments"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Long-term Deposits and Receivables"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "Current Assets"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1510":
+    name: "Stores, Spares and Consumables"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1520":
+    name: "Stock-in-Trade (Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1530":
+    name: "Trade Debts (Accounts Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1535":
+    name: "Provision for Doubtful Debts (contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1540":
+    name: "Advances, Deposits and Prepayments"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1550":
+    name: "Sales Tax Receivable (Input GST)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1560":
+    name: "Other Receivables and Short-term Loans"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1570":
+    name: "Short-term Investments"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1580":
+    name: "Cash and Bank Balances"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1581":
+    name: "Cash in Hand"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1582":
+    name: "Bank Balances (Current and Savings Accounts)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  # === LIABILITIES ===
+  "2000":
+    name: "Equity and Liabilities — Non-current Liabilities"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Long-term Financing (Bank Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Deferred Tax Liability"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  "2300":
+    name: "Retirement Benefit Obligation (Gratuity / EOBI)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  "2500":
+    name: "Current Liabilities"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2510":
+    name: "Trade and Other Payables"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2520":
+    name: "Accrued Liabilities"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "2530":
+    name: "Sales Tax Payable (Output GST)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2540":
+    name: "Income Tax Payable (Corporate Tax / Super Tax)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2550":
+    name: "Salaries, Wages and EOBI Payable"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2560":
+    name: "Short-term Borrowings"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  # === EQUITY ===
+  "3000":
+    name: "Share Capital and Reserves"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Ordinary Share Capital"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Capital Reserve / Share Premium"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "General Reserve"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "Accumulated Profit / Unappropriated Profit"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3500":
+    name: "Profit / (Loss) for the Year"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  # === REVENUE ===
+  "4000":
+    name: "Revenue"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "Net Sales (Turnover)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4200":
+    name: "Service Revenue"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "4300":
+    name: "Other Income (Gain on disposal, miscellaneous)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "4400":
+    name: "Finance Income / Profit on Deposits (Islamic: Murabaha markup income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  # === EXPENSES ===
+  "5000":
+    name: "Cost of Sales"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Distribution and Selling Expenses"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Administrative Expenses"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "5210":
+    name: "Salaries and Employee Benefits"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5220":
+    name: "Depreciation and Amortization"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "5230":
+    name: "Rent and Rates"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "5240":
+    name: "Utilities"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "5300":
+    name: "Finance Costs (Interest Expense / Islamic: Murabaha cost of funds)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "5400":
+    name: "Taxation (Current Year — Corporate Tax + Super Tax)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

@@ -1,0 +1,252 @@
+# Kontablo Localization Mapping: Liechtenstein (Swiss GAAP FER / PGR)
+# Version: 0.1.0-draft
+# Authority: Liechtensteinische Wirtschaftsprüfer-Kammer (LWK)
+# Standard: Swiss GAAP FER (Fachempfehlungen zur Rechnungslegung) / PGR (Personen- und Gesellschaftsrecht)
+# Critical Notes:
+#   MWST (Mehrwertsteuer / VAT) 8.1% — same rate as Switzerland (Liechtenstein is within Swiss customs union)
+#   Corporate income tax 12.5% (flat rate, one of the lowest in Europe)
+#   Currency: CHF (Swiss franc — legal tender; Liechtenstein uses CHF, no own currency)
+#   Financial centre: many holding companies, foundations (Stiftungen), and Anstalten
+#   Swiss GAAP FER used by listed entities and larger companies; PGR minimum requirements apply to all
+#   Close institutional alignment with Switzerland (customs union, monetary union, EEA member)
+
+metadata:
+  country: LI
+  authority: Liechtensteinische Wirtschaftsprüfer-Kammer
+  standard: Swiss_GAAP_FER_LI
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: CHF
+
+mappings:
+  "100":
+    name: "Flüssige Mittel (Cash and Cash Equivalents)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "102":
+    name: "Bankguthaben (Bank Accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "106":
+    name: "Kurzfristige Wertschriften (Short-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "110":
+    name: "Forderungen aus Lieferungen und Leistungen (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "119":
+    name: "Übrige kurzfristige Forderungen (Other Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "120":
+    name: "Vorräte (Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "130":
+    name: "Aktive Rechnungsabgrenzung (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "170":
+    name: "Vorsteuer MWST (VAT Receivable, 8.1%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "140":
+    name: "Finanzanlagen kurzfristig (Other Current Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "150":
+    name: "Sachanlagen (Property, Plant and Equipment, gross)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "158":
+    name: "Kumulierte Abschreibungen (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "160":
+    name: "Immaterielle Werte (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "161":
+    name: "Finanzanlagen langfristig (Long-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "200":
+    name: "Verbindlichkeiten aus Lieferungen und Leistungen (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "210":
+    name: "Kurzfristige Finanzverbindlichkeiten (Short-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "220":
+    name: "Geschuldete MWST (VAT Payable, 8.1%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "230":
+    name: "Einkommens- und Ertragssteuer (Income Tax Payable, 12.5%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "240":
+    name: "Lohnverbindlichkeiten (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "250":
+    name: "Passive Rechnungsabgrenzung (Accrued Expenses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "260":
+    name: "Vorauszahlungen von Kunden (Deferred Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "270":
+    name: "Langfristige Finanzverbindlichkeiten (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "280":
+    name: "Latente Steuern (Deferred Tax Liability)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  "300":
+    name: "Aktienkapital (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "390":
+    name: "Gewinnvortrag (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "400":
+    name: "Umsatzerlöse (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "500":
+    name: "Warenaufwand / Herstellkosten (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "510":
+    name: "Personalaufwand (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "520":
+    name: "Abschreibungen (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "550":
+    name: "Steueraufwand (Income Tax Expense, 12.5%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

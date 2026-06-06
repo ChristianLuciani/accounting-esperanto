@@ -1,0 +1,261 @@
+# Kontablo Localization Mapping: Rwanda (IFRS as adopted)
+# Version: 0.1.0-draft
+# Authority: ICPAR (Institute of Certified Public Accountants of Rwanda)
+# Standard: IFRS as adopted by Rwanda (mandatory for PIEs from 2016)
+# Critical Notes:
+#   VAT: 18% standard rate
+#   Corporate tax (CIT): 30% standard; 15% for preferred sector companies
+#   Currency: RWF (Rwandan Franc)
+#   One of Africa's fastest-growing economies; strong financial sector regulation
+#   IFRS for SMEs adopted alongside full IFRS
+#   Capital gains tax: 5% on listed companies; otherwise part of CIT
+#   Withholding tax: 15% on dividends; 15% on interest (non-residents)
+
+metadata:
+  country: RW
+  authority: ICPAR
+  standard: IFRS_RW
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: RWF
+
+mappings:
+  "1001":
+    name: "Cash on Hand (Amafaranga ku Ntoki)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1002":
+    name: "Bank Accounts (Konti ya Banki)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1003":
+    name: "Mobile Money (Amafaranga ya Telefone)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Trade Receivables (Amafaranga Yatanzwe mu Borwa)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Other Receivables (Ayandi Mafaranga Azabonerwa)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Inventories (Ibicuruzwa mu Bubiko)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Prepaid Expenses (Amafaranga Yishyuwe Mbere)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "VAT Receivable — 18% (Umusoro ku Nyongeragaciro Uzasubizwa)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Property, Plant and Equipment — Gross (Imitungo Ihamye — Yose)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2001":
+    name: "Accumulated Depreciation (Igabanuka Ryongereye)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Intangible Assets (Imitungo Idafatika)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Long-term Investments (Ishoramari ry'Igihe Kirekire)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "3000":
+    name: "Accounts Payable (Amafaranga Agomba Gutangwa)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "VAT Payable — 18% (Umusoro ku Nyongeragaciro Ugomba Gutangwa)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Income Tax Payable — 30% (Umusoro ku Nyungu Ugomba Gutangwa)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Payroll Liabilities (Imishahara Igomba Gutangwa)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "Accrued Expenses (Amafaranga Azagaragara)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Long-term Debt (Inguzanyo y'Igihe Kirekire)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Share Capital (Ingwate z'Imigabane)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Retained Earnings (Inyungu Zachunganywe)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Current Year Profit/Loss (Inyungu/Igihombo cy'Uyu Mwaka)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "6000":
+    name: "Sales Revenue (Amafaranga y'Ibikorwa byo Kugurisha)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "Service Revenue (Amafaranga y'Serivisi)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Financial Income (Inyungu z'Imari)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "7000":
+    name: "Cost of Goods Sold (Igiciro cy'Ibintu Byagurishijwe)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "7100":
+    name: "Salaries and Wages (Imishahara n'Imbayimbayi)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "Depreciation Expense (Igabanuka ry'Imitungo)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7300":
+    name: "Financial Expenses (Amafaranga y'Imari Yagiye)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "Income Tax Expense — 30% (Umusoro ku Nyungu)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "7500":
+    name: "Other Operating Expenses (Andi Mafaranga y'Ibikorwa)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

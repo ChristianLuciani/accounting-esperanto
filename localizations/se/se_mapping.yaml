@@ -1,0 +1,747 @@
+# Kontablo Localization Mapping: Sweden (BAS-kontoplanen)
+# Version: 0.1.0-draft
+# Authority: BAS-kontogruppen (www.bas.se) / BFN (Bokföringsnämnden — Swedish Accounting Standards Board)
+# Standard: BAS 2024 (Bas-kontoplanen, version 2024); K2 and K3 regulatory frameworks
+# Critical Notes:
+#   BAS (Bas-kontoplanen) is Sweden's de-facto standard chart of accounts. It is NOT legally
+#   mandatory but is used by the overwhelming majority of Swedish companies and is integrated
+#   into all Swedish accounting software. BAS uses a 4-digit code system structured in classes:
+#     Class 1: Assets (Tillgångar)
+#     Class 2: Liabilities and Equity (Skulder och eget kapital)
+#     Class 3: Revenue (Intäkter)
+#     Classes 4-6: Expenses by function / COGS, Personnel, Other
+#     Class 7: Personnel costs (alternative)
+#     Class 8: Financial income/expense, tax, extraordinary
+#   Regulatory frameworks: K1 (micro), K2 (small), K3 (larger / IFRS-like). Listed companies
+#   use IFRS as adopted by EU.
+#   VAT (Moms — Mervärdesskatt): standard rate 25%; reduced rates 12% (food, hotels) and 6% (books, transport).
+#   Corporate income tax: 20.6% (since 2021).
+#   BAS codes below are from BAS 2024. The full BAS chart has ~1,200 accounts; this mapping
+#   covers the primary accounts used in SME practice.
+
+metadata:
+  country: SE
+  authority: BAS-kontogruppen / BFN (Bokföringsnämnden)
+  standard: BAS_2024
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-01
+  currency: SEK
+
+mappings:
+  # === CLASS 1: TILLGÅNGAR (Assets) ===
+
+  # Immateriella anläggningstillgångar (Intangible Fixed Assets)
+  "1010":
+    name: "Balanserade utgifter för forskning och utveckling (Capitalised R&D Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1020":
+    name: "Koncessioner m.m. (Concessions, Patents, Licences)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1060":
+    name: "Hyresrätter och liknande rättigheter (Leaseholds and Similar Rights)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1070":
+    name: "Goodwill"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  # Materiella anläggningstillgångar (Tangible Fixed Assets)
+  "1100":
+    name: "Byggnader och mark (Buildings and Land)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "Byggnader (Buildings)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1119":
+    name: "Ackumulerade avskrivningar på byggnader (Accumulated Depreciation — Buildings, contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1130":
+    name: "Mark (Land)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Maskiner och inventarier (Machinery and Equipment)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1210":
+    name: "Maskiner och andra tekniska anläggningar (Machines and Technical Plant)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1219":
+    name: "Ackumulerade avskrivningar på maskiner (Accumulated Depreciation — Machinery, contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1220":
+    name: "Inventarier och verktyg (Fixtures, Fittings and Tools)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1229":
+    name: "Ackumulerade avskrivningar på inventarier (Accumulated Depreciation — Fixtures, contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1240":
+    name: "Bilar och andra transportmedel (Vehicles)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1290":
+    name: "Nyttjanderättstillgångar (Right-of-Use Assets — IFRS 16 / K3)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  # Finansiella anläggningstillgångar (Long-term Financial Assets)
+  "1310":
+    name: "Andelar i koncernföretag (Shares in Group Companies)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "1380":
+    name: "Andra långfristiga fordringar (Other Long-term Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  # Omsättningstillgångar (Current Assets)
+  "1400":
+    name: "Lager m.m. (Inventories)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1410":
+    name: "Lager av råvaror och förnödenheter (Raw Materials and Supplies)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1460":
+    name: "Lager av färdiga varor och handelsvaror (Finished Goods and Merchandise)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "Kortfristiga fordringar (Short-term Receivables)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1510":
+    name: "Kundfordringar (Trade Receivables / Accounts Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1515":
+    name: "Osäkra kundfordringar (Doubtful Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1519":
+    name: "Nedskrivning av kundfordringar (Impairment of Trade Receivables — contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1630":
+    name: "Avräkning för skatter och avgifter (Tax Accounts — prepaid tax / receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "1650":
+    name: "Momsfordran (VAT Receivable / Input VAT)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1680":
+    name: "Andra kortfristiga fordringar (Other Short-term Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1700":
+    name: "Förutbetalda kostnader och upplupna intäkter (Prepaid Expenses and Accrued Income)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1710":
+    name: "Förutbetalda hyreskostnader (Prepaid Rent)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1900":
+    name: "Kassa och bank (Cash and Bank)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1910":
+    name: "Kassa (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1920":
+    name: "PlusGiro (PlusGiro / Payment Service Account)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1930":
+    name: "Affärskonto / checkräkningskonto (Business Bank Account / Current Account)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1940":
+    name: "Övriga bankkonton (Other Bank Accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASS 2: SKULDER OCH EGET KAPITAL (Liabilities and Equity) ===
+
+  # Eget kapital (Equity)
+  "2010":
+    name: "Aktiekapital (Share Capital — Aktiebolag)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "2060":
+    name: "Fond för verkligt värde (Fair Value Reserve / OCI)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "2080":
+    name: "Balanserat resultat (Retained Earnings / Carried Forward Profit)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "2099":
+    name: "Årets resultat (Current Year Net Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  # Obeskattade reserver (Untaxed Reserves — Swedish-specific)
+  "2100":
+    name: "Obeskattade reserver (Untaxed Reserves — Swedish fiscal reserves, no IFRS equivalent)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: Untaxed reserves (periodiseringsfonder, accelerated depreciation) are a
+    # Swedish tax-accounting specific concept with no direct IFRS counterpart. They include
+    # deferred tax implicitly. Mapping to OCI reserves is approximate.
+
+  "2110":
+    name: "Periodiseringsfonder (Tax Equalisation Reserves / Periodisation Funds)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  # Avsättningar (Provisions)
+  "2210":
+    name: "Avsättningar för pensioner (Pension Provisions)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  "2250":
+    name: "Övriga avsättningar (Other Provisions)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  # Långfristiga skulder (Long-term Liabilities)
+  "2310":
+    name: "Långfristiga lån (Long-term Bank Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2350":
+    name: "Skulder till koncernföretag — långfristiga (Long-term Intercompany Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2390":
+    name: "Leasingskulder — långfristiga (Finance Lease Liabilities — long-term)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  # Kortfristiga skulder (Current Liabilities)
+  "2400":
+    name: "Kortfristiga skulder (Current Liabilities)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2410":
+    name: "Kortfristiga lån (Short-term Bank Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2440":
+    name: "Leverantörsskulder (Accounts Payable / Trade Creditors)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2510":
+    name: "Skatteskulder (Income Tax Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2610":
+    name: "Utgående moms 25% (Output VAT 25% Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2620":
+    name: "Utgående moms 12% (Output VAT 12% Payable — food, hotels)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2630":
+    name: "Utgående moms 6% (Output VAT 6% Payable — books, transport)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2640":
+    name: "Ingående moms (Input VAT Receivable — reclassified on settlement)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "2710":
+    name: "Personalskatt (Employee Income Tax Withheld — Payroll Liability)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2730":
+    name: "Lagstadgade sociala avgifter (Statutory Social Contributions Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2740":
+    name: "Semesterlöneskuld (Accrued Holiday Pay Liability)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2760":
+    name: "Upplupna löner (Accrued Salaries)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2800":
+    name: "Förutbetalda intäkter och upplupna kostnader (Deferred Revenue and Accrued Expenses)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "2830":
+    name: "Förutbetalda hyresintäkter (Deferred Rental Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "2990":
+    name: "Övriga kortfristiga skulder (Other Current Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000308"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASS 3: RÖRELSENS INTÄKTER (Operating Revenue) ===
+  "3000":
+    name: "Försäljning och intäkter (Sales and Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "3001":
+    name: "Försäljning av varor (Sales of Goods)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "3040":
+    name: "Försäljning av tjänster (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "3590":
+    name: "Övriga rörelseintäkter (Other Operating Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASS 4: KOSTNADER FÖR HANDELSVAROR (Cost of Goods / Materials) ===
+  "4000":
+    name: "Inköp av varor (Purchases of Goods / COGS)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "4010":
+    name: "Inköp av råvaror och förnödenheter (Purchases of Raw Materials)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "4400":
+    name: "Förändring av lager (Change in Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASS 5: ÖVRIGA EXTERNA KOSTNADER (Other External Costs) ===
+  "5000":
+    name: "Lokalkostnader (Premises / Facility Costs)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "5010":
+    name: "Lokalhyra (Rent — Premises)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "5090":
+    name: "Övriga lokalkostnader (Other Premises Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "5400":
+    name: "Förbrukningsinventarier och förbrukningsmaterial (Consumables / Small Tools)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "5800":
+    name: "Resekostnader (Travel Costs)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "5900":
+    name: "Reklam och PR (Marketing and PR / Advertising)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "5910":
+    name: "Annonsering (Advertising)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASS 6: ÖVRIGA EXTERNA KOSTNADER, continued ===
+  "6200":
+    name: "Telekommunikation (Telecommunications / Utilities)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "6570":
+    name: "Bankkostnader (Bank Charges)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASS 7: PERSONAL- OCH LÖNEKOSTNADER (Personnel Costs) ===
+  "7010":
+    name: "Löner till tjänstemän (Salaries — White-collar / Salaried Employees)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7080":
+    name: "Löner till kollektivanställda (Wages — Blue-collar / Hourly Workers)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7210":
+    name: "Lagstadgade sociala avgifter (Statutory Social Security Contributions — Employer)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7320":
+    name: "Pensionskostnader (Pension Costs — ITP / collective)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7510":
+    name: "Avskrivningar på immateriella anläggningstillgångar (Amortisation — Intangibles)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7520":
+    name: "Avskrivningar på byggnader och markanläggningar (Depreciation — Buildings)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7530":
+    name: "Avskrivningar på maskiner och inventarier (Depreciation — Machinery and Fixtures)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  # === CLASS 8: FINANSIELLA OCH ANDRA INKOMSTER/KOSTNADER (Financial Income/Expense and Tax) ===
+  "8310":
+    name: "Ränteintäkter från bank (Interest Income — Bank)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "8410":
+    name: "Räntekostnader för lån (Interest Expense — Loans)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "8910":
+    name: "Skatt på årets resultat (Income Tax Expense — Corporate)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "8940":
+    name: "Förändring av obeskattade reserver (Change in Untaxed Reserves)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"

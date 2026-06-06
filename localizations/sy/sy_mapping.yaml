@@ -1,0 +1,297 @@
+# Kontablo Localization Mapping: Syria (Local accounting standards — conflict-disrupted)
+# Version: 0.1.0-draft
+# Authority: Syrian Society of Accountants and Auditors (SSAA) / Ministry of Finance Syria
+# Standard: Syrian Accounting Standards (based on pre-2011 adoption of IFRS framework;
+#   implementation disrupted by civil war). Some IFRS-aligned standards adopted pre-2011.
+# Critical Notes:
+#   VERIFY ALL ENTRIES — Syria's accounting infrastructure has been severely disrupted by
+#   the civil war (2011–present) and subsequent political transitions (Assad government fell
+#   December 2024; transitional authority in place as of 2025). Formal accounting regulation
+#   under HTS/transitional authority is not yet standardized.
+#   Currency: SYP (Syrian Pound). Severely devalued — official rate vs black market diverge
+#   significantly. IAS 29 hyperinflation criteria have been met (cumulative inflation well
+#   exceeds 100% over 3 years). IAS 21 foreign currency and IAS 29 hyperinflation adjustments
+#   are mandatory for any IFRS-compliant reporting.
+#   Sanctions: US, EU, and other sanctions affect banking access. USD and Turkish Lira
+#   widely used in commerce in northern/opposition areas.
+#   Corporate income tax: pre-war rate was 28% (corporate income tax). Current enforcement
+#   and rates under transitional authority unclear. VERIFY.
+#   VAT: Syria had a General Sales Tax of 10% pre-2011; current status unclear. VERIFY.
+#   Sources: pre-2011 Syrian accounting standards documentation; World Bank Syria reconstruction
+#   assessments; IMF Syria reports (last Article IV pre-war).
+
+metadata:
+  country: SY
+  authority: Syrian Society of Accountants and Auditors (SSAA) — VERIFY operational status
+  standard: SAS_PRE2011_IFRS_TRANSITIONAL
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: SYP
+
+mappings:
+  "1":
+    name: "الأصول (Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "11":
+    name: "النقد وما في حكمه (Cash and Cash Equivalents)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — dual official/parallel exchange rates; USD and TRY widely used"
+
+  "111":
+    name: "الحسابات المصرفية (Bank Accounts — SYP)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — Syrian banking system under sanctions; Central Bank of Syria"
+
+  "112":
+    name: "الصندوق (Cash in Hand)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "113":
+    name: "حسابات بالعملة الأجنبية (Foreign Currency Accounts)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — USD/TRY usage in commerce; IAS 21 + IAS 29 hyperinflation adjustments required"
+
+  "12":
+    name: "الذمم المدينة التجارية (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — credit risk extremely impaired; significant ECL provision expected under IFRS 9"
+
+  "13":
+    name: "المخزون (Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "14":
+    name: "المصروفات المدفوعة مقدماً (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "15":
+    name: "ضريبة القيمة المضافة / ضريبة المبيعات المستردة (VAT/GST Receivable — VERIFY)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — 10% General Sales Tax pre-2011; current transitional tax system unclear"
+
+  "16":
+    name: "الأصول الثابتة الملموسة - الإجمالي (Property, Plant and Equipment — gross)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — significant impairment testing required; IAS 36 given conflict damage"
+
+  "17":
+    name: "مجمع الاستهلاك (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "18":
+    name: "الأصول غير الملموسة (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "2":
+    name: "الخصوم (Liabilities)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "21":
+    name: "الذمم الدائنة التجارية (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "22":
+    name: "ضريبة المبيعات المستحقة (Sales Tax / GST Payable — VERIFY)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — tax administration under transitional authority; rate and mechanism uncertain"
+
+  "23":
+    name: "ضريبة الدخل المستحقة (Income Tax Payable — 28% pre-war VERIFY)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — pre-2011 rate was 28%; enforcement under transitional government unclear"
+
+  "24":
+    name: "مستحقات الرواتب والضمان الاجتماعي (Payroll and Social Insurance Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "25":
+    name: "مستحقات أخرى (Accrued Expenses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "26":
+    name: "ديون طويلة الأجل (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — formal debt markets non-functional; external debt highly uncertain"
+
+  "3":
+    name: "حقوق الملكية (Equity)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "31":
+    name: "رأس المال (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "32":
+    name: "الأرباح المحتجزة (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — IAS 29 hyperinflation restatement affects retained earnings"
+
+  "33":
+    name: "نتيجة العام الحالي (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "4":
+    name: "الإيرادات (Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "41":
+    name: "إيرادات المبيعات (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "42":
+    name: "إيرادات الخدمات (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "5":
+    name: "المصروفات (Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "51":
+    name: "تكلفة البضاعة المباعة (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "52":
+    name: "الرواتب والأجور (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "53":
+    name: "الاستهلاك (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "54":
+    name: "ضريبة الدخل (Income Tax Expense — VERIFY)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — pre-war 28%; current enforcement unclear under transitional government"
+
+  "55":
+    name: "مصروفات تشغيلية أخرى (Other Operating Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

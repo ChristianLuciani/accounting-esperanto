@@ -1,0 +1,501 @@
+# Kontablo Localization Mapping: Kuwait (IFRS as adopted — KICPAA / Ministry of Commerce)
+# Version: 0.1.0-draft
+# Authority: KICPAA (Kuwait Association of Accountants and Auditors) issues pronouncements.
+#            Ministry of Commerce and Industry (MOCI) under Companies Law No. 1/2016.
+#            Central Bank of Kuwait (CBK) for financial institutions.
+#            Capital Markets Authority (CMA) for listed companies.
+# Standard: IFRS as adopted. Kuwait has committed to IFRS for PIEs and listed companies.
+#           No single formal adoption proclamation; IFRS adoption is de facto standard
+#           per CMA requirements and CBK circulars for regulated entities.
+# Critical Notes:
+#   No mandatory national chart of accounts.
+#   Codes below follow common practice in Kuwait consistent with KICPAA and Big-4 practice.
+#   NO VAT in Kuwait as of 2026. Kuwait has repeatedly delayed GCC VAT implementation.
+#     (GCC VAT Agreement 2017; Saudi Arabia and UAE implemented 2018; Kuwait has not.)
+#   NO Corporate Income Tax on Kuwaiti nationals and GCC citizens.
+#   Corporate Tax: 15% ONLY on foreign companies' share of profits (Decree Law No. 3 of 1955
+#     as amended by Law No. 2 of 2008). Rate applies to net taxable profit of foreign entities.
+#   Zakat: obligatory for Kuwaiti Muslim shareholders — 1% of net profit per Law No. 46 of 2006
+#     (Zakat Law). Zakat is computed separately from corporate tax and paid directly by
+#     shareholders; company may facilitate through equity distribution not expense line.
+#     VERIFY: whether entity-level Zakat booking is required per local practice.
+#   National Labour Support Tax (NLST): 2.5% of net profit of Kuwaiti listed companies
+#     (Law No. 19 of 2000). Applicable to publicly traded Kuwaiti companies only.
+#   Kuwait Foundation for the Advancement of Sciences (KFAS): 1% of net profit of
+#     Kuwaiti shareholding companies (Law No. 6 of 1984 as amended).
+#   PIFSS (Public Institution for Social Security): employer 11.5%, employee 8%
+#     for Kuwaiti nationals (Law No. 61 of 1976 as amended by Law No. 22 of 2020).
+#     Expatriates: not covered by PIFSS; employers pay EOSB (End of Service Benefit).
+#   Islamic Finance: Kuwait Finance House (KFH), Boubyan Bank, Gulf Bank Islamic windows.
+#     AAOIFI standards are reference for Islamic accounting in Kuwait.
+#     Key Islamic instruments: Murabaha, Musharakah, Ijara, Istisna'a, Sukuk Al-Ijara.
+#   Currency: KWD (Kuwaiti Dinar). Pegged to basket of currencies; among highest-valued
+#     currencies globally (~3.30 USD per KWD).
+# VERIFY: Foreign company tax rate — 15% confirmed under Law 2/2008; petroleum sector has
+#         separate arrangements under concession agreements (not public).
+# VERIFY: NLST — 2.5% confirmed under Law 19/2000; applies to Kuwaiti listed companies only.
+# VERIFY: KFAS — 1% confirmed under Law 6/1984 as amended; confirm 2026 applicability.
+# VERIFY: Zakat — 1% per Law 46/2006; accounting treatment (equity vs expense) varies;
+#         confirm current Ministry of Awqaf guidance.
+
+metadata:
+  country: KW
+  authority: KICPAA / Ministry of Commerce and Industry / CBK / CMA
+  standard: IFRS_KICPAA_adoption_current
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: KWD
+
+mappings:
+  # === ASSETS ===
+  "1000":
+    name: "Non-current Assets"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Property, Plant and Equipment (at cost)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "Land"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1120":
+    name: "Buildings"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1130":
+    name: "Plant, Machinery and Equipment"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1140":
+    name: "Vehicles and Transportation Equipment"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1150":
+    name: "Furniture, Fixtures and IT Equipment"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1160":
+    name: "Accumulated Depreciation (contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Right-of-Use Assets (IFRS 16)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Intangible Assets (net)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Investments in Associates and Joint Ventures"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "Investment Properties"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Current Assets"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Inventories"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Trade Receivables (net of ECL — IFRS 9)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "2210":
+    name: "Expected Credit Loss Allowance (contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "2300":
+    name: "Other Receivables, Deposits and Prepayments"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "2400":
+    name: "Short-term Investments / Murabaha Placements (Islamic)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "2500":
+    name: "Cash and Cash Equivalents"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "2510":
+    name: "Cash in Hand"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "2520":
+    name: "Bank Balances — KWD"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "2530":
+    name: "Bank Balances — Foreign Currency"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  # === LIABILITIES ===
+  "3000":
+    name: "Non-current Liabilities"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Long-term Borrowings (Bank / Islamic Finance — Murabaha/Ijara)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "End-of-Service Benefits Provision (EOSB — expatriates)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Finance Lease Liability — Long-term (IFRS 16)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Current Liabilities"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "Trade and Other Payables"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "4200":
+    name: "Accrued Expenses and Other Liabilities"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "4300":
+    name: "Income Tax Payable (15% — foreign companies only)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "4400":
+    name: "NLST Payable (National Labour Support Tax — 2.5%, listed Kuwaiti companies)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "4410":
+    name: "KFAS Payable (Kuwait Foundation for Advancement of Sciences — 1%)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "4500":
+    name: "Salaries and PIFSS Contributions Payable (Kuwaiti nationals)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "4600":
+    name: "Short-term Borrowings / Bank Overdraft"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  # === EQUITY ===
+  "5000":
+    name: "Shareholders' Equity"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Share Capital"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Statutory Reserve (10% of net profit until 50% of capital — Companies Law No. 1/2016)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "5300":
+    name: "Voluntary Reserve"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "5400":
+    name: "Retained Earnings"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5500":
+    name: "Net Profit / (Loss) for the Year"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  # === REVENUE ===
+  "6100":
+    name: "Revenue from Contracts with Customers (IFRS 15)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Service Revenue"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "6300":
+    name: "Finance Income / Murabaha Income (Islamic: profit rate on placements)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "6400":
+    name: "Dividend Income from Investments"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "6500":
+    name: "Other Income"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  # === EXPENSES ===
+  "7100":
+    name: "Cost of Goods Sold / Cost of Services"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "Staff Costs (Salaries, PIFSS employer, EOSB charge)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7300":
+    name: "Depreciation and Amortization"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "Rent and Occupancy"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "7500":
+    name: "Utilities"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "7600":
+    name: "Marketing and Advertising"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "7700":
+    name: "Finance Costs (Interest / Murabaha profit rate on borrowings)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "7800":
+    name: "Corporate Tax Expense (15% — foreign companies only)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "7810":
+    name: "NLST Expense (2.5% — listed Kuwaiti companies)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "7820":
+    name: "KFAS Expense (1% of net profit)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "7900":
+    name: "Other Operating Expenses"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

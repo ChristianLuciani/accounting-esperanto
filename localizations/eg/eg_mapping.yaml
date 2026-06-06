@@ -1,0 +1,444 @@
+# Kontablo Localization Mapping: Egypt (Egyptian Accounting Standards — EAS)
+# Version: 0.1.0-draft
+# Authority: ESAA (Egyptian Society of Accountants and Auditors) / Ministry of Investment
+#            Financial Regulatory Authority (FRA) for capital-market entities
+# Standard: Egyptian Accounting Standards (EAS), issued 2006, revised 2015
+#            EAS are IFRS-aligned; full IFRS required for banks and listed companies
+#            per Egyptian Exchange (EGX) rules and Central Bank of Egypt (CBE) directives.
+# Critical Notes:
+#   Egypt does not mandate a national chart of accounts for private-sector entities.
+#   Codes below follow common practice consistent with EAS and Egyptian CPA education materials.
+#   VAT (ضريبة القيمة المضافة — Daribat al-Qima al-Mudafa): 14% standard rate,
+#     introduced by Value Added Tax Law No. 67 of 2016 (replaced the General Sales Tax).
+#     Reduced rate 5% on certain machinery/equipment. Exempt: basic foodstuffs, medicine.
+#   Corporate Income Tax: 22.5% standard rate (Income Tax Law No. 91 of 2005 as amended).
+#   Withholding Tax: varies by payment type (dividends 10%, interest 20% on non-residents).
+#   Islamic finance instruments (Murabaha, Sukuk, Ijara) are relevant for banking sector;
+#     dedicated accounts may be required per CBE guidelines for Islamic banks.
+#   Currency: EGP (Egyptian Pound). Significant depreciation history; FX revaluation
+#     entries are material for import-dependent sectors.
+#   Social Insurance: employer ~26%, employee ~14% of insurable wage (Law No. 148 of 2019).
+# VERIFY: EAS revision status post-2015 — confirm whether EAS 2022 amendments are in force.
+# VERIFY: VAT rate — confirmed 14% as of 2026; verify any COVID-era temporary changes were reversed.
+
+metadata:
+  country: EG
+  authority: ESAA / Ministry of Investment / FRA
+  standard: EAS_2006_revised_2015
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: EGP
+
+mappings:
+  # === ASSETS ===
+  "1000":
+    name: "الأصول المتداولة (Current Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "النقدية وما في حكمها (Cash and Cash Equivalents)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "الصندوق (Cash on Hand / Petty Cash)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1120":
+    name: "البنوك — حسابات جارية (Banks — Current Accounts)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1130":
+    name: "أوراق مالية قصيرة الأجل (Short-term Marketable Securities)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "المدينون والأوراق التجارية المدينة (Trade Receivables and Bills Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1210":
+    name: "العملاء (Trade Debtors / Customers)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1220":
+    name: "مخصص الديون المشكوك في تحصيلها (Allowance for Doubtful Accounts — contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1230":
+    name: "أوراق القبض (Bills / Notes Receivable)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "المخزون (Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1310":
+    name: "بضاعة (Merchandise / Trading Stock)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1320":
+    name: "مواد خام (Raw Materials)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "ضريبة القيمة المضافة — مدينة (VAT Receivable / Input Tax)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "مصروفات مدفوعة مقدماً (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1600":
+    name: "أصول ثابتة (Fixed / Non-current Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1610":
+    name: "أراضي (Land)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1620":
+    name: "مباني وإنشاءات (Buildings and Structures)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1630":
+    name: "آلات ومعدات (Machinery and Equipment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1640":
+    name: "مجمع إهلاك الأصول الثابتة (Accumulated Depreciation — contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1700":
+    name: "أصول غير ملموسة (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  # === LIABILITIES ===
+  "2000":
+    name: "الالتزامات المتداولة (Current Liabilities)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "الموردون وأوراق الدفع (Trade Payables and Bills Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2110":
+    name: "الدائنون / الموردون (Trade Creditors / Suppliers)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "ضريبة القيمة المضافة — دائنة (VAT Payable / Output Tax)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2300":
+    name: "ضريبة الدخل المستحقة (Income Tax Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2400":
+    name: "مستحقات للعاملين (Payroll / Employee Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2500":
+    name: "مصروفات مستحقة (Accrued Expenses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "2600":
+    name: "قروض قصيرة الأجل (Short-term Loans / Bank Overdraft)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2700":
+    name: "الالتزامات غير المتداولة (Non-current Liabilities)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2710":
+    name: "قروض طويلة الأجل (Long-term Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2720":
+    name: "ضريبة دخل مؤجلة (Deferred Tax Liability)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  # === EQUITY ===
+  "3000":
+    name: "حقوق الملكية (Equity)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "رأس المال المدفوع (Paid-in Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "احتياطيات (Reserves)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "الأرباح المرحلة (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "صافي ربح / خسارة السنة (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  # === REVENUE ===
+  "4000":
+    name: "الإيرادات (Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "إيرادات المبيعات (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4200":
+    name: "إيرادات الخدمات (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "4300":
+    name: "إيرادات مالية (Financial / Interest Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "4400":
+    name: "إيرادات أخرى (Other Operating Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  # === EXPENSES ===
+  "5000":
+    name: "المصروفات (Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "تكلفة المبيعات (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "مصروفات الرواتب والأجور (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5300":
+    name: "مصروف الإهلاك (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "5400":
+    name: "مصروفات الإيجار (Rent Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "5500":
+    name: "مصروفات المرافق (Utilities Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "5600":
+    name: "مصروفات التسويق والإعلان (Marketing and Advertising)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "5700":
+    name: "مصروفات تمويلية / فوائد مدينة (Financial Expenses / Interest Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "5800":
+    name: "مصروف ضريبة الدخل (Income Tax Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "5900":
+    name: "مصروفات أخرى (Other Operating Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

@@ -1,0 +1,212 @@
+# Kontablo Localization Mapping: Democratic Republic of Congo (SYSCOHADA / OHADA)
+# Version: 0.1.0-draft
+# Authority: Conseil Permanent de la Comptabilité au Congo (CPCC)
+# Standard: SYSCOHADA Révisé 2017
+# Critical Notes:
+#   VAT (TVA): 16% standard rate
+#   Corporate tax: 30%
+#   Currency: Congolese Franc (CDF); USD widely used in practice (dual-currency economy)
+#   Mining sector dominant; large extractive-industry operations often maintain USD books
+#   OHADA mandatory chart applies; classes 1-7 with real OHADA codes
+#   VERIFY: USD functional currency treatment for mining entities under OHADA rules
+
+metadata:
+  country: CD
+  authority: Conseil Permanent de la Comptabilité au Congo (CPCC)
+  standard: SYSCOHADA_REVISE_2017
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: CDF
+
+mappings:
+  "10":
+    name: "Capital (Share Capital / Paid-in Capital)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "11":
+    name: "Réserves (Reserves)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "12":
+    name: "Report à nouveau (Retained Earnings / Carried Forward)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "13":
+    name: "Résultat net de l'exercice (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "20":
+    name: "Immobilisations incorporelles (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "21":
+    name: "Terrains (Land)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "22":
+    name: "Bâtiments (Buildings)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "24":
+    name: "Matériel et outillage (Equipment and Tools)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "28":
+    name: "Amortissements (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "31":
+    name: "Marchandises (Merchandise / Inventories)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "40":
+    name: "Fournisseurs (Accounts Payable / Suppliers)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "41":
+    name: "Clients (Trade Receivables)"
+    nature: "Debit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "44":
+    name: "État et collectivités — TVA (VAT / Tax Payable)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "45":
+    name: "Organismes sociaux (Payroll / Social Security Liabilities)"
+    nature: "Credit"
+    level: 4
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "51":
+    name: "Banque (Bank Accounts)"
+    nature: "Debit"
+    level: 5
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "52":
+    name: "Caisse (Cash)"
+    nature: "Debit"
+    level: 5
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "60":
+    name: "Achats (Purchases / Cost of Goods Sold)"
+    nature: "Debit"
+    level: 6
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "61":
+    name: "Services extérieurs (External Services)"
+    nature: "Debit"
+    level: 6
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "63":
+    name: "Autres charges (Other Operating Expenses)"
+    nature: "Debit"
+    level: 6
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "64":
+    name: "Charges de personnel (Salaries and Wages)"
+    nature: "Debit"
+    level: 6
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "66":
+    name: "Charges financières (Financial Expenses / Interest)"
+    nature: "Debit"
+    level: 6
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "70":
+    name: "Ventes (Sales Revenue)"
+    nature: "Credit"
+    level: 7
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "75":
+    name: "Autres produits (Other Revenue)"
+    nature: "Credit"
+    level: 7
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "77":
+    name: "Produits exceptionnels (Extraordinary Income)"
+    nature: "Credit"
+    level: 7
+    kontablo_uuid: "00000000-0000-4000-8000-000000000605"
+    aggregation_rules:
+      - "sum"

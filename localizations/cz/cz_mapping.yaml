@@ -1,0 +1,469 @@
+# Kontablo Localization Mapping: Czech Republic (Czech GAAP / Czech Accounting Act)
+# Version: 0.1.0-draft
+# Authority: MF ČR (Ministerstvo financí České republiky — Ministry of Finance)
+# Standard: Czech Accounting Act (Zákon č. 563/1991 Sb., o účetnictví) and implementing
+#           decrees (Vyhláška č. 500/2002 Sb. for businesses; Czech Accounting Standards — ČÚS)
+# Critical Notes:
+#   Czech Republic mandates use of the Účtový rozvrh (chart of accounts) based on the official
+#   Směrná účtová osnova (model chart of accounts) under MF ČR Decree 500/2002.
+#   The chart uses a 3-digit class structure: 0=Fixed assets, 1=Inventories, 2=Short-term
+#   financial assets & bank, 3=Receivables/Payables, 4=Capital/LT liabilities, 5=Costs,
+#   6=Revenue, 7=Off-balance sheet.
+#   Czech GAAP differs significantly from IFRS: no fair value for most instruments, cost model
+#   dominant, specific rules for deferred tax and lease accounting.
+#   Listed companies on Prague Stock Exchange (PSE) apply IFRS as adopted by EU.
+#   VAT (DPH — Daň z přidané hodnoty): standard rate 21%; reduced 12% (food, non-alcoholic
+#   beverages, drugs, books); 0% for intra-EU supplies and exports.
+#   Corporate income tax (DPPO — Daň z příjmů právnických osob): 21% (2024).
+#   Czech Crown (CZK) is the functional currency; EUR accounts common for export entities.
+
+metadata:
+  country: CZ
+  authority: MF ČR (Ministerstvo financí) / Vyhláška č. 500/2002 Sb.
+  standard: czech_gaap_smernauctovaosnova
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: CZK
+
+mappings:
+  # === TŘÍDA 0: DLOUHODOBÝ MAJETEK (Long-term Assets / Fixed Assets) ===
+
+  "011":
+    name: "Zřizovací výdaje (Formation / Establishment Costs)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: Czech GAAP still permits capitalisation of formation costs under certain
+    # conditions (ČÚS 004); IFRS IAS 38 prohibits this. Maps to intangibles as closest equivalent.
+
+  "012":
+    name: "Nehmotné výsledky výzkumu a vývoje (Intangible R&D Results)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "013":
+    name: "Software (Capitalised Software)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "014":
+    name: "Ocenitelná práva — patenty, licence, ochranné známky (Valuable Rights — Patents, Licences, Trademarks)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "015":
+    name: "Goodwill"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "019":
+    name: "Jiný dlouhodobý nehmotný majetek (Other Long-term Intangible Assets)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "021":
+    name: "Stavby (Buildings and Structures)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "022":
+    name: "Samostatné movité věci a soubory movitých věcí (Movable Assets and Asset Sets)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "031":
+    name: "Pozemky (Land)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "032":
+    name: "Umělecká díla a sbírky (Artworks and Collections)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "041":
+    name: "Nedokončený dlouhodobý nehmotný majetek (Intangibles Under Development)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "042":
+    name: "Nedokončený dlouhodobý hmotný majetek (PPE Under Construction)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "061":
+    name: "Podíly v ovládaných osobách (Investments in Controlled Entities)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "063":
+    name: "Ostatní dlouhodobé cenné papíry a podíly (Other Long-term Securities and Equity Investments)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "075":
+    name: "Oprávky k nehmotným výsledkům výzkumu a vývoje (Accumulated Amortisation — R&D, contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "082":
+    name: "Oprávky ke stavbám (Accumulated Depreciation — Buildings, contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "083":
+    name: "Oprávky k samostatným movitým věcem (Accumulated Depreciation — Movable Assets, contra)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  # === TŘÍDA 1: ZÁSOBY (Inventories) ===
+
+  "111":
+    name: "Pořízení materiálu (Materials in Transit / Purchases in Process)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "112":
+    name: "Materiál na skladě (Raw Materials and Supplies — on stock)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "132":
+    name: "Zboží na skladě a v prodejnách (Merchandise — on stock and in shops)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  # === TŘÍDA 2: KRÁTKODOBÝ FINANČNÍ MAJETEK A PENĚŽNÍ PROSTŘEDKY (Cash and Short-term Financial Assets) ===
+
+  "211":
+    name: "Pokladna (Cash on Hand)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "221":
+    name: "Bankovní účty (Bank Current Accounts)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "261":
+    name: "Peníze na cestě (Cash in Transit — inter-account transfers in progress)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  # === TŘÍDA 3: ZÚČTOVACÍ VZTAHY (Receivables and Payables) ===
+
+  "311":
+    name: "Pohledávky z obchodních vztahů (Trade Receivables)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "321":
+    name: "Závazky z obchodních vztahů (Trade Payables)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "331":
+    name: "Zaměstnanci (Employee Wage Payables)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "336":
+    name: "Zúčtování s institucemi sociálního zabezpečení a zdravotního pojištění (Social and Health Insurance Payable)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "341":
+    name: "Daň z příjmů (Income Tax — current)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "343":
+    name: "Daň z přidané hodnoty — saldo (VAT Net Balance)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: Czech DPH accounting uses a net balance approach in account 343;
+    # positive (credit) = VAT payable; negative (debit) = VAT receivable.
+
+  "381":
+    name: "Náklady příštích období (Prepaid Expenses)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "384":
+    name: "Výnosy příštích období (Deferred Income)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  # === TŘÍDA 4: KAPITÁLOVÉ ÚČTY A DLOUHODOBÉ ZÁVAZKY (Equity and Long-term Liabilities) ===
+
+  "411":
+    name: "Základní kapitál (Registered Share Capital)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "421":
+    name: "Rezervní fond (Legal/Statutory Reserve Fund)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "431":
+    name: "Výsledek hospodaření ve schvalovacím řízení (Profit/Loss Pending Approval)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "428":
+    name: "Nerozdělený zisk minulých let (Retained Earnings from Previous Years)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "451":
+    name: "Rezervy podle zvláštních právních předpisů (Statutory Reserves — tax-deductible)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  "461":
+    name: "Bankovní úvěry a výpomoci — dlouhodobé (Long-term Bank Loans)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  # === TŘÍDA 5: NÁKLADY (Expenses) ===
+
+  "501":
+    name: "Spotřeba materiálu (Consumption of Materials)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "504":
+    name: "Prodané zboží (Cost of Merchandise Sold)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "511":
+    name: "Opravy a udržování (Repairs and Maintenance)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "512":
+    name: "Cestovné (Travel Expenses)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "513":
+    name: "Náklady na reprezentaci (Entertainment and Representation Expenses)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"
+
+  "518":
+    name: "Ostatní služby (Other External Services)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "521":
+    name: "Mzdové náklady (Wage and Salary Costs)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "524":
+    name: "Zákonné sociální pojištění (Statutory Social Insurance — Employer)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "551":
+    name: "Odpisy dlouhodobého nehmotného a hmotného majetku (Depreciation and Amortisation)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "562":
+    name: "Úroky (Interest Expense)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "591":
+    name: "Daň z příjmů z běžné činnosti — splatná (Current Income Tax Expense)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  # === TŘÍDA 6: VÝNOSY (Revenue and Income) ===
+
+  "601":
+    name: "Tržby za vlastní výrobky (Revenue from Own Products)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "602":
+    name: "Tržby z prodeje služeb (Revenue from Services)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "604":
+    name: "Tržby za zboží (Revenue from Merchandise Sales)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "648":
+    name: "Ostatní provozní výnosy (Other Operating Income)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "662":
+    name: "Úroky (Interest Income)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"

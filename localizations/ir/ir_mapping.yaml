@@ -1,0 +1,266 @@
+# Kontablo Localization Mapping: Iran (INAS — Iranian National Accounting Standards)
+# Version: 0.1.0-draft
+# Authority: IACPA (Iranian Association of Certified Public Accountants) / Audit Organization of Iran
+# Standard: INAS (استانداردهای حسابداری ملی ایران) — Iranian National Accounting Standards
+# Critical Notes:
+#   VAT (مالیات بر ارزش افزوده): 10% standard rate
+#   Corporate tax (مالیات بر درآمد اشخاص حقوقی): 25% standard
+#   Currency: IRR (Iranian Rial) OR IRT (Toman — 1 Toman = 10 Rials)
+#   Toman is the de-facto unit in commerce; Rial is the official unit
+#   SANCTIONS: Iran faces comprehensive US and EU sanctions; significant impact on:
+#     - International banking and correspondent relationships
+#     - Cross-border transactions and FX conversion
+#     - Access to SWIFT and international payment systems
+#   IFRS adoption: INAS is broadly IFRS-influenced but maintains Iran-specific standards;
+#   full IFRS not formally adopted due to sanctions and political factors
+#   Audit Organization of Iran (AOI) issues standards; listed companies must follow INAS
+#   VERIFY: current VAT rate — was increased to 10% in 2023 budget; may have changed
+
+metadata:
+  country: IR
+  authority: IACPA / Audit Organization of Iran
+  standard: INAS
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: IRR
+
+mappings:
+  "1100":
+    name: "وجوه نقد و معادل‌های نقد (Cash and Cash Equivalents)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1101":
+    name: "صندوق (Cash on Hand)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1102":
+    name: "حساب‌های بانکی (Bank Accounts)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "حساب‌های دریافتنی تجاری (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "سایر حساب‌های دریافتنی (Other Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "موجودی مواد و کالا (Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "پیش‌پرداخت‌ها (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1600":
+    name: "مالیات بر ارزش افزوده پرداختی — 10% (VAT Receivable — 10%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "دارایی‌های ثابت مشهود — ناخالص (Property, Plant and Equipment — Gross)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2101":
+    name: "استهلاک انباشته (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "دارایی‌های نامشهود (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "2300":
+    name: "سرمایه‌گذاری‌های بلندمدت (Long-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "حساب‌های پرداختنی تجاری (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "مالیات بر ارزش افزوده دریافتی — 10% (VAT Payable — 10%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "مالیات بر درآمد پرداختنی — 25% (Income Tax Payable — 25%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "حقوق و دستمزد پرداختنی (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "3500":
+    name: "هزینه‌های تعهد شده (Accrued Expenses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "بدهی‌های بلندمدت (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "سرمایه (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "سود انباشته (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "سود/زیان خالص دوره (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "6000":
+    name: "درآمد فروش (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "درآمد خدمات (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "درآمد مالی (Financial Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "7000":
+    name: "بهای تمام‌شده کالای فروش رفته (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "7100":
+    name: "حقوق و دستمزد (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "هزینه استهلاک (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7300":
+    name: "هزینه‌های مالی (Financial Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "هزینه مالیات بر درآمد — 25% (Income Tax Expense — 25%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "7500":
+    name: "سایر هزینه‌های عملیاتی (Other Operating Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

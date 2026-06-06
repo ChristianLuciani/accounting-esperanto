@@ -1,0 +1,280 @@
+# Kontablo Localization Mapping: Zimbabwe (IFRS as adopted)
+# Version: 0.1.0-draft
+# Authority: ICAZ (Institute of Chartered Accountants of Zimbabwe)
+# Standard: IFRS as adopted by Zimbabwe
+# Critical Notes:
+#   Currency: ZiG (Zimbabwe Gold, introduced April 2024, replacing ZWL)
+#   HYPERINFLATION HISTORY: Zimbabwe has a documented hyperinflation history (2008-2009 peak).
+#   IAS 29 Financial Reporting in Hyperinflationary Economies applies when cumulative 3-year
+#   inflation exceeds 100%. Status as of 2024-2025 requires continuous monitoring.
+#   USD is widely used as functional currency alongside ZiG — dual-currency environment.
+#   Entities must disclose functional currency; many use USD as functional currency.
+#   VAT: 15% standard rate (VERIFY — previously 14.5%, increased 2020)
+#   Corporate tax: 25% (VERIFY — surcharges may apply)
+#   Withholding tax: 20% on dividends; 15% on interest
+#   VERIFY: ZiG exchange rate regime and IAS 29 applicability status as of reporting date
+
+metadata:
+  country: ZW
+  authority: ICAZ
+  standard: IFRS_ZW
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: ZiG
+
+mappings:
+  "1001":
+    name: "Cash on Hand — ZiG (Ndalama Dziri Mumaoko)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1002":
+    name: "Cash on Hand — USD (Ndalama — US Dollar)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1010":
+    name: "Bank Accounts — ZiG (Akaonti dzeBank)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1011":
+    name: "Bank Accounts — USD (Akaonti dzeBank — USD)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Trade Receivables (Zvikwereti zveMabasa)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Other Receivables (Zvikwereti Zvimwe)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Inventories (Zvechitengwa-tengwa)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Prepaid Expenses (Zvakabhadharwa Pamberi)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "VAT Receivable — 15% (Ndalama dzeVAT Dzodzoswa)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Property, Plant and Equipment — Gross (Zvivakwa nezviEnda — Wose)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2001":
+    name: "Accumulated Depreciation (Kuderedzwa Kwakakwana)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Intangible Assets (Zvivakwa Zvisingaonekwi)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Long-term Investments (Zvikwerete Zvirefu)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "3000":
+    name: "Accounts Payable (Zvikwereti kune Vatengesi)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Short-term Debt (Zvikwereti Zvipfupi)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "VAT Payable — 15% (Ndalama dzeVAT Dzinobhadharwa)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Income Tax Payable (Mutero weMari Inobhadharwa)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "Payroll Liabilities (Zvikwereti zveMaforamu eMushandi)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Long-term Debt (Zvikwereti Zvirefu)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Share Capital (Ndalama dzeHisse)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Retained Earnings (Mubereko Wakachengetwa)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Current Year Profit/Loss (Mubereko/Rufu rwaPasi Pagore)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "5300":
+    name: "IAS 29 Restatement Reserve (Yekudzorera IAS 29 — Hyperinflation Adjustment)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "6000":
+    name: "Sales Revenue (Mubereko weKutengesa)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "Service Revenue (Mubereko weSevhisi)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Financial Income (Mubereko weChimari)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "7000":
+    name: "Cost of Goods Sold (Mutengo weZvinhu Zvakatengeswa)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "7100":
+    name: "Salaries and Wages (Mubayiro wevashandi)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "Depreciation Expense (Chaputso cheKuderera kwemutengo)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7300":
+    name: "Financial Expenses (Chaputso cheChimari)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "Income Tax Expense (Chaputso cheMutero weMari)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "7500":
+    name: "Other Operating Expenses (Zvimwe Zvakaputswa Mukushanda)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

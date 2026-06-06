@@ -1,0 +1,271 @@
+# Kontablo Localization Mapping: Cuba (Cuban Accounting Standards — state-socialist)
+# Version: 0.1.0-draft
+# Authority: MTSS (Ministerio de Trabajo y Seguridad Social) / MEP (Ministerio de Economía
+#   y Planificación) / Ministerio de Finanzas y Precios (MFP)
+# Standard: Resolución 235/2005 del MFP and subsequent revisions. State-socialist accounting.
+# Critical Notes:
+#   VERIFY ALL ENTRIES — Cuba's accounting system reflects a state-socialist economy;
+#   IFRS adoption is minimal and limited to joint ventures with foreign investors.
+#   Currency: CUP (Peso Cubano). CUC (Peso Convertible) was abolished January 2021
+#   in the "Tarea Ordenamiento" monetary unification; CUP is now the sole official currency.
+#   USD is partially usable in specific state stores (MLC — Moneda Libremente Convertible
+#   system) but not for general accounting. VERIFY current MLC account treatment.
+#   Inflation has been significant post-2021 unification; IAS 29 hyperinflation criteria
+#   may be applicable. VERIFY current inflation rate against IAS 29 threshold (100% over 3 years).
+#   Private sector (trabajadores por cuenta propia / MPymes since 2021) is small but growing.
+#   No formal VAT system; various taxes and contributions via MFP.
+#   Corporate tax: Impuesto sobre Utilidades — 35% for joint ventures; rates for MPymes vary.
+#   VERIFY — Cuban MFP publishes Gaceta Oficial; access from outside Cuba is limited.
+
+metadata:
+  country: CU
+  authority: Ministerio de Finanzas y Precios (MFP)
+  standard: RESOLUCIÓN_235_2005_MFP_CU
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: CUP
+
+mappings:
+  "1":
+    name: "Activos (Assets)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "110":
+    name: "Caja (Cash in Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "111":
+    name: "Efectivo en Banco (Cash at Bank — CUP)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "112":
+    name: "Efectivo en MLC (Cash — Freely Convertible Currency accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — MLC (Moneda Libremente Convertible) system introduced 2020; treatment in unified CUP context"
+
+  "120":
+    name: "Cuentas por Cobrar (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "130":
+    name: "Inventarios (Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "140":
+    name: "Gastos Diferidos (Prepaid / Deferred Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "160":
+    name: "Activos Fijos Tangibles (Property, Plant and Equipment — gross)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "170":
+    name: "Depreciación Acumulada (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "180":
+    name: "Activos Intangibles (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "2":
+    name: "Pasivos (Liabilities)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "210":
+    name: "Cuentas por Pagar (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "220":
+    name: "Obligaciones con el Presupuesto (Tax Obligations to State Budget)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — state-sector enterprises remit profits directly; tax vs profit remittance distinction"
+
+  "225":
+    name: "Impuesto sobre Utilidades por Pagar (Income Tax Payable — 35% JV / VERIFY MPymes)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "230":
+    name: "Nóminas y Seguridad Social (Payroll and Social Security Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "240":
+    name: "Ingresos Diferidos (Deferred Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "260":
+    name: "Deudas a Largo Plazo (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "3":
+    name: "Patrimonio (Equity)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "310":
+    name: "Capital Estatal / Social (State Capital / Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — state enterprises: capital assigned by state; joint ventures: registered capital"
+
+  "320":
+    name: "Utilidades Retenidas (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "330":
+    name: "Resultado del Ejercicio (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "4":
+    name: "Ingresos (Revenue)"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "410":
+    name: "Ventas de Bienes (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "420":
+    name: "Servicios Prestados (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "5":
+    name: "Gastos (Expenses)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "510":
+    name: "Costo de Ventas (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "520":
+    name: "Salarios y Seguridad Social (Salaries and Payroll Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "530":
+    name: "Depreciación (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "540":
+    name: "Impuesto sobre Utilidades (Income Tax Expense — 35% JV)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — 35% for joint ventures; MPymes may follow different schedule"
+
+  "550":
+    name: "Otros Gastos Operacionales (Other Operating Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

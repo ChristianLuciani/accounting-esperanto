@@ -1,0 +1,270 @@
+# Kontablo Localization Mapping: Sri Lanka (SLFRS)
+# Version: 0.1.0-draft
+# Authority: CA Sri Lanka (Institute of Chartered Accountants of Sri Lanka)
+# Standard: SLFRS (Sri Lanka Financial Reporting Standards) — IFRS as adopted
+# Critical Notes:
+#   VAT: 18% (increased from 15% in late 2022/2023 as part of IMF bailout conditions)
+#   Corporate tax (CIT): 30% standard; 14% for qualifying exports/tourism; 40% for banking
+#   Currency: LKR (Sri Lankan Rupee) — significant depreciation during 2022 economic crisis
+#   2022 ECONOMIC CRISIS: Sri Lanka experienced sovereign default and IMF bailout (2023).
+#   IAS 29 (hyperinflation) was discussed but not formally triggered; inflation peaked ~70% (2022)
+#   VERIFY: whether IAS 29 was formally invoked for any reporting period
+#   Social Security Contribution Levy (SSCL): 2.5% on turnover (introduced 2022, replacing ESC)
+#   Advance Income Tax (AIT) and withholding tax apply to various payments
+
+metadata:
+  country: LK
+  authority: CA Sri Lanka
+  standard: SLFRS
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: LKR
+
+mappings:
+  "1001":
+    name: "Cash on Hand (අතේ ඇති මුදල් / கையில் உள்ள பணம்)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1002":
+    name: "Bank Accounts (බැංකු ගිණුම් / வங்கிக் கணக்குகள்)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1003":
+    name: "Short-term Investments (කෙටිකාලීන ආයෝජන)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Trade Receivables (වෙළඳ ලැබිය යුතු / வர்த்தக பெறுதல்கள்)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Other Receivables (වෙනත් ලැබිය යුතු)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "1300":
+    name: "Inventories (ගබඩා / சரக்கு)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Prepaid Expenses (කලින් ගෙවූ වියදම්)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "VAT Receivable — 18% (VAT ලැබිය යුතු)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1600":
+    name: "SSCL Receivable — 2.5% (Social Security Contribution Levy Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Property, Plant and Equipment — Gross (දේපල, යන්ත්‍ර හා උපකරණ)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "2001":
+    name: "Accumulated Depreciation (සමුච්චිත ක්ෂය)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Intangible Assets (අස්පෘශ්‍ය වත්කම්)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Long-term Investments (දිගුකාලීන ආයෝජන)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "3000":
+    name: "Accounts Payable (ගෙවිය යුතු / செலுத்த வேண்டியவை)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "VAT Payable — 18% (VAT ගෙවිය යුතු)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Income Tax Payable — 30% (ආදායම් බදු ගෙවිය යුතු)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Payroll Liabilities (වේතන බැඳීම්)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "3400":
+    name: "Accrued Expenses (උපචිත වියදම්)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Long-term Debt (දිගුකාලීන ණය)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Share Capital (කොටස් ප්‍රාග්ධනය)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Retained Earnings (රඳවා ගත් ඉපැයීම්)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Current Year Profit/Loss (වර්තමාන වර්ෂ ලාභ/අලාභ)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "6000":
+    name: "Sales Revenue (විකුණුම් ආදායම)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "Service Revenue (සේවා ආදායම)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Financial Income (මූල්‍ය ආදායම)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "7000":
+    name: "Cost of Goods Sold (විකුණු භාණ්ඩවල පිරිවැය)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "7100":
+    name: "Salaries and Wages (වේතන හා ඒජන්සි)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "Depreciation Expense (ක්ෂය ගාස්තු)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "7300":
+    name: "Financial Expenses (මූල්‍ය වියදම්)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "7400":
+    name: "Income Tax Expense — 30% (ආදායම් බදු ගාස්තු)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+
+  "7500":
+    name: "Other Operating Expenses (වෙනත් මෙහෙයුම් වියදම්)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

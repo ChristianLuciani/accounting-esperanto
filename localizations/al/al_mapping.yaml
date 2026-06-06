@@ -1,0 +1,301 @@
+# Kontablo Localization Mapping: Albania (NAS — Standardet Kombëtare të Kontabilitetit)
+# Version: 0.1.0-draft
+# Authority: ACC (Albanian Accounting Council — Këshilli Kombëtar i Kontabilitetit)
+# Standard: NAS Albania (Standardet Kombëtare të Kontabilitetit); IFRS for listed/public interest entities
+# Critical Notes:
+#   VAT (TVSH — Tatimi mbi Vlerën e Shtuar): 20% standard; 6% reduced (medicines, medical services, accommodation)
+#   Corporate income tax: 15% (standard); 5% for micro/small business (revenue < ALL 14M)
+#   Currency: ALL (Albanian Lek)
+#   Mandatory chart of accounts: classes 1-9 (Yugoslav-influenced, amended post-1990)
+#   Class 1: Non-current assets; Class 2: Inventories; Class 3: Cash and receivables
+#   Class 4: Liabilities; Class 5: Equity; Class 6: Revenue; Class 7: Expenses
+#   VERIFY: Codes follow the Plan Kontabël i Përgjithshëm (General Accounting Plan) per ACC; verify with current MF Albania guidance
+
+metadata:
+  country: AL
+  authority: ACC_ALBANIA
+  standard: NAS_ALBANIA
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: ALL
+
+mappings:
+  "121":
+    name: "Ndërtesa dhe konstruksione (Buildings and Structures)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "122":
+    name: "Makineritë dhe pajisjet (Machinery and Equipment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "128":
+    name: "Amortizimi i akumuluar (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "110":
+    name: "Aktivet jo-materiale (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "141":
+    name: "Investimet financiare afatgjata (Long-term Financial Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "211":
+    name: "Lëndët e para dhe materialet (Raw Materials)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "217":
+    name: "Mallrat (Merchandise)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "311":
+    name: "Llogaritë e arkëtueshme tregtare (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "319":
+    name: "Llogaritë e tjera të arkëtueshme (Other Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "331":
+    name: "Shpenzime të parapaguara (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "341":
+    name: "TVSH e zbritshme (VAT Receivable / Input TVSH)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "371":
+    name: "Arka (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "372":
+    name: "Llogaritë bankare (Bank Accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "401":
+    name: "Llogaritë e pagueshme tregtare (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "431":
+    name: "Hua bankare afatshkurtra (Short-term Bank Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "442":
+    name: "TVSH e pagueshme (VAT Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "445":
+    name: "Tatimi mbi fitimin i pagueshëm (Income Tax Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "421":
+    name: "Detyrimet ndaj punonjësve (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "391":
+    name: "Të ardhura të shtyra (Deferred Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000307"
+    aggregation_rules:
+      - "sum"
+
+  "511":
+    name: "Hua bankare afatgjata (Long-term Bank Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "521":
+    name: "Detyrimet nga qiramarrja financiare (Finance Lease Liability)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  "531":
+    name: "Tatim i shtyrë — detyrim (Deferred Tax Liability)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000403"
+    aggregation_rules:
+      - "sum"
+
+  "501":
+    name: "Kapitali themeltar (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "541":
+    name: "Fitimi i pashpërndarë (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "551":
+    name: "Fitimi/humbja e vitit aktual (Current Year Profit/Loss)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "701":
+    name: "Të ardhura nga shitja e mallrave (Sales Revenue — Goods)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "702":
+    name: "Të ardhura nga shërbime (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "762":
+    name: "Të ardhura nga interesat (Interest Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "601":
+    name: "Kostoja e mallrave të shitura (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "641":
+    name: "Shpenzime për pagat (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "651":
+    name: "Amortizimi (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "621":
+    name: "Shpenzime qiraje (Rent Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "622":
+    name: "Shpenzime utilitare (Utilities)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "661":
+    name: "Shpenzime interesash (Interest Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "691":
+    name: "Tatimi mbi fitimin (Income Tax Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

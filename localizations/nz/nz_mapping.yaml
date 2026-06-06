@@ -1,0 +1,430 @@
+# Kontablo Localization Mapping: New Zealand (NZ GAAP / XRB)
+# Version: 0.1.0-draft
+# Authority: XRB (External Reporting Board) / FMA (Financial Markets Authority) / IRD (Inland Revenue)
+# Standard: New Zealand GAAP under the Financial Reporting Act 2013 (FRA 2013);
+#           NZ IFRS (for publicly accountable entities); NZ IFRS RDR (reduced disclosure);
+#           PBE Standards for public benefit entities; NZ IFRS for SMEs (for eligible entities)
+# Critical Notes:
+#   New Zealand does not mandate a specific chart of accounts. The dominant SME practice
+#   follows the Xero NZ / MYOB NZ default chart, using numeric ranges similar to Australia.
+#   XRB adopted IFRS-aligned standards as NZ IFRS starting 2005. Tier 1 = full NZ IFRS;
+#   Tier 2 = NZ IFRS RDR (reduced disclosures); Tier 3/4 = simplified standards for small entities.
+#   GST (Goods and Services Tax): flat 15% rate — no reduced rates (unlike Australia). One of
+#   the broadest GST bases in the world, with very limited exemptions (financial services,
+#   fine metals). Returns typically filed monthly or 2-monthly.
+#   Corporate income tax: 28% (companies); 33% (trusts); 28% (Māori authorities).
+#   PAYE (Pay As You Earn): employer withholds income tax from wages; remitted to IRD.
+#   KiwiSaver: voluntary (with mandatory employer minimum): employer contributes 3% of gross
+#   wages for enrolled employees (mandatory employer contribution since 2013).
+#   Accident Compensation Corporation (ACC): employer ACC levy (Work account) varies by industry.
+#   NZD is the functional currency; AUD accounts common for trans-Tasman entities.
+#   Account codes follow Xero NZ default ranges.
+
+metadata:
+  country: NZ
+  authority: XRB (External Reporting Board) / IRD (Inland Revenue Department)
+  standard: nz_ifrs_xrb_tier2
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: NZD
+
+mappings:
+  # === ASSETS ===
+
+  "090":
+    name: "Bank — Cheque Account (Primary Operating Bank Account)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "091":
+    name: "Bank — Savings Account"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "092":
+    name: "Petty Cash"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "610":
+    name: "Accounts Receivable (Trade Debtors)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "611":
+    name: "Provision for Doubtful Debts (Allowance for Expected Credit Losses — contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "630":
+    name: "Inventory (Trading Stock)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "800":
+    name: "GST Receivable (Input Tax Credits Claimable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "805":
+    name: "Income Tax Prepaid / Provisional Tax Paid (Prepaid Corporate Tax)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "810":
+    name: "Prepaid Expenses"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "710":
+    name: "Land (Freehold Land)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "711":
+    name: "Buildings"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "712":
+    name: "Accumulated Depreciation — Buildings (contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "720":
+    name: "Plant and Equipment"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "721":
+    name: "Accumulated Depreciation — Plant and Equipment (contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "730":
+    name: "Motor Vehicles"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "731":
+    name: "Accumulated Depreciation — Motor Vehicles (contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "750":
+    name: "Intangible Assets — Software, IP, Website Development"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "751":
+    name: "Accumulated Amortisation — Intangibles (contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "760":
+    name: "Goodwill"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "770":
+    name: "Right-of-Use Asset (NZ IFRS 16 Leases)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000205"
+    aggregation_rules:
+      - "sum"
+
+  # === LIABILITIES ===
+
+  "820":
+    name: "Accounts Payable (Trade Creditors)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "825":
+    name: "GST Payable (Output GST Collected — 15%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "830":
+    name: "PAYE Payable (Employee Income Tax Withheld)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "831":
+    name: "KiwiSaver Payable (Employer KiwiSaver Contributions — minimum 3%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: KiwiSaver is NZ's voluntary retirement savings scheme. Employer minimum
+    # contribution is 3% of gross wages for enrolled employees. Employee contributes 3%,
+    # 4%, 6%, 8% or 10% of gross earnings. IRD administers contributions.
+
+  "832":
+    name: "ACC Levies Payable (Accident Compensation Corporation — Work Account levy)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: ACC levies are mandatory in NZ. Employer pays Work Account levy (varies by
+    # industry risk; set annually by ACC). Employees pay Earners' Account levy (deducted
+    # via PAYE, currently NZD 1.39/NZD 100 earnings, 2024).
+
+  "840":
+    name: "Income Tax Payable (Corporate Tax — 28%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "850":
+    name: "Short-term Borrowings (Overdraft and Short-term Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "860":
+    name: "Provisions — Annual Leave (Employee Holiday Pay — Holidays Act 2003)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  "870":
+    name: "Long-term Borrowings (Bank Loans — Non-current)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "880":
+    name: "Lease Liabilities (NZ IFRS 16 Right-of-Use Lease Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  # === EQUITY ===
+
+  "900":
+    name: "Share Capital / Paid-up Capital"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "910":
+    name: "Retained Earnings (Accumulated Surplus)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "920":
+    name: "Current Year Profit / Loss"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "930":
+    name: "Reserves (Asset Revaluation Reserve, General Reserve)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  # === REVENUE ===
+
+  "200":
+    name: "Sales Revenue (Revenue from Goods)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "201":
+    name: "Service Revenue"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "270":
+    name: "Other Income (Grants, Subsidies, Miscellaneous)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  "280":
+    name: "Interest Income"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  # === EXPENSES ===
+
+  "300":
+    name: "Cost of Sales (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "400":
+    name: "Wages and Salaries Expense"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "401":
+    name: "KiwiSaver Employer Contribution Expense"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "402":
+    name: "ACC Levy Expense (Employer Work Account Levy)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "420":
+    name: "Rent Expense"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "440":
+    name: "Depreciation and Amortisation Expense"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "460":
+    name: "Marketing and Advertising Expense"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "500":
+    name: "General and Administrative Expenses"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  "550":
+    name: "Interest Expense and Finance Costs"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  "590":
+    name: "Income Tax Expense (Corporate Income Tax — 28%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

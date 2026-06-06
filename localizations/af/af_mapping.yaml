@@ -1,0 +1,290 @@
+# Kontablo Localization Mapping: Afghanistan (Transitional — severely disrupted)
+# Version: 0.1.0-draft
+# Authority: Afghanistan Chartered Accountants Organization (ACAA) — operational status uncertain post-2021
+# Standard: IFRS adoption was in progress pre-2021; current status disrupted under Taliban government.
+# Critical Notes:
+#   VERIFY ALL ENTRIES — formal accounting infrastructure largely disrupted since August 2021.
+#   Currency: AFN (Afghan Afghani). Exchange rate highly volatile post-2021.
+#   Taxation: Taliban-era tax administration under Ministry of Finance; formal VAT system
+#   absent (replaced by business receipts tax ~2-4% on turnover). VERIFY — rates and
+#   administration subject to change without published notice.
+#   Corporate income tax: was 20% under AISA regime pre-2021. Current enforcement unclear.
+#   This mapping reflects pre-2021 IFRS-oriented chart of accounts as documented by ACAA
+#   and World Bank technical assistance programs. It should NOT be used for active compliance
+#   without verification against current Taliban MoF directives.
+#   Sources: World Bank Afghanistan PFM reports (pre-2021); ACAA technical standards.
+
+metadata:
+  country: AF
+  authority: ACAA (Afghanistan Chartered Accountants Organization) — VERIFY operational status
+  standard: IFRS_TRANSITIONAL_AF_PRE2021
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: AFN
+
+mappings:
+  "1000":
+    name: "Assets (VERIFY — current chart structure uncertain)"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000001"
+    aggregation_rules:
+      - "sum"
+
+  "1100":
+    name: "Cash and Cash Equivalents"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — hawala system widely used; formal banking severely constrained post-2021"
+
+  "1110":
+    name: "Cash at Bank (AFN)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — banking sector under sanctions; Da Afghanistan Bank (central bank) constrained"
+
+  "1115":
+    name: "Cash at Bank (USD)"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — USD widely used informally; reporting currency implications under IAS 21"
+
+  "1120":
+    name: "Cash in Hand"
+    nature: "Debit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "1200":
+    name: "Trade Receivables"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — credit risk environment severely impaired"
+
+  "1300":
+    name: "Inventories"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Prepaid Expenses"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1500":
+    name: "Business Receipts Tax Receivable"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — replaces VAT; ~2-4% on turnover under Taliban MoF; formal VAT abolished"
+
+  "1600":
+    name: "Property, Plant and Equipment (gross)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — impairment testing critical given conflict/instability"
+
+  "1610":
+    name: "Accumulated Depreciation"
+    nature: "Credit"
+    level: 3
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1700":
+    name: "Intangible Assets"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "2000":
+    name: "Liabilities"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000002"
+    aggregation_rules:
+      - "sum"
+
+  "2100":
+    name: "Accounts Payable"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2200":
+    name: "Business Receipts Tax Payable (VERIFY rate)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — Taliban MoF rate schedule; approximately 2-4% but enforcement irregular"
+
+  "2300":
+    name: "Income Tax Payable (VERIFY)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — pre-2021 rate was 20%; current enforcement and rate unclear"
+
+  "2400":
+    name: "Payroll Liabilities"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "2500":
+    name: "Accrued Expenses"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "2600":
+    name: "Long-term Debt"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — formal debt markets non-functional; World Bank/ADB programs frozen"
+
+  "3000":
+    name: "Equity"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000003"
+    aggregation_rules:
+      - "sum"
+
+  "3100":
+    name: "Share Capital"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "3200":
+    name: "Retained Earnings"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "3300":
+    name: "Current Year Profit/Loss"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  "4000":
+    name: "Revenue"
+    nature: "Credit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000004"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "Sales Revenue"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4200":
+    name: "Service Revenue"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "5000":
+    name: "Expenses"
+    nature: "Debit"
+    level: 1
+    kontablo_uuid: "00000000-0000-4000-8000-000000000005"
+    aggregation_rules:
+      - "sum"
+
+  "5100":
+    name: "Cost of Goods Sold"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "5200":
+    name: "Salaries and Wages"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "5300":
+    name: "Depreciation Expense"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "5400":
+    name: "Income Tax / Business Tax Expense (VERIFY)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
+    notes: "VERIFY — current tax regime and rates under Taliban government"
+
+  "5500":
+    name: "Other Operating Expenses"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000709"
+    aggregation_rules:
+      - "sum"

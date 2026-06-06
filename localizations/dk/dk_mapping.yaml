@@ -1,0 +1,399 @@
+# Kontablo Localization Mapping: Denmark (Danish GAAP / ÅRL)
+# Version: 0.1.0-draft
+# Authority: Erhvervsstyrelsen (Danish Business Authority) / FSR — Danske Revisorer
+# Standard: Danish Financial Statements Act (Årsregnskabsloven — ÅRL), consolidated 2015 with amendments
+# Critical Notes:
+#   Denmark does not mandate a specific chart of accounts. The ÅRL prescribes balance sheet
+#   and income statement formats; the Standardkontoplan (standard chart) published by FSR and
+#   supported by Dinero, e-conomic, and Billy is the de-facto SME reference.
+#   ÅRL reporting classes: Class A (micro), B (small), C (medium), D (large).
+#   Listed companies apply IFRS as adopted by EU (IAS Regulation).
+#   VAT (Moms): standard rate 25% — one of the highest in the EU. No reduced rate except
+#   zero rating (newspapers, exported goods, financial services).
+#   Corporate income tax (Selskabsskat): 22% (since 2016).
+#   Danish payroll contributions: ATP (labour market supplementary pension), AM-bidrag (labour
+#   market contribution 8% of gross salary), and social contributions (AES, AUB, etc.).
+#   Account codes follow e-conomic / Dinero default ranges most widely used by Danish SMEs.
+
+metadata:
+  country: DK
+  authority: Erhvervsstyrelsen / FSR — Danske Revisorer
+  standard: aarl_standardkontoplan
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: DKK
+
+mappings:
+  # === ANLÆGSAKTIVER (Fixed Assets) ===
+
+  "1010":
+    name: "Immaterielle anlægsaktiver — software og licenser (Intangible Assets — Software and Licences)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1020":
+    name: "Goodwill"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "1110":
+    name: "Grunde og bygninger (Land and Buildings)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1120":
+    name: "Tekniske anlæg og maskiner (Technical Plant and Machinery)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1130":
+    name: "Andre anlæg, driftsmateriel og inventar (Other Plant, Equipment and Fixtures)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1140":
+    name: "Biler og transportmidler (Vehicles)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "1199":
+    name: "Akkumulerede afskrivninger — materielle anlægsaktiver (Accumulated Depreciation — PPE, contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "1210":
+    name: "Kapitalandele i tilknyttede virksomheder (Investments in Subsidiaries)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  # === OMSÆTNINGSAKTIVER (Current Assets) ===
+
+  "1310":
+    name: "Varebeholdninger — handelsvarer (Merchandise Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1320":
+    name: "Varebeholdninger — råvarer og hjælpematerialer (Raw Materials Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "1400":
+    name: "Tilgodehavender fra salg og tjenesteydelser (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1405":
+    name: "Nedskrivning på tilgodehavender (Allowance for Doubtful Receivables — contra)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "1440":
+    name: "Momstilgodehavende (Input VAT Receivable)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "1450":
+    name: "Selskabsskat tilgodehavende (Corporate Tax Receivable — prepaid)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000109"
+    aggregation_rules:
+      - "sum"
+
+  "1490":
+    name: "Andre tilgodehavender og forudbetalte omkostninger (Other Receivables and Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "1810":
+    name: "Bankkonti (Bank Current Accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "1820":
+    name: "Kassebeholdning (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  # === EGENKAPITAL (Equity) ===
+
+  "2010":
+    name: "Aktiekapital / Anpartskapital (Share Capital / ApS Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "2020":
+    name: "Overkurs (Share Premium / Agio)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000504"
+    aggregation_rules:
+      - "sum"
+
+  "2060":
+    name: "Overført overskud / underskud (Retained Earnings / Accumulated Losses)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "2080":
+    name: "Årets resultat (Net Profit / Loss for the Year)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000503"
+    aggregation_rules:
+      - "sum"
+
+  # === HENSATTE FORPLIGTELSER (Provisions) ===
+
+  "2210":
+    name: "Hensættelser til pensioner og lignende (Pension Provisions)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  "2250":
+    name: "Andre hensatte forpligtelser (Other Provisions)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000404"
+    aggregation_rules:
+      - "sum"
+
+  # === LANGFRISTEDE GÆLDSFORPLIGTELSER (Long-term Liabilities) ===
+
+  "2310":
+    name: "Langfristede banklån (Long-term Bank Loans)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "2360":
+    name: "Finansielle leasingforpligtelser — langfristede (Finance Lease Liabilities — LT)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000402"
+    aggregation_rules:
+      - "sum"
+
+  # === KORTFRISTEDE GÆLDSFORPLIGTELSER (Current Liabilities) ===
+
+  "2410":
+    name: "Kortfristet del af langfristede lån (Current Portion of Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2430":
+    name: "Leverandørers gæld (Trade Payables / Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "2450":
+    name: "Momsgæld 25% (Output VAT 25% Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2460":
+    name: "Selskabsskat skyldig (Corporate Tax Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "2470":
+    name: "A-skat og AM-bidrag skyldig (Employee Income Tax Withheld + Labour Market Contribution Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+    # VERIFY: A-skat is Danish PAYE (withholding income tax). AM-bidrag = 8% labour market
+    # contribution deducted from gross salary. ATP employer contribution also in this bucket.
+
+  "2490":
+    name: "Anden kortfristet gæld og forudbetalinger (Other Current Liabilities and Deferred Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000308"
+    aggregation_rules:
+      - "sum"
+
+  # === NETTOOMSÆTNING OG ØVRIGE DRIFTSINDTÆGTER (Revenue) ===
+
+  "4000":
+    name: "Nettoomsætning — varesalg (Net Revenue — Goods Sales)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "4010":
+    name: "Nettoomsætning — tjenesteydelser (Net Revenue — Services)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "4100":
+    name: "Andre driftsindtægter (Other Operating Income)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000604"
+    aggregation_rules:
+      - "sum"
+
+  # === DRIFTSOMKOSTNINGER (Operating Expenses) ===
+
+  "5000":
+    name: "Vareforbrug / Produktionsomkostninger (COGS / Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "6000":
+    name: "Lønninger og gager (Wages and Salaries)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "6010":
+    name: "Sociale bidrag — arbejdsgiver (Employer Social Contributions — ATP, AES, AUB)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "6100":
+    name: "Husleje og lejeomkostninger (Rent and Premises Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000704"
+    aggregation_rules:
+      - "sum"
+
+  "6200":
+    name: "Afskrivninger og nedskrivninger (Depreciation, Amortisation and Impairment)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "6300":
+    name: "Markedsføring og salgsomkostninger (Marketing and Selling Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000706"
+    aggregation_rules:
+      - "sum"
+
+  "6400":
+    name: "Administration og øvrige driftsomkostninger (G&A and Other Operating Costs)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000705"
+    aggregation_rules:
+      - "sum"
+
+  # === FINANSIELLE POSTER (Financial Items) ===
+
+  "7100":
+    name: "Finansielle indtægter (Financial Income — interest received, dividends)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000603"
+    aggregation_rules:
+      - "sum"
+
+  "7200":
+    name: "Finansielle omkostninger (Financial Expenses — interest paid, bank charges)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000707"
+    aggregation_rules:
+      - "sum"
+
+  # === SKAT (Tax) ===
+
+  "8000":
+    name: "Skat af årets resultat (Income Tax Expense — Selskabsskat 22%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"

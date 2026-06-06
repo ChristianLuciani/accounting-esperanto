@@ -1,0 +1,235 @@
+# Kontablo Localization Mapping: São Tomé and Príncipe (Portuguese-influenced / IFRS adoption)
+# Version: 0.1.0-draft
+# Authority: Ministry of Finance and Public Administration (Ministério das Finanças e Administração Pública)
+# Standard: Portuguese-influenced accounting framework; IFRS adoption in progress
+# Critical Notes:
+#   IVA (Imposto sobre o Valor Acrescentado — VAT) 15%
+#   IRPC (Imposto sobre o Rendimento de Pessoas Colectivas — corporate income tax) 25%
+#   Currency: STN (São Tomé and Príncipe dobra, new — introduced 2018; pegged to EUR at 1 EUR = 24.5 STN)
+#   Former Portuguese colony; accounting framework closely follows Portuguese SNCRF model
+#   Oil sector exploration context may be relevant (Gulf of Guinea)
+
+metadata:
+  country: ST
+  authority: Ministério das Finanças e Administração Pública
+  standard: SNCRF_ST
+  kontablo_version: 0.1.0
+  last_updated: 2026-06-04
+  currency: STN
+
+mappings:
+  "11":
+    name: "Caixa (Cash on Hand)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000101"
+    aggregation_rules:
+      - "sum"
+
+  "12":
+    name: "Depósitos à ordem (Bank Accounts)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000102"
+    aggregation_rules:
+      - "sum"
+
+  "14":
+    name: "Outros instrumentos financeiros — curto prazo (Short-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000103"
+    aggregation_rules:
+      - "sum"
+
+  "21":
+    name: "Clientes (Trade Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000104"
+    aggregation_rules:
+      - "sum"
+
+  "27":
+    name: "Outras contas a receber (Other Receivables)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000105"
+    aggregation_rules:
+      - "sum"
+
+  "31":
+    name: "Mercadorias / Inventários (Inventories)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000106"
+    aggregation_rules:
+      - "sum"
+
+  "28":
+    name: "Diferimentos — activo (Prepaid Expenses)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000107"
+    aggregation_rules:
+      - "sum"
+
+  "2432":
+    name: "IVA dedutível (VAT Receivable, 15%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000108"
+    aggregation_rules:
+      - "sum"
+
+  "43":
+    name: "Activos fixos tangíveis — bruto (PP&E, gross)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000201"
+    aggregation_rules:
+      - "sum"
+
+  "438":
+    name: "Depreciações acumuladas (Accumulated Depreciation)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000202"
+    aggregation_rules:
+      - "sum"
+
+  "44":
+    name: "Activos intangíveis (Intangible Assets)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000203"
+    aggregation_rules:
+      - "sum"
+
+  "41":
+    name: "Investimentos financeiros (Long-term Investments)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000204"
+    aggregation_rules:
+      - "sum"
+
+  "22":
+    name: "Fornecedores (Accounts Payable)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000301"
+    aggregation_rules:
+      - "sum"
+
+  "25":
+    name: "Financiamentos obtidos — curto prazo (Short-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000302"
+    aggregation_rules:
+      - "sum"
+
+  "2433":
+    name: "IVA liquidado (VAT Payable, 15%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000303"
+    aggregation_rules:
+      - "sum"
+
+  "2412":
+    name: "IRPC a pagar (Income Tax Payable, 25%)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000304"
+    aggregation_rules:
+      - "sum"
+
+  "23":
+    name: "Pessoal — remunerações a pagar (Payroll Liabilities)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000305"
+    aggregation_rules:
+      - "sum"
+
+  "29":
+    name: "Diferimentos — passivo (Accrued Expenses / Deferred Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000306"
+    aggregation_rules:
+      - "sum"
+
+  "25-L":
+    name: "Financiamentos obtidos — longo prazo (Long-term Debt)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000401"
+    aggregation_rules:
+      - "sum"
+
+  "51":
+    name: "Capital realizado (Share Capital)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000501"
+    aggregation_rules:
+      - "sum"
+
+  "56":
+    name: "Resultados transitados (Retained Earnings)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000502"
+    aggregation_rules:
+      - "sum"
+
+  "71":
+    name: "Vendas (Sales Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000601"
+    aggregation_rules:
+      - "sum"
+
+  "72":
+    name: "Prestações de serviços (Service Revenue)"
+    nature: "Credit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000602"
+    aggregation_rules:
+      - "sum"
+
+  "61":
+    name: "Custo das mercadorias vendidas (Cost of Goods Sold)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000701"
+    aggregation_rules:
+      - "sum"
+
+  "63":
+    name: "Gastos com pessoal (Salaries and Wages)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000702"
+    aggregation_rules:
+      - "sum"
+
+  "64":
+    name: "Gastos de depreciação (Depreciation Expense)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000703"
+    aggregation_rules:
+      - "sum"
+
+  "8122":
+    name: "Imposto sobre o rendimento — IRPC (Income Tax Expense, 25%)"
+    nature: "Debit"
+    level: 2
+    kontablo_uuid: "00000000-0000-4000-8000-000000000708"
+    aggregation_rules:
+      - "sum"
