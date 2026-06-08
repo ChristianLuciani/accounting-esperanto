@@ -97,16 +97,16 @@ TIER2_RULES = [
     ("asset.current.carbon_credits", ["carbon credit", "crédito de carbono", "crédit carbone", "emission allowance"]),
     ("asset.noncurrent.biological", ["biological", "activo biológico", "actif biologique", "livestock", "ganado"]),
     ("liability.current.zakat",   ["zakat", "زكاة"]),
-    ("asset.current.cash",        ["cash", "caja", "caisse", "caixa", "efectivo", "tiền mặt", "النقد", "kasse", "касса", "현금", "nakit", "espèces", "petty cash"]),
-    ("asset.current.bank",        ["bank", "banco", "banque", "banca", "банк", "은행", "banka", "ngân hàng", "bancos"]),
-    ("asset.current.receivables", ["receivable", "clientes", "clients", "cuentas por cobrar", "contas a receber", "дебитор", "매출채권", "alacak", "phải thu", "debtors"]),
-    ("asset.current.inventory",   ["inventory", "inventario", "stock", "existencias", "estoque", "stocks", "запас", "재고", "stok", "hàng tồn kho"]),
+    ("asset.current.cash",        ["cash", "caja", "caisse", "caixa", "efectivo", "tiền mặt", "النقد", "kasse", "касса", "현금", "nakit", "espèces", "petty cash", "cassa", "kasa", "kas", "ταμείο"]),
+    ("asset.current.bank",        ["bank", "banco", "banque", "banca", "банк", "은행", "banka", "ngân hàng", "bancos", "البنك", "τράπεζα"]),
+    ("asset.current.receivables", ["receivable", "clientes", "clients", "cuentas por cobrar", "contas a receber", "дебитор", "매출채권", "alacak", "phải thu", "debtors", "clienti", "należności", "piutang", "πελάτες", "ذمم مدينة"]),
+    ("asset.current.inventory",   ["inventory", "inventario", "stock", "existencias", "estoque", "stocks", "запас", "재고", "stok", "hàng tồn kho", "magazzino", "zapasy", "persediaan"]),
     ("asset.current.vat_input",   ["vat input", "iva acreditable", "iva soportado", "tva déductible", "input vat", "input tax credit"]),
     ("asset.current.prepaid",     ["prepaid", "anticipo", "gastos pagados por anticipado", "charges constatées", "선급"]),
     ("asset.noncurrent.ppe",      ["ppe", "property plant", "propiedad planta", "immobilisations corporelles", "ativo imobilizado", "inmueble", "maquinaria", "основные средства", "유형자산", "maddi duran"]),
     ("asset.noncurrent.intangibles", ["intangible", "intangibles", "immobilisations incorporelles", "무형자산"]),
     ("asset.noncurrent.goodwill", ["goodwill", "fondo de comercio", "écart d'acquisition", "영업권"]),
-    ("liability.current.payables", ["payable", "proveedores", "fornecedores", "fournisseurs", "cuentas por pagar", "кредитор", "매입채무", "borç", "phải trả"]),
+    ("liability.current.payables", ["payable", "proveedores", "fornecedores", "fournisseurs", "cuentas por pagar", "кредитор", "매입채무", "borç", "phải trả", "fornitori", "zobowiązania", "utang", "προμηθευτές", "موردون"]),
     ("liability.current.vat_output", ["vat output", "iva por pagar", "iva repercutido", "tva collectée", "output vat"]),
     ("liability.current.tax",     ["tax payable", "impuestos por pagar", "impôt", "imposto a pagar", "vergi"]),
     ("liability.current.short_term_debt", ["short-term debt", "deuda corto plazo", "préstamo corto", "empréstimo"]),
@@ -115,7 +115,7 @@ TIER2_RULES = [
     ("equity.capital",            ["capital", "share capital", "capital social", "자본금", "sermaye"]),
     ("equity.retained",           ["retained", "resultados acumulados", "lucros acumulados", "report à nouveau", "이익잉여금"]),
     ("equity.reserves",           ["reserve", "reservas", "réserves", "yedek"]),
-    ("revenue.operating",         ["revenue", "ingresos", "ventas", "receita", "chiffre d'affaires", "doanh thu", "매출", "gelir", "выручка"]),
+    ("revenue.operating",         ["revenue", "ingresos", "ventas", "receita", "chiffre d'affaires", "doanh thu", "매출", "gelir", "выручка", "ricavi", "przychody", "pendapatan", "έσοδα", "πωλήσεις", "إيرادات", "sales"]),
     ("revenue.other",             ["other income", "otros ingresos", "produits divers"]),
     ("expense.cogs",              ["cogs", "cost of goods", "costo de ventas", "custo", "coût des ventes", "매출원가"]),
     ("expense.admin",             ["administrative", "gastos administrativos", "frais généraux", "despesas administrativas", "판관비"]),
@@ -166,7 +166,9 @@ COUNTRY = {"ae":"UAE","ar":"Argentina","br":"Brazil","ca":"Canada","cn":"China",
            "ru":"Russia","sa":"Saudi Arabia","tr":"Turkey","uk":"United Kingdom",
            "us":"USA","ve":"Venezuela","vn":"Vietnam","za":"South Africa",
            "sn":"Senegal","ci":"Cote d'Ivoire","kr":"South Korea","lb":"Lebanon",
-           "ec":"Ecuador"}
+           "ec":"Ecuador","it":"Italy","pl":"Poland","id":"Indonesia","gr":"Greece",
+           "cl":"Chile","pe":"Peru","ma":"Morocco","kz":"Kazakhstan","eg":"Egypt",
+           "ke":"Kenya","ph":"Philippines","pk":"Pakistan","ch":"Switzerland"}
 
 
 def build_entities(accounts, by_code):
@@ -228,6 +230,38 @@ def build_entities(accounts, by_code):
             {"code":"x","name":"유형자산","nature":"debit","amt":800000000}]},
     ]
 
+    # --- additional Tier-2 jurisdictions (multilingual breadth, no ontology codes)
+    def L(usd, ccy):  # local face amount giving ~usd after FX normalization
+        return round(usd / FX[ccy], 2)
+    more = [
+        ("it","EUR",[("Cassa","debit",50000),("Crediti verso clienti","debit",120000),
+                     ("Debiti verso fornitori","credit",70000),("Ricavi delle vendite","credit",300000)]),
+        ("pl","PLN",[("Kasa","debit",50000),("Należności od klientów","debit",120000),
+                     ("Zobowiązania wobec dostawców","credit",70000),("Przychody ze sprzedaży","credit",300000)]),
+        ("id","IDR",[("Kas","debit",50000),("Piutang usaha","debit",120000),
+                     ("Utang usaha","credit",70000),("Pendapatan","credit",300000)]),
+        ("gr","EUR",[("Ταμείο","debit",50000),("Πελάτες","debit",120000),
+                     ("Προμηθευτές","credit",70000),("Πωλήσεις","credit",300000)]),
+        ("cl","CLP",[("Caja","debit",50000),("Clientes","debit",120000),("Ventas","credit",300000)]),
+        ("pe","PEN",[("Bancos","debit",40000),("Clientes","debit",120000),("Ventas","credit",300000)]),
+        ("ma","MAD",[("Banque","debit",40000),("Clients","debit",120000),
+                     ("Fournisseurs","credit",70000),("Chiffre d'affaires","credit",300000)]),
+        ("kz","KZT",[("Касса","debit",50000),("Дебиторская задолженность","debit",120000),
+                     ("Кредиторская задолженность","credit",70000),("Выручка","credit",300000)]),
+        ("eg","EGP",[("النقد","debit",50000),("البنك","debit",40000),
+                     ("ذمم مدينة","debit",120000),("إيرادات","credit",300000)]),
+        ("ke","KES",[("Cash at bank","debit",50000),("Trade Receivables","debit",120000),
+                     ("Trade Payables","credit",70000),("Revenue","credit",300000)]),
+        ("ph","PHP",[("Cash on hand","debit",50000),("Accounts Receivable","debit",120000),("Sales","credit",300000)]),
+        ("pk","PKR",[("Bank balances","debit",40000),("Trade Debtors","debit",120000),("Revenue","credit",300000)]),
+        ("ch","CHF",[("Banque","debit",40000),("Clients","debit",120000),("Chiffre d'affaires","credit",300000)]),
+    ]
+    for j, ccy, rows in more:
+        entities.append({"id": f"{j.upper()}-T2", "name": f"{COUNTRY[j]} (Tier-2)",
+                         "j": j, "ccy": ccy,
+                         "data": [{"code":"x","name":nm,"nature":nat,"amt":L(usd,ccy)}
+                                  for nm,nat,usd in rows]})
+
     # --- coverage-boundary escalations: v0.3-roadmap instruments + exotic reserve
     entities.append({"id":"US-FRONTIER","name":"USA (frontier instruments)","j":"us","ccy":"USD","data":[
         {"code":"x","name":"Bitcoin Treasury Holdings","nature":"debit","amt":250000},
@@ -249,11 +283,17 @@ JCCY = {"ae":"AED","ar":"ARS","br":"BRL","ca":"CAD","cn":"CNY","co":"COP",
         "de":"EUR","es":"EUR","fr":"EUR","il":"ILS","in":"INR","jp":"JPY",
         "mx":"MXN","ng":"NGN","pa":"USD","ru":"RUB","sa":"SAR","tr":"TRY",
         "uk":"GBP","us":"USD","ve":"VES","vn":"VND","za":"ZAR",
-        "sn":"XOF","ci":"XOF","kr":"KRW","lb":"LBP","ec":"USD"}
+        "sn":"XOF","ci":"XOF","kr":"KRW","lb":"LBP","ec":"USD",
+        # --- additional Tier-2 jurisdictions (no ontology local_codes) ---
+        "it":"EUR","pl":"PLN","id":"IDR","gr":"EUR","cl":"CLP","pe":"PEN",
+        "ma":"MAD","kz":"KZT","eg":"EGP","ke":"KES","ph":"PHP","pk":"PKR",
+        "ch":"CHF"}
 FX = {"AED":0.27,"ARS":0.0011,"BRL":0.20,"CAD":0.73,"CNY":0.14,"COP":0.00025,
       "EUR":1.08,"ILS":0.27,"INR":0.012,"JPY":0.0067,"MXN":0.058,"NGN":0.00065,
       "RUB":0.011,"SAR":0.27,"TRY":0.030,"GBP":1.27,"USD":1.0,"VES":0.027,
-      "VND":0.00004,"ZAR":0.054,"XOF":0.00165,"KRW":0.00073,"LBP":0.0000112}
+      "VND":0.00004,"ZAR":0.054,"XOF":0.00165,"KRW":0.00073,"LBP":0.0000112,
+      "PLN":0.25,"IDR":0.000062,"CLP":0.0011,"PEN":0.27,"MAD":0.10,"KZT":0.0021,
+      "EGP":0.021,"KES":0.0078,"PHP":0.018,"PKR":0.0036,"CHF":1.13}
 
 # Representative USD face value per account class (local amounts are derived as
 # base/FX so each coded account contributes a comparable USD magnitude).

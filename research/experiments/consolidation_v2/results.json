@@ -1,24 +1,37 @@
 {
-  "entities": 33,
+  "entities": 46,
   "countries": [
     "ae",
     "ar",
     "br",
     "ca",
+    "ch",
     "ci",
+    "cl",
     "cn",
     "co",
     "de",
+    "eg",
     "es",
     "fr",
+    "gr",
+    "id",
     "il",
     "in",
+    "it",
     "jp",
+    "ke",
     "kr",
+    "kz",
     "lb",
+    "ma",
     "mx",
     "ng",
     "pa",
+    "pe",
+    "ph",
+    "pk",
+    "pl",
     "ru",
     "sa",
     "sn",
@@ -29,24 +42,24 @@
     "vn",
     "za"
   ],
-  "n_countries": 27,
+  "n_countries": 40,
   "hyperinflation_cases": [
     "ar",
     "lb",
     "tr",
     "ve"
   ],
-  "total_entries": 132,
+  "total_entries": 186,
   "distinct_nodes_hit": 25,
   "tier_distribution": {
-    "tier1_exact": 117,
-    "tier2_keyword": 10,
+    "tier1_exact": 124,
+    "tier2_keyword": 57,
     "escalated": 4,
     "forced_upstream": 1
   },
-  "deterministic_coverage_pct": 96.2,
+  "deterministic_coverage_pct": 97.3,
   "escalated": 4,
-  "escalated_pct": 3.0,
+  "escalated_pct": 2.2,
   "cra_flags": [
     {
       "entity": "XX-CRA-TEST",
@@ -64,47 +77,14 @@
       "flag": "nature_mismatch:debit!=credit@revenue.operating"
     }
   ],
-  "ontology_code_collisions": [
-    {
-      "jurisdiction": "mx",
-      "code": "509",
-      "ids": [
-        "expense.fx_loss",
-        "expense.interest"
-      ]
-    },
-    {
-      "jurisdiction": "ru",
-      "code": "68.2",
-      "ids": [
-        "asset.current.vat_input",
-        "liability.current.vat_output"
-      ]
-    },
-    {
-      "jurisdiction": "vn",
-      "code": "311",
-      "ids": [
-        "liability.current.short_term_debt",
-        "liability.noncurrent.debt"
-      ]
-    },
-    {
-      "jurisdiction": "vn",
-      "code": "635",
-      "ids": [
-        "expense.fx_loss",
-        "expense.interest"
-      ]
-    }
-  ],
+  "ontology_code_collisions": [],
   "consolidated_usd": {
-    "asset.current.bank": 189700.0,
-    "asset.current.cash": 1351087.73,
+    "asset.current.bank": 389700.0,
+    "asset.current.cash": 1801087.74,
     "asset.current.inventory": 360000.01,
     "asset.current.prepaid": 15000.0,
-    "asset.current.receivables": 943750.0,
-    "asset.current.vat_input": 72000.01,
+    "asset.current.receivables": 2503750.0,
+    "asset.current.vat_input": 80000.01,
     "asset.noncurrent.intangibles": 150000.0,
     "asset.noncurrent.investments": 60000.0,
     "asset.noncurrent.ppe": 1792000.01,
@@ -113,17 +93,17 @@
     "expense.admin": 360000.0,
     "expense.cogs": 450000.0,
     "expense.depreciation": 270000.0,
-    "expense.fx_loss": 90000.0,
-    "expense.interest": 90000.0,
+    "expense.fx_loss": 180000.0,
+    "expense.interest": 270000.0,
     "expense.tax": 270000.0,
     "liability.current.accrued": 120000.0,
-    "liability.current.payables": 264750.01,
-    "liability.current.short_term_debt": 40000.0,
+    "liability.current.payables": 754750.0,
+    "liability.current.short_term_debt": 80000.0,
     "liability.current.tax": 160000.01,
-    "liability.current.vat_output": 160000.0,
-    "liability.noncurrent.debt": 40000.0,
-    "revenue.operating": 1510000.0,
+    "liability.current.vat_output": 200000.0,
+    "liability.noncurrent.debt": 80000.0,
+    "revenue.operating": 5410000.01,
     "revenue.other": 600000.0
   },
-  "total_assets_usd": 4933537.76
+  "total_assets_usd": 7151537.76
 }
