@@ -62,6 +62,41 @@ Venezuela (VE)      & 10/10 & IAS~29 hyperinflation; dual-currency parallel rate
 The AI-augmented graph successfully mapped 100\% of the sample transaction sets to Kontablo's core `asset.current.cash` and `asset.current.receivables` universal IDs. By dynamically applying local-to-target foreign exchange conversions and semantic rate overrides, the engine demonstrated that Kontablo can seamlessly aggregate localized financial ledgers into a unified global balance sheet.
 Our analysis further demonstrates that the 30 Level 3 accounts cover \textbf{92\% of routine business transactions by empirical volume (count)}---as benchmarked against thousands of generic SME ledger exports. This proves that extreme ledger granularity in national standards (often hundreds of accounts) is mostly reserved for rare statistical or edge-case events.
 
+\subsection{Coverage Expansion and the Principled Residual}
+\label{subsec:coverage_expansion}
+
+The 92\% figure is a coverage-by-volume measure of a \emph{minimum core}
+of 30 nodes, not a ceiling. Because transaction frequency follows a long-tail
+(Pareto-type) distribution --- a small number of account types carry the bulk
+of posting volume, while a long tail of specialized types occurs rarely ---
+coverage is raised not by redesigning the architecture but by \textbf{extending
+the ontology with additional Level~3 (and, where warranted, Level~4) nodes for
+the next tier of transaction types}. Each added node captures a slice of the
+residual tail; coverage therefore rises monotonically with ontology breadth,
+with diminishing marginal volume per node added. We estimate (and flag as a
+quantity to be confirmed against a larger transaction corpus) that on the order
+of a few dozen additional nodes would move volume coverage from 92\% into the
+99\%+ range for general commercial activity; the final percentage points
+correspond to genuinely idiosyncratic, jurisdiction-specific, or novel
+instruments.
+
+We deliberately do \textbf{not} claim, or target, 100\% coverage. Two reasons,
+one principled and one architectural. \emph{Principled:} a universal standard
+that asserted total coverage would be epistemically overconfident --- new
+instruments (tokenised assets, CBDC settlement, novel Islamic-finance
+structures) and new jurisdictional rules continuously regenerate the tail, so a
+closed claim of completeness would be false the moment it was made. A residual
+uncertainty band is the honest representation of an open, evolving domain.
+\emph{Architectural:} Kontablo already has a designated mechanism for the
+residual --- the semantic coverage boundary (Section~\ref{subsec:residual_error})
+and the Co-responsibility Architecture (Section~\ref{sec:harness}), which route
+out-of-coverage transactions to human review rather than forcing a
+low-confidence posting. Coverage expansion shrinks the residual; the CRA
+guarantees that whatever residual remains is escalated and made observable, not
+silently mismapped. The objective is therefore not coverage~$=100\%$ but
+coverage~$\to$~high with a \emph{bounded, instrumented, human-resolved}
+remainder.
+
 \subsection{Non-Anglophone Jurisdictions and the Value of Deterministic Grounding}
 
 The simulation reveals a consistent pattern across the non-Anglophone
