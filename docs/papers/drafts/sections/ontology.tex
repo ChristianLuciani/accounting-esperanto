@@ -3,7 +3,11 @@
 \subsection{Graph Architecture vs. Rigid Trees}
 Kontablo's fundamental departure from existing commercial ERP parameters is its graph-based metadata model. Extant commercial and statutory systems (NetSuite, Mexico's SAT, France's PCG) use rigid tree hierarchies which fundamentally fail at massive multi-jurisdiction mappings.
 
-When a company attempts to map its Mexican subsidiary (with 5-digit SAT codes) to its French holding company (with 3-digit PCG codes) within a traditional ERP, it encounters a 1:N or N:M mapping problem that can only be resolved via labor-intensive manual overrides. Kontablo resolves this by abstracting the transaction outside of a local country's tree; it becomes an incoming edge to a \textbf{Universal Graph Node} which serves as the absolute pivot point.
+When a company attempts to map its Mexican subsidiary (with 5-digit SAT codes) to its French holding company (with 3-digit PCG codes) within a traditional ERP, it encounters a 1:N or N:M mapping problem that can only be resolved via labor-intensive manual overrides. Figure~\ref{fig:rigid_tree} illustrates this structural limitation: in any statutory tree, each account node has exactly one parent, so an account cannot simultaneously satisfy a tax-ledger hierarchy, a cost-center hierarchy, and an IFRS balance-sheet hierarchy.
+
+\input{figures/fig_rigid_tree}
+
+Kontablo resolves this by abstracting the transaction outside of a local country's tree; it becomes an incoming edge to a \textbf{Universal Graph Node} which serves as the absolute pivot point. Figure~\ref{fig:kontablo_graph_architecture} shows how local nodes from multiple jurisdictions converge on a single universal node via deterministic lookup or AI semantic fallback, and how that node maps forward to the IFRS taxonomy.
 
 \input{figures/fig_kontablo_graph_architecture}
 

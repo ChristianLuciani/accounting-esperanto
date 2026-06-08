@@ -2,21 +2,45 @@
 % Source: originally in sections/deterministic_logic.tex (second figure)
 % Depicts: AI proposed mapping → debit/credit check → liquidity boundary →
 %          Approved OR Raise Audit Flag.
+%
+% Design system: local/source=orange!20, Kontablo/universal=blue!15,
+%   IFRS/output/approved=green!15, decision=yellow!25, flag=red!15.
+%   Arrows >=Latex, thick. rounded corners=4pt.
 \begin{figure}[ht]
 \centering
-\begin{tikzpicture}[node distance=2.5cm, every node/.style={draw, fill=gray!10, rounded corners, font=\small}]
-    \node (step1) {AI Proposed Mapping};
-    \node (step2) [below of=step1] {Debit/Credit Check};
-    \node (step3) [below of=step2] {Liquidity Boundary};
-    \node (success) [right of=step3, node distance=4cm] {Approved};
-    \node (fail) [left of=step3, node distance=4.5cm] {Raise Audit Flag};
+\resizebox{0.65\textwidth}{!}{%
+\begin{tikzpicture}[
+    >=Latex,
+    node distance=1.8cm,
+    procnode/.style={draw=blue!60!black, rectangle, rounded corners=4pt,
+        fill=blue!10, minimum width=4.2cm, minimum height=1.0cm,
+        align=center, font=\small},
+    checknode/.style={draw=yellow!70!black, rectangle, rounded corners=4pt,
+        fill=yellow!20, minimum width=4.2cm, minimum height=1.0cm,
+        align=center, font=\small},
+    approvednode/.style={draw=green!60!black, rectangle, rounded corners=4pt,
+        fill=green!12, minimum width=3.0cm, minimum height=1.0cm,
+        align=center, font=\small},
+    flagnode/.style={draw=red!60!black, rectangle, rounded corners=4pt,
+        fill=red!10, minimum width=3.0cm, minimum height=1.0cm,
+        align=center, font=\small},
+    edgelabel/.style={font=\scriptsize, fill=white, inner sep=1pt}
+]
+    \node[procnode]  (step1) {AI Proposed Mapping};
+    \node[checknode, below=1.8cm of step1] (step2) {Debit/Credit Check};
+    \node[checknode, below=1.8cm of step2] (step3) {Liquidity Boundary};
+    \node[approvednode, right=3.5cm of step3] (success) {Approved};
+    \node[flagnode,   left=3.5cm of step3]  (fail)    {Raise Audit Flag};
 
-    \draw[->] (step1) -- (step2);
-    \draw[->] (step2) -- node[right] {Pass} (step3);
-    \draw[->] (step3) -- node[above] {Pass} (success);
-    \draw[->] (step2) -| node[above] {Fail} (fail);
-    \draw[->] (step3) -- node[above] {Fail} (fail);
-\end{tikzpicture}
-\caption{The deterministic boundary checklist verifies AI-proposed mappings prior to ledger write-in.}
+    \draw[->, thick] (step1) -- (step2);
+    \draw[->, thick] (step2) -- node[edgelabel, right] {Pass} (step3);
+    \draw[->, thick] (step3) -- node[edgelabel, above] {Pass} (success);
+    \draw[->, thick] (step2.west) -- ++(-1.2,0) |-
+        node[edgelabel, near start, left] {Fail} (fail.north);
+    \draw[->, thick] (step3) -- node[edgelabel, above] {Fail} (fail);
+\end{tikzpicture}%
+}
+\caption{The deterministic boundary checklist verifies AI-proposed mappings
+prior to ledger write-in.}
 \label{fig:deterministic_checklist}
 \end{figure}

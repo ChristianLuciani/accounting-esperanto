@@ -1,15 +1,36 @@
 % Figure: Kontablo Mapping Bridge (simple)
 % Source: originally in sections/ontology.tex (second figure)
 % Depicts: local account → mapping edge with confidence/method → universal node.
+%
+% Design system: local/source=orange!20, Kontablo/universal=blue!15,
+%   IFRS/output=green!15. Arrows >=Latex, thick. rounded corners=4pt.
 \begin{figure}[ht]
 \centering
-\begin{tikzpicture}[node distance=2cm, every node/.style={draw, fill=blue!10, rounded corners, font=\small}]
-    \node (local) [align=center] {Local Account \\ (e.g., SAT 101.01)};
-    \node (bridge) [right of=local, node distance=4.5cm, align=center] {Kontablo Mapping Edge \\ $\mu(e) = \{ \text{confidence}, \text{method} \}$};
-    \node (ifrs) [right of=bridge, node distance=4.5cm, align=center] {Universal Node \\ (e.g., \texttt{asset.current.cash})};
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+    >=Latex,
+    node distance=4.5cm,
+    localnode/.style={draw=orange!60!black, rectangle, rounded corners=4pt,
+        fill=orange!15, minimum width=4cm, minimum height=1.1cm,
+        align=center, font=\small},
+    bridgenode/.style={draw=yellow!70!black, rectangle, rounded corners=4pt,
+        fill=yellow!20, minimum width=5cm, minimum height=1.1cm,
+        align=center, font=\small},
+    targetnode/.style={draw=green!60!black, rectangle, rounded corners=4pt,
+        fill=green!12, minimum width=4cm, minimum height=1.1cm,
+        align=center, font=\small}
+]
+    \node[localnode] (local) {Local Account\\[2pt]\texttt{SAT 101.01}};
+    \node[bridgenode, right of=local] (bridge) {Kontablo Mapping Edge\\[2pt]%
+        $\mu(e) = \{\,\text{confidence},\;\text{method}\,\}$};
+    \node[targetnode, right of=bridge] (ifrs) {Universal Node\\[2pt]%
+        \texttt{asset.current.cash}};
     \draw[->, thick] (local) -- (bridge);
     \draw[->, thick] (bridge) -- (ifrs);
-\end{tikzpicture}
-\caption{The Kontablo mapping bridge connects localized statutory account nodes to standardized IFRS classifications.}
+\end{tikzpicture}%
+}
+\caption{The Kontablo mapping bridge connects localized statutory account
+nodes to standardized IFRS classifications via a weighted edge that carries
+a confidence score and match method.}
 \label{fig:kontablo_bridge}
 \end{figure}
