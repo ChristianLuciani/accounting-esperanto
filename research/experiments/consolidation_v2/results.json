@@ -1,68 +1,129 @@
 {
-  "entities": 20,
+  "entities": 33,
   "countries": [
+    "ae",
     "ar",
     "br",
+    "ca",
     "ci",
+    "cn",
+    "co",
     "de",
-    "ec",
+    "es",
     "fr",
+    "il",
+    "in",
+    "jp",
     "kr",
     "lb",
     "mx",
     "ng",
     "pa",
+    "ru",
     "sa",
     "sn",
     "tr",
+    "uk",
     "us",
     "ve",
-    "vn"
+    "vn",
+    "za"
   ],
-  "n_countries": 17,
+  "n_countries": 27,
   "hyperinflation_cases": [
     "ar",
     "lb",
     "tr",
     "ve"
   ],
-  "total_entries": 42,
-  "distinct_nodes_hit": 8,
+  "total_entries": 132,
+  "distinct_nodes_hit": 25,
   "tier_distribution": {
-    "tier1_exact": 12,
-    "tier2_keyword": 25,
+    "tier1_exact": 117,
+    "tier2_keyword": 10,
     "escalated": 4,
     "forced_upstream": 1
   },
-  "deterministic_coverage_pct": 88.1,
+  "deterministic_coverage_pct": 96.2,
   "escalated": 4,
-  "escalated_pct": 9.5,
+  "escalated_pct": 3.0,
   "cra_flags": [
     {
-      "entity": "XX-ENT-020-BAD",
+      "entity": "XX-CRA-TEST",
       "name": "Caja Chica",
       "flag": "nature_mismatch:credit!=debit@asset.current.cash"
     },
     {
-      "entity": "XX-ENT-020-BAD",
+      "entity": "XX-CRA-TEST",
       "name": "Bank Current Account",
       "flag": "boundary_violation:liquid_asset->noncurrent@asset.noncurrent.ppe"
     },
     {
-      "entity": "XX-ENT-020-BAD",
+      "entity": "XX-CRA-TEST",
       "name": "Ventas",
       "flag": "nature_mismatch:debit!=credit@revenue.operating"
     }
   ],
+  "ontology_code_collisions": [
+    {
+      "jurisdiction": "mx",
+      "code": "509",
+      "ids": [
+        "expense.fx_loss",
+        "expense.interest"
+      ]
+    },
+    {
+      "jurisdiction": "ru",
+      "code": "68.2",
+      "ids": [
+        "asset.current.vat_input",
+        "liability.current.vat_output"
+      ]
+    },
+    {
+      "jurisdiction": "vn",
+      "code": "311",
+      "ids": [
+        "liability.current.short_term_debt",
+        "liability.noncurrent.debt"
+      ]
+    },
+    {
+      "jurisdiction": "vn",
+      "code": "635",
+      "ids": [
+        "expense.fx_loss",
+        "expense.interest"
+      ]
+    }
+  ],
   "consolidated_usd": {
-    "asset.current.bank": 29700.0,
-    "asset.current.cash": 373725.0,
-    "asset.current.inventory": 45000.0,
-    "asset.current.receivables": 463510.0,
-    "asset.noncurrent.ppe": 592000.0,
-    "expense.cogs": 59400.0,
-    "liability.current.payables": 36810.0,
-    "revenue.operating": 1154200.0
+    "asset.current.bank": 189700.0,
+    "asset.current.cash": 1351087.73,
+    "asset.current.inventory": 360000.01,
+    "asset.current.prepaid": 15000.0,
+    "asset.current.receivables": 943750.0,
+    "asset.current.vat_input": 72000.01,
+    "asset.noncurrent.intangibles": 150000.0,
+    "asset.noncurrent.investments": 60000.0,
+    "asset.noncurrent.ppe": 1792000.01,
+    "equity.capital": 320000.0,
+    "equity.retained": 240000.0,
+    "expense.admin": 360000.0,
+    "expense.cogs": 450000.0,
+    "expense.depreciation": 270000.0,
+    "expense.fx_loss": 90000.0,
+    "expense.interest": 90000.0,
+    "expense.tax": 270000.0,
+    "liability.current.accrued": 120000.0,
+    "liability.current.payables": 264750.01,
+    "liability.current.short_term_debt": 40000.0,
+    "liability.current.tax": 160000.01,
+    "liability.current.vat_output": 160000.0,
+    "liability.noncurrent.debt": 40000.0,
+    "revenue.operating": 1510000.0,
+    "revenue.other": 600000.0
   },
-  "total_assets_usd": 1503935.0
+  "total_assets_usd": 4933537.76
 }

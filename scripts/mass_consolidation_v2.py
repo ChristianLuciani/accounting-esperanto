@@ -68,12 +68,23 @@ def load_ontology():
         elif isinstance(d, list):
             for a in d:
                 ingest(a)
-    # reverse index: jurisdiction -> {local_code -> kontablo_id}
-    by_code = defaultdict(dict)
+    # reverse index: jurisdiction -> {local_code -> kontablo_id}, detecting
+    # collisions (same jurisdiction+code mapped to >1 Kontablo node = a latent
+    # ontology data-quality defect). Collided codes are EXCLUDED from the
+    # deterministic index so they are not silently mis-resolved.
+    raw = defaultdict(lambda: defaultdict(list))
     for kid, a in accounts.items():
         for j, code in a["local_codes"].items():
-            by_code[j][code] = kid
-    return accounts, by_code
+            raw[j][code].append(kid)
+    by_code = defaultdict(dict)
+    collisions = []
+    for j in raw:
+        for code, ids in raw[j].items():
+            if len(ids) > 1:
+                collisions.append({"jurisdiction": j, "code": code, "ids": sorted(ids)})
+            else:
+                by_code[j][code] = ids[0]
+    return accounts, by_code, collisions
 
 
 # ---------------------------------------------------------------------------
@@ -149,87 +160,120 @@ def cra_validate(entry, kid, accounts):
 # hyperinflation dual-rate cases, francophone/Korean non-anglophone, and
 # 3 deliberately malformed entries to exercise the CRA.
 # ---------------------------------------------------------------------------
-def dataset():
-    return [
-        # --- original 10 (continuity), broadened with more account types ---
-        {"id":"MX-ENT-001","name":"Kontablo Mexico","j":"mx","ccy":"MXN","data":[
-            {"code":"101","name":"Caja","nature":"debit","amt":50000},
-            {"code":"105","name":"Clientes","nature":"debit","amt":120000},
-            {"code":"201","name":"Proveedores","nature":"credit","amt":70000},
-            {"code":"401","name":"Ventas","nature":"credit","amt":300000}]},
-        {"id":"BR-ENT-002","name":"Kontablo Brazil","j":"br","ccy":"BRL","data":[
-            {"code":"1.1.1.1.01-9","name":"Caixa Geral","nature":"debit","amt":30000},
-            {"code":"x","name":"Clientes","nature":"debit","amt":80000},
-            {"code":"x","name":"Estoque de Mercadorias","nature":"debit","amt":60000},
-            {"code":"x","name":"Fornecedores","nature":"credit","amt":40000}]},
-        {"id":"FR-ENT-003","name":"Kontablo France","j":"fr","ccy":"EUR","data":[
-            {"code":"512","name":"Banque","nature":"debit","amt":25000},
-            {"code":"411","name":"Clients","nature":"debit","amt":85000},
-            {"code":"607","name":"Coût des ventes","nature":"debit","amt":55000},
-            {"code":"706","name":"Chiffre d'affaires","nature":"credit","amt":210000}]},
-        {"id":"PA-ENT-004","name":"Kontablo Panama","j":"pa","ccy":"USD","data":[
-            {"code":"1.1.01","name":"Caja Fuerte","nature":"debit","amt":40000}]},
-        {"id":"EC-ENT-005","name":"Kontablo Ecuador","j":"ec","ccy":"USD","data":[
-            {"code":"x","name":"Caja Principal","nature":"debit","amt":12000},
-            {"code":"x","name":"Inventario de Mercaderias","nature":"debit","amt":33000}]},
-        {"id":"VE-ENT-006-OFF","name":"Venezuela (Official rate)","j":"ve","ccy":"VES","hyperinflation":True,"data":[
-            {"code":"x","name":"Caja en Bolivares","nature":"debit","amt":1000000}]},
-        {"id":"VE-ENT-007-PAR","name":"Venezuela (Parallel rate)","j":"ve","ccy":"VES","rate_override":0.013,"hyperinflation":True,"data":[
-            {"code":"x","name":"Caja en Bolivares","nature":"debit","amt":1000000}]},
-        {"id":"VN-ENT-008","name":"Kontablo Vietnam","j":"vn","ccy":"VND","data":[
-            {"code":"111","name":"Tiền mặt","nature":"debit","amt":300000000},
-            {"code":"x","name":"Phải thu khách hàng","nature":"debit","amt":500000000}]},
-        {"id":"NG-ENT-009","name":"Kontablo Nigeria","j":"ng","ccy":"NGN","data":[
-            {"code":"x","name":"Cash and Bank Balances","nature":"debit","amt":1500000}]},
-        {"id":"SA-ENT-010","name":"Saudi Arabia (Zakat)","j":"sa","ccy":"SAR","data":[
-            {"code":"101","name":"النقد","nature":"debit","amt":50000},
-            {"code":"x","name":"Zakat Provision","nature":"credit","amt":18000}]},
-        # --- expanded hyperinflation IAS 29 stress cases ---
-        {"id":"AR-ENT-011-OFF","name":"Argentina (Official)","j":"ar","ccy":"ARS","hyperinflation":True,"data":[
-            {"code":"1100","name":"Caja y Bancos","nature":"debit","amt":9000000}]},
-        {"id":"AR-ENT-012-PAR","name":"Argentina (Blue/Parallel)","j":"ar","ccy":"ARS","rate_override":0.0008,"hyperinflation":True,"data":[
-            {"code":"1100","name":"Caja y Bancos","nature":"debit","amt":9000000}]},
-        {"id":"TR-ENT-013","name":"Turkey (IAS 29)","j":"tr","ccy":"TRY","hyperinflation":True,"data":[
-            {"code":"x","name":"Nakit ve Nakit Benzerleri","nature":"debit","amt":2000000},
-            {"code":"x","name":"Ticari Alacaklar","nature":"debit","amt":3500000}]},
-        {"id":"LB-ENT-014","name":"Lebanon (IAS 29)","j":"lb","ccy":"LBP","rate_override":0.000011,"hyperinflation":True,"data":[
-            {"code":"x","name":"Cash on hand","nature":"debit","amt":1500000000}]},
-        # --- non-anglophone thin-corpus (Tier 2 by name; no local_codes) ---
-        {"id":"SN-ENT-015","name":"Senegal (SYSCOHADA)","j":"sn","ccy":"XOF","data":[
+COUNTRY = {"ae":"UAE","ar":"Argentina","br":"Brazil","ca":"Canada","cn":"China",
+           "co":"Colombia","de":"Germany","es":"Spain","fr":"France","il":"Israel",
+           "in":"India","jp":"Japan","mx":"Mexico","ng":"Nigeria","pa":"Panama",
+           "ru":"Russia","sa":"Saudi Arabia","tr":"Turkey","uk":"United Kingdom",
+           "us":"USA","ve":"Venezuela","vn":"Vietnam","za":"South Africa",
+           "sn":"Senegal","ci":"Cote d'Ivoire","kr":"South Korea","lb":"Lebanon",
+           "ec":"Ecuador"}
+
+
+def build_entities(accounts, by_code):
+    """Ontology-driven entities (one per jurisdiction with real local_codes,
+    exercising Tier-1 exact lookup) plus curated stress/edge/CRA entities.
+    Collided (ambiguous) codes are excluded via the cleaned by_code index."""
+    # jurisdiction -> [(account_id, local_code)] (unambiguous codes only)
+    j2 = defaultdict(list)
+    for aid, a in accounts.items():
+        for j, code in a["local_codes"].items():
+            if by_code.get(j, {}).get(code) == aid:   # skip collided codes
+                j2[j].append((aid, code))
+
+    entities = []
+    n = 0
+    for j in sorted(j2):
+        n += 1
+        ccy = JCCY.get(j, "USD")
+        rate = FX.get(ccy, 1.0)
+        data = []
+        for aid, code in sorted(j2[j]):
+            amt = round(base_for(aid) / rate, 2)  # local face ~ comparable USD
+            data.append({"code": code, "name": accounts[aid]["label"],
+                         "nature": accounts[aid]["nature"], "amt": amt})
+        entities.append({"id": f"{j.upper()}-{n:02d}",
+                         "name": f"{COUNTRY.get(j, j.upper())} (ontology-coded)",
+                         "j": j, "ccy": ccy, "data": data})
+
+    # --- IAS 29 hyperinflation: parallel-rate duplicates (dual-rate divergence)
+    for j, override in [("ve", 0.013), ("ar", 0.0008), ("tr", 0.012)]:
+        ccy = JCCY[j]
+        cash_code = next((c for aid, c in j2.get(j, []) if aid == "asset.current.cash"), "x")
+        entities.append({"id": f"{j.upper()}-PARALLEL", "j": j, "ccy": ccy,
+                         "name": f"{COUNTRY[j]} (parallel/IAS29 rate)",
+                         "rate_override": override, "hyperinflation": True,
+                         "data": [{"code": cash_code, "name": accounts["asset.current.cash"]["label"],
+                                   "nature": "debit", "amt": round(50000 / FX[ccy], 2)}]})
+    # mark official-rate hyperinflation entities too (for reporting)
+    for e in entities:
+        if e["j"] in ("ve", "ar", "tr"):
+            e["hyperinflation"] = True
+
+    # --- Lebanon: hyperinflation, NOT in ontology codes -> Tier-2 by name
+    entities.append({"id":"LB-TIER2","name":"Lebanon (IAS29, Tier-2)","j":"lb","ccy":"LBP",
+        "rate_override":0.000011,"hyperinflation":True,
+        "data":[{"code":"x","name":"Cash on hand","nature":"debit","amt":1500000000}]})
+
+    # --- non-anglophone thin-corpus jurisdictions without local_codes (Tier-2)
+    entities += [
+        {"id":"SN-SYSCOHADA","name":"Senegal (SYSCOHADA, Tier-2)","j":"sn","ccy":"XOF","data":[
             {"code":"x","name":"Banque","nature":"debit","amt":18000000},
             {"code":"x","name":"Clients","nature":"debit","amt":25000000},
             {"code":"x","name":"Fournisseurs","nature":"credit","amt":15000000}]},
-        {"id":"CI-ENT-016","name":"Côte d'Ivoire (SYSCOHADA)","j":"ci","ccy":"XOF","data":[
+        {"id":"CI-SYSCOHADA","name":"Cote d'Ivoire (SYSCOHADA, Tier-2)","j":"ci","ccy":"XOF","data":[
             {"code":"x","name":"Caisse","nature":"debit","amt":7000000}]},
-        {"id":"KR-ENT-017","name":"South Korea (K-IFRS)","j":"kr","ccy":"KRW","data":[
+        {"id":"KR-KIFRS","name":"South Korea (K-IFRS, Tier-2)","j":"kr","ccy":"KRW","data":[
             {"code":"x","name":"현금","nature":"debit","amt":120000000},
             {"code":"x","name":"매출채권","nature":"debit","amt":250000000},
             {"code":"x","name":"유형자산","nature":"debit","amt":800000000}]},
-        # --- agentic-economy / novel instruments (coverage tail) ---
-        {"id":"US-ENT-018","name":"USA (digital assets)","j":"us","ccy":"USD","data":[
-            {"code":"x","name":"Bitcoin Treasury Holdings","nature":"debit","amt":250000},
-            {"code":"x","name":"Carbon Credit Holdings","nature":"debit","amt":40000},
-            {"code":"x","name":"Operating Revenue","nature":"credit","amt":900000}]},
-        # --- entity with a genuinely unmapped exotic account (escalation) ---
-        {"id":"DE-ENT-019","name":"Germany (edge case)","j":"de","ccy":"EUR","data":[
-            {"code":"x","name":"Sonderposten mit Ruecklageanteil","nature":"credit","amt":50000},  # special tax-driven reserve, no clean IFRS node -> escalate
-            {"code":"x","name":"Kasse","nature":"debit","amt":20000}]},
-        # --- DELIBERATELY MALFORMED entity to exercise the CRA ---
-        {"id":"XX-ENT-020-BAD","name":"Injected errors (CRA test)","j":"mx","ccy":"USD","data":[
-            {"code":"x","name":"Caja Chica","nature":"credit","amt":5000},                 # cash declared credit -> nature_mismatch
-            {"code":"x","name":"Bank Current Account","nature":"debit","amt":8000,"forced_id":"asset.noncurrent.ppe"},  # liquid->noncurrent boundary violation
-            {"code":"x","name":"Ventas","nature":"debit","amt":10000}]},                   # revenue declared debit -> nature_mismatch
     ]
 
+    # --- coverage-boundary escalations: v0.3-roadmap instruments + exotic reserve
+    entities.append({"id":"US-FRONTIER","name":"USA (frontier instruments)","j":"us","ccy":"USD","data":[
+        {"code":"x","name":"Bitcoin Treasury Holdings","nature":"debit","amt":250000},
+        {"code":"x","name":"Carbon Credit Holdings","nature":"debit","amt":40000},
+        {"code":"x","name":"Zakat Provision","nature":"credit","amt":18000}]})
+    entities.append({"id":"DE-EDGE","name":"Germany (exotic reserve)","j":"de","ccy":"EUR","data":[
+        {"code":"x","name":"Sonderposten mit Ruecklageanteil","nature":"credit","amt":50000}]})
 
-FX = {"MXN":0.058,"BRL":0.20,"EUR":1.08,"USD":1.0,"VES":0.027,"VND":0.00004,
-      "NGN":0.00065,"SAR":0.27,"ARS":0.0011,"TRY":0.030,"LBP":0.0000112,
-      "XOF":0.00165,"KRW":0.00073}
+    # --- DELIBERATELY MALFORMED entity to exercise the CRA
+    entities.append({"id":"XX-CRA-TEST","name":"Injected errors (CRA test)","j":"mx","ccy":"USD","data":[
+        {"code":"x","name":"Caja Chica","nature":"credit","amt":5000},
+        {"code":"x","name":"Bank Current Account","nature":"debit","amt":8000,"forced_id":"asset.noncurrent.ppe"},
+        {"code":"x","name":"Ventas","nature":"debit","amt":10000}]})
+    return entities
+
+
+# Currency per jurisdiction (ISO) and USD-per-unit FX (synthetic 2026 rates).
+JCCY = {"ae":"AED","ar":"ARS","br":"BRL","ca":"CAD","cn":"CNY","co":"COP",
+        "de":"EUR","es":"EUR","fr":"EUR","il":"ILS","in":"INR","jp":"JPY",
+        "mx":"MXN","ng":"NGN","pa":"USD","ru":"RUB","sa":"SAR","tr":"TRY",
+        "uk":"GBP","us":"USD","ve":"VES","vn":"VND","za":"ZAR",
+        "sn":"XOF","ci":"XOF","kr":"KRW","lb":"LBP","ec":"USD"}
+FX = {"AED":0.27,"ARS":0.0011,"BRL":0.20,"CAD":0.73,"CNY":0.14,"COP":0.00025,
+      "EUR":1.08,"ILS":0.27,"INR":0.012,"JPY":0.0067,"MXN":0.058,"NGN":0.00065,
+      "RUB":0.011,"SAR":0.27,"TRY":0.030,"GBP":1.27,"USD":1.0,"VES":0.027,
+      "VND":0.00004,"ZAR":0.054,"XOF":0.00165,"KRW":0.00073,"LBP":0.0000112}
+
+# Representative USD face value per account class (local amounts are derived as
+# base/FX so each coded account contributes a comparable USD magnitude).
+BASE_USD = {
+    "asset.current.cash":50000, "asset.current.bank":40000,
+    "asset.current.receivables":120000, "asset.current.inventory":60000,
+    "asset.current.vat_input":8000, "asset.current.prepaid":5000,
+    "asset.noncurrent.ppe":200000, "liability":40000, "equity":80000,
+    "revenue":300000, "expense":90000,
+}
+def base_for(aid):
+    if aid in BASE_USD: return BASE_USD[aid]
+    for pref in ("asset.noncurrent","liability","equity","revenue","expense"):
+        if aid.startswith(pref): return BASE_USD.get(pref, 30000)
+    return 30000
 
 
 def main():
-    accounts, by_code = load_ontology()
-    data = dataset()
+    accounts, by_code, collisions = load_ontology()
+    data = build_entities(accounts, by_code)
 
     consolidated = defaultdict(float)     # kontablo_id -> USD
     tier_counts = Counter()
@@ -288,9 +332,14 @@ def main():
     print(f"   deterministic coverage : {det_cov:5.1f}%  (Tier1+Tier2)")
     print(f"   escalated to human (CRA): {escalated}  ({100*escalated/total_entries:.1f}%)")
     print("-"*78)
-    print(f"CO-RESPONSIBILITY: {len(flags_all)} inconsistency flag(s) raised:")
+    print(f"CO-RESPONSIBILITY: {len(flags_all)} inconsistency flag(s) raised on injected errors:")
     for f in flags_all:
         print(f"   [{f['entity']}] {f['name']}: {f['flag']}")
+    print("-"*78)
+    print(f"ONTOLOGY DEFECTS SURFACED: {len(collisions)} local-code collision(s) "
+          f"(same jurisdiction+code -> multiple nodes; excluded from Tier 1):")
+    for c in collisions:
+        print(f"   {c['jurisdiction']}: code {c['code']!r} -> {c['ids']}")
     print("-"*78)
     print("CONSOLIDATED BALANCE SHEET (USD, multi-jurisdiction, FX-normalized):")
     print(f"   {'Kontablo ID':<32} {'Label':<28} {'USD':>16}")
@@ -319,6 +368,7 @@ def main():
         "escalated": escalated,
         "escalated_pct": round(100*escalated/total_entries, 1),
         "cra_flags": flags_all,
+        "ontology_code_collisions": collisions,
         "consolidated_usd": {k: round(v, 2) for k, v in sorted(consolidated.items())},
         "total_assets_usd": round(total_assets, 2),
     }

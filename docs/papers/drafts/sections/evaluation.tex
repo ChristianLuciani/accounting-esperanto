@@ -3,7 +3,7 @@
 To empirically validate the ontology’s robustness against the three crises identified in Section 1.1, we developed a high-fidelity mass-consolidation engine. The simulation ingested raw, unmapped trial balances from 10 distinct entities across 9 countries representing diverse regulatory environments. 
 
 \subsection{Consolidation Simulation Engine}
-To validate Kontablo's real-world utility, we built a mass-consolidation simulation engine. The simulation models a multinational holding company consolidating trial balances from 10 distinct operational entities across 9 jurisdictions: Mexico (MX), Brazil (BR), France (FR), Panama (PA), Ecuador (EC), Colombia (CO), Vietnam (VN), Nigeria (NG), and Saudi Arabia (SA). Each subsidiary ledger was exported from a different source ERP (ERPNext, Zoho Books, Odoo, SAP B1) containing localized charts of accounts, varying currencies, and diverging tax treatment. This initial run was subsequently extended into a larger, fully reproducible validation matrix (20 entities, 17 jurisdictions; Section~\ref{subsec:expanded_validation}).
+To validate Kontablo's real-world utility, we built a mass-consolidation simulation engine. The simulation models a multinational holding company consolidating trial balances from 10 distinct operational entities across 9 jurisdictions: Mexico (MX), Brazil (BR), France (FR), Panama (PA), Ecuador (EC), Colombia (CO), Vietnam (VN), Nigeria (NG), and Saudi Arabia (SA). Each subsidiary ledger was exported from a different source ERP (ERPNext, Zoho Books, Odoo, SAP B1) containing localized charts of accounts, varying currencies, and diverging tax treatment. This initial run was subsequently extended into a larger, fully reproducible validation matrix (33 entities, 27 jurisdictions; Section~\ref{subsec:expanded_validation}).
 
 \subsection{The 10-Point Complexity Scale}
 To measure the difficulty of mapping local charts of accounts to the universal Level 3 ontology, we established a \textbf{10-point Complexity Scale}. The scale rates jurisdictions based on four primary vectors: (1) alignment with IFRS, (2) strictness of mandatory national charts of accounts, (3) complexity of electronic invoicing and transactional metadata requirements, and (4) currency volatility/inflation treatment. 
@@ -103,12 +103,17 @@ remainder.
 To test these claims beyond the initial proof, we extended the consolidation
 harness to a broader, fully reproducible run (script
 \texttt{scripts/mass\_consolidation\_v2.py}; artifacts in
-\texttt{research/experiments/consolidation\_v2/}). The expanded matrix processes
-\textbf{42 local account entries from 20 entities across 17 jurisdictions},
-spanning all five statement classes (assets, liabilities, equity, revenue,
-expense) and ten written scripts/languages (Spanish, Portuguese, French,
-Vietnamese, Arabic, German, Russian, Korean, Turkish, English). To keep the run
-deterministic and reproducible, the semantic AI fallback (Tier~3) is
+\texttt{research/experiments/consolidation\_v2/}). The trial balances are
+\emph{generated directly from the ontology itself}: for every jurisdiction that
+carries real \texttt{local\_codes} in the Level-3 YAML, an entity is
+constructed from those exact codes, so Tier-1 exact lookup is exercised against
+genuine mapping data rather than hand-authored examples. The expanded matrix
+processes \textbf{132 local account entries from 33 entities across 27
+jurisdictions}, spanning all five statement classes (assets, liabilities,
+equity, revenue, expense) and ten written scripts/languages (Spanish,
+Portuguese, French, Vietnamese, Arabic, German, Russian, Korean, Turkish,
+English), and populates \textbf{25 of the 30 universal Level-3 nodes}. To keep
+the run deterministic and reproducible, the semantic AI fallback (Tier~3) is
 \emph{not} exercised; instead, any entry the deterministic tiers cannot resolve
 is counted as \textbf{escalated} (routed to human review by the CRA). The run is
 therefore a test of pipeline correctness and boundary behaviour on a controlled
@@ -120,32 +125,34 @@ dataset, not an out-of-sample accuracy benchmark.
 \begin{tabular}{l r}
 \hline
 \textbf{Metric} & \textbf{Result} \\ \hline
-Entities consolidated & 20 \\
-Jurisdictions (countries) & 17 \\
+Entities consolidated & 33 \\
+Jurisdictions (countries) & 27 \\
 IAS~29 hyperinflation dual-rate cases & 4 (VE, AR, LB, TR) \\
-Local account entries processed & 42 \\
+Local account entries processed & 132 \\
 \hline
-Tier~1 (exact local-code lookup) & 12 \quad(28.6\%) \\
-Tier~2 (deterministic keyword rules) & 25 \quad(59.5\%) \\
-\textbf{Deterministic coverage (Tier~1+2)} & \textbf{88.1\%} \\
-Escalated to human via CRA & 4 \quad(9.5\%) \\
+Tier~1 (exact local-code lookup) & 117 \quad(88.6\%) \\
+Tier~2 (deterministic keyword rules) & 10 \quad(7.6\%) \\
+\textbf{Deterministic coverage (Tier~1+2)} & \textbf{96.2\%} \\
+Escalated to human via CRA & 4 \quad(3.0\%) \\
 \hline
 Injected inconsistencies detected by CRA & 3 / 3 \\
 \quad nature mismatches (debit/credit) & 2 \\
 \quad boundary violations (liquid$\to$non-current) & 1 \\
+Latent ontology code-collisions surfaced & 4 \\
 \hline
-Distinct Kontablo nodes populated & 8 \\
-Consolidated total assets (FX-normalized) & USD 1{,}503{,}935 \\
+Distinct Kontablo nodes populated & 25 / 30 \\
+Consolidated total assets (FX-normalized) & USD 4{,}933{,}538 \\
 \hline
 \end{tabular}
-\caption{Expanded deterministic validation run across 20 entities and 17
-jurisdictions. Coverage is measured by entry count; FX normalization to USD
-uses simulated 2026 rates, with parallel-rate overrides for hyperinflationary
-entities.}
+\caption{Expanded deterministic validation run across 33 entities and 27
+jurisdictions, with trial balances generated from the ontology's own
+\texttt{local\_codes}. Coverage is measured by entry count; FX normalization to
+USD uses simulated 2026 rates, with parallel-rate overrides for
+hyperinflationary entities.}
 \label{tab:expanded_validation}
 \end{table}
 
-Two results are worth emphasising. First, the \textbf{four escalated entries are
+Three results are worth emphasising. First, the \textbf{four escalated entries are
 all genuine coverage-boundary cases}, not failures: three are v0.3-roadmap
 instrument types not yet ratified in the operational ontology (cryptocurrency
 holdings, carbon credits, and a Zakat provision --- all carried in the YAML
@@ -158,7 +165,15 @@ Section~\ref{subsec:coverage_expansion}. Second, the Co-responsibility
 Architecture detected \textbf{all three deliberately injected inconsistencies}
 (two debit/credit nature mismatches and one liquid-asset-to-non-current
 boundary violation), penalising their confidence and raising audit flags before
-ledger write. No injected error passed silently.
+ledger write. No injected error passed silently. Third, beyond the injected
+errors, the run \textbf{surfaced four latent defects in the ontology itself}:
+local-code collisions in which a single jurisdiction code is mapped to two
+different Kontablo nodes (MX \texttt{509} $\to$ interest/fx-loss; RU
+\texttt{68.2} $\to$ input/output VAT; VN \texttt{311} $\to$ short-/long-term
+debt; VN \texttt{635} $\to$ interest/fx-loss). These were excluded from the
+deterministic index and logged for ontology maintenance --- a demonstration
+that the harness functions not only as a mapping engine but as a continuous
+data-quality check on the standard it implements.
 
 \subsection{Non-Anglophone Jurisdictions and the Value of Deterministic Grounding}
 
