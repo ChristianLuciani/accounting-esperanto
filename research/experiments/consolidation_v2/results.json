@@ -1,0 +1,68 @@
+{
+  "entities": 20,
+  "countries": [
+    "ar",
+    "br",
+    "ci",
+    "de",
+    "ec",
+    "fr",
+    "kr",
+    "lb",
+    "mx",
+    "ng",
+    "pa",
+    "sa",
+    "sn",
+    "tr",
+    "us",
+    "ve",
+    "vn"
+  ],
+  "n_countries": 17,
+  "hyperinflation_cases": [
+    "ar",
+    "lb",
+    "tr",
+    "ve"
+  ],
+  "total_entries": 42,
+  "distinct_nodes_hit": 8,
+  "tier_distribution": {
+    "tier1_exact": 12,
+    "tier2_keyword": 25,
+    "escalated": 4,
+    "forced_upstream": 1
+  },
+  "deterministic_coverage_pct": 88.1,
+  "escalated": 4,
+  "escalated_pct": 9.5,
+  "cra_flags": [
+    {
+      "entity": "XX-ENT-020-BAD",
+      "name": "Caja Chica",
+      "flag": "nature_mismatch:credit!=debit@asset.current.cash"
+    },
+    {
+      "entity": "XX-ENT-020-BAD",
+      "name": "Bank Current Account",
+      "flag": "boundary_violation:liquid_asset->noncurrent@asset.noncurrent.ppe"
+    },
+    {
+      "entity": "XX-ENT-020-BAD",
+      "name": "Ventas",
+      "flag": "nature_mismatch:debit!=credit@revenue.operating"
+    }
+  ],
+  "consolidated_usd": {
+    "asset.current.bank": 29700.0,
+    "asset.current.cash": 373725.0,
+    "asset.current.inventory": 45000.0,
+    "asset.current.receivables": 463510.0,
+    "asset.noncurrent.ppe": 592000.0,
+    "expense.cogs": 59400.0,
+    "liability.current.payables": 36810.0,
+    "revenue.operating": 1154200.0
+  },
+  "total_assets_usd": 1503935.0
+}
