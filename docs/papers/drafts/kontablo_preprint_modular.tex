@@ -6,6 +6,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{float}
+\usepackage{url}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning, fit, backgrounds}
 \usepackage[hidelinks]{hyperref}
@@ -59,6 +60,8 @@ Contact: \href{mailto:cluciani@gmail.com}{cluciani@gmail.com}.}}
 
 \input{sections/evaluation}
 
+\input{sections/labor_market}
+
 \input{sections/conclusion}
 
 \input{sections/acknowledgements}
@@ -69,15 +72,29 @@ Contact: \href{mailto:cluciani@gmail.com}{cluciani@gmail.com}.}}
 \section*{Selected Bibliography}
 \begin{itemize}
     \item IFRS Foundation. (2024). \textit{IFRS Taxonomy 2024}.
+    \item IFRS Foundation. (2025). \textit{Who Uses IFRS Accounting Standards?} \url{https://www.ifrs.org/use-around-the-world/use-of-ifrs-standards-by-jurisdiction/} [Profiles for 169 jurisdictions.]
     \item ISACA. (2024). \textit{AI Shared Responsibility Model: A Governance Framework}.
     \item EU AI Act. (2025). \textit{Governance of High-Risk AI Systems in Financial Markets}.
     \item Deloitte. (2025). \textit{Benchmarks for Global Financial Operations: The Cost of Inefficiency}.
     \item Gartner. (2024). \textit{Transforming Finance through Autonomous Systems}.
     \item Fintech Global. (2025). \textit{The Inefficiency Crisis: Addressing Reconciliation Error Rates in B2B Payments}.
-    \item Google Cloud. (2025). \textit{The Agent2Agent (A2A) Protocol Specification}.
+    \item Davidovic, S., \& Tourpe, H. (2026). \textit{How Agentic AI Will Reshape Payments}. IMF Notes, 2026/004. \url{https://www.imf.org/en/publications/imf-notes/issues/2026/04/22/how-agentic-ai-will-reshape-payments-575560}
+    \item Google Cloud / Linux Foundation. (2025). \textit{Agent2Agent (A2A) Protocol}. Donated to Linux Foundation June 2025. \url{https://a2a-protocol.org/latest/}
+    \item Google / FIDO Alliance. (2025). \textit{Agent Payments Protocol (AP2)}. Donated to FIDO Alliance May 2026. \url{https://ap2-protocol.org/}
     \item World Economic Forum. (2025). \textit{Agentic Commerce and the Future of M2M Transactions}.
     \item OECD. (2023). \textit{Tax Administration 2.0: Structural Digitalization}.
     \item Luciani, C. (2026). \textit{The Accounting Babel: Cross-Border Semantic Fragility}.
+    \item G7 Cyber Expert Group. (2026, January). \textit{Roadmap for Coordinating the Transition to Post-Quantum Cryptography in the Financial Sector}. Co-chaired by U.S. Treasury and Bank of England. \url{https://home.treasury.gov/news/press-releases/sb0355}
+    \item National Institute of Standards and Technology. (2024, August). \textit{NIST Releases First 3 Finalized Post-Quantum Encryption Standards} (FIPS 203 ML-KEM, FIPS 204 ML-DSA, FIPS 205 SLH-DSA). \url{https://www.nist.gov/news-events/news/2024/08/nist-releases-first-3-finalized-post-quantum-encryption-standards}
+    \item [Author TBD]. (2026). Neuro-Symbolic Financial Reasoning via Deterministic Fact Ledgers and Adversarial Low-Latency Hallucination Detector. arXiv:2603.04663. \url{https://arxiv.org/abs/2603.04663} [Universal Fact Ledger; deterministic grounding compresses financial hallucination to 1.2\%.]
+    \item Luong Tuan, T., \& Sanyal, A. (2026). Ontology-Constrained Neural Reasoning in Enterprise Agentic Systems: A Neurosymbolic Architecture for Domain-Grounded AI Agents. arXiv:2604.00555v5. \url{https://arxiv.org/abs/2604.00555} [1,800-run experiment; Vietnamese domains show $2\times$ ontology lift; L0--L5 coupling maturity model; Foundation AgenticOS platform, 22 industry verticals.]
+    \item [Author TBD]. (2025). PHANTOM: A Benchmark for Hallucination Detection in Financial Long-Context QA. \textit{NeurIPS 2025 Datasets and Benchmarks Track}. \url{https://openreview.net/forum?id=5YQAo0S3Hm}
+    \item Sharma, K., Kumar, P., \& Li, Y. (2025). OG-RAG: Ontology-Grounded Retrieval-Augmented Generation for Large Language Models. \textit{EMNLP 2025}. [$+55\%$ fact recall, $+40\%$ response correctness via ontology-anchored hypergraph retrieval.]
+    \item Willard, B. T., \& Louf, R. (2023). Efficient Guided Generation for Large Language Models. arXiv:2307.09702. [Grammar-constrained decoding; syntactic output bounds without fluency loss.]
+    \item Luo, L., et al. (2025). Graph-Constrained Reasoning: Faithful Reasoning on Knowledge Graphs with Large Language Models. \textit{ICML 2025}. arXiv:2410.13080. [KG-Trie constrains LLM decoding to valid KG paths at the token level.]
+    \item Garcez, A. d., \& Lamb, L. C. (2023). Neurosymbolic AI: The 3rd Wave. \textit{Artificial Intelligence Review} 56: 12387--12406. DOI:10.1007/s10462-023-10448-w.
+    \item PricewaterhouseCoopers. (2026, June). \textit{Hyperinflationary Economies as at June 2026}. \url{https://viewpoint.pwc.com/gx/en/pwc/in-briefs/2026/ib_int202610.html}
+    \item Ernst \& Young. (2025, November). \textit{IFRS Developments Issue 242: Hyperinflationary Economies}. \url{https://www.ey.com/content/dam/ey-unified-site/ey-com/en-gl/technical/ifrs-technical-resources/documents/ey-gl-developments-242-hyperinflationary-economies-v2-11-2025.pdf}
     \item Spivak, D. I. (2012). Functorial Data Migration. \textit{Information and Computation}. arXiv:1009.1166.
     \item Spivak, D. I., \& Kent, R. E. (2012). Ologs: A Categorical Framework for Knowledge Representation. \textit{PLoS ONE} 7(1): e24274.
     \item Ellerman, D. (2014). On Double-Entry Bookkeeping: The Mathematical Treatment. \textit{Accounting Education} 23(5): 483--501. arXiv:1407.1898.
@@ -90,6 +107,16 @@ Contact: \href{mailto:cluciani@gmail.com}{cluciani@gmail.com}.}}
     \item Mémoli, F. (2011). Gromov--Wasserstein Distances and the Metric Approach to Object Matching. \textit{Foundations of Computational Mathematics} 11(4): 417--487.
     \item Xu, H., Luo, D., Zha, H., \& Carin, L. (2019). Gromov--Wasserstein Learning for Graph Matching and Node Embedding. \textit{ICML}. arXiv:1901.06003.
     \item Cover, T. M. (1965). Geometrical and Statistical Properties of Systems of Linear Inequalities with Applications in Pattern Recognition. \textit{IEEE Trans. Electron. Comput.} EC-14(3): 326--334.
+    % --- Labor market section bibliography ---
+    \item Bureau of Labor Statistics. (2025a). \textit{Occupational Outlook Handbook: Accountants and Auditors}. U.S. Department of Labor. \url{https://www.bls.gov/ooh/business-and-financial/accountants-and-auditors.htm} [Projected employment change 2024--2034: $+5\%$; 124,200 annual openings; 2.0\% unemployment rate.]
+    \item Bureau of Labor Statistics. (2025b). \textit{Occupational Outlook Handbook: Bookkeeping, Accounting, and Auditing Clerks}. U.S. Department of Labor. \url{https://www.bls.gov/ooh/office-and-administrative-support/bookkeeping-accounting-and-auditing-clerks.htm} [Projected employment change 2024--2034: $-6\%$; automation cited as primary cause.]
+    \item World Economic Forum. (2025). \textit{Future of Jobs Report 2025}. Geneva: WEF. [Accounting and bookkeeping clerks ranked 7th fastest-declining occupation globally; estimated $-20\%$ by 2030.]
+    \item Institute of Chartered Accountants in England and Wales. (2026, May). \textit{AI and the Accounting Profession: Survey of 500 UK Firms}. ICAEW. [68\% expect some early-career role reduction; 83\% expect no net role reduction; 71\% report teams moving toward advisory work.]
+    \item Mäkelä, M., \& Stephany, F. (2024). AI Complementarity and Labour Market Recomposition: Evidence from 12 Million Job Vacancies. arXiv:2412.19754. Oxford Internet Institute. [AI-exposed roles $2\times$ more likely to require complementary cognitive skills; spillover effect across firm-level job postings.]
+    \item PricewaterhouseCoopers. (2025). \textit{AI Jobs Barometer}. PwC. [56\% wage premium for AI-complementary skills; 7.5\% growth in AI-skill postings in finance-adjacent functions; 15-country sample.]
+    \item Robert Half. (2026). \textit{2026 Accounting and Finance Hiring Guide}. Robert Half International. [CPA-level roles average 73 days to fill, 41\% longer than prior survey period; market described as ``acutely constrained''.]
+    \item American Institute of CPAs. (2025). \textit{Trends in the Supply of Accounting Graduates and the Demand for Public Accounting Recruits}. AICPA. [Strong hiring intent across firm sizes; pipeline challenge attributed to reduced CPA-exam sitting rates, not AI displacement.]
+    \item Association of Chartered Certified Accountants. (2024). \textit{Strategic Professional Syllabus Update: AI Ethics and Sustainability as Core Competencies, effective 2024}. ACCA. \url{https://www.accaglobal.com/}
 \end{itemize}
 
 \end{document}
