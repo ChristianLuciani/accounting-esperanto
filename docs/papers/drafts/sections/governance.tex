@@ -1,7 +1,54 @@
 \section{Ontology Governance and the Co-responsibility Paradigm}
 
+\subsection{The Non-Delegability Premise}
+\label{subsec:non_delegability}
+
+The Co-responsibility Architecture rests on a premise that is legal before it
+is technical: \textbf{responsibility for a financial record cannot be delegated
+to a non-human agent, whether deterministic or stochastic.} A software
+artifact cannot be a defendant. It cannot be fined, sanctioned, struck off a
+professional register, or imprisoned. As the University of Waterloo Centre for
+Information System Assurance frames the accountability crisis in AI assurance,
+``you cannot fine an algorithm, imprison a neural network, or shame a
+dataset'' (Tucker \& Kapoor, 2025). The legal accountability for every posted
+transaction therefore rests, necessarily and at all times, on an identifiable
+human professional.
+
+This premise has a consequence that is easy to state and important not to
+lose: \textbf{the human role in Kontablo is foundational, not residual.} It is
+present in every transaction as the locus of legal accountability, not merely
+invoked when the automated tiers fail. We distinguish two analytically
+separate human functions, because conflating them produces the false inference
+that the human becomes dispensable as automated coverage improves:
+
+\begin{enumerate}
+    \item \textbf{Foundational accountability and context governance
+    (invariant).} The human professional is the legal bearer of
+    responsibility for the record and the guarantor of \emph{context
+    integrity} --- that the jurisdictional rules, effective-date regulations,
+    and entity-specific facts the system reasons over are complete and
+    current. This function does not diminish as the ontology matures; it
+    applies to every transaction regardless of confidence score. Crucially,
+    accountability for context integrity is not the same as manual
+    re-verification of every transaction: context maintenance is largely a
+    systemic, deterministic responsibility of the harness (ontology
+    versioning, effective-date tracking), while \emph{accountability} for that
+    integrity remains human. This is the shift from point-in-time audit to
+    continuous ``living compliance'' (LSE Business Review, 2026).
+    \item \textbf{Residual error resolution (reactive).} The human resolves
+    the cases that automated tiers cannot --- the boundary population analysed
+    in Section~\ref{subsec:cra_as_error_management}. This load \emph{does}
+    decrease as coverage expands.
+\end{enumerate}
+
+The architecture below operationalizes both functions. The shrinkage argument
+made later in this paper (Section~\ref{subsec:cra_as_error_management}) applies
+strictly to function~(2). Function~(1) --- legal accountability and context
+governance --- is invariant by construction and is the reason the CRA can
+never reduce to zero human involvement, however complete the ontology becomes.
+
 \subsection{The Co-responsibility Architecture (CRA)}
-To prevent ``AI-only audit loops''—where automated systems silently hide booking errors or fraud from human supervisors—Kontablo implements a \textbf{Co-responsibility Architecture (CRA)}. This architecture formalizes the governance boundary between human operators and AI models, ensuring that neither party can modify financial records without leaving a verifiable audit trail.
+To prevent ``AI-only audit loops''—where automated systems silently hide booking errors or fraud from human supervisors—Kontablo implements a \textbf{Co-responsibility Architecture (CRA)}. This architecture formalizes the governance boundary between human operators and AI models, ensuring that neither party can modify financial records without leaving a verifiable audit trail. Consistent with Section~\ref{subsec:non_delegability}, the AI is positioned throughout as a \emph{proposer and instrumenter} --- it generates informed suggestions, attaches audit and provenance metadata, and improves operational efficiency --- never as the bearer of accountability for the resulting record.
 
 The CRA operates as a multi-stage control loop:
 \begin{enumerate}

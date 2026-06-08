@@ -13,6 +13,19 @@ Accounting systems are often viewed merely as recording tools, but they represen
 The International Financial Reporting Standards (IFRS) have achieved near-universal conceptual adoption: the IFRS Foundation publishes jurisdiction profiles for 169 jurisdictions where IFRS is required or permitted for public companies (IFRS Foundation, 2025). Yet, IFRS lacks a \textbf{computational execution layer}. While a CPA in Brazil and one in Japan agree on the conceptual definition of a ``Trade Receivable,'' their respective localized ERP systems implement that concept using completely different numerical schemas, database structures, and tax metadata tags. IFRS regulates reporting disclosures, not the execution of the transactional general ledger itself.
 
 \subsection{Research Contribution}
+
+\paragraph{Terminology: ``ontology'' in this paper.} Throughout this document,
+\textbf{ontology} is used in its information-science sense, not its
+philosophical one. We do not mean the metaphysical study of being. We mean a
+\emph{formal, machine-readable specification of the concepts in a domain and
+the relationships between them} --- the established usage in knowledge
+representation and the semantic web (Gruber, 1993; Spivak \& Kent, 2012). A
+Kontablo account is an ontology element in exactly this sense: a uniquely
+identified concept (a UUID) carrying typed attributes (nature, statement,
+jurisdiction overlay) and explicit, queryable relationships to other concepts.
+The artifact is a computational object an agent can reason over, not a
+philosophical claim about the nature of economic reality.
+
 Kontablo bridges this gap by creating an open, graph-based universal accounting ontology. Unlike prior work on XBRL—which is too granular and disclosure-focused for high-frequency transaction classification—Kontablo defines a precise ``Level 3'' taxonomy of 30 universal accounts. This paper makes the following contributions:
 \begin{enumerate}
     \item A formal graph-based data model for IFRS-anchored universal accounts, resolving tree-hierarchy limitations.
