@@ -24,17 +24,26 @@ that the human becomes dispensable as automated coverage improves:
 \begin{enumerate}
     \item \textbf{Foundational accountability and context governance
     (invariant).} The human professional is the legal bearer of
-    responsibility for the record and the guarantor of \emph{context
-    integrity} --- that the jurisdictional rules, effective-date regulations,
-    and entity-specific facts the system reasons over are complete and
-    current. This function does not diminish as the ontology matures; it
-    applies to every transaction regardless of confidence score. Crucially,
-    accountability for context integrity is not the same as manual
-    re-verification of every transaction: context maintenance is largely a
-    systemic, deterministic responsibility of the harness (ontology
-    versioning, effective-date tracking), while \emph{accountability} for that
-    integrity remains human. This is the shift from point-in-time audit to
-    continuous ``living compliance'' (LSE Business Review, 2026).
+    responsibility for the record and the guarantor of the \emph{integrity and
+    continuity of context}. These are two distinct properties. \emph{Integrity}
+    is a point-in-time property: that the jurisdictional rules, effective-date
+    regulations, and entity-specific facts the system reasons over are complete
+    and correct for the transaction at hand. \emph{Continuity} is a temporal
+    property: that this context persists coherently across transactions and
+    reporting periods. The distinction is not cosmetic. A stochastic language
+    model is \emph{stateless} --- it carries no memory between invocations and
+    therefore possesses no temporal continuity of its own. Continuity must
+    consequently be supplied by the system rather than the model: it is
+    materialized deterministically by the harness (immutable ontology
+    versioning, effective-date tracking, and the cryptographically sealed audit
+    trail described below) and held to account by the human. This function does not diminish as the ontology matures; it applies
+    to every transaction regardless of confidence score. Crucially,
+    accountability for context integrity and continuity is not the same as
+    manual re-verification of every transaction: their \emph{maintenance} is
+    largely a systemic, deterministic responsibility of the harness, while
+    \emph{accountability} for them remains human. This is the shift from
+    point-in-time audit to continuous ``living compliance'' (LSE Business
+    Review, 2026).
     \item \textbf{Residual error resolution (reactive).} The human resolves
     the cases that automated tiers cannot --- the boundary population analysed
     in Section~\ref{subsec:cra_as_error_management}. This load \emph{does}
