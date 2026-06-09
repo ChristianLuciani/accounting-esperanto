@@ -7,6 +7,24 @@ metadata:
     only where a primary source is cited (see chart_families.yaml)
   note: Universal coverage is via the IFRS-anchored layer (every Level-3 node has an ifrs_tag). statutory_chart
     jurisdictions additionally receive a local-code overlay.
+  boundary_conditions:
+  - B1. No fabricated codes. A jurisdiction is marked tier1_codes_available ONLY when a primary-source-cited
+    code set exists (inline in level3_accounts.yaml or via a chart family in chart_families.yaml).
+  - B2. Two distinct claims. mapping_mode='statutory_chart' is a CLASSIFICATION that a mandated national
+    chart exists (legal-tradition heuristic + named family); tier1_codes_available is the stronger, VERIFIED
+    claim that we hold cited codes. The two are reported separately; statutory_chart without codes means
+    'chart exists, codes not yet transcribed', not 'covered by Tier 1'.
+  - B3. IFRS-direct is a real coverage mode, not a gap. For the ~122 jurisdictions with no mandated national
+    numeric chart (typically common-law), the honest and complete mapping basis is the IFRS tag carried
+    by every Level-3 node; there is no local code to transcribe.
+  - B4. Multi-state multipliers only where a chart is genuinely shared. SYSCOHADA (OHADA Uniform Act)
+    is the one supranational chart shared verbatim by 17 states. The EU has NO shared chart (each member
+    state has its own), so EU coverage is per-country, not a multiplier.
+  - B5. Conservative classification. Where statehood applies IFRS directly without a mandated chart (e.g.,
+    Chile, Uruguay, Costa Rica, Dominican Rep., Paraguay), the jurisdiction is left ifrs_direct rather
+    than asserting a chart that does not exist.
+  - B6. IFRS status provenance. ifrs_status derives from the IFRS Foundation jurisdiction profiles (169
+    profiled); states without a profile are marked 'profile_na' rather than assumed.
 jurisdictions:
 - iso: dz
   name: Algeria
@@ -508,26 +526,26 @@ jurisdictions:
   name: Chile
   region: Americas
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
-  mapping_mode: statutory_chart
-  chart_family: PCGA_CL
+  mapping_mode: ifrs_direct
+  chart_family: null
   tier1_codes_available: false
-  coverage_basis: statutory local_codes overlay + IFRS anchor
+  coverage_basis: IFRS tag (no mandated national chart)
 - iso: co
   name: Colombia
   region: Americas
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
-  chart_family: PUC
+  chart_family: PUC_CO
   tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: cr
   name: Costa Rica
   region: Americas
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
-  mapping_mode: statutory_chart
-  chart_family: PUC_CR
+  mapping_mode: ifrs_direct
+  chart_family: null
   tier1_codes_available: false
-  coverage_basis: statutory local_codes overlay + IFRS anchor
+  coverage_basis: IFRS tag (no mandated national chart)
 - iso: cu
   name: Cuba
   region: Americas
@@ -548,10 +566,10 @@ jurisdictions:
   name: Dominican Republic
   region: Americas
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
-  mapping_mode: statutory_chart
-  chart_family: PUC_DO
+  mapping_mode: ifrs_direct
+  chart_family: null
   tier1_codes_available: false
-  coverage_basis: statutory local_codes overlay + IFRS anchor
+  coverage_basis: IFRS tag (no mandated national chart)
 - iso: ec
   name: Ecuador
   region: Americas
@@ -644,17 +662,17 @@ jurisdictions:
   name: Paraguay
   region: Americas
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
-  mapping_mode: statutory_chart
-  chart_family: PUC_PY
+  mapping_mode: ifrs_direct
+  chart_family: null
   tier1_codes_available: false
-  coverage_basis: statutory local_codes overlay + IFRS anchor
+  coverage_basis: IFRS tag (no mandated national chart)
 - iso: pe
   name: Peru
   region: Americas
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
-  chart_family: PCGE
-  tier1_codes_available: false
+  chart_family: PCGE_PE
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: kn
   name: Saint Kitts and Nevis
@@ -708,10 +726,10 @@ jurisdictions:
   name: Uruguay
   region: Americas
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
-  mapping_mode: statutory_chart
-  chart_family: PUC_UY
+  mapping_mode: ifrs_direct
+  chart_family: null
   tier1_codes_available: false
-  coverage_basis: statutory local_codes overlay + IFRS anchor
+  coverage_basis: IFRS tag (no mandated national chart)
 - iso: ve
   name: Venezuela
   region: Americas
@@ -1421,7 +1439,7 @@ jurisdictions:
   region: Europe
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
-  chart_family: PGC
+  chart_family: PGC_ES
   tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: se

@@ -42,3 +42,53 @@ families:
       expense.interest: "671"              # Intérêts des emprunts
       expense.fx_loss: "676"               # Pertes de change
       expense.tax: "891"                   # Impôts sur le résultat
+
+  PGC_ES:
+    name: "Plan General de Contabilidad (Spain)"
+    members: [es]
+    source: "Spain, Real Decreto 1514/2007 (ICAC), Plan General de Contabilidad, cuadro de cuentas. https://www.plangeneralcontable.com/"
+    codes:
+      asset.current.cash: "570"            # Caja, euros
+      asset.current.bank: "572"            # Bancos e instituciones de crédito c/c vista, euros
+      asset.current.receivables: "430"     # Clientes
+      asset.current.inventory: "300"       # Mercaderías
+      asset.current.vat_input: "472"       # Hacienda Pública, IVA soportado
+      asset.noncurrent.intangibles: "20"   # Inmovilizaciones intangibles
+      asset.noncurrent.ppe: "21"           # Inmovilizaciones materiales
+      liability.current.payables: "400"    # Proveedores
+      liability.current.vat_output: "477"  # Hacienda Pública, IVA repercutido
+      liability.current.tax: "475"         # Hacienda Pública, acreedora por conceptos fiscales
+      liability.noncurrent.debt: "170"     # Deudas a largo plazo con entidades de crédito
+      equity.capital: "100"                # Capital social
+      equity.reserves: "112"               # Reserva legal
+      equity.retained: "129"               # Resultado del ejercicio
+      revenue.operating: "700"             # Ventas de mercaderías
+      expense.cogs: "600"                  # Compras de mercaderías
+      expense.admin: "62"                  # Servicios exteriores
+      expense.depreciation: "681"          # Amortización del inmovilizado material
+      expense.interest: "662"              # Intereses de deudas
+      expense.fx_loss: "668"               # Diferencias negativas de cambio
+      expense.tax: "630"                   # Impuesto sobre beneficios
+
+  PCGE_PE:
+    name: "Plan Contable General Empresarial (Peru)"
+    members: [pe]
+    source: "Peru, Ministerio de Economía y Finanzas (MEF), Plan Contable General Empresarial (PCGE modificado 2019). https://www.mef.gob.pe/contenidos/conta_publ/pcge/PCGE_2019.pdf"
+    note: "PCGE is IFRS-converged; codes shown at element/sub-account level."
+    codes:
+      asset.current.cash: "101"            # Caja (elemento 10 Efectivo y equivalentes)
+      asset.current.bank: "104"            # Cuentas corrientes en instituciones financieras
+      asset.current.receivables: "12"      # Cuentas por cobrar comerciales - Terceros
+      asset.current.inventory: "20"        # Mercaderías
+      asset.noncurrent.ppe: "33"           # Inmuebles, maquinaria y equipo
+      asset.noncurrent.intangibles: "34"   # Intangibles
+      liability.current.payables: "42"     # Cuentas por pagar comerciales - Terceros
+      liability.current.tax: "40"          # Tributos y aportes al sistema de pensiones por pagar
+      equity.capital: "50"                 # Capital
+      equity.reserves: "58"                # Reservas
+      equity.retained: "59"                # Resultados acumulados
+      revenue.operating: "70"              # Ventas
+      expense.cogs: "69"                   # Costo de ventas
+      expense.admin: "63"                  # Gastos de servicios prestados por terceros
+      expense.depreciation: "68"           # Valuación y deterioro de activos (depreciación)
+      expense.interest: "67"               # Gastos financieros

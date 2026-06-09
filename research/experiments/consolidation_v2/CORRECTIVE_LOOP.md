@@ -87,13 +87,13 @@ Coverage is now recorded in a 195-jurisdiction manifest
 |---|---|
 | Sovereign states in manifest | 195 (193 UN + Holy See + Palestine) |
 | — universal IFRS-anchor layer | 195 |
-| — statutory-chart overlay | 73 |
-| — IFRS-direct (IFRS-tag mapping) | 122 |
-| — Tier-1 code sets populated (cited) | 39 (incl. 17 via SYSCOHADA) |
-| Entities consolidated | 61 |
+| — statutory-chart overlay | 68 |
+| — IFRS-direct (IFRS-tag mapping) | 127 |
+| — Tier-1 code sets populated (cited) | 40 (SYSCOHADA 17 + PGC-ES + PCGE-PE + inline) |
+| Entities consolidated | 62 |
 | Jurisdictions exercised in run | 55 |
-| Local entries processed | 267 |
-| Deterministic coverage (Tier 1+2) | 98.1% (Tier1 78.3% + Tier2 19.9%) |
+| Local entries processed | 272 |
+| Deterministic coverage (Tier 1+2) | 98.2% (Tier1 78.7% + Tier2 19.5%) |
 | Escalated to human (CRA) | 4 (all genuine coverage-boundary cases) |
 | Injected inconsistencies detected by CRA | 3 / 3 |
 | Ontology code-collisions remaining | 0 |

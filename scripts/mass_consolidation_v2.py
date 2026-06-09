@@ -241,24 +241,30 @@ def build_entities(accounts, by_code, families=None):
         "rate_override":0.000011,"hyperinflation":True,
         "data":[{"code":"x","name":"Cash on hand","nature":"debit","amt":1500000000}]})
 
-    # --- OHADA member states via the shared SYSCOHADA chart (Tier-1, real codes)
-    syscohada = (families.get("SYSCOHADA") or {})
-    sc_codes = syscohada.get("codes", {})
-    if sc_codes:
-        sc_pick = [("asset.current.cash", 50000), ("asset.current.bank", 40000),
-                   ("asset.current.receivables", 120000), ("liability.current.payables", 70000),
-                   ("revenue.operating", 300000)]
-        for member in syscohada.get("members", []):
-            ccy = JCCY.get(member, "XOF")
-            rate = FX.get(ccy, FX["XOF"])
-            data = []
-            for kid, usd in sc_pick:
-                if kid in sc_codes:
-                    data.append({"code": str(sc_codes[kid]), "name": accounts[kid]["label"],
-                                 "nature": accounts[kid]["nature"], "amt": round(usd / rate, 2)})
-            entities.append({"id": f"{member.upper()}-OHADA",
-                             "name": f"{COUNTRY.get(member, member.upper())} (SYSCOHADA)",
-                             "j": member, "ccy": ccy, "data": data})
+    # --- statutory chart-family member states (Tier-1, real cited codes).
+    #     One verified chart can cover many jurisdictions (e.g. SYSCOHADA -> 17).
+    #     Skip members already represented by inline ontology codes to avoid
+    #     double-counting (e.g. ES, which is inline in level3_accounts.yaml).
+    inline_juris = {j for a in accounts.values() for j in a["local_codes"]}
+    fam_pick = [("asset.current.cash", 50000), ("asset.current.bank", 40000),
+                ("asset.current.receivables", 120000), ("liability.current.payables", 70000),
+                ("revenue.operating", 300000)]
+    for famname, fam in families.items():
+        codes = fam.get("codes", {})
+        if not codes:
+            continue
+        for member in fam.get("members", []):
+            if member in inline_juris:
+                continue  # already generated from inline ontology codes
+            ccy = JCCY.get(member, "USD")
+            rate = FX.get(ccy, 1.0)
+            data = [{"code": str(codes[kid]), "name": accounts[kid]["label"],
+                     "nature": accounts[kid]["nature"], "amt": round(usd / rate, 2)}
+                    for kid, usd in fam_pick if kid in codes]
+            if data:
+                entities.append({"id": f"{member.upper()}-{famname}",
+                                 "name": f"{COUNTRY.get(member, member.upper())} ({famname})",
+                                 "j": member, "ccy": ccy, "data": data})
 
     # --- other non-anglophone thin-corpus jurisdictions (Tier-2 by name)
     entities += [

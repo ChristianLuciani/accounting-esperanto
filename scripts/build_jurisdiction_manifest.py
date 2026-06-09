@@ -124,9 +124,11 @@ CHART_FAMILY = {**{j: "SYSCOHADA" for j in OHADA}}
 CHART_FAMILY.update({
     "fr":"PCG","mc":"PCG",                         # Plan Comptable Général
     "ma":"CGNC","tn":"PC_Tunisie","dz":"SCF",      # Maghreb (PCG-derived)
-    "es":"PGC","co":"PUC","pe":"PCGE","ec":"PUC_EC","bo":"PUC_BO",
-    "cl":"PCGA_CL","do":"PUC_DO","cr":"PUC_CR","uy":"PUC_UY",
-    "mx":"SAT","br":"SPED","ar":"PCGA_AR","ve":"PUC_VE","py":"PUC_PY",
+    # Latin America: only states with a genuinely mandated national chart.
+    # Chile, Costa Rica, Uruguay, Dominican Rep., Paraguay apply IFRS directly
+    # without a mandated national numeric chart -> left as ifrs_direct.
+    "es":"PGC_ES","co":"PUC_CO","pe":"PCGE_PE","ec":"PUC_EC","bo":"PUC_BO",
+    "mx":"SAT","br":"SPED","ar":"PCGA_AR","ve":"PUC_VE",
     "de":"HGB_SKR","at":"OEKR","ch":"PME_CH",
     "ru":"RAS_94n","by":"RAS_BY","kz":"RAS_KZ","ua":"RAS_UA","uz":"RAS_UZ",
     "am":"RAS_AM","az":"RAS_AZ","ge":"RAS_GE","kg":"RAS_KG","tj":"RAS_TJ",
@@ -142,7 +144,7 @@ CHART_FAMILY.update({
 # code set (Tier-1 ready). Kept in sync with chart_families.yaml + the ontology.
 CODES_AVAILABLE = set(OHADA) | {
     "fr","es","mx","br","co","pa","de","ru","cn","vn","ar","tr","ae","ca",
-    "il","in","jp","uk","us","ve","za","ec","ma",
+    "il","in","jp","uk","us","ve","za","ec","ma","pe",
 }
 
 # IFRS adoption status overrides (default: required for listed companies, per
@@ -185,6 +187,14 @@ def build():
             "ifrs_status_source": "IFRS Foundation, 'Who uses IFRS Accounting Standards?' jurisdiction profiles (https://www.ifrs.org/use-around-the-world/use-of-ifrs-standards-by-jurisdiction/)",
             "mapping_mode_basis": "legal-tradition heuristic refined by named statutory chart families; code sets populated only where a primary source is cited (see chart_families.yaml)",
             "note": "Universal coverage is via the IFRS-anchored layer (every Level-3 node has an ifrs_tag). statutory_chart jurisdictions additionally receive a local-code overlay.",
+            "boundary_conditions": [
+                "B1. No fabricated codes. A jurisdiction is marked tier1_codes_available ONLY when a primary-source-cited code set exists (inline in level3_accounts.yaml or via a chart family in chart_families.yaml).",
+                "B2. Two distinct claims. mapping_mode='statutory_chart' is a CLASSIFICATION that a mandated national chart exists (legal-tradition heuristic + named family); tier1_codes_available is the stronger, VERIFIED claim that we hold cited codes. The two are reported separately; statutory_chart without codes means 'chart exists, codes not yet transcribed', not 'covered by Tier 1'.",
+                "B3. IFRS-direct is a real coverage mode, not a gap. For the ~122 jurisdictions with no mandated national numeric chart (typically common-law), the honest and complete mapping basis is the IFRS tag carried by every Level-3 node; there is no local code to transcribe.",
+                "B4. Multi-state multipliers only where a chart is genuinely shared. SYSCOHADA (OHADA Uniform Act) is the one supranational chart shared verbatim by 17 states. The EU has NO shared chart (each member state has its own), so EU coverage is per-country, not a multiplier.",
+                "B5. Conservative classification. Where statehood applies IFRS directly without a mandated chart (e.g., Chile, Uruguay, Costa Rica, Dominican Rep., Paraguay), the jurisdiction is left ifrs_direct rather than asserting a chart that does not exist.",
+                "B6. IFRS status provenance. ifrs_status derives from the IFRS Foundation jurisdiction profiles (169 profiled); states without a profile are marked 'profile_na' rather than assumed.",
+            ],
         },
         "jurisdictions": rows,
     }
