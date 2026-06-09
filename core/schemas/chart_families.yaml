@@ -310,3 +310,89 @@ families:
       liability.current.payables: "401"    # Доставчици
       equity.capital: "101"                # Основен капитал
       revenue.operating: "701"             # Приходи от продажби
+
+  UA_chart:
+    name: "План рахунків (Ukraine)"
+    members: [ua]
+    source: "Ukraine, Наказ Мінфіну 291 (Інструкція про застосування Плану рахунків)."
+    codes:
+      asset.current.cash: "301"            # Каса в національній валюті
+      asset.current.bank: "311"            # Поточні рахунки в національній валюті
+      asset.current.receivables: "361"     # Розрахунки з вітчизняними покупцями
+      asset.current.inventory: "281"       # Товари на складі
+      asset.noncurrent.ppe: "10"           # Основні засоби
+      asset.noncurrent.intangibles: "12"   # Нематеріальні активи
+      liability.current.payables: "631"    # Розрахунки з вітчизняними постачальниками
+      liability.current.tax: "641"         # Розрахунки за податками
+      liability.noncurrent.debt: "50"      # Довгострокові позики
+      equity.capital: "40"                 # Зареєстрований (пайовий) капітал
+      equity.reserves: "43"                # Резервний капітал
+      equity.retained: "44"                # Нерозподілені прибутки
+      revenue.operating: "702"             # Дохід від реалізації товарів
+      expense.cogs: "902"                  # Собівартість реалізованих товарів
+      expense.interest: "951"              # Відсотки за кредит
+      expense.fx_loss: "945"               # Втрати від операційної курсової різниці
+
+  KZ_chart:
+    name: "Типовой план счетов (Kazakhstan)"
+    members: [kz]
+    source: "Kazakhstan, Типовой план счетов бухгалтерского учёта (МФ РК); IFRS-based 4-digit chart."
+    codes:
+      asset.current.cash: "1010"           # Денежные средства в кассе
+      asset.current.bank: "1030"           # Денежные средства на текущих банковских счетах
+      asset.current.receivables: "1210"    # Краткосрочная дебиторская задолженность покупателей
+      asset.current.inventory: "1330"      # Товары
+      asset.noncurrent.ppe: "2410"         # Основные средства
+      asset.noncurrent.intangibles: "2730" # Нематериальные активы
+      liability.current.payables: "3310"   # Краткосрочная кредиторская задолженность поставщикам
+      liability.current.tax: "3110"        # Корпоративный подоходный налог
+      liability.noncurrent.debt: "4010"    # Долгосрочные банковские займы
+      equity.capital: "5010"               # Объявленный капитал
+      equity.retained: "5510"              # Нераспределённая прибыль
+      revenue.operating: "6010"            # Доход от реализации продукции и услуг
+      expense.cogs: "7010"                 # Себестоимость реализованной продукции
+      expense.admin: "7210"                # Административные расходы
+      expense.interest: "7310"             # Расходы по вознаграждениям
+      expense.fx_loss: "7430"              # Расходы от курсовой разницы
+
+  TN_chart:
+    name: "Plan Comptable des Entreprises (Tunisia)"
+    members: [tn]
+    source: "Tunisia, Loi 96-112 (1996), Plan Comptable des Entreprises (PCT 1997)."
+    codes:
+      asset.current.cash: "54"             # Caisse
+      asset.current.bank: "532"            # Banques
+      asset.current.receivables: "411"     # Clients
+      asset.current.inventory: "37"        # Stocks de marchandises
+      asset.noncurrent.ppe: "22"           # Immobilisations corporelles
+      asset.noncurrent.intangibles: "21"   # Immobilisations incorporelles
+      liability.current.payables: "401"    # Fournisseurs
+      liability.noncurrent.debt: "16"      # Emprunts
+      equity.capital: "101"                # Capital social
+      equity.reserves: "111"               # Réserve légale
+      equity.retained: "121"               # Résultats reportés
+      revenue.operating: "707"             # Ventes de marchandises
+      expense.cogs: "607"                  # Achats de marchandises
+      expense.depreciation: "681"          # Dotations aux amortissements
+      expense.interest: "651"              # Charges d'intérêts
+      expense.fx_loss: "655"               # Pertes de change
+
+  BY_chart:
+    name: "Типовой план счетов (Belarus)"
+    members: [by]
+    source: "Belarus, Постановление Минфина №50 (2011), типовой план счетов."
+    note: "Soviet-heritage numbering; revenue (90) carries cost as a sub-account, so COGS is not mapped to a distinct top-level code."
+    codes:
+      asset.current.cash: "50"             # Касса
+      asset.current.bank: "51"             # Расчётные счета
+      asset.current.receivables: "62"      # Расчёты с покупателями и заказчиками
+      asset.current.inventory: "41"        # Товары
+      asset.noncurrent.ppe: "01"           # Основные средства
+      asset.noncurrent.intangibles: "04"   # Нематериальные активы
+      liability.current.payables: "60"     # Расчёты с поставщиками и подрядчиками
+      liability.current.tax: "68"          # Расчёты по налогам и сборам
+      liability.noncurrent.debt: "67"      # Расчёты по долгосрочным кредитам и займам
+      equity.capital: "80"                 # Уставный капитал
+      equity.reserves: "82"                # Резервный капитал
+      equity.retained: "84"                # Нераспределённая прибыль
+      revenue.operating: "90"              # Доходы по текущей деятельности (реализация)

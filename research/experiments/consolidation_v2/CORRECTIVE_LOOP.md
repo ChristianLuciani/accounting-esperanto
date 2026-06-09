@@ -89,18 +89,18 @@ Coverage is now recorded in a 195-jurisdiction manifest
 | — universal IFRS-anchor layer | 195 |
 | — statutory-chart overlay | 72 |
 | — IFRS-direct (IFRS-tag mapping) | 123 |
-| — Tier-1 code sets populated (cited) | 44 (SYSCOHADA 17 + PGC + SNC + PCGE + CAS + PCMN + CGNC + SCF + RO + CZ + SK + HU + BG + inline) |
+| — Tier-1 code sets populated (cited) | 48 (SYSCOHADA 17 + PGC + SNC + PCGE + CAS + PCMN + CGNC + SCF + RO + CZ + SK + HU + BG + UA + KZ + TN + BY + inline) |
 | Descriptive placeholders excluded from Tier-1 (B1) | 14 |
-| Entities consolidated | 63 |
-| Jurisdictions exercised in run | 58 |
-| Local entries processed | 306 |
-| Deterministic coverage (Tier 1+2) | 96.7% (Tier1 81.7% + Tier2 15.0%) |
+| Entities consolidated | 67 |
+| Jurisdictions exercised in run | 61 |
+| Local entries processed | 326 |
+| Deterministic coverage (Tier 1+2) | 96.9% (Tier1 82.8% + Tier2 14.1%) |
 | CRA injected-error catalog detected & quarantined | 8/8 (12 flags, 5 invariant classes) |
 | Escalated to human (CRA) | 4 (all genuine coverage-boundary cases) |
 | Ontology code-collisions remaining | 0 |
 | Universal nodes populated | 25 / 30 |
 | IAS 29 hyperinflation dual-rate cases | 4 (VE, AR, LB, TR) |
-| Consolidated total assets (USD) | 12,226,038 |
+| Consolidated total assets (USD) | 13,066,038 |
 
 ## 6. Lessons / standing practice
 

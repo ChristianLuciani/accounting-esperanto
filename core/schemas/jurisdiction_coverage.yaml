@@ -431,8 +431,8 @@ jurisdictions:
   region: Africa
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
-  chart_family: PC_Tunisie
-  tier1_codes_available: false
+  chart_family: TN_chart
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: ug
   name: Uganda
@@ -887,8 +887,8 @@ jurisdictions:
   region: Asia
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
-  chart_family: RAS_KZ
-  tier1_codes_available: false
+  chart_family: KZ_chart
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: kw
   name: Kuwait
@@ -1151,8 +1151,8 @@ jurisdictions:
   region: Europe
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
-  chart_family: RAS_BY
-  tier1_codes_available: false
+  chart_family: BY_chart
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: be
   name: Belgium
@@ -1463,8 +1463,8 @@ jurisdictions:
   region: Europe
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
-  chart_family: RAS_UA
-  tier1_codes_available: false
+  chart_family: UA_chart
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: gb
   name: United Kingdom

@@ -123,14 +123,14 @@ OHADA = ["bj","bf","cm","cf","td","km","cg","cd","ci","gq","ga","gn","gw",
 CHART_FAMILY = {**{j: "SYSCOHADA" for j in OHADA}}
 CHART_FAMILY.update({
     "fr":"PCG","mc":"PCG",                         # Plan Comptable Général
-    "ma":"CGNC_MA","tn":"PC_Tunisie","dz":"SCF_DZ", # Maghreb (PCG-derived)
+    "ma":"CGNC_MA","tn":"TN_chart","dz":"SCF_DZ",   # Maghreb (PCG-derived)
     # Latin America: only states with a genuinely mandated national chart.
     # Chile, Costa Rica, Uruguay, Dominican Rep., Paraguay apply IFRS directly
     # without a mandated national numeric chart -> left as ifrs_direct.
     "es":"PGC_ES","co":"PUC_CO","pe":"PCGE_PE","ec":"PUC_EC","bo":"PUC_BO",
     "mx":"SAT","br":"SPED","ar":"PCGA_AR","ve":"PUC_VE",
     "de":"HGB_SKR","at":"OEKR","ch":"PME_CH",
-    "ru":"RAS_94n","by":"RAS_BY","kz":"RAS_KZ","ua":"RAS_UA","uz":"RAS_UZ",
+    "ru":"RAS_94n","by":"BY_chart","kz":"KZ_chart","ua":"UA_chart","uz":"RAS_UZ",
     "am":"RAS_AM","az":"RAS_AZ","ge":"RAS_GE","kg":"RAS_KG","tj":"RAS_TJ",
     "tm":"RAS_TM","md":"RAS_MD",
     "cn":"CAS_CN","vn":"VAS","kr":"KIFRS_chart","jp":"JP_chart","th":"TH_chart",

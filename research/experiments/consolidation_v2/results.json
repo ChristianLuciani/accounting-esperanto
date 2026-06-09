@@ -3,9 +3,9 @@
     "sovereign_states": 195,
     "statutory_chart": 72,
     "ifrs_direct": 123,
-    "tier1_code_sets_ready": 44
+    "tier1_code_sets_ready": 48
   },
-  "entities": 63,
+  "entities": 67,
   "countries": [
     "ar",
     "be",
@@ -13,6 +13,7 @@
     "bg",
     "bj",
     "br",
+    "by",
     "cd",
     "cf",
     "cg",
@@ -61,29 +62,31 @@
     "sn",
     "td",
     "tg",
+    "tn",
     "tr",
+    "ua",
     "us",
     "ve",
     "vn"
   ],
-  "n_countries": 58,
+  "n_countries": 61,
   "hyperinflation_cases": [
     "ar",
     "lb",
     "tr",
     "ve"
   ],
-  "total_entries": 306,
+  "total_entries": 326,
   "distinct_nodes_hit": 25,
   "tier_distribution": {
-    "tier1_exact": 250,
+    "tier1_exact": 270,
     "tier2_keyword": 46,
     "escalated": 4,
     "forced_upstream": 6
   },
-  "deterministic_coverage_pct": 96.7,
+  "deterministic_coverage_pct": 96.9,
   "escalated": 4,
-  "escalated_pct": 1.3,
+  "escalated_pct": 1.2,
   "cra_flags": [
     {
       "entity": "XX-CRA-TEST",
@@ -220,11 +223,11 @@
     }
   ],
   "consolidated_usd": {
-    "asset.current.bank": 1400000.01,
-    "asset.current.cash": 2834537.74,
+    "asset.current.bank": 1560000.01,
+    "asset.current.cash": 3034537.74,
     "asset.current.inventory": 360000.01,
     "asset.current.prepaid": 15000.0,
-    "asset.current.receivables": 5582500.0,
+    "asset.current.receivables": 6062499.99,
     "asset.current.vat_input": 40000.0,
     "asset.noncurrent.intangibles": 150000.0,
     "asset.noncurrent.investments": 60000.0,
@@ -238,13 +241,13 @@
     "expense.interest": 270000.0,
     "expense.tax": 270000.0,
     "liability.current.accrued": 120000.0,
-    "liability.current.payables": 2619999.99,
+    "liability.current.payables": 2899999.99,
     "liability.current.short_term_debt": 80000.0,
     "liability.current.tax": 160000.01,
     "liability.current.vat_output": 120000.0,
     "liability.noncurrent.debt": 80000.0,
-    "revenue.operating": 13200000.02,
+    "revenue.operating": 14400000.02,
     "revenue.other": 600000.0
   },
-  "total_assets_usd": 12226037.77
+  "total_assets_usd": 13066037.77
 }
