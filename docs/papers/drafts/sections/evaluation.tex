@@ -3,7 +3,7 @@
 To empirically validate the ontology’s robustness against the three crises identified in Section 1.1, we developed a high-fidelity mass-consolidation engine. The simulation ingested raw, unmapped trial balances from 10 distinct entities across 9 countries representing diverse regulatory environments. 
 
 \subsection{Consolidation Simulation Engine}
-To validate Kontablo's real-world utility, we built a mass-consolidation simulation engine. The simulation models a multinational holding company consolidating trial balances from 10 distinct operational entities across 9 jurisdictions: Mexico (MX), Brazil (BR), France (FR), Panama (PA), Ecuador (EC), Colombia (CO), Vietnam (VN), Nigeria (NG), and Saudi Arabia (SA). Each subsidiary ledger was exported from a different source ERP (ERPNext, Zoho Books, Odoo, SAP B1) containing localized charts of accounts, varying currencies, and diverging tax treatment. This initial run was subsequently extended into a larger, fully reproducible validation matrix (62 entities, 55 jurisdictions; Section~\ref{subsec:expanded_validation}).
+To validate Kontablo's real-world utility, we built a mass-consolidation simulation engine. The simulation models a multinational holding company consolidating trial balances from 10 distinct operational entities across 9 jurisdictions: Mexico (MX), Brazil (BR), France (FR), Panama (PA), Ecuador (EC), Colombia (CO), Vietnam (VN), Nigeria (NG), and Saudi Arabia (SA). Each subsidiary ledger was exported from a different source ERP (ERPNext, Zoho Books, Odoo, SAP B1) containing localized charts of accounts, varying currencies, and diverging tax treatment. This initial run was subsequently extended into a larger, fully reproducible validation matrix (56 entities, 50 jurisdictions; Section~\ref{subsec:expanded_validation}).
 
 \subsection{The 10-Point Complexity Scale}
 To measure the difficulty of mapping local charts of accounts to the universal Level 3 ontology, we established a \textbf{10-point Complexity Scale}. The scale rates jurisdictions based on four primary vectors: (1) alignment with IFRS, (2) strictness of mandatory national charts of accounts, (3) complexity of electronic invoicing and transactional metadata requirements, and (4) currency volatility/inflation treatment. 
@@ -106,20 +106,25 @@ the two UN observer states (Holy See, State of Palestine) --- in
 \texttt{core/schemas/jurisdiction\_coverage.yaml}. The claim is precise and
 two-layered. \emph{Every} one of the 195 is covered by Kontablo's universal
 IFRS-anchored layer, because each Level-3 node carries an \texttt{ifrs\_tag};
-this is the mapping basis for the \textbf{127} jurisdictions that do not mandate
+this is the mapping basis for the \textbf{123} jurisdictions that do not mandate
 a national numeric chart of accounts (typically common-law / IFRS-direct
 regimes, where an entity designs its own chart and there is no statutory code to
-map). The remaining \textbf{68} jurisdictions impose a statutory chart and
-additionally receive a local-code overlay; for \textbf{40} of these we populate
+map). The remaining \textbf{72} jurisdictions impose a statutory chart and
+additionally receive a local-code overlay; for \textbf{35} of these we populate
 and exercise primary-source-cited Tier-1 code sets, including the SYSCOHADA
 chart shared identically by all 17 OHADA member states (one verified chart, 17
-jurisdictions), the Spanish PGC (RD~1514/2007) and the Peruvian PCGE.
+jurisdictions), the Spanish PGC (RD~1514/2007), the Portuguese SNC (Portaria
+218/2015), the Peruvian PCGE, and single-country charts such as Panama's
+(11 cited codes) and Mexico's SAT.
 
 \paragraph{Boundary conditions of the coverage claim.} To keep the 195 figure
 honest rather than rhetorical, the manifest is governed by an explicit
 construction protocol, recorded in its metadata: \emph{(B1)} no fabricated
 codes --- a jurisdiction is marked Tier-1 only when a primary-source-cited code
-set exists; \emph{(B2)} two distinct claims are reported separately ---
+set exists, and a deterministic filter (a real statutory code must contain at
+least one digit) excludes descriptive text placeholders such as ``Cash'' or
+``Vorsteuer'' from the Tier-1 index (14 such placeholders were demoted, and the
+affected common-law jurisdictions fall back to the IFRS-tag basis); \emph{(B2)} two distinct claims are reported separately ---
 \texttt{mapping\_mode=statutory\_chart} (a mandated chart \emph{exists}) versus
 \texttt{tier1\_codes\_available} (we hold \emph{verified} codes), so ``statutory
 without codes'' never masquerades as Tier-1 coverage; \emph{(B3)} IFRS-direct is
@@ -142,7 +147,7 @@ themselves}: for every jurisdiction with real \texttt{local\_codes} (inline or
 via a chart family), an entity is constructed from those exact codes, so Tier-1
 exact lookup is exercised against genuine mapping data rather than hand-authored
 examples. The run
-processes \textbf{272 local account entries from 62 entities across 55
+processes \textbf{268 local account entries from 56 entities across 50
 jurisdictions}, spanning all five statement classes (assets, liabilities,
 equity, revenue, expense) and a dozen written scripts/languages (Spanish,
 Portuguese, French, Italian, Polish, Indonesian, Greek, Vietnamese, Arabic,
@@ -162,31 +167,32 @@ dataset, not an out-of-sample accuracy benchmark.
 \textbf{Metric} & \textbf{Result} \\ \hline
 Sovereign states in coverage manifest & 195 \\
 \quad universal IFRS-anchor layer & 195 \\
-\quad statutory-chart overlay & 68 \\
-\quad IFRS-direct (mapping via IFRS tag) & 127 \\
-\quad Tier-1 code sets populated (cited) & 40 \\
+\quad statutory-chart overlay & 72 \\
+\quad IFRS-direct (mapping via IFRS tag) & 123 \\
+\quad Tier-1 code sets populated (cited) & 35 \\
 \hline
-Entities consolidated & 62 \\
-Jurisdictions exercised in run & 55 \\
+Entities consolidated & 56 \\
+Jurisdictions exercised in run & 50 \\
 IAS~29 hyperinflation dual-rate cases & 4 (VE, AR, LB, TR) \\
-Local account entries processed & 272 \\
+Local account entries processed & 268 \\
 \hline
-Tier~1 (exact local-code lookup) & 214 \quad(78.7\%) \\
-Tier~2 (deterministic keyword rules) & 53 \quad(19.5\%) \\
-\textbf{Deterministic coverage (Tier~1+2)} & \textbf{98.2\%} \\
+Tier~1 (exact local-code lookup) & 205 \quad(76.5\%) \\
+Tier~2 (deterministic keyword rules) & 53 \quad(19.8\%) \\
+\textbf{Deterministic coverage (Tier~1+2)} & \textbf{96.3\%} \\
 Escalated to human via CRA & 4 \quad(1.5\%) \\
 \hline
-Injected inconsistencies detected by CRA & 3 / 3 \\
-\quad nature mismatches (debit/credit) & 2 \\
-\quad boundary violations (liquid$\to$non-current) & 1 \\
+Injected-error catalog detected \& quarantined by CRA & 8 / 8 \\
+\quad distinct invariant classes exercised & 5 \\
+\quad (nature, liquidity, statement, VAT direction, equity/liability) & 12 flags \\
+Descriptive placeholders excluded from Tier-1 (B1) & 14 \\
 Ontology code-collisions: detected $\to$ corrected $\to$ remaining & 4 $\to$ 0 \\
 \hline
 Distinct Kontablo nodes populated & 25 / 30 \\
-Consolidated total assets (FX-normalized) & USD 10{,}849{,}038 \\
+Consolidated total assets (FX-normalized) & USD 10{,}656{,}038 \\
 \hline
 \end{tabular}
 \caption{195-jurisdiction coverage manifest and the deterministic validation run
-(62 entities, 55 jurisdictions), with Tier-1 trial balances generated from the
+(56 entities, 50 jurisdictions), with Tier-1 trial balances generated from the
 ontology's own \texttt{local\_codes} and statutory chart families (e.g.,
 SYSCOHADA for the 17 OHADA states). Coverage is measured by entry count; FX
 normalization to USD uses simulated 2026 rates, with parallel-rate overrides for
@@ -204,10 +210,14 @@ is a jurisdiction-specific German tax-driven reserve
 The engine \emph{escalated rather than mismapped} each of them --- the
 empirical instantiation of the principled residual of
 Section~\ref{subsec:coverage_expansion}. Second, the Co-responsibility
-Architecture detected \textbf{all three deliberately injected inconsistencies}
-(two debit/credit nature mismatches and one liquid-asset-to-non-current
-boundary violation), penalising their confidence and raising audit flags before
-ledger write. No injected error passed silently. Third, and most consequential
+Architecture was tested against a deliberately injected error catalog spanning
+\textbf{five deterministic accounting invariants} --- debit/credit nature,
+the liquidity boundary (liquid asset to non-current), statement class (a P\&L
+name forced onto a balance-sheet node and vice versa), VAT direction (input
+forced onto the output node and vice versa), and equity/liability
+classification. It \textbf{detected and quarantined all eight injected errors}
+(twelve flags in total), holding them for human review rather than posting them.
+No injected error passed silently, and none reached the consolidated ledger. Third, and most consequential
 for the development of the standard, the run \textbf{closed a corrective loop on
 the ontology itself}. It surfaced four latent local-code collisions --- a single
 jurisdiction code mapped to two different Kontablo nodes (MX \texttt{509}

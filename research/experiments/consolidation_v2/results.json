@@ -1,18 +1,16 @@
 {
   "coverage_manifest": {
     "sovereign_states": 195,
-    "statutory_chart": 68,
-    "ifrs_direct": 127,
-    "tier1_code_sets_ready": 40
+    "statutory_chart": 72,
+    "ifrs_direct": 123,
+    "tier1_code_sets_ready": 35
   },
-  "entities": 62,
+  "entities": 56,
   "countries": [
-    "ae",
     "ar",
     "bf",
     "bj",
     "br",
-    "ca",
     "cd",
     "cf",
     "cg",
@@ -20,7 +18,6 @@
     "ci",
     "cl",
     "cm",
-    "cn",
     "co",
     "de",
     "eg",
@@ -45,40 +42,38 @@
     "ml",
     "mx",
     "ne",
-    "ng",
     "pa",
     "pe",
     "ph",
     "pk",
     "pl",
+    "pt",
     "ru",
     "sa",
     "sn",
     "td",
     "tg",
     "tr",
-    "uk",
     "us",
     "ve",
-    "vn",
-    "za"
+    "vn"
   ],
-  "n_countries": 55,
+  "n_countries": 50,
   "hyperinflation_cases": [
     "ar",
     "lb",
     "tr",
     "ve"
   ],
-  "total_entries": 272,
+  "total_entries": 268,
   "distinct_nodes_hit": 25,
   "tier_distribution": {
-    "tier1_exact": 214,
+    "tier1_exact": 205,
     "tier2_keyword": 53,
     "escalated": 4,
-    "forced_upstream": 1
+    "forced_upstream": 6
   },
-  "deterministic_coverage_pct": 98.2,
+  "deterministic_coverage_pct": 96.3,
   "escalated": 4,
   "escalated_pct": 1.5,
   "cra_flags": [
@@ -89,26 +84,143 @@
     },
     {
       "entity": "XX-CRA-TEST",
+      "name": "Ventas",
+      "flag": "nature_mismatch:debit!=credit@revenue.operating"
+    },
+    {
+      "entity": "XX-CRA-TEST",
       "name": "Bank Current Account",
       "flag": "boundary_violation:liquid_asset->noncurrent@asset.noncurrent.ppe"
     },
     {
       "entity": "XX-CRA-TEST",
-      "name": "Ventas",
+      "name": "Sales Revenue Domestic",
+      "flag": "nature_mismatch:credit!=debit@asset.current.cash"
+    },
+    {
+      "entity": "XX-CRA-TEST",
+      "name": "Sales Revenue Domestic",
+      "flag": "statement_mismatch:P&L_name->balance_sheet@asset.current.cash"
+    },
+    {
+      "entity": "XX-CRA-TEST",
+      "name": "Trade Receivables",
       "flag": "nature_mismatch:debit!=credit@revenue.operating"
+    },
+    {
+      "entity": "XX-CRA-TEST",
+      "name": "Trade Receivables",
+      "flag": "statement_mismatch:balance_sheet_name->P&L@revenue.operating"
+    },
+    {
+      "entity": "XX-CRA-TEST",
+      "name": "IVA Acreditable (input)",
+      "flag": "nature_mismatch:debit!=credit@liability.current.vat_output"
+    },
+    {
+      "entity": "XX-CRA-TEST",
+      "name": "IVA Acreditable (input)",
+      "flag": "vat_direction:input->output@liability.current.vat_output"
+    },
+    {
+      "entity": "XX-CRA-TEST",
+      "name": "IVA Repercutido (output)",
+      "flag": "nature_mismatch:credit!=debit@asset.current.vat_input"
+    },
+    {
+      "entity": "XX-CRA-TEST",
+      "name": "IVA Repercutido (output)",
+      "flag": "vat_direction:output->input@asset.current.vat_input"
+    },
+    {
+      "entity": "XX-CRA-TEST",
+      "name": "Capital Social",
+      "flag": "class_confusion:equity->liability@liability.noncurrent.debt"
     }
   ],
   "ontology_code_collisions": [],
+  "descriptive_placeholders_excluded": [
+    {
+      "jurisdiction": "us",
+      "code": "Cash",
+      "id": "asset.current.cash"
+    },
+    {
+      "jurisdiction": "ca",
+      "code": "Cash",
+      "id": "asset.current.cash"
+    },
+    {
+      "jurisdiction": "uk",
+      "code": "Cash",
+      "id": "asset.current.cash"
+    },
+    {
+      "jurisdiction": "cn",
+      "code": "库存现金",
+      "id": "asset.current.cash"
+    },
+    {
+      "jurisdiction": "ae",
+      "code": "Cash",
+      "id": "asset.current.cash"
+    },
+    {
+      "jurisdiction": "ng",
+      "code": "Cash",
+      "id": "asset.current.cash"
+    },
+    {
+      "jurisdiction": "za",
+      "code": "Cash",
+      "id": "asset.current.cash"
+    },
+    {
+      "jurisdiction": "mx",
+      "code": "IVA Acreditable",
+      "id": "asset.current.vat_input"
+    },
+    {
+      "jurisdiction": "de",
+      "code": "Vorsteuer",
+      "id": "asset.current.vat_input"
+    },
+    {
+      "jurisdiction": "in",
+      "code": "GST Input Credit",
+      "id": "asset.current.vat_input"
+    },
+    {
+      "jurisdiction": "cn",
+      "code": "进项税额",
+      "id": "asset.current.vat_input"
+    },
+    {
+      "jurisdiction": "br",
+      "code": "Impostos a Recuperar",
+      "id": "asset.current.vat_input"
+    },
+    {
+      "jurisdiction": "mx",
+      "code": "IVA Trasladado",
+      "id": "liability.current.vat_output"
+    },
+    {
+      "jurisdiction": "cn",
+      "code": "销项税额",
+      "id": "liability.current.vat_output"
+    }
+  ],
   "consolidated_usd": {
-    "asset.current.bank": 1080000.0,
-    "asset.current.cash": 2689537.74,
+    "asset.current.bank": 1120000.0,
+    "asset.current.cash": 2384537.73,
     "asset.current.inventory": 360000.01,
     "asset.current.prepaid": 15000.0,
-    "asset.current.receivables": 4622500.0,
-    "asset.current.vat_input": 80000.01,
+    "asset.current.receivables": 4742500.0,
+    "asset.current.vat_input": 40000.0,
     "asset.noncurrent.intangibles": 150000.0,
     "asset.noncurrent.investments": 60000.0,
-    "asset.noncurrent.ppe": 1792000.01,
+    "asset.noncurrent.ppe": 1784000.01,
     "equity.capital": 320000.0,
     "equity.retained": 240000.0,
     "expense.admin": 360000.0,
@@ -118,13 +230,13 @@
     "expense.interest": 270000.0,
     "expense.tax": 270000.0,
     "liability.current.accrued": 120000.0,
-    "liability.current.payables": 1990000.0,
+    "liability.current.payables": 2060000.0,
     "liability.current.short_term_debt": 80000.0,
     "liability.current.tax": 160000.01,
-    "liability.current.vat_output": 200000.0,
+    "liability.current.vat_output": 120000.0,
     "liability.noncurrent.debt": 80000.0,
-    "revenue.operating": 10810000.01,
+    "revenue.operating": 11100000.01,
     "revenue.other": 600000.0
   },
-  "total_assets_usd": 10849037.76
+  "total_assets_usd": 10656037.76
 }

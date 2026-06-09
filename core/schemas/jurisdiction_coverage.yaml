@@ -304,7 +304,7 @@ jurisdictions:
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
   chart_family: CGNC
-  tier1_codes_available: true
+  tier1_codes_available: false
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: mz
   name: Mozambique
@@ -392,7 +392,7 @@ jurisdictions:
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: ifrs_direct
   chart_family: null
-  tier1_codes_available: true
+  tier1_codes_available: false
   coverage_basis: IFRS tag (no mandated national chart)
 - iso: ss
   name: South Sudan
@@ -520,7 +520,7 @@ jurisdictions:
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: ifrs_direct
   chart_family: null
-  tier1_codes_available: true
+  tier1_codes_available: false
   coverage_basis: IFRS tag (no mandated national chart)
 - iso: cl
   name: Chile
@@ -576,7 +576,7 @@ jurisdictions:
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
   chart_family: PUC_EC
-  tier1_codes_available: true
+  tier1_codes_available: false
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: sv
   name: El Salvador
@@ -654,10 +654,10 @@ jurisdictions:
   name: Panama
   region: Americas
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
-  mapping_mode: ifrs_direct
-  chart_family: null
+  mapping_mode: statutory_chart
+  chart_family: national_inline
   tier1_codes_available: true
-  coverage_basis: IFRS tag (no mandated national chart)
+  coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: py
   name: Paraguay
   region: Americas
@@ -720,7 +720,7 @@ jurisdictions:
   ifrs_status: US-GAAP (IFRS permitted for foreign private issuers)
   mapping_mode: ifrs_direct
   chart_family: null
-  tier1_codes_available: true
+  tier1_codes_available: false
   coverage_basis: IFRS tag (no mandated national chart)
 - iso: uy
   name: Uruguay
@@ -808,7 +808,7 @@ jurisdictions:
   ifrs_status: Chinese ASBE (substantially converged with IFRS)
   mapping_mode: statutory_chart
   chart_family: CAS
-  tier1_codes_available: true
+  tier1_codes_available: false
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: cy
   name: Cyprus
@@ -830,10 +830,10 @@ jurisdictions:
   name: India
   region: Asia
   ifrs_status: Ind-AS (IFRS-converged)
-  mapping_mode: ifrs_direct
-  chart_family: null
+  mapping_mode: statutory_chart
+  chart_family: national_inline
   tier1_codes_available: true
-  coverage_basis: IFRS tag (no mandated national chart)
+  coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: id
   name: Indonesia
   region: Asia
@@ -862,10 +862,10 @@ jurisdictions:
   name: Israel
   region: Asia
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
-  mapping_mode: ifrs_direct
-  chart_family: null
+  mapping_mode: statutory_chart
+  chart_family: national_inline
   tier1_codes_available: true
-  coverage_basis: IFRS tag (no mandated national chart)
+  coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: jp
   name: Japan
   region: Asia
@@ -1006,10 +1006,10 @@ jurisdictions:
   name: Saudi Arabia
   region: Asia
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
-  mapping_mode: ifrs_direct
-  chart_family: null
-  tier1_codes_available: false
-  coverage_basis: IFRS tag (no mandated national chart)
+  mapping_mode: statutory_chart
+  chart_family: national_inline
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: sg
   name: Singapore
   region: Asia
@@ -1096,7 +1096,7 @@ jurisdictions:
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: ifrs_direct
   chart_family: null
-  tier1_codes_available: true
+  tier1_codes_available: false
   coverage_basis: IFRS tag (no mandated national chart)
 - iso: uz
   name: Uzbekistan
@@ -1383,8 +1383,8 @@ jurisdictions:
   region: Europe
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
-  chart_family: SNC
-  tier1_codes_available: false
+  chart_family: SNC_PT
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: ro
   name: Romania

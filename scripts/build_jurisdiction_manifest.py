@@ -135,17 +135,37 @@ CHART_FAMILY.update({
     "tm":"RAS_TM","md":"RAS_MD",
     "cn":"CAS","vn":"VAS","kr":"KIFRS_chart","jp":"JP_chart","th":"TH_chart",
     "id":"SAK_ID","kh":"CAS_KH","la":"LAS",
-    "pt":"SNC","gr":"EGLS","pl":"PL_chart","ro":"RO_chart","cz":"CZ_chart",
+    "pt":"SNC_PT","gr":"EGLS","pl":"PL_chart","ro":"RO_chart","cz":"CZ_chart",
     "sk":"SK_chart","hu":"HU_chart","bg":"BG_chart","si":"SI_chart","hr":"HR_chart",
     "rs":"RS_chart","be":"PCMN_BE","lu":"PCN_LU","tr":"TR_chart",
 })
 
-# Jurisdictions for which we have an actually-populated, primary-source-cited
-# code set (Tier-1 ready). Kept in sync with chart_families.yaml + the ontology.
-CODES_AVAILABLE = set(OHADA) | {
-    "fr","es","mx","br","co","pa","de","ru","cn","vn","ar","tr","ae","ca",
-    "il","in","jp","uk","us","ve","za","ec","ma","pe",
-}
+# Tier-1 availability is DERIVED FROM ACTUAL DATA (no hand list): a jurisdiction
+# is Tier-1 iff it has >=1 real (digit-bearing) inline code in level3_accounts.yaml
+# OR is a member of a chart family that carries codes in chart_families.yaml.
+# Descriptive text placeholders (e.g. "Cash") are not codes and do not count.
+ONTOLOGY_PATH = os.path.join(ROOT, "core/schemas/level3_accounts.yaml")
+FAMILIES_PATH = os.path.join(ROOT, "core/schemas/chart_families.yaml")
+
+
+def _is_code(c):
+    return any(ch.isdigit() for ch in str(c))
+
+
+def derive_codes_available():
+    numeric_inline, fam_members = set(), set()
+    for d in yaml.safe_load_all(open(ONTOLOGY_PATH, encoding="utf-8")):
+        items = d.get("level3") if isinstance(d, dict) and "level3" in d else (d if isinstance(d, list) else [])
+        for it in items or []:
+            if isinstance(it, dict) and "nature" in it:
+                for j, code in (it.get("local_codes") or {}).items():
+                    if _is_code(code):
+                        numeric_inline.add(j)
+    fams = (yaml.safe_load(open(FAMILIES_PATH, encoding="utf-8")) or {}).get("families", {})
+    for fam in fams.values():
+        if fam.get("codes"):
+            fam_members.update(fam.get("members", []))
+    return numeric_inline, fam_members
 
 # IFRS adoption status overrides (default: required for listed companies, per
 # IFRS Foundation profiles). Only notable deviations are listed.
@@ -165,18 +185,24 @@ DEFAULT_IFRS = "IFRS required for domestic listed companies (IFRS Foundation pro
 
 
 def build():
+    numeric_inline, fam_members = derive_codes_available()
     rows = []
     for iso, (name, region) in STATES.items():
-        fam = CHART_FAMILY.get(iso)
-        mode = "statutory_chart" if fam else "ifrs_direct"
+        fam_named = CHART_FAMILY.get(iso)
+        has_codes = iso in numeric_inline or iso in fam_members
+        mode = "statutory_chart" if (fam_named or has_codes) else "ifrs_direct"
+        # name the chart family; jurisdictions with real inline codes but no
+        # supranational family are tagged "national_inline".
+        fam = fam_named or ("national_inline" if iso in numeric_inline else None)
         rows.append({
             "iso": iso, "name": name, "region": region,
             "ifrs_status": IFRS_OVERRIDE.get(iso, DEFAULT_IFRS),
             "mapping_mode": mode,
             "chart_family": fam,
-            "tier1_codes_available": iso in CODES_AVAILABLE,
+            "tier1_codes_available": has_codes,
             "coverage_basis": ("statutory local_codes overlay + IFRS anchor"
-                               if fam else "IFRS tag (no mandated national chart)"),
+                               if mode == "statutory_chart"
+                               else "IFRS tag (no mandated national chart)"),
         })
     rows.sort(key=lambda r: (r["region"], r["name"]))
     doc = {

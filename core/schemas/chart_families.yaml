@@ -92,3 +92,27 @@ families:
       expense.admin: "63"                  # Gastos de servicios prestados por terceros
       expense.depreciation: "68"           # Valuación y deterioro de activos (depreciación)
       expense.interest: "67"               # Gastos financieros
+
+  SNC_PT:
+    name: "Sistema de Normalização Contabilística (Portugal)"
+    members: [pt]
+    source: "Portugal, SNC — Código de Contas, Portaria n.º 218/2015 (CNC). https://www.cnc.min-financas.pt/"
+    codes:
+      asset.current.cash: "11"             # Caixa
+      asset.current.bank: "12"             # Depósitos à ordem
+      asset.current.receivables: "21"      # Clientes
+      asset.current.inventory: "32"        # Mercadorias
+      asset.current.vat_input: "2432"      # Estado - IVA dedutível
+      asset.noncurrent.ppe: "43"           # Ativos fixos tangíveis
+      asset.noncurrent.intangibles: "44"   # Ativos intangíveis
+      liability.current.payables: "22"     # Fornecedores
+      liability.current.vat_output: "2433" # Estado - IVA liquidado
+      liability.current.tax: "24"          # Estado e outros entes públicos
+      equity.capital: "51"                 # Capital realizado
+      equity.reserves: "55"                # Reservas
+      equity.retained: "56"                # Resultados transitados
+      revenue.operating: "71"              # Vendas
+      expense.cogs: "31"                   # Compras
+      expense.admin: "62"                  # Fornecimentos e serviços externos
+      expense.depreciation: "64"           # Gastos de depreciação e de amortização
+      expense.interest: "691"              # Juros suportados

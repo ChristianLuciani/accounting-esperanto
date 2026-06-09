@@ -82,6 +82,7 @@ def load_ontology():
                 "uuid": item.get("uuid"),
                 "label": item.get("label_en", item["id"]),
                 "nature": item.get("nature", "unknown"),
+                "statement": item.get("statement", "unknown"),
                 "local_codes": {k: str(v) for k, v in (item.get("local_codes") or {}).items()},
             }
 
@@ -96,10 +97,20 @@ def load_ontology():
     # collisions (same jurisdiction+code mapped to >1 Kontablo node = a latent
     # ontology data-quality defect). Collided codes are EXCLUDED from the
     # deterministic index so they are not silently mis-resolved.
+    # A real statutory code contains at least one digit. Descriptive text
+    # placeholders (e.g. "Cash", "Vorsteuer", "IVA Acreditable") are NOT codes
+    # and are excluded from the Tier-1 index (boundary condition B1).
+    def is_code(c):
+        return any(ch.isdigit() for ch in str(c))
+
     raw = defaultdict(lambda: defaultdict(list))
+    placeholders = []
     for kid, a in accounts.items():
         for j, code in a["local_codes"].items():
-            raw[j][code].append(kid)
+            if is_code(code):
+                raw[j][code].append(kid)
+            else:
+                placeholders.append({"jurisdiction": j, "code": str(code), "id": kid})
     by_code = defaultdict(dict)
     collisions = []
     for j in raw:
@@ -108,7 +119,7 @@ def load_ontology():
                 collisions.append({"jurisdiction": j, "code": code, "ids": sorted(ids)})
             else:
                 by_code[j][code] = ids[0]
-    return accounts, by_code, collisions
+    return accounts, by_code, collisions, placeholders
 
 
 # ---------------------------------------------------------------------------
@@ -166,16 +177,50 @@ def resolve(entry, jurisdiction, accounts, by_code):
 
 
 def cra_validate(entry, kid, accounts):
-    """Co-responsibility deterministic boundary checks. Returns list of flags."""
+    """Co-responsibility deterministic boundary checks. Returns list of flags.
+    Each check is a deterministic accounting invariant; together they form the
+    Deterministic Boundary Library exercised by the injected-error catalog."""
     if not kid or kid not in accounts:
         return []
     flags = []
     target = accounts[kid]
+    nm = entry["name"].lower()
+
+    # 1. Nature (debit/credit) must match the target node.
     if entry.get("nature") and entry["nature"] != target["nature"]:
         flags.append(f"nature_mismatch:{entry['nature']}!={target['nature']}@{kid}")
-    nm = entry["name"].lower()
-    if ("cash" in nm or "bank" in nm or "caja" in nm or "banco" in nm) and "noncurrent" in kid:
+
+    # 2. Liquidity boundary: a liquid asset must not map to a non-current node.
+    if any(w in nm for w in ("cash", "bank", "caja", "banco", "banque", "caisse")) \
+       and "noncurrent" in kid:
         flags.append(f"boundary_violation:liquid_asset->noncurrent@{kid}")
+
+    # Checks 3-5 are heuristic name-vs-target invariants used to catch a bad
+    # upstream/AI proposal; they are applied to forced (proposed) mappings only,
+    # so a correct name-derived resolution (e.g. "Prepaid Expenses" -> a
+    # balance-sheet asset) is never false-flagged.
+    if entry.get("forced_id"):
+        # 3. Statement-class boundary: a P&L name must not land on a
+        #    balance-sheet node, and vice versa.
+        pl_words = ("revenue", "sales", "ventas", "ingreso", "depreciation", "interest")
+        bs_words = ("receivable", "payable", "inventory", "capital", "equity")
+        if any(w in nm for w in pl_words) and target["statement"] == "balance_sheet":
+            flags.append(f"statement_mismatch:P&L_name->balance_sheet@{kid}")
+        elif any(w in nm for w in bs_words) and target["statement"] == "income_statement":
+            flags.append(f"statement_mismatch:balance_sheet_name->P&L@{kid}")
+
+        # 4. VAT direction: input VAT must not map to the output node (or vice versa).
+        in_vat = any(w in nm for w in ("input", "acreditable", "soportado", "récupérable", "recuperable"))
+        out_vat = any(w in nm for w in ("output", "repercutido", "trasladado", "facturée", "facturada"))
+        if in_vat and kid == "liability.current.vat_output":
+            flags.append(f"vat_direction:input->output@{kid}")
+        if out_vat and kid == "asset.current.vat_input":
+            flags.append(f"vat_direction:output->input@{kid}")
+
+        # 5. Equity vs liability: capital/equity must not map to a liability node.
+        if any(w in nm for w in ("capital", "equity", "patrimonio")) and kid.startswith("liability"):
+            flags.append(f"class_confusion:equity->liability@{kid}")
+
     return flags
 
 
@@ -314,11 +359,27 @@ def build_entities(accounts, by_code, families=None):
     entities.append({"id":"DE-EDGE","name":"Germany (exotic reserve)","j":"de","ccy":"EUR","data":[
         {"code":"x","name":"Sonderposten mit Ruecklageanteil","nature":"credit","amt":50000}]})
 
-    # --- DELIBERATELY MALFORMED entity to exercise the CRA
-    entities.append({"id":"XX-CRA-TEST","name":"Injected errors (CRA test)","j":"mx","ccy":"USD","data":[
+    # --- DELIBERATELY MALFORMED entities: injected-error catalog exercising the
+    #     full Deterministic Boundary Library. Each entry triggers a specific
+    #     CRA check; forced_id simulates a bad upstream/AI proposal.
+    entities.append({"id":"XX-CRA-TEST","name":"Injected errors (CRA catalog)","j":"mx","ccy":"USD","data":[
+        # (1) nature mismatch: cash declared credit
         {"code":"x","name":"Caja Chica","nature":"credit","amt":5000},
+        # (1) nature mismatch: revenue declared debit
+        {"code":"x","name":"Ventas","nature":"debit","amt":10000},
+        # (2) liquidity boundary: bank forced to a non-current node
         {"code":"x","name":"Bank Current Account","nature":"debit","amt":8000,"forced_id":"asset.noncurrent.ppe"},
-        {"code":"x","name":"Ventas","nature":"debit","amt":10000}]})
+        # (3) statement mismatch: revenue name forced to a balance-sheet node
+        {"code":"x","name":"Sales Revenue Domestic","nature":"credit","amt":12000,"forced_id":"asset.current.cash"},
+        # (3) statement mismatch: balance-sheet name forced to a P&L node
+        {"code":"x","name":"Trade Receivables","nature":"debit","amt":9000,"forced_id":"revenue.operating"},
+        # (4) VAT direction: input VAT forced to the output-VAT node
+        {"code":"x","name":"IVA Acreditable (input)","nature":"debit","amt":3000,"forced_id":"liability.current.vat_output"},
+        # (4) VAT direction: output VAT forced to the input-VAT node
+        {"code":"x","name":"IVA Repercutido (output)","nature":"credit","amt":3000,"forced_id":"asset.current.vat_input"},
+        # (5) class confusion: equity forced to a liability node
+        {"code":"x","name":"Capital Social","nature":"credit","amt":40000,"forced_id":"liability.noncurrent.debt"},
+    ]})
     return entities
 
 
@@ -361,7 +422,7 @@ def base_for(aid):
 
 
 def main():
-    accounts, by_code, collisions = load_ontology()
+    accounts, by_code, collisions, placeholders = load_ontology()
     families = load_families()
     by_code = merge_family_codes(by_code, families)
     coverage = load_coverage()
@@ -376,6 +437,7 @@ def main():
     total_entries = 0
     resolved = 0
     escalated = 0
+    quarantined = 0
 
     for ent in data:
         entities += 1
@@ -396,6 +458,10 @@ def main():
                     flags_all.append({"entity": ent["id"], "name": e["name"], "flag": f})
             if kid is None:
                 escalated += 1
+            elif flags:
+                # CRA quarantine: a flagged mapping is held for human review and
+                # is NOT posted to the consolidated ledger.
+                quarantined += 1
             else:
                 resolved += 1
                 consolidated[kid] += e["amt"] * rate
@@ -438,7 +504,8 @@ def main():
     print(f"   deterministic coverage : {det_cov:5.1f}%  (Tier1+Tier2)")
     print(f"   escalated to human (CRA): {escalated}  ({100*escalated/total_entries:.1f}%)")
     print("-"*78)
-    print(f"CO-RESPONSIBILITY: {len(flags_all)} inconsistency flag(s) raised on injected errors:")
+    print(f"CO-RESPONSIBILITY: {len(flags_all)} flag(s) across {quarantined} quarantined "
+          f"entr(y/ies) (held for human review, NOT posted):")
     for f in flags_all:
         print(f"   [{f['entity']}] {f['name']}: {f['flag']}")
     print("-"*78)
@@ -446,6 +513,10 @@ def main():
           f"(same jurisdiction+code -> multiple nodes; excluded from Tier 1):")
     for c in collisions:
         print(f"   {c['jurisdiction']}: code {c['code']!r} -> {c['ids']}")
+    print(f"DESCRIPTIVE PLACEHOLDERS EXCLUDED FROM TIER 1 (not statutory codes, "
+          f"boundary B1): {len(placeholders)}")
+    for p in placeholders:
+        print(f"   {p['jurisdiction']}: {p['code']!r} ({p['id']})")
     print("-"*78)
     print("CONSOLIDATED BALANCE SHEET (USD, multi-jurisdiction, FX-normalized):")
     print(f"   {'Kontablo ID':<32} {'Label':<28} {'USD':>16}")
@@ -481,6 +552,7 @@ def main():
         "escalated_pct": round(100*escalated/total_entries, 1),
         "cra_flags": flags_all,
         "ontology_code_collisions": collisions,
+        "descriptive_placeholders_excluded": placeholders,
         "consolidated_usd": {k: round(v, 2) for k, v in sorted(consolidated.items())},
         "total_assets_usd": round(total_assets, 2),
     }
