@@ -391,6 +391,7 @@ JCCY = {"ae":"AED","ar":"ARS","br":"BRL","ca":"CAD","cn":"CNY","co":"COP",
         "it":"EUR","pl":"PLN","id":"IDR","gr":"EUR","cl":"CLP","pe":"PEN",
         "ma":"MAD","kz":"KZT","eg":"EGP","ke":"KES","ph":"PHP","pk":"PKR",
         "ch":"CHF","dz":"DZD","ro":"RON","be":"EUR",
+        "cz":"CZK","sk":"EUR","hu":"HUF","bg":"BGN",
         # --- OHADA member currencies (SYSCOHADA) ---
         "bj":"XOF","bf":"XOF","ml":"XOF","ne":"XOF","tg":"XOF","gw":"XOF",
         "cm":"XAF","cf":"XAF","td":"XAF","cg":"XAF","gq":"XAF","ga":"XAF",
@@ -401,7 +402,8 @@ FX = {"AED":0.27,"ARS":0.0011,"BRL":0.20,"CAD":0.73,"CNY":0.14,"COP":0.00025,
       "VND":0.00004,"ZAR":0.054,"XOF":0.00165,"KRW":0.00073,"LBP":0.0000112,
       "PLN":0.25,"IDR":0.000062,"CLP":0.0011,"PEN":0.27,"MAD":0.10,"KZT":0.0021,
       "EGP":0.021,"KES":0.0078,"PHP":0.018,"PKR":0.0036,"CHF":1.13,
-      "XAF":0.00165,"KMF":0.0022,"CDF":0.00035,"DZD":0.0074,"RON":0.22}
+      "XAF":0.00165,"KMF":0.0022,"CDF":0.00035,"DZD":0.0074,"RON":0.22,
+      "CZK":0.043,"HUF":0.0028,"BGN":0.55}
 
 # Representative USD face value per account class (local amounts are derived as
 # base/FX so each coded account contributes a comparable USD magnitude).

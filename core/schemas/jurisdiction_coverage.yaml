@@ -1176,7 +1176,7 @@ jurisdictions:
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
   chart_family: BG_chart
-  tier1_codes_available: false
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: hr
   name: Croatia
@@ -1192,7 +1192,7 @@ jurisdictions:
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
   chart_family: CZ_chart
-  tier1_codes_available: false
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: dk
   name: Denmark
@@ -1256,7 +1256,7 @@ jurisdictions:
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
   chart_family: HU_chart
-  tier1_codes_available: false
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: is
   name: Iceland
@@ -1424,7 +1424,7 @@ jurisdictions:
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
   chart_family: SK_chart
-  tier1_codes_available: false
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: si
   name: Slovenia

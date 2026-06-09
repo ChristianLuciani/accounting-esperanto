@@ -236,3 +236,77 @@ families:
       expense.depreciation: "6811"         # Cheltuieli de exploatare - amortizări
       expense.interest: "666"              # Cheltuieli privind dobânzile
       expense.fx_loss: "665"               # Cheltuieli din diferențe de curs valutar
+
+  CZ_chart:
+    name: "Směrná účtová osnova (Czechia)"
+    members: [cz]
+    source: "Czechia, Vyhláška 500/2002 Sb., směrná účtová osnova pro podnikatele."
+    codes:
+      asset.current.cash: "211"            # Pokladna
+      asset.current.bank: "221"            # Bankovní účty
+      asset.current.receivables: "311"     # Pohledávky z obchodních vztahů
+      asset.current.inventory: "132"       # Zboží na skladě
+      asset.noncurrent.ppe: "022"          # Samostatné hmotné movité věci
+      asset.noncurrent.intangibles: "013"  # Software
+      liability.current.payables: "321"    # Závazky z obchodních vztahů
+      liability.current.tax: "343"         # DPH
+      liability.noncurrent.debt: "461"     # Bankovní úvěry
+      equity.capital: "411"                # Základní kapitál
+      equity.reserves: "421"               # Rezervní fond
+      equity.retained: "428"               # Nerozdělený zisk minulých let
+      revenue.operating: "604"             # Tržby za zboží
+      expense.cogs: "504"                  # Prodané zboží
+      expense.depreciation: "551"          # Odpisy dlouhodobého majetku
+      expense.interest: "562"              # Úroky
+      expense.fx_loss: "563"               # Kurzové ztráty
+
+  SK_chart:
+    name: "Účtová osnova (Slovakia)"
+    members: [sk]
+    source: "Slovakia, Opatrenie MF SR (účtová osnova pre podnikateľov); shares the Czechoslovak chart numbering."
+    codes:
+      asset.current.cash: "211"            # Pokladnica
+      asset.current.bank: "221"            # Bankové účty
+      asset.current.receivables: "311"     # Odberatelia
+      asset.current.inventory: "132"       # Tovar na sklade
+      asset.noncurrent.ppe: "022"          # Samostatné hnuteľné veci
+      asset.noncurrent.intangibles: "013"  # Softvér
+      liability.current.payables: "321"    # Dodávatelia
+      liability.current.tax: "343"         # DPH
+      liability.noncurrent.debt: "461"     # Bankové úvery
+      equity.capital: "411"                # Základné imanie
+      equity.retained: "428"               # Nerozdelený zisk minulých rokov
+      revenue.operating: "604"             # Tržby za tovar
+      expense.cogs: "504"                  # Predaný tovar
+      expense.depreciation: "551"          # Odpisy
+      expense.interest: "562"              # Úroky
+      expense.fx_loss: "563"               # Kurzové straty
+
+  HU_chart:
+    name: "Számlatükör (Hungary)"
+    members: [hu]
+    source: "Hungary, Act C of 2000 on Accounting (számviteli törvény), standard számlatükör."
+    note: "Hungarian sub-account numbers within a class are partly flexible; only the well-established standard codes are populated."
+    codes:
+      asset.current.cash: "381"            # Pénztár
+      asset.current.bank: "384"            # Elszámolási betétszámla
+      asset.current.receivables: "311"     # Vevők
+      asset.current.inventory: "26"        # Áruk
+      liability.current.payables: "454"    # Szállítók
+      equity.capital: "411"                # Jegyzett tőke
+      revenue.operating: "91"              # Értékesítés nettó árbevétele
+      expense.cogs: "814"                  # Eladott áruk beszerzési értéke (ELÁBÉ)
+
+  BG_chart:
+    name: "Национален сметкоплан (Bulgaria)"
+    members: [bg]
+    source: "Bulgaria, National Chart of Accounts (Национален сметкоплан)."
+    codes:
+      asset.current.cash: "501"            # Каса
+      asset.current.bank: "503"            # Разплащателна сметка
+      asset.current.receivables: "411"     # Клиенти
+      asset.current.inventory: "304"       # Стоки
+      asset.noncurrent.ppe: "204"          # Машини, съоръжения и оборудване
+      liability.current.payables: "401"    # Доставчици
+      equity.capital: "101"                # Основен капитал
+      revenue.operating: "701"             # Приходи от продажби
