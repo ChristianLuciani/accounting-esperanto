@@ -122,22 +122,30 @@ OHADA = ["bj","bf","cm","cf","td","km","cg","cd","ci","gq","ga","gn","gw",
          "ml","ne","sn","tg"]  # 17 OHADA states sharing SYSCOHADA
 CHART_FAMILY = {**{j: "SYSCOHADA" for j in OHADA}}
 CHART_FAMILY.update({
-    "fr":"PCG","mc":"PCG",                         # Plan Comptable Général
-    "ma":"CGNC_MA","tn":"TN_chart","dz":"SCF_DZ",   # Maghreb (PCG-derived)
-    # Latin America: only states with a genuinely mandated national chart.
-    # Chile, Costa Rica, Uruguay, Dominican Rep., Paraguay apply IFRS directly
-    # without a mandated national numeric chart -> left as ifrs_direct.
-    "es":"PGC_ES","co":"PUC_CO","pe":"PCGE_PE","ec":"PUC_EC","bo":"PUC_BO",
+    # Western Europe (PCG / national charts)
+    "fr":"PCG_FR","mc":"PCG_FR",                    # French Plan Comptable Général (FR inline; MC applies PCG)
+    "es":"PGC_ES","pt":"SNC_PT","be":"PCMN_BE","lu":"LU_PCN",
+    "de":"HGB_SKR","at":"AT_chart",
+    # Maghreb (PCG-derived)
+    "ma":"CGNC_MA","tn":"TN_chart","dz":"SCF_DZ",
+    # Latin America: only states with a genuinely mandated national chart
+    # (Chile, Costa Rica, Uruguay, Dominican Rep., Paraguay -> ifrs_direct).
+    "co":"PUC_CO","pe":"PCGE_PE","ec":"PUC_EC","bo":"PUC_BO",
     "mx":"SAT","br":"SPED","ar":"PCGA_AR","ve":"PUC_VE",
-    "de":"HGB_SKR","at":"AT_chart","ch":"PME_CH",
+    # CIS / RAS-heritage charts
     "ru":"RAS_94n","by":"BY_chart","kz":"KZ_chart","ua":"UA_chart","uz":"RAS_UZ",
     "am":"RAS_AM","az":"RAS_AZ","ge":"RAS_GE","kg":"RAS_KG","tj":"RAS_TJ",
     "tm":"RAS_TM","md":"RAS_MD",
-    "cn":"CAS_CN","vn":"VAS","kr":"KIFRS_chart","jp":"JP_chart","th":"TH_chart",
-    "id":"SAK_ID","kh":"CAS_KH","la":"LAS",
-    "pt":"SNC_PT","gr":"EGLS","pl":"PL_chart","ro":"RO_OMFP1802","cz":"CZ_chart",
-    "sk":"SK_chart","hu":"HU_chart","bg":"BG_chart","si":"SI_chart","hr":"HR_chart",
-    "rs":"RS_chart","be":"PCMN_BE","lu":"PCN_LU","tr":"TR_chart",
+    # Central/Eastern Europe
+    "ro":"RO_OMFP1802","cz":"CZ_chart","sk":"SK_chart","hu":"HU_chart",
+    "bg":"BG_chart","si":"SI_chart","hr":"HR_chart","rs":"RS_chart",
+    "gr":"EGLS","pl":"PL_chart","tr":"TR_chart",
+    # Asia with a mandated numeric chart
+    "cn":"CAS_CN","vn":"VAS","la":"LAS",
+    # NOTE: Japan, South Korea, Indonesia, Thailand, Cambodia and Switzerland
+    # apply IFRS / converged standards WITHOUT a legally mandated national
+    # numeric chart of accounts -> classified ifrs_direct (boundary B5), not
+    # statutory_chart.
 })
 
 # Tier-1 availability is DERIVED FROM ACTUAL DATA (no hand list): a jurisdiction

@@ -393,7 +393,7 @@ JCCY = {"ae":"AED","ar":"ARS","br":"BRL","ca":"CAD","cn":"CNY","co":"COP",
         "ch":"CHF","dz":"DZD","ro":"RON","be":"EUR",
         "cz":"CZK","sk":"EUR","hu":"HUF","bg":"BGN",
         "ua":"UAH","tn":"TND","by":"BYN",
-        "rs":"RSD","hr":"EUR","si":"EUR","at":"EUR",
+        "rs":"RSD","hr":"EUR","si":"EUR","at":"EUR","lu":"EUR","mc":"EUR",
         # --- OHADA member currencies (SYSCOHADA) ---
         "bj":"XOF","bf":"XOF","ml":"XOF","ne":"XOF","tg":"XOF","gw":"XOF",
         "cm":"XAF","cf":"XAF","td":"XAF","cg":"XAF","gq":"XAF","ga":"XAF",

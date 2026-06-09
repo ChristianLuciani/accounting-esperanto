@@ -798,10 +798,10 @@ jurisdictions:
   name: Cambodia
   region: Asia
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
-  mapping_mode: statutory_chart
-  chart_family: CAS_KH
+  mapping_mode: ifrs_direct
+  chart_family: null
   tier1_codes_available: false
-  coverage_basis: statutory local_codes overlay + IFRS anchor
+  coverage_basis: IFRS tag (no mandated national chart)
 - iso: cn
   name: China
   region: Asia
@@ -838,10 +838,10 @@ jurisdictions:
   name: Indonesia
   region: Asia
   ifrs_status: SAK (IFRS-converged)
-  mapping_mode: statutory_chart
-  chart_family: SAK_ID
+  mapping_mode: ifrs_direct
+  chart_family: null
   tier1_codes_available: false
-  coverage_basis: statutory local_codes overlay + IFRS anchor
+  coverage_basis: IFRS tag (no mandated national chart)
 - iso: ir
   name: Iran
   region: Asia
@@ -871,7 +871,7 @@ jurisdictions:
   region: Asia
   ifrs_status: IFRS permitted; J-GAAP + JMIS also used
   mapping_mode: statutory_chart
-  chart_family: JP_chart
+  chart_family: national_inline
   tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: jo
@@ -1022,10 +1022,10 @@ jurisdictions:
   name: South Korea
   region: Asia
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
-  mapping_mode: statutory_chart
-  chart_family: KIFRS_chart
+  mapping_mode: ifrs_direct
+  chart_family: null
   tier1_codes_available: false
-  coverage_basis: statutory local_codes overlay + IFRS anchor
+  coverage_basis: IFRS tag (no mandated national chart)
 - iso: lk
   name: Sri Lanka
   region: Asia
@@ -1062,10 +1062,10 @@ jurisdictions:
   name: Thailand
   region: Asia
   ifrs_status: TFRS (IFRS-converged)
-  mapping_mode: statutory_chart
-  chart_family: TH_chart
+  mapping_mode: ifrs_direct
+  chart_family: null
   tier1_codes_available: false
-  coverage_basis: statutory local_codes overlay + IFRS anchor
+  coverage_basis: IFRS tag (no mandated national chart)
 - iso: tl
   name: Timor-Leste
   region: Asia
@@ -1223,7 +1223,7 @@ jurisdictions:
   region: Europe
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
-  chart_family: PCG
+  chart_family: PCG_FR
   tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: de
@@ -1311,8 +1311,8 @@ jurisdictions:
   region: Europe
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
-  chart_family: PCN_LU
-  tier1_codes_available: false
+  chart_family: LU_PCN
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: mt
   name: Malta
@@ -1335,8 +1335,8 @@ jurisdictions:
   region: Europe
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
-  chart_family: PCG
-  tier1_codes_available: false
+  chart_family: PCG_FR
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: me
   name: Montenegro
@@ -1454,10 +1454,10 @@ jurisdictions:
   name: Switzerland
   region: Europe
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
-  mapping_mode: statutory_chart
-  chart_family: PME_CH
+  mapping_mode: ifrs_direct
+  chart_family: null
   tier1_codes_available: false
-  coverage_basis: statutory local_codes overlay + IFRS anchor
+  coverage_basis: IFRS tag (no mandated national chart)
 - iso: ua
   name: Ukraine
   region: Europe

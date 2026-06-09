@@ -455,3 +455,41 @@ families:
       equity.capital: "9000"               # Nennkapital
       revenue.operating: "4000"            # Umsatzerlöse
       expense.cogs: "5000"                 # Wareneinsatz
+
+  LU_PCN:
+    name: "Plan Comptable Normalisé (Luxembourg)"
+    members: [lu]
+    source: "Luxembourg, Plan Comptable Normalisé (PCN 2020), Règlement grand-ducal 12/09/2019."
+    note: "BeNeLux-style class 4: 40 = créances (receivables), 44 = dettes (payables) — NOT the French PCG 411/401 convention."
+    codes:
+      asset.current.cash: "516"            # Caisse
+      asset.current.bank: "513"            # Banques, CCP
+      asset.current.receivables: "40"      # Créances résultant de ventes et prestations
+      liability.current.payables: "44"     # Dettes résultant d'achats et de prestations
+      equity.capital: "101"                # Capital souscrit
+      revenue.operating: "70"              # Montant net du chiffre d'affaires
+      expense.cogs: "60"                   # Consommation de marchandises et matières
+
+  PCG_FR:
+    name: "Plan Comptable Général (France / Monaco)"
+    members: [mc]
+    source: "France, Plan Comptable Général (PCG, ANC Règlement 2014-03); applied in Monaco. (fr is held inline in the ontology.)"
+    codes:
+      asset.current.cash: "530"            # Caisse
+      asset.current.bank: "512"            # Banques
+      asset.current.receivables: "411"     # Clients
+      asset.current.inventory: "37"        # Stocks de marchandises
+      asset.current.vat_input: "44566"     # TVA déductible sur autres biens et services
+      asset.noncurrent.ppe: "21"           # Immobilisations corporelles
+      asset.noncurrent.intangibles: "20"   # Immobilisations incorporelles
+      liability.current.payables: "401"    # Fournisseurs
+      liability.current.vat_output: "44571"# TVA collectée
+      liability.noncurrent.debt: "164"     # Emprunts auprès des établissements de crédit
+      equity.capital: "101"                # Capital
+      equity.reserves: "106"               # Réserves
+      equity.retained: "110"               # Report à nouveau
+      revenue.operating: "707"             # Ventes de marchandises
+      expense.cogs: "607"                  # Achats de marchandises
+      expense.depreciation: "6811"         # Dotations aux amortissements
+      expense.interest: "661"              # Charges d'intérêts
+      expense.fx_loss: "666"               # Pertes de change
