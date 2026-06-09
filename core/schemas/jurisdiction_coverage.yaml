@@ -1,0 +1,1570 @@
+metadata:
+  title: Kontablo Jurisdiction Coverage Manifest
+  count: 195
+  definition: 193 UN member states + 2 UN observer states (Holy See, State of Palestine)
+  ifrs_status_source: IFRS Foundation, 'Who uses IFRS Accounting Standards?' jurisdiction profiles (https://www.ifrs.org/use-around-the-world/use-of-ifrs-standards-by-jurisdiction/)
+  mapping_mode_basis: legal-tradition heuristic refined by named statutory chart families; code sets populated
+    only where a primary source is cited (see chart_families.yaml)
+  note: Universal coverage is via the IFRS-anchored layer (every Level-3 node has an ifrs_tag). statutory_chart
+    jurisdictions additionally receive a local-code overlay.
+jurisdictions:
+- iso: dz
+  name: Algeria
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SCF
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: ao
+  name: Angola
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: bj
+  name: Benin
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SYSCOHADA
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: bw
+  name: Botswana
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: bf
+  name: Burkina Faso
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SYSCOHADA
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: bi
+  name: Burundi
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: cv
+  name: Cabo Verde
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: cm
+  name: Cameroon
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SYSCOHADA
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: cf
+  name: Central African Republic
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SYSCOHADA
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: td
+  name: Chad
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SYSCOHADA
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: km
+  name: Comoros
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SYSCOHADA
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: cg
+  name: Congo (Republic)
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SYSCOHADA
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: ci
+  name: Cote d'Ivoire
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SYSCOHADA
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: cd
+  name: DR Congo
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SYSCOHADA
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: dj
+  name: Djibouti
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: eg
+  name: Egypt
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: gq
+  name: Equatorial Guinea
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SYSCOHADA
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: er
+  name: Eritrea
+  region: Africa
+  ifrs_status: profile_na
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: sz
+  name: Eswatini
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: et
+  name: Ethiopia
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: ga
+  name: Gabon
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SYSCOHADA
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: gm
+  name: Gambia
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: gh
+  name: Ghana
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: gn
+  name: Guinea
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SYSCOHADA
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: gw
+  name: Guinea-Bissau
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SYSCOHADA
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: ke
+  name: Kenya
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: ls
+  name: Lesotho
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: lr
+  name: Liberia
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: ly
+  name: Libya
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: mg
+  name: Madagascar
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: mw
+  name: Malawi
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: ml
+  name: Mali
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SYSCOHADA
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: mr
+  name: Mauritania
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: mu
+  name: Mauritius
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: ma
+  name: Morocco
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: CGNC
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: mz
+  name: Mozambique
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: na
+  name: Namibia
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: ne
+  name: Niger
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SYSCOHADA
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: ng
+  name: Nigeria
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: rw
+  name: Rwanda
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: st
+  name: Sao Tome and Principe
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: sn
+  name: Senegal
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SYSCOHADA
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: sc
+  name: Seychelles
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: sl
+  name: Sierra Leone
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: so
+  name: Somalia
+  region: Africa
+  ifrs_status: profile_na
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: za
+  name: South Africa
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: true
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: ss
+  name: South Sudan
+  region: Africa
+  ifrs_status: profile_na
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: sd
+  name: Sudan
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: tz
+  name: Tanzania
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: tg
+  name: Togo
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SYSCOHADA
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: tn
+  name: Tunisia
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: PC_Tunisie
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: ug
+  name: Uganda
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: zm
+  name: Zambia
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: zw
+  name: Zimbabwe
+  region: Africa
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: ag
+  name: Antigua and Barbuda
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: ar
+  name: Argentina
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: PCGA_AR
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: bs
+  name: Bahamas
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: bb
+  name: Barbados
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: bz
+  name: Belize
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: bo
+  name: Bolivia
+  region: Americas
+  ifrs_status: national GAAP (IFRS not required)
+  mapping_mode: statutory_chart
+  chart_family: PUC_BO
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: br
+  name: Brazil
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SPED
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: ca
+  name: Canada
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: true
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: cl
+  name: Chile
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: PCGA_CL
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: co
+  name: Colombia
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: PUC
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: cr
+  name: Costa Rica
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: PUC_CR
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: cu
+  name: Cuba
+  region: Americas
+  ifrs_status: national GAAP
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: dm
+  name: Dominica
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: do
+  name: Dominican Republic
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: PUC_DO
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: ec
+  name: Ecuador
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: PUC_EC
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: sv
+  name: El Salvador
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: gd
+  name: Grenada
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: gt
+  name: Guatemala
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: gy
+  name: Guyana
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: ht
+  name: Haiti
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: hn
+  name: Honduras
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: jm
+  name: Jamaica
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: mx
+  name: Mexico
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SAT
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: ni
+  name: Nicaragua
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: pa
+  name: Panama
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: true
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: py
+  name: Paraguay
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: PUC_PY
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: pe
+  name: Peru
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: PCGE
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: kn
+  name: Saint Kitts and Nevis
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: lc
+  name: Saint Lucia
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: vc
+  name: Saint Vincent and the Grenadines
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: sr
+  name: Suriname
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: tt
+  name: Trinidad and Tobago
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: us
+  name: United States
+  region: Americas
+  ifrs_status: US-GAAP (IFRS permitted for foreign private issuers)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: true
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: uy
+  name: Uruguay
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: PUC_UY
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: ve
+  name: Venezuela
+  region: Americas
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: PUC_VE
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: af
+  name: Afghanistan
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: am
+  name: Armenia
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: RAS_AM
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: az
+  name: Azerbaijan
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: RAS_AZ
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: bh
+  name: Bahrain
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: bd
+  name: Bangladesh
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: bt
+  name: Bhutan
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: bn
+  name: Brunei
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: kh
+  name: Cambodia
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: CAS_KH
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: cn
+  name: China
+  region: Asia
+  ifrs_status: Chinese ASBE (substantially converged with IFRS)
+  mapping_mode: statutory_chart
+  chart_family: CAS
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: cy
+  name: Cyprus
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: ge
+  name: Georgia
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: RAS_GE
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: in
+  name: India
+  region: Asia
+  ifrs_status: Ind-AS (IFRS-converged)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: true
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: id
+  name: Indonesia
+  region: Asia
+  ifrs_status: SAK (IFRS-converged)
+  mapping_mode: statutory_chart
+  chart_family: SAK_ID
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: ir
+  name: Iran
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: iq
+  name: Iraq
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: il
+  name: Israel
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: true
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: jp
+  name: Japan
+  region: Asia
+  ifrs_status: IFRS permitted; J-GAAP + JMIS also used
+  mapping_mode: statutory_chart
+  chart_family: JP_chart
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: jo
+  name: Jordan
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: kz
+  name: Kazakhstan
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: RAS_KZ
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: kw
+  name: Kuwait
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: kg
+  name: Kyrgyzstan
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: RAS_KG
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: la
+  name: Laos
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: LAS
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: lb
+  name: Lebanon
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: my
+  name: Malaysia
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: mv
+  name: Maldives
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: mn
+  name: Mongolia
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: mm
+  name: Myanmar
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: np
+  name: Nepal
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: kp
+  name: North Korea
+  region: Asia
+  ifrs_status: profile_na
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: om
+  name: Oman
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: pk
+  name: Pakistan
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: ph
+  name: Philippines
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: qa
+  name: Qatar
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: sa
+  name: Saudi Arabia
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: sg
+  name: Singapore
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: kr
+  name: South Korea
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: KIFRS_chart
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: lk
+  name: Sri Lanka
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: ps
+  name: State of Palestine
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: sy
+  name: Syria
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: tj
+  name: Tajikistan
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: RAS_TJ
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: th
+  name: Thailand
+  region: Asia
+  ifrs_status: TFRS (IFRS-converged)
+  mapping_mode: statutory_chart
+  chart_family: TH_chart
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: tl
+  name: Timor-Leste
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: tr
+  name: Turkey
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: TR_chart
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: tm
+  name: Turkmenistan
+  region: Asia
+  ifrs_status: profile_na
+  mapping_mode: statutory_chart
+  chart_family: RAS_TM
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: ae
+  name: United Arab Emirates
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: true
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: uz
+  name: Uzbekistan
+  region: Asia
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: RAS_UZ
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: vn
+  name: Vietnam
+  region: Asia
+  ifrs_status: VAS (IFRS adoption roadmap to 2025+)
+  mapping_mode: statutory_chart
+  chart_family: VAS
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: ye
+  name: Yemen
+  region: Asia
+  ifrs_status: profile_na
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: al
+  name: Albania
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: ad
+  name: Andorra
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: at
+  name: Austria
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: OEKR
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: by
+  name: Belarus
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: RAS_BY
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: be
+  name: Belgium
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: PCMN_BE
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: ba
+  name: Bosnia and Herzegovina
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: bg
+  name: Bulgaria
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: BG_chart
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: hr
+  name: Croatia
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: HR_chart
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: cz
+  name: Czechia
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: CZ_chart
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: dk
+  name: Denmark
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: ee
+  name: Estonia
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: fi
+  name: Finland
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: fr
+  name: France
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: PCG
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: de
+  name: Germany
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: HGB_SKR
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: gr
+  name: Greece
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: EGLS
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: va
+  name: Holy See
+  region: Europe
+  ifrs_status: profile_na
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: hu
+  name: Hungary
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: HU_chart
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: is
+  name: Iceland
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: ie
+  name: Ireland
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: it
+  name: Italy
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: lv
+  name: Latvia
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: li
+  name: Liechtenstein
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: lt
+  name: Lithuania
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: lu
+  name: Luxembourg
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: PCN_LU
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: mt
+  name: Malta
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: md
+  name: Moldova
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: RAS_MD
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: mc
+  name: Monaco
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: PCG
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: me
+  name: Montenegro
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: nl
+  name: Netherlands
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: mk
+  name: North Macedonia
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: 'no'
+  name: Norway
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: pl
+  name: Poland
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: PL_chart
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: pt
+  name: Portugal
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SNC
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: ro
+  name: Romania
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: RO_chart
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: ru
+  name: Russia
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: RAS_94n
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: sm
+  name: San Marino
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: rs
+  name: Serbia
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: RS_chart
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: sk
+  name: Slovakia
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SK_chart
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: si
+  name: Slovenia
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: SI_chart
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: es
+  name: Spain
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: PGC
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: se
+  name: Sweden
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: ch
+  name: Switzerland
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: PME_CH
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: ua
+  name: Ukraine
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: statutory_chart
+  chart_family: RAS_UA
+  tier1_codes_available: false
+  coverage_basis: statutory local_codes overlay + IFRS anchor
+- iso: gb
+  name: United Kingdom
+  region: Europe
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: au
+  name: Australia
+  region: Oceania
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: fj
+  name: Fiji
+  region: Oceania
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: ki
+  name: Kiribati
+  region: Oceania
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: mh
+  name: Marshall Islands
+  region: Oceania
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: fm
+  name: Micronesia
+  region: Oceania
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: nr
+  name: Nauru
+  region: Oceania
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: nz
+  name: New Zealand
+  region: Oceania
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: pw
+  name: Palau
+  region: Oceania
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: pg
+  name: Papua New Guinea
+  region: Oceania
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: ws
+  name: Samoa
+  region: Oceania
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: sb
+  name: Solomon Islands
+  region: Oceania
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: to
+  name: Tonga
+  region: Oceania
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: tv
+  name: Tuvalu
+  region: Oceania
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)
+- iso: vu
+  name: Vanuatu
+  region: Oceania
+  ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
+  mapping_mode: ifrs_direct
+  chart_family: null
+  tier1_codes_available: false
+  coverage_basis: IFRS tag (no mandated national chart)

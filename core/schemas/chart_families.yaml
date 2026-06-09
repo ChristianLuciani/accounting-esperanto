@@ -1,0 +1,44 @@
+# Kontablo Statutory Chart Families
+# Real, primary-source-cited code sets for supranational / shared statutory
+# charts of accounts. A "family" maps Kontablo Level-3 node ids -> the local
+# statutory code, and is shared by every jurisdiction assigned to that family in
+# core/schemas/jurisdiction_coverage.yaml. This lets one verified chart cover
+# many jurisdictions (e.g., SYSCOHADA covers the 17 OHADA member states).
+#
+# Only families with a citable primary source are populated here. Single-country
+# charts (SAT-MX, PCG-FR, etc.) remain inline in level3_accounts.yaml.
+
+metadata:
+  version: "0.1.0"
+  note: "codes are statutory account numbers; verify against each family's cited source."
+
+families:
+
+  SYSCOHADA:
+    name: "Système Comptable OHADA (SYSCOHADA révisé)"
+    members: [bj, bf, cm, cf, td, km, cg, cd, ci, gq, ga, gn, gw, ml, ne, sn, tg]
+    source: "OHADA, Acte uniforme relatif au droit comptable et à l'information financière (AUDCIF), SYSCOHADA révisé, in force 2018; plan de comptes. https://www.ohada.org/"
+    note: "PCG-derived 8-class chart, mandatory across all 17 OHADA member states."
+    codes:
+      asset.current.cash: "571"            # Caisse
+      asset.current.bank: "521"            # Banques (comptes locaux)
+      asset.current.receivables: "411"     # Clients
+      asset.current.inventory: "31"        # Stocks de marchandises
+      asset.current.vat_input: "4452"      # État, TVA récupérable sur achats
+      asset.noncurrent.intangibles: "21"   # Immobilisations incorporelles
+      asset.noncurrent.ppe: "22"           # Immobilisations corporelles (terrains/bâtiments)
+      liability.current.payables: "401"    # Fournisseurs, dettes en compte
+      liability.current.vat_output: "4431" # État, TVA facturée sur ventes
+      liability.current.tax: "44"          # État et collectivités publiques
+      liability.noncurrent.debt: "16"      # Emprunts et dettes assimilées
+      equity.capital: "101"                # Capital social
+      equity.reserves: "11"                # Réserves
+      equity.retained: "12"                # Report à nouveau
+      revenue.operating: "701"             # Ventes de marchandises
+      revenue.other: "77"                  # Revenus financiers et assimilés
+      expense.cogs: "601"                  # Achats de marchandises
+      expense.admin: "62"                  # Services extérieurs
+      expense.depreciation: "681"          # Dotations aux amortissements d'exploitation
+      expense.interest: "671"              # Intérêts des emprunts
+      expense.fx_loss: "676"               # Pertes de change
+      expense.tax: "891"                   # Impôts sur le résultat

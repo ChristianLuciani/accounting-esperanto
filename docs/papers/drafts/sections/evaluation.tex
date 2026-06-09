@@ -3,7 +3,7 @@
 To empirically validate the ontology’s robustness against the three crises identified in Section 1.1, we developed a high-fidelity mass-consolidation engine. The simulation ingested raw, unmapped trial balances from 10 distinct entities across 9 countries representing diverse regulatory environments. 
 
 \subsection{Consolidation Simulation Engine}
-To validate Kontablo's real-world utility, we built a mass-consolidation simulation engine. The simulation models a multinational holding company consolidating trial balances from 10 distinct operational entities across 9 jurisdictions: Mexico (MX), Brazil (BR), France (FR), Panama (PA), Ecuador (EC), Colombia (CO), Vietnam (VN), Nigeria (NG), and Saudi Arabia (SA). Each subsidiary ledger was exported from a different source ERP (ERPNext, Zoho Books, Odoo, SAP B1) containing localized charts of accounts, varying currencies, and diverging tax treatment. This initial run was subsequently extended into a larger, fully reproducible validation matrix (46 entities, 40 jurisdictions; Section~\ref{subsec:expanded_validation}).
+To validate Kontablo's real-world utility, we built a mass-consolidation simulation engine. The simulation models a multinational holding company consolidating trial balances from 10 distinct operational entities across 9 jurisdictions: Mexico (MX), Brazil (BR), France (FR), Panama (PA), Ecuador (EC), Colombia (CO), Vietnam (VN), Nigeria (NG), and Saudi Arabia (SA). Each subsidiary ledger was exported from a different source ERP (ERPNext, Zoho Books, Odoo, SAP B1) containing localized charts of accounts, varying currencies, and diverging tax treatment. This initial run was subsequently extended into a larger, fully reproducible validation matrix (61 entities, 55 jurisdictions; Section~\ref{subsec:expanded_validation}).
 
 \subsection{The 10-Point Complexity Scale}
 To measure the difficulty of mapping local charts of accounts to the universal Level 3 ontology, we established a \textbf{10-point Complexity Scale}. The scale rates jurisdictions based on four primary vectors: (1) alignment with IFRS, (2) strictness of mandatory national charts of accounts, (3) complexity of electronic invoicing and transactional metadata requirements, and (4) currency volatility/inflation treatment. 
@@ -100,17 +100,35 @@ remainder.
 \subsection{Expanded Multi-Jurisdiction Validation}
 \label{subsec:expanded_validation}
 
-To test these claims beyond the initial proof, we extended the consolidation
-harness to a broader, fully reproducible run (script
-\texttt{scripts/mass\_consolidation\_v2.py}; artifacts in
-\texttt{research/experiments/consolidation\_v2/}). The trial balances are
-\emph{generated directly from the ontology itself}: for every jurisdiction that
-carries real \texttt{local\_codes} in the Level-3 YAML, an entity is
-constructed from those exact codes, so Tier-1 exact lookup is exercised against
-genuine mapping data rather than hand-authored examples. The expanded matrix
-processes \textbf{186 local account entries from 46 entities across 40
+\paragraph{What ``195 jurisdictions'' means.} Coverage is recorded in an
+explicit manifest of all 195 sovereign states --- the 193 UN member states plus
+the two UN observer states (Holy See, State of Palestine) --- in
+\texttt{core/schemas/jurisdiction\_coverage.yaml}. The claim is precise and
+two-layered. \emph{Every} one of the 195 is covered by Kontablo's universal
+IFRS-anchored layer, because each Level-3 node carries an \texttt{ifrs\_tag};
+this is the mapping basis for the \textbf{122} jurisdictions that do not mandate
+a national numeric chart of accounts (typically common-law / IFRS-direct
+regimes, where an entity designs its own chart and there is no statutory code to
+map). The remaining \textbf{73} jurisdictions impose a statutory chart and
+additionally receive a local-code overlay; for \textbf{39} of these we populate
+and exercise primary-source-cited Tier-1 code sets, including the SYSCOHADA
+chart shared identically by all 17 OHADA member states (one verified chart, 17
+jurisdictions). We deliberately do \emph{not} claim a fabricated code set for
+every state; where no statutory chart exists, the honest mapping basis is the
+IFRS tag, and this is recorded per jurisdiction in the manifest with its IFRS
+adoption status sourced from the IFRS Foundation profiles.
+
+To test the pipeline beyond the initial proof, we ran a broader, fully
+reproducible consolidation (script \texttt{scripts/mass\_consolidation\_v2.py};
+artifacts in \texttt{research/experiments/consolidation\_v2/}). The trial
+balances are \emph{generated directly from the ontology and chart families
+themselves}: for every jurisdiction with real \texttt{local\_codes} (inline or
+via a chart family), an entity is constructed from those exact codes, so Tier-1
+exact lookup is exercised against genuine mapping data rather than hand-authored
+examples. The run
+processes \textbf{267 local account entries from 61 entities across 55
 jurisdictions}, spanning all five statement classes (assets, liabilities,
-equity, revenue, expense) and ten-plus written scripts/languages (Spanish,
+equity, revenue, expense) and a dozen written scripts/languages (Spanish,
 Portuguese, French, Italian, Polish, Indonesian, Greek, Vietnamese, Arabic,
 German, Russian, Korean, Turkish, English), and populates \textbf{25 of the 30
 universal Level-3 nodes}. To keep
@@ -126,15 +144,21 @@ dataset, not an out-of-sample accuracy benchmark.
 \begin{tabular}{l r}
 \hline
 \textbf{Metric} & \textbf{Result} \\ \hline
-Entities consolidated & 46 \\
-Jurisdictions (countries) & 40 \\
-IAS~29 hyperinflation dual-rate cases & 4 (VE, AR, LB, TR) \\
-Local account entries processed & 186 \\
+Sovereign states in coverage manifest & 195 \\
+\quad universal IFRS-anchor layer & 195 \\
+\quad statutory-chart overlay & 73 \\
+\quad IFRS-direct (mapping via IFRS tag) & 122 \\
+\quad Tier-1 code sets populated (cited) & 39 \\
 \hline
-Tier~1 (exact local-code lookup) & 124 \quad(66.7\%) \\
-Tier~2 (deterministic keyword rules) & 57 \quad(30.6\%) \\
-\textbf{Deterministic coverage (Tier~1+2)} & \textbf{97.3\%} \\
-Escalated to human via CRA & 4 \quad(2.2\%) \\
+Entities consolidated & 61 \\
+Jurisdictions exercised in run & 55 \\
+IAS~29 hyperinflation dual-rate cases & 4 (VE, AR, LB, TR) \\
+Local account entries processed & 267 \\
+\hline
+Tier~1 (exact local-code lookup) & 209 \quad(78.3\%) \\
+Tier~2 (deterministic keyword rules) & 53 \quad(19.9\%) \\
+\textbf{Deterministic coverage (Tier~1+2)} & \textbf{98.1\%} \\
+Escalated to human via CRA & 4 \quad(1.5\%) \\
 \hline
 Injected inconsistencies detected by CRA & 3 / 3 \\
 \quad nature mismatches (debit/credit) & 2 \\
@@ -142,13 +166,14 @@ Injected inconsistencies detected by CRA & 3 / 3 \\
 Ontology code-collisions: detected $\to$ corrected $\to$ remaining & 4 $\to$ 0 \\
 \hline
 Distinct Kontablo nodes populated & 25 / 30 \\
-Consolidated total assets (FX-normalized) & USD 7{,}151{,}538 \\
+Consolidated total assets (FX-normalized) & USD 10{,}639{,}038 \\
 \hline
 \end{tabular}
-\caption{Expanded deterministic validation run across 46 entities and 40
-jurisdictions, with Tier-1 trial balances generated from the ontology's own
-\texttt{local\_codes}. Coverage is measured by entry count; FX normalization to
-USD uses simulated 2026 rates, with parallel-rate overrides for
+\caption{195-jurisdiction coverage manifest and the deterministic validation run
+(61 entities, 55 jurisdictions), with Tier-1 trial balances generated from the
+ontology's own \texttt{local\_codes} and statutory chart families (e.g.,
+SYSCOHADA for the 17 OHADA states). Coverage is measured by entry count; FX
+normalization to USD uses simulated 2026 rates, with parallel-rate overrides for
 hyperinflationary entities.}
 \label{tab:expanded_validation}
 \end{table}
