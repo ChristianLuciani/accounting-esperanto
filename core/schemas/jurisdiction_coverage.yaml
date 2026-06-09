@@ -807,8 +807,8 @@ jurisdictions:
   region: Asia
   ifrs_status: Chinese ASBE (substantially converged with IFRS)
   mapping_mode: statutory_chart
-  chart_family: CAS
-  tier1_codes_available: false
+  chart_family: CAS_CN
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: cy
   name: Cyprus
@@ -1160,7 +1160,7 @@ jurisdictions:
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
   chart_family: PCMN_BE
-  tier1_codes_available: false
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: ba
   name: Bosnia and Herzegovina

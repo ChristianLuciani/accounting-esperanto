@@ -133,7 +133,7 @@ CHART_FAMILY.update({
     "ru":"RAS_94n","by":"RAS_BY","kz":"RAS_KZ","ua":"RAS_UA","uz":"RAS_UZ",
     "am":"RAS_AM","az":"RAS_AZ","ge":"RAS_GE","kg":"RAS_KG","tj":"RAS_TJ",
     "tm":"RAS_TM","md":"RAS_MD",
-    "cn":"CAS","vn":"VAS","kr":"KIFRS_chart","jp":"JP_chart","th":"TH_chart",
+    "cn":"CAS_CN","vn":"VAS","kr":"KIFRS_chart","jp":"JP_chart","th":"TH_chart",
     "id":"SAK_ID","kh":"CAS_KH","la":"LAS",
     "pt":"SNC_PT","gr":"EGLS","pl":"PL_chart","ro":"RO_chart","cz":"CZ_chart",
     "sk":"SK_chart","hu":"HU_chart","bg":"BG_chart","si":"SI_chart","hr":"HR_chart",

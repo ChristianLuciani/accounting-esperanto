@@ -290,7 +290,7 @@ def build_entities(accounts, by_code, families=None):
     #     One verified chart can cover many jurisdictions (e.g. SYSCOHADA -> 17).
     #     Skip members already represented by inline ontology codes to avoid
     #     double-counting (e.g. ES, which is inline in level3_accounts.yaml).
-    inline_juris = {j for a in accounts.values() for j in a["local_codes"]}
+    inline_juris = set(j2.keys())  # jurisdictions actually generated from numeric inline codes
     fam_pick = [("asset.current.cash", 50000), ("asset.current.bank", 40000),
                 ("asset.current.receivables", 120000), ("liability.current.payables", 70000),
                 ("revenue.operating", 300000)]

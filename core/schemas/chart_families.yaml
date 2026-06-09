@@ -116,3 +116,51 @@ families:
       expense.admin: "62"                  # Fornecimentos e serviços externos
       expense.depreciation: "64"           # Gastos de depreciação e de amortização
       expense.interest: "691"              # Juros suportados
+
+  CAS_CN:
+    name: "Accounting Standards for Business Enterprises (China)"
+    members: [cn]
+    source: "China, Ministry of Finance (MOF), ASBE 会计科目 (chart of accounts). https://www.iasplus.com/en/jurisdictions/asia/china"
+    note: "MOF account codes; VAT is a sub-account of 2221 应交税费 and is omitted here to avoid sub-account ambiguity (escalates instead)."
+    codes:
+      asset.current.cash: "1001"           # 库存现金 Cash on hand
+      asset.current.bank: "1002"           # 银行存款 Bank deposits
+      asset.current.receivables: "1122"    # 应收账款 Accounts receivable
+      asset.current.inventory: "1405"      # 库存商品 Merchandise inventory
+      asset.noncurrent.ppe: "1601"         # 固定资产 Fixed assets
+      asset.noncurrent.intangibles: "1701" # 无形资产 Intangible assets
+      liability.current.payables: "2202"   # 应付账款 Accounts payable
+      liability.current.tax: "2221"        # 应交税费 Taxes payable
+      liability.noncurrent.debt: "2501"    # 长期借款 Long-term borrowings
+      equity.capital: "4001"               # 实收资本 Paid-in capital
+      equity.reserves: "4101"              # 盈余公积 Surplus reserve
+      equity.retained: "4104"              # 利润分配/未分配利润 Retained earnings
+      revenue.operating: "6001"            # 主营业务收入 Main operating revenue
+      expense.cogs: "6401"                 # 主营业务成本 Main operating cost
+      expense.admin: "6602"                # 管理费用 Administrative expenses
+      expense.interest: "6603"             # 财务费用 Financial expenses
+
+  PCMN_BE:
+    name: "Plan Comptable Minimum Normalisé (Belgium)"
+    members: [be]
+    source: "Belgium, Commission des Normes Comptables (CNC/CBN), Plan comptable minimum normalisé (AR 12/09/1983, consolidé). https://www.cnc-cbn.be/"
+    codes:
+      asset.current.cash: "570"            # Caisses
+      asset.current.bank: "550"            # Établissements de crédit: comptes courants
+      asset.current.receivables: "400"     # Clients
+      asset.current.inventory: "34"        # Marchandises (stocks)
+      asset.current.vat_input: "411"       # TVA à récupérer
+      asset.noncurrent.ppe: "22"           # Terrains et constructions
+      asset.noncurrent.intangibles: "21"   # Immobilisations incorporelles
+      liability.current.payables: "440"    # Fournisseurs
+      liability.current.vat_output: "451"  # TVA à payer
+      liability.current.tax: "45"          # Dettes fiscales, salariales et sociales
+      liability.noncurrent.debt: "17"      # Dettes à plus d'un an
+      equity.capital: "10"                 # Capital
+      equity.reserves: "13"                # Réserves
+      equity.retained: "14"                # Bénéfice reporté
+      revenue.operating: "70"              # Chiffre d'affaires
+      expense.cogs: "604"                  # Achats de marchandises
+      expense.admin: "61"                  # Services et biens divers
+      expense.depreciation: "630"          # Amortissements
+      expense.interest: "650"              # Charges des dettes
