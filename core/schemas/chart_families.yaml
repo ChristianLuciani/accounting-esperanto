@@ -164,3 +164,75 @@ families:
       expense.admin: "61"                  # Services et biens divers
       expense.depreciation: "630"          # Amortissements
       expense.interest: "650"              # Charges des dettes
+
+  CGNC_MA:
+    name: "Code Général de Normalisation Comptable / PCGE (Morocco)"
+    members: [ma]
+    source: "Morocco, CGNC (loi 9-88), Plan Comptable Général des Entreprises. https://www.plancomptable.ma/"
+    codes:
+      asset.current.cash: "5161"           # Caisse
+      asset.current.bank: "5141"           # Banques (solde débiteur)
+      asset.current.receivables: "3421"    # Clients
+      asset.current.inventory: "3111"      # Marchandises
+      asset.current.vat_input: "3455"      # État - TVA récupérable
+      asset.noncurrent.ppe: "23"           # Immobilisations corporelles
+      asset.noncurrent.intangibles: "22"   # Immobilisations incorporelles
+      liability.current.payables: "4411"   # Fournisseurs
+      liability.current.vat_output: "4455" # État - TVA facturée
+      liability.noncurrent.debt: "14"      # Dettes de financement
+      equity.capital: "1111"               # Capital social
+      equity.reserves: "114"               # Réserve légale
+      equity.retained: "116"               # Report à nouveau
+      revenue.operating: "7111"            # Ventes de marchandises
+      expense.cogs: "6111"                 # Achats de marchandises
+      expense.interest: "631"              # Charges d'intérêts
+      expense.fx_loss: "633"               # Pertes de change
+
+  SCF_DZ:
+    name: "Système Comptable Financier (Algeria)"
+    members: [dz]
+    source: "Algeria, Loi 07-11 (2007), Système Comptable Financier (SCF 2010), plan de comptes. https://www.cecyb.net/"
+    note: "IFRS-inspired chart strongly converged with the French PCG."
+    codes:
+      asset.current.cash: "53"             # Caisse
+      asset.current.bank: "512"            # Banques comptes courants
+      asset.current.receivables: "411"     # Clients
+      asset.current.inventory: "30"        # Stocks de marchandises
+      asset.current.vat_input: "4456"      # État - TVA déductible
+      asset.noncurrent.ppe: "21"           # Immobilisations corporelles
+      asset.noncurrent.intangibles: "20"   # Immobilisations incorporelles
+      liability.current.payables: "401"    # Fournisseurs
+      liability.current.vat_output: "4457" # État - TVA collectée
+      liability.noncurrent.debt: "16"      # Emprunts et dettes assimilées
+      equity.capital: "101"                # Capital émis
+      equity.reserves: "106"               # Réserves
+      equity.retained: "11"                # Report à nouveau
+      revenue.operating: "70"              # Ventes
+      expense.cogs: "60"                   # Achats consommés
+      expense.depreciation: "68"           # Dotations aux amortissements
+      expense.interest: "661"              # Charges d'intérêts
+      expense.fx_loss: "666"               # Pertes de change
+
+  RO_OMFP1802:
+    name: "Plan de conturi general (Romania)"
+    members: [ro]
+    source: "Romania, OMFP 1802/2014, Planul de conturi general. https://kpmg.com/ro/en/home/insights/2017/01/chart-of-accounts-romania.html"
+    codes:
+      asset.current.cash: "5311"           # Casa în lei
+      asset.current.bank: "5121"           # Conturi la bănci în lei
+      asset.current.receivables: "4111"    # Clienți
+      asset.current.inventory: "371"       # Mărfuri
+      asset.current.vat_input: "4426"      # TVA deductibilă
+      asset.noncurrent.ppe: "213"          # Instalații tehnice, mijloace de transport
+      asset.noncurrent.intangibles: "20"   # Imobilizări necorporale
+      liability.current.payables: "401"    # Furnizori
+      liability.current.vat_output: "4427" # TVA colectată
+      liability.noncurrent.debt: "162"     # Credite bancare pe termen lung
+      equity.capital: "1012"               # Capital subscris vărsat
+      equity.reserves: "106"               # Rezerve
+      equity.retained: "117"               # Rezultatul reportat
+      revenue.operating: "707"             # Venituri din vânzarea mărfurilor
+      expense.cogs: "607"                  # Cheltuieli privind mărfurile
+      expense.depreciation: "6811"         # Cheltuieli de exploatare - amortizări
+      expense.interest: "666"              # Cheltuieli privind dobânzile
+      expense.fx_loss: "665"               # Cheltuieli din diferențe de curs valutar

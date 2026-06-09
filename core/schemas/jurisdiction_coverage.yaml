@@ -31,8 +31,8 @@ jurisdictions:
   region: Africa
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
-  chart_family: SCF
-  tier1_codes_available: false
+  chart_family: SCF_DZ
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: ao
   name: Angola
@@ -303,8 +303,8 @@ jurisdictions:
   region: Africa
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
-  chart_family: CGNC
-  tier1_codes_available: false
+  chart_family: CGNC_MA
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: mz
   name: Mozambique
@@ -1391,8 +1391,8 @@ jurisdictions:
   region: Europe
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
-  chart_family: RO_chart
-  tier1_codes_available: false
+  chart_family: RO_OMFP1802
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: ru
   name: Russia
