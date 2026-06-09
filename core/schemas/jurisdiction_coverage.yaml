@@ -502,10 +502,10 @@ jurisdictions:
   name: Bolivia
   region: Americas
   ifrs_status: national GAAP (IFRS not required)
-  mapping_mode: statutory_chart
-  chart_family: PUC_BO
+  mapping_mode: ifrs_direct
+  chart_family: null
   tier1_codes_available: false
-  coverage_basis: statutory local_codes overlay + IFRS anchor
+  coverage_basis: IFRS tag (no mandated national chart)
 - iso: br
   name: Brazil
   region: Americas
@@ -574,10 +574,10 @@ jurisdictions:
   name: Ecuador
   region: Americas
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
-  mapping_mode: statutory_chart
-  chart_family: PUC_EC
+  mapping_mode: ifrs_direct
+  chart_family: null
   tier1_codes_available: false
-  coverage_basis: statutory local_codes overlay + IFRS anchor
+  coverage_basis: IFRS tag (no mandated national chart)
 - iso: sv
   name: El Salvador
   region: Americas
@@ -750,18 +750,18 @@ jurisdictions:
   name: Armenia
   region: Asia
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
-  mapping_mode: statutory_chart
-  chart_family: RAS_AM
+  mapping_mode: ifrs_direct
+  chart_family: null
   tier1_codes_available: false
-  coverage_basis: statutory local_codes overlay + IFRS anchor
+  coverage_basis: IFRS tag (no mandated national chart)
 - iso: az
   name: Azerbaijan
   region: Asia
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
-  mapping_mode: statutory_chart
-  chart_family: RAS_AZ
+  mapping_mode: ifrs_direct
+  chart_family: null
   tier1_codes_available: false
-  coverage_basis: statutory local_codes overlay + IFRS anchor
+  coverage_basis: IFRS tag (no mandated national chart)
 - iso: bh
   name: Bahrain
   region: Asia
@@ -822,10 +822,10 @@ jurisdictions:
   name: Georgia
   region: Asia
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
-  mapping_mode: statutory_chart
-  chart_family: RAS_GE
+  mapping_mode: ifrs_direct
+  chart_family: null
   tier1_codes_available: false
-  coverage_basis: statutory local_codes overlay + IFRS anchor
+  coverage_basis: IFRS tag (no mandated national chart)
 - iso: in
   name: India
   region: Asia
@@ -902,10 +902,10 @@ jurisdictions:
   name: Kyrgyzstan
   region: Asia
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
-  mapping_mode: statutory_chart
-  chart_family: RAS_KG
+  mapping_mode: ifrs_direct
+  chart_family: null
   tier1_codes_available: false
-  coverage_basis: statutory local_codes overlay + IFRS anchor
+  coverage_basis: IFRS tag (no mandated national chart)
 - iso: la
   name: Laos
   region: Asia
@@ -1054,10 +1054,10 @@ jurisdictions:
   name: Tajikistan
   region: Asia
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
-  mapping_mode: statutory_chart
-  chart_family: RAS_TJ
+  mapping_mode: ifrs_direct
+  chart_family: null
   tier1_codes_available: false
-  coverage_basis: statutory local_codes overlay + IFRS anchor
+  coverage_basis: IFRS tag (no mandated national chart)
 - iso: th
   name: Thailand
   region: Asia
@@ -1239,8 +1239,8 @@ jurisdictions:
   region: Europe
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
-  chart_family: EGLS
-  tier1_codes_available: false
+  chart_family: GR_chart
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: va
   name: Holy See
@@ -1327,8 +1327,8 @@ jurisdictions:
   region: Europe
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
-  chart_family: RAS_MD
-  tier1_codes_available: false
+  chart_family: MD_chart
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: mc
   name: Monaco

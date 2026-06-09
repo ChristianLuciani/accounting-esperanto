@@ -128,18 +128,20 @@ CHART_FAMILY.update({
     "de":"HGB_SKR","at":"AT_chart",
     # Maghreb (PCG-derived)
     "ma":"CGNC_MA","tn":"TN_chart","dz":"SCF_DZ",
-    # Latin America: only states with a genuinely mandated national chart
-    # (Chile, Costa Rica, Uruguay, Dominican Rep., Paraguay -> ifrs_direct).
-    "co":"PUC_CO","pe":"PCGE_PE","ec":"PUC_EC","bo":"PUC_BO",
+    # Latin America: only states with a genuinely mandated national chart.
+    # ifrs_direct (IFRS mandatory, no mandated numeric chart): Chile, Costa Rica,
+    # Uruguay, Dominican Rep., Paraguay, Ecuador, Bolivia.
+    "co":"PUC_CO","pe":"PCGE_PE",
     "mx":"SAT","br":"SPED","ar":"PCGA_AR","ve":"PUC_VE",
-    # CIS / RAS-heritage charts
-    "ru":"RAS_94n","by":"BY_chart","kz":"KZ_chart","ua":"UA_chart","uz":"RAS_UZ",
-    "am":"RAS_AM","az":"RAS_AZ","ge":"RAS_GE","kg":"RAS_KG","tj":"RAS_TJ",
-    "tm":"RAS_TM","md":"RAS_MD",
+    # CIS: only those retaining a mandated national chart. ifrs_direct (adopted
+    # IFRS, no mandated numeric chart): Armenia, Georgia, Azerbaijan,
+    # Kyrgyzstan, Tajikistan.
+    "ru":"RAS_94n","by":"BY_chart","kz":"KZ_chart","ua":"UA_chart",
+    "uz":"RAS_UZ","tm":"RAS_TM","md":"MD_chart",
     # Central/Eastern Europe
     "ro":"RO_OMFP1802","cz":"CZ_chart","sk":"SK_chart","hu":"HU_chart",
     "bg":"BG_chart","si":"SI_chart","hr":"HR_chart","rs":"RS_chart",
-    "gr":"EGLS","pl":"PL_chart","tr":"TR_chart",
+    "gr":"GR_chart","pl":"PL_chart","tr":"TR_chart",
     # Asia with a mandated numeric chart
     "cn":"CAS_CN","vn":"VAS","la":"LAS",
     # NOTE: Japan, South Korea, Indonesia, Thailand, Cambodia and Switzerland

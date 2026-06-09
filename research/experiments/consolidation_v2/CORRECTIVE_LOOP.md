@@ -87,20 +87,20 @@ Coverage is now recorded in a 195-jurisdiction manifest
 |---|---|
 | Sovereign states in manifest | 195 (193 UN + Holy See + Palestine) |
 | — universal IFRS-anchor layer | 195 |
-| — statutory-chart overlay | 67 (JP, KR, ID, TH, KH, CH reclassified to ifrs_direct: IFRS-converged, no mandated numeric chart) |
-| — IFRS-direct (IFRS-tag mapping) | 128 |
-| — Tier-1 code sets populated (cited) | 54 (SYSCOHADA 17 + PGC-FR/MC + PGC-ES + SNC + PCMN + LU + AT + CAS + PCGE + CGNC + SCF + RO + CZ + SK + HU + BG + UA + KZ + TN + BY + RS + HR + SI + inline) |
+| — statutory-chart overlay | 60 (reclassified to ifrs_direct after research: JP KR ID TH KH CH + IFRS-adopting CIS AM GE AZ KG TJ + EC BO — all IFRS without a mandated numeric chart) |
+| — IFRS-direct (IFRS-tag mapping) | 135 |
+| — Tier-1 code sets populated (cited) | 56 / 60 statutory (remaining 4 = PL, UZ, TM, LA: chart exists but numbers unverified/not legally fixed) |
 | Descriptive placeholders excluded from Tier-1 (B1) | 14 |
-| Entities consolidated | 73 |
-| Jurisdictions exercised in run | 67 |
-| Local entries processed | 356 |
-| Deterministic coverage (Tier 1+2) | 97.2% (Tier1 84.3% + Tier2 12.9%) |
+| Entities consolidated | 75 |
+| Jurisdictions exercised in run | 68 |
+| Local entries processed | 366 |
+| Deterministic coverage (Tier 1+2) | 97.3% (Tier1 84.7% + Tier2 12.6%) |
 | CRA injected-error catalog detected & quarantined | 8/8 (12 flags, 5 invariant classes) |
 | Escalated to human (CRA) | 4 (all genuine coverage-boundary cases) |
 | Ontology code-collisions remaining | 0 |
 | Universal nodes populated | 25 / 30 |
 | IAS 29 hyperinflation dual-rate cases | 4 (VE, AR, LB, TR) |
-| Consolidated total assets (USD) | 14,326,038 |
+| Consolidated total assets (USD) | 14,746,038 |
 
 ## 6. Lessons / standing practice
 

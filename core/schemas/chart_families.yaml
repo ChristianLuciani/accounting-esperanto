@@ -470,6 +470,35 @@ families:
       revenue.operating: "70"              # Montant net du chiffre d'affaires
       expense.cogs: "60"                   # Consommation de marchandises et matières
 
+  MD_chart:
+    name: "Planul general de conturi contabile (Moldova)"
+    members: [md]
+    source: "Moldova, Planul general de conturi contabile (Ministerul Finanțelor); mandatory except for IFRS appliers."
+    codes:
+      asset.current.cash: "241"            # Casa
+      asset.current.bank: "242"            # Conturi curente în monedă națională
+      asset.current.receivables: "221"     # Creanțe comerciale
+      asset.current.inventory: "217"       # Mărfuri
+      asset.noncurrent.ppe: "123"          # Mijloace fixe
+      liability.current.payables: "521"    # Datorii comerciale curente
+      equity.capital: "311"                # Capital social
+      revenue.operating: "611"             # Venituri din vânzări
+      expense.cogs: "711"                  # Costul vânzărilor
+
+  GR_chart:
+    name: "Σχέδιο Λογαριασμών ΕΓΛΣ / ΕΛΠ (Greece)"
+    members: [gr]
+    source: "Greece, ΕΓΛΣ (P.D. 1123/1980), retained in correspondence under the Greek Accounting Standards (ΕΛΠ, Ν.4308/2014)."
+    note: "Codes follow the long-established ΕΓΛΣ chart; the ΕΛΠ appendix keeps it in correspondence. COGS has no single ΕΓΛΣ leaf and is omitted."
+    codes:
+      asset.current.cash: "38.00"          # Ταμείο
+      asset.current.bank: "38.03"          # Καταθέσεις όψεως
+      asset.current.receivables: "30"      # Πελάτες
+      asset.current.inventory: "20"        # Εμπορεύματα
+      liability.current.payables: "50"     # Προμηθευτές
+      equity.capital: "40"                 # Κεφάλαιο
+      revenue.operating: "71"              # Πωλήσεις εμπορευμάτων
+
   PCG_FR:
     name: "Plan Comptable Général (France / Monaco)"
     members: [mc]

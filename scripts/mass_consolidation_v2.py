@@ -394,6 +394,7 @@ JCCY = {"ae":"AED","ar":"ARS","br":"BRL","ca":"CAD","cn":"CNY","co":"COP",
         "cz":"CZK","sk":"EUR","hu":"HUF","bg":"BGN",
         "ua":"UAH","tn":"TND","by":"BYN",
         "rs":"RSD","hr":"EUR","si":"EUR","at":"EUR","lu":"EUR","mc":"EUR",
+        "md":"MDL","gr":"EUR",
         # --- OHADA member currencies (SYSCOHADA) ---
         "bj":"XOF","bf":"XOF","ml":"XOF","ne":"XOF","tg":"XOF","gw":"XOF",
         "cm":"XAF","cf":"XAF","td":"XAF","cg":"XAF","gq":"XAF","ga":"XAF",
@@ -406,7 +407,7 @@ FX = {"AED":0.27,"ARS":0.0011,"BRL":0.20,"CAD":0.73,"CNY":0.14,"COP":0.00025,
       "EGP":0.021,"KES":0.0078,"PHP":0.018,"PKR":0.0036,"CHF":1.13,
       "XAF":0.00165,"KMF":0.0022,"CDF":0.00035,"DZD":0.0074,"RON":0.22,
       "CZK":0.043,"HUF":0.0028,"BGN":0.55,"UAH":0.024,"TND":0.32,"BYN":0.31,
-      "RSD":0.0092}
+      "RSD":0.0092,"MDL":0.057}
 
 # Representative USD face value per account class (local amounts are derived as
 # base/FX so each coded account contributes a comparable USD magnitude).
