@@ -129,7 +129,7 @@ CHART_FAMILY.update({
     # without a mandated national numeric chart -> left as ifrs_direct.
     "es":"PGC_ES","co":"PUC_CO","pe":"PCGE_PE","ec":"PUC_EC","bo":"PUC_BO",
     "mx":"SAT","br":"SPED","ar":"PCGA_AR","ve":"PUC_VE",
-    "de":"HGB_SKR","at":"OEKR","ch":"PME_CH",
+    "de":"HGB_SKR","at":"AT_chart","ch":"PME_CH",
     "ru":"RAS_94n","by":"BY_chart","kz":"KZ_chart","ua":"UA_chart","uz":"RAS_UZ",
     "am":"RAS_AM","az":"RAS_AZ","ge":"RAS_GE","kg":"RAS_KG","tj":"RAS_TJ",
     "tm":"RAS_TM","md":"RAS_MD",

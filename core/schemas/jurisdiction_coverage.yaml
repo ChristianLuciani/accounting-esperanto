@@ -1143,8 +1143,8 @@ jurisdictions:
   region: Europe
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
-  chart_family: OEKR
-  tier1_codes_available: false
+  chart_family: AT_chart
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: by
   name: Belarus
@@ -1184,7 +1184,7 @@ jurisdictions:
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
   chart_family: HR_chart
-  tier1_codes_available: false
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: cz
   name: Czechia
@@ -1416,7 +1416,7 @@ jurisdictions:
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
   chart_family: RS_chart
-  tier1_codes_available: false
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: sk
   name: Slovakia
@@ -1432,7 +1432,7 @@ jurisdictions:
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
   mapping_mode: statutory_chart
   chart_family: SI_chart
-  tier1_codes_available: false
+  tier1_codes_available: true
   coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: es
   name: Spain

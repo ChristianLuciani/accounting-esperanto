@@ -396,3 +396,62 @@ families:
       equity.reserves: "82"                # Резервный капитал
       equity.retained: "84"                # Нераспределённая прибыль
       revenue.operating: "90"              # Доходы по текущей деятельности (реализация)
+
+  RS_chart:
+    name: "Kontni okvir (Serbia)"
+    members: [rs]
+    source: "Serbia, Pravilnik o Kontnom okviru za privredna društva, zadruge i preduzetnike (Sl. glasnik)."
+    codes:
+      asset.current.cash: "243"            # Blagajna
+      asset.current.bank: "241"            # Tekući (poslovni) računi
+      asset.current.receivables: "204"     # Kupci u zemlji
+      asset.current.inventory: "134"       # Roba u prometu
+      asset.noncurrent.ppe: "023"          # Postrojenja i oprema
+      liability.current.payables: "435"    # Dobavljači u zemlji
+      equity.capital: "300"                # Osnovni kapital
+      revenue.operating: "604"             # Prihodi od prodaje robe
+      expense.cogs: "501"                  # Nabavna vrednost prodate robe
+
+  HR_chart:
+    name: "Računski plan (Croatia)"
+    members: [hr]
+    source: "Croatia, RRiF-ov računski plan za poduzetnike (HSFI/MSFI)."
+    codes:
+      asset.current.cash: "1000"           # Blagajna
+      asset.current.bank: "1020"           # Žiro-račun
+      asset.current.receivables: "1200"    # Kupci
+      asset.current.inventory: "6500"      # Roba
+      asset.noncurrent.ppe: "0200"         # Postrojenja i oprema
+      liability.current.payables: "2200"   # Dobavljači
+      equity.capital: "9000"               # Upisani kapital
+      revenue.operating: "7500"            # Prihodi od prodaje
+
+  SI_chart:
+    name: "Enotni kontni okvir (Slovenia)"
+    members: [si]
+    source: "Slovenia, Enotni kontni okvir za gospodarske družbe (SRS, Slovenski inštitut za revizijo)."
+    codes:
+      asset.current.cash: "100"            # Denarna sredstva v blagajni
+      asset.current.bank: "110"            # Denarna sredstva na računih
+      asset.current.receivables: "120"     # Kratkoročne terjatve do kupcev
+      asset.current.inventory: "660"       # Trgovsko blago
+      asset.noncurrent.ppe: "040"          # Nepremičnine
+      liability.current.payables: "220"    # Kratkoročne obveznosti do dobaviteljev
+      equity.capital: "900"                # Osnovni kapital
+      revenue.operating: "760"             # Prihodi od prodaje
+
+  AT_chart:
+    name: "Einheitskontenrahmen (Austria)"
+    members: [at]
+    source: "Austria, Österreichischer Einheitskontenrahmen (EKR)."
+    codes:
+      asset.current.cash: "2700"           # Kassa
+      asset.current.bank: "2800"           # Guthaben bei Kreditinstituten
+      asset.current.receivables: "2000"    # Forderungen aus Lieferungen und Leistungen
+      asset.current.inventory: "1600"      # Handelswarenvorrat
+      asset.current.vat_input: "2500"      # Vorsteuer
+      liability.current.payables: "3300"   # Verbindlichkeiten aus Lieferungen und Leistungen
+      liability.current.vat_output: "3500" # Umsatzsteuer
+      equity.capital: "9000"               # Nennkapital
+      revenue.operating: "4000"            # Umsatzerlöse
+      expense.cogs: "5000"                 # Wareneinsatz
