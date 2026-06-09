@@ -8,7 +8,7 @@
 %   orange!30 for group/root nodes. Arrows >=Latex. rounded corners=4pt.
 \begin{figure}[ht]
 \centering
-\resizebox{0.88\textwidth}{!}{%
+\resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
     >=Latex,
     rootnode/.style={draw=orange!70!black, rectangle, rounded corners=4pt,
@@ -18,7 +18,7 @@
         fill=orange!18, minimum width=3.8cm, minimum height=0.9cm,
         align=center, font=\small},
     leafnode/.style={draw=orange!50!black, rectangle, rounded corners=4pt,
-        fill=orange!10, minimum width=3.8cm, minimum height=0.9cm,
+        fill=orange!10, text width=2.7cm, minimum height=0.9cm,
         align=center, font=\scriptsize},
     constraint/.style={draw=red!60!black, rectangle, rounded corners=4pt,
         fill=red!8, text width=5.5cm, align=center,
@@ -30,21 +30,21 @@
 \node[rootnode] (assets) at (0,0) {Assets (Activo)};
 
 % Level 1 groups
-\node[groupnode] (current)    at (-4.5,-1.8) {Current Assets\\(Activo Circulante)};
-\node[groupnode] (noncurrent) at ( 4.5,-1.8) {Non-Current Assets\\(Activo Fijo)};
+\node[groupnode] (current)    at (-5.5,-2.0) {Current Assets\\(Activo Circulante)};
+\node[groupnode] (noncurrent) at ( 5.5,-2.0) {Non-Current Assets\\(Activo Fijo)};
 
 % Level 2 leaves under Current
-\node[leafnode] (cash)   at (-6.5,-3.6) {\texttt{101} Cash\\(Caja)};
-\node[leafnode] (bank)   at (-4.5,-3.6) {\texttt{102} Bank\\(Bancos)};
-\node[leafnode] (ar)     at (-2.5,-3.6) {\texttt{105} Receivables\\(Cuentas por cobrar)};
+\node[leafnode] (cash)   at (-9.5,-4.4) {\texttt{101} Cash\\(Caja)};
+\node[leafnode] (bank)   at (-5.5,-4.4) {\texttt{102} Bank\\(Bancos)};
+\node[leafnode] (ar)     at (-1.5,-4.4) {\texttt{105} Receivables\\(Cuentas por cobrar)};
 
 % Level 3 leaf under Cash
-\node[leafnode] (petty)  at (-7.5,-5.4) {\texttt{101.01} Petty Cash\\(Caja chica)};
-\node[leafnode] (till)   at (-5.5,-5.4) {\texttt{101.02} Cash Register\\(Caja general)};
+\node[leafnode] (petty)  at (-11.2,-6.6) {\texttt{101.01} Petty Cash\\(Caja chica)};
+\node[leafnode] (till)   at (-7.8,-6.6)  {\texttt{101.02} Cash Register\\(Caja general)};
 
 % Level 2 leaves under Non-Current
-\node[leafnode] (ppe)    at (3.5,-3.6)  {\texttt{160} Property, Plant \& Equip.};
-\node[leafnode] (intang) at (6.0,-3.6)  {\texttt{170} Intangibles};
+\node[leafnode] (ppe)    at (3.2,-4.4)  {\texttt{160} Property, Plant \& Equip.};
+\node[leafnode] (intang) at (7.8,-4.4)  {\texttt{170} Intangibles};
 
 % Tree edges
 \draw[treeline] (assets.south) -- ++(0,-0.4) -| (current.north);
@@ -61,7 +61,7 @@
 \draw[treeline] (noncurrent.south) -- ++(0,-0.4) -| (intang.north);
 
 % Constraint callout
-\node[constraint] (note) at (0,-7.0) {%
+\node[constraint] (note) at (3.5,-7.0) {%
     \textbf{Rigid tree constraint:} each account belongs to exactly one
     parent. \texttt{101.01 Petty Cash} cannot simultaneously appear under
     a tax-ledger branch, a cost-center branch, and the balance-sheet

@@ -9,24 +9,23 @@
 \resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
     >=Latex,
-    node distance=4.5cm,
     localnode/.style={draw=orange!60!black, rectangle, rounded corners=4pt,
-        fill=orange!15, minimum width=4cm, minimum height=1.1cm,
+        fill=orange!15, minimum width=4cm, minimum height=1.2cm,
         align=center, font=\small},
     bridgenode/.style={draw=yellow!70!black, rectangle, rounded corners=4pt,
-        fill=yellow!20, minimum width=5cm, minimum height=1.1cm,
+        fill=yellow!20, minimum width=5cm, minimum height=1.2cm,
         align=center, font=\small},
     targetnode/.style={draw=green!60!black, rectangle, rounded corners=4pt,
-        fill=green!12, minimum width=4cm, minimum height=1.1cm,
+        fill=green!12, minimum width=4cm, minimum height=1.2cm,
         align=center, font=\small}
 ]
     \node[localnode] (local) {Local Account\\[2pt]\texttt{SAT 101.01}};
-    \node[bridgenode, right of=local] (bridge) {Kontablo Mapping Edge\\[2pt]%
+    \node[bridgenode, right=2.6cm of local] (bridge) {Kontablo Mapping Edge\\[2pt]%
         $\mu(e) = \{\,\text{confidence},\;\text{method}\,\}$};
-    \node[targetnode, right of=bridge] (ifrs) {Universal Node\\[2pt]%
+    \node[targetnode, right=2.6cm of bridge] (ifrs) {Universal Node\\[2pt]%
         \texttt{asset.current.cash}};
-    \draw[->, thick] (local) -- (bridge);
-    \draw[->, thick] (bridge) -- (ifrs);
+    \draw[->, very thick, orange!60!black] (local) -- node[above, font=\scriptsize]{maps via} (bridge);
+    \draw[->, very thick, green!55!black] (bridge) -- node[above, font=\scriptsize]{resolves to} (ifrs);
 \end{tikzpicture}%
 }
 \caption{The Kontablo mapping bridge connects localized statutory account

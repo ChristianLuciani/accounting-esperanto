@@ -1,73 +1,72 @@
 % Figure: Historical evolution of financial standards
 % Source: originally in sections/precedents.tex
-% Depicts: Timeline 1937 → present; reporting and payment standardization vs.
+% Depicts: Timeline 1937 -> present; reporting and payment standardization vs.
 %          persistent execution-layer fragmentation, resolved by Kontablo.
-%
-% Design system: local/source=orange!20, Kontablo/universal=blue!15,
-%   IFRS/output=green!15, decision=yellow!25, database=gray!20,
-%   agent=violet!15. Arrows >=Latex, thick. rounded corners=4pt.
+% Layout: milestone cards ALTERNATE above/below the timeline so each card has
+%          full horizontal room and remains legible.
 \begin{figure}[ht]
 \centering
 \resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
     >=Latex,
-    node distance=1.5cm and 2.2cm,
-    milestone/.style={circle, fill=blue!60!black, draw=blue!60!black, inner sep=2.5pt},
-    descnode/.style={draw=gray!60, rectangle, rounded corners=4pt,
-        fill=gray!10, text width=4.2cm, align=left, font=\scriptsize,
-        minimum height=2.2cm}
+    milestone/.style={circle, fill=blue!70!black, draw=blue!40!black, inner sep=2.6pt},
+    card/.style={draw=blue!55, rectangle, rounded corners=4pt, fill=blue!5,
+        text width=3.7cm, align=left, font=\scriptsize, inner sep=5pt},
+    cardK/.style={draw=green!55!black, rectangle, rounded corners=4pt, fill=green!10,
+        text width=3.7cm, align=left, font=\scriptsize, inner sep=5pt},
+    conn/.style={draw=blue!40, thick}
 ]
 
-% Timeline axis
-\draw[thick, ->, gray!60] (0,0) -- (15.5,0)
-    node[right, font=\small\bfseries, black] {Present};
+% --- timeline axis ---
+\draw[thick,->] (0,0) -- (18,0) node[right, font=\small\bfseries] {Present};
 
-% 1937/1947
-\node[milestone] (m1) at (1,0) {};
-\node[above=0.25cm of m1, font=\bfseries\small] {1937/1947};
-\node[descnode, fill=orange!12, draw=orange!50, below=0.4cm of m1] (d1) {%
-    \textbf{National Charts-of-Accounts}\\[2pt]%
-    German \textit{Gemeinschaftsrahmen} (1937), French \textit{Plan Comptable}
-    (1947). Localized, rigid ledger trees.};
+% --- milestone x positions ---
+\def\xa{1.7}\def\xb{5.3}\def\xc{8.9}\def\xd{12.5}\def\xe{16.0}
+\foreach \x in {\xa,\xb,\xc,\xd,\xe} { \node[milestone] at (\x,0) {}; }
 
-% Late 1990s
-\node[milestone] (m2) at (4.5,0) {};
-\node[above=0.25cm of m2, font=\bfseries\small] {Late 1990s};
-\node[descnode, fill=orange!12, draw=orange!50, below=0.4cm of m2] (d2) {%
-    \textbf{Electronic Invoicing (EDI)}\\[2pt]%
-    UN/EDIFACT standardizes invoice transport but does not specify
+% --- cards alternate: up, down, up, down, up ---
+\node[card, anchor=south] (c1) at (\xa, 1.0) {%
+    \textbf{1937 / 1947 — National Charts of Accounts}\\[2pt]
+    German \emph{Gemeinschaftsrahmen} (1937) and French \emph{Plan Comptable}
+    (1947) establish localized, rigid ledger trees.};
+\draw[conn] (\xa,0) -- (\xa,1.0);
+
+\node[card, anchor=north] (c2) at (\xb, -1.0) {%
+    \textbf{Late 1990s — Electronic Invoicing (EDI)}\\[2pt]
+    UN/EDIFACT standardizes invoice \emph{transport}, but specifies no
     ledger-account mapping rules.};
+\draw[conn] (\xb,0) -- (\xb,-1.0);
 
-% 2001/2004
-\node[milestone] (m3) at (8,0) {};
-\node[above=0.25cm of m3, font=\bfseries\small] {2001/2004};
-\node[descnode, fill=orange!12, draw=orange!50, below=0.4cm of m3] (d3) {%
-    \textbf{Reporting Focus (XBRL)}\\[2pt]%
-    Regulator-focused financial statement tagging. Excludes
-    transaction-level mapping or execution semantics.};
+\node[card, anchor=south] (c3) at (\xc, 1.0) {%
+    \textbf{2001 / 2004 — Reporting Focus (XBRL)}\\[2pt]
+    Regulator-focused statement tagging; excludes transaction-level mapping
+    and execution semantics.};
+\draw[conn] (\xc,0) -- (\xc,1.0);
 
-% 2004/2013
-\node[milestone] (m4) at (11.5,0) {};
-\node[above=0.25cm of m4, font=\bfseries\small] {2004/2013};
-\node[descnode, fill=orange!12, draw=orange!50, below=0.4cm of m4] (d4) {%
-    \textbf{Payment Messaging (ISO~20022)}\\[2pt]%
-    Standardizes bank-to-bank messaging but leaves ERP general-ledger
+\node[card, anchor=north] (c4) at (\xd, -1.0) {%
+    \textbf{2004 / 2013 — Payment Messaging (ISO 20022)}\\[2pt]
+    Standardizes bank-to-bank messaging, but leaves ERP general-ledger
     posting and statutory mapping unaddressed.};
+\draw[conn] (\xd,0) -- (\xd,-1.0);
 
-% Kontablo (present)
-\node[milestone, fill=blue!60!black, draw=blue!60!black] (m5) at (14.5,0) {};
-\node[above=0.25cm of m5, font=\bfseries\small] {2025};
-\node[descnode, fill=blue!10, draw=blue!50, below=0.4cm of m5] (d5) {%
-    \textbf{Graph-Based Subledger (Kontablo)}\\[2pt]%
-    Unifies reporting and execution layers for ERPs and autonomous
-    AI agents in a single graph-ontology API.};
+\node[cardK, anchor=south] (c5) at (\xe, 1.0) {%
+    \textbf{2025 — Graph-Based Subledger (Kontablo)}\\[2pt]
+    Unifies the reporting and execution layers for ERPs and autonomous AI
+    agents in a single graph-ontology API.};
+\draw[draw=green!50!black, thick] (\xe,0) -- (\xe,1.0);
+
+% --- year tick labels on the axis (opposite side of each card) ---
+\node[font=\scriptsize\bfseries, below=2pt] at (\xa,0) {1937/47};
+\node[font=\scriptsize\bfseries, above=2pt] at (\xb,0) {Late 1990s};
+\node[font=\scriptsize\bfseries, below=2pt] at (\xc,0) {2001/04};
+\node[font=\scriptsize\bfseries, above=2pt] at (\xd,0) {2004/13};
+\node[font=\scriptsize\bfseries, below=2pt] at (\xe,0) {2025};
 
 \end{tikzpicture}%
 }
 \caption{Historical evolution of financial standards. While communication
 (payment messaging) and disclosure (XBRL) standardized over time, the
-execution layer (general ledger chart-of-accounts mappings) remained
-fragmented at the national tree level until the introduction of Kontablo's
-graph ontology.}
+execution layer --- general-ledger chart-of-accounts mappings --- remained
+fragmented at the national tree level until Kontablo's graph ontology.}
 \label{fig:historical_timeline}
 \end{figure}
