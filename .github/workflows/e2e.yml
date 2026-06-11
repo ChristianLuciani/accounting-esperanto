@@ -1,0 +1,72 @@
+# Opt-in two-ERP end-to-end workflow.
+#
+# Spinning up ERPNext + Odoo is minutes-long, so this NEVER runs on the fast PR
+# gate (ci.yml). It runs only:
+#   - manually (workflow_dispatch),
+#   - nightly (schedule), or
+#   - on a pull_request explicitly labelled `e2e`.
+#
+# The reconciliation invariants themselves are also guarded cheaply on every
+# fast run via tests/test_example_reconciliation.py + tests/test_e2e_harness.py
+# (fixtures mode, no Docker). This workflow is the full-fidelity confirmation.
+name: e2e-two-erp
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 4 * * *"   # nightly 04:00 UTC
+  pull_request:
+    types: [labeled, synchronize, reopened]
+
+jobs:
+  two-erp-e2e:
+    # Gate the PR trigger on the `e2e` label; dispatch/schedule always run.
+    if: >-
+      github.event_name != 'pull_request' ||
+      contains(github.event.pull_request.labels.*.name, 'e2e')
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # Cheap, deterministic guard: the reconciliation logic must already hold
+      # in fixtures mode before we pay for two ERPs.
+      - name: Reconciliation logic (fixtures, no Docker)
+        run: |
+          python -m pytest tests/test_example_reconciliation.py tests/test_e2e_harness.py -q
+          python -m e2e.runner --mode fixtures
+
+      - name: Start two-ERP stack
+        run: docker compose -f e2e/docker-compose.yml up -d --build
+
+      - name: Wait for services
+        run: |
+          python e2e/wait_for.py \
+            http://localhost:8000/ \
+            http://localhost:8069/web/database/selector \
+            http://localhost:8081/api/method/ping \
+            --timeout 1200 --interval 10
+
+      - name: Provision both ERPs
+        run: |
+          python e2e/provision/provision_odoo.py
+          python e2e/provision/provision_erpnext.py
+
+      - name: Run live consolidation assertions
+        run: python e2e/runner.py --mode live
+
+      - name: Dump logs on failure
+        if: failure()
+        run: docker compose -f e2e/docker-compose.yml logs --tail=200
+
+      - name: Tear down
+        if: always()
+        run: docker compose -f e2e/docker-compose.yml down -v
