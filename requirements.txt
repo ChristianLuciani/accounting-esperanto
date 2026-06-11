@@ -10,3 +10,9 @@ pytest
 pytest-asyncio
 httpx
 jsonschema
+requests
+# gRPC interface (api/grpc): pinned to a protobuf-5.x-compatible line so it
+# coexists with google-generativeai. Regenerate stubs with grpcio-tools when
+# the proto changes (see api/grpc/README.md).
+grpcio~=1.68.0
+grpcio-tools~=1.68.0
