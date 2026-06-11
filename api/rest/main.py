@@ -58,7 +58,7 @@ async def map_accounts(request: MappingRequest):
         mapped = semantic_matcher.match_batch(request.accounts, routing_info)
         
         # Step 3: Apply Jurisdictional Tax Compliance Overrides
-        final_mapped = tax_compliance.process(mapped, country)
+        final_mapped = tax_compliance.process(mapped, country, request.accounts)
         
         # Step 4: Final Integrity Validation
         is_valid = validator.validate(final_mapped)

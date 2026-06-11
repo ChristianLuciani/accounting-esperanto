@@ -6,9 +6,11 @@ abstract: >
   Kontablo is a graph-based, UUID-keyed universal accounting ontology that bridges
   local jurisdictional chart-of-accounts standards, international reporting frameworks
   (IFRS/XBRL), the agentic economy (MCP, A2A, AP2), and blockchain/DeFi protocols.
-  It enables deterministic, machine-verifiable financial data exchange across
-  23 jurisdictions through a Tree-to-Graph Universal Bridge and a Deterministic
-  Boundary Library that eliminates the classical class of accounting hallucination.
+  It enables deterministic, machine-verifiable financial data exchange across all
+  195 sovereign jurisdictions (with statutory chart-of-accounts overlays for the
+  60 jurisdictions that mandate a national chart) through a Tree-to-Graph Universal
+  Bridge and a Deterministic Boundary Library that eliminates the classical class
+  of accounting hallucination.
 authors:
   - family-names: Luciani
     given-names: Christian

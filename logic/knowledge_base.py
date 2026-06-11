@@ -25,7 +25,12 @@ class KnowledgeBase:
                         with open(os.path.join(path, file), 'r') as f:
                             data = yaml.safe_load(f)
                             # Store by country and standard name
-                            country = data.get("metadata", {}).get("country", country_dir).upper()
+                            country = data.get("metadata", {}).get("country", country_dir)
+                            # YAML 1.1 parses bare NO (Norway), ON, etc. as booleans;
+                            # fall back to the directory name for any non-string value.
+                            if not isinstance(country, str):
+                                country = country_dir
+                            country = country.upper()
                             if country not in self.standards:
                                 self.standards[country] = {}
                             self.standards[country][file.replace(".yaml", "")] = data

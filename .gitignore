@@ -49,3 +49,4 @@ docs/papers/drafts/*.log
 # Claude Code internal directories
 .claude/worktrees/
 .claude/settings.local.json
+texput.log

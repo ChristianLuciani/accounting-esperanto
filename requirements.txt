@@ -9,3 +9,4 @@ python-dotenv
 pytest
 pytest-asyncio
 httpx
+jsonschema

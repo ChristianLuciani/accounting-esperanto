@@ -23,7 +23,7 @@ gh release create v0.1.0 \
 
 ### T+15min: Actualizar BibTeX y CITATION.cff con DOIs reales
 - Abrir https://zenodo.org/deposit → copiar DOI asignado
-- Editar `docs/papers/drafts/kontablo_preprint_modular.tex`: reemplazar `howpublished={Preprint v1.75}` por el DOI y URL de Zenodo
+- Editar `docs/papers/drafts/kontablo_preprint_modular.tex`: reemplazar `howpublished={Preprint v1.8}` por el DOI y URL de Zenodo
 - Editar `CITATION.cff`: reemplazar `notes: "SSRN/Zenodo submission pending"` por el DOI real
 - Recompilar PDF y hacer commit/push
 

@@ -3,11 +3,13 @@
 **Kontablo is a graph-based, UUID-keyed universal accounting ontology** that bridges
 local jurisdictional chart-of-accounts standards, international reporting frameworks
 (IFRS/XBRL), the agentic economy (MCP, A2A, AP2), and blockchain/DeFi protocols —
-enabling deterministic, machine-verifiable financial data exchange across 23 jurisdictions.
+enabling deterministic, machine-verifiable financial data exchange across all 195
+sovereign jurisdictions (complete global coverage), with statutory chart-of-accounts
+overlays for the 60 jurisdictions that mandate a national chart.
 
 | | |
 |---|---|
-| **Status** | Phase 2.5 — Infrastructure Finalization |
+| **Status** | Phase 3 — Pre-Publication |
 | **Preprint** | `docs/papers/drafts/kontablo_preprint_modular.pdf` — SSRN/Zenodo submission pending |
 | **License** | [BSL 1.1](LICENSE) → Apache 2.0 on 2030-05-28 · ERPNext connector: [Apache 2.0](connectors/erpnext/LICENSE) |
 | **Author** | Christian Luciani · [ORCID 0000-0002-6955-5384](https://orcid.org/0000-0002-6955-5384) |
@@ -117,16 +119,57 @@ not the model — enforces these boundaries.
 
 ## Which jurisdictions does Kontablo cover?
 
-23 jurisdictions are fully mapped as of Phase 2.5:
+All **195 sovereign jurisdictions** are mapped (complete global coverage), with
+7,000+ account mappings in `/localizations`. Coverage operates in two layers:
 
-| Region | Jurisdictions |
-|---|---|
-| Latin America | Mexico (SAT), Brazil (SPED), Venezuela (hyperinflationary), Colombia, Chile, Peru, Panama, Ecuador, Argentina |
-| Europe | France (PCG), Germany, Spain, United Kingdom, Russia |
-| Middle East / Africa | Saudi Arabia (SOCPA), UAE, Israel, Nigeria (FRCN), South Africa |
-| Asia-Pacific | Vietnam (VAS), Japan, China, India |
+- **Universal IFRS-anchored layer** — every jurisdiction is covered by the
+  UUID-keyed Level 3 taxonomy, including jurisdictions with no mandated national
+  chart (IFRS-pure, e.g. United Kingdom, Estonia, Botswana, Namibia).
+- **Statutory chart overlays** — the **60 jurisdictions that mandate a national
+  chart of accounts** additionally receive code-level mappings against
+  primary-source-cited statutory charts. Examples: SYSCOHADA (shared by 17 OHADA
+  member states), French PCG (also applied in Monaco), Spanish PGC, Portuguese SNC,
+  Belgian PCMN, Luxembourg PCN, Austrian EKR, Chinese CAS, Peruvian PCGE, Mexican
+  SAT, Brazilian SPED, plus the Moroccan, Algerian, Romanian, Czech, Slovak,
+  Hungarian, Bulgarian, Ukrainian, Kazakh, Tunisian, Belarusian, Serbian, Croatian,
+  Slovenian, Moldovan and Greek national charts.
+
+Special contexts modeled: IAS 29 hyperinflation (Venezuela, Lebanon, Zimbabwe,
+Argentina, and others), Islamic finance jurisdictions, and distribution-only
+corporate income tax regimes (Estonia, Latvia, Georgia).
 
 Multi-lingual semantic mapping is operational for Spanish, French, Arabic, and Vietnamese.
+
+---
+
+## How can I verify Kontablo's claims?
+
+Every quantitative claim in the preprint abstract is regenerable from this
+repository with deterministic commands — no API keys, no network calls:
+
+```bash
+pip install -r requirements.txt
+
+# Coverage manifest (195 sovereign / 60 statutory charts / 56 Tier-1-ready)
+# and the validation matrix: 75 entities, 68 jurisdictions, 97.3% deterministic
+# resolution, 25/30 universal nodes populated, 4 escalations to human review.
+python scripts/mass_consolidation_v2.py
+# → results in research/experiments/consolidation_v2/results.json
+
+# Test suite, including integrity checks across all localization YAMLs
+python -m pytest tests/
+```
+
+CI re-runs both on every push and fails the build if any published number
+stops reproducing (see `.github/workflows/ci.yml`).
+
+Honest bounds on what is claimed: the validation matrix uses **synthetic
+trial balances**, not production ledger data; statutory-chart coverage is
+exercised against primary-source-cited charts for **56 of the 60**
+statutory-chart jurisdictions; no account codes are fabricated, and
+jurisdictions without a mandated chart are covered by the IFRS-anchored
+layer, not asserted to have national codes. The construction protocol is
+documented in the preprint (Appendix and Section on expanded validation).
 
 ---
 
@@ -134,7 +177,7 @@ Multi-lingual semantic mapping is operational for Spanish, French, Arabic, and V
 
 ```
 /core           — Ontology schemas and UUID-keyed account mapping (v0.1)
-/localizations  — 23 jurisdiction-specific chart-of-accounts mappings
+/localizations  — Chart-of-accounts mappings for all 195 sovereign jurisdictions
 /spec           — The standard in human-readable and machine-readable form
 /openspec       — 6 OpenSpec change proposals (aggregation, versioning, multi-language, etc.)
 /api            — FastAPI service for semantic mapping and consolidation (REST + gRPC)
@@ -159,9 +202,9 @@ Multi-lingual semantic mapping is operational for Spanish, French, Arabic, and V
 - **Not a learning management system or courseware.**
 - **Not a replacement for jurisdiction-specific accounting software.** Kontablo sits
   above existing software as a translation and validation layer.
-- **Not feature-complete.** Phase 2.5 delivers the ontology, specifications, and
-  reference connectors. Production connectors for NetSuite and SAP S/4HANA are
-  Phase 3 (post-publication).
+- **Not feature-complete.** The v1 release delivers the ontology, specifications,
+  and reference connectors. Production connectors for NetSuite and SAP S/4HANA
+  are post-publication work.
 
 ---
 
@@ -205,7 +248,7 @@ for Kontablo's production layer but does not yet exist as a legal entity.
 
 ---
 
-## What is the roadmap beyond Phase 2.5?
+## What is the roadmap beyond the v1 release?
 
 **Phase 3 — Expert Validation and Production Connectors** (post-publication):
 - Structured validation interviews with 15+ international CPAs across mapped jurisdictions.
@@ -215,8 +258,9 @@ for Kontablo's production layer but does not yet exist as a legal entity.
   [NIST FIPS 203](https://csrc.nist.gov/pubs/fips/203/final) /
   [NIST FIPS 204](https://csrc.nist.gov/pubs/fips/204/final))
   on spec version hashes.
-- Jurisdiction expansion toward comprehensive global coverage (23 jurisdictions mapped
-  at v1; full global scale is the long-term target).
+- Deepening statutory chart coverage: account-level granularity beyond the v1
+  baseline, and resolution of the 4 statutory-chart jurisdictions not yet
+  exercised against primary-source-cited charts (56 of 60 covered at v1).
 
 Commercial API hosting, SaaS, and implementation services are out of scope for
 this repository. See [LICENSING.md](LICENSING.md) for commercial use options.

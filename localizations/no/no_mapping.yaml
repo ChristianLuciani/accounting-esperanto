@@ -18,7 +18,7 @@
 #   OTP (Obligatorisk tjenestepensjon — mandatory occupational pension): minimum 2% of salary.
 
 metadata:
-  country: NO
+  country: "NO"  # quoted: bare NO parses as YAML 1.1 boolean false
   authority: NRS (Norsk RegnskapsStiftelse) / Standard Norge (NS 4102)
   standard: norsk_standard_kontoplan_ns4102
   kontablo_version: 0.1.0

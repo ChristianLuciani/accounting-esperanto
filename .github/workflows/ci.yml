@@ -1,0 +1,68 @@
+# Kontablo CI — the claims–evidence gate.
+#
+# Kontablo's thesis is determinism and verifiability, so the repo machine-checks
+# its own published claims on every push: the test suite must pass, every
+# localization YAML must load, and the mass-consolidation engine must reproduce
+# the exact numbers cited in the preprint abstract, README, CITATION.cff and
+# .zenodo.json. If a number drifts, the build fails before the claim ships.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run test suite
+        run: python -m pytest tests/ -v
+
+      - name: Reproduce published validation numbers
+        run: |
+          python scripts/mass_consolidation_v2.py
+          python - <<'EOF'
+          import json, sys
+
+          results = json.load(open("research/experiments/consolidation_v2/results.json"))
+
+          # Published claims (abstract v1.8, README, CITATION.cff, .zenodo.json).
+          # If a legitimate methodology change moves a number, update BOTH this
+          # block and all four citable surfaces in the same PR (see CLAUDE.md,
+          # "Claims–evidence traceability").
+          expected = {
+              ("coverage_manifest", "sovereign_states"): 195,
+              ("coverage_manifest", "statutory_chart"): 60,
+              ("coverage_manifest", "tier1_code_sets_ready"): 56,
+              ("entities",): 75,
+              ("n_countries",): 68,
+              ("deterministic_coverage_pct",): 97.3,
+              ("distinct_nodes_hit",): 25,
+              ("escalated",): 4,
+          }
+
+          failures = []
+          for path, want in expected.items():
+              node = results
+              for key in path:
+                  node = node[key]
+              if node != want:
+                  failures.append(f"{'/'.join(path)}: published {want}, got {node}")
+
+          if failures:
+              print("CLAIM DRIFT — published numbers no longer reproduce:")
+              print("\n".join(failures))
+              sys.exit(1)
+          print("All published validation numbers reproduce exactly.")
+          EOF
