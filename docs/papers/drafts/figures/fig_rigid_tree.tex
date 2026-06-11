@@ -1,0 +1,82 @@
+% Figure 2.1: Example of a rigid statutory chart-of-accounts tree
+% Source: new figure, created for the Figure 2 split.
+% Depicts: Mexico SAT chart-of-accounts as a strict 1-parent-per-node tree.
+%          Each account lives in exactly one branch, illustrating the
+%          multi-jurisdiction mapping limitation that Kontablo solves.
+%
+% Design system: local/source=orange!20 for leaf accounts,
+%   orange!30 for group/root nodes. Arrows >=Latex. rounded corners=4pt.
+\begin{figure}[ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tikzpicture}[
+    >=Latex,
+    rootnode/.style={draw=orange!70!black, rectangle, rounded corners=4pt,
+        fill=orange!30, minimum width=4.0cm, minimum height=0.9cm,
+        align=center, font=\small\bfseries},
+    groupnode/.style={draw=orange!60!black, rectangle, rounded corners=4pt,
+        fill=orange!18, minimum width=3.8cm, minimum height=0.9cm,
+        align=center, font=\small},
+    leafnode/.style={draw=orange!50!black, rectangle, rounded corners=4pt,
+        fill=orange!10, text width=2.7cm, minimum height=0.9cm,
+        align=center, font=\scriptsize},
+    constraint/.style={draw=red!60!black, rectangle, rounded corners=4pt,
+        fill=red!8, text width=5.5cm, align=center,
+        minimum height=1.0cm, font=\scriptsize},
+    treeline/.style={thick, gray!60}
+]
+
+% Root
+\node[rootnode] (assets) at (0,0) {Assets (Activo)};
+
+% Level 1 groups
+\node[groupnode] (current)    at (-5.5,-2.0) {Current Assets\\(Activo Circulante)};
+\node[groupnode] (noncurrent) at ( 5.5,-2.0) {Non-Current Assets\\(Activo Fijo)};
+
+% Level 2 leaves under Current
+\node[leafnode] (cash)   at (-9.5,-4.4) {\texttt{101} Cash\\(Caja)};
+\node[leafnode] (bank)   at (-5.5,-4.4) {\texttt{102} Bank\\(Bancos)};
+\node[leafnode] (ar)     at (-1.5,-4.4) {\texttt{105} Receivables\\(Cuentas por cobrar)};
+
+% Level 3 leaf under Cash
+\node[leafnode] (petty)  at (-11.2,-6.6) {\texttt{101.01} Petty Cash\\(Caja chica)};
+\node[leafnode] (till)   at (-7.8,-6.6)  {\texttt{101.02} Cash Register\\(Caja general)};
+
+% Level 2 leaves under Non-Current
+\node[leafnode] (ppe)    at (3.2,-4.4)  {\texttt{160} Property, Plant \& Equip.};
+\node[leafnode] (intang) at (7.8,-4.4)  {\texttt{170} Intangibles};
+
+% Tree edges
+\draw[treeline] (assets.south) -- ++(0,-0.4) -| (current.north);
+\draw[treeline] (assets.south) -- ++(0,-0.4) -| (noncurrent.north);
+
+\draw[treeline] (current.south) -- ++(0,-0.4) -| (cash.north);
+\draw[treeline] (current.south) -- ++(0,-0.4) -| (bank.north);
+\draw[treeline] (current.south) -- ++(0,-0.4) -| (ar.north);
+
+\draw[treeline] (cash.south) -- ++(0,-0.4) -| (petty.north);
+\draw[treeline] (cash.south) -- ++(0,-0.4) -| (till.north);
+
+\draw[treeline] (noncurrent.south) -- ++(0,-0.4) -| (ppe.north);
+\draw[treeline] (noncurrent.south) -- ++(0,-0.4) -| (intang.north);
+
+% Constraint callout
+\node[constraint] (note) at (3.5,-7.0) {%
+    \textbf{Rigid tree constraint:} each account belongs to exactly one
+    parent. \texttt{101.01 Petty Cash} cannot simultaneously appear under
+    a tax-ledger branch, a cost-center branch, and the balance-sheet
+    branch — a structural limitation in cross-jurisdiction consolidation.};
+
+\draw[->, thick, red!60!black, dashed]
+    (petty.south) .. controls +(-0.5,-0.8) and +(-2.5,0.5) .. (note.west);
+
+\end{tikzpicture}%
+}
+\caption{Example of a rigid statutory chart-of-accounts tree (Mexico SAT
+excerpt). Each account node has exactly one parent. This single-path
+constraint prevents multi-dimensional classification: an account cannot
+simultaneously satisfy a tax-ledger hierarchy, a cost-center hierarchy,
+and an IFRS balance-sheet hierarchy — the mapping problem that Kontablo's
+graph architecture resolves.}
+\label{fig:rigid_tree}
+\end{figure}

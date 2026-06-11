@@ -1,0 +1,524 @@
+# Kontablo Statutory Chart Families
+# Real, primary-source-cited code sets for supranational / shared statutory
+# charts of accounts. A "family" maps Kontablo Level-3 node ids -> the local
+# statutory code, and is shared by every jurisdiction assigned to that family in
+# core/schemas/jurisdiction_coverage.yaml. This lets one verified chart cover
+# many jurisdictions (e.g., SYSCOHADA covers the 17 OHADA member states).
+#
+# Only families with a citable primary source are populated here. Single-country
+# charts (SAT-MX, PCG-FR, etc.) remain inline in level3_accounts.yaml.
+
+metadata:
+  version: "0.1.0"
+  note: "codes are statutory account numbers; verify against each family's cited source."
+
+families:
+
+  SYSCOHADA:
+    name: "Système Comptable OHADA (SYSCOHADA révisé)"
+    members: [bj, bf, cm, cf, td, km, cg, cd, ci, gq, ga, gn, gw, ml, ne, sn, tg]
+    source: "OHADA, Acte uniforme relatif au droit comptable et à l'information financière (AUDCIF), SYSCOHADA révisé, in force 2018; plan de comptes. https://www.ohada.org/"
+    note: "PCG-derived 8-class chart, mandatory across all 17 OHADA member states."
+    codes:
+      asset.current.cash: "571"            # Caisse
+      asset.current.bank: "521"            # Banques (comptes locaux)
+      asset.current.receivables: "411"     # Clients
+      asset.current.inventory: "31"        # Stocks de marchandises
+      asset.current.vat_input: "4452"      # État, TVA récupérable sur achats
+      asset.noncurrent.intangibles: "21"   # Immobilisations incorporelles
+      asset.noncurrent.ppe: "22"           # Immobilisations corporelles (terrains/bâtiments)
+      liability.current.payables: "401"    # Fournisseurs, dettes en compte
+      liability.current.vat_output: "4431" # État, TVA facturée sur ventes
+      liability.current.tax: "44"          # État et collectivités publiques
+      liability.noncurrent.debt: "16"      # Emprunts et dettes assimilées
+      equity.capital: "101"                # Capital social
+      equity.reserves: "11"                # Réserves
+      equity.retained: "12"                # Report à nouveau
+      revenue.operating: "701"             # Ventes de marchandises
+      revenue.other: "77"                  # Revenus financiers et assimilés
+      expense.cogs: "601"                  # Achats de marchandises
+      expense.admin: "62"                  # Services extérieurs
+      expense.depreciation: "681"          # Dotations aux amortissements d'exploitation
+      expense.interest: "671"              # Intérêts des emprunts
+      expense.fx_loss: "676"               # Pertes de change
+      expense.tax: "891"                   # Impôts sur le résultat
+
+  PGC_ES:
+    name: "Plan General de Contabilidad (Spain)"
+    members: [es]
+    source: "Spain, Real Decreto 1514/2007 (ICAC), Plan General de Contabilidad, cuadro de cuentas. https://www.plangeneralcontable.com/"
+    codes:
+      asset.current.cash: "570"            # Caja, euros
+      asset.current.bank: "572"            # Bancos e instituciones de crédito c/c vista, euros
+      asset.current.receivables: "430"     # Clientes
+      asset.current.inventory: "300"       # Mercaderías
+      asset.current.vat_input: "472"       # Hacienda Pública, IVA soportado
+      asset.noncurrent.intangibles: "20"   # Inmovilizaciones intangibles
+      asset.noncurrent.ppe: "21"           # Inmovilizaciones materiales
+      liability.current.payables: "400"    # Proveedores
+      liability.current.vat_output: "477"  # Hacienda Pública, IVA repercutido
+      liability.current.tax: "475"         # Hacienda Pública, acreedora por conceptos fiscales
+      liability.noncurrent.debt: "170"     # Deudas a largo plazo con entidades de crédito
+      equity.capital: "100"                # Capital social
+      equity.reserves: "112"               # Reserva legal
+      equity.retained: "129"               # Resultado del ejercicio
+      revenue.operating: "700"             # Ventas de mercaderías
+      expense.cogs: "600"                  # Compras de mercaderías
+      expense.admin: "62"                  # Servicios exteriores
+      expense.depreciation: "681"          # Amortización del inmovilizado material
+      expense.interest: "662"              # Intereses de deudas
+      expense.fx_loss: "668"               # Diferencias negativas de cambio
+      expense.tax: "630"                   # Impuesto sobre beneficios
+
+  PCGE_PE:
+    name: "Plan Contable General Empresarial (Peru)"
+    members: [pe]
+    source: "Peru, Ministerio de Economía y Finanzas (MEF), Plan Contable General Empresarial (PCGE modificado 2019). https://www.mef.gob.pe/contenidos/conta_publ/pcge/PCGE_2019.pdf"
+    note: "PCGE is IFRS-converged; codes shown at element/sub-account level."
+    codes:
+      asset.current.cash: "101"            # Caja (elemento 10 Efectivo y equivalentes)
+      asset.current.bank: "104"            # Cuentas corrientes en instituciones financieras
+      asset.current.receivables: "12"      # Cuentas por cobrar comerciales - Terceros
+      asset.current.inventory: "20"        # Mercaderías
+      asset.noncurrent.ppe: "33"           # Inmuebles, maquinaria y equipo
+      asset.noncurrent.intangibles: "34"   # Intangibles
+      liability.current.payables: "42"     # Cuentas por pagar comerciales - Terceros
+      liability.current.tax: "40"          # Tributos y aportes al sistema de pensiones por pagar
+      equity.capital: "50"                 # Capital
+      equity.reserves: "58"                # Reservas
+      equity.retained: "59"                # Resultados acumulados
+      revenue.operating: "70"              # Ventas
+      expense.cogs: "69"                   # Costo de ventas
+      expense.admin: "63"                  # Gastos de servicios prestados por terceros
+      expense.depreciation: "68"           # Valuación y deterioro de activos (depreciación)
+      expense.interest: "67"               # Gastos financieros
+
+  SNC_PT:
+    name: "Sistema de Normalização Contabilística (Portugal)"
+    members: [pt]
+    source: "Portugal, SNC — Código de Contas, Portaria n.º 218/2015 (CNC). https://www.cnc.min-financas.pt/"
+    codes:
+      asset.current.cash: "11"             # Caixa
+      asset.current.bank: "12"             # Depósitos à ordem
+      asset.current.receivables: "21"      # Clientes
+      asset.current.inventory: "32"        # Mercadorias
+      asset.current.vat_input: "2432"      # Estado - IVA dedutível
+      asset.noncurrent.ppe: "43"           # Ativos fixos tangíveis
+      asset.noncurrent.intangibles: "44"   # Ativos intangíveis
+      liability.current.payables: "22"     # Fornecedores
+      liability.current.vat_output: "2433" # Estado - IVA liquidado
+      liability.current.tax: "24"          # Estado e outros entes públicos
+      equity.capital: "51"                 # Capital realizado
+      equity.reserves: "55"                # Reservas
+      equity.retained: "56"                # Resultados transitados
+      revenue.operating: "71"              # Vendas
+      expense.cogs: "31"                   # Compras
+      expense.admin: "62"                  # Fornecimentos e serviços externos
+      expense.depreciation: "64"           # Gastos de depreciação e de amortização
+      expense.interest: "691"              # Juros suportados
+
+  CAS_CN:
+    name: "Accounting Standards for Business Enterprises (China)"
+    members: [cn]
+    source: "China, Ministry of Finance (MOF), ASBE 会计科目 (chart of accounts). https://www.iasplus.com/en/jurisdictions/asia/china"
+    note: "MOF account codes; VAT is a sub-account of 2221 应交税费 and is omitted here to avoid sub-account ambiguity (escalates instead)."
+    codes:
+      asset.current.cash: "1001"           # 库存现金 Cash on hand
+      asset.current.bank: "1002"           # 银行存款 Bank deposits
+      asset.current.receivables: "1122"    # 应收账款 Accounts receivable
+      asset.current.inventory: "1405"      # 库存商品 Merchandise inventory
+      asset.noncurrent.ppe: "1601"         # 固定资产 Fixed assets
+      asset.noncurrent.intangibles: "1701" # 无形资产 Intangible assets
+      liability.current.payables: "2202"   # 应付账款 Accounts payable
+      liability.current.tax: "2221"        # 应交税费 Taxes payable
+      liability.noncurrent.debt: "2501"    # 长期借款 Long-term borrowings
+      equity.capital: "4001"               # 实收资本 Paid-in capital
+      equity.reserves: "4101"              # 盈余公积 Surplus reserve
+      equity.retained: "4104"              # 利润分配/未分配利润 Retained earnings
+      revenue.operating: "6001"            # 主营业务收入 Main operating revenue
+      expense.cogs: "6401"                 # 主营业务成本 Main operating cost
+      expense.admin: "6602"                # 管理费用 Administrative expenses
+      expense.interest: "6603"             # 财务费用 Financial expenses
+
+  PCMN_BE:
+    name: "Plan Comptable Minimum Normalisé (Belgium)"
+    members: [be]
+    source: "Belgium, Commission des Normes Comptables (CNC/CBN), Plan comptable minimum normalisé (AR 12/09/1983, consolidé). https://www.cnc-cbn.be/"
+    codes:
+      asset.current.cash: "570"            # Caisses
+      asset.current.bank: "550"            # Établissements de crédit: comptes courants
+      asset.current.receivables: "400"     # Clients
+      asset.current.inventory: "34"        # Marchandises (stocks)
+      asset.current.vat_input: "411"       # TVA à récupérer
+      asset.noncurrent.ppe: "22"           # Terrains et constructions
+      asset.noncurrent.intangibles: "21"   # Immobilisations incorporelles
+      liability.current.payables: "440"    # Fournisseurs
+      liability.current.vat_output: "451"  # TVA à payer
+      liability.current.tax: "45"          # Dettes fiscales, salariales et sociales
+      liability.noncurrent.debt: "17"      # Dettes à plus d'un an
+      equity.capital: "10"                 # Capital
+      equity.reserves: "13"                # Réserves
+      equity.retained: "14"                # Bénéfice reporté
+      revenue.operating: "70"              # Chiffre d'affaires
+      expense.cogs: "604"                  # Achats de marchandises
+      expense.admin: "61"                  # Services et biens divers
+      expense.depreciation: "630"          # Amortissements
+      expense.interest: "650"              # Charges des dettes
+
+  CGNC_MA:
+    name: "Code Général de Normalisation Comptable / PCGE (Morocco)"
+    members: [ma]
+    source: "Morocco, CGNC (loi 9-88), Plan Comptable Général des Entreprises. https://www.plancomptable.ma/"
+    codes:
+      asset.current.cash: "5161"           # Caisse
+      asset.current.bank: "5141"           # Banques (solde débiteur)
+      asset.current.receivables: "3421"    # Clients
+      asset.current.inventory: "3111"      # Marchandises
+      asset.current.vat_input: "3455"      # État - TVA récupérable
+      asset.noncurrent.ppe: "23"           # Immobilisations corporelles
+      asset.noncurrent.intangibles: "22"   # Immobilisations incorporelles
+      liability.current.payables: "4411"   # Fournisseurs
+      liability.current.vat_output: "4455" # État - TVA facturée
+      liability.noncurrent.debt: "14"      # Dettes de financement
+      equity.capital: "1111"               # Capital social
+      equity.reserves: "114"               # Réserve légale
+      equity.retained: "116"               # Report à nouveau
+      revenue.operating: "7111"            # Ventes de marchandises
+      expense.cogs: "6111"                 # Achats de marchandises
+      expense.interest: "631"              # Charges d'intérêts
+      expense.fx_loss: "633"               # Pertes de change
+
+  SCF_DZ:
+    name: "Système Comptable Financier (Algeria)"
+    members: [dz]
+    source: "Algeria, Loi 07-11 (2007), Système Comptable Financier (SCF 2010), plan de comptes. https://www.cecyb.net/"
+    note: "IFRS-inspired chart strongly converged with the French PCG."
+    codes:
+      asset.current.cash: "53"             # Caisse
+      asset.current.bank: "512"            # Banques comptes courants
+      asset.current.receivables: "411"     # Clients
+      asset.current.inventory: "30"        # Stocks de marchandises
+      asset.current.vat_input: "4456"      # État - TVA déductible
+      asset.noncurrent.ppe: "21"           # Immobilisations corporelles
+      asset.noncurrent.intangibles: "20"   # Immobilisations incorporelles
+      liability.current.payables: "401"    # Fournisseurs
+      liability.current.vat_output: "4457" # État - TVA collectée
+      liability.noncurrent.debt: "16"      # Emprunts et dettes assimilées
+      equity.capital: "101"                # Capital émis
+      equity.reserves: "106"               # Réserves
+      equity.retained: "11"                # Report à nouveau
+      revenue.operating: "70"              # Ventes
+      expense.cogs: "60"                   # Achats consommés
+      expense.depreciation: "68"           # Dotations aux amortissements
+      expense.interest: "661"              # Charges d'intérêts
+      expense.fx_loss: "666"               # Pertes de change
+
+  RO_OMFP1802:
+    name: "Plan de conturi general (Romania)"
+    members: [ro]
+    source: "Romania, OMFP 1802/2014, Planul de conturi general. https://kpmg.com/ro/en/home/insights/2017/01/chart-of-accounts-romania.html"
+    codes:
+      asset.current.cash: "5311"           # Casa în lei
+      asset.current.bank: "5121"           # Conturi la bănci în lei
+      asset.current.receivables: "4111"    # Clienți
+      asset.current.inventory: "371"       # Mărfuri
+      asset.current.vat_input: "4426"      # TVA deductibilă
+      asset.noncurrent.ppe: "213"          # Instalații tehnice, mijloace de transport
+      asset.noncurrent.intangibles: "20"   # Imobilizări necorporale
+      liability.current.payables: "401"    # Furnizori
+      liability.current.vat_output: "4427" # TVA colectată
+      liability.noncurrent.debt: "162"     # Credite bancare pe termen lung
+      equity.capital: "1012"               # Capital subscris vărsat
+      equity.reserves: "106"               # Rezerve
+      equity.retained: "117"               # Rezultatul reportat
+      revenue.operating: "707"             # Venituri din vânzarea mărfurilor
+      expense.cogs: "607"                  # Cheltuieli privind mărfurile
+      expense.depreciation: "6811"         # Cheltuieli de exploatare - amortizări
+      expense.interest: "666"              # Cheltuieli privind dobânzile
+      expense.fx_loss: "665"               # Cheltuieli din diferențe de curs valutar
+
+  CZ_chart:
+    name: "Směrná účtová osnova (Czechia)"
+    members: [cz]
+    source: "Czechia, Vyhláška 500/2002 Sb., směrná účtová osnova pro podnikatele."
+    codes:
+      asset.current.cash: "211"            # Pokladna
+      asset.current.bank: "221"            # Bankovní účty
+      asset.current.receivables: "311"     # Pohledávky z obchodních vztahů
+      asset.current.inventory: "132"       # Zboží na skladě
+      asset.noncurrent.ppe: "022"          # Samostatné hmotné movité věci
+      asset.noncurrent.intangibles: "013"  # Software
+      liability.current.payables: "321"    # Závazky z obchodních vztahů
+      liability.current.tax: "343"         # DPH
+      liability.noncurrent.debt: "461"     # Bankovní úvěry
+      equity.capital: "411"                # Základní kapitál
+      equity.reserves: "421"               # Rezervní fond
+      equity.retained: "428"               # Nerozdělený zisk minulých let
+      revenue.operating: "604"             # Tržby za zboží
+      expense.cogs: "504"                  # Prodané zboží
+      expense.depreciation: "551"          # Odpisy dlouhodobého majetku
+      expense.interest: "562"              # Úroky
+      expense.fx_loss: "563"               # Kurzové ztráty
+
+  SK_chart:
+    name: "Účtová osnova (Slovakia)"
+    members: [sk]
+    source: "Slovakia, Opatrenie MF SR (účtová osnova pre podnikateľov); shares the Czechoslovak chart numbering."
+    codes:
+      asset.current.cash: "211"            # Pokladnica
+      asset.current.bank: "221"            # Bankové účty
+      asset.current.receivables: "311"     # Odberatelia
+      asset.current.inventory: "132"       # Tovar na sklade
+      asset.noncurrent.ppe: "022"          # Samostatné hnuteľné veci
+      asset.noncurrent.intangibles: "013"  # Softvér
+      liability.current.payables: "321"    # Dodávatelia
+      liability.current.tax: "343"         # DPH
+      liability.noncurrent.debt: "461"     # Bankové úvery
+      equity.capital: "411"                # Základné imanie
+      equity.retained: "428"               # Nerozdelený zisk minulých rokov
+      revenue.operating: "604"             # Tržby za tovar
+      expense.cogs: "504"                  # Predaný tovar
+      expense.depreciation: "551"          # Odpisy
+      expense.interest: "562"              # Úroky
+      expense.fx_loss: "563"               # Kurzové straty
+
+  HU_chart:
+    name: "Számlatükör (Hungary)"
+    members: [hu]
+    source: "Hungary, Act C of 2000 on Accounting (számviteli törvény), standard számlatükör."
+    note: "Hungarian sub-account numbers within a class are partly flexible; only the well-established standard codes are populated."
+    codes:
+      asset.current.cash: "381"            # Pénztár
+      asset.current.bank: "384"            # Elszámolási betétszámla
+      asset.current.receivables: "311"     # Vevők
+      asset.current.inventory: "26"        # Áruk
+      liability.current.payables: "454"    # Szállítók
+      equity.capital: "411"                # Jegyzett tőke
+      revenue.operating: "91"              # Értékesítés nettó árbevétele
+      expense.cogs: "814"                  # Eladott áruk beszerzési értéke (ELÁBÉ)
+
+  BG_chart:
+    name: "Национален сметкоплан (Bulgaria)"
+    members: [bg]
+    source: "Bulgaria, National Chart of Accounts (Национален сметкоплан)."
+    codes:
+      asset.current.cash: "501"            # Каса
+      asset.current.bank: "503"            # Разплащателна сметка
+      asset.current.receivables: "411"     # Клиенти
+      asset.current.inventory: "304"       # Стоки
+      asset.noncurrent.ppe: "204"          # Машини, съоръжения и оборудване
+      liability.current.payables: "401"    # Доставчици
+      equity.capital: "101"                # Основен капитал
+      revenue.operating: "701"             # Приходи от продажби
+
+  UA_chart:
+    name: "План рахунків (Ukraine)"
+    members: [ua]
+    source: "Ukraine, Наказ Мінфіну 291 (Інструкція про застосування Плану рахунків)."
+    codes:
+      asset.current.cash: "301"            # Каса в національній валюті
+      asset.current.bank: "311"            # Поточні рахунки в національній валюті
+      asset.current.receivables: "361"     # Розрахунки з вітчизняними покупцями
+      asset.current.inventory: "281"       # Товари на складі
+      asset.noncurrent.ppe: "10"           # Основні засоби
+      asset.noncurrent.intangibles: "12"   # Нематеріальні активи
+      liability.current.payables: "631"    # Розрахунки з вітчизняними постачальниками
+      liability.current.tax: "641"         # Розрахунки за податками
+      liability.noncurrent.debt: "50"      # Довгострокові позики
+      equity.capital: "40"                 # Зареєстрований (пайовий) капітал
+      equity.reserves: "43"                # Резервний капітал
+      equity.retained: "44"                # Нерозподілені прибутки
+      revenue.operating: "702"             # Дохід від реалізації товарів
+      expense.cogs: "902"                  # Собівартість реалізованих товарів
+      expense.interest: "951"              # Відсотки за кредит
+      expense.fx_loss: "945"               # Втрати від операційної курсової різниці
+
+  KZ_chart:
+    name: "Типовой план счетов (Kazakhstan)"
+    members: [kz]
+    source: "Kazakhstan, Типовой план счетов бухгалтерского учёта (МФ РК); IFRS-based 4-digit chart."
+    codes:
+      asset.current.cash: "1010"           # Денежные средства в кассе
+      asset.current.bank: "1030"           # Денежные средства на текущих банковских счетах
+      asset.current.receivables: "1210"    # Краткосрочная дебиторская задолженность покупателей
+      asset.current.inventory: "1330"      # Товары
+      asset.noncurrent.ppe: "2410"         # Основные средства
+      asset.noncurrent.intangibles: "2730" # Нематериальные активы
+      liability.current.payables: "3310"   # Краткосрочная кредиторская задолженность поставщикам
+      liability.current.tax: "3110"        # Корпоративный подоходный налог
+      liability.noncurrent.debt: "4010"    # Долгосрочные банковские займы
+      equity.capital: "5010"               # Объявленный капитал
+      equity.retained: "5510"              # Нераспределённая прибыль
+      revenue.operating: "6010"            # Доход от реализации продукции и услуг
+      expense.cogs: "7010"                 # Себестоимость реализованной продукции
+      expense.admin: "7210"                # Административные расходы
+      expense.interest: "7310"             # Расходы по вознаграждениям
+      expense.fx_loss: "7430"              # Расходы от курсовой разницы
+
+  TN_chart:
+    name: "Plan Comptable des Entreprises (Tunisia)"
+    members: [tn]
+    source: "Tunisia, Loi 96-112 (1996), Plan Comptable des Entreprises (PCT 1997)."
+    codes:
+      asset.current.cash: "54"             # Caisse
+      asset.current.bank: "532"            # Banques
+      asset.current.receivables: "411"     # Clients
+      asset.current.inventory: "37"        # Stocks de marchandises
+      asset.noncurrent.ppe: "22"           # Immobilisations corporelles
+      asset.noncurrent.intangibles: "21"   # Immobilisations incorporelles
+      liability.current.payables: "401"    # Fournisseurs
+      liability.noncurrent.debt: "16"      # Emprunts
+      equity.capital: "101"                # Capital social
+      equity.reserves: "111"               # Réserve légale
+      equity.retained: "121"               # Résultats reportés
+      revenue.operating: "707"             # Ventes de marchandises
+      expense.cogs: "607"                  # Achats de marchandises
+      expense.depreciation: "681"          # Dotations aux amortissements
+      expense.interest: "651"              # Charges d'intérêts
+      expense.fx_loss: "655"               # Pertes de change
+
+  BY_chart:
+    name: "Типовой план счетов (Belarus)"
+    members: [by]
+    source: "Belarus, Постановление Минфина №50 (2011), типовой план счетов."
+    note: "Soviet-heritage numbering; revenue (90) carries cost as a sub-account, so COGS is not mapped to a distinct top-level code."
+    codes:
+      asset.current.cash: "50"             # Касса
+      asset.current.bank: "51"             # Расчётные счета
+      asset.current.receivables: "62"      # Расчёты с покупателями и заказчиками
+      asset.current.inventory: "41"        # Товары
+      asset.noncurrent.ppe: "01"           # Основные средства
+      asset.noncurrent.intangibles: "04"   # Нематериальные активы
+      liability.current.payables: "60"     # Расчёты с поставщиками и подрядчиками
+      liability.current.tax: "68"          # Расчёты по налогам и сборам
+      liability.noncurrent.debt: "67"      # Расчёты по долгосрочным кредитам и займам
+      equity.capital: "80"                 # Уставный капитал
+      equity.reserves: "82"                # Резервный капитал
+      equity.retained: "84"                # Нераспределённая прибыль
+      revenue.operating: "90"              # Доходы по текущей деятельности (реализация)
+
+  RS_chart:
+    name: "Kontni okvir (Serbia)"
+    members: [rs]
+    source: "Serbia, Pravilnik o Kontnom okviru za privredna društva, zadruge i preduzetnike (Sl. glasnik)."
+    codes:
+      asset.current.cash: "243"            # Blagajna
+      asset.current.bank: "241"            # Tekući (poslovni) računi
+      asset.current.receivables: "204"     # Kupci u zemlji
+      asset.current.inventory: "134"       # Roba u prometu
+      asset.noncurrent.ppe: "023"          # Postrojenja i oprema
+      liability.current.payables: "435"    # Dobavljači u zemlji
+      equity.capital: "300"                # Osnovni kapital
+      revenue.operating: "604"             # Prihodi od prodaje robe
+      expense.cogs: "501"                  # Nabavna vrednost prodate robe
+
+  HR_chart:
+    name: "Računski plan (Croatia)"
+    members: [hr]
+    source: "Croatia, RRiF-ov računski plan za poduzetnike (HSFI/MSFI)."
+    codes:
+      asset.current.cash: "1000"           # Blagajna
+      asset.current.bank: "1020"           # Žiro-račun
+      asset.current.receivables: "1200"    # Kupci
+      asset.current.inventory: "6500"      # Roba
+      asset.noncurrent.ppe: "0200"         # Postrojenja i oprema
+      liability.current.payables: "2200"   # Dobavljači
+      equity.capital: "9000"               # Upisani kapital
+      revenue.operating: "7500"            # Prihodi od prodaje
+
+  SI_chart:
+    name: "Enotni kontni okvir (Slovenia)"
+    members: [si]
+    source: "Slovenia, Enotni kontni okvir za gospodarske družbe (SRS, Slovenski inštitut za revizijo)."
+    codes:
+      asset.current.cash: "100"            # Denarna sredstva v blagajni
+      asset.current.bank: "110"            # Denarna sredstva na računih
+      asset.current.receivables: "120"     # Kratkoročne terjatve do kupcev
+      asset.current.inventory: "660"       # Trgovsko blago
+      asset.noncurrent.ppe: "040"          # Nepremičnine
+      liability.current.payables: "220"    # Kratkoročne obveznosti do dobaviteljev
+      equity.capital: "900"                # Osnovni kapital
+      revenue.operating: "760"             # Prihodi od prodaje
+
+  AT_chart:
+    name: "Einheitskontenrahmen (Austria)"
+    members: [at]
+    source: "Austria, Österreichischer Einheitskontenrahmen (EKR)."
+    codes:
+      asset.current.cash: "2700"           # Kassa
+      asset.current.bank: "2800"           # Guthaben bei Kreditinstituten
+      asset.current.receivables: "2000"    # Forderungen aus Lieferungen und Leistungen
+      asset.current.inventory: "1600"      # Handelswarenvorrat
+      asset.current.vat_input: "2500"      # Vorsteuer
+      liability.current.payables: "3300"   # Verbindlichkeiten aus Lieferungen und Leistungen
+      liability.current.vat_output: "3500" # Umsatzsteuer
+      equity.capital: "9000"               # Nennkapital
+      revenue.operating: "4000"            # Umsatzerlöse
+      expense.cogs: "5000"                 # Wareneinsatz
+
+  LU_PCN:
+    name: "Plan Comptable Normalisé (Luxembourg)"
+    members: [lu]
+    source: "Luxembourg, Plan Comptable Normalisé (PCN 2020), Règlement grand-ducal 12/09/2019."
+    note: "BeNeLux-style class 4: 40 = créances (receivables), 44 = dettes (payables) — NOT the French PCG 411/401 convention."
+    codes:
+      asset.current.cash: "516"            # Caisse
+      asset.current.bank: "513"            # Banques, CCP
+      asset.current.receivables: "40"      # Créances résultant de ventes et prestations
+      liability.current.payables: "44"     # Dettes résultant d'achats et de prestations
+      equity.capital: "101"                # Capital souscrit
+      revenue.operating: "70"              # Montant net du chiffre d'affaires
+      expense.cogs: "60"                   # Consommation de marchandises et matières
+
+  MD_chart:
+    name: "Planul general de conturi contabile (Moldova)"
+    members: [md]
+    source: "Moldova, Planul general de conturi contabile (Ministerul Finanțelor); mandatory except for IFRS appliers."
+    codes:
+      asset.current.cash: "241"            # Casa
+      asset.current.bank: "242"            # Conturi curente în monedă națională
+      asset.current.receivables: "221"     # Creanțe comerciale
+      asset.current.inventory: "217"       # Mărfuri
+      asset.noncurrent.ppe: "123"          # Mijloace fixe
+      liability.current.payables: "521"    # Datorii comerciale curente
+      equity.capital: "311"                # Capital social
+      revenue.operating: "611"             # Venituri din vânzări
+      expense.cogs: "711"                  # Costul vânzărilor
+
+  GR_chart:
+    name: "Σχέδιο Λογαριασμών ΕΓΛΣ / ΕΛΠ (Greece)"
+    members: [gr]
+    source: "Greece, ΕΓΛΣ (P.D. 1123/1980), retained in correspondence under the Greek Accounting Standards (ΕΛΠ, Ν.4308/2014)."
+    note: "Codes follow the long-established ΕΓΛΣ chart; the ΕΛΠ appendix keeps it in correspondence. COGS has no single ΕΓΛΣ leaf and is omitted."
+    codes:
+      asset.current.cash: "38.00"          # Ταμείο
+      asset.current.bank: "38.03"          # Καταθέσεις όψεως
+      asset.current.receivables: "30"      # Πελάτες
+      asset.current.inventory: "20"        # Εμπορεύματα
+      liability.current.payables: "50"     # Προμηθευτές
+      equity.capital: "40"                 # Κεφάλαιο
+      revenue.operating: "71"              # Πωλήσεις εμπορευμάτων
+
+  PCG_FR:
+    name: "Plan Comptable Général (France / Monaco)"
+    members: [mc]
+    source: "France, Plan Comptable Général (PCG, ANC Règlement 2014-03); applied in Monaco. (fr is held inline in the ontology.)"
+    codes:
+      asset.current.cash: "530"            # Caisse
+      asset.current.bank: "512"            # Banques
+      asset.current.receivables: "411"     # Clients
+      asset.current.inventory: "37"        # Stocks de marchandises
+      asset.current.vat_input: "44566"     # TVA déductible sur autres biens et services
+      asset.noncurrent.ppe: "21"           # Immobilisations corporelles
+      asset.noncurrent.intangibles: "20"   # Immobilisations incorporelles
+      liability.current.payables: "401"    # Fournisseurs
+      liability.current.vat_output: "44571"# TVA collectée
+      liability.noncurrent.debt: "164"     # Emprunts auprès des établissements de crédit
+      equity.capital: "101"                # Capital
+      equity.reserves: "106"               # Réserves
+      equity.retained: "110"               # Report à nouveau
+      revenue.operating: "707"             # Ventes de marchandises
+      expense.cogs: "607"                  # Achats de marchandises
+      expense.depreciation: "6811"         # Dotations aux amortissements
+      expense.interest: "661"              # Charges d'intérêts
+      expense.fx_loss: "666"               # Pertes de change

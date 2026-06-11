@@ -1,42 +1,77 @@
-% Figure: Kontablo Ontology Architecture
+% Figure 2.2: Kontablo Graph Architecture (the solution)
 % Source: originally in sections/ontology.tex
-% Depicts: Local accounting nodes (MX/FR/VN) → Kontablo universal node → IFRS target;
-%           autonomous AI agent writing via AP2.
+% Depicts: Local accounting nodes (MX/FR/VN) → Kontablo universal node via
+%          exact lookup or AI semantic fallback → IFRS target;
+%          autonomous AI agent writing via AP2 protocol.
+%
+% Design system: local/source=orange!20, Kontablo/universal=blue!15,
+%   IFRS/output=green!15, agent=violet!15. Arrows >=Latex, thick.
+%   rounded corners=4pt.
 \begin{figure}[ht]
 \centering
 \resizebox{\textwidth}{!}{%
 \begin{tikzpicture}[
     >=Latex,
     node distance=1.8cm and 3cm,
-    localnode/.style={draw, rectangle, rounded corners, align=center, fill=red!10, text width=4cm, font=\small},
-    kontablo/.style={draw, circle, align=center, minimum size=4cm, fill=blue!15, font=\bfseries},
-    target/.style={draw, diamond, aspect=2, align=center, fill=green!15, font=\small\bfseries},
-    agent/.style={draw, rectangle, rounded corners, align=center, fill=purple!15, font=\small}
+    localnode/.style={draw=orange!60!black, rectangle, rounded corners=4pt,
+        fill=orange!15, text width=4.0cm, minimum height=1.0cm,
+        align=center, font=\small},
+    kontablo/.style={draw=blue!60!black, circle,
+        fill=blue!12, minimum size=3.8cm, align=center, font=\small\bfseries},
+    targetnode/.style={draw=green!60!black, diamond, aspect=2,
+        fill=green!12, align=center, font=\small\bfseries},
+    agentnode/.style={draw=violet!60!black, rectangle, rounded corners=4pt,
+        fill=violet!12, text width=4.2cm, minimum height=1.0cm,
+        align=center, font=\small},
+    edgelabel/.style={font=\scriptsize, fill=white, inner sep=1pt}
 ]
 
 % Local Nodes
-\node[localnode] (mx) {Mexico (SAT)\\ \texttt{101.01 Caja}};
-\node[localnode, below=1.2cm of mx] (fr) {France (PCG)\\ \texttt{531 Caisse}};
-\node[localnode, below=1.2cm of fr] (vn) {Vietnam (VAS)\\ \texttt{111 Tien mat}};
+\node[localnode] (mx) {Mexico (SAT)\\\texttt{101.01 Caja}};
+\node[localnode, below=1.2cm of mx] (fr) {France (PCG)\\\texttt{531 Caisse}};
+\node[localnode, below=1.2cm of fr] (vn) {Vietnam (VAS)\\\texttt{111 Tien mat}};
 
-% Kontablo Node
-\node[kontablo, right=4cm of fr] (kcash) {asset.current.cash\\[0.5em] \tiny{Universal Kontablo ID}};
+% Kontablo Universal Node
+\node[kontablo, right=4.2cm of fr] (kcash) {%
+    \texttt{asset.current.cash}\\[4pt]
+    {\scriptsize Universal Kontablo ID}};
 
-% Edges from local to Kontablo
-\draw[->, thick, dashed] (mx.east) to[out=0, in=140] node[above, sloped, font=\scriptsize] {Exact Lookup} (kcash.140);
-\draw[->, thick, dashed] (fr.east) to node[above, font=\scriptsize] {Exact Lookup} (kcash.180);
-\draw[->, thick, dashed] (vn.east) to[out=0, in=220] node[below, sloped, font=\scriptsize] {AI Semantic Fallback} (kcash.220);
+% Edges: local → Kontablo
+\draw[->, thick, dashed, orange!70!black]
+    (mx.east) to[out=0, in=140]
+    node[edgelabel, above, sloped] {Exact Lookup}
+    (kcash.140);
+\draw[->, thick, dashed, orange!70!black]
+    (fr.east) --
+    node[edgelabel, above] {Exact Lookup}
+    (kcash.180);
+\draw[->, thick, dotted, orange!70!black]
+    (vn.east) to[out=0, in=220]
+    node[edgelabel, below, sloped] {AI Semantic Fallback}
+    (kcash.220);
 
 % IFRS Target
-\node[target, right=4cm of kcash] (ifrs) {IFRS Taxonomy\\ \texttt{CashEq}};
-\draw[->, ultra thick] (kcash.east) to node[above, font=\scriptsize] {1:1 Standardized} (ifrs.west);
+\node[targetnode, right=4.2cm of kcash] (ifrs) {%
+    IFRS Taxonomy\\\texttt{CashEq}};
+\draw[->, ultra thick, green!60!black]
+    (kcash.east) --
+    node[edgelabel, above] {1:1 Standardized}
+    (ifrs.west);
 
-% Agent Integration
-\node[agent, above=3cm of kcash] (mcp) {Autonomous AI Agent\\ (via AP2 Protocol Intent Mandate)};
-\draw[->, thick, dotted] (mcp.south) -- (kcash.north) node[midway, right, font=\scriptsize] {Direct Query/Write};
+% Agent
+\node[agentnode, above=2.8cm of kcash] (agent) {%
+    Autonomous AI Agent\\{\scriptsize (via AP2 Protocol Intent Mandate)}};
+\draw[->, thick, violet!60!black, dotted]
+    (agent.south) --
+    node[edgelabel, right] {Direct Query / Write}
+    (kcash.north);
 
 \end{tikzpicture}%
 }
-\caption{The Kontablo Ontology Architecture: bridging local accounting nodes to the universal ontology via exact lookup or semantic fallback.}
+\caption{The Kontablo graph architecture: local statutory account nodes
+(Mexico SAT, France PCG, Vietnam VAS) converge on a universal Kontablo
+node via deterministic exact lookup or AI semantic fallback. The universal
+node maps 1:1 to the IFRS taxonomy target. Autonomous AI agents interact
+directly with the universal layer via the AP2 protocol.}
 \label{fig:kontablo_graph_architecture}
 \end{figure}

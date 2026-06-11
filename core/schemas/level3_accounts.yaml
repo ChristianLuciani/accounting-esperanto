@@ -117,7 +117,7 @@ level3:
       pa: "1.1.12"
       fr: "445660"
       de: "Vorsteuer"
-      ru: "68.2"
+      ru: "19"            # Order 94n: account 19 "НДС по приобретенным ценностям" (input VAT)
       vn: "1331"
       in: "GST Input Credit"
       cn: "进项税额"
@@ -283,7 +283,7 @@ level3:
     local_codes:
       mx: "IVA Trasladado"
       fr: "445710"
-      ru: "68.2"
+      ru: "68.02"         # Order 94n: account 68 sub-2 "Расчеты по НДС" (output/settlement VAT)
       vn: "3331"
       cn: "销项税额"
     not_applicable: ["us", "ca"]  # Sales tax is state-level in US, not VAT
@@ -351,7 +351,7 @@ level3:
     is_aggregate: false
     local_codes:
       mx: "311"
-      vn: "311"
+      vn: "341"            # Circular 200: account 341 long-term borrowings & finance-lease (311 = short-term)
 
   - id: "liability.noncurrent.lease"
     uuid: "30000000-0000-4000-8000-000000000002"
@@ -527,10 +527,10 @@ level3:
     level: 3
     is_aggregate: false
     local_codes:
-      mx: "509"
-      vn: "635"
+      mx: "701.04"         # SAT Anexo 24: 701.04 "Intereses a cargo" (financial expenses)
+      vn: "635"            # VAS Circular 200: 635 "Chi phí tài chính" (interest is its principal component)
       fr: "661"
-    notes: "VN account 635 includes BOTH interest and FX losses — needs subaccount split in Kontablo."
+    notes: "VAS account 635 aggregates interest AND FX losses under one statutory code; Kontablo maps 635 to the interest leaf (its dominant component) and does not claim a distinct VAS leaf for FX loss (see expense.fx_loss)."
 
   - id: "expense.tax"
     uuid: "00000000-0000-4000-8000-000000000507"
@@ -558,10 +558,9 @@ level3:
     level: 3
     is_aggregate: false
     local_codes:
-      mx: "509"
-      vn: "635"
+      mx: "701.01"         # SAT Anexo 24: 701.01 "Pérdida cambiaria" (FX loss)
       de: "6800"
-    notes: "Critical in VE (dual-currency system). Split from interest in VN (account 635 is combined)."
+    notes: "Critical in VE (dual-currency system). VAS has no distinct statutory leaf code for FX loss: realized FX losses transit account 635 (financial expenses), which Kontablo maps to expense.interest; hence no vn code is claimed here to avoid a one-code-to-two-leaves collision."
 
 ---
 

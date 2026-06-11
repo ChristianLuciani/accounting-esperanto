@@ -210,10 +210,13 @@ instrument.
 Management}
 \label{subsec:cra_as_error_management}
 
-The Co-responsibility Architecture (ADR-008, Section~10) is commonly
-presented as a governance mechanism for human oversight. In the context of
-the harness architecture, it plays a more specific functional role: it is the
-\textbf{residual error management layer}.
+The Co-responsibility Architecture (ADR-008, Section~10) serves two functions
+(Section~\ref{subsec:non_delegability}): it is the foundational locus of
+non-delegable legal accountability for every transaction, and --- the aspect
+this subsection isolates --- it is the \textbf{residual error management
+layer}. The discussion here concerns only the second, reactive function; it
+presupposes, and does not replace, the foundational accountability the human
+carries on every record regardless of whether it is flagged.
 
 Where the three-tier pipeline and the Deterministic Boundary Library resolve
 decisions within coverage, the CRA governs what happens at and beyond the
@@ -223,23 +226,33 @@ confidence below threshold -- the CRA routes the transaction to human review,
 enforces justification logging, and records the outcome with an immutable
 audit trail.
 
-The human accountant in this design is not a rubber-stamp approver of AI
-output. They are the \textbf{resolver of the residual error population}: the
-cases that are genuinely beyond automated coverage and require human judgment.
-The CRA's inconsistency flagging mechanism ensures that every such resolution
-is recorded and attributable, operationalizing the ISACA shared-responsibility
-model and the EU AI Act's requirements for high-risk AI systems in financial
-contexts (ISACA, 2024; EU AI Act, 2025).
+Within this reactive scope, the human accountant is not a rubber-stamp
+approver of AI output. For the cases that reach review, they are the
+\textbf{resolver of the residual error population}: cases genuinely beyond
+automated coverage that require human judgment. The CRA's inconsistency
+flagging mechanism ensures that every such resolution is recorded and
+attributable, operationalizing the ISACA shared-responsibility model and the
+EU AI Act's requirements for high-risk AI systems in financial contexts
+(ISACA, 2024; EU AI Act, 2025). This is precisely the human-in-the-loop
+anchoring that recent work on the AI assurance accountability gap identifies
+as the mechanism preserving professional responsibility when autonomous
+systems cannot bear it (Tucker \& Kapoor, 2025).
 
-This framing implies a property of the system over time: as the ontology
-expands -- more jurisdictions mapped, more transaction types covered, more
-boundary predicates encoded -- the population of out-of-coverage cases
-shrinks and the human review load decreases. The CRA, operating on a
-shrinking residual, becomes progressively less burdened without ever being
-removed. The coverage boundary never reaches zero; there will always be novel
-transactions, regulatory changes, and jurisdictional edge cases that require
-human judgment. The design accepts this reality and manages it, rather than
-claiming to eliminate it.
+This framing implies a property of the system over time that applies
+\textbf{only to the reactive function}: as the ontology expands -- more
+jurisdictions mapped, more transaction types covered, more boundary predicates
+encoded -- the population of out-of-coverage cases shrinks and the
+\emph{error-resolution} load decreases. The CRA, operating on a shrinking
+residual, imposes progressively less reactive review burden. This does
+\emph{not} mean human involvement trends to zero: the foundational
+accountability and context-governance function
+(Section~\ref{subsec:non_delegability}) is invariant and per-transaction. What
+a maturing ontology changes is the \emph{mix} of human work --- less time
+spent resolving misclassifications, with no reduction in the legal
+responsibility the human carries for the record. The coverage boundary itself
+never reaches zero either; novel transactions, regulatory changes, and
+jurisdictional edge cases continually renew the residual. The design accepts
+both realities and manages them, rather than claiming to eliminate the human.
 
 \subsection{Future Extension: Per-Client Determinism (ADR-011)}
 \label{subsec:adr011_preview}

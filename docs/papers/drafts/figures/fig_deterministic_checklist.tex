@@ -1,22 +1,63 @@
-% Figure: Deterministic Boundary Checklist
+% Figure: Deterministic Boundary Library — validation gauntlet
 % Source: originally in sections/deterministic_logic.tex (second figure)
-% Depicts: AI proposed mapping → debit/credit check → liquidity boundary →
-%          Approved OR Raise Audit Flag.
+% Depicts: an AI-proposed mapping passes a sequence of deterministic invariant
+%          checks (the five exercised in the validation harness); any failure
+%          quarantines the mapping for human review (it is NOT posted), and only
+%          a clean pass reaches the ledger.
+%
+% Design system: Kontablo/universal=blue, decision=amber diamonds,
+%   approved/ledger=green, quarantine/flag=red. Arrows >=Latex.
 \begin{figure}[ht]
 \centering
-\begin{tikzpicture}[node distance=2.5cm, every node/.style={draw, fill=gray!10, rounded corners, font=\small}]
-    \node (step1) {AI Proposed Mapping};
-    \node (step2) [below of=step1] {Debit/Credit Check};
-    \node (step3) [below of=step2] {Liquidity Boundary};
-    \node (success) [right of=step3, node distance=4cm] {Approved};
-    \node (fail) [left of=step3, node distance=4.5cm] {Raise Audit Flag};
+\resizebox{!}{0.58\textheight}{%
+\begin{tikzpicture}[
+    >=Latex,
+    proc/.style={draw=blue!60!black, rectangle, rounded corners=4pt,
+        fill=blue!10, text width=4.2cm, align=center, minimum height=1.0cm,
+        font=\small},
+    check/.style={draw=yellow!70!black, diamond, aspect=2.4,
+        fill=yellow!20, text width=3.0cm, align=center, font=\small,
+        inner sep=1pt},
+    approved/.style={draw=green!55!black, rectangle, rounded corners=4pt,
+        fill=green!14, text width=4.2cm, align=center, minimum height=1.0cm,
+        font=\small\bfseries},
+    quar/.style={draw=red!60!black, rectangle, rounded corners=4pt,
+        fill=red!10, text width=3.4cm, align=center, minimum height=2.2cm,
+        font=\small\bfseries},
+    lbl/.style={font=\scriptsize, fill=white, inner sep=1.5pt},
+    faillbl/.style={font=\scriptsize, text=red!60!black, fill=white, inner sep=1.5pt}
+]
+    \node[proc] (p) at (0,0) {AI-proposed mapping\\ \scriptsize(UUID + confidence)};
+    \node[check, below=1.0cm of p]  (d1) {1.\ Nature\\(debit/credit) OK?};
+    \node[check, below=0.9cm of d1] (d2) {2.\ Liquidity\\boundary OK?};
+    \node[check, below=0.9cm of d2] (d3) {3.\ Statement\\class OK?};
+    \node[check, below=0.9cm of d3] (d4) {4.\ VAT\\direction OK?};
+    \node[check, below=0.9cm of d4] (d5) {5.\ Equity/\\liability OK?};
+    \node[approved, below=1.0cm of d5] (ok) {Write to ledger\\ \scriptsize(confidence preserved)};
 
-    \draw[->] (step1) -- (step2);
-    \draw[->] (step2) -- node[right] {Pass} (step3);
-    \draw[->] (step3) -- node[above] {Pass} (success);
-    \draw[->] (step2) -| node[above] {Fail} (fail);
-    \draw[->] (step3) -- node[above] {Fail} (fail);
-\end{tikzpicture}
-\caption{The deterministic boundary checklist verifies AI-proposed mappings prior to ledger write-in.}
+    % quarantine node on the right, vertically centred on the gauntlet
+    \node[quar] (q) at (7.2,-7.2) {Quarantine\\ \scriptsize human review;\\ \scriptsize NOT posted};
+
+    % pass-through (down)
+    \foreach \a/\b in {p/d1, d1/d2, d2/d3, d3/d4, d4/d5}
+        \draw[->, thick] (\a) -- (\b);
+    \draw[->, thick] (d5) -- node[lbl] {all pass} (ok);
+
+    % failures route right into quarantine
+    \foreach \d in {d1, d2, d3, d4, d5}
+        \draw[->, thick, red!55!black] (\d.east) -- node[faillbl, near start] {fail} (q.west);
+
+    % penalty annotation
+    \node[font=\scriptsize\itshape, text=red!55!black, align=center, above=2pt of q]
+        {confidence $\to 0.3$};
+\end{tikzpicture}%
+}
+\caption{The Deterministic Boundary Library as a validation gauntlet. An
+AI-proposed mapping must satisfy a sequence of deterministic accounting
+invariants --- the five exercised in the validation harness (nature, liquidity,
+statement class, VAT direction, and equity/liability classification). Any single
+failure quarantines the proposal for human review with a penalised confidence
+score; it is \emph{not} posted to the ledger. Only a clean pass on every
+invariant reaches the ledger write path.}
 \label{fig:deterministic_checklist}
 \end{figure}
