@@ -1,0 +1,72 @@
+# Two free open-source ERPs for the Kontablo transnational reconciliation demo.
+#
+#   ERPNext  → http://localhost:8080   (parent: Spain / PGC)
+#   Odoo     → http://localhost:8069   (subsidiary: Mexico / SAT)
+#
+# This brings the ERPs up with empty databases. Seed them with the demo group
+# using ./seed/seed_erpnext.py and ./seed/seed_odoo.py (see README.md), then run
+#   python run_reconciliation.py --source live
+#
+# Ports avoid the global PORT-REGISTRY reservations (and never use 3000).
+# Image tags are pinned for reproducibility; bump deliberately.
+
+services:
+  # ---- Odoo (subsidiary: Mexico) -------------------------------------------
+  odoo-db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data
+
+  odoo:
+    image: odoo:17
+    depends_on:
+      - odoo-db
+    ports:
+      - "8069:8069"
+    environment:
+      HOST: odoo-db
+      USER: odoo
+      PASSWORD: odoo
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+
+  # ---- ERPNext / Frappe (parent: Spain) ------------------------------------
+  # ERPNext's official stack is multi-container; the frappe/erpnext image with
+  # a bundled init is used here for a single-command demo bring-up.
+  erpnext-db:
+    image: mariadb:10.6
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+    volumes:
+      - erpnext-db-data:/var/lib/mysql
+
+  erpnext-redis:
+    image: redis:7-alpine
+
+  erpnext:
+    image: frappe/erpnext:v15.0.0
+    depends_on:
+      - erpnext-db
+      - erpnext-redis
+    ports:
+      - "8080:8000"
+    environment:
+      DB_HOST: erpnext-db
+      DB_PORT: "3306"
+      REDIS_CACHE: erpnext-redis:6379
+      REDIS_QUEUE: erpnext-redis:6379
+    volumes:
+      - erpnext-sites:/home/frappe/frappe-bench/sites
+
+volumes:
+  odoo-db-data:
+  odoo-web-data:
+  erpnext-db-data:
+  erpnext-sites:

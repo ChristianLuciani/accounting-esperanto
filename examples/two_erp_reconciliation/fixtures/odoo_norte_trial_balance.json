@@ -1,0 +1,93 @@
+{
+  "company": "Manufactura del Norte, S.A. de C.V.",
+  "jurisdiction": "mx",
+  "currency": "MXN",
+  "standard": "SAT Código Agrupador",
+  "reporting_date": "2026-06-11",
+  "entries": [
+    {
+      "local_code": "101",
+      "local_name": "Caja",
+      "debit": 500000,
+      "credit": 0.0,
+      "intercompany_with": null
+    },
+    {
+      "local_code": "102",
+      "local_name": "Bancos",
+      "debit": 1500000,
+      "credit": 0.0,
+      "intercompany_with": null
+    },
+    {
+      "local_code": "105",
+      "local_name": "Clientes",
+      "debit": 2000000,
+      "credit": 0.0,
+      "intercompany_with": null
+    },
+    {
+      "local_code": "151",
+      "local_name": "Inventarios",
+      "debit": 1200000,
+      "credit": 0.0,
+      "intercompany_with": null
+    },
+    {
+      "local_code": "181",
+      "local_name": "Maquinaria y equipo",
+      "debit": 6000000,
+      "credit": 0.0,
+      "intercompany_with": null
+    },
+    {
+      "local_code": "501",
+      "local_name": "Costo de ventas",
+      "debit": 3000000,
+      "credit": 0.0,
+      "intercompany_with": null
+    },
+    {
+      "local_code": "504",
+      "local_name": "Gastos de administración",
+      "debit": 1000000,
+      "credit": 0.0,
+      "intercompany_with": null
+    },
+    {
+      "local_code": "300",
+      "local_name": "Capital social",
+      "debit": 0.0,
+      "credit": 4000000,
+      "intercompany_with": null
+    },
+    {
+      "local_code": "305",
+      "local_name": "Resultados acumulados",
+      "debit": 0.0,
+      "credit": 1200000,
+      "intercompany_with": null
+    },
+    {
+      "local_code": "201",
+      "local_name": "Proveedores",
+      "debit": 0.0,
+      "credit": 3275862,
+      "intercompany_with": "iberica-es"
+    },
+    {
+      "local_code": "311",
+      "local_name": "Documentos por pagar a largo plazo",
+      "debit": 0.0,
+      "credit": 1724138,
+      "intercompany_with": null
+    },
+    {
+      "local_code": "401",
+      "local_name": "Ventas",
+      "debit": 0.0,
+      "credit": 5000000,
+      "intercompany_with": null
+    }
+  ]
+}

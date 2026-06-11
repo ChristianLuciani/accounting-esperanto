@@ -79,7 +79,13 @@ Kontablo exposes three agent-economy interfaces above the core API:
 | **A2A** (Agent2Agent) | Agent-to-agent interoperation across financial workflows |
 | **AP2** (Agent Payments Protocol) | Settlement coordination between autonomous agents |
 
-The REST/gRPC API is the canonical data interface. The agent-native layer sits above it.
+The REST API is the canonical data interface and is fully implemented (FastAPI).
+A gRPC interface is defined in [`api/grpc/kontablo.proto`](api/grpc/kontablo.proto)
+with a minimal server ([`api/grpc/server.py`](api/grpc/server.py)) that implements
+the **deterministic** RPCs — account queries, mapping, consolidation with
+intercompany elimination, balance-sheet validation — over the same engine that
+backs REST. RPCs that would depend on stochastic LLM inference are intentionally
+left `UNIMPLEMENTED` rather than faked. The agent-native layer sits above the API.
 An ERP integrates via the API directly; an autonomous agent uses the agent-native layer.
 Neither is subordinate. Kontablo will adopt any agentic protocol that gains meaningful
 traction — the architecture names the category, not a single protocol.
@@ -180,9 +186,10 @@ documented in the preprint (Appendix and Section on expanded validation).
 /localizations  — Chart-of-accounts mappings for all 195 sovereign jurisdictions
 /spec           — The standard in human-readable and machine-readable form
 /openspec       — 6 OpenSpec change proposals (aggregation, versioning, multi-language, etc.)
-/api            — FastAPI service for semantic mapping and consolidation (REST + gRPC)
-/frontend       — React + Framer Motion reference dashboard
-/connectors     — ERP connectors (ERPNext/Frappe: Apache 2.0; proprietary ERPs: separate license)
+/api            — FastAPI REST service + gRPC server (deterministic RPCs) for mapping/consolidation
+/frontend       — React + Framer Motion reference dashboard (local demo only)
+/examples       — Runnable transnational reconciliation walkthroughs (self-contained + two-ERP)
+/connectors     — ERP connectors (ERPNext/Frappe & Odoo: Apache 2.0; proprietary ERPs: separate license)
 /logic          — Deterministic mapping rules, validators, Deterministic Boundary Library
 /docs/adr       — 13 Architecture Decision Records
 /docs/papers    — Academic preprint (PDF + LaTeX source)
