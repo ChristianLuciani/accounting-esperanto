@@ -1,8 +1,20 @@
 import pytest
 from fastapi.testclient import TestClient
 from api.rest.main import app
+from scripts.ai_router import get_secret
 
 client = TestClient(app)
+
+# Tier-3 semantic fallback calls a live LLM; these are integration tests that
+# only run when at least one provider key is configured.
+_LLM_AVAILABLE = any(
+    get_secret(k)
+    for k in ("GROQ_API_KEY", "CEREBRAS_API_KEY", "GOOGLE_AI_API_KEY", "OPENROUTER_API_KEY")
+)
+requires_llm = pytest.mark.skipif(
+    not _LLM_AVAILABLE,
+    reason="Tier-3 AI fallback integration test: no LLM API key configured",
+)
 
 def test_root():
     response = client.get("/")
@@ -16,6 +28,7 @@ def test_root():
     # ("IL", "קופה", "00000000-0000-4000-8000-000000000101"), # Requires Hebrew support in AI matcher
     # ("RU", "Налоги", "00000000-0000-4000-8000-000000000203"), # Requires Russian support in AI matcher
 ])
+@requires_llm
 def test_semantic_match(country, name, expected_uuid):
     payload = {
         "company_id": "test-123",
@@ -28,6 +41,7 @@ def test_semantic_match(country, name, expected_uuid):
     assert data["mapped_accounts"][0]["kontablo_uuid"] == expected_uuid
 
 # 2.2 Hyperinflation Resilience (Venezuela)
+@requires_llm
 def test_venezuela_hyperinflation():
     payload = {
         "company_id": "ve-456",
@@ -44,6 +58,7 @@ def test_venezuela_hyperinflation():
     assert "hyperinflation" in data["mapped_accounts"][0]["agent_justification"].lower()
 
 # 2.3 Cascading Taxes (Brazil / India)
+@requires_llm
 def test_brazil_sped_tax():
     payload = {
         "company_id": "br-789",

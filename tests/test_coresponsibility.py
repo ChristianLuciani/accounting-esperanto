@@ -57,10 +57,11 @@ async def test_flag():
     print(f"Adjusted Confidence: {response.confidence_score}")
 
     # The flag should be True because 'Cash' is in name and ID is 'noncurrent'
-    if response.inconsistency_flag:
-        print("\n✅ TEST PASSED: System successfully flagged a deterministic boundary violation.")
-    else:
-        print("\n❌ TEST FAILED: System ignored the inconsistency.")
+    assert response.inconsistency_flag, (
+        "System ignored the inconsistency: a 'Petty Cash Fund' account mapped to "
+        "a non-current PPE node must raise the deterministic boundary flag."
+    )
+    print("\n✅ TEST PASSED: System successfully flagged a deterministic boundary violation.")
 
 if __name__ == "__main__":
     asyncio.run(test_flag())
