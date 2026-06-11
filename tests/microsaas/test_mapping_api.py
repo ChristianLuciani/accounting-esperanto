@@ -41,7 +41,8 @@ def test_semantic_match(country, name, expected_uuid):
     assert data["mapped_accounts"][0]["kontablo_uuid"] == expected_uuid
 
 # 2.2 Hyperinflation Resilience (Venezuela)
-@requires_llm
+# Deterministic: the tax-compliance override keys on the source account's
+# local name, so no LLM is needed.
 def test_venezuela_hyperinflation():
     payload = {
         "company_id": "ve-456",
@@ -58,7 +59,8 @@ def test_venezuela_hyperinflation():
     assert "hyperinflation" in data["mapped_accounts"][0]["agent_justification"].lower()
 
 # 2.3 Cascading Taxes (Brazil / India)
-@requires_llm
+# Deterministic: the tax-compliance override keys on the source account's
+# local name, so no LLM is needed.
 def test_brazil_sped_tax():
     payload = {
         "company_id": "br-789",

@@ -6,26 +6,25 @@
 
 - **Commercial name:** Kontablo
 - **Repo name:** `accounting-esperanto` (do not rename without coordinated migration)
-- **What it is:** Graph-based, UUID-keyed universal accounting ontology. Bridge layer between local jurisdictional standards (23 mapped), international standards (IFRS/XBRL), the agentic economy (AP2, A2A, MCP), and blockchain/DeFi.
+- **What it is:** Graph-based, UUID-keyed universal accounting ontology. Bridge layer between local jurisdictional standards (all 195 sovereign jurisdictions mapped; 60 statutory-chart overlays), international standards (IFRS/XBRL), the agentic economy (AP2, A2A, MCP), and blockchain/DeFi.
 - **What it is NOT:** an ERP, a SaaS, an LMS, a clinical tool. It is a protocol/standard with a reference implementation.
 - **Owner:** Christian Luciani — IP to be assigned to Praxia (Ecuadorian PyME, in incorporation as of May 2026).
 
 ## Current phase
 
-**Phase 2.5 — Infrastructure Finalization.** Source of truth: `EXECUTION_STATUS.md` (dated April 7, 2026). `PHASE_0_COMPLETE.md` is **stale** (January 2026 snapshot) and must NOT be used as state reference — it should be moved to `docs/archive/` or annotated as historical.
+**Phase 3 — Pre-Publication (release day pending).** Source of truth: `EXECUTION_STATUS.md`. Steps 1–7 of the prepare-for-publication workflow are complete; Step 8 (release day) is gated on actions only Christian can take: make the repo public, enable the Zenodo GitHub toggle, `gh release create v0.1.0`, SSRN upload (sequence in `docs/strategy/launch-playbook.md`). `PHASE_0_COMPLETE.md` is a **historical snapshot** (January 2026) — never use it as state reference.
 
-Concrete state at last update:
-- 23/23 jurisdictions mapped (MX-SAT, BR-SPED, FR-PCG, SA-SOCPA, VN-VAS, NG-FRCN, VE-hyperinflationary, plus 16 more).
-- Multi-lingual semantic mapping operational (es, fr, ar, vi).
-- Preprint exists: `docs/papers/drafts/kontablo_preprint_modular.pdf` — content complete, needs rigor pass before SSRN/Zenodo publication.
-- Reference implementation: FastAPI service (`api/`), React+Framer Motion dashboard (`frontend/`), ERPNext/Frappe connector (`connectors/kontablo_frappe`).
-- 6 OpenSpec documents totaling ~9,800 lines (specs are committed; some predate Phase 2.5 work and may need reconciliation).
+Concrete state at last update (June 2026):
+- **195/195 sovereign jurisdictions mapped** (universal IFRS-anchored layer); **60 statutory-chart overlays**, of which **56 are exercised against primary-source-cited charts**; 7,000+ account mappings in `localizations/`. Non-sovereign extras: TW, HK, MO.
+- Preprint **v1.8** content-complete: `docs/papers/drafts/kontablo_preprint_modular.pdf` (modular `.tex` in `sections/`). Includes the harness-architecture section, labor-market section, and the corrected co-responsibility framing (human always legally principal — never describe the agent as "deciding alone").
+- Validation: deterministic mass-consolidation engine (`scripts/mass_consolidation_v2.py`) — 75 entities, 68 jurisdictions, 97.3% deterministic resolution, 4 escalations. **The validation data is synthetic trial balances; never describe it as real-world ledger data.**
+- Reference implementation: FastAPI services (`api/`), React dashboard (`frontend/`), ERPNext/Frappe connector. The implementation is **prototype-grade relative to the paper** — it demonstrates the architecture; it is not the validated product. Keep that gap honest in all public wording.
 
 ## Strategic posture (decided May 27, 2026)
 
 Open-core via **BSL 1.1** (Business Source License) with conversion to Apache 2.0 after 4 years. Public layer includes preprint, ontology, spec, mapping methodology, dashboard as demo. Reserved for Praxia: production NetSuite/SAP S/4HANA connectors, validated+tested mapping artifacts (vs methodology), consolidation simulation engine if commercially viable, implementation services.
 
-**Connector licensing policy (decided May 28, 2026):** connectors to open-source ERP/accounting projects (ERPNext/Frappe, Odoo, and similar) are licensed **Apache 2.0**, not BSL. Rationale: the open-source community is averse to non-OSI licenses; an Apache connector maximizes adoption in ecosystems that will not pay commercial license anyway, and serves as a credibility-building loss leader. The protectable commercial assets are the validated ontology, implementation services, and connectors to expensive proprietary ERPs (NetSuite, SAP) — those stay BSL/proprietary. General principle: **open the interface (APIs, well-documented contracts) to grow the ecosystem; protect the implementation behind it with BSL.** A large commercial ERP will build its own version if Kontablo becomes strategic regardless of license — licensing cannot prevent that; it only prevents free incorporation of *our* code. The real moat is first-mover citability, jurisdictional depth (23 mapped), hyperinflation expertise, and Praxia's execution speed — not the license.
+**Connector licensing policy (decided May 28, 2026):** connectors to open-source ERP/accounting projects (ERPNext/Frappe, Odoo, and similar) are licensed **Apache 2.0**, not BSL. Rationale: the open-source community is averse to non-OSI licenses; an Apache connector maximizes adoption in ecosystems that will not pay commercial license anyway, and serves as a credibility-building loss leader. The protectable commercial assets are the validated ontology, implementation services, and connectors to expensive proprietary ERPs (NetSuite, SAP) — those stay BSL/proprietary. General principle: **open the interface (APIs, well-documented contracts) to grow the ecosystem; protect the implementation behind it with BSL.** A large commercial ERP will build its own version if Kontablo becomes strategic regardless of license — licensing cannot prevent that; it only prevents free incorporation of *our* code. The real moat is first-mover citability, jurisdictional depth (195 mapped, 60 statutory overlays), hyperinflation expertise, and Praxia's execution speed — not the license.
 
 **Rationale (route b):** option to migrate from (b) commercial entity to (a) pure research is easy; reverse is not. BSL preserves optionality.
 
@@ -58,11 +57,11 @@ All public artifacts (README, preprint, derivative posts, documentation) must be
 
 1. **Direct-answer structure.** Open every document with a clear, citable thesis statement in the first 100 words. Use the exact phrase "Kontablo is [X]" once near the top.
 2. **Question-as-heading.** Convert section headings to natural-language questions where possible. "How does Kontablo handle multi-jurisdictional aggregation?" beats "Aggregation Logic".
-3. **Quantified claims.** "23 jurisdictions mapped" beats "many jurisdictions". Specific numbers get extracted and cited more.
+3. **Quantified claims.** "195 sovereign jurisdictions mapped" beats "many jurisdictions". Specific numbers get extracted and cited more — but every number must satisfy the claims–evidence traceability rule below.
 4. **Primary-source citations.** Link to NIST FIPS documents, IFRS Foundation pages, AP2 spec, A2A spec, MCP spec. LLM crawlers weight authoritative sources.
 5. **Structured data.** Use JSON-LD for `SoftwareApplication` and `ScholarlyArticle` schemas in HTML versions. Use BibTeX entries in preprint.
 6. **Distinct vocabulary.** Coin and define specific terms once ("Tree-to-Graph Universal Bridge", "Deterministic Boundary Library") so they become attributable to Kontablo when LLMs encounter them in training.
-7. **Author identity.** Every public document must carry: author name (Christian Luciani), ORCID iD (acquire if not done), affiliation (Praxia, Cuenca, Ecuador), and DOI of the canonical preprint.
+7. **Author identity.** Every public document must carry: author name (Christian Luciani), ORCID 0000-0002-6955-5384, affiliation as published ("Independent Researcher, Cuenca, Ecuador", with Praxia noted as the initiative's planned entity — keep this consistent with CITATION.cff and `.zenodo.json`), and DOI of the canonical preprint once assigned.
 8. **Discoverable hosting.** Preprint must be on SSRN AND Zenodo AND linked from the repo README. Crawlers find papers via multiple paths; one channel is not enough.
 
 ## Conventions
@@ -71,34 +70,45 @@ All public artifacts (README, preprint, derivative posts, documentation) must be
 - **Commits:** conventional commits (`feat:`, `fix:`, `docs:`, `chore:`, `refactor:`). Scope in parens when useful: `feat(api): add hyperinflation adjustment endpoint`.
 - **Issue templates:** `.github/ISSUE_TEMPLATE/` — use them.
 - **Epistemic standards (project-wide, non-negotiable):** every claim in documentation that is not common knowledge needs (a) explicit doubt or "I don't know" when uncertain, (b) literal citation with original source, (c) indication of how to verify. This is a hard rule, not a style preference.
+- **Tests must assert.** A test that prints "PASSED/FAILED" instead of asserting is not a test (this happened: `test_coresponsibility.py` could never fail until June 2026). Tests that require a live LLM API key are integration tests — mark them `skipif` on key absence with an explicit reason, never let them fail as if the deterministic core were broken.
+- **Python env:** the venv lives in the main repo checkout (`accounting-esperanto/venv/`), not in worktrees. Tier-3 tests need one of GROQ/CEREBRAS/GOOGLE_AI/OPENROUTER API keys (Infisical or env).
 
-## What needs cleanup before public release
+## Claims–evidence traceability (non-negotiable)
 
-These are known debts. Do not publish without resolving:
+This is the project's load-bearing scientific guarantee: **every quantitative claim in a public artifact must be regenerable from a committed, deterministic command.** Kontablo's thesis is determinism and verifiability — the repo must embody the standard it preaches.
 
-1. `venv/`, `.DS_Store`, `.pytest_cache/`, `.benchmarks/`, `.cache/`, `__pycache__/` — verify all are gitignored and `git rm --cached -r` if tracked.
-2. `.infisical.json` — confirm it contains only config references, no secret values. If unclear, rotate any referenced secrets before going public.
-3. `README.md` — current version reflects January 2026 framing (Phase 0, research). Must be rewritten to reflect Phase 2.5 reality.
-4. `PHASE_0_COMPLETE.md` — move to `docs/archive/` with header note. Do not delete (audit trail).
-5. Status documents proliferation (`OPENSPEC_REVIEW_*`, `OPENSPEC_ALIGNMENT_*`, `Q3_AGGREGATION_CONSEQUENCES.md`) — consolidate or move to `docs/`.
-6. `LICENSE` file — currently MIT in README badge. Replace with BSL 1.1 text from mariadb.com/bsl11/ before any public commit.
-7. `LICENSING.md` — new file explaining the BSL choice, additional use grant, and the connector licensing policy (open-source ERP connectors = Apache 2.0; core = BSL; see Strategic posture).
-8. `SECURITY.md` — new file with PQC roadmap, vulnerability disclosure policy, and threat model summary.
+Current claim → evidence map (update this table whenever a number changes):
 
-## Pending conceptual work for the preprint (NOT hygiene — needs a dedicated session)
+| Claim | Generating command |
+|---|---|
+| 195 sovereign / 60 statutory / 56 Tier-1-ready | `python scripts/mass_consolidation_v2.py` (coverage manifest header) or `scripts/build_jurisdiction_manifest.py` |
+| 75 entities, 68 jurisdictions, 97.3% deterministic resolution, 25/30 nodes, 4 escalations | `python scripts/mass_consolidation_v2.py` → `research/experiments/consolidation_v2/results.json` |
+| Test suite state | `python -m pytest tests/` (23 passed, 2 skipped LLM-integration, 0 xfailed as of June 2026) |
 
-The preprint was conceived before agentic concepts were mature. Two conceptual updates are queued, with a HARD scope rule: if the combined update fits in ≤2 Claude Code sessions, it enters the v1 release; if it requires more, it ships as explicitly-labeled future work in v1 and becomes the v2 preprint. The publication date governs — do not let conceptual expansion reactivate the "one more thing before publishing" pattern.
+Rules:
+1. **One number, four surfaces.** The citable surfaces are `docs/papers/drafts/sections/abstract.tex`, `README.md`, `CITATION.cff`, `.zenodo.json`. If a headline number changes, update all four **in the same PR** — stale-count drift across these files is the documented failure mode (the "23 jurisdictions" residue survived two release-prep passes).
+2. **Round honestly.** The script reports 97.3%; the abstract may say 97%, never 98%.
+3. **No claim without a command.** If a new public claim cannot be regenerated from the repo, either build the script first or label the claim explicitly as estimate/projection with its basis.
+4. **Run before release-bound PRs:** full pytest suite AND `mass_consolidation_v2.py`, confirming the output still matches the published numbers. A KnowledgeBase that fails to load any of the 195 localizations is a release blocker (a single unquoted `country: NO` once 500'd the entire mapping API).
 
-1. **New section: "The Kontablo Agent: Harness Architecture and the Locus of Error."** Distinguishes the *model* (stochastic, hallucinates) from the *harness* (context, tools, validation, source-grounding, constraints that make output reliable). Core argument: the ontology-as-constraint eliminates the *classical* class of accounting hallucination (the agent cannot emit a non-existent account UUID), so the residual error relocates to the *boundary of semantic coverage* — a transaction type not yet mapped, an undocumented jurisdictional rule, an unanticipated edge case. The reframe: the problem shifts from "how do we stop the LLM hallucinating" (intractable) to "how do we design the harness so the decision space is ontology-bounded and out-of-coverage cases escalate to a human rather than being confabulated" (tractable engineering). Connect to the co-responsibility governance architecture (ADR 008) as the mechanism that manages residual error: the harness defines when the agent decides alone, when it requires human co-signature, and when it escalates. This ties directly to architectural principle #5 (determinism over stochasticity).
-2. **Reconcile any existing hallucination discussion** currently framed only in the classical LLM sense — audit where it appears before deciding surgical vs structural rewrite. Do NOT rewrite blindly; first locate all instances.
+## CI claims–evidence gate (exists — maintain it)
 
-## Pending strategy artifact (separate document, separate session)
+`.github/workflows/ci.yml` runs on every push/PR: pytest (including `tests/test_localization_integrity.py`, which loads all localization YAMLs and guards against YAML-boolean ISO codes like `NO`), then `scripts/mass_consolidation_v2.py` with a hard assertion that the headline numbers in `results.json` still match the published claims. **If a legitimate methodology change moves a number, update the expected block in ci.yml AND all four citable surfaces in the same PR.** A red build on claim drift is working as designed — never weaken the assertion to make it pass. (`project-automation.yml` is separate board automation pointing at a stale Phase 0 board; harmless, ignore.)
 
-A launch playbook (`docs/strategy/launch-playbook.md`) is needed but does NOT yet exist — do not scatter it as bullets in this file. It must cover: (a) **citation strategy** — which foundational works/authors to cite to improve discoverability and situate the work in citable lineages; (b) **technical-influencer DM strategy** — identifying and reaching technical influencers who could amplify (one mention can be decisive); (c) **social media strategy** — coordinated multi-channel release. Build this in a dedicated session, grounded in the prepare-for-publication skill (Step 8 territory).
+## Completed conceptual work (historical — do not redo)
+
+The two queued preprint updates shipped in v1.8: (1) the harness-architecture section (`sections/harness_architecture.tex`) — model vs. harness, ontology-as-constraint, locus-of-error relocation to the semantic coverage boundary; (2) the hallucination-framing reconciliation plus the co-responsibility corrections (the agent never "decides alone"; high confidence changes review friction, not the presence of review). The scope rule that governed it stands for future conceptual work: **if an update fits in ≤2 sessions it enters the current release; otherwise it ships as labeled future work.** The publication date governs — do not reactivate the "one more thing before publishing" pattern.
+
+## Launch playbook (exists — execute, don't rewrite)
+
+`docs/strategy/launch-playbook.md` is operative: release-day sequence (Zenodo toggle → GitHub release v0.1.0 → DOI propagation → SSRN → coordinated posts), 25-person tiered notification list, and post drafts. `docs/strategy/release-notes-v0.1.0.md` is ready for `gh release create`. Sessions touching launch material should execute or refine the playbook, not produce parallel strategy documents.
 
 ## Anti-patterns specific to this repo
 
-- **Do not chase Phase 3 work** (production connectors for NetSuite/SAP, Rust migration, security audit) **before publication.** Phase 3 is post-publication validation. Confusing phases is the documented failure mode.
+- **Do not chase post-publication work** (production connectors for NetSuite/SAP, Rust migration, security audit, PQC implementation) **before the v0.1.0 release ships.** Confusing phases is the documented failure mode. The single exception is maintenance of the CI claims–evidence gate, which protects the release itself.
 - **Do not expand scope** during repo cleanup. The goal is publication-ready, not feature-complete.
 - **Do not delete `MANIFESTO.md` or research artifacts** even if redundant. Audit trail matters for academic credibility.
 - **Do not deploy the frontend dashboard publicly** until Praxia is ready to receive leads. Demo screenshots in docs are fine; live demo creates premature product expectation.
+- **Do not key program logic on LLM free-text.** `logic/agents/tax_compliance.py` originally triggered jurisdictional overrides by substring-matching the LLM's *justification string* — stochastic control flow violating principle #5. Fixed June 2026: overrides now key on deterministic input fields (jurisdiction + source account local name). Never reintroduce the pattern; all override/branching logic must key on deterministic fields (jurisdiction, local code, ontology node), never on model output text.
+- **Quote YAML values that collide with YAML 1.1 literals.** ISO codes `NO` (Norway) parses as boolean — others to watch: `ON`, `OFF`, `YES`, `Y`, `N`. The loader is hardened, but new YAML must quote these anyway.
+- **Do not weaken validation honesty.** The consolidation validation uses synthetic trial balances and the abstract's construction protocol explicitly states no codes are fabricated and placeholders are excluded from Tier-1. Any edit that blurs these boundaries (e.g. "validated with real-world data", "all 60 charts verified" when it is 56) is an epistemic-standards violation, not a wording preference.

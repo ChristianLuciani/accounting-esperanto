@@ -35,7 +35,8 @@ class OntologyService:
                     level=acc['level'],
                     parent=acc.get('parent'),
                     is_aggregate=acc.get('is_aggregate', False),
-                    optional=acc.get('optional', False)
+                    optional=acc.get('optional', False),
+                    local_codes=acc.get('local_codes')
                 ))
             except Exception as e:
                 print(f"Error parsing account {acc.get('id')}: {e}")

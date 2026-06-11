@@ -142,6 +142,37 @@ Multi-lingual semantic mapping is operational for Spanish, French, Arabic, and V
 
 ---
 
+## How can I verify Kontablo's claims?
+
+Every quantitative claim in the preprint abstract is regenerable from this
+repository with deterministic commands — no API keys, no network calls:
+
+```bash
+pip install -r requirements.txt
+
+# Coverage manifest (195 sovereign / 60 statutory charts / 56 Tier-1-ready)
+# and the validation matrix: 75 entities, 68 jurisdictions, 97.3% deterministic
+# resolution, 25/30 universal nodes populated, 4 escalations to human review.
+python scripts/mass_consolidation_v2.py
+# → results in research/experiments/consolidation_v2/results.json
+
+# Test suite, including integrity checks across all localization YAMLs
+python -m pytest tests/
+```
+
+CI re-runs both on every push and fails the build if any published number
+stops reproducing (see `.github/workflows/ci.yml`).
+
+Honest bounds on what is claimed: the validation matrix uses **synthetic
+trial balances**, not production ledger data; statutory-chart coverage is
+exercised against primary-source-cited charts for **56 of the 60**
+statutory-chart jurisdictions; no account codes are fabricated, and
+jurisdictions without a mandated chart are covered by the IFRS-anchored
+layer, not asserted to have national codes. The construction protocol is
+documented in the preprint (Appendix and Section on expanded validation).
+
+---
+
 ## What is in this repository?
 
 ```
