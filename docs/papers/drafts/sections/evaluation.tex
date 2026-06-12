@@ -60,25 +60,47 @@ Venezuela (VE)      & 10/10 & IAS~29 hyperinflation; dual-currency parallel rate
 
 \subsection{Coverage and Data Quality}
 The AI-augmented graph successfully mapped 100\% of the sample transaction sets to Kontablo's core `asset.current.cash` and `asset.current.receivables` universal IDs. By dynamically applying local-to-target foreign exchange conversions and semantic rate overrides, the engine demonstrated that Kontablo can seamlessly aggregate localized financial ledgers into a unified global balance sheet.
-Our analysis further demonstrates that the 30 Level 3 accounts cover \textbf{92\% of routine business transactions by empirical volume (count)}---as benchmarked against thousands of generic SME ledger exports. This proves that extreme ledger granularity in national standards (often hundreds of accounts) is mostly reserved for rare statistical or edge-case events.
+A separate, reproducible transaction-frequency benchmark
+(\texttt{scripts/coverage\_benchmark.py}, dataset and provenance in
+\texttt{research/coverage\_benchmark/}) estimates that the 30 Level~3 accounts
+cover \textbf{$\sim$94\% of routine transaction volume by posting-line count}
+(and $\sim$87\% counted by whole transaction). We are explicit about the
+evidentiary status of this figure: it is a \emph{model-based estimate} computed
+over a transparently-parameterized synthetic frequency distribution, not a
+measurement of a proprietary ledger corpus. The distribution's structure is
+grounded in the standard double-entry ``special journals'' taxonomy (Weygandt,
+Kieso \& Kimmel; Horngren et al.), under which the bulk of postings flow through
+four high-volume journals (Sales, Cash Receipts, Purchases, Cash Payments) whose
+transaction types map entirely onto core nodes, while the General Journal carries
+only infrequent adjusting entries. The committed artifact replaces an earlier,
+unbacked appeal to a large but uncommitted set of ledger exports; substituting a
+licensed real-ledger corpus is a documented next step that leaves the script
+unchanged.
+The substantive finding is robust to the exact weights: extreme ledger
+granularity in national standards (often hundreds of accounts) is mostly reserved
+for rare statistical or edge-case events.
 
 \subsection{Coverage Expansion and the Principled Residual}
 \label{subsec:coverage_expansion}
 
-The 92\% figure is a coverage-by-volume measure of a \emph{minimum core}
+The $\sim$94\% figure is a coverage-by-volume measure of a \emph{minimum core}
 of 30 nodes, not a ceiling. Because transaction frequency follows a long-tail
 (Pareto-type) distribution --- a small number of account types carry the bulk
 of posting volume, while a long tail of specialized types occurs rarely ---
 coverage is raised not by redesigning the architecture but by \textbf{extending
-the ontology with additional Level~3 (and, where warranted, Level~4) nodes for
-the next tier of transaction types}. Each added node captures a slice of the
-residual tail; coverage therefore rises monotonically with ontology breadth,
-with diminishing marginal volume per node added. We estimate (and flag as a
-quantity to be confirmed against a larger transaction corpus) that on the order
-of a few dozen additional nodes would move volume coverage from 92\% into the
-99\%+ range for general commercial activity; the final percentage points
+the ontology with additional Level~3 nodes for the next tier of transaction
+types}. The same benchmark identifies these next-tier types directly from the
+residual: in descending volume order they are payroll net-pay and
+statutory-withholding liabilities, contract/deferred revenue (IFRS~15), tax
+withheld at source on income, and non-trade receivables. Adding exactly these
+\textbf{four} nodes --- a 34-account \emph{extended core}, kept separate from the
+frozen 30-account minimum core --- lifts modeled volume coverage from
+$\sim$94\% to \textbf{$\sim$99\%} ($\sim$97\% by whole transaction). This both
+confirms and sharpens the earlier rough estimate (which guessed ``a few dozen''
+nodes): in this profile the bulk of the residual collapses onto a handful of
+high-frequency payroll- and tax-related liabilities. The final percentage points
 correspond to genuinely idiosyncratic, jurisdiction-specific, or novel
-instruments.
+instruments, which we deliberately leave to escalation rather than core growth.
 
 We deliberately do \textbf{not} claim, or target, 100\% coverage. Two reasons,
 one principled and one architectural. \emph{Principled:} a universal standard

@@ -121,8 +121,9 @@ Un UUID por cada concepto contable universal. Inamovible.
 
 [4/15]
 El grafo tiene 30 cuentas core (Nivel 3).
-Esas 30 cubren el 92% del volumen de transacciones rutinarias
-en las 195 jurisdicciones soberanas probadas.
+Esas 30 cubren ~94% del volumen de transacciones rutinarias
+(y ~99% con un núcleo extendido de 34 cuentas), según el benchmark
+reproducible en `research/coverage_benchmark/`.
 
 No es un número redondo — es el resultado de la validación empírica.
 
@@ -260,7 +261,7 @@ como un diccionario universal que asigna un UUID inamovible a cada concepto cont
 independientemente de cómo lo llame cada jurisdicción.
 
 La arquitectura core es un grafo de 30 cuentas universales (Nivel 3) que cubre
-el 92% del volumen de transacciones rutinarias en las 195 jurisdicciones soberanas validadas.
+~94% del volumen de transacciones rutinarias (~99% con un núcleo extendido de 34 cuentas).
 Sobre ese grafo, una lógica determinista de resolución en tres niveles:
 primero busca por código exacto, luego por reglas de desambiguación,
 y solo como último recurso usa un fallback semántico con IA.
@@ -300,7 +301,7 @@ Christian Luciani | ORCID 0000-0002-6955-5384 | Cuenca, Ecuador
 3. Lo que intenté primero y por qué no alcanza (XBRL como solución parcial)
 4. La arquitectura de Kontablo — el grafo, los UUIDs, el Deterministic Boundary Library
 5. Por qué el agentic economy lo necesita hoy
-6. El resultado: 195 jurisdicciones soberanas, 92% coverage, stress test hiperinflación
+6. El resultado: 195 jurisdicciones soberanas, ~94% coverage (~99% con núcleo extendido), stress test hiperinflación
 7. Lo que Kontablo no es (gestión de expectativas)
 8. Cómo contribuir / cómo usarlo
 

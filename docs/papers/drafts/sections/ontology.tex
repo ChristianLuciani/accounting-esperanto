@@ -44,7 +44,7 @@ The taxonomy defines exactly 30 Level 3 accounts, divided into two distinct comp
         \item \texttt{asset.noncurrent.biological} (enabled for agricultural entities under IAS 41 in countries like Brazil and Argentina).
     \end{itemize}
 \end{enumerate}
-Empirical review proves that this 30-account configuration captures over \textbf{92\% of routine transaction volume} in SME accounting ledgers across all tested jurisdictions.
+A reproducible transaction-frequency benchmark (Section~\ref{subsec:coverage_expansion}; \texttt{scripts/coverage\_benchmark.py}) estimates that this 30-account configuration captures $\sim$\textbf{94\% of routine transaction volume} by posting count in a representative SME ledger profile, with a 34-account extended core reaching $\sim$99\%.
 
 \subsection{Tree-to-Graph Compatibility Protocol}
 All major legacy ERPs (ERPNext, Odoo, Zoho Books, SAP B1) enforce strict hierarchical trees where each account has exactly one parent. Integrating these systems with Kontablo requires managing the mismatch between trees and graphs. Kontablo implements a two-way compatibility protocol (ADR-008):

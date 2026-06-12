@@ -9,6 +9,9 @@ abstract: >
   It enables deterministic, machine-verifiable financial data exchange across
   23 jurisdictions through a Tree-to-Graph Universal Bridge and a Deterministic
   Boundary Library that eliminates the classical class of accounting hallucination.
+  Its 30-account Level 3 minimum core covers an estimated ~94% of routine
+  transaction volume by posting count (rising to ~99% with a 34-account extended
+  core), reproducible from a committed transaction-frequency benchmark.
 authors:
   - family-names: Luciani
     given-names: Christian
