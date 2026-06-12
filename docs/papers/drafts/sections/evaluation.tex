@@ -119,6 +119,27 @@ silently mismapped. The objective is therefore not coverage~$=100\%$ but
 coverage~$\to$~high with a \emph{bounded, instrumented, human-resolved}
 remainder.
 
+This raises a governance question the benchmark answers directly: \emph{under
+what criteria may the core grow, and when must it not?} We codify the answer as
+an explicit admission policy (ADR-015). The ontology is structured in three
+layers --- a \textbf{frozen} 30-node minimum core (the citable Pareto headline),
+a \textbf{bounded} extended core that grows only under the policy, and an
+open-ended residual handled by overlays and CRA escalation that is \emph{never}
+forced into the core. A transaction type earns a core node only if it
+simultaneously (i)~captures material, \emph{measured} posting volume (the
+benchmark is the gate, with a working threshold near $0.5\%$ of total volume),
+(ii)~recurs across many jurisdictions under a clean IFRS anchor (otherwise it is
+a local overlay, not a universal node), (iii)~admits an unambiguous deterministic
+boundary --- a fixed nature, statement class and IFRS tag with no collision ---
+(iv)~is not already decomposable into existing nodes, and (v)~is a mature, stable
+instrument. Because posting volume is Pareto-distributed, this gate is
+\textbf{self-limiting}: after the extended core, almost every further candidate
+falls below the volume threshold, so the core converges on a small number of
+dozens of nodes rather than the hundreds found in national charts. Growth by
+intuition or by request is thereby replaced with growth by measured evidence,
+and the standing tension between a small, elegant core and broad coverage is
+resolved without compromising either.
+
 \subsection{Expanded Multi-Jurisdiction Validation}
 \label{subsec:expanded_validation}
 
