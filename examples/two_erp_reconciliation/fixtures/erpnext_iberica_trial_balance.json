@@ -1,0 +1,86 @@
+{
+  "company": "Ibérica Manufactura, S.A.",
+  "jurisdiction": "es",
+  "currency": "EUR",
+  "standard": "PGC (Plan General de Contabilidad)",
+  "reporting_date": "2026-06-11",
+  "entries": [
+    {
+      "local_code": "572",
+      "local_name": "Bancos, c/c vista, euros",
+      "debit": 200000,
+      "credit": 0.0,
+      "intercompany_with": null
+    },
+    {
+      "local_code": "430",
+      "local_name": "Clientes por ventas y prestaciones de servicios",
+      "debit": 300000,
+      "credit": 0.0,
+      "intercompany_with": "norte-mx"
+    },
+    {
+      "local_code": "300",
+      "local_name": "Mercaderías (existencias)",
+      "debit": 150000,
+      "credit": 0.0,
+      "intercompany_with": null
+    },
+    {
+      "local_code": "21",
+      "local_name": "Inmovilizado material",
+      "debit": 500000,
+      "credit": 0.0,
+      "intercompany_with": null
+    },
+    {
+      "local_code": "600",
+      "local_name": "Compras de mercaderías",
+      "debit": 400000,
+      "credit": 0.0,
+      "intercompany_with": null
+    },
+    {
+      "local_code": "62",
+      "local_name": "Servicios exteriores",
+      "debit": 120000,
+      "credit": 0.0,
+      "intercompany_with": null
+    },
+    {
+      "local_code": "100",
+      "local_name": "Capital social",
+      "debit": 0.0,
+      "credit": 600000,
+      "intercompany_with": null
+    },
+    {
+      "local_code": "129",
+      "local_name": "Resultado del ejercicio",
+      "debit": 0.0,
+      "credit": 170000,
+      "intercompany_with": null
+    },
+    {
+      "local_code": "400",
+      "local_name": "Proveedores",
+      "debit": 0.0,
+      "credit": 250000,
+      "intercompany_with": null
+    },
+    {
+      "local_code": "170",
+      "local_name": "Deudas a largo plazo con entidades de crédito",
+      "debit": 0.0,
+      "credit": 250000,
+      "intercompany_with": null
+    },
+    {
+      "local_code": "700",
+      "local_name": "Ventas de mercaderías",
+      "debit": 0.0,
+      "credit": 400000,
+      "intercompany_with": null
+    }
+  ]
+}

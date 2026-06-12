@@ -27,7 +27,9 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Run test suite
-        run: python -m pytest tests/ -v
+        # tests/ covers the engine, API, gRPC and example walkthroughs;
+        # connectors/ covers the ERPNext and Odoo connector unit + contract tests.
+        run: python -m pytest tests/ connectors/ -v
 
       - name: Reproduce published validation numbers
         run: |

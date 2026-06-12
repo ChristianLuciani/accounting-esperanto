@@ -1,348 +1,200 @@
 #!/usr/bin/env python3
-"""Transnational reconciliation example — Spanish parent + Mexican subsidiary.
+"""
+Self-contained transnational reconciliation (zero external dependencies).
 
-Self-contained, deterministic, no Docker and no live ERP required. This is the
-canonical scenario the production-grade two-ERP end-to-end harness (``e2e/``)
-mirrors: a Spanish parent on the PGC chart reporting in EUR, a Mexican
-subsidiary on the SAT (Anexo 24) chart reporting in MXN, an intra-group
-receivable/payable pair of equal economic value, consolidated to a single
-presentation currency (EUR) with the intercompany position eliminated.
+What this is: a runnable, fully deterministic demonstration of Kontablo
+consolidating a two-jurisdiction group whose books live in two *different*
+classical local charts of accounts:
 
-Why this file exists
---------------------
-It is the *single source of truth* for the consolidation + elimination logic
-and for the trial-balance fixtures. Three consumers import from here so they can
-never silently diverge:
+  * Parent  — "Ibérica Manufactura, S.A."     Spain   (PGC, EUR)
+  * Subsidiary — "Manufactura del Norte, S.A. de C.V."  Mexico  (SAT, MXN)
 
-  * ``tests/test_example_reconciliation.py`` — fast unit assertions (no Docker).
-  * ``e2e/runner.py`` — the Dockerized harness, which feeds trial balances
-    pulled from two *real* ERPs (ERPNext + Odoo) through the very same
-    :func:`reconcile` path.
-  * this module's ``__main__`` — a runnable demo.
+It pulls each local chart, maps every account to the universal Kontablo UUID
+ontology via the deterministic resolve() path (Tier-1 exact local-code lookup,
+Tier-2 multilingual keyword fallback), normalises both currencies to USD,
+consolidates, eliminates one intercompany balance, and prints a unified
+cross-border trial balance that still balances (Σdebits = Σcredits).
 
-Determinism (CLAUDE.md principle #5)
-------------------------------------
-Account → Kontablo-node resolution reuses :func:`scripts.mass_consolidation_v2.resolve`
-verbatim — the exact deterministic Tier-1 (local-code) + Tier-2 (multilingual
-keyword) path the published validation harness uses. No LLM is involved.
-Intercompany lines are identified by an explicit ``(jurisdiction, local_code)``
-allowlist — a deterministic field, never by parsing free text.
+Honesty note: the trial balances below are SYNTHETIC (hand-constructed,
+balanced by construction) — they are not real-world ledger data. The *local
+codes themselves* are real PGC/SAT statutory codes drawn from the committed
+Kontablo ontology, so the Tier-1 lookups are genuine. No LLM is involved; every
+mapping and every elimination is a deterministic graph/rule operation.
 
-FX honesty
-----------
-The MXN→EUR rate here is a *fixed synthetic rate* (0.05) chosen so the example
-is reproducible and the intra-group pair nets exactly. It is not a market rate.
-The e2e harness uses the same fixed rate so the two stay consistent.
+This is the zero-dependency tier. The next tier up
+(``examples/two_erp_reconciliation/``) runs the *same* engine against two real
+open-source ERPs (ERPNext + Odoo) over Docker via the connectors.
+
+Run:  python examples/transnational_reconciliation.py
 """
 
 from __future__ import annotations
 
 import os
 import sys
-from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple
 
-# Make the repo root importable when run directly (python examples/...).
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if ROOT not in sys.path:
-    sys.path.insert(0, ROOT)
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from scripts.mass_consolidation_v2 import load_ontology, resolve  # noqa: E402
+from core.engine import (  # noqa: E402
+    ConsolidationEngine,
+    IntercompanyLink,
+    LocalEntry,
+    SubsidiaryTB,
+)
 
-# --------------------------------------------------------------------------- #
-# Presentation currency + FX. Fixed synthetic rates (NOT market data).
-# --------------------------------------------------------------------------- #
-PRESENTATION_CURRENCY = "EUR"
-FX_TO_PRESENTATION: Dict[str, float] = {
-    "EUR": 1.0,
-    "MXN": 0.05,  # synthetic, fixed; documented in module docstring + e2e README
-}
-
-# Intercompany lines: explicit (jurisdiction, local_code) allowlist. Deterministic
-# field-based identification — never substring-matching of names/justifications.
-INTERCOMPANY_CODES: set = {
-    ("es", "4330"),  # parent: intra-group receivable from the Mexican subsidiary
-    ("mx", "216"),   # subsidiary: intra-group payable to the Spanish parent
-}
-
-EPSILON = 0.01  # currency rounding tolerance (cents of the presentation currency)
+# USD value of the single intercompany balance (parent financed the subsidiary):
+# the parent carries an intercompany receivable; the subsidiary an intercompany
+# payable of the same USD size. On consolidation the pair is eliminated.
+INTERCOMPANY_USD = 100_000.0
 
 
-# --------------------------------------------------------------------------- #
-# Data model
-# --------------------------------------------------------------------------- #
-@dataclass
-class Line:
-    """One trial-balance line, carrying its natural-side balance."""
+def build_parent_spain() -> SubsidiaryTB:
+    """Ibérica Manufactura, S.A. — Spanish PGC, amounts in EUR.
 
-    local_code: str
-    local_name: str
-    nature: str          # "debit" | "credit"
-    amount: float        # positive, expressed on the account's natural side
-
-    @property
-    def signed(self) -> float:
-        """Debit positive, credit negative — a balanced sheet sums to zero."""
-        return self.amount if self.nature == "debit" else -self.amount
-
-
-@dataclass
-class Entity:
-    entity_id: str
-    name: str
-    jurisdiction: str    # ISO 3166-1 alpha-2 (es, mx)
-    currency: str
-    source: str          # "fixture" | "erpnext" | "odoo" — honesty label
-    lines: List[Line] = field(default_factory=list)
-
-
-@dataclass
-class ConsolidatedNode:
-    kontablo_id: str
-    label: str
-    debit: float = 0.0
-    credit: float = 0.0
-
-    @property
-    def net(self) -> float:
-        return self.debit - self.credit
-
-
-@dataclass
-class ReconciliationResult:
-    presentation_currency: str
-    nodes_pre: Dict[str, ConsolidatedNode]
-    nodes_post: Dict[str, ConsolidatedNode]
-    intercompany_receivable: float
-    intercompany_payable: float
-    total_debit_pre: float
-    total_credit_pre: float
-    total_debit_post: float
-    total_credit_post: float
-
-    @property
-    def balances_pre(self) -> bool:
-        return abs(self.total_debit_pre - self.total_credit_pre) < EPSILON
-
-    @property
-    def balances_post(self) -> bool:
-        return abs(self.total_debit_post - self.total_credit_post) < EPSILON
-
-    @property
-    def intercompany_nets_to_zero(self) -> bool:
-        return abs(self.intercompany_receivable - self.intercompany_payable) < EPSILON
-
-
-# --------------------------------------------------------------------------- #
-# Scenario fixtures (used by the self-contained example + as the expected shape
-# the e2e provisioning posts into the two real ERPs).
-# --------------------------------------------------------------------------- #
-def build_scenario() -> List[Entity]:
-    """The two-entity transnational group. Each trial balance balances locally."""
-    parent = Entity(
-        entity_id="ES-PARENT",
-        name="Iberia Holding S.A. (Spain, PGC)",
+    Balanced by construction: Σdebit = Σcredit = 1,670,000 EUR.
+    Account 430 (Clientes) includes the intercompany receivable from Mexico.
+    """
+    return SubsidiaryTB(
+        subsidiary_id="iberica-es",
         jurisdiction="es",
         currency="EUR",
-        source="fixture",
-        lines=[
-            Line("572", "Bancos", "debit", 100_000),
-            Line("430", "Clientes", "debit", 50_000),
-            Line("4330", "Clientes empresas del grupo", "debit", 30_000),  # intercompany
-            Line("300", "Existencias comerciales", "debit", 40_000),
-            Line("400", "Proveedores", "credit", 30_000),
-            Line("100", "Capital social", "credit", 120_000),
-            Line("700", "Ventas de mercaderias", "credit", 70_000),
+        entries=[
+            LocalEntry("572", "Bancos, c/c vista, euros", debit=200_000, nature="debit"),
+            LocalEntry("430", "Clientes por ventas y prestaciones de servicios",
+                       debit=300_000, nature="debit", intercompany_with="norte-mx"),
+            LocalEntry("300", "Mercaderías (existencias)", debit=150_000, nature="debit"),
+            LocalEntry("21", "Inmovilizado material", debit=500_000, nature="debit"),
+            LocalEntry("600", "Compras de mercaderías", debit=400_000, nature="debit"),
+            LocalEntry("62", "Servicios exteriores", debit=120_000, nature="debit"),
+            LocalEntry("100", "Capital social", credit=600_000, nature="credit"),
+            LocalEntry("129", "Resultado del ejercicio", credit=170_000, nature="credit"),
+            LocalEntry("400", "Proveedores", credit=250_000, nature="credit"),
+            LocalEntry("170", "Deudas a largo plazo con entidades de crédito",
+                       credit=250_000, nature="credit"),
+            LocalEntry("700", "Ventas de mercaderías", credit=400_000, nature="credit"),
         ],
     )
-    subsidiary = Entity(
-        entity_id="MX-SUB",
-        name="Azteca Servicios S.A. de C.V. (Mexico, SAT)",
+
+
+def build_subsidiary_mexico() -> SubsidiaryTB:
+    """Manufactura del Norte, S.A. de C.V. — Mexican SAT chart, amounts in MXN.
+
+    Balanced by construction: Σdebit = Σcredit = 15,200,000 MXN.
+    Account 201 (Proveedores) includes the intercompany payable to Spain.
+    """
+    return SubsidiaryTB(
+        subsidiary_id="norte-mx",
         jurisdiction="mx",
         currency="MXN",
-        source="fixture",
-        lines=[
-            Line("102", "Bancos", "debit", 800_000),
-            Line("105", "Clientes", "debit", 500_000),
-            Line("107", "Almacen (Inventario)", "debit", 300_000),
-            Line("201", "Proveedores", "credit", 200_000),
-            Line("216", "Cuentas por pagar a partes relacionadas", "credit", 600_000),  # intercompany
-            Line("300", "Capital social", "credit", 400_000),
-            Line("401", "Ventas y/o servicios gravados", "credit", 400_000),
+        entries=[
+            LocalEntry("101", "Caja", debit=500_000, nature="debit"),
+            LocalEntry("102", "Bancos", debit=1_500_000, nature="debit"),
+            LocalEntry("105", "Clientes", debit=2_000_000, nature="debit"),
+            LocalEntry("151", "Inventarios", debit=1_200_000, nature="debit"),
+            LocalEntry("181", "Maquinaria y equipo", debit=6_000_000, nature="debit"),
+            LocalEntry("501", "Costo de ventas", debit=3_000_000, nature="debit"),
+            LocalEntry("504", "Gastos de administración", debit=1_000_000, nature="debit"),
+            LocalEntry("300", "Capital social", credit=4_000_000, nature="credit"),
+            LocalEntry("305", "Resultados acumulados", credit=1_200_000, nature="credit"),
+            LocalEntry("201", "Proveedores", credit=3_275_862, nature="credit",
+                       intercompany_with="iberica-es"),
+            LocalEntry("311", "Documentos por pagar a largo plazo",
+                       credit=1_724_138, nature="credit"),
+            LocalEntry("401", "Ventas", credit=5_000_000, nature="credit"),
         ],
     )
-    return [parent, subsidiary]
 
 
-# --------------------------------------------------------------------------- #
-# Core reconciliation logic (the only copy; everything imports this)
-# --------------------------------------------------------------------------- #
-def fx_rate(currency: str) -> float:
-    if currency not in FX_TO_PRESENTATION:
-        raise KeyError(
-            f"No fixed FX rate for {currency!r}; add it to FX_TO_PRESENTATION."
+def intercompany_links() -> list[IntercompanyLink]:
+    """The single intercompany balance to eliminate, keyed on deterministic
+    (subsidiary_id, kontablo_id) — never on free text."""
+    return [
+        IntercompanyLink(
+            from_subsidiary="iberica-es",
+            from_kontablo_id="asset.current.receivables",  # PGC 430
+            to_subsidiary="norte-mx",
+            to_kontablo_id="liability.current.payables",   # SAT 201
+            amount_usd=INTERCOMPANY_USD,
         )
-    return FX_TO_PRESENTATION[currency]
+    ]
 
 
-def assert_local_balance(entity: Entity) -> None:
-    """A trial balance that does not balance locally is a provisioning bug."""
-    total = sum(line.signed for line in entity.lines)
-    if abs(total) >= EPSILON:
-        raise AssertionError(
-            f"{entity.entity_id} trial balance does not balance locally: "
-            f"net {total:.2f} {entity.currency}"
-        )
+def reconcile():
+    """Run the full pipeline and return the ConsolidationResult (used by tests)."""
+    engine = ConsolidationEngine()
+    subs = [build_parent_spain(), build_subsidiary_mexico()]
+    return engine.consolidate(subs, eliminations=intercompany_links())
 
 
-def reconcile(
-    entities: List[Entity],
-    accounts: Optional[dict] = None,
-    by_code: Optional[dict] = None,
-) -> ReconciliationResult:
-    """Consolidate → convert → eliminate intercompany → report.
-
-    Resolution uses :func:`scripts.mass_consolidation_v2.resolve` so this path is
-    identical to the published deterministic validation harness.
-    """
-    if accounts is None or by_code is None:
-        accounts, by_code, *_ = load_ontology()
-
-    nodes_pre: Dict[str, ConsolidatedNode] = {}
-    nodes_post: Dict[str, ConsolidatedNode] = {}
-    ic_receivable = 0.0
-    ic_payable = 0.0
-
-    def node_for(container: Dict[str, ConsolidatedNode], kid: str) -> ConsolidatedNode:
-        if kid not in container:
-            label = accounts.get(kid, {}).get("label", kid)
-            container[kid] = ConsolidatedNode(kontablo_id=kid, label=label)
-        return container[kid]
-
-    for entity in entities:
-        assert_local_balance(entity)
-        rate = fx_rate(entity.currency)
-        for line in entity.lines:
-            kid, _tier, _conf = resolve(
-                {"code": line.local_code, "name": line.local_name, "nature": line.nature},
-                entity.jurisdiction,
-                accounts,
-                by_code,
-            )
-            if kid is None:
-                raise AssertionError(
-                    f"{entity.entity_id} line {line.local_code} '{line.local_name}' "
-                    f"did not resolve deterministically (escalated)."
-                )
-            value = round(line.amount * rate, 2)
-            is_ic = (entity.jurisdiction, line.local_code) in INTERCOMPANY_CODES
-
-            # Pre-elimination consolidated trial balance (everything posted).
-            pre = node_for(nodes_pre, kid)
-            if line.nature == "debit":
-                pre.debit += value
-            else:
-                pre.credit += value
-
-            if is_ic:
-                if line.nature == "debit":
-                    ic_receivable += value
-                else:
-                    ic_payable += value
-                # Post-elimination: intercompany lines are removed.
-                continue
-
-            post = node_for(nodes_post, kid)
-            if line.nature == "debit":
-                post.debit += value
-            else:
-                post.credit += value
-
-    total_debit_pre = round(sum(n.debit for n in nodes_pre.values()), 2)
-    total_credit_pre = round(sum(n.credit for n in nodes_pre.values()), 2)
-    total_debit_post = round(sum(n.debit for n in nodes_post.values()), 2)
-    total_credit_post = round(sum(n.credit for n in nodes_post.values()), 2)
-
-    return ReconciliationResult(
-        presentation_currency=PRESENTATION_CURRENCY,
-        nodes_pre=nodes_pre,
-        nodes_post=nodes_post,
-        intercompany_receivable=round(ic_receivable, 2),
-        intercompany_payable=round(ic_payable, 2),
-        total_debit_pre=total_debit_pre,
-        total_credit_pre=total_credit_pre,
-        total_debit_post=total_debit_post,
-        total_credit_post=total_credit_post,
-    )
+# ---------------------------------------------------------------------------
+# Presentation
+# ---------------------------------------------------------------------------
+def _print_local_chart(tb: SubsidiaryTB, engine: ConsolidationEngine) -> None:
+    print(f"\n  {tb.subsidiary_id}  ·  {tb.jurisdiction.upper()}  ·  {tb.currency}")
+    print(f"  {'code':>7}  {'local account':<46} {'→ kontablo_id':<34} tier")
+    print("  " + "-" * 100)
+    for e in tb.entries:
+        kid, tier, _ = engine.resolve(e, tb.jurisdiction)
+        print(f"  {e.code:>7}  {e.name[:46]:<46} {str(kid):<34} {tier}")
 
 
-def format_report(result: ReconciliationResult) -> str:
-    cur = result.presentation_currency
-    out = []
-    out.append("=" * 72)
-    out.append("KONTABLO TRANSNATIONAL RECONCILIATION — ES parent + MX subsidiary")
-    out.append("=" * 72)
-    out.append(f"Presentation currency: {cur}")
-    out.append("")
-    out.append(f"CONSOLIDATED TRIAL BALANCE (pre-elimination, {cur}):")
-    out.append(f"   {'Kontablo node':<34}{'debit':>14}{'credit':>14}")
-    for kid in sorted(result.nodes_pre):
-        n = result.nodes_pre[kid]
-        out.append(f"   {kid:<34}{n.debit:>14,.2f}{n.credit:>14,.2f}")
-    out.append("   " + "-" * 62)
-    out.append(
-        f"   {'TOTAL':<34}{result.total_debit_pre:>14,.2f}{result.total_credit_pre:>14,.2f}"
-    )
-    out.append("")
-    out.append("INTERCOMPANY ELIMINATION:")
-    out.append(f"   intra-group receivable (ES 4330): {result.intercompany_receivable:>14,.2f} {cur}")
-    out.append(f"   intra-group payable    (MX 216) : {result.intercompany_payable:>14,.2f} {cur}")
-    out.append(
-        f"   net after elimination           : "
-        f"{result.intercompany_receivable - result.intercompany_payable:>14,.2f} {cur}"
-    )
-    out.append("")
-    out.append(f"CONSOLIDATED TRIAL BALANCE (post-elimination, {cur}):")
-    out.append(f"   {'Kontablo node':<34}{'debit':>14}{'credit':>14}")
-    for kid in sorted(result.nodes_post):
-        n = result.nodes_post[kid]
-        out.append(f"   {kid:<34}{n.debit:>14,.2f}{n.credit:>14,.2f}")
-    out.append("   " + "-" * 62)
-    out.append(
-        f"   {'TOTAL':<34}{result.total_debit_post:>14,.2f}{result.total_credit_post:>14,.2f}"
-    )
-    out.append("")
-    out.append(f"   balances pre-elimination : {result.balances_pre}")
-    out.append(f"   balances post-elimination: {result.balances_post}")
-    out.append(f"   intercompany nets to zero: {result.intercompany_nets_to_zero}")
-    out.append("=" * 72)
-    return "\n".join(out)
+def _section(lines, statement, natures):
+    return [l for l in lines if l.statement == statement and l.nature in natures]
 
 
-def assert_reconciled(result: ReconciliationResult) -> None:
-    """The three load-bearing invariants. Shared by example, test, and e2e."""
-    assert result.balances_pre, (
-        f"consolidated TB (pre) does not balance: "
-        f"D {result.total_debit_pre} != C {result.total_credit_pre}"
-    )
-    assert result.intercompany_nets_to_zero, (
-        f"intercompany does not net to zero: receivable "
-        f"{result.intercompany_receivable} != payable {result.intercompany_payable}"
-    )
-    assert result.balances_post, (
-        f"consolidated TB (post-elimination) does not balance: "
-        f"D {result.total_debit_post} != C {result.total_credit_post}"
-    )
+def main() -> None:
+    engine = ConsolidationEngine()
+    parent = build_parent_spain()
+    sub = build_subsidiary_mexico()
 
+    print("=" * 104)
+    print("KONTABLO — Transnational reconciliation (self-contained, deterministic)")
+    print("  Parent:     Ibérica Manufactura, S.A.        Spain (PGC)   EUR")
+    print("  Subsidiary: Manufactura del Norte, S.A. de C.V.  Mexico (SAT)  MXN  (100% owned)")
+    print("=" * 104)
 
-def main() -> int:
-    entities = build_scenario()
-    result = reconcile(entities)
-    print(format_report(result))
-    assert_reconciled(result)
-    print("\n✅ Reconciliation invariants hold.")
-    return 0
+    print("\n[1] LOCAL CHARTS → KONTABLO UUID ONTOLOGY (deterministic resolve)")
+    _print_local_chart(parent, engine)
+    _print_local_chart(sub, engine)
+
+    result = engine.consolidate([parent, sub], eliminations=intercompany_links())
+
+    print("\n[2] FX NORMALISATION TO USD")
+    print(f"  EUR→USD {engine.fx_to_usd(parent):.4f}   MXN→USD {engine.fx_to_usd(sub):.4f}")
+
+    print("\n[3] INTERCOMPANY ELIMINATION")
+    print(f"  Eliminated {result.eliminations_applied} intercompany balance "
+          f"(USD {INTERCOMPANY_USD:,.0f}): "
+          f"Ibérica receivable (PGC 430) ↔ Norte payable (SAT 201)")
+
+    print("\n[4] UNIFIED CROSS-BORDER TRIAL BALANCE (USD)")
+    groups = [
+        ("ASSETS", "balance_sheet", {"debit"}),
+        ("LIABILITIES & EQUITY", "balance_sheet", {"credit"}),
+        ("REVENUE", "income_statement", {"credit"}),
+        ("EXPENSES", "income_statement", {"debit"}),
+    ]
+    for title, stmt, natures in groups:
+        rows = _section(result.lines, stmt, natures)
+        if not rows:
+            continue
+        print(f"\n  {title}")
+        for l in rows:
+            amt = l.debit_usd if "debit" in natures else l.credit_usd
+            print(f"    {l.kontablo_id:<34} {l.label_en[:30]:<30} {amt:>16,.2f}")
+
+    print("\n  " + "-" * 100)
+    print(f"  {'Σ DEBITS (USD)':<66} {result.total_debits:>16,.2f}")
+    print(f"  {'Σ CREDITS (USD)':<66} {result.total_credits:>16,.2f}")
+    print(f"  {'BALANCE DIFFERENCE (should be ~0.00)':<66} {result.balance_difference:>16,.2f}")
+    status = "BALANCED ✓" if result.is_balanced() else "OUT OF BALANCE ✗"
+    print(f"\n  RECONCILIATION: {status}")
+    if result.escalations:
+        print(f"  Escalated to human review (CRA): {len(result.escalations)} entr(ies)")
+    if result.cra_flags:
+        print(f"  CRA boundary flags: {len(result.cra_flags)}")
+    print("=" * 104)
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    main()

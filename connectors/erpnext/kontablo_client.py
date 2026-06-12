@@ -49,6 +49,38 @@ class ERPNextKontabloConnector:
         response.raise_for_status()
         return response.json()
 
+    def write_back_mappings(self, mappings: List[Dict], custom_field: str = "kontablo_uuid") -> List[Dict]:
+        """
+        Writes the resolved Kontablo mapping back onto each ERPNext Account.
+
+        This is the "write-back" leg of the round-trip: ERPNext chart of accounts
+        → Kontablo mapping → annotate the ERP. It PUTs the kontablo_id / uuid /
+        confidence into a custom field on each Account so the mapping is visible
+        and auditable inside ERPNext (mirroring the Frappe 'Kontablo Mapping'
+        DocType for the REST-only deployment path).
+
+        `mappings` is the `mappings` list returned by Kontablo `/mapping/batch`.
+        Returns the list of write-back results (one per account).
+        """
+        results = []
+        for m in mappings:
+            account_name = m.get("local_code")
+            if not account_name:
+                continue
+            payload = {
+                custom_field: m.get("kontablo_uuid") or m.get("kontablo_id"),
+                "kontablo_id": m.get("kontablo_id"),
+                "kontablo_confidence": m.get("confidence_score"),
+            }
+            response = requests.put(
+                f"{self.erpnext_url}/api/resource/Account/{account_name}",
+                headers=self.headers,
+                json=payload,
+            )
+            response.raise_for_status()
+            results.append({"account": account_name, "written": payload})
+        return results
+
     def get_trial_balance(self, company: str, to_date: str) -> Dict:
         """
         Executes the Trial Balance report in ERPNext.

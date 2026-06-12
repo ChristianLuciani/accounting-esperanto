@@ -1,14 +1,18 @@
-# Opt-in two-ERP end-to-end workflow.
+# Opt-in heavier confirmation for the two-ERP reconciliation demo.
 #
-# Spinning up ERPNext + Odoo is minutes-long, so this NEVER runs on the fast PR
-# gate (ci.yml). It runs only:
+# The deterministic engine behind the demo is already covered on the fast PR
+# gate (tests/examples/test_two_erp_reconciliation.py). This workflow is an
+# explicit, NON-blocking confirmation that the demo's end-to-end fixtures path
+# reproduces the published balanced result. It never runs on the fast gate; it
+# runs only:
 #   - manually (workflow_dispatch),
 #   - nightly (schedule), or
 #   - on a pull_request explicitly labelled `e2e`.
 #
-# The reconciliation invariants themselves are also guarded cheaply on every
-# fast run via tests/test_example_reconciliation.py + tests/test_e2e_harness.py
-# (fixtures mode, no Docker). This workflow is the full-fidelity confirmation.
+# The *live* two-ERP path (real ERPNext + Odoo over Docker) is intentionally NOT
+# run here: it needs manual ERPNext site + API-key setup (see
+# examples/two_erp_reconciliation/README.md "How do I run it against the real
+# ERPs?"). Use `make e2e-up && make e2e-seed && make reconcile-live` locally.
 name: e2e-two-erp
 
 on:
@@ -19,13 +23,13 @@ on:
     types: [labeled, synchronize, reopened]
 
 jobs:
-  two-erp-e2e:
+  two-erp-reconciliation:
     # Gate the PR trigger on the `e2e` label; dispatch/schedule always run.
     if: >-
       github.event_name != 'pull_request' ||
       contains(github.event.pull_request.labels.*.name, 'e2e')
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
 
@@ -37,36 +41,8 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      # Cheap, deterministic guard: the reconciliation logic must already hold
-      # in fixtures mode before we pay for two ERPs.
-      - name: Reconciliation logic (fixtures, no Docker)
-        run: |
-          python -m pytest tests/test_example_reconciliation.py tests/test_e2e_harness.py -q
-          python -m e2e.runner --mode fixtures
+      - name: Two-ERP reconciliation (fixtures, deterministic)
+        run: python examples/two_erp_reconciliation/run_reconciliation.py --source fixtures
 
-      - name: Start two-ERP stack
-        run: docker compose -f e2e/docker-compose.yml up -d --build
-
-      - name: Wait for services
-        run: |
-          python e2e/wait_for.py \
-            http://localhost:8000/ \
-            http://localhost:8069/web/database/selector \
-            http://localhost:8081/api/method/ping \
-            --timeout 1200 --interval 10
-
-      - name: Provision both ERPs
-        run: |
-          python e2e/provision/provision_odoo.py
-          python e2e/provision/provision_erpnext.py
-
-      - name: Run live consolidation assertions
-        run: python e2e/runner.py --mode live
-
-      - name: Dump logs on failure
-        if: failure()
-        run: docker compose -f e2e/docker-compose.yml logs --tail=200
-
-      - name: Tear down
-        if: always()
-        run: docker compose -f e2e/docker-compose.yml down -v
+      - name: Demo tests
+        run: python -m pytest tests/examples/ -q

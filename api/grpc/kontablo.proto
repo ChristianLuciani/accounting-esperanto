@@ -258,7 +258,10 @@ message IntercompanyElimination {
   string from_subsidiary = 1;
   string to_subsidiary = 2;
   double amount = 3;
-  string kontablo_id = 4;
+  string kontablo_id = 4;          // the node booked in `from_subsidiary`
+  // Contra leg booked in `to_subsidiary` (e.g. payable matching a receivable).
+  // Empty = single-node elimination (the same node on both sides).
+  string contra_kontablo_id = 5;
 }
 
 message ConsolidationRequest {

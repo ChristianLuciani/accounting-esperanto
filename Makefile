@@ -1,22 +1,23 @@
 # Kontablo developer entrypoints.
 #
-# Fast, no-Docker targets first; the heavy two-ERP e2e is opt-in.
+# Thin convenience wrappers over existing repo entrypoints — no logic lives here.
+# The two-ERP reconciliation demo itself lives in examples/two_erp_reconciliation/.
 
-PYTHON ?= venv/bin/python
+PYTHON ?= python
 COMPOSE ?= docker compose
-E2E_COMPOSE := $(COMPOSE) -f e2e/docker-compose.yml
+DEMO := examples/two_erp_reconciliation
+DEMO_COMPOSE := $(COMPOSE) -f $(DEMO)/docker-compose.yml
 
-.PHONY: help test claims example e2e-example e2e e2e-up e2e-provision e2e-run e2e-down
+.PHONY: help test claims reconcile reconcile-live e2e-up e2e-seed e2e-down
 
 help:
 	@echo "Targets:"
 	@echo "  make test          - run the fast pytest suite (no Docker)"
 	@echo "  make claims        - reproduce the published validation numbers"
-	@echo "  make e2e-example   - run the self-contained reconciliation example (no Docker)"
-	@echo "  make e2e           - full two-ERP Docker e2e: up -> provision -> assert -> down"
-	@echo "  make e2e-up        - start the two-ERP stack (ERPNext + Odoo + Kontablo API)"
-	@echo "  make e2e-provision - provision both ERPs (real records, fixture amounts)"
-	@echo "  make e2e-run       - run the live consolidation assertions"
+	@echo "  make reconcile     - two-ERP reconciliation, fixtures source (no Docker)"
+	@echo "  make e2e-up        - start the two-ERP stack (ERPNext + Odoo)"
+	@echo "  make e2e-seed      - seed both ERPs (real records, synthetic amounts)"
+	@echo "  make reconcile-live- two-ERP reconciliation against the live ERPs"
 	@echo "  make e2e-down      - tear the stack down and remove volumes"
 
 # ---- fast, no-Docker ------------------------------------------------------- #
@@ -26,26 +27,21 @@ test:
 claims:
 	$(PYTHON) scripts/mass_consolidation_v2.py
 
-example e2e-example:
-	$(PYTHON) examples/transnational_reconciliation.py
+reconcile:
+	$(PYTHON) $(DEMO)/run_reconciliation.py --source fixtures
 
-# ---- two-ERP Docker e2e (opt-in) ------------------------------------------ #
+# ---- two-ERP Docker demo (opt-in; see examples/two_erp_reconciliation/README) #
 e2e-up:
-	$(E2E_COMPOSE) up -d --build
-	$(PYTHON) e2e/wait_for.py \
-		http://localhost:8000/ \
-		http://localhost:8069/web/database/selector \
-		http://localhost:8081/api/method/ping \
-		--timeout 900
+	$(DEMO_COMPOSE) up -d --build
 
-e2e-provision:
-	$(PYTHON) e2e/provision/provision_odoo.py
-	$(PYTHON) e2e/provision/provision_erpnext.py
+# Seeding needs the ERPNext site + API keys to exist first; see the demo README.
+# ERPNEXT_API_KEY / ERPNEXT_API_SECRET (and the ODOO_* vars) must be exported.
+e2e-seed:
+	$(PYTHON) $(DEMO)/seed/seed_odoo.py
+	$(PYTHON) $(DEMO)/seed/seed_erpnext.py
 
-e2e-run:
-	$(PYTHON) e2e/runner.py --mode live
+reconcile-live:
+	$(PYTHON) $(DEMO)/run_reconciliation.py --source live
 
 e2e-down:
-	$(E2E_COMPOSE) down -v
-
-e2e: e2e-up e2e-provision e2e-run e2e-down
+	$(DEMO_COMPOSE) down -v
