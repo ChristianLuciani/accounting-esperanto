@@ -7,8 +7,13 @@ abstract: >
   local jurisdictional chart-of-accounts standards, international reporting frameworks
   (IFRS/XBRL), the agentic economy (MCP, A2A, AP2), and blockchain/DeFi protocols.
   It enables deterministic, machine-verifiable financial data exchange across
-  23 jurisdictions through a Tree-to-Graph Universal Bridge and a Deterministic
-  Boundary Library that eliminates the classical class of accounting hallucination.
+  all 195 sovereign jurisdictions (with statutory chart-of-accounts overlays for
+  the 60 jurisdictions that mandate a national chart, 56 of them exercised
+  against primary-source-cited code sets) through a Tree-to-Graph Universal
+  Bridge and a Deterministic Boundary Library that eliminates the classical
+  class of accounting hallucination at the harness level. A reproducible
+  mass-consolidation validation spans 75 entities in 68 jurisdictions, with the
+  deterministic tiers resolving 97% of entries.
   Its 30-account Level 3 minimum core covers an estimated ~94% of routine
   transaction volume by posting count (rising to ~99% with a 34-account extended
   core), reproducible from a committed transaction-frequency benchmark.

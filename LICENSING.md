@@ -57,7 +57,7 @@ distributed under a separate commercial license.
 Open the interface — grow the ecosystem.
 Protect the validated implementation behind it.
 
-The real moat is first-mover citability, 23-jurisdiction depth, hyperinflation expertise,
+The real moat is first-mover citability, 195-jurisdiction depth (60 statutory-chart overlays), hyperinflation expertise,
 and execution speed — not the license text.
 
 ## Commercial licensing
