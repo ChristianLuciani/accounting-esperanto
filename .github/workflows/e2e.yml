@@ -1,0 +1,48 @@
+# Opt-in heavier confirmation for the two-ERP reconciliation demo.
+#
+# The deterministic engine behind the demo is already covered on the fast PR
+# gate (tests/examples/test_two_erp_reconciliation.py). This workflow is an
+# explicit, NON-blocking confirmation that the demo's end-to-end fixtures path
+# reproduces the published balanced result. It never runs on the fast gate; it
+# runs only:
+#   - manually (workflow_dispatch),
+#   - nightly (schedule), or
+#   - on a pull_request explicitly labelled `e2e`.
+#
+# The *live* two-ERP path (real ERPNext + Odoo over Docker) is intentionally NOT
+# run here: it needs manual ERPNext site + API-key setup (see
+# examples/two_erp_reconciliation/README.md "How do I run it against the real
+# ERPs?"). Use `make e2e-up && make e2e-seed && make reconcile-live` locally.
+name: e2e-two-erp
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 4 * * *"   # nightly 04:00 UTC
+  pull_request:
+    types: [labeled, synchronize, reopened]
+
+jobs:
+  two-erp-reconciliation:
+    # Gate the PR trigger on the `e2e` label; dispatch/schedule always run.
+    if: >-
+      github.event_name != 'pull_request' ||
+      contains(github.event.pull_request.labels.*.name, 'e2e')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Two-ERP reconciliation (fixtures, deterministic)
+        run: python examples/two_erp_reconciliation/run_reconciliation.py --source fixtures
+
+      - name: Demo tests
+        run: python -m pytest tests/examples/ -q
