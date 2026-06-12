@@ -1,0 +1,37 @@
+type,journal,weight,n_legs,legs_in_min_core,legs_in_extended,legs
+credit_sale_with_vat,sales,120,3,3,3,asset.current.receivables | revenue.operating | liability.current.vat_output
+cash_or_card_sale_with_vat,cash_receipts,90,3,3,3,asset.current.cash | revenue.operating | liability.current.vat_output
+customer_receipt_on_account,cash_receipts,110,2,2,2,asset.current.bank | asset.current.receivables
+sales_credit_note,sales,8,3,3,3,revenue.operating | liability.current.vat_output | asset.current.receivables
+credit_purchase_inventory_vat,purchases,55,3,3,3,asset.current.inventory | asset.current.vat_input | liability.current.payables
+credit_purchase_expense_vat,purchases,60,3,3,3,expense.admin | asset.current.vat_input | liability.current.payables
+supplier_payment,cash_payments,75,2,2,2,liability.current.payables | asset.current.bank
+purchase_credit_note,purchases,6,3,3,3,liability.current.payables | asset.current.vat_input | expense.admin
+internal_cash_to_bank_transfer,cash_payments,18,2,2,2,asset.current.bank | asset.current.cash
+bank_charges,cash_payments,14,2,2,2,expense.admin | asset.current.bank
+petty_cash_expense,cash_payments,22,2,2,2,expense.admin | asset.current.cash
+cogs_recognition,general,30,2,2,2,expense.cogs | asset.current.inventory
+payroll_gross_wages,general,12,2,1,2,expense.admin | residual.payroll_liability
+payroll_statutory_withholding,general,12,2,0,2,residual.payroll_liability | residual.payroll_liability
+payroll_employer_social_charges,general,12,2,1,2,expense.admin | residual.payroll_liability
+payroll_net_payment,cash_payments,12,2,1,2,residual.payroll_liability | asset.current.bank
+withholding_tax_on_income,cash_receipts,8,2,1,2,residual.withholding_tax_asset | asset.current.receivables
+deferred_revenue_billing,sales,6,2,1,2,asset.current.receivables | residual.deferred_revenue
+deferred_revenue_recognition,general,6,2,1,2,residual.deferred_revenue | revenue.operating
+employee_advance_or_deposit,cash_payments,3,2,1,2,residual.other_receivable | asset.current.bank
+depreciation_charge,general,4,2,2,2,expense.depreciation | asset.noncurrent.ppe
+prepaid_amortization,general,4,2,2,2,expense.admin | asset.current.prepaid
+accrual_of_expense,general,6,2,2,2,expense.admin | liability.current.accrued
+vat_periodic_settlement,general,1,3,3,3,liability.current.vat_output | asset.current.vat_input | asset.current.bank
+income_tax_accrual,general,1,2,2,2,expense.tax | liability.current.tax
+fixed_asset_purchase,cash_payments,2,3,3,3,asset.noncurrent.ppe | asset.current.vat_input | asset.current.bank
+loan_drawdown,general,1,2,2,2,asset.current.bank | liability.current.short_term_debt
+loan_repayment_with_interest,cash_payments,2,3,3,3,liability.current.short_term_debt | expense.interest | asset.current.bank
+interest_or_other_income,cash_receipts,2,2,2,2,asset.current.bank | revenue.other
+fx_revaluation_loss,general,1,2,2,2,expense.fx_loss | asset.current.receivables
+fx_revaluation_gain,general,1,2,2,2,asset.current.receivables | revenue.other
+asset_disposal_gain_or_loss,general,0.4,3,2,2,asset.current.bank | asset.noncurrent.ppe | residual.disposal_gain_loss
+dividends_declared,general,0.2,2,1,1,equity.retained | residual.dividends_payable
+long_term_provision_movement,general,0.3,2,1,1,expense.admin | residual.long_term_provision
+novel_instrument_crypto_or_carbon,general,0.3,2,1,1,residual.novel_instrument | asset.current.bank
+miscellaneous_idiosyncratic,general,20,2,1,1,residual.miscellaneous_idiosyncratic | asset.current.bank

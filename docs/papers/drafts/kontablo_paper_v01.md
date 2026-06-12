@@ -28,7 +28,7 @@ The proliferation of incompatible national accounting standards creates signific
 
 This paper introduces **Kontablo**, an open, graph-based universal accounting ontology anchored to IFRS and validated across 20+ jurisdictions. Unlike prior work on XBRL taxonomies—which prioritize human-audit disclosures over high-frequency semantic execution—Kontablo's graph model enables transitive account mappings, multi-hop aggregation rules, and AI-assisted transaction classification under a strict **Co-responsibility Architecture (CRA)**. In this architecture, AI models propose mappings while human accountants retain final approval authority ("AI proposes, Human disposes"), enforcing database-level audit trails through persistent inconsistency flags. 
 
-A comparative analysis of account structures across 23 jurisdictions yields a core taxonomy of 30 Level 3 accounts covering over 92% of routine business transactions. We validated this ontology via a mass-consolidation simulation engine, unifying disparate local ledger data across 9 diverse regulatory environments. Kontablo's design demonstrates that a 99%-automatable accounting protocol is achievable, establishing an indispensable financial abstraction layer for ERP interoperability, microSaaS scaling, and the nascent Agent Payments Protocol (AP2) ecosystem.
+A comparative analysis of account structures across 23 jurisdictions yields a core taxonomy of 30 Level 3 accounts covering an estimated ~94% of routine transaction volume by posting count (~99% with a 34-account extended core). We validated this ontology via a mass-consolidation simulation engine, unifying disparate local ledger data across 9 diverse regulatory environments. Kontablo's design demonstrates that a 99%-automatable accounting protocol is achievable, establishing an indispensable financial abstraction layer for ERP interoperability, microSaaS scaling, and the nascent Agent Payments Protocol (AP2) ecosystem.
 
 ---
 
@@ -162,7 +162,7 @@ The taxonomy defines exactly 30 Level 3 accounts, divided into two distinct comp
     *   `liability.current.zakat` (enabled for SOCPA compliance in Saudi Arabia and the Gulf Cooperation Council region).
     *   `asset.noncurrent.biological` (enabled for agricultural entities under IAS 41 in countries like Brazil and Argentina).
 
-Empirical review proves that this 30-account configuration captures over **92% of routine transaction volume** in SME accounting ledgers across all tested jurisdictions.
+A reproducible transaction-frequency benchmark (`scripts/coverage_benchmark.py`) estimates that this 30-account configuration captures **~94% of routine transaction volume** by posting count (~99% with a 34-account extended core).
 
 ### 4.3 Tree-to-Graph Compatibility Protocol
 
@@ -325,7 +325,7 @@ By using the mathematical graph representation, Kontablo enables continuous, mul
 ### 8.4 Coverage and Data Quality
 The AI-augmented graph successfully mapped 100% of the sample transaction sets to Kontablo's core universal IDs, utilizing semantic fallbacks where explicit lookup rules were absent. By dynamically applying local-to-target foreign exchange conversions and rate overrides, the engine demonstrated that Kontablo can aggregate disparate, localized financial ledgers into a unified, IFRS-compliant global balance sheet in real-time.
 
-Our analysis demonstrates that the 30 Level 3 accounts cover **92% of routine business transactions by empirical volume (count)**—as benchmarked against thousands of generic SME ledger exports—validating that extreme ledger granularity in national standards (often hundreds of accounts) is mostly reserved for rare statistical or edge-case events.
+Our analysis estimates that the 30 Level 3 accounts cover **~94% of routine transaction volume by posting count** (a 34-account extended core reaches ~99%), per the reproducible benchmark in `research/coverage_benchmark/`—validating that extreme ledger granularity in national standards (often hundreds of accounts) is mostly reserved for rare statistical or edge-case events. (This supersedes an earlier unbacked appeal to a large but uncommitted set of SME ledger exports; the figure is now a model-based estimate regenerable via `scripts/coverage_benchmark.py`.)
 
 ---
 
@@ -367,7 +367,7 @@ Kontablo increases auditability by up to **95% (based on reducing human error re
 
 ## 10. Conclusion and Future Work
 
-This paper presents Kontablo, a graph-based universal accounting ontology anchored to IFRS and validated across 20+ jurisdictions. Our comparative analysis yields a core Level 3 taxonomy of 30 accounts covering 92% of routine business transactions, with formal aggregation rules, IFRS tag cross-references, and jurisdiction-specific overlay mechanisms for regulatory divergence.
+This paper presents Kontablo, a graph-based universal accounting ontology anchored to IFRS and validated across 20+ jurisdictions. Our comparative analysis yields a core Level 3 taxonomy of 30 accounts covering an estimated ~94% of routine transaction volume (~99% with a 34-account extended core), with formal aggregation rules, IFRS tag cross-references, and jurisdiction-specific overlay mechanisms for regulatory divergence.
 
 The key finding is that despite the apparent diversity of global accounting standards, a **minimum universal core of 18 accounts** exists in all analyzed jurisdictions. Building Kontablo around this empirically-validated core—rather than attempting a politically negotiated compromise—offers a practical path toward the ultimate goal: a 99%-automatable global accounting protocol, heavily supervised and ultimately authorized by human expert oversight.
 

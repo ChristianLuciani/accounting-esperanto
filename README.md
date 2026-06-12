@@ -50,6 +50,24 @@ it accepts a tree-structured chart from any ERP or jurisdiction and resolves it 
 graph nodes via a three-tier confidence system (exact match → pattern disambiguation
 → semantic AI fallback). The result is always a UUID, never a local code.
 
+### How much of real accounting activity does the 30-account core capture?
+
+A reproducible transaction-frequency benchmark
+([`research/coverage_benchmark/`](research/coverage_benchmark/),
+[`scripts/coverage_benchmark.py`](scripts/coverage_benchmark.py)) estimates that
+the **30-account Level 3 minimum core covers ~94% of routine transaction volume**
+by posting count (~87% counted by whole transaction). A **34-account extended
+core** — adding payroll, deferred revenue (IFRS 15), withholding-tax, and
+non-trade-receivable nodes — reaches **~99%**. The remaining few percent is a
+deliberately-retained *principled residual* (suspense, intercompany, novel
+instruments) that escalates to a human via the Co-responsibility Architecture
+rather than being force-mapped. The figure is a **model-based estimate** over a
+transparently-parameterized synthetic distribution grounded in the standard
+double-entry "special journals" taxonomy — not a measurement of a private ledger
+corpus, and labeled as such. Regenerate it with one command; the claims–evidence
+test [`tests/test_coverage_claim.py`](tests/test_coverage_claim.py) pins it to
+every surface that cites it.
+
 ### What makes Kontablo deterministic?
 
 **UUID as truth.** Every economic concept has a stable, collision-resistant UUID.

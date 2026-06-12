@@ -1,0 +1,58 @@
+{
+  "metric": "routine_transaction_volume_coverage",
+  "unit_reported": "line",
+  "artifact_status": "synthetic_reference_distribution (not measured field data)",
+  "minimum_core_node_count": 30,
+  "extended_core_node_count": 34,
+  "extended_core_added": [
+    "asset.current.other_receivables",
+    "asset.current.withholding_tax",
+    "liability.current.deferred_revenue",
+    "liability.current.payroll"
+  ],
+  "line_weighted": {
+    "total": 1794.8,
+    "min_core_covered": 1690.6,
+    "extended_covered": 1773.6,
+    "min_core_pct": 94.2,
+    "extended_pct": 98.8,
+    "residual_volume_by_label": {
+      "residual.miscellaneous_idiosyncratic": 20.0,
+      "residual.disposal_gain_loss": 0.4,
+      "residual.long_term_provision": 0.3,
+      "residual.novel_instrument": 0.3,
+      "residual.dividends_payable": 0.2
+    }
+  },
+  "transaction_weighted": {
+    "total": 725.2,
+    "min_core_covered": 633.0,
+    "extended_covered": 704.0,
+    "min_core_pct": 87.3,
+    "extended_pct": 97.1,
+    "residual_volume_by_label": {
+      "residual.miscellaneous_idiosyncratic": 20.0,
+      "residual.disposal_gain_loss": 0.4,
+      "residual.long_term_provision": 0.3,
+      "residual.novel_instrument": 0.3,
+      "residual.dividends_payable": 0.2
+    }
+  },
+  "minimum_core_coverage_pct": 94.2,
+  "extended_core_coverage_pct": 98.8,
+  "dataset_meta": {
+    "artifact_type": "synthetic_reference_distribution",
+    "not_measured_field_data": true,
+    "unit": "transactions_per_representative_month",
+    "entity_profile": "Small-to-medium trading + services company, VAT-registered, a handful of employees, single functional currency with occasional FX. Chosen because it exercises both the sales and purchase cycles plus payroll and period-end adjustments — the common denominator across the jurisdictions Kontablo maps.\n",
+    "citations": [
+      "Weygandt, Kieso & Kimmel (2018), Accounting Principles 13e, Wiley, Ch.7 (Special Journals).",
+      "Horngren, Harrison & Oliver (2015), Accounting 10e, Pearson (Special Journals / subsidiary ledgers)."
+    ],
+    "caveats": [
+      "Weights are reasoned estimates anchored to the special-journals taxonomy, not counted from a real corpus.",
+      "Payroll statutory-deduction frequency and withholding-tax-at-source frequency are jurisdiction-sensitive; the values here are mid-range global estimates.",
+      "Replacing this block with per-line counts from a licensed anonymized ledger corpus is the designated next step; the script does not change."
+    ]
+  }
+}

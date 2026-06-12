@@ -2,7 +2,7 @@
 
 ## What's in this release
 
-- **Ontology**: 30 universal accounts (Level 3 minimum-core), UUID-keyed, mapped across **195 sovereign jurisdictions (complete global coverage)** — 92% routine transaction volume coverage
+- **Ontology**: 30 universal accounts (Level 3 minimum-core), UUID-keyed, mapped across **195 sovereign jurisdictions (complete global coverage)** — ~94% routine transaction volume coverage (~99% with a 34-account extended core); reproducible via `scripts/coverage_benchmark.py`
 - **API**: FastAPI reference implementation (`api/`) with account mapping, batch consolidation, and transaction classification endpoints
 - **Connectors**: ERPNext/Frappe connector (`connectors/erpnext/`) — Apache 2.0 license
 - **Preprint**: Full academic paper — see `docs/papers/drafts/kontablo_preprint_modular.pdf`
