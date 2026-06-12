@@ -60,12 +60,12 @@ Venezuela (VE)      & 10/10 & IAS~29 hyperinflation; dual-currency parallel rate
 
 \subsection{Coverage and Data Quality}
 The AI-augmented graph successfully mapped 100\% of the sample transaction sets to Kontablo's core `asset.current.cash` and `asset.current.receivables` universal IDs. By dynamically applying local-to-target foreign exchange conversions and semantic rate overrides, the engine demonstrated that Kontablo can seamlessly aggregate localized financial ledgers into a unified global balance sheet.
-Our analysis further demonstrates that the 30 Level 3 accounts cover \textbf{92\% of routine business transactions by empirical volume (count)}---as benchmarked against thousands of generic SME ledger exports. This proves that extreme ledger granularity in national standards (often hundreds of accounts) is mostly reserved for rare statistical or edge-case events.
+Our analysis further suggests that the 30 Level 3 accounts cover on the order of \textbf{92\% of routine business transactions by volume (count)}. We are explicit about the epistemic status of this figure: it is a structured estimate derived from the relative frequency of account types observed in generic SME chart-of-accounts structures during the comparative mapping work, \emph{not} a measurement against a committed, reproducible transaction corpus. Building that benchmark corpus --- and re-deriving the coverage figure from it --- is flagged as required pre-camera-ready work; until then the number should be read with an uncertainty band of several percentage points. The estimate is nonetheless consistent with the long-tail structure of posting volume: extreme ledger granularity in national standards (often hundreds of accounts) is mostly reserved for rare statistical or edge-case events.
 
 \subsection{Coverage Expansion and the Principled Residual}
 \label{subsec:coverage_expansion}
 
-The 92\% figure is a coverage-by-volume measure of a \emph{minimum core}
+The 92\% figure is a coverage-by-volume estimate for a \emph{minimum core}
 of 30 nodes, not a ceiling. Because transaction frequency follows a long-tail
 (Pareto-type) distribution --- a small number of account types carry the bulk
 of posting volume, while a long tail of specialized types occurs rarely ---

@@ -84,6 +84,8 @@ Current claim → evidence map (update this table whenever a number changes):
 | 195 sovereign / 60 statutory / 56 Tier-1-ready | `python scripts/mass_consolidation_v2.py` (coverage manifest header) or `scripts/build_jurisdiction_manifest.py` |
 | 75 entities, 68 jurisdictions, 97.3% deterministic resolution, 25/30 nodes, 4 escalations | `python scripts/mass_consolidation_v2.py` → `research/experiments/consolidation_v2/results.json` |
 | Test suite state | `python -m pytest tests/` (23 passed, 2 skipped LLM-integration, 0 xfailed as of June 2026) |
+| ~92% routine-transaction-volume coverage of the 30-account core | **ESTIMATE, no generating command yet.** Labeled "structured estimate, flagged for confirmation" in all surfaces (June 2026 audit). The committed transaction-volume benchmark that will make it reproducible is queued work (see the coverage-benchmark task). Never restore "empirically"/"proves"/"benchmarked against thousands of SME ledger exports" phrasing until that benchmark exists. |
+| SME margin scenario (70–85% cost reduction → 1.8–3.2 pp margin) | **ILLUSTRATIVE MODEL, not empirical** — impact.tex frames it as a hypothesis with stated assumptions. Do not cite as a result. |
 
 Rules:
 1. **One number, four surfaces.** The citable surfaces are `docs/papers/drafts/sections/abstract.tex`, `README.md`, `CITATION.cff`, `.zenodo.json`. If a headline number changes, update all four **in the same PR** — stale-count drift across these files is the documented failure mode (the "23 jurisdictions" residue survived two release-prep passes).
