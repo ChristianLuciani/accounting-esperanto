@@ -1,0 +1,289 @@
+# Kontablo — Transaction-Volume Coverage Benchmark: frequency dataset
+# ---------------------------------------------------------------------------
+# PURPOSE
+#   Make the preprint's "the 30-account minimum core covers ~X% of routine
+#   transaction VOLUME" claim REPRODUCIBLE from a committed command, in line
+#   with the project's epistemic standard (every non-trivial claim must be
+#   citable and verifiable). It is consumed by scripts/coverage_benchmark.py.
+#
+# WHAT THIS MEASURES
+#   Coverage by POSTING VOLUME (journal-line count), NOT by distinct account
+#   count and NOT the deterministic resolution rate reported by
+#   mass_consolidation_v2.py (that is a different metric: 97.3% of synthetic
+#   ledger ENTRIES resolved to *some* node). Here we ask: of all journal lines
+#   a representative SME posts in a period, what fraction land on one of the
+#   30 minimum-core Level-3 nodes?
+#
+# PROVENANCE — READ THIS BEFORE CITING THE NUMBER (epistemic honesty)
+#   This is a SYNTHETIC, TRANSPARENTLY-PARAMETERIZED reference distribution.
+#   It is NOT a measurement of a real ledger corpus. The preprint previously
+#   asserted the figure was "benchmarked against thousands of generic SME
+#   ledger exports"; no such corpus is committed to this repository, so that
+#   phrasing overstated the evidence. This artifact replaces the unbacked
+#   assertion with a model whose every assumption is inspectable and editable.
+#
+#   The structure (which transaction types exist and which dominate volume) is
+#   grounded in the standard double-entry "special journals" taxonomy, under
+#   which the overwhelming majority of an entity's postings flow through four
+#   high-frequency journals — Sales, Cash Receipts, Purchases, Cash Payments —
+#   while the General Journal is reserved for infrequent adjusting/closing and
+#   non-routine entries:
+#     - Weygandt, Kieso & Kimmel, "Accounting Principles", 13th ed., Wiley,
+#       Ch. 7 "Accounting Information Systems / Special Journals". The four
+#       special journals exist precisely BECAUSE a handful of transaction
+#       types recur at high volume; this is the textbook basis for the
+#       long-tail (Pareto-type) posting distribution Kontablo relies on.
+#     - Horngren, Harrison & Oliver, "Accounting", Pearson — same special-
+#       journals treatment.
+#   The four special-journal transaction types map ENTIRELY onto core nodes
+#   (cash, bank, receivables, payables, inventory, VAT in/out, revenue,
+#   expense), which is the mechanism behind high volume coverage from a small
+#   core.
+#
+#   The RELATIVE WEIGHTS below (postings per representative month for a small
+#   trading+services company) are the author's reasoned estimates anchored to
+#   that taxonomy, NOT counted from field data. They are deliberately exposed
+#   as plain numbers so a reviewer can substitute their own profile or a real
+#   corpus and re-run. The headline number must therefore be reported as a
+#   MODEL-BASED ESTIMATE ("estimated to cover ~X%"), with this file cited as
+#   the artifact, until a licensed real-ledger corpus replaces it (see
+#   research/coverage_benchmark/README.md, "Roadmap to a real-corpus run").
+#
+# HOW A LEG IS SCORED
+#   Each transaction type lists its journal-line "legs". A leg references a
+#   Kontablo node id. coverage_benchmark.py checks each leg id against:
+#     (1) the 30-node MINIMUM CORE (level3: block of level3_accounts.yaml), and
+#     (2) the EXTENDED CORE (minimum core + extended_core: block).
+#   Legs whose id is in neither set are the PRINCIPLED RESIDUAL: genuinely
+#   lower-frequency or idiosyncratic types the paper deliberately does not
+#   force into the core (they escalate via the Co-responsibility Architecture).
+#   Residual leg ids are namespaced "residual.*" so they can never accidentally
+#   match a real node.
+#
+# UNITS
+#   weight = representative journal entries (transactions) per month. Each
+#   transaction contributes len(legs) journal LINES. Volume coverage is line-
+#   weighted by default (see coverage_benchmark.py --unit).
+
+meta:
+  artifact_type: synthetic_reference_distribution
+  not_measured_field_data: true
+  unit: transactions_per_representative_month
+  entity_profile: >
+    Small-to-medium trading + services company, VAT-registered, a handful of
+    employees, single functional currency with occasional FX. Chosen because it
+    exercises both the sales and purchase cycles plus payroll and period-end
+    adjustments — the common denominator across the jurisdictions Kontablo maps.
+  citations:
+    - "Weygandt, Kieso & Kimmel (2018), Accounting Principles 13e, Wiley, Ch.7 (Special Journals)."
+    - "Horngren, Harrison & Oliver (2015), Accounting 10e, Pearson (Special Journals / subsidiary ledgers)."
+  caveats:
+    - "Weights are reasoned estimates anchored to the special-journals taxonomy, not counted from a real corpus."
+    - "Payroll statutory-deduction frequency and withholding-tax-at-source frequency are jurisdiction-sensitive; the values here are mid-range global estimates."
+    - "Replacing this block with per-line counts from a licensed anonymized ledger corpus is the designated next step; the script does not change."
+
+# ---------------------------------------------------------------------------
+# TRANSACTION TYPES
+#   journal: which special/general journal the type belongs to (provenance tag)
+#   weight:  representative transactions / month
+#   legs:    node ids touched (Kontablo level3 ids, or residual.* for the tail)
+# ---------------------------------------------------------------------------
+transactions:
+
+  # ---- Sales journal + Cash receipts journal (high volume) --------------
+  - type: credit_sale_with_vat
+    journal: sales
+    weight: 120
+    legs: [asset.current.receivables, revenue.operating, liability.current.vat_output]
+  - type: cash_or_card_sale_with_vat
+    journal: cash_receipts
+    weight: 90
+    legs: [asset.current.cash, revenue.operating, liability.current.vat_output]
+  - type: customer_receipt_on_account
+    journal: cash_receipts
+    weight: 110
+    legs: [asset.current.bank, asset.current.receivables]
+  - type: sales_credit_note
+    journal: sales
+    weight: 8
+    legs: [revenue.operating, liability.current.vat_output, asset.current.receivables]
+
+  # ---- Purchases journal + Cash payments journal (high volume) ----------
+  - type: credit_purchase_inventory_vat
+    journal: purchases
+    weight: 55
+    legs: [asset.current.inventory, asset.current.vat_input, liability.current.payables]
+  - type: credit_purchase_expense_vat
+    journal: purchases
+    weight: 60
+    legs: [expense.admin, asset.current.vat_input, liability.current.payables]
+  - type: supplier_payment
+    journal: cash_payments
+    weight: 75
+    legs: [liability.current.payables, asset.current.bank]
+  - type: purchase_credit_note
+    journal: purchases
+    weight: 6
+    legs: [liability.current.payables, asset.current.vat_input, expense.admin]
+
+  # ---- Cash/bank housekeeping (cash journals) ---------------------------
+  - type: internal_cash_to_bank_transfer
+    journal: cash_payments
+    weight: 18
+    legs: [asset.current.bank, asset.current.cash]
+  - type: bank_charges
+    journal: cash_payments
+    weight: 14
+    legs: [expense.admin, asset.current.bank]
+  - type: petty_cash_expense
+    journal: cash_payments
+    weight: 22
+    legs: [expense.admin, asset.current.cash]
+
+  # ---- Cost of sales (perpetual inventory) ------------------------------
+  - type: cogs_recognition
+    journal: general
+    weight: 30
+    legs: [expense.cogs, asset.current.inventory]
+
+  # ---- Payroll (monthly run; multi-line, statutory deductions) ----------
+  #   Gross wage expense is a core node (expense.admin); the NET-PAY and
+  #   STATUTORY-DEDUCTION liabilities are NOT in the 30-node minimum core.
+  #   These are the single largest source of routine NON-core volume and the
+  #   prime extended-core candidate (residual.payroll_liability).
+  - type: payroll_gross_wages
+    journal: general
+    weight: 12
+    legs: [expense.admin, residual.payroll_liability]
+  - type: payroll_statutory_withholding
+    journal: general
+    weight: 12
+    legs: [residual.payroll_liability, residual.payroll_liability]
+  - type: payroll_employer_social_charges
+    journal: general
+    weight: 12
+    legs: [expense.admin, residual.payroll_liability]
+  - type: payroll_net_payment
+    journal: cash_payments
+    weight: 12
+    legs: [residual.payroll_liability, asset.current.bank]
+
+  # ---- Tax withheld at source on our income (retención/withholding) ------
+  #   Common in LatAm, parts of Asia/Africa; a customer withholds tax and
+  #   remits it, leaving us a tax credit asset. NOT in the minimum core.
+  - type: withholding_tax_on_income
+    journal: cash_receipts
+    weight: 8
+    legs: [residual.withholding_tax_asset, asset.current.receivables]
+
+  # ---- Deferred / contract revenue (IFRS 15) ----------------------------
+  - type: deferred_revenue_billing
+    journal: sales
+    weight: 6
+    legs: [asset.current.receivables, residual.deferred_revenue]
+  - type: deferred_revenue_recognition
+    journal: general
+    weight: 6
+    legs: [residual.deferred_revenue, revenue.operating]
+
+  # ---- Other / non-trade receivables (employee advances, deposits) ------
+  - type: employee_advance_or_deposit
+    journal: cash_payments
+    weight: 3
+    legs: [residual.other_receivable, asset.current.bank]
+
+  # ---- Period-end adjusting entries (General journal, low volume) -------
+  - type: depreciation_charge
+    journal: general
+    weight: 4
+    legs: [expense.depreciation, asset.noncurrent.ppe]
+  - type: prepaid_amortization
+    journal: general
+    weight: 4
+    legs: [expense.admin, asset.current.prepaid]
+  - type: accrual_of_expense
+    journal: general
+    weight: 6
+    legs: [expense.admin, liability.current.accrued]
+  - type: vat_periodic_settlement
+    journal: general
+    weight: 1
+    legs: [liability.current.vat_output, asset.current.vat_input, asset.current.bank]
+  - type: income_tax_accrual
+    journal: general
+    weight: 1
+    legs: [expense.tax, liability.current.tax]
+
+  # ---- Financing / investing (low volume) -------------------------------
+  - type: fixed_asset_purchase
+    journal: cash_payments
+    weight: 2
+    legs: [asset.noncurrent.ppe, asset.current.vat_input, asset.current.bank]
+  - type: loan_drawdown
+    journal: general
+    weight: 1
+    legs: [asset.current.bank, liability.current.short_term_debt]
+  - type: loan_repayment_with_interest
+    journal: cash_payments
+    weight: 2
+    legs: [liability.current.short_term_debt, expense.interest, asset.current.bank]
+  - type: interest_or_other_income
+    journal: cash_receipts
+    weight: 2
+    legs: [asset.current.bank, revenue.other]
+  - type: fx_revaluation_loss
+    journal: general
+    weight: 1
+    legs: [expense.fx_loss, asset.current.receivables]
+  - type: fx_revaluation_gain
+    journal: general
+    weight: 1
+    legs: [asset.current.receivables, revenue.other]   # posted to "other income"; in core
+
+  # ---- Principled residual tail (genuinely idiosyncratic, NOT extended) --
+  #   Deliberately left out of BOTH core and extended core. These are the
+  #   "final percentage points" the paper says correspond to idiosyncratic /
+  #   novel instruments and are handled by escalation, not by core growth.
+  - type: asset_disposal_gain_or_loss
+    journal: general
+    weight: 0.4
+    legs: [asset.current.bank, asset.noncurrent.ppe, residual.disposal_gain_loss]
+  - type: dividends_declared
+    journal: general
+    weight: 0.2
+    legs: [equity.retained, residual.dividends_payable]
+  - type: long_term_provision_movement
+    journal: general
+    weight: 0.3
+    legs: [expense.admin, residual.long_term_provision]
+  - type: novel_instrument_crypto_or_carbon
+    journal: general
+    weight: 0.3
+    legs: [residual.novel_instrument, asset.current.bank]
+  # Aggregate stand-in for the persistent miscellaneous/idiosyncratic tail that
+  # EVERY real ledger carries even after the core is extended: suspense and
+  # rounding entries, intercompany/related-party balances, jurisdiction-specific
+  # minor taxes and grants, memo/statistical postings, one-off reclasses, etc.
+  # Its weight is an EXPLICIT ASSUMPTION, not a fitted value: ~one idiosyncratic
+  # entry per business day (~20/month). It is deliberately NOT absorbed by the
+  # extended core — it is the empirical face of the "principled residual" the
+  # paper refuses to drive to zero (handled by CRA escalation, not core growth).
+  - type: miscellaneous_idiosyncratic
+    journal: general
+    weight: 20
+    legs: [residual.miscellaneous_idiosyncratic, asset.current.bank]
+
+# ---------------------------------------------------------------------------
+# EXTENDED-CORE ABSORPTION MAP
+#   Which residual.* labels are absorbed by which extended_core node when the
+#   benchmark is run in "extended" mode. coverage_benchmark.py reads the
+#   extended_core: block of level3_accounts.yaml for the node ids; this map
+#   tells it which residual legs those nodes are intended to capture, so the
+#   "extended" coverage number reflects ONLY the nodes actually added.
+#   Any residual.* label NOT listed here stays uncovered in extended mode too
+#   (the principled residual).
+extended_absorption:
+  residual.payroll_liability: liability.current.payroll
+  residual.withholding_tax_asset: asset.current.withholding_tax
+  residual.deferred_revenue: liability.current.deferred_revenue
+  residual.other_receivable: asset.current.other_receivables

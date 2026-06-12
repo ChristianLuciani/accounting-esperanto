@@ -672,3 +672,97 @@ pending_accounts:
     ias_ref: "IAS 41"
     applicable: ["br", "ar", "nz", "au"]
     notes: "Agricultural companies. BR, AR are major users."
+
+---
+
+## EXTENDED CORE — Level 3 high-frequency residual-tail accounts (volume coverage)
+#
+# These nodes are NOT part of the 30-account MINIMUM CORE (that count, and the
+# "30 accounts cover ~92-94% of routine volume" Pareto headline, is frozen).
+# They are kept under their own `extended_core:` key precisely so the minimum-
+# core loaders (mass_consolidation_v2.py and coverage_benchmark.py) never fold
+# them into the 30.
+#
+# WHY THESE FOUR. The transaction-VOLUME coverage benchmark
+# (scripts/coverage_benchmark.py + research/coverage_benchmark/) identified the
+# largest slices of routine posting volume that fall OUTSIDE the 30 core nodes.
+# In descending volume order, the dominant out-of-core types are: payroll
+# net-pay + statutory-withholding liabilities, contract/deferred revenue
+# (IFRS 15), tax withheld at source on income, and non-trade/other receivables.
+# Adding exactly these four nodes moves modeled volume coverage from ~94% (core)
+# into the ~99% range; what remains uncovered is the deliberately-retained
+# principled residual (suspense, intercompany, novel instruments, local minor
+# taxes) handled by CRA escalation, not by further core growth.
+#
+# Full provenance and the re-measurement are in
+# research/coverage_benchmark/README.md. Local codes below are taken from the
+# named statutory charts (French PCG, Spanish PGC RD 1514/2007, Vietnamese VAS
+# Circular 200/2014, Colombian PUC) and should be verified against the primary
+# source before being promoted into the production Tier-1 index.
+
+extended_core:
+  - id: "liability.current.payroll"
+    uuid: "50000000-0000-4000-8000-000000000001"
+    label_en: "Payroll Liabilities (Wages & Statutory Withholdings)"
+    label_es: "Remuneraciones y Retenciones por Pagar"
+    ifrs_tag: "ifrs-full:OtherCurrentPayables"  # IAS 19 short-term employee benefits; no dedicated IFRS taxonomy leaf — verify if a more specific element is preferred
+    nature: "credit"
+    statement: "balance_sheet"
+    parent: "liability.current"
+    level: 3
+    is_aggregate: false
+    extended_core: true
+    local_codes:
+      fr: "421"     # PCG: "Personnel - rémunérations dues"
+      es: "465"     # PGC RD 1514/2007: "Remuneraciones pendientes de pago"
+      vn: "334"     # VAS Circular 200: "Phải trả người lao động"
+    notes: "Aggregates net wages payable plus employee/employer statutory deductions (income-tax withholding, social security). Largest single source of routine NON-core posting volume (payroll runs)."
+
+  - id: "liability.current.deferred_revenue"
+    uuid: "50000000-0000-4000-8000-000000000002"
+    label_en: "Contract Liabilities / Deferred Revenue (IFRS 15)"
+    label_es: "Pasivos por Contrato / Ingresos Diferidos (NIIF 15)"
+    ifrs_tag: "ifrs-full:CurrentContractLiabilities"  # IFRS 15 contract liabilities — verify exact element label against the latest IFRS taxonomy
+    nature: "credit"
+    statement: "balance_sheet"
+    parent: "liability.current"
+    level: 3
+    is_aggregate: false
+    extended_core: true
+    local_codes:
+      fr: "487"     # PCG: "Produits constatés d'avance"
+      es: "485"     # PGC: "Ingresos anticipados"
+      vn: "3387"    # VAS Circular 200: "Doanh thu chưa thực hiện" (unearned revenue)
+    notes: "Billings/advances ahead of revenue recognition. Common in subscription and service SMEs; distinct from trade payables and accruals under IFRS 15."
+
+  - id: "asset.current.withholding_tax"
+    uuid: "50000000-0000-4000-8000-000000000003"
+    label_en: "Tax Withheld at Source / Tax Credits Receivable"
+    label_es: "Retenciones y Anticipos de Impuestos"
+    ifrs_tag: "ifrs-full:CurrentTaxAssetsCurrent"
+    nature: "debit"
+    statement: "balance_sheet"
+    parent: "asset.current"
+    level: 3
+    is_aggregate: false
+    extended_core: true
+    local_codes:
+      co: "1355"    # PUC: "Anticipo de impuestos y contribuciones o saldos a favor" (retenciones)
+      es: "473"     # PGC: "Hacienda Pública, retenciones y pagos a cuenta"
+    notes: "Income tax withheld by customers at source (retención) and advance-tax credits. High frequency in LatAm and parts of Asia/Africa; not applicable everywhere."
+
+  - id: "asset.current.other_receivables"
+    uuid: "50000000-0000-4000-8000-000000000004"
+    label_en: "Other / Non-trade Receivables"
+    label_es: "Otras Cuentas por Cobrar (No Comerciales)"
+    ifrs_tag: "ifrs-full:OtherCurrentReceivables"
+    nature: "debit"
+    statement: "balance_sheet"
+    parent: "asset.current"
+    level: 3
+    is_aggregate: false
+    extended_core: true
+    local_codes:
+      fr: "425"     # PCG: "Personnel - avances et acomptes"
+      es: "440"     # PGC: "Deudores varios"
+    notes: "Employee advances, deposits, and other non-trade amounts receivable; distinct from trade receivables."

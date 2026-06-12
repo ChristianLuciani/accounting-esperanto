@@ -33,6 +33,7 @@ Each ADR follows this structure:
 | [012](012-mathematical-foundations-and-prior-art.md) | Mathematical Foundations and Prior-Art Positioning | Proposed | 2026-05-29 |
 | [013](013-erp-tree-to-graph-compatibility.md) | Tree-to-Graph Compatibility Protocol for ERP Integration | Proposed | 2026-03-13 |
 | [014](014-postgresql.md) | PostgreSQL | Proposed | 2026-01-27 |
+| [015](015-core-node-admission-and-growth-policy.md) | Core-Node Admission Policy — when the ontology grows and when it must not | Proposed | 2026-06-11 |
 
 > ⚠️ **Header/filename mismatch (renumbering debt):** files `013-erp-tree-to-graph-compatibility.md`
 > and `014-postgresql.md` still carry their pre-renumbering internal headers (`013` reads

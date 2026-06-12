@@ -60,25 +60,47 @@ Venezuela (VE)      & 10/10 & IAS~29 hyperinflation; dual-currency parallel rate
 
 \subsection{Coverage and Data Quality}
 The AI-augmented graph successfully mapped 100\% of the sample transaction sets to Kontablo's core `asset.current.cash` and `asset.current.receivables` universal IDs. By dynamically applying local-to-target foreign exchange conversions and semantic rate overrides, the engine demonstrated that Kontablo can seamlessly aggregate localized financial ledgers into a unified global balance sheet.
-Our analysis further demonstrates that the 30 Level 3 accounts cover \textbf{92\% of routine business transactions by empirical volume (count)}---as benchmarked against thousands of generic SME ledger exports. This proves that extreme ledger granularity in national standards (often hundreds of accounts) is mostly reserved for rare statistical or edge-case events.
+A separate, reproducible transaction-frequency benchmark
+(\texttt{scripts/coverage\_benchmark.py}, dataset and provenance in
+\texttt{research/coverage\_benchmark/}) estimates that the 30 Level~3 accounts
+cover \textbf{$\sim$94\% of routine transaction volume by posting-line count}
+(and $\sim$87\% counted by whole transaction). We are explicit about the
+evidentiary status of this figure: it is a \emph{model-based estimate} computed
+over a transparently-parameterized synthetic frequency distribution, not a
+measurement of a proprietary ledger corpus. The distribution's structure is
+grounded in the standard double-entry ``special journals'' taxonomy (Weygandt,
+Kieso \& Kimmel; Horngren et al.), under which the bulk of postings flow through
+four high-volume journals (Sales, Cash Receipts, Purchases, Cash Payments) whose
+transaction types map entirely onto core nodes, while the General Journal carries
+only infrequent adjusting entries. The committed artifact replaces an earlier,
+unbacked appeal to a large but uncommitted set of ledger exports; substituting a
+licensed real-ledger corpus is a documented next step that leaves the script
+unchanged.
+The substantive finding is robust to the exact weights: extreme ledger
+granularity in national standards (often hundreds of accounts) is mostly reserved
+for rare statistical or edge-case events.
 
 \subsection{Coverage Expansion and the Principled Residual}
 \label{subsec:coverage_expansion}
 
-The 92\% figure is a coverage-by-volume measure of a \emph{minimum core}
+The $\sim$94\% figure is a coverage-by-volume measure of a \emph{minimum core}
 of 30 nodes, not a ceiling. Because transaction frequency follows a long-tail
 (Pareto-type) distribution --- a small number of account types carry the bulk
 of posting volume, while a long tail of specialized types occurs rarely ---
 coverage is raised not by redesigning the architecture but by \textbf{extending
-the ontology with additional Level~3 (and, where warranted, Level~4) nodes for
-the next tier of transaction types}. Each added node captures a slice of the
-residual tail; coverage therefore rises monotonically with ontology breadth,
-with diminishing marginal volume per node added. We estimate (and flag as a
-quantity to be confirmed against a larger transaction corpus) that on the order
-of a few dozen additional nodes would move volume coverage from 92\% into the
-99\%+ range for general commercial activity; the final percentage points
+the ontology with additional Level~3 nodes for the next tier of transaction
+types}. The same benchmark identifies these next-tier types directly from the
+residual: in descending volume order they are payroll net-pay and
+statutory-withholding liabilities, contract/deferred revenue (IFRS~15), tax
+withheld at source on income, and non-trade receivables. Adding exactly these
+\textbf{four} nodes --- a 34-account \emph{extended core}, kept separate from the
+frozen 30-account minimum core --- lifts modeled volume coverage from
+$\sim$94\% to \textbf{$\sim$99\%} ($\sim$97\% by whole transaction). This both
+confirms and sharpens the earlier rough estimate (which guessed ``a few dozen''
+nodes): in this profile the bulk of the residual collapses onto a handful of
+high-frequency payroll- and tax-related liabilities. The final percentage points
 correspond to genuinely idiosyncratic, jurisdiction-specific, or novel
-instruments.
+instruments, which we deliberately leave to escalation rather than core growth.
 
 We deliberately do \textbf{not} claim, or target, 100\% coverage. Two reasons,
 one principled and one architectural. \emph{Principled:} a universal standard
@@ -96,6 +118,27 @@ guarantees that whatever residual remains is escalated and made observable, not
 silently mismapped. The objective is therefore not coverage~$=100\%$ but
 coverage~$\to$~high with a \emph{bounded, instrumented, human-resolved}
 remainder.
+
+This raises a governance question the benchmark answers directly: \emph{under
+what criteria may the core grow, and when must it not?} We codify the answer as
+an explicit admission policy (ADR-015). The ontology is structured in three
+layers --- a \textbf{frozen} 30-node minimum core (the citable Pareto headline),
+a \textbf{bounded} extended core that grows only under the policy, and an
+open-ended residual handled by overlays and CRA escalation that is \emph{never}
+forced into the core. A transaction type earns a core node only if it
+simultaneously (i)~captures material, \emph{measured} posting volume (the
+benchmark is the gate, with a working threshold near $0.5\%$ of total volume),
+(ii)~recurs across many jurisdictions under a clean IFRS anchor (otherwise it is
+a local overlay, not a universal node), (iii)~admits an unambiguous deterministic
+boundary --- a fixed nature, statement class and IFRS tag with no collision ---
+(iv)~is not already decomposable into existing nodes, and (v)~is a mature, stable
+instrument. Because posting volume is Pareto-distributed, this gate is
+\textbf{self-limiting}: after the extended core, almost every further candidate
+falls below the volume threshold, so the core converges on a small number of
+dozens of nodes rather than the hundreds found in national charts. Growth by
+intuition or by request is thereby replaced with growth by measured evidence,
+and the standing tension between a small, elegant core and broad coverage is
+resolved without compromising either.
 
 \subsection{Expanded Multi-Jurisdiction Validation}
 \label{subsec:expanded_validation}

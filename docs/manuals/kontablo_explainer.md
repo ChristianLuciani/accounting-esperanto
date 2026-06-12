@@ -60,7 +60,7 @@ Kontablo defines **30 universal "Level 3" accounts** that exist in some form in 
 | **Equity (3)** | Capital, Retained Earnings, Reserves |
 | **Revenue (2)** | Operating Revenue, Other Income |
 | **Expenses (5)** | COGS, Admin, Depreciation, Finance Costs, Income Tax |
-| **Total** | **30 accounts covering ~92% of routine transactions** |
+| **Total** | **30 accounts covering ~94% of routine transaction volume (~99% with a 34-account extended core)** |
 
 ---
 
