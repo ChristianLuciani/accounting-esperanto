@@ -34,9 +34,10 @@ that the human becomes dispensable as automated coverage improves:
     model is \emph{stateless} --- it carries no memory between invocations and
     therefore possesses no temporal continuity of its own. Continuity must
     consequently be supplied by the system rather than the model: it is
-    materialized deterministically by the harness (immutable ontology
-    versioning, effective-date tracking, and the cryptographically sealed audit
-    trail described below) and held to account by the human. This function does not diminish as the ontology matures; it applies
+    materialized deterministically by the harness (append-only ontology
+    versioning, effective-date tracking, and the audit trail described below,
+    whose cryptographic sealing is specified as roadmap work) and held to
+    account by the human. This function does not diminish as the ontology matures; it applies
     to every transaction regardless of confidence score. Crucially,
     accountability for context integrity and continuity is not the same as
     manual re-verification of every transaction: their \emph{maintenance} is
@@ -77,7 +78,7 @@ Two key metadata fields are appended to every mapped transaction record:
     \item {\sloppy\texttt{inconsistency\_note}: A text field containing the specific rule violation description (e.g., ``Nature Mismatch: local debit account mapped to credit node \texttt{equity.capital}'') concatenated with the human operator's written justification for the override.\par}
 \end{itemize}
 
-Once written, these fields are cryptographically hashed and sealed as part of the transaction block. This makes it impossible for an internal user to change a mapping post-facto to cover up irregularities without triggering a hash mismatch in the audit ledger.
+The specification requires that, once written, these fields be cryptographically hashed and sealed as part of the transaction block, so that any post-facto change to a mapping --- for example, to cover up an irregularity --- produces a hash mismatch in the audit ledger. The v0.x reference implementation provides append-only logging of these fields; cryptographic sealing (hybrid classical and post-quantum signatures over version hashes) is specified as roadmap work and is not yet implemented.
 
 \subsection{Anti-Corruption and Embezzlement Mitigation}
 In legacy corporate environments, fraud often occurs through the collusion of internal accounting staff who ``rubber-stamp'' misclassified journal entries (e.g., booking personal expenditures as business-related ``Administrative Expenses'' or masking asset withdrawals as ``Intercompany Receivables''). 

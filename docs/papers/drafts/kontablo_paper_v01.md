@@ -1,16 +1,10 @@
----
-title: "Kontablo: A Graph-Based Universal Accounting Ontology for the M2M Agentic Economy"
-description: "An open-source, graph-based universal accounting ontology anchored to IFRS, designed to resolve cross-border ledger fragmentation for ERPs and autonomous AI agents (AP2/A2A)."
-keywords: ["Kontablo", "Accounting Ontology", "IFRS Standardization", "Agentic Economy", "A2A Protocol", "AP2 Protocol", "Model Context Protocol", "Co-responsibility Architecture", "ERP Interoperability", "Real-Time Auditing"]
-author: "Christian Luciani"
-version: "1.75"
-license: "BSL-1.1"
-date: "2026-04-28"
-category: "Fintech & AI Governance"
-schema:
-  type: "TechArticle"
-  audience: "CFOs, Enterprise Architects, AI Systems Developers, Forensic Auditors"
----
+> **SUPERSEDED — DO NOT CITE.** This is the v1.75 markdown draft, retained only
+> as an audit-trail artifact. Its quantitative claims (e.g. "23 jurisdictions",
+> "20+ jurisdictions", "9 regulatory environments") are stale and contradicted
+> by the canonical preprint. The canonical, citable version is
+> `docs/papers/drafts/kontablo_preprint_modular.tex` (PDF:
+> `kontablo_preprint_modular.pdf`). SEO/GEO frontmatter has been removed from
+> this file so AI crawlers do not index the stale numbers.
 
 # Kontablo: A Graph-Based Universal Accounting Ontology for the M2M Agentic Economy
 

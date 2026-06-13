@@ -42,6 +42,7 @@ not BSL 1.1. This applies to:
 | Connector | Location | License |
 |-----------|----------|---------|
 | ERPNext / Frappe | `connectors/erpnext/` | Apache 2.0 |
+| Odoo | `connectors/odoo/` | Apache 2.0 |
 
 Rationale: open-source ERP communities will not adopt connectors under non-OSI licenses.
 Apache 2.0 maximizes adoption in these ecosystems. The protectable commercial assets are

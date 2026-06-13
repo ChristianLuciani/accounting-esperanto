@@ -44,7 +44,7 @@ Kontablo defines **30 universal "Level 3" accounts** that exist in some form in 
 - A **stable ID** (e.g., `asset.current.receivables`) that never changes
 - A **UUID** for machine-to-machine reference
 - A **direct link** to the IFRS taxonomy tag
-- A **local code table** for 23 jurisdictions
+- A **local code table** populated across the committed localizations (195 jurisdictions mapped; 60 statutory-chart overlays)
 - **Aggregation rules** for automated financial statement preparation
 
 ---

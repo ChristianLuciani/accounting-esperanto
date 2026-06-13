@@ -223,8 +223,9 @@ decisions within coverage, the CRA governs what happens at and beyond the
 coverage boundary. When the harness cannot deterministically resolve a
 transaction -- because no Tier 1 or Tier 2 rule matches, and Tier 3 returns
 confidence below threshold -- the CRA routes the transaction to human review,
-enforces justification logging, and records the outcome with an immutable
-audit trail.
+enforces justification logging, and records the outcome in an append-only
+audit trail (the specification calls for cryptographic sealing of this
+trail; v0.x implements append-only logging).
 
 Within this reactive scope, the human accountant is not a rubber-stamp
 approver of AI output. For the cases that reach review, they are the

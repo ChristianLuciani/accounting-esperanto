@@ -13,7 +13,7 @@ Pasos 1–7 del workflow prepare-for-publication completados. Paso 8 (release da
 ### 1. Global Jurisdictional Coverage (195/195 — 100%)
 - [x] **195 sovereign jurisdictions** mapped — complete global coverage.
 - [x] 7,000+ account mappings across all localizations.
-- [x] Mandatory charts: SYSCOHADA (12 países OHADA), PCG-France, SNC-Portugal,
+- [x] Mandatory charts: SYSCOHADA (17 países OHADA), PCG-France, SNC-Portugal,
       MAR-Belgium, EKR-Austria, K-GAAP-Korea, BAS-Sweden, Smerná osnova-Czech,
       SCF-Algeria, PCGM-Morocco, P(S)BO-Ukraine, OMF-Romania, and more.
 - [x] Special contexts: IAS 29 hyperinflation (VE, LB, ZW, CU, SR, SY),
