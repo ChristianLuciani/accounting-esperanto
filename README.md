@@ -11,7 +11,7 @@ overlays for the 60 jurisdictions that mandate a national chart.
 |---|---|
 | **Status** | Phase 3 — Pre-Publication |
 | **Preprint** | `docs/papers/drafts/kontablo_preprint_modular.pdf` — SSRN/Zenodo submission pending |
-| **License** | [BSL 1.1](LICENSE) → Apache 2.0 on 2030-05-28 · ERPNext connector: [Apache 2.0](connectors/erpnext/LICENSE) |
+| **License** | [BSL 1.1](LICENSE) → Apache 2.0 on 2030-05-28 · ERPNext & Odoo connectors: [Apache 2.0](connectors/erpnext/LICENSE) |
 | **Author** | Christian Luciani · [ORCID 0000-0002-6955-5384](https://orcid.org/0000-0002-6955-5384) |
 
 ---
@@ -117,9 +117,10 @@ Kontablo-mediated transaction. Accountability cannot be transferred to an agent.
 The architecture has two non-negotiable properties:
 
 - **Full auditability.** Every transaction, agent decision, and confidence score is
-  recorded with an immutable audit trail. Zero-corruption is an explicit design goal:
-  Kontablo implements everything technically possible to make financial flows observable,
-  traceable, and verifiable.
+  recorded in an append-only audit trail (cryptographic sealing of that trail is a
+  roadmap item, not yet implemented). Zero-corruption is an explicit design goal:
+  Kontablo aims to make financial flows observable, traceable, and verifiable by
+  every technically available means.
 - **Human veto power.** The human retains the right to review and reverse any agent
   decision at any time. If an agent produces an incorrect or fraudulent transaction,
   the human can correct it — and the audit trail preserves both the original action
@@ -298,7 +299,7 @@ Kontablo core is licensed under **BSL 1.1** (Business Source License). It conver
 automatically to Apache 2.0 on **May 28, 2030**. See [LICENSE](LICENSE) and
 [LICENSING.md](LICENSING.md) for the full terms, Additional Use Grant, and rationale.
 
-ERPNext/Frappe connector: **Apache 2.0**. See [connectors/erpnext/LICENSE](connectors/erpnext/LICENSE).
+ERPNext/Frappe and Odoo connectors: **Apache 2.0**. See [connectors/erpnext/LICENSE](connectors/erpnext/LICENSE) and [connectors/odoo/LICENSE](connectors/odoo/LICENSE).
 
 Contributing guidelines, branch naming, and the Contributor License Agreement
 (required for BSL projects) are documented in [CONTRIBUTING.md](CONTRIBUTING.md)
