@@ -1,0 +1,15 @@
+Account,Account Code,Debit,Credit
+Caja,101,862068.97,0.00
+Bancos,102,689655.17,0.00
+Clientes,105,2068965.52,0.00
+Inventarios,151,1034482.76,0.00
+Propiedad Planta y Equipo,181,3448275.86,0.00
+Proveedores,201,0.00,1206896.55
+Impuestos por Pagar,2030,0.00,258620.69
+Deuda Largo Plazo,212,0.00,1724137.93
+Capital Social,300,0.00,1379310.34
+Resultados Acumulados,305,0.00,2327586.23
+Ventas,401,0.00,5172413.79
+Costo de Ventas,501,2586206.90,0.00
+Gastos Administrativos,601,1034482.76,0.00
+Depreciación,613,344827.59,0.00

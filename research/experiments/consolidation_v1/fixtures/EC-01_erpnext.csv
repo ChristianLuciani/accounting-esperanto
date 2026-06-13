@@ -1,0 +1,15 @@
+Account,Currency,Debit,Credit
+Caja,,50000.00,0.00
+Bancos,,40000.00,0.00
+Clientes,,120000.00,0.00
+Inventarios,,60000.00,0.00
+Propiedad Planta y Equipo,,200000.00,0.00
+Proveedores,,0.00,70000.00
+Impuestos por Pagar,,0.00,15000.00
+Deuda Largo Plazo,,0.00,100000.00
+Capital Social,,0.00,80000.00
+Resultados Acumulados,,0.00,135000.00
+Ventas,,0.00,300000.00
+Costo de Ventas,,150000.00,0.00
+Gastos Administrativos,,60000.00,0.00
+Depreciación,,20000.00,0.00

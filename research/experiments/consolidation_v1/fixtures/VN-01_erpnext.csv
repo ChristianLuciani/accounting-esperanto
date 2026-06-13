@@ -1,0 +1,14 @@
+Account,Currency,Debit,Credit
+111 - Tiền mặt,,1250000000.00,0.00
+112 - Tiền gửi ngân hàng,,1000000000.00,0.00
+131 - Phải thu của khách hàng,,3000000000.00,0.00
+152 - Hàng tồn kho,,1500000000.00,0.00
+211 - Tài sản cố định hữu hình,,5000000000.00,0.00
+242 - Chi phí trả trước dài hạn,,225000000.00,0.00
+331 - Phải trả cho người bán,,0.00,1750000000.00
+333 - Thuế và các khoản phải nộp,,0.00,375000000.00
+411 - Vốn đầu tư của chủ sở hữu,,0.00,2000000000.00
+421 - Lợi nhuận sau thuế chưa phân phối,,0.00,6250000000.00
+511 - Doanh thu bán hàng,,0.00,7500000000.00
+632 - Giá vốn hàng bán,,3750000000.00,0.00
+642 - Chi phí quản lý doanh nghiệp,,2150000000.00,0.00

@@ -1,0 +1,240 @@
+{
+  "run": "initial_run_v1",
+  "description": "Synthetic trial balances, formatted as source-ERP exports (ERPNext, Zoho Books, Odoo, SAP B1). Not real company data. Fully regenerable: python scripts/consolidation_v1_initial_run.py",
+  "entities": 10,
+  "countries": [
+    "br",
+    "co",
+    "ec",
+    "fr",
+    "mx",
+    "ng",
+    "pa",
+    "sa",
+    "vn"
+  ],
+  "n_countries": 9,
+  "source_erp_formats": [
+    "erpnext",
+    "odoo",
+    "sap_b1",
+    "zoho_books"
+  ],
+  "total_entries": 131,
+  "tier_distribution": {
+    "tier1_exact": 67,
+    "tier2_keyword": 56,
+    "escalated": 8
+  },
+  "deterministic_coverage_pct": 93.9,
+  "escalated": 8,
+  "escalated_pct": 6.1,
+  "tiers_by_jurisdiction": {
+    "br": {
+      "tier1_exact": 2,
+      "tier2_keyword": 9
+    },
+    "co": {
+      "tier1_exact": 10,
+      "tier2_keyword": 2
+    },
+    "ec": {
+      "tier2_keyword": 14
+    },
+    "fr": {
+      "tier1_exact": 11,
+      "tier2_keyword": 2
+    },
+    "mx": {
+      "tier1_exact": 22,
+      "tier2_keyword": 6
+    },
+    "ng": {
+      "tier2_keyword": 14
+    },
+    "pa": {
+      "tier1_exact": 9,
+      "tier2_keyword": 5
+    },
+    "sa": {
+      "tier1_exact": 1,
+      "tier2_keyword": 4,
+      "escalated": 7
+    },
+    "vn": {
+      "tier1_exact": 12,
+      "escalated": 1
+    }
+  },
+  "per_entity": [
+    {
+      "entity": "MX-01",
+      "name": "Manufactura Azteca SA de CV",
+      "jurisdiction": "mx",
+      "currency": "MXN",
+      "source_erp_format": "erpnext",
+      "lines": 14,
+      "total_debits_local": 12068965.53,
+      "total_credits_local": 12068965.53,
+      "balanced": true,
+      "tier1": 11,
+      "tier2": 3,
+      "escalated": 0
+    },
+    {
+      "entity": "MX-02",
+      "name": "Distribuidora del Norte SA",
+      "jurisdiction": "mx",
+      "currency": "MXN",
+      "source_erp_format": "zoho_books",
+      "lines": 14,
+      "total_debits_local": 12068965.53,
+      "total_credits_local": 12068965.53,
+      "balanced": true,
+      "tier1": 11,
+      "tier2": 3,
+      "escalated": 0
+    },
+    {
+      "entity": "BR-01",
+      "name": "Industria Paulista Ltda",
+      "jurisdiction": "br",
+      "currency": "BRL",
+      "source_erp_format": "sap_b1",
+      "lines": 11,
+      "total_debits_local": 3325000.0,
+      "total_credits_local": 3325000.0,
+      "balanced": true,
+      "tier1": 2,
+      "tier2": 9,
+      "escalated": 0
+    },
+    {
+      "entity": "FR-01",
+      "name": "Société Lyonnaise SARL",
+      "jurisdiction": "fr",
+      "currency": "EUR",
+      "source_erp_format": "odoo",
+      "lines": 13,
+      "total_debits_local": 507407.43,
+      "total_credits_local": 507407.43,
+      "balanced": true,
+      "tier1": 11,
+      "tier2": 2,
+      "escalated": 0
+    },
+    {
+      "entity": "PA-01",
+      "name": "Logística Istmo SA",
+      "jurisdiction": "pa",
+      "currency": "USD",
+      "source_erp_format": "zoho_books",
+      "lines": 14,
+      "total_debits_local": 700000.0,
+      "total_credits_local": 700000.0,
+      "balanced": true,
+      "tier1": 9,
+      "tier2": 5,
+      "escalated": 0
+    },
+    {
+      "entity": "EC-01",
+      "name": "Comercial Andina Cia Ltda",
+      "jurisdiction": "ec",
+      "currency": "USD",
+      "source_erp_format": "erpnext",
+      "lines": 14,
+      "total_debits_local": 700000.0,
+      "total_credits_local": 700000.0,
+      "balanced": true,
+      "tier1": 0,
+      "tier2": 14,
+      "escalated": 0
+    },
+    {
+      "entity": "CO-01",
+      "name": "Comercializadora Bogotá SAS",
+      "jurisdiction": "co",
+      "currency": "COP",
+      "source_erp_format": "odoo",
+      "lines": 12,
+      "total_debits_local": 2820000000.0,
+      "total_credits_local": 2820000000.0,
+      "balanced": true,
+      "tier1": 10,
+      "tier2": 2,
+      "escalated": 0
+    },
+    {
+      "entity": "VN-01",
+      "name": "Công ty TNHH Sông Hồng",
+      "jurisdiction": "vn",
+      "currency": "VND",
+      "source_erp_format": "erpnext",
+      "lines": 13,
+      "total_debits_local": 17875000000.0,
+      "total_credits_local": 17875000000.0,
+      "balanced": true,
+      "tier1": 12,
+      "tier2": 0,
+      "escalated": 1
+    },
+    {
+      "entity": "NG-01",
+      "name": "Lagos Trading Ltd",
+      "jurisdiction": "ng",
+      "currency": "NGN",
+      "source_erp_format": "zoho_books",
+      "lines": 14,
+      "total_debits_local": 1076923076.93,
+      "total_credits_local": 1076923076.93,
+      "balanced": true,
+      "tier1": 0,
+      "tier2": 14,
+      "escalated": 0
+    },
+    {
+      "entity": "SA-01",
+      "name": "شركة الرياض التجارية",
+      "jurisdiction": "sa",
+      "currency": "SAR",
+      "source_erp_format": "sap_b1",
+      "lines": 12,
+      "total_debits_local": 2585185.19,
+      "total_credits_local": 2585185.19,
+      "balanced": true,
+      "tier1": 1,
+      "tier2": 4,
+      "escalated": 7
+    }
+  ],
+  "consolidated_usd": {
+    "asset.current.bank": 320000.0,
+    "asset.current.cash": 500000.01,
+    "asset.current.inventory": 540000.0,
+    "asset.current.receivables": 1080000.0,
+    "asset.current.vat_input": 8000.0,
+    "asset.noncurrent.ppe": 1800000.0,
+    "equity.capital": -720000.0,
+    "equity.retained": -1436000.03,
+    "expense.admin": 616000.0,
+    "expense.cogs": 1200000.0,
+    "expense.depreciation": 120000.0,
+    "liability.current.accrued": -15000.0,
+    "liability.current.payables": -714999.99,
+    "liability.current.tax": -105000.0,
+    "liability.current.vat_output": -12000.0,
+    "liability.noncurrent.debt": -500000.0,
+    "revenue.operating": -2850000.0
+  },
+  "suspense_usd": 169000.0,
+  "identity": {
+    "assets_usd": 4248000.02,
+    "liabilities_usd": 1346999.99,
+    "equity_usd": 2156000.03,
+    "revenue_usd": 2850000.0,
+    "expenses_usd": 1936000.01,
+    "suspense_usd": 169000.0,
+    "gap_usd": 0.0
+  }
+}

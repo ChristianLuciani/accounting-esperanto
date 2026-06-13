@@ -1,0 +1,12 @@
+Acct No.,Account Name,Debit (LC),Credit (LC)
+1.1.1.1.01-9,Caixa,250000.00,0.00
+1.1.1.2.01-0,Contas a Receber,600000.00,0.00
+1.1.4.1.01-5,Estoque,300000.00,0.00
+1.2.3.1.01-2,Ativo Imobilizado,1000000.00,0.00
+2.1.1.1.01-4,Fornecedores,0.00,350000.00
+2.1.4.1.01-7,Imposto a Pagar,0.00,75000.00
+2.3.1.1.01-1,Capital Social,0.00,400000.00
+2.3.5.1.01-8,Lucros Acumulados,0.00,1000000.00
+3.1.1.1.01-3,Receita de Vendas,0.00,1500000.00
+3.2.1.1.01-6,Custo das Mercadorias,750000.00,0.00
+3.3.1.1.01-9,Despesas Administrativas,425000.00,0.00

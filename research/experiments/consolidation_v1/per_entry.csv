@@ -1,0 +1,132 @@
+entity,jurisdiction,currency,source_erp,local_code,local_name,kontablo_id,tier,confidence,usd_value
+MX-01,mx,MXN,erpnext,101,Caja,asset.current.cash,tier1_exact,1.0,50000.0
+MX-01,mx,MXN,erpnext,102,Bancos,asset.current.bank,tier1_exact,1.0,40000.0
+MX-01,mx,MXN,erpnext,105,Clientes,asset.current.receivables,tier1_exact,1.0,120000.0
+MX-01,mx,MXN,erpnext,151,Inventarios,asset.current.inventory,tier1_exact,1.0,60000.0
+MX-01,mx,MXN,erpnext,181,Propiedad Planta y Equipo,asset.noncurrent.ppe,tier1_exact,1.0,200000.0
+MX-01,mx,MXN,erpnext,201,Proveedores,liability.current.payables,tier1_exact,1.0,70000.0
+MX-01,mx,MXN,erpnext,2030,Impuestos por Pagar,liability.current.tax,tier1_exact,1.0,15000.0
+MX-01,mx,MXN,erpnext,212,Deuda Largo Plazo,liability.noncurrent.debt,tier2_keyword,0.85,100000.0
+MX-01,mx,MXN,erpnext,300,Capital Social,equity.capital,tier1_exact,1.0,80000.0
+MX-01,mx,MXN,erpnext,305,Resultados Acumulados,equity.retained,tier1_exact,1.0,135000.0
+MX-01,mx,MXN,erpnext,401,Ventas,revenue.operating,tier1_exact,1.0,300000.0
+MX-01,mx,MXN,erpnext,501,Costo de Ventas,expense.cogs,tier1_exact,1.0,150000.0
+MX-01,mx,MXN,erpnext,601,Gastos Administrativos,expense.admin,tier2_keyword,0.85,60000.0
+MX-01,mx,MXN,erpnext,613,Depreciación,expense.depreciation,tier2_keyword,0.85,20000.0
+MX-02,mx,MXN,zoho_books,101,Caja,asset.current.cash,tier1_exact,1.0,50000.0
+MX-02,mx,MXN,zoho_books,102,Bancos,asset.current.bank,tier1_exact,1.0,40000.0
+MX-02,mx,MXN,zoho_books,105,Clientes,asset.current.receivables,tier1_exact,1.0,120000.0
+MX-02,mx,MXN,zoho_books,151,Inventarios,asset.current.inventory,tier1_exact,1.0,60000.0
+MX-02,mx,MXN,zoho_books,181,Propiedad Planta y Equipo,asset.noncurrent.ppe,tier1_exact,1.0,200000.0
+MX-02,mx,MXN,zoho_books,201,Proveedores,liability.current.payables,tier1_exact,1.0,70000.0
+MX-02,mx,MXN,zoho_books,2030,Impuestos por Pagar,liability.current.tax,tier1_exact,1.0,15000.0
+MX-02,mx,MXN,zoho_books,212,Deuda Largo Plazo,liability.noncurrent.debt,tier2_keyword,0.85,100000.0
+MX-02,mx,MXN,zoho_books,300,Capital Social,equity.capital,tier1_exact,1.0,80000.0
+MX-02,mx,MXN,zoho_books,305,Resultados Acumulados,equity.retained,tier1_exact,1.0,135000.0
+MX-02,mx,MXN,zoho_books,401,Ventas,revenue.operating,tier1_exact,1.0,300000.0
+MX-02,mx,MXN,zoho_books,501,Costo de Ventas,expense.cogs,tier1_exact,1.0,150000.0
+MX-02,mx,MXN,zoho_books,601,Gastos Administrativos,expense.admin,tier2_keyword,0.85,60000.0
+MX-02,mx,MXN,zoho_books,613,Depreciación,expense.depreciation,tier2_keyword,0.85,20000.0
+BR-01,br,BRL,sap_b1,1.1.1.1.01-9,Caixa,asset.current.cash,tier1_exact,1.0,50000.0
+BR-01,br,BRL,sap_b1,1.1.1.2.01-0,Contas a Receber,asset.current.receivables,tier1_exact,1.0,120000.0
+BR-01,br,BRL,sap_b1,1.1.4.1.01-5,Estoque,asset.current.inventory,tier2_keyword,0.85,60000.0
+BR-01,br,BRL,sap_b1,1.2.3.1.01-2,Ativo Imobilizado,asset.noncurrent.ppe,tier2_keyword,0.85,200000.0
+BR-01,br,BRL,sap_b1,2.1.1.1.01-4,Fornecedores,liability.current.payables,tier2_keyword,0.85,70000.0
+BR-01,br,BRL,sap_b1,2.1.4.1.01-7,Imposto a Pagar,liability.current.tax,tier2_keyword,0.85,15000.0
+BR-01,br,BRL,sap_b1,2.3.1.1.01-1,Capital Social,equity.capital,tier2_keyword,0.85,80000.0
+BR-01,br,BRL,sap_b1,2.3.5.1.01-8,Lucros Acumulados,equity.retained,tier2_keyword,0.85,200000.0
+BR-01,br,BRL,sap_b1,3.1.1.1.01-3,Receita de Vendas,revenue.operating,tier2_keyword,0.85,300000.0
+BR-01,br,BRL,sap_b1,3.2.1.1.01-6,Custo das Mercadorias,expense.cogs,tier2_keyword,0.85,150000.0
+BR-01,br,BRL,sap_b1,3.3.1.1.01-9,Despesas Administrativas,expense.admin,tier2_keyword,0.85,85000.0
+FR-01,fr,EUR,odoo,512,Caisse,asset.current.cash,tier1_exact,1.0,50000.0
+FR-01,fr,EUR,odoo,371,Stocks de marchandises,asset.current.inventory,tier1_exact,1.0,60000.0
+FR-01,fr,EUR,odoo,211,Immobilisations corporelles,asset.noncurrent.ppe,tier1_exact,1.0,200000.01
+FR-01,fr,EUR,odoo,445660,TVA déductible,asset.current.vat_input,tier1_exact,1.0,8000.0
+FR-01,fr,EUR,odoo,401,Fournisseurs,liability.current.payables,tier1_exact,1.0,69999.99
+FR-01,fr,EUR,odoo,445710,TVA collectée,liability.current.vat_output,tier1_exact,1.0,12000.0
+FR-01,fr,EUR,odoo,444,"État, impôts",liability.current.tax,tier1_exact,1.0,15000.0
+FR-01,fr,EUR,odoo,101,Capital social,equity.capital,tier2_keyword,0.85,80000.0
+FR-01,fr,EUR,odoo,110,Report à nouveau,equity.retained,tier2_keyword,0.85,71000.03
+FR-01,fr,EUR,odoo,701,Ventes de produits,revenue.operating,tier1_exact,1.0,300000.0
+FR-01,fr,EUR,odoo,607,Achats de marchandises,expense.cogs,tier1_exact,1.0,150000.0
+FR-01,fr,EUR,odoo,627,Frais généraux,expense.admin,tier1_exact,1.0,60000.0
+FR-01,fr,EUR,odoo,681,Dotations aux amortissements,expense.depreciation,tier1_exact,1.0,20000.0
+PA-01,pa,USD,zoho_books,1.1.01,Caja,asset.current.cash,tier1_exact,1.0,50000.0
+PA-01,pa,USD,zoho_books,1.1.02,Bancos,asset.current.bank,tier1_exact,1.0,40000.0
+PA-01,pa,USD,zoho_books,1.1.05,Clientes,asset.current.receivables,tier1_exact,1.0,120000.0
+PA-01,pa,USD,zoho_books,1.1.08,Inventarios,asset.current.inventory,tier1_exact,1.0,60000.0
+PA-01,pa,USD,zoho_books,2.1.01,Propiedad Planta y Equipo,asset.noncurrent.ppe,tier1_exact,1.0,200000.0
+PA-01,pa,USD,zoho_books,3.1.01,Proveedores,liability.current.payables,tier1_exact,1.0,70000.0
+PA-01,pa,USD,zoho_books,3.1.04,Impuestos por Pagar,liability.current.tax,tier2_keyword,0.85,15000.0
+PA-01,pa,USD,zoho_books,4.1.01,Deuda Largo Plazo,liability.noncurrent.debt,tier2_keyword,0.85,100000.0
+PA-01,pa,USD,zoho_books,5.1.01,Capital Social,equity.capital,tier1_exact,1.0,80000.0
+PA-01,pa,USD,zoho_books,5.2.01,Resultados Acumulados,equity.retained,tier2_keyword,0.85,135000.0
+PA-01,pa,USD,zoho_books,6.1.01,Ventas,revenue.operating,tier1_exact,1.0,300000.0
+PA-01,pa,USD,zoho_books,7.1.01,Costo de Ventas,expense.cogs,tier1_exact,1.0,150000.0
+PA-01,pa,USD,zoho_books,8.1.01,Gastos Administrativos,expense.admin,tier2_keyword,0.85,60000.0
+PA-01,pa,USD,zoho_books,8.2.01,Depreciación,expense.depreciation,tier2_keyword,0.85,20000.0
+EC-01,ec,USD,erpnext,x,Caja,asset.current.cash,tier2_keyword,0.85,50000.0
+EC-01,ec,USD,erpnext,x,Bancos,asset.current.bank,tier2_keyword,0.85,40000.0
+EC-01,ec,USD,erpnext,x,Clientes,asset.current.receivables,tier2_keyword,0.85,120000.0
+EC-01,ec,USD,erpnext,x,Inventarios,asset.current.inventory,tier2_keyword,0.85,60000.0
+EC-01,ec,USD,erpnext,x,Propiedad Planta y Equipo,asset.noncurrent.ppe,tier2_keyword,0.85,200000.0
+EC-01,ec,USD,erpnext,x,Proveedores,liability.current.payables,tier2_keyword,0.85,70000.0
+EC-01,ec,USD,erpnext,x,Impuestos por Pagar,liability.current.tax,tier2_keyword,0.85,15000.0
+EC-01,ec,USD,erpnext,x,Deuda Largo Plazo,liability.noncurrent.debt,tier2_keyword,0.85,100000.0
+EC-01,ec,USD,erpnext,x,Capital Social,equity.capital,tier2_keyword,0.85,80000.0
+EC-01,ec,USD,erpnext,x,Resultados Acumulados,equity.retained,tier2_keyword,0.85,135000.0
+EC-01,ec,USD,erpnext,x,Ventas,revenue.operating,tier2_keyword,0.85,300000.0
+EC-01,ec,USD,erpnext,x,Costo de Ventas,revenue.operating,tier2_keyword,0.85,150000.0
+EC-01,ec,USD,erpnext,x,Gastos Administrativos,expense.admin,tier2_keyword,0.85,60000.0
+EC-01,ec,USD,erpnext,x,Depreciación,expense.depreciation,tier2_keyword,0.85,20000.0
+CO-01,co,COP,odoo,1105,Caja,asset.current.cash,tier1_exact,1.0,50000.0
+CO-01,co,COP,odoo,1110,Bancos,asset.current.bank,tier1_exact,1.0,40000.0
+CO-01,co,COP,odoo,1305,Clientes,asset.current.receivables,tier1_exact,1.0,120000.0
+CO-01,co,COP,odoo,1430,Inventarios,asset.current.inventory,tier1_exact,1.0,60000.0
+CO-01,co,COP,odoo,1516,Propiedades Planta y Equipo,asset.noncurrent.ppe,tier1_exact,1.0,200000.0
+CO-01,co,COP,odoo,2205,Proveedores,liability.current.payables,tier1_exact,1.0,70000.0
+CO-01,co,COP,odoo,2404,Impuestos por Pagar,liability.current.tax,tier2_keyword,0.85,15000.0
+CO-01,co,COP,odoo,3105,Capital Social,equity.capital,tier1_exact,1.0,80000.0
+CO-01,co,COP,odoo,3605,Resultados Acumulados,equity.retained,tier2_keyword,0.85,240000.0
+CO-01,co,COP,odoo,4135,Ingresos Operacionales,revenue.operating,tier1_exact,1.0,300000.0
+CO-01,co,COP,odoo,6105,Costo de Ventas,expense.cogs,tier1_exact,1.0,150000.0
+CO-01,co,COP,odoo,5205,Gastos Administrativos,expense.admin,tier1_exact,1.0,85000.0
+VN-01,vn,VND,erpnext,111,Tiền mặt,asset.current.cash,tier1_exact,1.0,50000.0
+VN-01,vn,VND,erpnext,112,Tiền gửi ngân hàng,asset.current.bank,tier1_exact,1.0,40000.0
+VN-01,vn,VND,erpnext,131,Phải thu của khách hàng,asset.current.receivables,tier1_exact,1.0,120000.0
+VN-01,vn,VND,erpnext,152,Hàng tồn kho,asset.current.inventory,tier1_exact,1.0,60000.0
+VN-01,vn,VND,erpnext,211,Tài sản cố định hữu hình,asset.noncurrent.ppe,tier1_exact,1.0,200000.0
+VN-01,vn,VND,erpnext,242,Chi phí trả trước dài hạn,ESCALATED,escalated,0.0,9000.0
+VN-01,vn,VND,erpnext,331,Phải trả cho người bán,liability.current.payables,tier1_exact,1.0,70000.0
+VN-01,vn,VND,erpnext,333,Thuế và các khoản phải nộp,liability.current.accrued,tier1_exact,1.0,15000.0
+VN-01,vn,VND,erpnext,411,Vốn đầu tư của chủ sở hữu,equity.capital,tier1_exact,1.0,80000.0
+VN-01,vn,VND,erpnext,421,Lợi nhuận sau thuế chưa phân phối,equity.retained,tier1_exact,1.0,250000.0
+VN-01,vn,VND,erpnext,511,Doanh thu bán hàng,revenue.operating,tier1_exact,1.0,300000.0
+VN-01,vn,VND,erpnext,632,Giá vốn hàng bán,expense.cogs,tier1_exact,1.0,150000.0
+VN-01,vn,VND,erpnext,642,Chi phí quản lý doanh nghiệp,expense.admin,tier1_exact,1.0,86000.0
+NG-01,ng,NGN,zoho_books,x,Cash on Hand,asset.current.cash,tier2_keyword,0.85,50000.0
+NG-01,ng,NGN,zoho_books,x,Bank Balances,asset.current.bank,tier2_keyword,0.85,40000.0
+NG-01,ng,NGN,zoho_books,x,Trade Receivables,asset.current.receivables,tier2_keyword,0.85,120000.0
+NG-01,ng,NGN,zoho_books,x,Inventory,asset.current.inventory,tier2_keyword,0.85,60000.0
+NG-01,ng,NGN,zoho_books,x,Property Plant and Equipment,asset.noncurrent.ppe,tier2_keyword,0.85,200000.0
+NG-01,ng,NGN,zoho_books,x,Trade Payables,liability.current.payables,tier2_keyword,0.85,70000.0
+NG-01,ng,NGN,zoho_books,x,Tax Payable,liability.current.payables,tier2_keyword,0.85,15000.0
+NG-01,ng,NGN,zoho_books,x,Long-Term Debt,liability.noncurrent.debt,tier2_keyword,0.85,100000.0
+NG-01,ng,NGN,zoho_books,x,Share Capital,equity.capital,tier2_keyword,0.85,80000.0
+NG-01,ng,NGN,zoho_books,x,Retained Earnings,equity.retained,tier2_keyword,0.85,135000.0
+NG-01,ng,NGN,zoho_books,x,Revenue,revenue.operating,tier2_keyword,0.85,300000.0
+NG-01,ng,NGN,zoho_books,x,Cost of Goods Sold,expense.cogs,tier2_keyword,0.85,150000.0
+NG-01,ng,NGN,zoho_books,x,Administrative Expenses,expense.admin,tier2_keyword,0.85,60000.0
+NG-01,ng,NGN,zoho_books,x,Depreciation,expense.depreciation,tier2_keyword,0.85,20000.0
+SA-01,sa,SAR,sap_b1,101,النقد في الصندوق,asset.current.cash,tier1_exact,1.0,50000.0
+SA-01,sa,SAR,sap_b1,102,البنك,asset.current.bank,tier2_keyword,0.85,40000.0
+SA-01,sa,SAR,sap_b1,110,ذمم مدينة,asset.current.receivables,tier2_keyword,0.85,120000.0
+SA-01,sa,SAR,sap_b1,120,المخزون,ESCALATED,escalated,0.0,60000.0
+SA-01,sa,SAR,sap_b1,150,الأصول الثابتة,ESCALATED,escalated,0.0,200000.0
+SA-01,sa,SAR,sap_b1,201,موردون,liability.current.payables,tier2_keyword,0.85,70000.0
+SA-01,sa,SAR,sap_b1,215,مخصص الزكاة,ESCALATED,escalated,0.0,18000.0
+SA-01,sa,SAR,sap_b1,301,رأس المال,ESCALATED,escalated,0.0,80000.0
+SA-01,sa,SAR,sap_b1,305,الأرباح المبقاة,ESCALATED,escalated,0.0,230000.0
+SA-01,sa,SAR,sap_b1,401,إيرادات المبيعات,revenue.operating,tier2_keyword,0.85,300000.0
+SA-01,sa,SAR,sap_b1,501,تكلفة المبيعات,ESCALATED,escalated,0.0,150000.0
+SA-01,sa,SAR,sap_b1,510,مصاريف إدارية,ESCALATED,escalated,0.0,78000.0
