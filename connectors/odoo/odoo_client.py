@@ -121,7 +121,7 @@ class OdooKontabloConnector:
                 for a in accounts if a.get("code")
             ],
         }
-        response = requests.post(f"{self.kontablo_url}/mapping/batch", json=payload)
+        response = requests.post(f"{self.kontablo_url}/mapping/batch", json=payload, timeout=30)
         response.raise_for_status()
         return response.json()
 
@@ -141,6 +141,6 @@ class OdooKontabloConnector:
                 }
             ],
         }
-        response = requests.post(f"{self.kontablo_url}/consolidation", json=payload)
+        response = requests.post(f"{self.kontablo_url}/consolidation", json=payload, timeout=30)
         response.raise_for_status()
         return response.json()

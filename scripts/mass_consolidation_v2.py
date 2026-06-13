@@ -425,12 +425,36 @@ def base_for(aid):
     return 30000
 
 
+def add_equity_plug(entities, accounts):
+    """Balance every synthetic entity: append a retained-earnings line whose
+    amount is total debits minus total credits, so each trial balance
+    satisfies debits == credits exactly. The line is always credit-natured
+    (retained earnings); a debit-heavy entity gets a positive amount, a
+    credit-heavy one a negative amount (an accumulated deficit carried with
+    its sign, standard for a synthetic plug).
+
+    Plug lines are marked "plug": they are POSTED to the consolidated ledger
+    (the books must balance) but EXCLUDED from the tier/coverage statistics,
+    because a balancing artifact is not a mapping exercise — counting 75
+    trivially-resolving plugs would pad the deterministic-coverage headline."""
+    label = accounts["equity.retained"]["label"]
+    for ent in entities:
+        signed = sum(e["amt"] if e["nature"] == "debit" else -e["amt"]
+                     for e in ent["data"])
+        plug = round(signed, 2)
+        if plug != 0.0:
+            ent["data"].append({"code": "x", "name": label,
+                                "nature": "credit", "amt": plug,
+                                "plug": True})
+    return entities
+
+
 def main():
     accounts, by_code, collisions, placeholders = load_ontology()
     families = load_families()
     by_code = merge_family_codes(by_code, families)
     coverage = load_coverage()
-    data = build_entities(accounts, by_code, families)
+    data = add_equity_plug(build_entities(accounts, by_code, families), accounts)
 
     consolidated = defaultdict(float)     # kontablo_id -> USD
     tier_counts = Counter()
@@ -443,11 +467,33 @@ def main():
     escalated = 0
     quarantined = 0
 
+    suspense_usd = 0.0          # escalated + quarantined lines, signed by nature
+    signed_usd = defaultdict(float)  # kontablo_id -> signed USD (debit +, credit -)
+
     for ent in data:
         entities += 1
         countries.add(ent["j"])
         rate = ent.get("rate_override", FX.get(ent["ccy"], 1.0))
+        # Every synthetic trial balance must balance (equity plug applied).
+        tb_gap = round(sum(e["amt"] if e["nature"] == "debit" else -e["amt"]
+                           for e in ent["data"]), 2)
+        assert tb_gap == 0.0, f"{ent['id']}: trial balance off by {tb_gap}"
         for e in ent["data"]:
+            if e.get("plug"):
+                # Balancing line: posted to the ledger so the books balance,
+                # excluded from tier/coverage statistics (see add_equity_plug).
+                usd_signed = (e["amt"] if e["nature"] == "debit"
+                              else -e["amt"]) * rate
+                consolidated["equity.retained"] += e["amt"] * rate
+                signed_usd["equity.retained"] += usd_signed
+                per_entry.append({
+                    "entity": ent["id"], "jurisdiction": ent["j"],
+                    "currency": ent["ccy"], "local_code": e["code"],
+                    "local_name": e["name"], "kontablo_id": "equity.retained",
+                    "tier": "balancing_plug", "confidence": 1.0,
+                    "usd_value": round(e["amt"] * rate, 2), "cra_flags": "",
+                })
+                continue
             total_entries += 1
             forced = e.get("forced_id")
             if forced:
@@ -460,15 +506,19 @@ def main():
                 conf = min(conf, 0.3)
                 for f in flags:
                     flags_all.append({"entity": ent["id"], "name": e["name"], "flag": f})
+            usd_signed = (e["amt"] if e["nature"] == "debit" else -e["amt"]) * rate
             if kid is None:
                 escalated += 1
+                suspense_usd += usd_signed
             elif flags:
                 # CRA quarantine: a flagged mapping is held for human review and
                 # is NOT posted to the consolidated ledger.
                 quarantined += 1
+                suspense_usd += usd_signed
             else:
                 resolved += 1
                 consolidated[kid] += e["amt"] * rate
+                signed_usd[kid] += usd_signed
             per_entry.append({
                 "entity": ent["id"], "jurisdiction": ent["j"], "currency": ent["ccy"],
                 "local_code": e["code"], "local_name": e["name"],
@@ -476,6 +526,23 @@ def main():
                 "confidence": conf, "usd_value": round(e["amt"] * rate, 2),
                 "cra_flags": ";".join(flags) if flags else "",
             })
+
+    # ---- consolidated accounting identity: A = L + E + (R - X) ----
+    # Signed by nature (debit +, credit -); escalated/quarantined lines sit in
+    # an explicit suspense bucket so the identity is exact and auditable.
+    def _bucket(prefix):
+        return sum(v for k, v in signed_usd.items() if k.startswith(prefix))
+
+    id_assets = _bucket("asset")
+    id_liabilities = -_bucket("liability")
+    id_equity = -_bucket("equity")
+    id_revenue = -_bucket("revenue")
+    id_expenses = _bucket("expense")
+    identity_gap = round(
+        id_assets + suspense_usd
+        - (id_liabilities + id_equity + (id_revenue - id_expenses)), 2)
+    assert abs(identity_gap) < 0.01, \
+        f"consolidated identity violated: gap={identity_gap}"
 
     # ---- 195-jurisdiction coverage manifest ----
     cov_total = len(coverage)
@@ -559,6 +626,15 @@ def main():
         "descriptive_placeholders_excluded": placeholders,
         "consolidated_usd": {k: round(v, 2) for k, v in sorted(consolidated.items())},
         "total_assets_usd": round(total_assets, 2),
+        "identity": {
+            "assets_usd": round(id_assets, 2),
+            "liabilities_usd": round(id_liabilities, 2),
+            "equity_usd": round(id_equity, 2),
+            "revenue_usd": round(id_revenue, 2),
+            "expenses_usd": round(id_expenses, 2),
+            "suspense_usd": round(suspense_usd, 2),
+            "gap_usd": identity_gap,
+        },
     }
     with open(os.path.join(OUT_DIR, "results.json"), "w") as f:
         json.dump(summary, f, indent=2, ensure_ascii=False)

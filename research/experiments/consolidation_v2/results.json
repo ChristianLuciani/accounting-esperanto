@@ -240,7 +240,7 @@
     "asset.noncurrent.investments": 60000.0,
     "asset.noncurrent.ppe": 1784000.01,
     "equity.capital": 320000.0,
-    "equity.retained": 240000.0,
+    "equity.retained": -5005962.22,
     "expense.admin": 360000.0,
     "expense.cogs": 450000.0,
     "expense.depreciation": 270000.0,
@@ -256,5 +256,14 @@
     "revenue.operating": 16800000.03,
     "revenue.other": 600000.0
   },
-  "total_assets_usd": 14746037.81
+  "total_assets_usd": 14746037.81,
+  "identity": {
+    "assets_usd": 14746037.81,
+    "liabilities_usd": 4019999.97,
+    "equity_usd": -4685962.22,
+    "revenue_usd": 17400000.03,
+    "expenses_usd": 1799999.98,
+    "suspense_usd": 188000.0,
+    "gap_usd": 0.0
+  }
 }

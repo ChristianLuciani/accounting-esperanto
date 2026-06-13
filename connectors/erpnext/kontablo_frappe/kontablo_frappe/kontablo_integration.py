@@ -37,7 +37,7 @@ def sync_chart_of_accounts(company: str, jurisdiction: str):
     headers = {"Authorization": f"Bearer {api_key}"}
     
     try:
-        response = requests.post(f"{kontablo_url}/mapping/batch", json=payload, headers=headers)
+        response = requests.post(f"{kontablo_url}/mapping/batch", json=payload, headers=headers, timeout=30)
         response.raise_for_status()
         data = response.json()
         
@@ -108,7 +108,7 @@ def sync_trial_balance(company: str, to_date: str, jurisdiction: str, currency: 
     
     headers = {"Authorization": f"Bearer {api_key}"}
     try:
-        response = requests.post(f"{kontablo_url}/consolidation", json=payload, headers=headers)
+        response = requests.post(f"{kontablo_url}/consolidation", json=payload, headers=headers, timeout=30)
         response.raise_for_status()
         return response.json()
     except Exception as e:

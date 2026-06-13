@@ -1,4 +1,3 @@
-import google.generativeai as genai
 import os
 from typing import List, Optional
 import json
@@ -8,6 +7,9 @@ class AIService:
     def __init__(self, api_key: Optional[str] = None):
         self.api_key = api_key or os.getenv("GOOGLE_API_KEY")
         if self.api_key:
+            # Lazy import: the deterministic tiers (and the whole API when no
+            # key is configured) must not require the genai package at all.
+            import google.generativeai as genai
             genai.configure(api_key=self.api_key)
             self.model = genai.GenerativeModel('gemini-1.5-flash')
         else:

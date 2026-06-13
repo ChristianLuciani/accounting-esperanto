@@ -209,9 +209,14 @@ class ConsolidationServicer(pb_grpc.ConsolidationServiceServicer):
             )
             for el in request.eliminations
         ]
-        result = self.engine.consolidate(
-            subs, eliminations=links, target_currency=request.target_currency or "USD"
-        )
+        try:
+            result = self.engine.consolidate(
+                subs, eliminations=links,
+                target_currency=request.target_currency or "USD",
+            )
+        except ValueError as e:
+            # Unsupported target currency / unknown FX: caller error, not crash.
+            context.abort(grpc.StatusCode.INVALID_ARGUMENT, str(e))
         tb = [
             pb.ConsolidatedEntry(
                 kontablo_id=l.kontablo_id,

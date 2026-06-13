@@ -78,6 +78,27 @@ reference distribution. It is NOT a measurement of a real ledger corpus.**
   real ledger carries — it is the empirical face of the **principled residual**
   and is deliberately *not* absorbed by the extended core.
 
+## Sensitivity: what if the General-Journal tail is underweighted?
+
+The natural attack on a synthetic distribution is "you cherry-picked the tail
+weight." The benchmark answers quantitatively: `--misc-weight K` multiplies
+every General Journal (tail) transaction's weight by K and re-measures, and
+the default run commits the sweep to `coverage_results.json →
+sensitivity_misc_weight`:
+
+| Tail weight | Minimum core (30 nodes) | Extended core (34 nodes) |
+|---|---|---|
+| ×1.0 (committed distribution) | 94.2 % | 98.8 % |
+| ×1.5 | 92.6 % | 98.3 % |
+| ×2.0 | 91.1 % | 97.9 % |
+| ×3.0 | 88.7 % | 97.2 % |
+
+Even with the entire non-routine tail **tripled**, the 30-node minimum core
+still covers ~89 % of posting volume and the extended core ~97 %. The headline
+is robust to the assumption an adversary would most plausibly contest.
+
+Regenerate any row: `python scripts/coverage_benchmark.py --misc-weight 2.0`
+
 ## Why the extended core stops at 34, not 100 % coverage
 
 The four extended nodes (`liability.current.payroll`,

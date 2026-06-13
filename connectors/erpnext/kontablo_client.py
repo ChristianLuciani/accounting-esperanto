@@ -23,7 +23,7 @@ class ERPNextKontabloConnector:
             "filters": json.dumps([["company", "=", company]]),
             "limit_page_length": 0
         }
-        response = requests.get(f"{self.erpnext_url}/api/resource/Account", headers=self.headers, params=params)
+        response = requests.get(f"{self.erpnext_url}/api/resource/Account", headers=self.headers, params=params, timeout=30)
         response.raise_for_status()
         return response.json().get("data", [])
 
@@ -45,7 +45,7 @@ class ERPNextKontabloConnector:
             ]
         }
         
-        response = requests.post(f"{self.kontablo_url}/mapping/batch", json=kontablo_payload)
+        response = requests.post(f"{self.kontablo_url}/mapping/batch", json=kontablo_payload, timeout=30)
         response.raise_for_status()
         return response.json()
 
@@ -76,6 +76,7 @@ class ERPNextKontabloConnector:
                 f"{self.erpnext_url}/api/resource/Account/{account_name}",
                 headers=self.headers,
                 json=payload,
+                timeout=30,
             )
             response.raise_for_status()
             results.append({"account": account_name, "written": payload})
@@ -93,7 +94,8 @@ class ERPNextKontabloConnector:
         response = requests.get(
             f"{self.erpnext_url}/api/method/erpnext.accounts.report.trial_balance.trial_balance.execute",
             headers=self.headers,
-            params=params
+            params=params,
+            timeout=30,
         )
         response.raise_for_status()
         # ERPNext reports usually return [columns, data]
@@ -129,6 +131,6 @@ class ERPNextKontabloConnector:
             ]
         }
         
-        response = requests.post(f"{self.kontablo_url}/consolidation", json=payload)
+        response = requests.post(f"{self.kontablo_url}/consolidation", json=payload, timeout=30)
         response.raise_for_status()
         return response.json()
