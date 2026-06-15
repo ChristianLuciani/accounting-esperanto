@@ -1,13 +1,15 @@
 \section{The Downstream Economic Impact of Ontology Bridges}
 
 \subsection{Financial Integration Velocity (FIV) in M\&A}
-In corporate Mergers and Acquisitions (M\&A), the speed at which the acquirer can unify the general ledgers of disparate subsidiaries is a primary constraint on synergy capture. Standard ERP-level integration requires manual mapping of charts of accounts, a process taking between 90 and 180 days of consultancy labor. During this period, the parent company operates with restricted financial visibility, delaying cost-rationalization and capital-allocation decisions.
+In corporate Mergers and Acquisitions (M\&A), the speed at which the acquirer can unify the general ledgers of disparate subsidiaries is a primary constraint on synergy capture. Standard ERP-level integration requires manual mapping of charts of accounts, a process commonly reported at 90 to 180 days of consultancy labor. During this period, the parent company operates with restricted financial visibility, delaying cost-rationalization and capital-allocation decisions.
 
-Kontablo reduces this normalization period to \textbf{under 24 hours} by deploying the Level 3 mapping engine as a translation layer. We define the Financial Integration Velocity ($FIV$) as the rate of successful account unification:
+We propose \textbf{Financial Integration Velocity ($FIV$)} as a heuristic metric for this process --- a stipulative definition we introduce, not an empirical result or a theorem --- defined as the rate of successful account unification:
 
-\[ FIV = \frac{\sum_{i=1}^{n} a_i(1 - \epsilon_i)}{t_{\text{reconciliation}}} \]
+\begin{equation}\label{eq:fiv}
+FIV = \frac{\sum_{i=1}^{n} a_i(1 - \epsilon_i)}{t_{\text{reconciliation}}}
+\end{equation}
 
-Where $a_i$ represents the active account nodes in the target ledger, $\epsilon_i$ represents the error rate of the automated mappings, and $t_{\text{reconciliation}}$ is the time in hours required to achieve validation. Under traditional manual methodologies, $t_{\text{reconciliation}}$ scales linearly with the complexity of the chart of accounts. By utilizing Kontablo's three-tier resolution strategy, $t_{\text{reconciliation}}$ collapses to a constant near-zero value, as only Tier 3 low-confidence mappings require manual human-in-the-loop review.
+where $a_i$ represents the active account nodes in the target ledger, $\epsilon_i$ the error rate of the automated mappings, and $t_{\text{reconciliation}}$ the time in hours required to achieve validation. Under traditional manual methodologies, $t_{\text{reconciliation}}$ scales with the complexity of the chart of accounts. By deploying the Level~3 mapping engine as a translation layer, Kontablo is \emph{designed} to drive $t_{\text{reconciliation}}$ toward a small constant --- a design target on the order of hours rather than months, since only Tier~3 low-confidence mappings require human-in-the-loop review. We present the sub-24-hour figure as a target the architecture is built to enable, not a measured outcome; quantifying realized $t_{\text{reconciliation}}$ on live M\&A integrations is explicit future work.
 
 \subsection{An Illustrative Cost Scenario for SME Operating Margins}
 Small and Medium Enterprises (SMEs) face disproportionate accounting costs when expanding across borders. Legacy ERP vendors price multi-entity consolidation modules out of reach for growing firms, forcing them to rely on outsourced accountants. By deploying the Kontablo Level 3 bridge via lightweight API integrations (such as the microSaaS prototype), SMEs can automatically map local tax invoices to a global standard.
@@ -17,17 +19,73 @@ As an \emph{illustrative scenario} --- a hypothesis to be validated with real de
 \subsection{Real-Time Auditing (RTA) vs. Retrospective Audits}
 The traditional corporate audit is a retrospective, batch-processed event. Auditing firms spend months sampling journal entries from the preceding year, looking for anomalies after they have already affected the balance sheet. This latency permits fraud to remain undetected for long periods and distorts financial reporting.
 
-We define a formal metric for Real-Time Auditing (RTA) efficiency, comparing the latency of anomaly detection. Under a standard retrospective audit, the audit latency ($L_{\text{audit}}$) is:
+We compare the latency of anomaly detection. Under a standard retrospective audit, the audit latency ($L_{\text{audit}}$) is the gap between when a transaction is posted and when the audit that examines it is reported:
 
-\[ L_{\text{audit}} = T_{\text{report}} - T_{\text{transaction}} \approx 30 \text{ to } 365 \text{ days} \]
+\begin{equation}\label{eq:l_audit}
+L_{\text{audit}} = T_{\text{report}} - T_{\text{transaction}} \approx 30 \text{ to } 365 \text{ days}
+\end{equation}
 
-With Kontablo's Co-responsibility Architecture (CRA), the validation rules are executed at the transaction level in real time. If an AI agent or accountant overrides a mapping in a way that violates a deterministic boundary, an inconsistency flag is immediately raised and logged. Thus, the real-time anomaly detection latency ($L_{\text{rta}}$) is:
+With Kontablo's Co-responsibility Architecture (CRA), the deterministic boundary checks execute at the transaction level. If an AI agent or accountant commits a mapping that violates a deterministic boundary, an inconsistency flag is raised and logged at write time, so the detection latency for that class of anomaly ($L_{\text{rta}}$) is:
 
-\[ L_{\text{rta}} = t_{\text{execution}} + t_{\text{flag}} \approx < 1 \text{ second} \]
+\begin{equation}\label{eq:l_rta}
+L_{\text{rta}} = t_{\text{execution}} + t_{\text{flag}} \approx {<}\,1 \text{ second}
+\end{equation}
 
-This shift from retroactive sampling to continuous transaction-level boundary enforcement changes the role of the auditor from a forensic detective to a systems supervisor, dramatically reducing compliance risks and insurance premiums for global businesses.
+\paragraph{RTA complements, it does not replace, the existing audit.} We are
+careful not to overclaim here: real-time boundary enforcement does not make the
+forensic auditor obsolete. It adds three capabilities on top of the existing
+method rather than substituting for it. \emph{(1) Real-time flagging:}
+boundary-violating mappings are caught at the instant of posting
+(Eq.~\ref{eq:l_rta}) instead of months later (Eq.~\ref{eq:l_audit}), but this
+reaches only the anomalies a \emph{deterministic} rule can express ---
+nature, liquidity, statement-class, and the other Boundary-Library invariants
+--- not judgement-level fraud or collusion. \emph{(2) Queryable, AI-tagged
+lineage:} because every posting carries a universal ID, a confidence score,
+and the AI's justification, an auditor can query the population directly
+(``show every override against a deterministic rule,'' ``every Tier-3 mapping
+below 0.7'') rather than sampling blind. \emph{(3) Traditional sampling remains
+valid and is augmented:} random-sample forensic testing, analytical review,
+and professional skepticism continue unchanged --- now applied to a cleaner,
+fully-traced population with the routine boundary errors already removed. The
+net effect is an \emph{increase} in forensic auditability and capacity, not a
+replacement of the auditor: the role shifts from detecting mechanical
+mis-postings by hand toward investigating the higher-order anomalies the
+deterministic layer cannot adjudicate.
 
 \subsection{Auditability and Fraud Prevention}
 Manual reconciliation is inherently opaque: when accounting teams manually adjust entries in spreadsheets during month-end close, they create an audit gap between the source ledger and the consolidated statement.
 
 Kontablo's contribution to auditability is structural rather than statistical: every transaction recorded via the Kontablo Graph is linked to a deterministic universal ID, so a forensic audit can trace any consolidated line item back to its origin in the local ledger (e.g., a Vietnamese VAS account) with no semantic translation lost in the process, and every human or AI override is permanently flagged in the audit trail (Section~\ref{sec:harness}). We deliberately do not quantify this as a percentage improvement --- auditability gains depend on the baseline process being replaced --- but the mechanism replaces sample-based retrospective auditing with complete, queryable lineage. For an AI-driven economy, this translates to \textbf{Real-Time Auditing (RTA)} rather than once-a-year forensic sampling.
+
+\subsection{Foreign-Currency Reconciliation and the Transaction-Date Rate (IAS 21)}
+\label{subsec:fx_reconciliation}
+The hyperinflation cases of Section~\ref{sec:evaluation} exercise IAS~29
+dual-rate divergence, but a more pervasive foreign-currency problem sits one
+level below it and applies to \emph{every} cross-border ledger, not only
+hyperinflationary ones: IAS~21 requires a foreign-currency transaction to be
+recorded at the spot exchange rate \emph{at the date of the transaction}. In
+practice, when transactions are not reconciled as they occur, firms fall back
+on the standard's practical expedient --- a period average or weighted-average
+rate applied at month-end close. That expedient is the quiet source of two
+distinct problems. First, it is an \emph{approximation}: an average rate
+applied to a month of transactions silently misstates any individual
+transaction whose true spot rate diverged from the mean, and the error grows
+with both volatility and the dispersion of transaction timing within the
+period. Second, and worse, batch period-rate translation is a \emph{cover}:
+because the reconciliation happens away from the transaction and away from its
+date-stamped rate, an improperly classified or timed entry is far harder to
+detect once it has been folded into an averaged month-end figure.
+
+A common semantic layer addresses both at their root by making the rate a
+property of the transaction rather than of the period. Each posting carries its
+transaction-date spot rate alongside its universal ID and provenance, so
+month-end translation becomes a deterministic re-aggregation of date-stamped
+amounts rather than the application of a single smoothing rate, and any entry
+can be re-derived to its exact transaction-date rate on audit. This does not
+repeal the practical expedient --- a firm may still elect average-rate
+reporting where IAS~21 permits it --- but it converts the expedient from a
+lossy necessity into an explicit, reversible choice, and it removes the
+reconciliation blind spot in which mis-timed or mis-rated entries currently
+hide. Implementing per-transaction rate capture and the IAS~21 average-rate
+election as a first-class ledger dimension is on the roadmap; the architecture
+already carries the per-transaction provenance the mechanism requires.

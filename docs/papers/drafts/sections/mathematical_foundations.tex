@@ -1,4 +1,5 @@
 \section{Mathematical Foundations of the Translation Mechanism}
+\label{sec:mathfound}
 
 The tree-to-graph-to-tree pipeline of Section~\ref{sec:ontology-bridge} is not an ad hoc
 engineering convenience; it is an instance of a construction that recurs, under different
@@ -17,6 +18,20 @@ $T_s$ may correspond to several accounts in $T_t$ and vice versa (the $1{:}N$ an
 cardinalities), and the multi-dimensional roles an account plays (statutory, fiscal,
 functional, consolidated) cannot be expressed inside a single-parent hierarchy at all. The
 direct approach fails because the two trees do not share a common coordinate system.
+
+\emph{A concrete instance.} Consider one economic event --- a domestic credit
+sale of goods with value-added tax. In Mexico's SAT chart it touches
+\texttt{105} (Clientes), \texttt{401} (Ingresos), and \texttt{208}
+(IVA trasladado); in France's PCG, \texttt{411} (Clients), \texttt{707}
+(Ventes de marchandises), and \texttt{44571} (TVA collect\'ee); in Vietnam's
+VAS, \texttt{131} (trade receivables), \texttt{511} (revenue), and
+\texttt{3331} (VAT payable). No single-parent edge relates ``SAT 208'' to
+``PCG 44571'' to ``VAS 3331'': they are the \emph{same} concept
+(output VAT payable) under three incompatible coordinate systems, and the
+receivable line additionally carries fiscal and functional roles the tree
+cannot hold at once. This is the $N{:}M$ obstruction the formalism names ---
+and the reason the pivot below routes every chart through one shared node set
+rather than attempting $T_s \rightarrow T_t$ directly.
 
 \subsection{Lift, Pivot, Project: an Adjoint Pair}
 Kontablo resolves this exactly as machine translation resolves the analogous problem between
@@ -63,6 +78,7 @@ account is re-expressed as an edge into a multi-dimensional graph, where members
 several analytical dimensions is no longer in conflict.
 
 \subsection{The Cost of the Return Trip: a Reconciliation Obstruction}
+\label{subsec:reconciliation_obstruction}
 The return trip is lossy by construction. Linearization selects a primary reporting
 dimension and discards the secondary analytical edges
 (Section~\ref{sec:ontology-bridge}); the discarded content is precisely the failure of the
