@@ -1,4 +1,5 @@
 \section{Deterministic Logic Rules vs. AI Probability}
+\label{sec:deterministic}
 
 \subsection{The Failure of Pure Semantic AI in Accounting}
 While modern Large Language Models (LLMs) excel at semantic matching, using them as primary systems of record in financial systems is dangerous. LLM hallucinations in bookkeeping can lead to tax fraud, regulatory penalties, and audit failures. A mapping accuracy of 95\% is acceptable for search queries, but unacceptable for general ledgers where accuracy must be 100\% (or at least all discrepancies must be flagged). An AI proposing that an electricity bill is a ``Prepaid Expense'' instead of an ``Administrative Expense'' introduces systemic errors that compromise financial integrity.
@@ -13,6 +14,12 @@ To achieve high automation without risking hallucinated mappings, Kontablo imple
 \end{enumerate}
 
 \input{figures/fig_three_tier_pipeline}
+
+Figure~\ref{fig:tier_worked_example} traces the same logic on three concrete
+inputs --- one resolved at each tier --- to make the distinction between the
+deterministic tiers and the single stochastic one concrete.
+
+\input{figures/fig_tier_worked_example}
 
 \subsection{The Deterministic Questions Library}
 To prevent LLM mapping proposals from silently corrupting the ledger, all outputs from Tier 3 must pass through a strict library of deterministic boundary rules. Rather than letting the LLM decide a mapping in a single step, the system forces the mapping through a sequence of deterministic questions based on the target node's metadata. 

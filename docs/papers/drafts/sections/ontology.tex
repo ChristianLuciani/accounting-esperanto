@@ -36,7 +36,7 @@ The core of the Kontablo protocol is the \textbf{Level 3 account specification},
 
 The taxonomy defines exactly 30 Level 3 accounts, divided into two distinct components:
 \begin{enumerate}
-    \item \textbf{18 Universal Accounts:} Mandated for all enterprise profiles. These cover core operational categories including Cash, Trade Receivables, Trade Payables, Retained Earnings, Cost of Goods Sold, and Administrative Expenses.
+    \item \textbf{18 Near-Universal Core Accounts:} concepts that recur near-universally across the committed jurisdiction mapping sets (the most universal appear in 94--98\% of them; none reaches a literal 100\%). These cover core operational categories including Cash, Trade Receivables, Trade Payables, Retained Earnings, Cost of Goods Sold, and Administrative Expenses.
     \item \textbf{12 Optional/Jurisdictional Overlays:} Activatable nodes based on specific regulatory regimes or business models. Examples include:
     \begin{itemize}
         \item \texttt{asset.current.vat\_input} and \texttt{liability.current.vat\_output} (disabled in jurisdictions without VAT, such as the United States).
@@ -47,18 +47,43 @@ The taxonomy defines exactly 30 Level 3 accounts, divided into two distinct comp
 A reproducible transaction-frequency benchmark (Section~\ref{subsec:coverage_expansion}; \texttt{scripts/coverage\_benchmark.py}) estimates that this 30-account configuration captures $\sim$\textbf{94\% of routine transaction volume} by posting count in a representative SME ledger profile, with a 34-account extended core reaching $\sim$99\%.
 
 \subsection{Tree-to-Graph Compatibility Protocol}
-All major legacy ERPs (ERPNext, Odoo, Zoho Books, SAP B1) enforce strict hierarchical trees where each account has exactly one parent. Integrating these systems with Kontablo requires managing the mismatch between trees and graphs. Kontablo implements a two-way compatibility protocol (ADR-008):
+\label{subsec:tree_to_graph}
+All major legacy ERPs (ERPNext, Odoo, Zoho Books, SAP B1) enforce strict hierarchical trees where each account has exactly one parent. Integrating these systems with Kontablo requires managing the mismatch between trees and graphs. Kontablo implements a two-way compatibility protocol (ADR-008\footnote{Architecture Decision Records (ADRs) referenced throughout this paper are committed in the project repository under \texttt{docs/adr/}; ADR-008 specifies the tree-to-graph compatibility protocol, ADR-009 the determinism-over-stochasticity principle, and ADR-011 per-client determinism.}):
 
 \subsubsection{Tree-to-Graph (Import Stream)}
 When importing ledger data from a legacy ERP into Kontablo, the linear account hierarchy is converted into a multi-dimensional graph. The mapping service traverses the ERP tree and assigns each leaf node a mapping edge pointing to a Level 3 universal node in Kontablo, enriching the node with its multi-dimensional properties:
-\[ \text{ERP Leaf} \xrightarrow{\text{Mapping Edge}} \text{Kontablo Node } V_u \]
+\begin{equation}\label{eq:import_edge}
+\text{ERP Leaf} \xrightarrow{\text{Mapping Edge}} \text{Kontablo Node } V_u
+\end{equation}
 If the import tool encounters a group account (e.g., an asset class summary node), it collapses the group and maps only the underlying transaction-bearing leaf nodes, preserving historical ledger provenance.
+
+\emph{Worked example.} An ERPNext chart contains the leaf
+\texttt{1310 - Debtors} under the parent path
+\texttt{Application of Funds} $\rightarrow$ \texttt{Current Assets} $\rightarrow$
+\texttt{Accounts Receivable}. The import stream discards the single-parent path
+and attaches one mapping edge \texttt{1310 - Debtors}
+$\xrightarrow{\text{maps-to}}$ \texttt{asset.current.receivables}, then enriches
+the node with the dimensions the tree could not express simultaneously --- IFRS
+tag (\texttt{IAS 1.54(h)}), nature (\texttt{debit}), statement
+(\texttt{balance\_sheet}), and any jurisdiction overlay --- none of which
+required a separate parent in the source tree.
 
 \subsubsection{Graph-to-Tree (Export Stream / Linearization)}
 To export data back to a legacy ERP, Kontablo must \textbf{linearize} the multi-dimensional graph back into a single-parent tree. The linearization algorithm selects the primary reporting dimension (typically the IFRS Balance Sheet classification edge) and ignores secondary analytical dimensions. This maintains downward compatibility with ERP database schemas while keeping the multi-dimensional graph intact inside Kontablo for analysis.
 
+\emph{Worked example.} Exporting the same \texttt{asset.current.receivables}
+node into an Odoo chart, the linearizer picks the balance-sheet edge as the
+primary dimension and emits a single-parent account \texttt{Current Assets}
+$\rightarrow$ \texttt{Receivables} $\rightarrow$ \texttt{Trade Receivables};
+the node's secondary analytical edges (e.g.\ a cash-flow-statement
+classification or an intercompany-counterparty dimension) are dropped from the
+exported tree but retained inside Kontablo. The discarded secondary edges are
+exactly the information a single-parent tree cannot hold --- the formal source
+of the reconciliation obstruction analysed in
+Section~\ref{subsec:reconciliation_obstruction}.
+
 \subsection{AI Validation and the Co-responsibility Architecture}
-Kontablo maps 1:N cardinality disruptions via a strictly defined \textbf{Co-responsibility Architecture}. In this model, the integrated AI models (Gemini Ultra/Flash 2.5) act as augmentative auditors that propose mappings and verify human overrides. 
+Kontablo maps 1:N cardinality disruptions via a strictly defined \textbf{Co-responsibility Architecture}. In this model, the integrated large language model (LLM) acts as an augmentative auditor that proposes mappings and verifies human overrides; the architecture is model-agnostic by design and names no specific vendor.
 
 If a human accountant makes a selection that contradicts the deterministic boundary of a node (e.g., mapping a physical cash account to a non-current asset node), the system generates an \textbf{Inconsistency Flag}. This flag, accompanied by a machine-generated audit note, is permanently attached to the transaction. This ensures that while the human remains the final authority (``AI proposes, Human disposes''), the system enforces a digital trail of accountability that simplifies future forensic audits. Final legal accountability rests with the human operator. The AI's role is verification and warning; the human retains veto power and bears sole legal responsibility for any mapping committed to the ledger. The audit trail records both the AI's proposal and the human's disposition, making every decision traceable and attributable.
 

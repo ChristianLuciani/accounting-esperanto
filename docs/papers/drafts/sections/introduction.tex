@@ -26,7 +26,7 @@ jurisdiction overlay) and explicit, queryable relationships to other concepts.
 The artifact is a computational object an agent can reason over, not a
 philosophical claim about the nature of economic reality.
 
-Kontablo bridges this gap by creating an open, graph-based universal accounting ontology. Unlike prior work on XBRL—which is too granular and disclosure-focused for high-frequency transaction classification—Kontablo defines a precise ``Level 3'' taxonomy of 30 universal accounts. This paper makes the following contributions:
+Kontablo bridges this gap by creating an open, graph-based universal accounting ontology. Unlike prior work on XBRL---which is a disclosure and reporting taxonomy, not a transaction-execution layer (we treat the two as complementary; Section~\ref{sec:precedents})---Kontablo defines a precise ``Level 3'' taxonomy of 30 universal accounts. This paper makes the following contributions:
 \begin{enumerate}
     \item A formal graph-based data model for IFRS-anchored universal accounts, resolving tree-hierarchy limitations.
     \item A three-tier mapping resolution strategy that maps localized ERP trees into the universal graph.
@@ -34,3 +34,48 @@ Kontablo bridges this gap by creating an open, graph-based universal accounting 
     \item A mass-consolidation simulation engine proving coverage across 195 sovereign jurisdictions, including a dual-currency hyperinflation stress test.
     \item A roadmap for two-way API integration with the top 10 global commercial ERP systems.
 \end{enumerate}
+
+\paragraph{The three resolution tiers, up front.} Because the rest of this
+paper refers constantly to ``Tier~1/2/3,'' we define them here; they are
+developed fully in Section~\ref{sec:deterministic}. Each tier is an attempt to
+resolve one local account (a code and a name in some jurisdiction) to a
+universal Level~3 node, and the engine descends the tiers only on failure:
+
+\begin{itemize}
+    \item \textbf{Tier~1 --- Exact code lookup} (deterministic, confidence
+    $1.0$): the local statutory code matches a committed entry for that
+    jurisdiction. \emph{Example:} Mexican SAT code \texttt{101}
+    $\rightarrow$ \texttt{asset.current.cash}.
+    \item \textbf{Tier~2 --- Deterministic keyword rules} (deterministic,
+    confidence $\sim$$0.8$--$0.9$): no code match, but an auditable
+    multilingual rule fires on the account name. \emph{Example:} a Vietnamese
+    line named ``Tien mat'' (cash) $\rightarrow$
+    \texttt{asset.current.cash}.
+    \item \textbf{Tier~3 --- Semantic AI fallback} (stochastic, confidence
+    $0.5$--$0.85$): neither deterministic tier resolves, so an LLM proposes a
+    node \emph{from the fixed set of existing universal nodes only} --- the
+    Deterministic Boundary Library rejects any proposal outside the graph and
+    routes it to human review. \emph{Example:} ``Provisi\'on para Contingencias
+    Laborales'' with no matching code or keyword $\rightarrow$ a proposed node
+    plus a confidence score, gated before posting.
+\end{itemize}
+
+\noindent The decisive property is that Tiers~1 and~2 are deterministic and
+verifiable, Tier~3 is the only stochastic step, and \emph{no} tier can invent a
+node that does not already exist in the ontology.
+
+\paragraph{Organization of this paper.} Sections~\ref{sec:precedents}
+and~\ref{sec:ontology-bridge} establish the historical precedents and the
+graph-versus-tree data model; Section~\ref{sec:mathfound} gives the formal
+(category- and sheaf-theoretic) account of the translation and its
+reconciliation obstruction. Section~\ref{sec:deterministic} specifies the
+three-tier resolution strategy and the Deterministic Boundary Library, and
+Section~\ref{sec:harness} frames the system as a model-plus-harness and locates
+where residual error can live. Sections~\ref{sec:agentic} and~\ref{sec:governance}
+cover the agent-native interfaces and the Co-responsibility Architecture
+(including its scope and enforcement boundary, Section~\ref{subsec:enforcement_boundary}).
+Section~\ref{sec:evaluation} reports the reproducible validation; the
+labor-market and conclusion sections close the paper. Readers interested only
+in the engineering may read Sections~\ref{sec:ontology-bridge},
+\ref{sec:deterministic}, \ref{sec:harness}, and \ref{sec:evaluation} as a
+self-contained unit.

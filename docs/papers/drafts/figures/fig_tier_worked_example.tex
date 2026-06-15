@@ -1,0 +1,41 @@
+% Figure: one local account, resolved by each of the three tiers (worked example).
+% Companion to fig_three_tier_pipeline (which shows the control flow); this one
+% shows concrete inputs and the universal node each tier resolves them to.
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    >=Latex,
+    every node/.style={font=\small},
+    local/.style={draw=gray!60, rectangle, rounded corners=3pt, fill=gray!8, text width=4.6cm, align=left, minimum height=1.0cm, inner sep=4pt},
+    tier/.style={draw=blue!55, rectangle, rounded corners=3pt, fill=blue!8, text width=3.1cm, align=center, minimum height=1.0cm, font=\small\bfseries},
+    node3/.style={draw=green!45!black, rectangle, rounded corners=3pt, fill=green!8, text width=3.4cm, align=center, minimum height=1.0cm},
+    flag/.style={draw=red!60!black, rectangle, rounded corners=3pt, fill=red!8, text width=3.4cm, align=center, minimum height=1.0cm}
+]
+% local inputs
+\node[local] (l1) {\textbf{Tier 1 input}\\ MX SAT code \texttt{101}, ``Caja''};
+\node[local, below=0.7cm of l1] (l2) {\textbf{Tier 2 input}\\ VN line ``Tien mat'' (cash; no code match)};
+\node[local, below=0.7cm of l2] (l3) {\textbf{Tier 3 input}\\ ``Provisi\'on para Contingencias Laborales'' (no code, no keyword)};
+
+% tier labels
+\node[tier, right=1.6cm of l1] (t1) {Tier 1\\ exact code\\ (conf 1.0)};
+\node[tier, right=1.6cm of l2] (t2) {Tier 2\\ keyword rule\\ (conf 0.8--0.9)};
+\node[tier, right=1.6cm of l3] (t3) {Tier 3\\ semantic AI\\ (conf 0.5--0.85)};
+
+% outputs
+\node[node3, right=1.6cm of t1] (o1) {\texttt{asset.current.cash}\\ \emph{posted}};
+\node[node3, right=1.6cm of t2] (o2) {\texttt{asset.current.cash}\\ \emph{posted}};
+\node[flag, right=1.6cm of t3] (o3) {proposed node, gated by the Boundary Library\\ $\rightarrow$ \emph{human review}};
+
+\draw[->,thick] (l1) -- (t1); \draw[->,thick] (t1) -- (o1);
+\draw[->,thick] (l2) -- (t2); \draw[->,thick] (t2) -- (o2);
+\draw[->,thick] (l3) -- (t3); \draw[->,thick] (t3) -- (o3);
+\end{tikzpicture}
+\caption{The three tiers on concrete inputs. Tier~1 resolves a statutory code
+deterministically; Tier~2 resolves a name via an auditable multilingual rule
+when no code matches; Tier~3 (the only stochastic step) proposes a node when
+neither deterministic tier fires, and that proposal is constrained to existing
+universal nodes and gated by the Deterministic Boundary Library before it can
+post. The engine descends the tiers only on failure, so most volume resolves at
+Tier~1--2 without inference.}
+\label{fig:tier_worked_example}
+\end{figure}

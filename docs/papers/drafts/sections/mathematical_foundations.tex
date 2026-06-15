@@ -1,4 +1,5 @@
 \section{Mathematical Foundations of the Translation Mechanism}
+\label{sec:mathfound}
 
 The tree-to-graph-to-tree pipeline of Section~\ref{sec:ontology-bridge} is not an ad hoc
 engineering convenience; it is an instance of a construction that recurs, under different
@@ -18,6 +19,20 @@ cardinalities), and the multi-dimensional roles an account plays (statutory, fis
 functional, consolidated) cannot be expressed inside a single-parent hierarchy at all. The
 direct approach fails because the two trees do not share a common coordinate system.
 
+\emph{A concrete instance.} Consider one economic event --- a domestic credit
+sale of goods with value-added tax. In Mexico's SAT chart it touches
+\texttt{105} (Clientes), \texttt{401} (Ingresos), and \texttt{208}
+(IVA trasladado); in France's PCG, \texttt{411} (Clients), \texttt{707}
+(Ventes de marchandises), and \texttt{44571} (TVA collect\'ee); in Vietnam's
+VAS, \texttt{131} (trade receivables), \texttt{511} (revenue), and
+\texttt{3331} (VAT payable). No single-parent edge relates ``SAT 208'' to
+``PCG 44571'' to ``VAS 3331'': they are the \emph{same} concept
+(output VAT payable) under three incompatible coordinate systems, and the
+receivable line additionally carries fiscal and functional roles the tree
+cannot hold at once. This is the $N{:}M$ obstruction the formalism names ---
+and the reason the pivot below routes every chart through one shared node set
+rather than attempting $T_s \rightarrow T_t$ directly.
+
 \subsection{Lift, Pivot, Project: an Adjoint Pair}
 Kontablo resolves this exactly as machine translation resolves the analogous problem between
 natural languages: rather than mapping $T_s$ directly to $T_t$, it analyses $T_s$ up into a
@@ -26,11 +41,11 @@ In machine translation this intermediate is the \textit{interlingua} at the apex
 Vauquois triangle (Vauquois, 1968); in Kontablo it is the Level~3 universal node set
 $V_{\text{universal}}$, which serves as the absolute pivot.
 
-This pivot construction has a precise categorical reading. Following Spivak (2012), a
+This pivot construction has a natural categorical reading. Following Spivak (2012), a
 database schema is a small category and an instance is a set-valued functor on it; a schema
 mapping $F: \mathcal{S} \rightarrow \mathcal{T}$ then induces three canonical
-\emph{data-migration functors}. Two of them are exactly Kontablo's import and export
-streams:
+\emph{data-migration functors}. Kontablo's import and export streams are structurally
+analogous to two of them:
 \[
 \Sigma_F : \mathcal{S}\text{-Inst} \rightarrow \mathcal{T}\text{-Inst}
 \qquad\text{(import / lift: tree}\rightarrow\text{graph)}
@@ -41,11 +56,15 @@ streams:
 \]
 where $\Sigma_F$ is left adjoint to $\Delta_F$. The import stream enriches each leaf of the
 local tree with a mapping edge to a universal node and lifts it into the multi-dimensional
-graph $G$; the export stream linearizes $G$ back to a single-parent tree. Because the pair is
-adjoint, the round trip is \emph{canonical} rather than arbitrary: it is the universal way to
-move data and queries between the two schemas. The Kontablo import/export is therefore an
-instance of functorial data migration, and the universal node set is the colimit-like object
-through which both legs factor.
+graph $G$; the export stream linearizes $G$ back to a single-parent tree. We state the
+correspondence as an analogy, in the same register as the Cover's-theorem passage below,
+because the full construction has not been carried out: we have not defined the schema
+categories, constructed $F$, or verified the adjunction, and the implemented export step
+\emph{selects} a primary reporting dimension (Section~\ref{sec:ontology-bridge}) --- a
+choice a canonical adjoint would have to eliminate or parameterize. Working the
+correspondence out for a minimal chart pair, or amending it where it fails, is labeled
+future work; what the analogy buys today is a design discipline (imports should be free
+constructions, exports should be structure-forgetting) rather than a theorem.
 
 \subsection{Why Lifting the Dimension Resolves the Mapping}
 The intuition that a problem unsolvable in a low-dimensional structure becomes solvable once
@@ -59,6 +78,7 @@ account is re-expressed as an edge into a multi-dimensional graph, where members
 several analytical dimensions is no longer in conflict.
 
 \subsection{The Cost of the Return Trip: a Reconciliation Obstruction}
+\label{subsec:reconciliation_obstruction}
 The return trip is lossy by construction. Linearization selects a primary reporting
 dimension and discards the secondary analytical edges
 (Section~\ref{sec:ontology-bridge}); the discarded content is precisely the failure of the
@@ -74,14 +94,20 @@ together across all jurisdictions --- while a non-trivial degree-one class, $H^{
 is the exact obstruction to such gluing: it measures, and localizes, the inconsistency that
 no choice of mapping can remove.
 
-This gives two of Kontablo's operational notions a precise referent. A node's
-\emph{deterministic boundary} (ADR~009) is a sheaf restriction map: it constrains which
-local sections are admissible. The \emph{Inconsistency Flag} of the co-responsibility
-architecture is then not a heuristic warning but the detection of a local section that fails
-to extend --- a witness to a non-zero cohomology class. Determinism and reconciliation thus
-speak one language: the deterministic scaffolding defines the restriction maps, and
-cohomology reports where global consistency is mathematically impossible and a human must
-dispose.
+This gives two of Kontablo's operational notions an intended formal referent. A node's
+\emph{deterministic boundary} (ADR~009) is designed to play the role of a sheaf restriction
+map: it constrains which local sections are admissible. The \emph{Inconsistency Flag} of
+the co-responsibility architecture is designed to play the role of a witness to a local
+section that fails to extend --- a non-zero cohomology class. The implemented flag is, today,
+a set of deterministic rule checks (Section~\ref{subsec:expanded_validation}), not an
+instantiated sheaf; the current state of formal validation is a committed toy experiment
+(\texttt{research/experiments/kirchhoff\_hodge\_toy/}) that constructs a cellular sheaf over
+a small intercompany scenario, computes $\delta^{0}$ and the $H^{0}$/$H^{1}$ dimensions
+numerically, and resolves the imbalance by Moore--Penrose reconciliation --- a mechanics
+validation, not a proof of the general correspondence. Determinism and reconciliation are
+nonetheless designed to speak one language: the deterministic scaffolding defines the
+restriction maps, and cohomology is the intended formal account of where global consistency
+fails and a human must dispose.
 
 \subsection{The Accounting-Native Anchor: the Pacioli Group}
 None of this is foreign to accounting's own mathematics. Ellerman (2014) shows that

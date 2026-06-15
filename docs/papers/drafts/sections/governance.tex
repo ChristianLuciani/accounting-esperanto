@@ -1,4 +1,5 @@
 \section{Ontology Governance and the Co-responsibility Paradigm}
+\label{sec:governance}
 
 \subsection{The Non-Delegability Premise}
 \label{subsec:non_delegability}
@@ -34,9 +35,10 @@ that the human becomes dispensable as automated coverage improves:
     model is \emph{stateless} --- it carries no memory between invocations and
     therefore possesses no temporal continuity of its own. Continuity must
     consequently be supplied by the system rather than the model: it is
-    materialized deterministically by the harness (immutable ontology
-    versioning, effective-date tracking, and the cryptographically sealed audit
-    trail described below) and held to account by the human. This function does not diminish as the ontology matures; it applies
+    materialized deterministically by the harness (append-only ontology
+    versioning, effective-date tracking, and the audit trail described below,
+    whose cryptographic sealing is specified as roadmap work) and held to
+    account by the human. This function does not diminish as the ontology matures; it applies
     to every transaction regardless of confidence score. Crucially,
     accountability for context integrity and continuity is not the same as
     manual re-verification of every transaction: their \emph{maintenance} is
@@ -57,7 +59,7 @@ governance --- is invariant by construction and is the reason the CRA can
 never reduce to zero human involvement, however complete the ontology becomes.
 
 \subsection{The Co-responsibility Architecture (CRA)}
-To prevent ``AI-only audit loops''—where automated systems silently hide booking errors or fraud from human supervisors—Kontablo implements a \textbf{Co-responsibility Architecture (CRA)}. This architecture formalizes the governance boundary between human operators and AI models, ensuring that neither party can modify financial records without leaving a verifiable audit trail. Consistent with Section~\ref{subsec:non_delegability}, the AI is positioned throughout as a \emph{proposer and instrumenter} --- it generates informed suggestions, attaches audit and provenance metadata, and improves operational efficiency --- never as the bearer of accountability for the resulting record.
+To prevent ``AI-only audit loops''—where automated systems silently hide booking errors or fraud from human supervisors—Kontablo implements a \textbf{Co-responsibility Architecture (CRA)}. This architecture formalizes the governance boundary between human operators and AI models, ensuring that neither party can modify financial records without leaving a verifiable audit trail. The CRA is, in the vocabulary of contemporary \textbf{AI governance}, a domain-specific human-in-the-loop control: it instantiates the accountability, human-oversight, and record-keeping obligations that frameworks such as the NIST AI Risk Management Framework, ISO/IEC~42001, and the EU AI Act place on high-risk AI systems (ISACA, 2024; EU AI Act, 2025), specialized to the accounting ledger where the accountable party is a named professional rather than an organization. Consistent with Section~\ref{subsec:non_delegability}, the AI is positioned throughout as a \emph{proposer and instrumenter} --- it generates informed suggestions, attaches audit and provenance metadata, and improves operational efficiency --- never as the bearer of accountability for the resulting record.
 
 The CRA operates as a multi-stage control loop:
 \begin{enumerate}
@@ -77,7 +79,71 @@ Two key metadata fields are appended to every mapped transaction record:
     \item {\sloppy\texttt{inconsistency\_note}: A text field containing the specific rule violation description (e.g., ``Nature Mismatch: local debit account mapped to credit node \texttt{equity.capital}'') concatenated with the human operator's written justification for the override.\par}
 \end{itemize}
 
-Once written, these fields are cryptographically hashed and sealed as part of the transaction block. This makes it impossible for an internal user to change a mapping post-facto to cover up irregularities without triggering a hash mismatch in the audit ledger.
+The specification requires that, once written, these fields be cryptographically hashed and sealed as part of the transaction block, so that any post-facto change to a mapping --- for example, to cover up an irregularity --- produces a hash mismatch in the audit ledger. The v0.x reference implementation provides append-only logging of these fields; cryptographic sealing (hybrid classical and post-quantum signatures over version hashes) is specified as roadmap work and is not yet implemented.
+
+\subsection{Scope and Enforcement Boundary}
+\label{subsec:enforcement_boundary}
+
+A recurring question determines whether the CRA is a governance guarantee or a
+decoration: \emph{on which transactions does it actually run?} Kontablo is a
+\textbf{semantic mapping and validation layer}, not a book of record. The ERP
+(ERPNext, Odoo, SAP B1, NetSuite) remains the system of record; Kontablo
+resolves each local account to a universal node, runs the deterministic
+boundary checks, and writes the resulting mapping and CRA metadata back into
+the ERP record (the custom fields of the previous subsection) or returns them
+over its API. It does not maintain a shadow ledger the ERP is unaware of.
+Three integration modes therefore define the surface the CRA governs:
+
+\begin{enumerate}
+    \item \textbf{Connector-mediated.} The connector subscribes to the host
+    ERP's write events (e.g.\ Frappe/ERPNext document hooks, SAP B1 UDF
+    triggers) so that a posting --- whether typed into the ERP UI, imported
+    from a spreadsheet, or pushed by an integration --- is routed through the
+    mapping and the boundary checks at write time.
+    \item \textbf{API-submitted.} An autonomous agent or upstream service calls
+    the mapping API directly (the agent-native path of
+    Section~\ref{sec:harness}); the CRA runs inline before the transaction is
+    handed to the ERP.
+    \item \textbf{Batch / import.} Bulk uploads (CSV exports, migration loads)
+    are processed through the import stream
+    (Section~\ref{subsec:tree_to_graph}) and validated as a set.
+\end{enumerate}
+
+The honest boundary is this: \textbf{the CRA enforces only on transactions that
+reach one of these paths.} A journal entry posted directly in the ERP through a
+write path the connector does \emph{not} subscribe to is governed only
+retroactively --- at the next validation sweep or consolidation run --- not at
+the instant of posting. Completeness of enforcement is therefore an integration
+property, not an automatic one: it holds exactly to the extent that the
+connector intercepts every write path of the host system. We state this
+explicitly because conflating ``Kontablo validates mappings'' with ``Kontablo
+governs every transaction in the enterprise'' is the ambiguity an implementer
+would otherwise discover late. For entries that bypass the live hooks,
+Kontablo's guarantee is \emph{detectability on sweep} --- the same
+deterministic checks, applied in batch, flag the inconsistency and quarantine
+it from the consolidated statement --- not prevention at keystroke.
+
+\paragraph{Two authorization modes, one accountable human.} The CRA does not
+require a human to hand-approve every line. Deterministic resolutions (Tier~1
+exact-code and Tier~2 rule matches, Section~\ref{sec:deterministic}) post under
+\emph{standing ex-ante authorization}: the responsible accountant approves the
+deterministic policy --- the code maps and the boundary rules --- once,
+configures it, and retains veto and the right to inspect or reverse any posting
+it produced. These postings are logged and fully reviewable but are not
+individually signed, exactly as an accountant today authorizes a recurring
+posting rule without re-signing each instance it fires. Only the residual ---
+flagged boundary violations, Tier~3 low-confidence proposals, and explicit
+human overrides --- requires \emph{per-transaction disposition}: the human
+selects or confirms the mapping and, where a deterministic rule is
+contradicted, enters the written justification persisted in
+\texttt{inconsistency\_note}. The accountant's ``signature'' is thus two
+records, not one: a standing authorization of the deterministic policy, and a
+per-exception sign-off on each flagged item. This is what is meant by a
+``mandatory human review \emph{pathway} for every proposal'': the pathway and
+the veto exist for every transaction, while the act of review is spent where it
+has value --- on the exceptions --- rather than rubber-stamping the
+deterministic majority. Legal accountability remains undivided and human in
+both modes (Section~\ref{subsec:non_delegability}).
 
 \subsection{Anti-Corruption and Embezzlement Mitigation}
 In legacy corporate environments, fraud often occurs through the collusion of internal accounting staff who ``rubber-stamp'' misclassified journal entries (e.g., booking personal expenditures as business-related ``Administrative Expenses'' or masking asset withdrawals as ``Intercompany Receivables''). 
