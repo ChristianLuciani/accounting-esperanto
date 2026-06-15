@@ -42,12 +42,29 @@ class KnowledgeBase:
         accepted as a mapping."""
         if not hasattr(self, "_valid_uuids"):
             uuids = set()
+
+            def _add(entry):
+                # An entry may carry either key depending on the chart's schema
+                # (dict-shaped localizations use kontablo_uuid; the list-shaped
+                # SAT chart uses esperanto_uuid).
+                if isinstance(entry, dict):
+                    u = entry.get("kontablo_uuid") or entry.get("esperanto_uuid")
+                    if u:
+                        uuids.add(str(u).lower())
+
             for country_data in self.standards.values():
                 for std_data in country_data.values():
-                    for mapping in std_data.get("mappings", {}).values():
-                        u = mapping.get("kontablo_uuid")
-                        if u:
-                            uuids.add(str(u).lower())
+                    if not isinstance(std_data, dict):
+                        continue
+                    mappings = std_data.get("mappings")
+                    # `mappings` is a dict {code: entry} in most charts, a list
+                    # of entries in the SAT chart, or absent/None in a few.
+                    if isinstance(mappings, dict):
+                        for entry in mappings.values():
+                            _add(entry)
+                    elif isinstance(mappings, list):
+                        for entry in mappings:
+                            _add(entry)
             self._valid_uuids = uuids
         return self._valid_uuids
 
