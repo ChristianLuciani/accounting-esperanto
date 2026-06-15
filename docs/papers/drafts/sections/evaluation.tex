@@ -1,9 +1,9 @@
-\section{Empirical Validation: Mass Consolidation Simulation}
+\section{Validation: Mass Consolidation Simulation}
 
-To empirically validate the ontology’s robustness against the three crises identified in Section 1.1, we developed a high-fidelity mass-consolidation engine. The simulation ingested raw, unmapped trial balances from 10 distinct entities across 9 countries representing diverse regulatory environments. 
+To test the ontology's robustness against the three crises identified in Section 1.1, we developed a mass-consolidation engine and exercised it on \textbf{synthetic} trial balances --- 10 distinct entities across 9 countries representing diverse regulatory environments. The data is simulated, not drawn from production ledgers; what the simulation validates is the mapping and consolidation \emph{architecture}, not field performance.
 
 \subsection{Consolidation Simulation Engine}
-To validate Kontablo's real-world utility, we built a mass-consolidation simulation engine. The simulation models a multinational holding company consolidating trial balances from 10 distinct operational entities across 9 jurisdictions: Mexico (MX), Brazil (BR), France (FR), Panama (PA), Ecuador (EC), Colombia (CO), Vietnam (VN), Nigeria (NG), and Saudi Arabia (SA). Each subsidiary ledger was exported from a different source ERP (ERPNext, Zoho Books, Odoo, SAP B1) containing localized charts of accounts, varying currencies, and diverging tax treatment. This initial run was subsequently extended into a larger, fully reproducible validation matrix (75 entities, 68 jurisdictions; Section~\ref{subsec:expanded_validation}).
+The simulation models a multinational holding company consolidating trial balances from 10 distinct operational entities across 9 jurisdictions: Mexico (MX, two entities), Brazil (BR), France (FR), Panama (PA), Ecuador (EC), Colombia (CO), Vietnam (VN), Nigeria (NG), and Saudi Arabia (SA). Each subsidiary ledger is a synthetic trial balance written in the trial-balance export format of one of four source ERPs (ERPNext, Zoho Books, Odoo, SAP Business One) --- the files mirror each ERP's export layout but were never exported from a live ERP instance --- carrying localized charts of accounts (real statutory codes from SAT, SPED-style, PCG, PUC, VAS, SOCPA numbering), varying currencies, and diverging tax treatment. Every entity's trial balance balances exactly (total debits equal total credits in local currency), and the consolidated ledger satisfies the accounting identity $A = L + E + (R - X)$ with escalated lines carried in an explicit suspense bucket. The full artifact --- fixtures, parsers, resolution pipeline, and results --- is committed and regenerable with a single deterministic command (\texttt{scripts/consolidation\_v1\_initial\_run.py}; artifacts in \texttt{research/experiments/consolidation\_v1/}); no API keys or model calls are required. This initial run was subsequently extended into a larger, fully reproducible validation matrix (75 entities, 68 jurisdictions; Section~\ref{subsec:expanded_validation}).
 
 \subsection{The 10-Point Complexity Scale}
 To measure the difficulty of mapping local charts of accounts to the universal Level 3 ontology, we established a \textbf{10-point Complexity Scale}. The scale rates jurisdictions based on four primary vectors: (1) alignment with IFRS, (2) strictness of mandatory national charts of accounts, (3) complexity of electronic invoicing and transactional metadata requirements, and (4) currency volatility/inflation treatment. 
@@ -296,20 +296,31 @@ find$\to$fix$\to$re-validate record is archived with the run artifacts.
 
 \subsection{Non-Anglophone Jurisdictions and the Value of Deterministic Grounding}
 
-The simulation reveals a consistent pattern across the non-Anglophone
-high-complexity jurisdictions (VN-Vietnam complexity 7/10, SA-Saudi Arabia
-7/10) that aligns with the \textbf{Inverse Parametric Knowledge Effect (IPKE)}
-identified in independent empirical work (Luong Tuan \& Sanyal, 2026;
-Section~\ref{subsec:ipke}): ontological grounding adds most value precisely
-where LLM pretraining coverage of the target domain is structurally thinnest.
+The initial run exposes a pattern across the non-Anglophone jurisdictions
+rated high on the complexity rubric of Table~\ref{tab:jurisdictions}
+(Vietnam 7/10, Saudi Arabia 7/10) that aligns with the \textbf{Inverse
+Parametric Knowledge Effect (IPKE)} identified in independent empirical work
+(Luong Tuan \& Sanyal, 2026; Section~\ref{subsec:ipke}): ontological grounding
+adds most value precisely where LLM pretraining coverage of the target domain
+is structurally thinnest.
 
-For Vietnam (VAS 2014 government-mandated chart) and Saudi Arabia (SOCPA with
-Zakat overlay), Tier~1 exact-code lookup succeeded at lower rates than
-English-language jurisdictions --- the codes are less likely to appear in
-pretraining corpora --- and Tier~3 semantic fallback was invoked more
-frequently. Without the Deterministic Boundary Library's hard rejection of
-UUID non-members, these would be the jurisdictions most likely to produce
-silent misclassifications. The deterministic constraint layer is therefore not
+The committed run (\texttt{research/experiments/consolidation\_v1/results.json})
+shows the two sides of this effect. For Saudi Arabia (SOCPA with Zakat
+overlay), the deterministic tiers resolve only 5 of 12 lines --- one
+ontology-carried SOCPA code at Tier~1, four Arabic names matched by the
+multilingual Tier~2 rules --- and the remaining 7 lines escalate to human
+review, the highest escalation rate in the run. (In these reproducible runs,
+lines the deterministic tiers cannot resolve are \emph{escalated} rather than
+passed to the Tier~3 semantic fallback, which would require model calls; in a
+deployment, these escalations are exactly the lines that Tier~3 would
+receive.) For Vietnam, by contrast, the ontology carries the VAS Circular~200
+statutory code set, and 12 of 13 lines resolve at Tier~1 --- committed
+deterministic grounding substitutes entirely for the parametric knowledge the
+model lacks. The contrast is the point: where neither committed codes nor
+keyword rules cover a jurisdiction, the residual routes to semantic inference
+or to a human, and without the Deterministic Boundary Library's hard rejection
+of UUID non-members those would be the lines most likely to produce silent
+misclassifications. The deterministic constraint layer is therefore not
 merely a quality enhancement; it is an operational requirement for
 jurisdictions where the model's parametric knowledge is sparse.
 

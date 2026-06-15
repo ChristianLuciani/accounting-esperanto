@@ -1,0 +1,14 @@
+Code,Account,Debit,Credit,Balance
+512,Caisse,46296.30,0.00,46296.30
+371,Stocks de marchandises,55555.56,0.00,55555.56
+211,Immobilisations corporelles,185185.19,0.00,185185.19
+445660,TVA déductible,7407.41,0.00,7407.41
+401,Fournisseurs,0.00,64814.81,-64814.81
+445710,TVA collectée,0.00,11111.11,-11111.11
+444,"État, impôts",0.00,13888.89,-13888.89
+101,Capital social,0.00,74074.07,-74074.07
+110,Report à nouveau,0.00,65740.77,-65740.77
+701,Ventes de produits,0.00,277777.78,-277777.78
+607,Achats de marchandises,138888.89,0.00,138888.89
+627,Frais généraux,55555.56,0.00,55555.56
+681,Dotations aux amortissements,18518.52,0.00,18518.52
