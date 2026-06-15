@@ -138,15 +138,34 @@ def measure(transactions, absorption, core_ids, extended_node_ids, unit):
     }
 
 
+def scale_misc(transactions, factor):
+    """Return a copy of the dataset with every General Journal (tail)
+    transaction's weight multiplied by `factor`. The general journal is the
+    long tail the coverage claim could be accused of underweighting; the
+    sensitivity sweep makes that attack quantitative instead of rhetorical."""
+    if factor == 1.0:
+        return transactions
+    return [
+        {**t, "weight": float(t["weight"]) * factor}
+        if t.get("journal") == "general" else t
+        for t in transactions
+    ]
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--unit", choices=["line", "transaction"], default="line",
                     help="line = journal-line weighted (default, headline); "
                          "transaction = strict (all legs must be covered).")
+    ap.add_argument("--misc-weight", type=float, default=1.0, metavar="K",
+                    help="multiply every General Journal (tail) transaction "
+                         "weight by K before measuring (sensitivity analysis; "
+                         "default 1.0 = the committed distribution).")
     args = ap.parse_args()
 
     core_ids, extended_node_ids = load_core_and_extended()
     transactions, absorption, meta = load_dataset()
+    transactions = scale_misc(transactions, args.misc_weight)
 
     # Sanity: the minimum core must be exactly 30 (the frozen headline).
     if len(core_ids) != 30:
@@ -158,9 +177,20 @@ def main():
     txn_res = measure(transactions, absorption, core_ids, extended_node_ids, "transaction")
     res = line_res if args.unit == "line" else txn_res
 
+    # Sensitivity sweep: how the headline moves if the General Journal tail
+    # is systematically underweighted in the committed distribution.
+    sweep = {}
+    for k in (1.0, 1.5, 2.0, 3.0):
+        r = measure(scale_misc(load_dataset()[0], k), absorption,
+                    core_ids, extended_node_ids, "line")
+        sweep[str(k)] = {"minimum_core_pct": r["min_core_pct"],
+                         "extended_core_pct": r["extended_pct"]}
+
     out = {
         "metric": "routine_transaction_volume_coverage",
         "unit_reported": args.unit,
+        "misc_weight_factor": args.misc_weight,
+        "sensitivity_misc_weight": sweep,
         "artifact_status": "synthetic_reference_distribution (not measured field data)",
         "minimum_core_node_count": len(core_ids),
         "extended_core_node_count": len(core_ids) + len(extended_node_ids),
@@ -210,6 +240,10 @@ def main():
     print(f"    \"The 30-account minimum core covers ~{mc:.0f}% of routine")
     print(f"     transaction volume; an extended core of {n_ext} accounts reaches")
     print(f"     ~{ec:.0f}%.\"  (model-based estimate; see transaction_frequency.yaml)")
+    print("-" * 70)
+    print("  Sensitivity (General-Journal tail weight x K -> minimum-core %):")
+    print("    " + "   ".join(f"x{k}: {v['minimum_core_pct']:.1f}%"
+                              for k, v in sweep.items()))
     print("-" * 70)
     print("  Largest residual labels still uncovered by the extended core:")
     for k, v in list(line_res["residual_volume_by_label"].items())[:8]:

@@ -1,7 +1,10 @@
+import logging
 from typing import List, Dict, Any
 from api.rest.models import AccountPayload, MappedAccount
 from logic.knowledge_base import KnowledgeBase
 from scripts.ai_router import router
+
+logger = logging.getLogger(__name__)
 
 class SemanticMatcherAgent:
     """
@@ -62,21 +65,38 @@ class SemanticMatcherAgent:
         try:
             response = router.complete(prompt, task_type="research", priority="speed")
             content = response["content"].strip()
-            
+
             if "|" in content:
                 uuid, justification = content.split("|", 1)
-                return MappedAccount(
-                    local_code=account.local_code,
-                    kontablo_uuid=uuid.strip(),
-                    confidence_score=0.8,
-                    agent_justification=justification.strip()
+                uuid = uuid.strip()
+                # Deterministic Boundary Library: the proposed UUID must be a
+                # member of the ontology graph. A non-member is by definition
+                # a hallucination and is escalated, never posted.
+                if self.kb.has_uuid(uuid):
+                    return MappedAccount(
+                        local_code=account.local_code,
+                        kontablo_uuid=uuid,
+                        confidence_score=0.8,
+                        agent_justification=justification.strip()
+                    )
+                return self._escalate(
+                    account,
+                    f"AI proposed UUID '{uuid}' is not in the ontology; "
+                    "rejected by the deterministic boundary check."
                 )
+            return self._escalate(
+                account, "AI response did not follow the UUID | justification format."
+            )
         except Exception as e:
-            pass
+            logger.warning("Semantic match failed for %s: %s", account.local_code, e)
+            return self._escalate(account, f"AI matching unavailable ({type(e).__name__}).")
 
+    def _escalate(self, account: AccountPayload, reason: str) -> MappedAccount:
+        """Escalation path: no UUID is fabricated; the entry routes to human
+        review (Co-responsibility Architecture)."""
         return MappedAccount(
             local_code=account.local_code,
             kontablo_uuid="00000000-0000-0000-0000-000000000000",
             confidence_score=0.1,
-            agent_justification="Fallback: AI matching failed."
+            agent_justification=f"Escalated to human review: {reason}"
         )

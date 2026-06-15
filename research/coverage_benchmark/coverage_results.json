@@ -1,6 +1,25 @@
 {
   "metric": "routine_transaction_volume_coverage",
   "unit_reported": "line",
+  "misc_weight_factor": 1.0,
+  "sensitivity_misc_weight": {
+    "1.0": {
+      "minimum_core_pct": 94.2,
+      "extended_core_pct": 98.8
+    },
+    "1.5": {
+      "minimum_core_pct": 92.6,
+      "extended_core_pct": 98.3
+    },
+    "2.0": {
+      "minimum_core_pct": 91.1,
+      "extended_core_pct": 97.9
+    },
+    "3.0": {
+      "minimum_core_pct": 88.7,
+      "extended_core_pct": 97.2
+    }
+  },
   "artifact_status": "synthetic_reference_distribution (not measured field data)",
   "minimum_core_node_count": 30,
   "extended_core_node_count": 34,

@@ -74,8 +74,12 @@ def test_surfaces_cite_the_benchmark(results):
     ec = str(round(results["extended_core_coverage_pct"]))  # "99"
     for name, path in SURFACES.items():
         text = path.read_text(encoding="utf-8")
-        assert mc in text, f"{name} ({path.name}) does not cite minimum-core ~{mc}%"
-        assert ec in text, f"{name} ({path.name}) does not cite extended-core ~{ec}%"
+        # Require the percent sign (plain or TeX-escaped): a bare "94" would
+        # false-match unrelated digits (years, counts) and mask drift.
+        assert (f"{mc}%" in text or f"{mc}\\%" in text), \
+            f"{name} ({path.name}) does not cite minimum-core ~{mc}%"
+        assert (f"{ec}%" in text or f"{ec}\\%" in text), \
+            f"{name} ({path.name}) does not cite extended-core ~{ec}%"
 
 
 def test_retired_wording_is_gone():

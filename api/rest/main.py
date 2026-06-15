@@ -18,7 +18,8 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Initialize Components
+# Initialize Components — fail fast: an API that starts without its
+# KnowledgeBase serves 500s on every mapping call while reporting healthy.
 try:
     kb = KnowledgeBase()
     router_agent = RouterAgent()
@@ -28,6 +29,7 @@ try:
     logger.info("✅ All agents and Knowledge Base initialized")
 except Exception as e:
     logger.error(f"❌ Initialization failed: {e}")
+    raise
 
 @app.get("/")
 async def root():

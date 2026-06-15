@@ -30,11 +30,15 @@ app = FastAPI(
     version="1.0.0",
 )
 
-# CORS configuration
+# CORS configuration. Wildcard origins + credentials is an invalid combo
+# (browsers reject it; Starlette silently drops the header), so credentials
+# stay off; set KONTABLO_CORS_ORIGINS to a comma-separated allowlist to
+# re-enable them behind explicit origins.
+_cors_origins = [o.strip() for o in os.getenv("KONTABLO_CORS_ORIGINS", "*").split(",")]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
+    allow_origins=_cors_origins,
+    allow_credentials=_cors_origins != ["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -119,7 +123,10 @@ async def classify_transaction(request: TransactionClassificationRequest):
 
 @app.post("/consolidation", tags=["reporting"])
 async def consolidate_balances(request: ConsolidationRequest):
-    return await consolidation_service.consolidate(request.trial_balances, request.target_currency)
+    try:
+        return await consolidation_service.consolidate(request.trial_balances, request.target_currency)
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

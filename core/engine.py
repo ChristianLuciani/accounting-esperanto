@@ -167,7 +167,15 @@ class ConsolidationEngine:
     def fx_to_usd(self, tb: SubsidiaryTB) -> float:
         if tb.fx_rate_to_usd is not None:
             return tb.fx_rate_to_usd
-        return FX.get(tb.currency.upper(), 1.0)
+        ccy = tb.currency.upper()
+        if ccy not in FX:
+            # A silent 1.0 fallback would consolidate mislabeled amounts;
+            # an unknown currency must be an explicit caller error.
+            raise ValueError(
+                f"no FX rate for currency {ccy!r} (subsidiary "
+                f"{tb.subsidiary_id}); pass fx_rate_to_usd explicitly."
+            )
+        return FX[ccy]
 
     # -- consolidation ------------------------------------------------------
     def consolidate(
@@ -176,6 +184,13 @@ class ConsolidationEngine:
         eliminations: Optional[List[IntercompanyLink]] = None,
         target_currency: str = "USD",
     ) -> ConsolidationResult:
+        # v0.x consolidates in USD only. Refuse anything else explicitly
+        # rather than silently labelling USD figures with another currency.
+        if target_currency.upper() != "USD":
+            raise ValueError(
+                f"target_currency={target_currency!r} is not supported: "
+                "v0.x consolidates in USD only (multi-target FX is roadmap)."
+            )
         eliminations = eliminations or []
         # kontablo_id -> {"debit": x, "credit": y}
         agg: Dict[str, Dict[str, float]] = {}

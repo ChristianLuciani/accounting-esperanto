@@ -91,16 +91,19 @@ class MappingService:
                     break
             
             if match:
-                # In reality, the CSV would map to a core ID.
-                return SingleMappingResponse(
-                    local_code=request.local_code,
-                    kontablo_id="asset.current.receivables", # Placeholder
-                    kontablo_uuid=self.ontology_service.get_account("asset.current.receivables").uuid,
-                    label_en="Trade Receivables",
-                    confidence_score=0.8,
-                    match_method="fuzzy_string",
-                    justification=f"Match found in {request.jurisdiction.upper()} CSV standard."
-                )
+                # The research CSVs carry the local chart (code, name, level)
+                # but no Kontablo node, so a hit here cannot produce a mapping
+                # by itself. It DOES confirm the code exists in the
+                # jurisdiction's statutory chart and gives us its official
+                # name — use that to enrich the request for the semantic
+                # tier instead of fabricating a node.
+                if not request.local_name:
+                    name_cols = ["NOMBRE DE LA CUENTA Y/O SUBCUENTA", "Name",
+                                 "Nom du compte", "NOME DA CONTA"]
+                    for col in name_cols:
+                        if match.get(col):
+                            request.local_name = str(match[col])
+                            break
 
         # 3. AI Semantic Fallback
         if self.ai_service:
