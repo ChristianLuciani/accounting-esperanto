@@ -1,0 +1,59 @@
+% Figure: Single-node multidimensionality.
+% Depicts ONE concrete universal node (a trade receivable from a credit sale,
+% asset.current.receivables) at the centre, with labelled edges fanning out to
+% each analytical dimension it carries simultaneously: statement classification,
+% nature, fiscal/tax, functional/cost-center, consolidation/intercompany, and
+% jurisdiction overlay. Complements the FLOW figures (fig_kontablo_bridge,
+% fig_kontablo_graph_architecture, fig_tree_graph_tree), which show local ->
+% universal -> IFRS translation rather than a single node's dimensional edges.
+%
+% Design system: universal/Kontablo = blue (fill blue!15 / edge blue!60!black),
+%   jurisdiction/local = orange (fill orange!15 / edge orange!60!black),
+%   statement/output = green (fill green!12 / edge green!55!black).
+%   Arrows >=Latex, thick. rounded corners=4pt.
+\begin{figure}[!htbp]
+\centering
+\resizebox{0.9\textwidth}{!}{%
+\begin{tikzpicture}[
+    >=Latex,
+    corenode/.style={draw=blue!60!black, circle, fill=blue!15,
+        minimum size=3.4cm, align=center, font=\small\bfseries},
+    dim/.style={draw=blue!55!black, rectangle, rounded corners=4pt,
+        fill=blue!8, text width=3.7cm, minimum height=1.4cm,
+        align=center, font=\footnotesize, inner sep=4pt},
+    juris/.style={dim, draw=orange!60!black, fill=orange!15},
+    stmt/.style={dim, draw=green!55!black, fill=green!12}
+]
+    % Central universal node
+    \node[corenode] (n) {%
+        \texttt{asset.current.}\\\texttt{receivables}\\[3pt]%
+        {\scriptsize\mdseries Trade receivable}\\{\scriptsize\mdseries (credit sale)}};
+
+    % Six dimension satellites, hexagonally placed around the centre
+    \node[stmt]  (stmt) at ( 90:5.4cm) {\textbf{Statement}\\Balance sheet:\\current asset};
+    \node[dim]   (nat)  at ( 30:5.8cm) {\textbf{Nature}\\Debit-natured};
+    \node[dim]   (fisc) at (-30:5.8cm) {\textbf{Fiscal / tax}\\Output VAT,\\withholding,\\SAT/SPED tag, Zakat};
+    \node[juris] (jur)  at (-90:5.4cm) {\textbf{Jurisdiction overlay}\\\texttt{MX-SAT-105}\\\texttt{FR-PCG-411}\\\texttt{VN-VAS-131}};
+    \node[dim]   (cons) at (-150:5.8cm) {\textbf{Consolidation /}\\\textbf{intercompany}\\Counterparty +\\elimination role};
+    \node[dim]   (func) at ( 150:5.8cm) {\textbf{Functional /}\\\textbf{cost-center}\\Department /\\project attribution};
+
+    % Edges from the single node to each dimension
+    \draw[->, very thick, green!55!black]  (n) -- (stmt);
+    \draw[->, very thick, blue!55!black]   (n) -- (nat);
+    \draw[->, very thick, blue!55!black]   (n) -- (fisc);
+    \draw[->, very thick, orange!60!black] (n) -- (jur);
+    \draw[->, very thick, blue!55!black]   (n) -- (cons);
+    \draw[->, very thick, blue!55!black]   (n) -- (func);
+\end{tikzpicture}%
+}
+\caption{A single universal Kontablo node carries every analytical dimension
+at once. One node --- a trade receivable from a credit sale
+(\texttt{asset.current.receivables}) --- simultaneously holds its statement
+classification, debit/credit nature, fiscal/tax treatment, functional
+cost-center attribution, consolidation/intercompany role, and the local
+statutory codes (Mexico SAT, France PCG, Vietnam VAS) that map into it. In a
+single-parent tree each of these dimensions would require a separate hierarchy
+and a duplicated copy of the account; the graph keeps one canonical node and
+attaches the dimensions as coexisting properties and edges.}
+\label{fig:node_dimensions}
+\end{figure}
