@@ -88,7 +88,11 @@ the question that sheaf cohomology was built to answer.
 
 Assign to the mapping graph a cellular sheaf whose stalks carry the local ledger data and
 whose restriction maps encode the consistency conditions on shared (overlapping) accounts
-(Robinson, 2017; Curry, 2014; Hansen \& Ghrist, 2019). Then the degree-zero cohomology
+(Robinson, 2017; Curry, 2014; Hansen \& Ghrist, 2019). The domains here are explicit: each
+stalk is a finite-dimensional real vector space $\mathbb{R}^{d}$ (the monetary amounts a node
+carries across its $d$ analytical dimensions, valued in the Pacioli group of
+Section~\ref{subsec:pacioli}), the restriction maps are $\mathbb{R}$-linear, and the
+cohomology spaces are therefore $\mathbb{R}$-vector spaces. Then the degree-zero cohomology
 $H^{0}$ is the space of \emph{globally consistent reconciliations} --- the data that patches
 together across all jurisdictions --- while a non-trivial degree-one class, $H^{1} \neq 0$,
 is the exact obstruction to such gluing: it measures, and localizes, the inconsistency that
@@ -110,12 +114,21 @@ restriction maps, and cohomology is the intended formal account of where global 
 fails and a human must dispose.
 
 \subsection{The Accounting-Native Anchor: the Pacioli Group}
+\label{subsec:pacioli}
 None of this is foreign to accounting's own mathematics. Ellerman (2014) shows that
 double-entry bookkeeping is, exactly, the \emph{group of differences} construction (the
 ``Pacioli group'') on unsigned T-account pairs, and --- crucially for Kontablo --- that this
 construction \emph{generalizes naturally to multi-dimensional vector accounting}, in which
 scalar money amounts are replaced by vectors recording distinct types of property or
-analytical dimension. Kontablo's multi-dimensional property graph is the data-structure
+analytical dimension. This fixes the domain of monetary value precisely. The scalar Pacioli
+group is the group of differences of ordered pairs of non-negative amounts,
+$\mathcal{G} = (\mathbb{R}_{\geq 0} \times \mathbb{R}_{\geq 0})/\!\sim\, \cong (\mathbb{R}, +)$:
+a signed real, where the debit/credit nature supplies the sign rather than a separate
+$\mathbb{R}_{\geq 0}$ magnitude. The multi-dimensional generalization is $\mathcal{G}^{d}
+\cong \mathbb{R}^{d}$ over the $d$ analytical dimensions --- the domain the sheaf stalks of
+Section~\ref{subsec:reconciliation_obstruction} are valued in. (Implementations realize
+$\mathcal{G}$ as fixed-point rationals $\subset \mathbb{Q}$ for exact cent arithmetic; the
+algebra is stated over $\mathbb{R}$.) Kontablo's multi-dimensional property graph is the data-structure
 realization of precisely that generalization. The contribution is therefore not to invent a
 new algebra of accounting, but to operationalize, as a deterministic protocol over a
 property graph, a multi-dimensional generalization that has been latent in the mathematics of
