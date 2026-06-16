@@ -8,13 +8,12 @@ by:
     (``examples/transnational_reconciliation.py``), and
   * the real two-ERP walkthrough (``examples/two_erp_reconciliation/``).
 
-It deliberately *imports* the resolution logic from the CI-gated validation
-harness (``scripts/mass_consolidation_v2.py``) instead of re-implementing it, so
-that every surface uses the exact same Tier-1 (local-code) and Tier-2
-(multilingual keyword) rules that produce the published 97.3% deterministic
-coverage number. Re-implementing the rules here would let them drift out of
-sync with the harness behind the claims-evidence gate — the documented failure
-mode this repo guards against.
+It deliberately *imports* the resolution logic from the shared harness package
+(``core.harness``) instead of re-implementing it, so that every surface uses the
+exact same Tier-1 (local-code) and Tier-2 (multilingual keyword) rules that
+produce the published 97.3% deterministic coverage number. Re-implementing the
+rules here would let them drift out of sync with the harness behind the
+claims-evidence gate — the documented failure mode this repo guards against.
 
 Nothing in this module calls an LLM. Every decision is a graph lookup, a
 deterministic keyword rule, or arithmetic. Intercompany eliminations key on
@@ -24,29 +23,22 @@ CLAUDE.md architectural principle #5 (determinism over stochasticity).
 
 from __future__ import annotations
 
-import importlib.util
-import os
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-_HARNESS_PATH = os.path.join(ROOT, "scripts", "mass_consolidation_v2.py")
-
-
-def _load_harness():
-    """Import the validation harness module by file path (it is import-safe:
-    all execution is behind a ``__main__`` guard)."""
-    spec = importlib.util.spec_from_file_location("kontablo_harness", _HARNESS_PATH)
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)  # type: ignore[union-attr]
-    return mod
-
-
-_H = _load_harness()
+from core.harness import (
+    cra_validate,
+    load_families,
+    load_ontology,
+    merge_family_codes,
+    resolve as harness_resolve,
+)
+from core.harness import FX as _HARNESS_FX
+from core.harness import JCCY as _HARNESS_JCCY
 
 # Re-export the canonical FX table so every surface normalises to USD identically.
-FX: Dict[str, float] = dict(_H.FX)
-JCCY: Dict[str, str] = dict(_H.JCCY)
+FX: Dict[str, float] = dict(_HARNESS_FX)
+JCCY: Dict[str, str] = dict(_HARNESS_JCCY)
 
 
 @dataclass
@@ -150,14 +142,14 @@ class ConsolidationEngine:
     def __init__(self):
         # accounts: kontablo_id -> {uuid,label,nature,statement,local_codes}
         # by_code:  jurisdiction -> {local_code -> kontablo_id}
-        self.accounts, self.by_code, self.collisions, self.placeholders = _H.load_ontology()
-        families = _H.load_families()
-        self.by_code = _H.merge_family_codes(self.by_code, families)
+        self.accounts, self.by_code, self.collisions, self.placeholders = load_ontology()
+        families = load_families()
+        self.by_code = merge_family_codes(self.by_code, families)
 
     # -- resolution ---------------------------------------------------------
     def resolve(self, entry: LocalEntry, jurisdiction: str) -> Tuple[Optional[str], str, float]:
         """Return (kontablo_id, tier, confidence) using the harness resolver."""
-        return _H.resolve(
+        return harness_resolve(
             {"code": entry.code, "name": entry.name, "nature": entry.nature},
             jurisdiction.lower(),
             self.accounts,
@@ -189,7 +181,7 @@ class ConsolidationEngine:
                 kid, tier, conf = self.resolve(e, tb.jurisdiction)
                 debit_usd = round(e.debit * rate, 2)
                 credit_usd = round(e.credit * rate, 2)
-                flags = _H.cra_validate(
+                flags = cra_validate(
                     {"code": e.code, "name": e.name, "nature": e.nature},
                     kid,
                     self.accounts,
