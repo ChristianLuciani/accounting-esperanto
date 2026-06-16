@@ -50,3 +50,6 @@ docs/papers/drafts/*.log
 .claude/worktrees/
 .claude/settings.local.json
 texput.log
+
+# graphify generated knowledge-graph output (regenerate with `graphify update .`)
+graphify-out/
