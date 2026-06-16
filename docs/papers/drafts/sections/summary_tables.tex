@@ -1,0 +1,96 @@
+\section{What does Kontablo contribute, at a glance?}
+\label{sec:signature-tables}
+
+The three tables below compress the core of this paper into citable extracts: the
+three contributions (Table~\ref{tab:contributions}), the Three-Tier Resolution
+Strategy (Table~\ref{tab:three-tier}), and the coverage scorecard
+(Table~\ref{tab:scorecard}). Every figure in Table~\ref{tab:scorecard} is
+regenerable from the committed command named in its caption; the prose body
+carries the full
+argument and the \emph{Remarks} (after the Evaluation) mark the honesty
+boundaries.
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{p{2.9cm} p{5.4cm} p{4.6cm}}
+\toprule
+\textbf{Contribution} & \textbf{What it does} & \textbf{Honesty boundary} \\
+\midrule
+Level~3 minimum core (30 accounts) &
+Represents an estimated $\sim$94\% of routine transaction volume by posting count
+($\sim$99\% with a 34-account extended core). &
+A model-based estimate from a committed benchmark, not a measurement of real
+ledgers. \\
+\addlinespace
+Three-Tier Resolution Strategy &
+Deterministic exact-code and keyword resolution first, then a confidence-scored
+semantic AI fallback bounded by the Deterministic Boundary Library. &
+Eliminates the classical accounting hallucination class at the harness level;
+residual error relocates to the semantic coverage boundary. \\
+\addlinespace
+Co-responsibility Architecture (CRA) &
+Pairs every AI mapping proposal with a mandatory human review pathway and an
+append-only audit trail. &
+The human operator is always the legal principal; the agent never decides
+alone. \\
+\bottomrule
+\end{tabular}
+\caption{The three contributions of Kontablo and the boundary that keeps each
+claim honest.}
+\label{tab:contributions}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{p{1.4cm} p{4.0cm} p{4.2cm} p{3.3cm}}
+\toprule
+\textbf{Tier} & \textbf{Mechanism} & \textbf{Determinism guarantee} & \textbf{Failure mode} \\
+\midrule
+Tier~1 &
+Exact local-code $\rightarrow$ UUID lookup. &
+Fully deterministic and reproducible. &
+Code absent or colliding $\rightarrow$ fall through. \\
+\addlinespace
+Tier~2 &
+Keyword / disambiguation rules keyed on deterministic fields (jurisdiction,
+local code, ontology node). &
+Deterministic; never keys on model free-text. &
+Ambiguous input $\rightarrow$ fall through. \\
+\addlinespace
+Tier~3 &
+Confidence-scored semantic AI fallback, constrained to UUIDs that exist in the
+graph. &
+Ontology-as-constraint: cannot propose a non-existent account. &
+Low confidence / out-of-coverage $\rightarrow$ escalate to human (CRA). \\
+\bottomrule
+\end{tabular}
+\caption{The Three-Tier Resolution Strategy. Determinism is exhausted before any
+stochastic inference is reached; out-of-coverage instruments escalate rather than
+mismap.}
+\label{tab:three-tier}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{p{7.5cm} p{4.5cm}}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Sovereign jurisdictions mapped (IFRS-anchored layer) & 195 / 195 \\
+Statutory chart-of-accounts overlays & 60 \\
+Tier-1 exercised against primary-source-cited charts & 56 of 60 \\
+Validation matrix (synthetic trial balances) & 75 entities, 68 jurisdictions \\
+Deterministic resolution rate & 97.3\% \\
+Out-of-coverage escalations to human review & 4 \\
+\bottomrule
+\end{tabular}
+\caption{Coverage and validation scorecard. The validation uses \emph{synthetic}
+trial balances built from the ontology's own committed code sets. Regenerable
+from \texttt{python scripts/mass\_consolidation\_v2.py} (validation run) and
+\texttt{scripts/build\_jurisdiction\_manifest.py} (coverage manifest); the
+abstract rounds 97.3\% to 97\%.}
+\label{tab:scorecard}
+\end{table}

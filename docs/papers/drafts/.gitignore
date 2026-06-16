@@ -1,1 +1,7 @@
 figures/fig_tree_graph_tree.png
+
+# LaTeX build artifacts (the compiled PDF is committed; intermediates are not)
+*.aux
+*.log
+*.toc
+*.out

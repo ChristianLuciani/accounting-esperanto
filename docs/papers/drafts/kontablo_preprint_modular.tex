@@ -1,6 +1,7 @@
-\documentclass[12pt]{article}
+\documentclass[12pt]{clapps}  % Praxia/Kontablo house style (clean-room)
 
 % --- PACKAGES ---
+% geometry, lmodern, microtype, xcolor and hyperref are provided by clapps.cls.
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{amsmath}
@@ -9,11 +10,6 @@
 \usepackage{url}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning, fit, backgrounds}
-\usepackage[hidelinks]{hyperref}
-\usepackage{geometry}
-\geometry{a4paper, margin=1in}
-\usepackage{lmodern}
-\usepackage{microtype}  % HZ-algorithm: eliminates most overfull \hbox < 10pt
 
 % --- PREAMBLE ---
 \title{Kontablo: A Graph-Based Universal Accounting Ontology for the M2M Agentic Economy%
@@ -35,8 +31,17 @@ Contact: \href{mailto:cluciani@gmail.com}{cluciani@gmail.com}.}}
 
 \maketitle
 
+\clappsepigraph{Confusion of tongues did not stop the building; it only made
+every later floor cost more to align.}{On the Accounting Babel}
+
 % --- SECTIONS ---
 \input{sections/abstract}
+
+\compactcontents
+
+\input{sections/summary_instructions}
+
+\input{sections/summary_tables}
 
 \input{sections/introduction}
 
@@ -60,6 +65,8 @@ Contact: \href{mailto:cluciani@gmail.com}{cluciani@gmail.com}.}}
 
 \input{sections/evaluation}
 
+\input{sections/remarks}
+
 \input{sections/labor_market}
 
 \input{sections/conclusion}
@@ -67,6 +74,8 @@ Contact: \href{mailto:cluciani@gmail.com}{cluciani@gmail.com}.}}
 \input{sections/acknowledgements}
 
 \input{sections/appendix}
+
+\input{sections/glossary}
 
 % --- BIBLIOGRAPHY ---
 \section*{Selected Bibliography}
@@ -132,6 +141,7 @@ Contact: \href{mailto:cluciani@gmail.com}{cluciani@gmail.com}.}}
     \item Market Research (financial consolidation segment). (2025). \textit{Financial Consolidation Software Market Size and Forecast}. [Segment valued at approximately USD~3.2~billion in 2025, CAGR $\approx$9\%.] Figures vary by analyst house; reported here as an order-of-magnitude proxy, not a precise total.
     \item Gartner. (2021). \textit{How to Improve Your Data Quality} / \textit{Data Quality Market Survey}. [Poor data quality costs the average organization an estimated USD~12.9~million per year.] \url{https://www.gartner.com/en/data-analytics/topics/data-quality}
     \item Reta Vortaro (ReVo). \textit{Esperanto dictionary: konto, kontado, kalkuli}. \url{https://vortaro.net} [Source for the Esperanto etymology of ``Kontablo''.]
+    \item Genewein, T., Franklin, M., Lerchner, A., Orseau, L., Albanie, S., Bales, A., Wyeth, C., Chan, S., Gabriel, I., Leibo, J.~Z., Dafoe, A., Hutter, M., Graepel, T., \& Legg, S. (2026). \textit{From AGI to ASI}. Google DeepMind. arXiv:2606.12683. [Source of the explicit dual-readership (human/machine) reading-path convention adopted in this paper; cited for document structure, not content.]
 \end{itemize}
 
 \end{document}

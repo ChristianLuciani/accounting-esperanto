@@ -1,0 +1,41 @@
+\subsection{Remarks: the boundaries of these results}
+\label{sec:remarks}
+
+The following remarks state, in one place and without hedging, the limits of what
+the evaluation above establishes. They are not disclaimers appended for caution;
+they are load-bearing scope conditions, and any summary of this work that omits
+them misrepresents it.
+
+\paragraph{Remark I (Synthetic data).} The consolidation validation runs on
+\emph{synthetic} trial balances constructed from the ontology's own committed code
+sets. No codes are fabricated and placeholders are excluded from Tier-1. The run
+demonstrates the architecture and the resolution behaviour; it is not a
+measurement of real-world ledger data, and no claim of real-ledger validation is
+made.
+
+\paragraph{Remark II (56 of 60).} Tier-1 coverage is exercised against
+primary-source-cited statutory charts in \emph{56 of the 60} statutory-chart
+jurisdictions, not all 60. The four unexercised overlays are mapped at the
+universal IFRS-anchored layer but not yet checked against a primary-source chart.
+
+\paragraph{Remark III (Estimates, not measurements).} The core-coverage figures
+($\sim$94\% by posting count, $\sim$99\% with the extended core) are model-based
+estimates from a committed, labeled synthetic frequency distribution, regenerable
+from \texttt{scripts/coverage\_benchmark.py}. They are not measurements of real
+ledgers, and the earlier "benchmarked against thousands of SME ledger exports"
+framing has been retired.
+
+\paragraph{Remark IV (The human is always principal).} The Co-responsibility
+Architecture keeps legal accountability with the human operator at all times. High
+model confidence changes the \emph{friction} of review --- how much scrutiny a
+proposal invites --- never its \emph{presence}. The agent never decides alone, and
+this paper does not describe it as doing so.
+
+\paragraph{Remark V (Prototype-grade implementation).} The reference
+implementation is prototype-grade relative to this paper: it demonstrates the
+architecture, not the validated product. REST is fully implemented; the gRPC
+surface implements only the deterministic RPCs (account queries, mapping,
+consolidation with intercompany elimination, balance validation), with
+LLM-dependent RPCs returning \texttt{UNIMPLEMENTED}. gRPC should be read as
+"deterministic core implemented, remainder planned," not as feature parity with
+REST.
