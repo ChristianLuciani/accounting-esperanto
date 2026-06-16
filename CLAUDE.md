@@ -117,3 +117,13 @@ The two queued preprint updates shipped in v1.8: (1) the harness-architecture se
 - **Do not key program logic on LLM free-text.** `logic/agents/tax_compliance.py` originally triggered jurisdictional overrides by substring-matching the LLM's *justification string* — stochastic control flow violating principle #5. Fixed June 2026: overrides now key on deterministic input fields (jurisdiction + source account local name). Never reintroduce the pattern; all override/branching logic must key on deterministic fields (jurisdiction, local code, ontology node), never on model output text.
 - **Quote YAML values that collide with YAML 1.1 literals.** ISO codes `NO` (Norway) parses as boolean — others to watch: `ON`, `OFF`, `YES`, `Y`, `N`. The loader is hardened, but new YAML must quote these anyway.
 - **Do not weaken validation honesty.** The consolidation validation uses synthetic trial balances and the abstract's construction protocol explicitly states no codes are fabricated and placeholders are excluded from Tier-1. Any edit that blurs these boundaries (e.g. "validated with real-world data", "all 60 charts verified" when it is 56) is an epistemic-standards violation, not a wording preference.
+
+## graphify
+
+This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
+
+Rules:
+- For codebase questions, first run `graphify query "<question>"` when graphify-out/graph.json exists. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep output.
+- If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
+- Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
+- After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
