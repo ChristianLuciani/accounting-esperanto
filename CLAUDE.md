@@ -120,3 +120,13 @@ The two queued preprint updates shipped in v1.8: (1) the harness-architecture se
 - **Quote YAML values that collide with YAML 1.1 literals.** ISO codes `NO` (Norway) parses as boolean — others to watch: `ON`, `OFF`, `YES`, `Y`, `N`. The loader is hardened, but new YAML must quote these anyway.
 - **Do not weaken validation honesty.** The consolidation validation uses synthetic trial balances and the abstract's construction protocol explicitly states no codes are fabricated and placeholders are excluded from Tier-1. Any edit that blurs these boundaries (e.g. "validated with real-world data", "all 60 charts verified" when it is 56) is an epistemic-standards violation, not a wording preference.
 - **Do not make the validation harness resolve FX live.** `scripts/mass_consolidation_v2.py` and the claims-evidence numbers MUST price in the pinned `core/harness/fx.py:FX` table; wiring the harness to `fx_provider` live rates would make `results.json` non-reproducible and break the CI gate. Live FX belongs only to the runtime surfaces (REST/gRPC), env-gated, with the pinned table as offline fallback. Likewise keep `conftest.py`'s `KONTABLO_FX_MODE=static` default so the test session never depends on a network rate.
+
+## graphify
+
+This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.
+
+Rules:
+- For codebase questions, first run `graphify query "<question>"` when graphify-out/graph.json exists. Use `graphify path "<A>" "<B>"` for relationships and `graphify explain "<concept>"` for focused concepts. These return a scoped subgraph, usually much smaller than GRAPH_REPORT.md or raw grep output.
+- If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
+- Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
+- After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
