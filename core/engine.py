@@ -35,6 +35,7 @@ from core.harness import (
 )
 from core.harness import FX as _HARNESS_FX
 from core.harness import JCCY as _HARNESS_JCCY
+from core.harness.fx_provider import FXProvider
 
 # Re-export the canonical FX table so every surface normalises to USD identically.
 FX: Dict[str, float] = dict(_HARNESS_FX)
@@ -139,12 +140,18 @@ class ConsolidationEngine:
     """Loads the real Level-3 ontology once and drives deterministic
     resolution + cross-border consolidation with intercompany elimination."""
 
-    def __init__(self):
+    def __init__(self, fx_provider: Optional[FXProvider] = None):
         # accounts: kontablo_id -> {uuid,label,nature,statement,local_codes}
         # by_code:  jurisdiction -> {local_code -> kontablo_id}
         self.accounts, self.by_code, self.collisions, self.placeholders = load_ontology()
         families = load_families()
         self.by_code = merge_family_codes(self.by_code, families)
+        # Optional runtime FX source. Default ``None`` keeps the historical,
+        # fully deterministic behaviour (the pinned ``FX`` table) so the
+        # validation harness and tests are unaffected. A live deployment passes
+        # a provider (e.g. ``core.harness.get_fx_provider()``) to price balances
+        # at current rates, with the pinned table as offline fallback.
+        self.fx_provider = fx_provider
 
     # -- resolution ---------------------------------------------------------
     def resolve(self, entry: LocalEntry, jurisdiction: str) -> Tuple[Optional[str], str, float]:
@@ -160,6 +167,12 @@ class ConsolidationEngine:
         if tb.fx_rate_to_usd is not None:
             return tb.fx_rate_to_usd
         ccy = tb.currency.upper()
+        # Runtime provider first (when configured); fall back to the pinned
+        # table so the engine still resolves offline / in static mode.
+        if self.fx_provider is not None:
+            rate = self.fx_provider.usd_per_unit(ccy)
+            if rate is not None:
+                return rate
         if ccy not in FX:
             # A silent 1.0 fallback would consolidate mislabeled amounts;
             # an unknown currency must be an explicit caller error.

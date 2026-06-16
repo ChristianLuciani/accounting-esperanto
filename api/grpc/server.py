@@ -37,6 +37,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspa
 from api.grpc.gen import kontablo_pb2 as pb  # noqa: E402
 from api.grpc.gen import kontablo_pb2_grpc as pb_grpc  # noqa: E402
 from api.src.services.ontology import OntologyService  # noqa: E402
+from core.harness.fx_provider import get_fx_provider  # noqa: E402
 from core.engine import (  # noqa: E402
     ConsolidationEngine,
     IntercompanyLink,
@@ -279,7 +280,9 @@ class ValidationServicer(pb_grpc.ValidationServiceServicer):
 def build_server(address: str = "[::]:50051", max_workers: int = 4) -> grpc.Server:
     """Construct (but do not start) a gRPC server with all servicers wired."""
     ontology = OntologyService(ONTOLOGY_PATH)
-    engine = ConsolidationEngine()
+    # Env-gated FX: live runtime rates by default (KONTABLO_FX_MODE), pinned
+    # static fallback offline / in tests. See core.harness.fx_provider.
+    engine = ConsolidationEngine(fx_provider=get_fx_provider())
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=max_workers))
     pb_grpc.add_AccountServiceServicer_to_server(AccountServicer(ontology), server)
     pb_grpc.add_MappingServiceServicer_to_server(MappingServicer(engine, ontology), server)
