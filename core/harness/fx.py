@@ -1,11 +1,17 @@
 """Currency tables shared by the harness.
 
 ``JCCY`` maps an ISO 3166-1 alpha-2 jurisdiction to its ISO 4217 currency;
-``FX`` gives USD-per-unit synthetic 2026 rates used to normalise every local
-balance to USD. These tables are shared by both the deterministic engine
-(``core.engine`` — for FX normalisation) and the validation runner
-(``scripts/mass_consolidation_v2.py`` — for synthetic-entity construction), so
-they live in the harness package rather than in either consumer.
+``FX`` gives USD-per-unit **pinned** synthetic 2026 rates. These tables are
+shared by the deterministic engine (``core.engine``) and the validation runner
+(``scripts/mass_consolidation_v2.py``), so they live in the harness package
+rather than in either consumer.
+
+``FX`` is deliberately frozen: the validation harness must reproduce
+byte-identical results for the claims-evidence gate, so it always prices in
+these pinned rates. For a *runtime* deployment that needs current market rates,
+see ``core.harness.fx_provider`` — a pluggable provider (ECB/Frankfurter →
+open.er-api → this static table as offline fallback). ``FX`` is the offline,
+deterministic last resort of that chain.
 """
 
 from __future__ import annotations

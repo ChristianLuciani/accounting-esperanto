@@ -24,6 +24,18 @@ from __future__ import annotations
 
 from core.harness.boundary import cra_validate
 from core.harness.fx import FX, JCCY
+from core.harness.fx_provider import (
+    ChainedFXProvider,
+    FXProvider,
+    FXQuote,
+    StaticFXProvider,
+    convert,
+    get_fx_provider,
+    live_fx_provider,
+    manual_quote,
+    static_fx_provider,
+    usd_per_unit,
+)
 from core.harness.ontology import (
     FAMILIES_PATH,
     ONTOLOGY_PATH,
@@ -44,4 +56,15 @@ __all__ = [
     "JCCY",
     "ONTOLOGY_PATH",
     "FAMILIES_PATH",
+    # runtime FX resolution
+    "FXProvider",
+    "StaticFXProvider",
+    "ChainedFXProvider",
+    "FXQuote",
+    "manual_quote",
+    "get_fx_provider",
+    "live_fx_provider",
+    "static_fx_provider",
+    "usd_per_unit",
+    "convert",
 ]

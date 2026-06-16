@@ -82,6 +82,14 @@ class TrialBalance(BaseModel):
     reporting_date: date
     entries: List[TrialBalanceEntry]
     exchange_rate: Optional[float] = None  # Custom override for complex FX cases
+    # Audit metadata for a manual exchange_rate (asynchronous transactions
+    # priced at a contract/invoice rate): its effective date and the rationale.
+    exchange_rate_as_of: Optional[str] = Field(
+        None, description="Effective date of a manual exchange_rate, e.g. '2026-03-31'"
+    )
+    exchange_rate_note: Optional[str] = Field(
+        None, description="Rationale for a manual exchange_rate, for the audit trail"
+    )
 
 class ConsolidationRequest(BaseModel):
     target_currency: str = "USD"
