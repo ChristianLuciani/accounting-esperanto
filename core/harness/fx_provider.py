@@ -39,9 +39,70 @@ import threading
 import time
 import urllib.error
 import urllib.request
+from dataclasses import asdict, dataclass
+from datetime import datetime, timezone
 from typing import Dict, List, Optional, Tuple
 
 from core.harness.fx import FX as STATIC_FX
+
+
+def _utcnow_iso() -> str:
+    """ISO-8601 UTC timestamp (second precision) for audit records."""
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+
+
+@dataclass(frozen=True)
+class FXQuote:
+    """An auditable, attachable record of *which* rate priced a balance and
+    *where it came from*. One quote is produced per currency conversion so it
+    can be stamped onto the transaction / resolved entry that used it.
+
+    Fields:
+      * ``usd_per_unit`` — the rate applied (USD value of one unit of ``currency``).
+      * ``source``       — provider id: ``frankfurter-ecb`` | ``open-er-api`` |
+                            ``static-pinned`` | ``manual``.
+      * ``mode``         — ``live`` | ``static`` | ``manual``.
+      * ``as_of``        — the rate's upstream publication date/time (ECB ``date``,
+                            ExchangeRate-API ``time_last_update_utc``), or the
+                            operator-supplied as-of for a manual rate. ``None``
+                            for the pinned static table (synthetic, undated).
+      * ``retrieved_at`` — when this quote was produced / applied (UTC).
+      * ``note``         — free-text rationale, used mainly for manual rates
+                            (e.g. ``"contract rate, invoice 2026-03-31"``).
+    """
+
+    currency: str
+    usd_per_unit: float
+    source: str
+    mode: str
+    retrieved_at: str
+    as_of: Optional[str] = None
+    note: Optional[str] = None
+
+    def to_dict(self) -> dict:
+        return asdict(self)
+
+
+def manual_quote(
+    currency: str,
+    usd_per_unit: float,
+    as_of: Optional[str] = None,
+    note: Optional[str] = None,
+) -> FXQuote:
+    """Build an audited manual FX quote — for an asynchronous transaction priced
+    at an operator-supplied rate (contract rate, invoice-date rate, agreed
+    intercompany rate). ``as_of`` records the rate's effective date and ``note``
+    the rationale, so a manual override is as traceable as a fetched one."""
+    return FXQuote(
+        currency=currency.upper(),
+        usd_per_unit=float(usd_per_unit),
+        source="manual",
+        mode="manual",
+        retrieved_at=_utcnow_iso(),
+        as_of=as_of,
+        note=note,
+    )
+
 
 # Default cache TTL: FX reference rates publish at most daily, so a multi-hour
 # cache is correct and keeps a busy API from hammering the upstream endpoints.
@@ -58,9 +119,29 @@ class FXProvider:
     chain) can fall through to the next source."""
 
     name = "abstract"
+    mode = "static"
 
     def usd_per_unit(self, currency: str) -> Optional[float]:  # pragma: no cover - interface
         raise NotImplementedError
+
+    def _as_of(self, currency: str) -> Optional[str]:
+        """Upstream publication date/time of the rate, if the provider knows it."""
+        return None
+
+    def quote(self, currency: str) -> Optional[FXQuote]:
+        """Resolve the rate *and* its provenance as an attachable ``FXQuote``.
+        Returns ``None`` when the provider cannot price the currency."""
+        rate = self.usd_per_unit(currency)
+        if rate is None:
+            return None
+        return FXQuote(
+            currency=currency.upper(),
+            usd_per_unit=rate,
+            source=self.name,
+            mode=self.mode,
+            retrieved_at=_utcnow_iso(),
+            as_of=self._as_of(currency),
+        )
 
 
 class StaticFXProvider(FXProvider):
@@ -69,7 +150,8 @@ class StaticFXProvider(FXProvider):
     Defaults to ``core.harness.fx.FX`` — the same values the validation harness
     uses — so a static-mode runtime reproduces the documented numbers exactly."""
 
-    name = "static"
+    name = "static-pinned"
+    mode = "static"
 
     def __init__(self, table: Optional[Dict[str, float]] = None):
         src = STATIC_FX if table is None else table
@@ -91,17 +173,27 @@ class _HTTPTableProvider(FXProvider):
     into the consolidation path."""
 
     url = ""
+    mode = "live"
 
     def __init__(self, ttl_seconds: Optional[float] = None, timeout_seconds: Optional[float] = None):
         self._ttl = _DEFAULT_TTL_SECONDS if ttl_seconds is None else ttl_seconds
         self._timeout = _DEFAULT_TIMEOUT_SECONDS if timeout_seconds is None else timeout_seconds
         self._cache: Optional[Dict[str, float]] = None  # {CCY: units-per-USD}
+        self._as_of_value: Optional[str] = None  # upstream publication date/time
         self._fetched_at = 0.0
         self._lock = threading.Lock()
 
     def _parse(self, payload: dict) -> Dict[str, float]:  # pragma: no cover - overridden
         """Return ``{CCY: units-per-USD}`` from the provider's JSON payload."""
         raise NotImplementedError
+
+    def _parse_as_of(self, payload: dict) -> Optional[str]:
+        """The rate's upstream publication date/time, if the payload carries it."""
+        return None
+
+    def _as_of(self, currency: str) -> Optional[str]:
+        self._table()  # ensure a fetch has happened so _as_of_value is populated
+        return self._as_of_value
 
     def _fresh(self) -> bool:
         return self._cache is not None and (time.time() - self._fetched_at) < self._ttl
@@ -119,6 +211,7 @@ class _HTTPTableProvider(FXProvider):
                 table = self._parse(payload)
                 if table:
                     self._cache = {k.upper(): float(v) for k, v in table.items() if v}
+                    self._as_of_value = self._parse_as_of(payload)
                     self._fetched_at = time.time()
             except (urllib.error.URLError, ValueError, KeyError, TypeError, TimeoutError, OSError):
                 # Upstream unreachable or malformed: keep whatever we last had
@@ -149,6 +242,9 @@ class FrankfurterProvider(_HTTPTableProvider):
     def _parse(self, payload: dict) -> Dict[str, float]:
         return payload.get("rates", {}) or {}
 
+    def _parse_as_of(self, payload: dict) -> Optional[str]:
+        return payload.get("date")  # ECB reference-rate date, e.g. "2026-06-16"
+
 
 class OpenExchangeRateProvider(_HTTPTableProvider):
     """Broad-coverage rates via open.er-api.com (ExchangeRate-API, no API key)."""
@@ -160,6 +256,10 @@ class OpenExchangeRateProvider(_HTTPTableProvider):
         if payload.get("result") != "success":
             return {}
         return payload.get("rates", {}) or {}
+
+    def _parse_as_of(self, payload: dict) -> Optional[str]:
+        # e.g. "Tue, 16 Jun 2026 00:02:31 +0000"
+        return payload.get("time_last_update_utc")
 
 
 class ChainedFXProvider(FXProvider):
@@ -185,6 +285,18 @@ class ChainedFXProvider(FXProvider):
             if rate is not None:
                 return provider.name, rate
         return None, None
+
+    def quote(self, currency: str) -> Optional[FXQuote]:
+        """Return the full provenance quote from the first provider that can
+        price ``currency`` (carrying that provider's source, mode, and as-of)."""
+        for provider in self.providers:
+            try:
+                q = provider.quote(currency)
+            except Exception:  # a misbehaving provider must not break the chain
+                q = None
+            if q is not None:
+                return q
+        return None
 
 
 # ---------------------------------------------------------------------------

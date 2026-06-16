@@ -35,7 +35,12 @@ from core.harness import (
 )
 from core.harness import FX as _HARNESS_FX
 from core.harness import JCCY as _HARNESS_JCCY
-from core.harness.fx_provider import FXProvider
+from core.harness.fx_provider import (
+    FXProvider,
+    FXQuote,
+    manual_quote,
+    static_fx_provider,
+)
 
 # Re-export the canonical FX table so every surface normalises to USD identically.
 FX: Dict[str, float] = dict(_HARNESS_FX)
@@ -64,6 +69,10 @@ class SubsidiaryTB:
     currency: str
     entries: List[LocalEntry] = field(default_factory=list)
     fx_rate_to_usd: Optional[float] = None  # overrides the FX table when set
+    # Audit metadata for a manual override (async transactions priced at an
+    # operator-supplied rate): the rate's effective date and the rationale.
+    fx_rate_as_of: Optional[str] = None  # e.g. "2026-03-31" (invoice/contract date)
+    fx_rate_note: Optional[str] = None   # e.g. "contract rate per SPA clause 4.2"
 
 
 @dataclass
@@ -94,6 +103,10 @@ class ResolvedEntry:
     debit_usd: float
     credit_usd: float
     cra_flags: List[str] = field(default_factory=list)
+    # Provenance of the FX rate applied to this entry: which source priced it,
+    # the rate, its upstream as-of date, when it was applied, and the mode
+    # (live | static | manual). ``None`` only if the line never resolved.
+    fx: Optional[FXQuote] = None
 
 
 @dataclass
@@ -118,6 +131,9 @@ class ConsolidationResult:
     eliminations_applied: int
     escalations: List[ResolvedEntry]
     cra_flags: List[str]
+    # subsidiary_id -> the FX quote used to normalise that subsidiary to USD,
+    # so the consolidated statement carries a per-entity FX audit trail.
+    fx_quotes: Dict[str, FXQuote] = field(default_factory=dict)
 
     @property
     def total_debits(self) -> float:
@@ -163,24 +179,39 @@ class ConsolidationEngine:
             self.by_code,
         )
 
-    def fx_to_usd(self, tb: SubsidiaryTB) -> float:
-        if tb.fx_rate_to_usd is not None:
-            return tb.fx_rate_to_usd
+    def fx_quote_for(self, tb: SubsidiaryTB) -> FXQuote:
+        """Resolve the FX rate for a subsidiary *with its provenance*.
+
+        Priority: (1) an explicit manual override (``fx_rate_to_usd``) — recorded
+        as a ``manual`` quote carrying the operator's as-of date and note, for
+        asynchronous transactions priced at a contract/invoice rate; (2) the
+        configured runtime provider (live source, source-attributed, dated);
+        (3) the pinned static table (offline/deterministic fallback). An unknown
+        currency with no override is an explicit error, never a silent 1.0."""
         ccy = tb.currency.upper()
-        # Runtime provider first (when configured); fall back to the pinned
-        # table so the engine still resolves offline / in static mode.
+        if tb.fx_rate_to_usd is not None:
+            return manual_quote(
+                ccy, tb.fx_rate_to_usd, as_of=tb.fx_rate_as_of, note=tb.fx_rate_note
+            )
         if self.fx_provider is not None:
-            rate = self.fx_provider.usd_per_unit(ccy)
-            if rate is not None:
-                return rate
-        if ccy not in FX:
+            quote = self.fx_provider.quote(ccy)
+            if quote is not None:
+                return quote
+        # Pinned static fallback (offline / static mode).
+        quote = static_fx_provider().quote(ccy)
+        if quote is None:
             # A silent 1.0 fallback would consolidate mislabeled amounts;
             # an unknown currency must be an explicit caller error.
             raise ValueError(
                 f"no FX rate for currency {ccy!r} (subsidiary "
                 f"{tb.subsidiary_id}); pass fx_rate_to_usd explicitly."
             )
-        return FX[ccy]
+        return quote
+
+    def fx_to_usd(self, tb: SubsidiaryTB) -> float:
+        """The USD-per-unit rate for a subsidiary (provenance discarded). Kept
+        for backwards compatibility; ``fx_quote_for`` returns the audit record."""
+        return self.fx_quote_for(tb).usd_per_unit
 
     # -- consolidation ------------------------------------------------------
     def consolidate(
@@ -202,9 +233,12 @@ class ConsolidationEngine:
         resolved: List[ResolvedEntry] = []
         escalations: List[ResolvedEntry] = []
         cra_flags: List[str] = []
+        fx_quotes: Dict[str, FXQuote] = {}
 
         for tb in subsidiaries:
-            rate = self.fx_to_usd(tb)
+            quote = self.fx_quote_for(tb)
+            rate = quote.usd_per_unit
+            fx_quotes[tb.subsidiary_id] = quote
             for e in tb.entries:
                 kid, tier, conf = self.resolve(e, tb.jurisdiction)
                 debit_usd = round(e.debit * rate, 2)
@@ -225,6 +259,7 @@ class ConsolidationEngine:
                     debit_usd=debit_usd,
                     credit_usd=credit_usd,
                     cra_flags=flags,
+                    fx=quote,
                 )
                 resolved.append(rec)
                 if flags:
@@ -278,6 +313,7 @@ class ConsolidationEngine:
             eliminations_applied=applied,
             escalations=escalations,
             cra_flags=cra_flags,
+            fx_quotes=fx_quotes,
         )
 
     @staticmethod

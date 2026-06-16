@@ -15,11 +15,14 @@ from core.harness.fx import FX
 from core.harness.fx_provider import (
     ChainedFXProvider,
     FrankfurterProvider,
+    FXQuote,
+    OpenExchangeRateProvider,
     StaticFXProvider,
     _HTTPTableProvider,
     convert,
     fx_mode,
     get_fx_provider,
+    manual_quote,
     usd_per_unit,
 )
 
@@ -131,6 +134,60 @@ def test_live_mode_selects_chain(monkeypatch):
 def test_explicit_override_beats_env(monkeypatch):
     monkeypatch.setenv("KONTABLO_FX_MODE", "live")
     assert isinstance(get_fx_provider(live=False), StaticFXProvider)
+
+
+# --- FXQuote provenance: source, mode, as_of, retrieved_at, note ------------
+def test_static_quote_carries_pinned_provenance():
+    q = StaticFXProvider().quote("EUR")
+    assert isinstance(q, FXQuote)
+    assert q.currency == "EUR"
+    assert q.usd_per_unit == FX["EUR"]
+    assert q.source == "static-pinned"
+    assert q.mode == "static"
+    assert q.as_of is None  # pinned synthetic table is undated
+    assert q.retrieved_at  # a timestamp is stamped
+    assert StaticFXProvider().quote("ZZZ") is None
+
+
+def test_manual_quote_is_audited():
+    q = manual_quote("VES", 0.0017, as_of="2026-03-31", note="contract rate, invoice 42")
+    assert (q.source, q.mode) == ("manual", "manual")
+    assert q.usd_per_unit == 0.0017
+    assert q.as_of == "2026-03-31"
+    assert q.note == "contract rate, invoice 42"
+    assert q.retrieved_at
+    # round-trips to a plain dict for serialisation / storage on a transaction
+    d = q.to_dict()
+    assert d["source"] == "manual" and d["as_of"] == "2026-03-31"
+
+
+def test_http_quote_captures_upstream_as_of():
+    p = FrankfurterProvider()
+    # Stub the cache + as-of as if a fetch had returned ECB's 2026-06-16 set.
+    p._cache = {"EUR": 0.86}
+    p._as_of_value = "2026-06-16"
+    p._fetched_at = float("inf")
+    q = p.quote("EUR")
+    assert q.source == "frankfurter-ecb"
+    assert q.mode == "live"
+    assert q.as_of == "2026-06-16"
+    assert q.usd_per_unit == pytest.approx(1.0 / 0.86)
+
+
+def test_open_er_api_parses_update_time_as_of():
+    p = OpenExchangeRateProvider()
+    table = p._parse({"result": "success", "rates": {"VES": 592.5}})
+    as_of = p._parse_as_of({"time_last_update_utc": "Tue, 16 Jun 2026 00:02:31 +0000"})
+    assert table == {"VES": 592.5}
+    assert as_of == "Tue, 16 Jun 2026 00:02:31 +0000"
+
+
+def test_chain_quote_returns_answering_providers_provenance():
+    empty = _Fixed("empty", {})
+    backup = _Fixed("backup", {"VES": 0.0017})
+    q = ChainedFXProvider([empty, backup]).quote("VES")
+    assert q.source == "backup"  # provenance is the provider that answered
+    assert q.usd_per_unit == 0.0017
 
 
 # --- live integration (opt-in: KONTABLO_FX_LIVE_TEST=1) ---------------------
