@@ -23,13 +23,13 @@ Kontablo acts as the foundational subledger layer for the emerging \textbf{Agent
 This metadata ensures that the ERP systems of the buyer, the vendor, and the financial intermediary record the event identically and instantaneously. It eliminates the need for post-transaction bank reconciliation, as the payment message contains the exact posting coordinates for both general ledgers.
 
 \subsection{Model Context Protocol (MCP) Integration}
-To enable AI agents to interact with corporate general ledgers dynamically, Kontablo provides a standardized \textbf{Model Context Protocol (MCP)} server interface. The MCP server exposes tools that allow LLM agents to:
+To let AI agents interact with corporate accounting systems through a stable semantic contract rather than a bespoke database schema, the Kontablo \emph{specification} defines a standardized \textbf{Model Context Protocol (MCP)} server interface. This is design intent, not a shipped feature: as of v0.x the reference implementation exposes its capabilities over a REST API (\texttt{api/rest}, \texttt{api/src}) and a deterministic gRPC core (\texttt{api/grpc/server.py}); the MCP server is specified but not yet implemented, and is tracked as roadmap work. Once shipped, the interface exposes tools that allow LLM agents to:
 \begin{itemize}
     \item Query the current semantic structure of the corporate chart of accounts.
     \item Request mapping proposals for new vendor invoices or billing items.
     \item Perform real-time compliance audits on draft journal entries prior to ledger write-in.
 \end{itemize}
-By utilizing the MCP standard, any agent equipped with a compatible client can read and write to the general ledger using structured tool calls. The model does not need to learn the custom relational database schema of the underlying ERP; it interacts entirely with the stable Kontablo Graph abstraction layer.
+By utilizing the MCP standard, any agent equipped with a compatible client can obtain mapping proposals and validation results through structured tool calls, without learning the custom relational database schema of the underlying ERP; it interacts entirely with the stable Kontablo Graph abstraction layer. Consistent with the scope boundary of Section~\ref{subsec:enforcement_boundary}, Kontablo is a semantic mapping and validation layer, not a book of record: the agent does not write into a Kontablo-proprietary general ledger. The resulting transaction is recorded in the ERP through the connector --- or, on the roadmap, in a thin UUID-native subledger that synchronizes to an ERP of record --- with Kontablo supplying the validated posting coordinates rather than holding the authoritative ledger itself.
 
 \subsection{Cryptographic Liability and Agent\_ID Tracking}
 In an autonomous economy, tracing liability is a critical legal requirement. When an accounting error, fraud, or transaction violation occurs, it must be possible to attribute the action to a specific autonomous agent.
