@@ -31,197 +31,44 @@ Outputs (committed for reproducibility):
 """
 
 import os
-import re
+import sys
 import csv
 import json
 import yaml
 from collections import defaultdict, Counter
 
+# Run as a script (`python scripts/mass_consolidation_v2.py`): put the repo root
+# on sys.path so the shared harness package (`core.harness`) is importable.
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-ONTOLOGY_PATH = os.path.join(ROOT, "core/schemas/level3_accounts.yaml")
+if ROOT not in sys.path:
+    sys.path.insert(0, ROOT)
+
+# The deterministic core lives in the shared harness package — this script is
+# now purely the validation RUNNER (synthetic data + the run + artifact writing)
+# and imports the resolver, the Deterministic Boundary Library, the ontology
+# loaders, and the FX tables rather than defining them. Re-defining them here
+# is what created the inverted dependency (core.engine importing from this
+# script); keep this import-only.
+from core.harness import (  # noqa: E402
+    FX,
+    JCCY,
+    TIER2_RULES,  # noqa: F401  (re-exported for callers importing it from here)
+    cra_validate,
+    load_families,
+    load_ontology,
+    merge_family_codes,
+    resolve,
+)
+
 COVERAGE_PATH = os.path.join(ROOT, "core/schemas/jurisdiction_coverage.yaml")
-FAMILIES_PATH = os.path.join(ROOT, "core/schemas/chart_families.yaml")
 OUT_DIR = os.path.join(ROOT, "research/experiments/consolidation_v2")
 
 
-def load_families():
-    """family -> {members:[iso], codes:{kontablo_id: local_code}}."""
-    doc = yaml.safe_load(open(FAMILIES_PATH, encoding="utf-8"))
-    return doc.get("families", {})
-
-
 def load_coverage():
-    """195-jurisdiction manifest (list of dict rows)."""
+    """195-jurisdiction manifest (list of dict rows). Runner-local: the coverage
+    manifest is used only for the printed/serialised report, not for resolution."""
     doc = yaml.safe_load(open(COVERAGE_PATH, encoding="utf-8"))
     return doc.get("jurisdictions", [])
-
-
-def merge_family_codes(by_code, families):
-    """Add shared statutory-chart-family codes into the per-jurisdiction Tier-1
-    index for every member jurisdiction (e.g., SYSCOHADA -> 17 OHADA states)."""
-    for fam in families.values():
-        for member in fam.get("members", []):
-            for kid, code in fam.get("codes", {}).items():
-                by_code.setdefault(member, {}).setdefault(str(code), kid)
-    return by_code
-
-# ---------------------------------------------------------------------------
-# Load the real Level-3 ontology
-# ---------------------------------------------------------------------------
-def load_ontology():
-    # The YAML is multi-section: the ASSETS section is a dict with key "level3";
-    # LIABILITIES/EQUITY/INCOME/roadmap sections are bare YAML lists (no key).
-    # Collect account dicts from BOTH shapes; an account is any item carrying
-    # both "id" and "nature" (this excludes aggregation/validation rule blocks).
-    docs = list(yaml.safe_load_all(open(ONTOLOGY_PATH, encoding="utf-8")))
-    accounts = {}
-
-    def ingest(item):
-        if isinstance(item, dict) and "id" in item and "nature" in item:
-            accounts[item["id"]] = {
-                "uuid": item.get("uuid"),
-                "label": item.get("label_en", item["id"]),
-                "nature": item.get("nature", "unknown"),
-                "statement": item.get("statement", "unknown"),
-                "local_codes": {k: str(v) for k, v in (item.get("local_codes") or {}).items()},
-            }
-
-    for d in docs:
-        if isinstance(d, dict) and "level3" in d:
-            for a in d["level3"]:
-                ingest(a)
-        elif isinstance(d, list):
-            for a in d:
-                ingest(a)
-    # reverse index: jurisdiction -> {local_code -> kontablo_id}, detecting
-    # collisions (same jurisdiction+code mapped to >1 Kontablo node = a latent
-    # ontology data-quality defect). Collided codes are EXCLUDED from the
-    # deterministic index so they are not silently mis-resolved.
-    # A real statutory code contains at least one digit. Descriptive text
-    # placeholders (e.g. "Cash", "Vorsteuer", "IVA Acreditable") are NOT codes
-    # and are excluded from the Tier-1 index (boundary condition B1).
-    def is_code(c):
-        return any(ch.isdigit() for ch in str(c))
-
-    raw = defaultdict(lambda: defaultdict(list))
-    placeholders = []
-    for kid, a in accounts.items():
-        for j, code in a["local_codes"].items():
-            if is_code(code):
-                raw[j][code].append(kid)
-            else:
-                placeholders.append({"jurisdiction": j, "code": str(code), "id": kid})
-    by_code = defaultdict(dict)
-    collisions = []
-    for j in raw:
-        for code, ids in raw[j].items():
-            if len(ids) > 1:
-                collisions.append({"jurisdiction": j, "code": code, "ids": sorted(ids)})
-            else:
-                by_code[j][code] = ids[0]
-    return accounts, by_code, collisions, placeholders
-
-
-# ---------------------------------------------------------------------------
-# Tier 2 deterministic multilingual keyword rules (auditable, no AI)
-# Each rule: (kontablo_id, [substrings in lowercased local name])
-# Languages: en, es, pt, fr, vi, ar, de, ru, ko, tr.
-# ---------------------------------------------------------------------------
-TIER2_RULES = [
-    ("asset.current.crypto",      ["crypto", "bitcoin", "digital asset", "criptomoneda", "token"]),
-    ("asset.current.carbon_credits", ["carbon credit", "crédito de carbono", "crédit carbone", "emission allowance"]),
-    ("asset.noncurrent.biological", ["biological", "activo biológico", "actif biologique", "livestock", "ganado"]),
-    ("liability.current.zakat",   ["zakat", "زكاة"]),
-    ("asset.current.cash",        ["cash", "caja", "caisse", "caixa", "efectivo", "tiền mặt", "النقد", "kasse", "касса", "현금", "nakit", "espèces", "petty cash", "cassa", "kasa", "kas", "ταμείο"]),
-    ("asset.current.bank",        ["bank", "banco", "banque", "banca", "банк", "은행", "banka", "ngân hàng", "bancos", "البنك", "τράπεζα"]),
-    ("asset.current.receivables", ["receivable", "clientes", "clients", "cuentas por cobrar", "contas a receber", "дебитор", "매출채권", "alacak", "phải thu", "debtors", "clienti", "należności", "piutang", "πελάτες", "ذمم مدينة"]),
-    ("asset.current.inventory",   ["inventory", "inventario", "stock", "existencias", "estoque", "stocks", "запас", "재고", "stok", "hàng tồn kho", "magazzino", "zapasy", "persediaan"]),
-    ("asset.current.vat_input",   ["vat input", "iva acreditable", "iva soportado", "tva déductible", "input vat", "input tax credit"]),
-    ("asset.current.prepaid",     ["prepaid", "anticipo", "gastos pagados por anticipado", "charges constatées", "선급"]),
-    ("asset.noncurrent.ppe",      ["ppe", "property plant", "propiedad planta", "immobilisations corporelles", "ativo imobilizado", "inmueble", "maquinaria", "основные средства", "유형자산", "maddi duran"]),
-    ("asset.noncurrent.intangibles", ["intangible", "intangibles", "immobilisations incorporelles", "무형자산"]),
-    ("asset.noncurrent.goodwill", ["goodwill", "fondo de comercio", "écart d'acquisition", "영업권"]),
-    ("liability.current.payables", ["payable", "proveedores", "fornecedores", "fournisseurs", "cuentas por pagar", "кредитор", "매입채무", "borç", "phải trả", "fornitori", "zobowiązania", "utang", "προμηθευτές", "موردون"]),
-    ("liability.current.vat_output", ["vat output", "iva por pagar", "iva repercutido", "tva collectée", "output vat"]),
-    ("liability.current.tax",     ["tax payable", "impuestos por pagar", "impôt", "imposto a pagar", "vergi"]),
-    ("liability.current.short_term_debt", ["short-term debt", "deuda corto plazo", "préstamo corto", "empréstimo"]),
-    ("liability.noncurrent.debt", ["long-term debt", "deuda largo plazo", "dette", "emprunt", "차입금"]),
-    ("liability.current.zakat",   ["zakat", "زكاة"]),
-    ("equity.capital",            ["capital", "share capital", "capital social", "자본금", "sermaye"]),
-    ("equity.retained",           ["retained", "resultados acumulados", "lucros acumulados", "report à nouveau", "이익잉여금"]),
-    ("equity.reserves",           ["reserve", "reservas", "réserves", "yedek"]),
-    ("revenue.operating",         ["revenue", "ingresos", "ventas", "receita", "chiffre d'affaires", "doanh thu", "매출", "gelir", "выручка", "ricavi", "przychody", "pendapatan", "έσοδα", "πωλήσεις", "إيرادات", "sales"]),
-    ("revenue.other",             ["other income", "otros ingresos", "produits divers"]),
-    ("expense.cogs",              ["cogs", "cost of goods", "costo de ventas", "custo", "coût des ventes", "매출원가"]),
-    ("expense.admin",             ["administrative", "gastos administrativos", "frais généraux", "despesas administrativas", "판관비"]),
-    ("expense.depreciation",      ["depreciation", "depreciación", "amortissement", "depreciação", "감가상각"]),
-    ("expense.interest",          ["interest expense", "gastos financieros", "charges d'intérêts", "이자비용"]),
-    ("expense.fx_loss",           ["fx loss", "pérdida cambiaria", "perte de change", "diferencia en cambio", "환차손"]),
-]
-
-
-def resolve(entry, jurisdiction, accounts, by_code):
-    """Return (kontablo_id, tier, confidence)."""
-    code = str(entry["code"])
-    # Tier 1: exact local-code lookup
-    if code in by_code.get(jurisdiction, {}):
-        return by_code[jurisdiction][code], "tier1_exact", 1.0
-    # Tier 2: multilingual keyword rules
-    name = entry["name"].lower()
-    for kid, keys in TIER2_RULES:
-        if any(k in name for k in keys):
-            if kid in accounts:
-                return kid, "tier2_keyword", 0.85
-    # Escalate (residual -> CRA human review). Tier 3 AI not run here.
-    return None, "escalated", 0.0
-
-
-def cra_validate(entry, kid, accounts):
-    """Co-responsibility deterministic boundary checks. Returns list of flags.
-    Each check is a deterministic accounting invariant; together they form the
-    Deterministic Boundary Library exercised by the injected-error catalog."""
-    if not kid or kid not in accounts:
-        return []
-    flags = []
-    target = accounts[kid]
-    nm = entry["name"].lower()
-
-    # 1. Nature (debit/credit) must match the target node.
-    if entry.get("nature") and entry["nature"] != target["nature"]:
-        flags.append(f"nature_mismatch:{entry['nature']}!={target['nature']}@{kid}")
-
-    # 2. Liquidity boundary: a liquid asset must not map to a non-current node.
-    if any(w in nm for w in ("cash", "bank", "caja", "banco", "banque", "caisse")) \
-       and "noncurrent" in kid:
-        flags.append(f"boundary_violation:liquid_asset->noncurrent@{kid}")
-
-    # Checks 3-5 are heuristic name-vs-target invariants used to catch a bad
-    # upstream/AI proposal; they are applied to forced (proposed) mappings only,
-    # so a correct name-derived resolution (e.g. "Prepaid Expenses" -> a
-    # balance-sheet asset) is never false-flagged.
-    if entry.get("forced_id"):
-        # 3. Statement-class boundary: a P&L name must not land on a
-        #    balance-sheet node, and vice versa.
-        pl_words = ("revenue", "sales", "ventas", "ingreso", "depreciation", "interest")
-        bs_words = ("receivable", "payable", "inventory", "capital", "equity")
-        if any(w in nm for w in pl_words) and target["statement"] == "balance_sheet":
-            flags.append(f"statement_mismatch:P&L_name->balance_sheet@{kid}")
-        elif any(w in nm for w in bs_words) and target["statement"] == "income_statement":
-            flags.append(f"statement_mismatch:balance_sheet_name->P&L@{kid}")
-
-        # 4. VAT direction: input VAT must not map to the output node (or vice versa).
-        in_vat = any(w in nm for w in ("input", "acreditable", "soportado", "récupérable", "recuperable"))
-        out_vat = any(w in nm for w in ("output", "repercutido", "trasladado", "facturée", "facturada"))
-        if in_vat and kid == "liability.current.vat_output":
-            flags.append(f"vat_direction:input->output@{kid}")
-        if out_vat and kid == "asset.current.vat_input":
-            flags.append(f"vat_direction:output->input@{kid}")
-
-        # 5. Equity vs liability: capital/equity must not map to a liability node.
-        if any(w in nm for w in ("capital", "equity", "patrimonio")) and kid.startswith("liability"):
-            flags.append(f"class_confusion:equity->liability@{kid}")
-
-    return flags
 
 
 # ---------------------------------------------------------------------------
@@ -381,33 +228,8 @@ def build_entities(accounts, by_code, families=None):
     return entities
 
 
-# Currency per jurisdiction (ISO) and USD-per-unit FX (synthetic 2026 rates).
-JCCY = {"ae":"AED","ar":"ARS","br":"BRL","ca":"CAD","cn":"CNY","co":"COP",
-        "de":"EUR","es":"EUR","fr":"EUR","il":"ILS","in":"INR","jp":"JPY",
-        "mx":"MXN","ng":"NGN","pa":"USD","ru":"RUB","sa":"SAR","tr":"TRY",
-        "uk":"GBP","us":"USD","ve":"VES","vn":"VND","za":"ZAR",
-        "sn":"XOF","ci":"XOF","kr":"KRW","lb":"LBP","ec":"USD",
-        # --- additional Tier-2 jurisdictions (no ontology local_codes) ---
-        "it":"EUR","pl":"PLN","id":"IDR","gr":"EUR","cl":"CLP","pe":"PEN",
-        "ma":"MAD","kz":"KZT","eg":"EGP","ke":"KES","ph":"PHP","pk":"PKR",
-        "ch":"CHF","dz":"DZD","ro":"RON","be":"EUR",
-        "cz":"CZK","sk":"EUR","hu":"HUF","bg":"BGN",
-        "ua":"UAH","tn":"TND","by":"BYN",
-        "rs":"RSD","hr":"EUR","si":"EUR","at":"EUR","lu":"EUR","mc":"EUR",
-        "md":"MDL","gr":"EUR",
-        # --- OHADA member currencies (SYSCOHADA) ---
-        "bj":"XOF","bf":"XOF","ml":"XOF","ne":"XOF","tg":"XOF","gw":"XOF",
-        "cm":"XAF","cf":"XAF","td":"XAF","cg":"XAF","gq":"XAF","ga":"XAF",
-        "km":"KMF","cd":"CDF"}
-FX = {"AED":0.27,"ARS":0.0011,"BRL":0.20,"CAD":0.73,"CNY":0.14,"COP":0.00025,
-      "EUR":1.08,"ILS":0.27,"INR":0.012,"JPY":0.0067,"MXN":0.058,"NGN":0.00065,
-      "RUB":0.011,"SAR":0.27,"TRY":0.030,"GBP":1.27,"USD":1.0,"VES":0.027,
-      "VND":0.00004,"ZAR":0.054,"XOF":0.00165,"KRW":0.00073,"LBP":0.0000112,
-      "PLN":0.25,"IDR":0.000062,"CLP":0.0011,"PEN":0.27,"MAD":0.10,"KZT":0.0021,
-      "EGP":0.021,"KES":0.0078,"PHP":0.018,"PKR":0.0036,"CHF":1.13,
-      "XAF":0.00165,"KMF":0.0022,"CDF":0.00035,"DZD":0.0074,"RON":0.22,
-      "CZK":0.043,"HUF":0.0028,"BGN":0.55,"UAH":0.024,"TND":0.32,"BYN":0.31,
-      "RSD":0.0092,"MDL":0.057}
+# Currency per jurisdiction (JCCY) and USD-per-unit FX (FX) now live in
+# core.harness.fx (imported above) — shared with core.engine's normalisation.
 
 # Representative USD face value per account class (local amounts are derived as
 # base/FX so each coded account contributes a comparable USD magnitude).
