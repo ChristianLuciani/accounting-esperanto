@@ -18,11 +18,13 @@
     decnode/.style={draw=yellow!70!black, diamond, aspect=2,
         fill=yellow!20, text width=2.8cm, align=center, font=\small},
     flagnode/.style={draw=red!60!black, rectangle, rounded corners=4pt,
-        fill=red!10, text width=3.8cm, align=center,
+        fill=red!10, text width=4.0cm, align=center,
         minimum height=1.2cm, font=\small},
-    dbnode/.style={draw=gray!60, cylinder, shape border rotate=90,
-        fill=gray!20, text width=3.0cm, align=center,
-        minimum height=1.5cm, font=\small},
+    dbnode/.style={cylinder, shape border rotate=90, aspect=0.3,
+        draw=gray!70!black, cylinder uses custom fill,
+        cylinder body fill=gray!16, cylinder end fill=gray!34,
+        minimum width=2.8cm, minimum height=2.4cm, text width=2.4cm,
+        align=center, font=\small, inner sep=4pt},
     edgelabel/.style={font=\scriptsize, fill=white, inner sep=1pt}
 ]
 
@@ -37,17 +39,16 @@
     \textbf{3.~Rule Engine}\\Validates deterministic boundaries};
 \node[flagnode, left=2.6cm of rule_check] (flag_record) {%
     \textbf{4.~Inconsistency Flagged}\\[2pt]
-    Set \texttt{inconsistency\_flag}~= True; write audit note};
-\node[dbnode, below=1.2cm of flag_record] (db) {%
+    {\footnotesize Sets \texttt{inconsistency\_flag}\\ to \texttt{True} and writes an audit note}};
+\node[dbnode, below=1.4cm of flag_record] (db) {%
     \textbf{Audit Ledger}\\[2pt]
-    Persist signed transactional metadata};
+    {\footnotesize signed, append-only metadata}};
 
 % Paths
 \draw[->, thick] (ai_propose) -- (human_override);
 \draw[->, thick] (human_override) -- (rule_check);
 \draw[->, thick] (rule_check) -- node[edgelabel, above] {Violation} (flag_record);
-\draw[->, thick] (rule_check.south) -- ++(0,-0.7) -|
-    node[edgelabel, near start, right] {Valid} (db.east);
+\draw[->, thick] (rule_check.south) |- node[edgelabel, near end, above] {Valid} (db.east);
 \draw[->, thick] (flag_record) -- (db);
 
 \end{tikzpicture}%

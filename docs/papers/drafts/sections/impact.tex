@@ -2,7 +2,7 @@
 
 \subsection{How much does cross-border accounting fragmentation cost?}
 \label{subsec:cost_of_fragmentation}
-The ``Accounting Babel'' introduced earlier is not merely a technical
+The ``Accounting Babel'' introduced in Section~\ref{subsec:crises} is not merely a technical
 inconvenience; it carries a measurable economic weight that appears in three
 layers that compound on one another. We assemble the estimate below entirely
 from third-party figures and label it for what it is --- a \emph{scale-level}
@@ -90,7 +90,7 @@ boundary-violating mappings are caught at the instant of posting
 (Eq.~\ref{eq:l_rta}) instead of months later (Eq.~\ref{eq:l_audit}), but this
 reaches only the anomalies a \emph{deterministic} rule can express ---
 nature, liquidity, statement-class, and the other Boundary-Library invariants
---- not judgement-level fraud or collusion. \emph{(2) Queryable, AI-tagged
+--- not judgment-level fraud or collusion. \emph{(2) Queryable, AI-tagged
 lineage:} because every posting carries a universal ID, a confidence score,
 and the AI's justification, an auditor can query the population directly
 (``show every override against a deterministic rule,'' ``every Tier-3 mapping
@@ -103,10 +103,18 @@ replacement of the auditor: the role shifts from detecting mechanical
 mis-postings by hand toward investigating the higher-order anomalies the
 deterministic layer cannot adjudicate.
 
-\subsection{Auditability and Fraud Prevention}
-Manual reconciliation is inherently opaque: when accounting teams manually adjust entries in spreadsheets during month-end close, they create an audit gap between the source ledger and the consolidated statement.
-
-Kontablo's contribution to auditability is structural rather than statistical: every transaction recorded via the Kontablo Graph is linked to a deterministic universal ID, so a forensic audit can trace any consolidated line item back to its origin in the local ledger (e.g., a Vietnamese VAS account) with no semantic translation lost in the process, and every human or AI override is permanently flagged in the audit trail (Section~\ref{sec:harness}). We deliberately do not quantify this as a percentage improvement --- auditability gains depend on the baseline process being replaced --- but the mechanism replaces sample-based retrospective auditing with complete, queryable lineage. For an AI-driven economy, this translates to \textbf{Real-Time Auditing (RTA)} rather than once-a-year forensic sampling.
+This auditability gain is \emph{structural rather than statistical}: every
+posting links to a deterministic universal ID, so a forensic audit can trace any
+consolidated line item back to its origin in the local ledger (e.g.\ a Vietnamese
+VAS account) with no semantic translation lost, and every human or AI override is
+permanently flagged in the audit trail (Section~\ref{sec:harness}). We
+deliberately do not quantify it as a percentage improvement --- the gain depends
+on the baseline process being replaced --- but the mechanism replaces
+sample-based retrospective auditing with complete, queryable lineage. This is the
+structural counterpart to the latency argument above: manual reconciliation is
+opaque, since entries adjusted by hand at month-end open a gap between the source
+ledger and the consolidated statement, whereas a deterministic universal ID
+closes it.
 
 \subsection{Foreign-Currency Reconciliation and the Transaction-Date Rate (IAS 21)}
 \label{subsec:fx_reconciliation}
