@@ -54,7 +54,7 @@ Kontablo within this literature at the level of application and contribution.
 Luong Tuan \& Sanyal (2026) present a controlled experiment (1,800 runs, five
 regulated industries, three LLMs) demonstrating that ontology-coupled agents
 significantly outperform ungrounded baselines on metric accuracy and role
-consistency. Independently, [arXiv:2603.04663] (2026) introduces a
+consistency. Independently, Agand (2026) introduces a
 \emph{Universal Fact Ledger} --- deterministic typed variables grounding
 financial agent reasoning --- and shows this compresses financial hallucination
 to 1.2\%, with residual error concentrating at domain boundaries. Both
@@ -62,14 +62,12 @@ findings are direct empirical support for Kontablo's architectural
 Principle~5 (determinism over stochasticity wherever movable).
 
 \textbf{Ontologies provide categorically different guarantees than RAG.}
-While retrieval-augmented generation (RAG) improves probabilistic accuracy,
-it does not provide structural constraints on the output space. Sharma et al.
-(OG-RAG, EMNLP 2025) demonstrate $+55\%$ fact recall from ontology-anchored
-hypergraph retrieval, but acknowledge that formal constraint enforcement
-requires machine-readable ontological definitions that document-chunk
-retrieval cannot supply. This distinction is central to Kontablo: the UUID
-graph membership check is not a probabilistic improvement over RAG --- it is
-a categorical rejection mechanism applied before any value reaches the ledger.
+Sharma et al. (OG-RAG, EMNLP 2025) demonstrate $+55\%$ fact recall from
+ontology-anchored hypergraph retrieval, yet note that formal constraint
+enforcement requires machine-readable ontological definitions that
+document-chunk retrieval cannot supply. We develop this categorical distinction
+--- retrieval improves the odds; ontology bounds the output space --- in
+Section~\ref{subsec:ontology_vs_rag}.
 
 \textbf{Kontablo's contribution relative to this literature.}
 Existing neurosymbolic enterprise architectures (Luong Tuan \& Sanyal, 2026;

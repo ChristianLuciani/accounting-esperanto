@@ -124,7 +124,7 @@ Errors at the semantic coverage boundary take three forms:
     \item \textbf{Unmapped transaction types.} A transaction type not yet
     represented in the ontology has no valid UUID. The Three-Tier Resolution
     Pipeline routes it to Tier 3 (semantic AI fallback); if confidence remains
-    below the threshold (Section~6), it is flagged for human review rather than
+    below the threshold (Section~\ref{sec:deterministic}), it is flagged for human review rather than
     forcing a low-confidence posting. The error is not confabulated -- it is
     escalated and made observable.
 
@@ -138,7 +138,7 @@ Errors at the semantic coverage boundary take three forms:
     \item \textbf{Semantic ambiguity within coverage.} Some transactions
     satisfy the boundary predicates of more than one Level 3 node. In these
     cases Tier 3 may produce a defensible but suboptimal mapping. The
-    Co-responsibility Architecture (Section~10) manages this residual by
+    Co-responsibility Architecture (Section~\ref{sec:governance}) manages this residual by
     requiring human review for low-confidence Tier 3 outputs.
 \end{enumerate}
 
@@ -150,21 +150,16 @@ Stochastic interior errors from an unconstrained model are, by contrast,
 artifact beyond the wrong posting itself, invisible to the audit trail unless
 a human catches it retrospectively.
 
-This relocation framing is corroborated by independent work.
-Luong Tuan \& Sanyal (2026) describe the equivalent phenomenon in their
-neurosymbolic enterprise architecture as the \emph{inverse parametric
-knowledge effect}: the value of ontological grounding is highest precisely at
-the coverage boundary, where LLM parametric knowledge is weakest (Vietnamese
-financial regulation: $\Delta = +.29$; English financial domains: $\Delta =
-+.12$). A system well-grounded in the core of the ontology reveals its
-failure mode at the periphery -- which is exactly the observable error
-behavior the CRA is designed to capture, not suppress.
-The neuro-symbolic financial reasoning architecture of [arXiv:2603.04663]
-(2026) similarly identifies that shifting from probabilistic retrieval to
-deterministic grounding compresses financial hallucination to 1.2\%, with
-residual error concentrating at domain boundaries -- confirming the relocation
-pattern as a general property of constrained-output financial systems, not an
-artifact of Kontablo's specific design.
+This relocation framing is corroborated by independent work. The
+\emph{inverse parametric knowledge effect} (Section~\ref{subsec:ipke}) places the
+value of ontological grounding highest precisely at the coverage boundary, where
+LLM parametric knowledge is weakest --- exactly the observable error behavior the
+CRA is designed to capture, not suppress. The neuro-symbolic financial reasoning
+architecture of Agand (2026) similarly finds that shifting from probabilistic
+retrieval to deterministic grounding compresses financial hallucination to 1.2\%,
+with residual error concentrating at domain boundaries --- confirming the
+relocation pattern as a general property of constrained-output financial systems,
+not an artifact of Kontablo's specific design.
 
 \subsection{The Engineering Reframe: From Intractable to Tractable}
 \label{subsec:reframe}
@@ -190,12 +185,12 @@ This is a tractable engineering problem with identifiable components:
 
 \begin{itemize}
     \item Schema-constrained tool interfaces that enforce UUID membership
-    \item The Three-Tier Resolution Pipeline (Section~6), which maximizes
+    \item The Three-Tier Resolution Pipeline (Section~\ref{sec:deterministic}), which maximizes
     the proportion of decisions resolved deterministically before reaching
     the model
-    \item The Deterministic Boundary Library (Section~6.3), which validates
+    \item The Deterministic Boundary Library (Section~\ref{subsec:boundary_library}), which validates
     even Tier 3 proposals against ontological predicates before ledger write
-    \item The Co-responsibility Architecture (Section~10), which governs
+    \item The Co-responsibility Architecture (Section~\ref{sec:governance}), which governs
     the out-of-coverage escalation path
 \end{itemize}
 
@@ -210,7 +205,7 @@ instrument.
 Management}
 \label{subsec:cra_as_error_management}
 
-The Co-responsibility Architecture (ADR-008, Section~10) serves two functions
+The Co-responsibility Architecture (ADR-008, Section~\ref{sec:governance}) serves two functions
 (Section~\ref{subsec:non_delegability}): it is the foundational locus of
 non-delegable legal accountability for every transaction, and --- the aspect
 this subsection isolates --- it is the \textbf{residual error management

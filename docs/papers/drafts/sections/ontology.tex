@@ -63,7 +63,7 @@ The core of the Kontablo protocol is the \textbf{Level 3 account specification},
 
 The taxonomy defines exactly 30 Level 3 accounts, divided into two distinct components:
 \begin{enumerate}
-    \item \textbf{18 Near-Universal Core Accounts:} concepts that recur near-universally across the committed jurisdiction mapping sets (the most universal appear in 94--98\% of them; none reaches a literal 100\%). These cover core operational categories including Cash, Trade Receivables, Trade Payables, Retained Earnings, Cost of Goods Sold, and Administrative Expenses.
+    \item \textbf{18 Near-Universal Core Accounts:} concepts that recur near-universally across the committed jurisdiction mapping sets (the most universal appear in 94--98\% of them; none reaches a literal 100\%, the shortfall reflecting incomplete mapping depth rather than conceptual absence from the underlying standard). These cover core operational categories including Cash, Trade Receivables, Trade Payables, Retained Earnings, Cost of Goods Sold, and Administrative Expenses.
     \item \textbf{12 Optional/Jurisdictional Overlays:} Activatable nodes based on specific regulatory regimes or business models. Examples include:
     \begin{itemize}
         \item \texttt{asset.current.vat\_input} and \texttt{liability.current.vat\_output} (disabled in jurisdictions without VAT, such as the United States).
@@ -106,14 +106,16 @@ the node's secondary analytical edges (e.g.\ a cash-flow-statement
 classification or an intercompany-counterparty dimension) are dropped from the
 exported tree but retained inside Kontablo. The discarded secondary edges are
 exactly the information a single-parent tree cannot hold --- the formal source
-of the reconciliation obstruction analysed in
+of the reconciliation obstruction analyzed in
 Section~\ref{subsec:reconciliation_obstruction}.
 
 \subsection{AI Validation and the Co-responsibility Architecture}
-Kontablo maps 1:N cardinality disruptions via a strictly defined \textbf{Co-responsibility Architecture}. In this model, the integrated large language model (LLM) acts as an augmentative auditor that proposes mappings and verifies human overrides; the architecture is model-agnostic by design and names no specific vendor.
-
-If a human accountant makes a selection that contradicts the deterministic boundary of a node (e.g., mapping a physical cash account to a non-current asset node), the system generates an \textbf{Inconsistency Flag}. This flag, accompanied by a machine-generated audit note, is permanently attached to the transaction. This ensures that while the human remains the final authority (``AI proposes, Human disposes''), the system enforces a digital trail of accountability that simplifies future forensic audits. Final legal accountability rests with the human operator. The AI's role is verification and warning; the human retains veto power and bears sole legal responsibility for any mapping committed to the ledger. The audit trail records both the AI's proposal and the human's disposition, making every decision traceable and attributable.
-
-
-\subsection{Standard Hierarchy: The Level 3 Minimum Core}
-Based on a comparative analysis of 195 jurisdictions, we identify 18 Level 3 accounts that recur near-universally across the analyzed standards (e.g., cash, receivables, trade payables, share capital): in our committed jurisdiction mapping sets, the most universal of these concepts appear in 94--98\% of jurisdictions, with the remainder reflecting incomplete mapping depth rather than conceptual absence from the underlying standard. An additional 12 accounts (e.g., Input VAT, Zakat Provision, Deferred Tax) are classified as ``Jurisdiction-Specific Overlays,'' which are toggled based on the entity's regulatory environment metadata.
+Kontablo resolves the 1:N and N:M mapping cardinalities introduced above under a
+\textbf{Co-responsibility Architecture (CRA)}: the language model proposes
+mappings and verifies human overrides, but the human operator remains the final
+authority (``AI proposes, Human disposes'') and the sole bearer of legal
+accountability, and every proposal-and-disposition is recorded in an append-only
+audit trail. The architecture is model-agnostic and names no specific vendor. We
+defer the full mechanism --- inconsistency flagging, the standing-versus-per-exception
+authorization modes, and the enforcement boundary --- to
+Section~\ref{sec:governance}.

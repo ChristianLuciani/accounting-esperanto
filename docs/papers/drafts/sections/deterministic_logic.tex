@@ -21,7 +21,8 @@ deterministic tiers and the single stochastic one concrete.
 
 \input{figures/fig_tier_worked_example}
 
-\subsection{The Deterministic Questions Library}
+\subsection{The Deterministic Boundary Library}
+\label{subsec:boundary_library}
 To prevent LLM mapping proposals from silently corrupting the ledger, all outputs from Tier 3 must pass through a strict library of deterministic boundary rules. Rather than letting the LLM decide a mapping in a single step, the system forces the mapping through a sequence of deterministic questions based on the target node's metadata. 
 
 For example, if the AI proposes mapping a local account ``Petty Cash Fund'' to the Level 3 node \texttt{asset.current.cash}, the rule engine verifies:
@@ -36,7 +37,7 @@ If any validation returns a mismatch (e.g., if the AI attempts to map a restrict
 \input{figures/fig_deterministic_checklist}
 
 \subsection{Cross-Jurisdiction Semantic Bridge}
-Imagine a multinational with two accountants: one in Mexico who names the cash account ``Caja Revolvente’’ and one in Brazil who uses ``Caixa Geral.’’ To a human ERP manager, these are different. In the Kontablo Graph, both accountants’ local entries hit the same node because they both satisfy the deterministic criteria for `asset.current.cash`.
+Imagine a multinational with two accountants: one in Mexico who names the cash account ``Caja Revolvente'' and one in Brazil who uses ``Caixa Geral.'' To a human ERP manager, these are different. In the Kontablo Graph, both accountants' local entries hit the same node because they both satisfy the deterministic criteria for \texttt{asset.current.cash}.
 
 This allows a corporate headquarters to have a \textbf{Unified Single-target Ledger} where the name of the local account is irrelevant to the consolidated analytical truth. The consolidation occurs at the graph layer, not the string/label layer.
 
@@ -47,7 +48,7 @@ Jurisdictions Benefit Most}
 A non-obvious consequence of ontology-as-constraint is what Luong Tuan \&
 Sanyal (2026) term the \textbf{Inverse Parametric Knowledge Effect (IPKE)}:
 the value of ontological grounding is \emph{inversely proportional} to the
-LLM’s pretraining coverage of the target domain. For well-documented
+LLM's pretraining coverage of the target domain. For well-documented
 international concepts -- Basel~III ratios, PCI-DSS levels, IFRS core
 terminology -- LLMs already encode sufficient parametric knowledge, and
 injecting additional ontological context produces marginal gains (or in
@@ -55,9 +56,9 @@ some cases modest regressions due to context displacement). For
 enterprise-specific, non-English, or thin-corpus regulatory domains,
 ontological grounding is not an optimization but an operational requirement.
 
-This effect has direct implications for Kontablo’s jurisdictional coverage
+This effect has direct implications for Kontablo's jurisdictional coverage
 strategy. The jurisdictions that benefit most from the deterministic
-constraint layer are precisely those where pretraining data is structutest
+constraint layer are precisely those where pretraining data is structurally
 sparse: VAS-Vietnam (government-mandated chart in Vietnamese), SOCPA-Saudi
 Arabia (Zakat provisions in Arabic), SYSCOHADA-francophone Africa (OHADA
 chart in French with local judicial overlays), and IAS~29 hyperinflationary
@@ -80,7 +81,7 @@ codes, and SYSCOHADA blueprints?
 RAG retrieves; it does not constrain. A RAG system can surface the relevant
 section of the Vietnamese VAS standard for a given transaction, but it
 cannot \emph{prevent} the LLM from emitting an account code that does not
-exist in the client’s actual chart. The critical difference is the locus of
+exist in the client's actual chart. The critical difference is the locus of
 the guarantee:
 
 \begin{itemize}
@@ -89,7 +90,7 @@ the guarantee:
   less likely.
   \item \textbf{Ontology-as-constraint} provides a categorical guarantee:
   any UUID that does not exist in the graph is rejected at the harness level
-  before reaching the ledger, regardless of the model’s confidence.
+  before reaching the ledger, regardless of the model's confidence.
 \end{itemize}
 
 Luong Tuan \& Sanyal (2026) quantify the distinction: while RAG and ontology
@@ -97,7 +98,7 @@ injection achieve comparable scores on lexical recall metrics, ontologies
 provide \emph{categorically different} capabilities that document-chunk
 retrieval cannot replicate -- hierarchical constraint enforcement, formal
 composability across industries, and machine-verifiable output validation
-(their Table~5). For Kontablo’s ledger-grade accuracy requirement -- where a
+(their Table~5). For Kontablo's ledger-grade accuracy requirement -- where a
 95\% accuracy rate is not acceptable and every mismatch must be flagged --
 the categorical guarantee is the operative property, not the average-case
 improvement. A system that \emph{usually} maps correctly but \emph{sometimes}

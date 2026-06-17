@@ -1,6 +1,7 @@
 \section{Introduction}
 
 \subsection{The Three Structural Crises of Modern Accounting}
+\label{subsec:crises}
 Accounting systems are often viewed merely as recording tools, but they represent the actual \textit{language} of capital. When this language is fragmented, capital becomes inefficient. Current multinational accounting environments suffer from three core structural crises that legacy architectures cannot resolve:
 
 \begin{enumerate}
@@ -26,14 +27,13 @@ jurisdiction overlay) and explicit, queryable relationships to other concepts.
 The artifact is a computational object an agent can reason over, not a
 philosophical claim about the nature of economic reality.
 
-Kontablo bridges this gap by creating an open, graph-based universal accounting ontology. Unlike prior work on XBRL---which is a disclosure and reporting taxonomy, not a transaction-execution layer (we treat the two as complementary; Section~\ref{sec:precedents})---Kontablo defines a precise ``Level 3'' taxonomy of 30 universal accounts. This paper makes the following contributions:
+Kontablo bridges this gap by creating an open, graph-based universal accounting ontology. Unlike XBRL --- a disclosure and reporting taxonomy rather than a transaction-execution layer, and complementary to Kontablo rather than displaced by it (Section~\ref{sec:precedents}) --- Kontablo defines a precise ``Level 3'' taxonomy of 30 universal accounts. This paper makes three core contributions:
 \begin{enumerate}
-    \item A formal graph-based data model for IFRS-anchored universal accounts, resolving tree-hierarchy limitations.
-    \item A three-tier mapping resolution strategy that maps localized ERP trees into the universal graph.
-    \item A multilingual semantic mapping engine with a Co-responsibility Architecture (CRA) for auditing human overrides.
-    \item A mass-consolidation simulation engine proving coverage across 195 sovereign jurisdictions, including a dual-currency hyperinflation stress test.
-    \item A roadmap for two-way API integration with the top 10 global commercial ERP systems.
+    \item \textbf{A Level~3 minimum-core taxonomy} of 30 universal, IFRS-anchored accounts, expressed as a directed multi-dimensional property graph that removes the single-parent limitation of statutory chart-of-accounts trees.
+    \item \textbf{A Three-Tier Resolution Strategy} that maps localized ERP charts into the universal graph: deterministic exact-code and multilingual keyword resolution first, then a confidence-scored semantic AI fallback bounded by the Deterministic Boundary Library.
+    \item \textbf{A Co-responsibility Architecture (CRA)} that pairs every mapping proposal with a mandatory human-review pathway and an append-only audit trail, keeping legal accountability with the human operator.
 \end{enumerate}
+We substantiate these on a reproducible mass-consolidation simulation spanning 195 sovereign jurisdictions and 75 entities, including a dual-rate IAS~29 hyperinflation stress test (Section~\ref{sec:evaluation}), and outline a roadmap for two-way connectors to major commercial ERP systems in the concluding section.
 
 \paragraph{The three resolution tiers, up front.} Because the rest of this
 paper refers constantly to ``Tier~1/2/3,'' we define them here; they are
@@ -63,19 +63,3 @@ universal Level~3 node, and the engine descends the tiers only on failure:
 \noindent The decisive property is that Tiers~1 and~2 are deterministic and
 verifiable, Tier~3 is the only stochastic step, and \emph{no} tier can invent a
 node that does not already exist in the ontology.
-
-\paragraph{Organization of this paper.} Sections~\ref{sec:precedents}
-and~\ref{sec:ontology-bridge} establish the historical precedents and the
-graph-versus-tree data model; Section~\ref{sec:mathfound} gives the formal
-(category- and sheaf-theoretic) account of the translation and its
-reconciliation obstruction. Section~\ref{sec:deterministic} specifies the
-three-tier resolution strategy and the Deterministic Boundary Library, and
-Section~\ref{sec:harness} frames the system as a model-plus-harness and locates
-where residual error can live. Sections~\ref{sec:agentic} and~\ref{sec:governance}
-cover the agent-native interfaces and the Co-responsibility Architecture
-(including its scope and enforcement boundary, Section~\ref{subsec:enforcement_boundary}).
-Section~\ref{sec:evaluation} reports the reproducible validation; the
-labor-market and conclusion sections close the paper. Readers interested only
-in the engineering may read Sections~\ref{sec:ontology-bridge},
-\ref{sec:deterministic}, \ref{sec:harness}, and \ref{sec:evaluation} as a
-self-contained unit.
