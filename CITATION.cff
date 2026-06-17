@@ -13,7 +13,8 @@ abstract: >
   Bridge and a Deterministic Boundary Library that eliminates the classical
   class of accounting hallucination at the harness level. A reproducible
   mass-consolidation validation on a synthetic matrix built from the ontology's
-  own committed code sets spans 75 entities in 68 jurisdictions, with the
+  own committed code sets spans 75 entities in 68 jurisdictions across
+  fourteen languages and five writing systems, with the
   deterministic tiers resolving 97% of entries.
   Its 30-account Level 3 minimum core covers an estimated ~94% of routine
   transaction volume by posting count (rising to ~99% with a 34-account extended
@@ -32,7 +33,7 @@ identifiers:
     description: "Zenodo deposit of the v0.1.0 release"
 license: BUSL-1.1
 version: "0.1.0"
-date-released: "2026-05-28"
+date-released: "2026-06-18"
 keywords:
   - accounting
   - ontology

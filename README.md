@@ -14,7 +14,7 @@ overlays for the 60 jurisdictions that mandate a national chart.
 |---|---|
 | **Status** | Phase 3 — Pre-Publication |
 | **Preprint** | [DOI 10.5281/zenodo.20738796](https://doi.org/10.5281/zenodo.20738796) · `docs/papers/drafts/kontablo_preprint_modular.pdf` · SSRN submission pending |
-| **License** | [BSL 1.1](LICENSE) → Apache 2.0 on 2030-05-28 · ERPNext & Odoo connectors: [Apache 2.0](connectors/erpnext/LICENSE) |
+| **License** | [BSL 1.1](LICENSE) → Apache 2.0 on 2030-06-18 · ERPNext & Odoo connectors: [Apache 2.0](connectors/erpnext/LICENSE) |
 | **Author** | Christian Luciani · [ORCID 0000-0002-6955-5384](https://orcid.org/0000-0002-6955-5384) |
 
 ---
@@ -181,8 +181,9 @@ repository with deterministic commands — no API keys, no network calls:
 pip install -r requirements.txt
 
 # Coverage manifest (195 sovereign / 60 statutory charts / 56 Tier-1-ready)
-# and the validation matrix: 75 entities, 68 jurisdictions, 97.3% deterministic
-# resolution, 25/30 universal nodes populated, 4 escalations to human review.
+# and the validation matrix: 75 entities, 68 jurisdictions, fourteen languages
+# across five writing systems, 97.3% deterministic resolution, 25/30 universal
+# nodes populated, 4 escalations to human review.
 python scripts/mass_consolidation_v2.py
 # → results in research/experiments/consolidation_v2/results.json
 
@@ -303,7 +304,7 @@ this repository. See [LICENSING.md](LICENSING.md) for commercial use options.
 ## License and contributing
 
 Kontablo core is licensed under **BSL 1.1** (Business Source License). It converts
-automatically to Apache 2.0 on **May 28, 2030**. See [LICENSE](LICENSE) and
+automatically to Apache 2.0 on **June 18, 2030**. See [LICENSE](LICENSE) and
 [LICENSING.md](LICENSING.md) for the full terms, Additional Use Grant, and rationale.
 
 ERPNext/Frappe and Odoo connectors: **Apache 2.0**. See [connectors/erpnext/LICENSE](connectors/erpnext/LICENSE) and [connectors/odoo/LICENSE](connectors/odoo/LICENSE).

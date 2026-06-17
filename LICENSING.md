@@ -14,7 +14,7 @@ The **Business Source License 1.1 (BSL 1.1)** preserves this structure:
 - The Additional Use Grant permits open-source ERP integrations and academic use.
 - Commercial products that compete directly with Kontablo's core offering require
   a separate commercial license from the Licensor.
-- After **May 28, 2030** (four years from first public release), the entire codebase
+- After **June 18, 2030** (four years from first public release), the entire codebase
   converts automatically to **Apache License 2.0** — no action required.
 
 This model is used by MariaDB, HashiCorp (pre-BSL), and other infrastructure projects
