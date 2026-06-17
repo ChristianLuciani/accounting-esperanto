@@ -25,6 +25,11 @@ authors:
     affiliation: "Independent Researcher, Cuenca, Ecuador"
     email: cluciani@gmail.com
 repository-code: "https://github.com/ChristianLuciani/accounting-esperanto"
+doi: "10.5281/zenodo.20738796"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.20738796"
+    description: "Zenodo deposit of the v0.1.0 release"
 license: BUSL-1.1
 version: "0.1.0"
 date-released: "2026-05-28"
@@ -52,5 +57,6 @@ preferred-citation:
       orcid: "https://orcid.org/0000-0002-6955-5384"
       affiliation: "Independent Researcher, Cuenca, Ecuador"
   year: 2026
-  notes: "Preprint. SSRN/Zenodo submission pending. DOI will be added upon publication."
-  url: "https://github.com/ChristianLuciani/accounting-esperanto"
+  doi: "10.5281/zenodo.20738796"
+  notes: "Preprint on Zenodo (DOI 10.5281/zenodo.20738796). SSRN submission pending."
+  url: "https://doi.org/10.5281/zenodo.20738796"

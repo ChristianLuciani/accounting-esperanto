@@ -13,7 +13,7 @@ overlays for the 60 jurisdictions that mandate a national chart.
 | | |
 |---|---|
 | **Status** | Phase 3 — Pre-Publication |
-| **Preprint** | `docs/papers/drafts/kontablo_preprint_modular.pdf` — SSRN/Zenodo submission pending |
+| **Preprint** | [DOI 10.5281/zenodo.20738796](https://doi.org/10.5281/zenodo.20738796) · `docs/papers/drafts/kontablo_preprint_modular.pdf` · SSRN submission pending |
 | **License** | [BSL 1.1](LICENSE) → Apache 2.0 on 2030-05-28 · ERPNext & Odoo connectors: [Apache 2.0](connectors/erpnext/LICENSE) |
 | **Author** | Christian Luciani · [ORCID 0000-0002-6955-5384](https://orcid.org/0000-0002-6955-5384) |
 
@@ -249,7 +249,9 @@ documented in the preprint (Appendix and Section on expanded validation).
                   for Multi-Jurisdictional Financial Integration},
   author       = {Luciani, Christian},
   year         = {2026},
-  note         = {Preprint. SSRN/Zenodo submission pending. Available at
+  doi          = {10.5281/zenodo.20738796},
+  url          = {https://doi.org/10.5281/zenodo.20738796},
+  note         = {Preprint. Zenodo. SSRN submission pending. Source at
                   \url{https://github.com/ChristianLuciani/accounting-esperanto}},
   institution  = {Independent Researcher, Cuenca, Ecuador},
   orcid        = {0000-0002-6955-5384}
@@ -259,10 +261,10 @@ documented in the preprint (Appendix and Section on expanded validation).
 **APA:**
 
 Luciani, C. (2026). *Kontablo: A graph-based universal accounting ontology for
-multi-jurisdictional financial integration* [Preprint]. Praxia.
-https://github.com/ChristianLuciani/accounting-esperanto
+multi-jurisdictional financial integration* [Preprint]. Zenodo.
+https://doi.org/10.5281/zenodo.20738796
 
-*DOI will be added upon SSRN/Zenodo publication.*
+*SSRN URL will be added once the SSRN deposit is approved.*
 
 ---
 

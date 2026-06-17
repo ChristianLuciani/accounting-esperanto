@@ -43,5 +43,5 @@
     {"identifier": "zenodo"},
     {"identifier": "software"}
   ],
-  "notes": "Preprint available at the repository. SSRN DOI will be linked once assigned. Source License: Business Source License 1.1, converting to Apache 2.0 on 2030-05-28 (the Change Date in LICENSE)."
+  "notes": "Preprint deposited on Zenodo (DOI 10.5281/zenodo.20738796). SSRN URL will be linked once the SSRN deposit is approved. Source License: Business Source License 1.1, converting to Apache 2.0 on 2030-05-28 (the Change Date in LICENSE)."
 }

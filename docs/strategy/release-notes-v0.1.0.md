@@ -33,15 +33,15 @@ See `LICENSE` and `LICENSING.md` for full terms.
 
 ## Citation
 
-Preprint DOI: *to be updated after Zenodo/SSRN deposit*
+Preprint DOI: [10.5281/zenodo.20738796](https://doi.org/10.5281/zenodo.20738796) (Zenodo). SSRN URL pending.
 
 ```bibtex
 @misc{luciani2026kontablo,
   author       = {Luciani, Christian},
   title        = {Kontablo: A Graph-Based Universal Accounting Ontology for the {M2M} Agentic Economy},
   year         = {2026},
-  howpublished = {Preprint v0.1.0},
-  url          = {https://github.com/ChristianLuciani/accounting-esperanto},
-  note         = {DOI to be added upon Zenodo/SSRN deposit}
+  howpublished = {Preprint, Zenodo},
+  doi          = {10.5281/zenodo.20738796},
+  url          = {https://doi.org/10.5281/zenodo.20738796}
 }
 ```
