@@ -329,7 +329,7 @@ Christian Luciani | ORCID 0000-0002-6955-5384 | Cuenca, Ecuador
 
 ### License
 
-Business Source License 1.1. Converts to Apache 2.0 on 2030-06-01.
+Business Source License 1.1. Converts to Apache 2.0 on 2030-06-18 (the Change Date in LICENSE).
 ERPNext connector: Apache 2.0.
 
 ---

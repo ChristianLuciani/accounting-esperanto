@@ -2,7 +2,10 @@
 
 **Kontablo is a graph-based, UUID-keyed universal accounting ontology** that bridges
 local jurisdictional chart-of-accounts standards, international reporting frameworks
-(IFRS/XBRL), the agentic economy (MCP, A2A, AP2), and blockchain/DeFi protocols —
+([IFRS](https://www.ifrs.org/)/[XBRL](https://www.xbrl.org/)), the agentic economy
+([MCP](https://modelcontextprotocol.io/specification),
+[A2A](https://a2a-protocol.org/), [AP2](https://ap2-protocol.org/specification/)),
+and blockchain/DeFi protocols —
 enabling deterministic, machine-verifiable financial data exchange across all 195
 sovereign jurisdictions (complete global coverage), with statutory chart-of-accounts
 overlays for the 60 jurisdictions that mandate a national chart.
@@ -10,8 +13,8 @@ overlays for the 60 jurisdictions that mandate a national chart.
 | | |
 |---|---|
 | **Status** | Phase 3 — Pre-Publication |
-| **Preprint** | `docs/papers/drafts/kontablo_preprint_modular.pdf` — SSRN/Zenodo submission pending |
-| **License** | [BSL 1.1](LICENSE) → Apache 2.0 on 2030-06-17 · ERPNext & Odoo connectors: [Apache 2.0](connectors/erpnext/LICENSE) |
+| **Preprint** | [DOI 10.5281/zenodo.20738796](https://doi.org/10.5281/zenodo.20738796) · `docs/papers/drafts/kontablo_preprint_modular.pdf` · SSRN submission pending |
+| **License** | [BSL 1.1](LICENSE) → Apache 2.0 on 2030-06-18 · ERPNext & Odoo connectors: [Apache 2.0](connectors/erpnext/LICENSE) |
 | **Author** | Christian Luciani · [ORCID 0000-0002-6955-5384](https://orcid.org/0000-0002-6955-5384) |
 
 ---
@@ -93,9 +96,9 @@ Kontablo exposes three agent-economy interfaces above the core API:
 
 | Protocol | Role |
 |---|---|
-| **MCP** (Model Context Protocol) | LLM/agent tool consumption — query the ledger, resolve UUIDs, validate transactions |
-| **A2A** (Agent2Agent) | Agent-to-agent interoperation across financial workflows |
-| **AP2** (Agent Payments Protocol) | Settlement coordination between autonomous agents |
+| **[MCP](https://modelcontextprotocol.io/specification)** (Model Context Protocol) | LLM/agent tool consumption — query the ledger, resolve UUIDs, validate transactions |
+| **[A2A](https://a2a-protocol.org/)** (Agent2Agent) | Agent-to-agent interoperation across financial workflows |
+| **[AP2](https://ap2-protocol.org/specification/)** (Agent Payments Protocol) | Settlement coordination between autonomous agents |
 
 The REST API is the canonical data interface and is fully implemented (FastAPI).
 A gRPC interface is defined in [`api/grpc/kontablo.proto`](api/grpc/kontablo.proto)
@@ -159,9 +162,11 @@ All **195 sovereign jurisdictions** are mapped (complete global coverage), with
   Hungarian, Bulgarian, Ukrainian, Kazakh, Tunisian, Belarusian, Serbian, Croatian,
   Slovenian, Moldovan and Greek national charts.
 
-Special contexts modeled: IAS 29 hyperinflation (Venezuela, Lebanon, Zimbabwe,
-Argentina, and others), Islamic finance jurisdictions, and distribution-only
-corporate income tax regimes (Estonia, Latvia, Georgia).
+Special contexts modeled:
+[IAS 29](https://www.ifrs.org/issued-standards/list-of-standards/ias-29-financial-reporting-in-hyperinflationary-economies/)
+hyperinflation (Venezuela, Lebanon, Zimbabwe, Argentina, and others), Islamic
+finance jurisdictions, and distribution-only corporate income tax regimes
+(Estonia, Latvia, Georgia).
 
 Multi-lingual semantic mapping is operational for Spanish, French, Arabic, and Vietnamese.
 
@@ -245,9 +250,11 @@ documented in the preprint (Appendix and Section on expanded validation).
                   for Multi-Jurisdictional Financial Integration},
   author       = {Luciani, Christian},
   year         = {2026},
-  note         = {Preprint. SSRN/Zenodo submission pending. Available at
+  doi          = {10.5281/zenodo.20738796},
+  url          = {https://doi.org/10.5281/zenodo.20738796},
+  note         = {Preprint. Zenodo. SSRN submission pending. Source at
                   \url{https://github.com/ChristianLuciani/accounting-esperanto}},
-  institution  = {Independent Researcher , Cuenca, Ecuador},
+  institution  = {Independent Researcher, Cuenca, Ecuador},
   orcid        = {0000-0002-6955-5384}
 }
 ```
@@ -255,10 +262,10 @@ documented in the preprint (Appendix and Section on expanded validation).
 **APA:**
 
 Luciani, C. (2026). *Kontablo: A graph-based universal accounting ontology for
-multi-jurisdictional financial integration* [Preprint]. Praxia.
-https://github.com/ChristianLuciani/accounting-esperanto
+multi-jurisdictional financial integration* [Preprint]. Zenodo.
+https://doi.org/10.5281/zenodo.20738796
 
-*DOI will be added upon SSRN/Zenodo publication.*
+*SSRN URL will be added once the SSRN deposit is approved.*
 
 ---
 
@@ -297,7 +304,7 @@ this repository. See [LICENSING.md](LICENSING.md) for commercial use options.
 ## License and contributing
 
 Kontablo core is licensed under **BSL 1.1** (Business Source License). It converts
-automatically to Apache 2.0 on **June 17, 2030**. See [LICENSE](LICENSE) and
+automatically to Apache 2.0 on **June 18, 2030**. See [LICENSE](LICENSE) and
 [LICENSING.md](LICENSING.md) for the full terms, Additional Use Grant, and rationale.
 
 ERPNext/Frappe and Odoo connectors: **Apache 2.0**. See [connectors/erpnext/LICENSE](connectors/erpnext/LICENSE) and [connectors/odoo/LICENSE](connectors/odoo/LICENSE).
