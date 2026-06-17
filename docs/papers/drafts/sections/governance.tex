@@ -176,3 +176,31 @@ both modes (Section~\ref{subsec:non_delegability}).
 In legacy corporate environments, fraud often occurs through the collusion of internal accounting staff who ``rubber-stamp'' misclassified journal entries (e.g., booking personal expenditures as business-related ``Administrative Expenses'' or masking asset withdrawals as ``Intercompany Receivables''). 
 
 By inserting the CRA between the general ledger database and the user interface, Kontablo establishes an automated, independent ``witness.'' Because the deterministic rules cannot be bribed or pressured, any fraudulent mapping override will automatically flag itself in the audit database. When external auditors perform their review, they do not need to sample thousands of transactions randomly; they simply query for all records where \texttt{inconsistency\_flag == true}. This structural transparency dramatically increases the difficulty of internal embezzlement and enforces compliance at the database write-in layer.
+
+\subsection{How does Kontablo relate to sovereign AI?}
+\label{subsec:sovereign_ai}
+\textbf{Sovereign AI} --- the capacity of a nation or institution to operate and
+govern its own AI stack (compute, models, and data) under its own jurisdiction
+rather than depending on a foreign provider --- is becoming a load-bearing
+constraint for public-sector and regulated finance. Kontablo is
+\emph{sovereignty-compatible by construction}, at three levels this paper has
+already established and a future revision will develop in full.
+\emph{Jurisdictional sovereignty:} the universal layer interoperates with, rather
+than replaces, each nation's statutory chart, so adoption requires neither
+surrendering a local chart of accounts nor harmonizing sovereign tax codes
+(Section~\ref{sec:precedents}). \emph{Data sovereignty:} the per-client
+determinism design keeps the agent and its data on client infrastructure
+(Section~\ref{subsec:adr011_preview}), so transaction data need not leave the
+jurisdiction to be mapped. \emph{Compute and linguistic sovereignty:} because the
+deterministic tiers resolve the large majority of volume with no language-model
+call at all, a sovereign deployment is not forced onto a foreign frontier model
+for its load-bearing decisions --- and the inverse parametric knowledge effect
+(Section~\ref{subsec:ipke}) shows that deterministic grounding benefits
+non-Anglophone jurisdictions the most. Combined with the non-delegability premise
+(Section~\ref{subsec:non_delegability}), under which legal accountability rests on
+a professional answerable to national law and never on a borderless AI, these
+properties position Kontablo as a candidate substrate for sovereign financial AI.
+We surface this point only at a high level here; a fuller treatment of digital
+sovereignty --- on-premises and air-gapped deployment profiles, and cross-border
+consolidation under conflicting data-residency regimes --- is deferred to future
+work (Section~\ref{sec:conclusion}).
