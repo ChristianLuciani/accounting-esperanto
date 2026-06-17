@@ -18,10 +18,10 @@
         fill=orange!18, minimum width=3.8cm, minimum height=0.9cm,
         align=center, font=\small},
     leafnode/.style={draw=orange!50!black, rectangle, rounded corners=4pt,
-        fill=orange!10, text width=2.7cm, minimum height=0.9cm,
+        fill=orange!10, text width=2.3cm, minimum height=0.9cm,
         align=center, font=\scriptsize},
     constraint/.style={draw=red!60!black, rectangle, rounded corners=4pt,
-        fill=red!8, text width=5.5cm, align=center,
+        fill=red!8, text width=10.5cm, align=center,
         minimum height=1.0cm, font=\scriptsize},
     treeline/.style={thick, gray!60}
 ]
@@ -30,21 +30,21 @@
 \node[rootnode] (assets) at (0,0) {Assets (Activo)};
 
 % Level 1 groups
-\node[groupnode] (current)    at (-5.5,-2.0) {Current Assets\\(Activo Circulante)};
-\node[groupnode] (noncurrent) at ( 5.5,-2.0) {Non-Current Assets\\(Activo Fijo)};
+\node[groupnode] (current)    at (-4.0,-2.0) {Current Assets\\(Activo Circulante)};
+\node[groupnode] (noncurrent) at ( 4.0,-2.0) {Non-Current Assets\\(Activo Fijo)};
 
 % Level 2 leaves under Current
-\node[leafnode] (cash)   at (-9.5,-4.4) {\texttt{101} Cash\\(Caja)};
-\node[leafnode] (bank)   at (-5.5,-4.4) {\texttt{102} Bank\\(Bancos)};
-\node[leafnode] (ar)     at (-1.5,-4.4) {\texttt{105} Receivables\\(Cuentas por cobrar)};
+\node[leafnode] (cash)   at (-6.6,-4.4) {\texttt{101} Cash\\(Caja)};
+\node[leafnode] (bank)   at (-4.0,-4.4) {\texttt{102} Bank\\(Bancos)};
+\node[leafnode] (ar)     at (-1.4,-4.4) {\texttt{105} Receivables\\(Cuentas por cobrar)};
 
 % Level 3 leaf under Cash
-\node[leafnode] (petty)  at (-11.2,-6.6) {\texttt{101.01} Petty Cash\\(Caja chica)};
-\node[leafnode] (till)   at (-7.8,-6.6)  {\texttt{101.02} Cash Register\\(Caja general)};
+\node[leafnode] (petty)  at (-7.9,-6.6) {\texttt{101.01} Petty Cash\\(Caja chica)};
+\node[leafnode] (till)   at (-5.3,-6.6)  {\texttt{101.02} Cash Register\\(Caja general)};
 
 % Level 2 leaves under Non-Current
-\node[leafnode] (ppe)    at (3.2,-4.4)  {\texttt{160} Property, Plant \& Equip.};
-\node[leafnode] (intang) at (7.8,-4.4)  {\texttt{170} Intangibles};
+\node[leafnode] (ppe)    at (2.6,-4.4)  {\texttt{160} Property, Plant \& Equip.};
+\node[leafnode] (intang) at (5.4,-4.4)  {\texttt{170} Intangibles};
 
 % Tree edges
 \draw[treeline] (assets.south) -- ++(0,-0.4) -| (current.north);
@@ -60,15 +60,16 @@
 \draw[treeline] (noncurrent.south) -- ++(0,-0.4) -| (ppe.north);
 \draw[treeline] (noncurrent.south) -- ++(0,-0.4) -| (intang.north);
 
-% Constraint callout
-\node[constraint] (note) at (3.5,-7.0) {%
+% Constraint callout, placed below the leaf row (not to the right) so the
+% figure stays narrow and renders at full size.
+\node[constraint] (note) at (-1.2,-8.7) {%
     \textbf{Rigid tree constraint:} each account belongs to exactly one
     parent. \texttt{101.01 Petty Cash} cannot simultaneously appear under
     a tax-ledger branch, a cost-center branch, and the balance-sheet
     branch — a structural limitation in cross-jurisdiction consolidation.};
 
 \draw[->, thick, red!60!black, dashed]
-    (petty.south) .. controls +(-0.5,-0.8) and +(-2.5,0.5) .. (note.west);
+    (petty.south) .. controls +(0,-0.9) and +(-2.5,0.6) .. (note.west);
 
 \end{tikzpicture}%
 }

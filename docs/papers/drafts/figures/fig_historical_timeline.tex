@@ -11,17 +11,18 @@
     >=Latex,
     milestone/.style={circle, fill=blue!70!black, draw=blue!40!black, inner sep=2.6pt},
     card/.style={draw=blue!55, rectangle, rounded corners=4pt, fill=blue!5,
-        text width=3.7cm, align=left, font=\scriptsize, inner sep=5pt},
+        text width=3.7cm, align=left, font=\footnotesize, inner sep=5pt},
     cardK/.style={draw=green!55!black, rectangle, rounded corners=4pt, fill=green!10,
-        text width=3.7cm, align=left, font=\scriptsize, inner sep=5pt},
+        text width=3.7cm, align=left, font=\footnotesize, inner sep=5pt},
     conn/.style={draw=blue!40, thick}
 ]
 
 % --- timeline axis ---
-\draw[thick,->] (0,0) -- (18,0) node[right, font=\small\bfseries] {Present};
+\draw[thick,->] (0,0) -- (13.4,0) node[right, font=\small\bfseries] {Present};
 
-% --- milestone x positions ---
-\def\xa{1.7}\def\xb{5.3}\def\xc{8.9}\def\xd{12.5}\def\xe{16.0}
+% --- milestone x positions (compressed so the figure renders at full size,
+% i.e. \fitwidth no longer has to shrink it; keeps in-card font at \footnotesize) ---
+\def\xa{1.9}\def\xb{4.6}\def\xc{7.3}\def\xd{10.0}\def\xe{12.7}
 \foreach \x in {\xa,\xb,\xc,\xd,\xe} { \node[milestone] at (\x,0) {}; }
 
 % --- cards alternate: up, down, up, down, up ---
