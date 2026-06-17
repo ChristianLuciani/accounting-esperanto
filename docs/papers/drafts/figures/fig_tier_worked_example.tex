@@ -17,14 +17,14 @@
 \node[local, below=0.7cm of l2] (l3) {\textbf{Tier 3 input}\\ ``Provisi\'on para Contingencias Laborales'' (no code, no keyword)};
 
 % tier labels
-\node[tier, right=1.6cm of l1] (t1) {Tier 1\\ exact code\\ (conf 1.0)};
-\node[tier, right=1.6cm of l2] (t2) {Tier 2\\ keyword rule\\ (conf 0.8--0.9)};
-\node[tier, right=1.6cm of l3] (t3) {Tier 3\\ semantic AI\\ (conf 0.5--0.85)};
+\node[tier, right=1.3cm of l1] (t1) {Tier 1\\ exact code\\ (conf 1.0)};
+\node[tier, right=1.3cm of l2] (t2) {Tier 2\\ keyword rule\\ (conf 0.8--0.9)};
+\node[tier, right=1.3cm of l3] (t3) {Tier 3\\ semantic AI\\ (conf 0.5--0.85)};
 
 % outputs
-\node[node3, right=1.6cm of t1] (o1) {\texttt{asset.current.cash}\\ \emph{posted}};
-\node[node3, right=1.6cm of t2] (o2) {\texttt{asset.current.cash}\\ \emph{posted}};
-\node[flag, right=1.6cm of t3] (o3) {proposed node, gated by the Boundary Library\\ $\rightarrow$ \emph{human review}};
+\node[node3, right=1.3cm of t1] (o1) {{\footnotesize\texttt{asset.current.cash}}\\ \emph{posted}};
+\node[node3, right=1.3cm of t2] (o2) {{\footnotesize\texttt{asset.current.cash}}\\ \emph{posted}};
+\node[flag, right=1.3cm of t3] (o3) {proposed node, gated by the Boundary Library\\ $\rightarrow$ \emph{human review}};
 
 \draw[->,thick] (l1) -- (t1); \draw[->,thick] (t1) -- (o1);
 \draw[->,thick] (l2) -- (t2); \draw[->,thick] (t2) -- (o2);

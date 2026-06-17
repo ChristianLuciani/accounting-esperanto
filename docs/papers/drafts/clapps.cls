@@ -59,34 +59,41 @@
 \definecolor{clappsMuted}{HTML}{52606D}  % secondary grey for meta lines
 
 % --- Section headings (titlesec if present, else base \@startsection) --------
+% Section headings are set ragged-right with hyphenation disabled, so a heading
+% never breaks a word across lines (e.g. "Mecha-nism", "Recom-position").
+\newcommand{\clapps@headsetup}{\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000\relax}
 \IfFileExists{titlesec.sty}{%
   \RequirePackage{titlesec}%
   \titleformat{\section}
-    {\sffamily\Large\bfseries\color{clappsAccent}}{\color{clappsAccent}\thesection}{0.7em}{}%
+    {\clapps@headsetup\sffamily\Large\bfseries\color{clappsAccent}}{\color{clappsAccent}\thesection}{0.7em}{}%
   \titleformat{\subsection}
-    {\sffamily\large\bfseries\color{clappsInk}}{\color{clappsAccent}\thesubsection}{0.6em}{}%
+    {\clapps@headsetup\sffamily\large\bfseries\color{clappsInk}}{\color{clappsAccent}\thesubsection}{0.6em}{}%
   \titleformat{\subsubsection}
-    {\sffamily\normalsize\bfseries\color{clappsInk}}{\color{clappsAccent}\thesubsubsection}{0.5em}{}%
+    {\clapps@headsetup\sffamily\normalsize\bfseries\color{clappsInk}}{\color{clappsAccent}\thesubsubsection}{0.5em}{}%
 }{%
   % Base-LaTeX fallback: the final argument of \@startsection styles the whole
   % heading (number included), giving sans + accent headings with no package.
   \renewcommand\section{\@startsection{section}{1}{\z@}%
      {-3.5ex \@plus -1ex \@minus -.2ex}{2.3ex \@plus.2ex}%
-     {\sffamily\Large\bfseries\color{clappsAccent}}}%
+     {\clapps@headsetup\sffamily\Large\bfseries\color{clappsAccent}}}%
   \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
      {-3.25ex\@plus -1ex \@minus -.2ex}{1.5ex \@plus .2ex}%
-     {\sffamily\large\bfseries\color{clappsInk}}}%
+     {\clapps@headsetup\sffamily\large\bfseries\color{clappsInk}}}%
   \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
      {-3.25ex\@plus -1ex \@minus -.2ex}{1.5ex \@plus .2ex}%
-     {\sffamily\normalsize\bfseries\color{clappsInk}}}%
+     {\clapps@headsetup\sffamily\normalsize\bfseries\color{clappsInk}}}%
 }
 
 % --- Title block (base \@maketitle override; no titling dependency) ----------
+% The accent rule under the title is sized to the rendered width of the author
+% name (not a fixed fraction), so the two visually align.
+\newlength{\clapps@rulewd}
 \renewcommand{\maketitle}{%
   \thispagestyle{plain}\vskip 0.5em%
+  \settowidth{\clapps@rulewd}{\sffamily\large\@author}%
   \begin{center}%
     {\sffamily\LARGE\bfseries\color{clappsInk}\@title \par}%
-    \vskip 0.4em{\color{clappsAccent}\rule{0.18\textwidth}{1.2pt}}\par
+    \vskip 0.4em{\color{clappsAccent}\rule{\clapps@rulewd}{1.2pt}}\par
     \vskip 0.7em{\sffamily\large\color{clappsInk}\@author \par}%
     \vskip 0.5em{\sffamily\small\color{clappsMuted}\@date \par}%
   \end{center}\par
@@ -121,17 +128,24 @@
 \IfFileExists{tcolorbox.sty}{\clapps@tcbtrue}{\clapps@tcbfalse}
 \ifclapps@tcb
   \RequirePackage[most]{tcolorbox}
+  % breakable: a long note flows across the page boundary instead of jumping
+  % whole to the next page and leaving the prior page half empty.
   \newtcolorbox{summarynote}{%
+    breakable, enhanced jigsaw,
     colback=clappsAccent!4, colframe=clappsAccent!55, boxrule=0.6pt, arc=2pt,
     left=8pt, right=8pt, top=6pt, bottom=6pt}
 \else
+  % No-package fallback: a ruled callout. Kept free of a minipage so the note
+  % breaks across pages (a minipage would jump whole and strand whitespace).
+  % A heavier accent rule above and a lighter one below read as a deliberate box.
   \newenvironment{summarynote}{%
-    \par\vskip0.5em\noindent
-    \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule}%
-    \color{clappsAccent}\rule{\linewidth}{0.6pt}\par\vskip4pt\color{black}%
+    \par\addvspace{0.7em}%
+    \noindent{\color{clappsAccent}\rule{\linewidth}{1.1pt}}\par\nobreak
+    \vskip4pt\noindent\ignorespaces
   }{%
-    \par\vskip4pt\color{clappsAccent}\rule{\linewidth}{0.6pt}%
-    \end{minipage}\par\vskip0.5em}
+    \par\vskip4pt%
+    \noindent{\color{clappsAccent}\rule{\linewidth}{0.6pt}}\par
+    \addvspace{0.7em}}
 \fi
 
 % --- Aggressive URL breaking (stop long DOIs/paths bleeding past the margin) --

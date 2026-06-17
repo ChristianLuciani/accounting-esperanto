@@ -4,7 +4,7 @@
 To test the ontology's robustness against the three crises identified in Section 1.1, we developed a mass-consolidation engine and exercised it on \textbf{synthetic} trial balances --- 10 distinct entities across 9 countries representing diverse regulatory environments. The data is simulated, not drawn from production ledgers; what the simulation validates is the mapping and consolidation \emph{architecture}, not field performance.
 
 \subsection{Consolidation Simulation Engine}
-The simulation models a multinational holding company consolidating trial balances from 10 distinct operational entities across 9 jurisdictions: Mexico (MX, two entities), Brazil (BR), France (FR), Panama (PA), Ecuador (EC), Colombia (CO), Vietnam (VN), Nigeria (NG), and Saudi Arabia (SA). Each subsidiary ledger is a synthetic trial balance written in the trial-balance export format of one of four source ERPs (ERPNext, Zoho Books, Odoo, SAP Business One) --- the files mirror each ERP's export layout but were never exported from a live ERP instance --- carrying localized charts of accounts (real statutory codes from SAT, SPED-style, PCG, PUC, VAS, SOCPA numbering), varying currencies, and diverging tax treatment. Every entity's trial balance balances exactly (total debits equal total credits in local currency), and the consolidated ledger satisfies the accounting identity $A = L + E + (R - X)$ with escalated lines carried in an explicit suspense bucket. The full artifact --- fixtures, parsers, resolution pipeline, and results --- is committed and regenerable with a single deterministic command (\texttt{scripts/consolidation\_v1\_initial\_run.py}; artifacts in \texttt{research/experiments/consolidation\_v1/}); no API keys or model calls are required. This initial run was subsequently extended into a larger, fully reproducible validation matrix (75 entities, 68 jurisdictions; Section~\ref{subsec:expanded_validation}).
+The simulation models a multinational holding company consolidating trial balances from 10 distinct operational entities across 9 jurisdictions: Mexico (MX, two entities), Brazil (BR), France (FR), Panama (PA), Ecuador (EC), Colombia (CO), Vietnam (VN), Nigeria (NG), and Saudi Arabia (SA). Each subsidiary ledger is a synthetic trial balance written in the trial-balance export format of one of four source ERPs (ERPNext, Zoho Books, Odoo, SAP Business One) --- the files mirror each ERP's export layout but were never exported from a live ERP instance --- carrying localized charts of accounts (real statutory codes from SAT, SPED-style, PCG, PUC, VAS, SOCPA numbering), varying currencies, and diverging tax treatment. Every entity's trial balance balances exactly (total debits equal total credits in local currency), and the consolidated ledger satisfies the accounting identity $A = L + E + (R - X)$ with escalated lines carried in an explicit suspense bucket. The full artifact --- fixtures, parsers, resolution pipeline, and results --- is committed and regenerable with a single deterministic command (\pathtt{scripts/consolidation_v1_initial_run.py}; artifacts in \pathtt{research/experiments/consolidation_v1/}); no API keys or model calls are required. This initial run was subsequently extended into a larger, fully reproducible validation matrix (75 entities, 68 jurisdictions; Section~\ref{subsec:expanded_validation}).
 
 \subsection{The 10-Point Complexity Scale}
 To measure the difficulty of mapping local charts of accounts to the universal Level 3 ontology, we established a \textbf{10-point Complexity Scale}. The scale rates jurisdictions based on four primary vectors: (1) alignment with IFRS, (2) strictness of mandatory national charts of accounts, (3) complexity of electronic invoicing and transactional metadata requirements, and (4) currency volatility/inflation treatment. 
@@ -17,42 +17,43 @@ Within this sample, the average complexity score is \textbf{5.6 / 10} (arithmeti
 \centering
 \small
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{l|c|l|l}
-\hline
-\textbf{Jurisdiction} & \textbf{Complexity (1--10)} & \textbf{Primary Complexity Driver} & \textbf{Validation Status} \\ \hline
-\multicolumn{4}{l}{\textit{Tier 1--2: IFRS-pure / minimal local divergence}} \\ \hline
+\begin{tabular}{lcll}
+\toprule
+\textbf{Jurisdiction} & \textbf{Complexity (1--10)} & \textbf{Primary Complexity Driver} & \textbf{Validation Status} \\
+\midrule
+\multicolumn{4}{l}{\textit{Tier 1--2: IFRS-pure / minimal local divergence}} \\
 United Kingdom (UK) & 2/10 & Full IFRS adoption; common-law flexibility & Fully Mapped \\
 Canada (CA)         & 2/10 & IFRS aligned with CPA Canada guidance & Fully Mapped \\
 Australia (AU)      & 2/10 & AASB equivalent to IFRS verbatim & Fully Mapped \\
-\hline
-\multicolumn{4}{l}{\textit{Tier 3--4: Moderate divergence}} \\ \hline
+\midrule
+\multicolumn{4}{l}{\textit{Tier 3--4: Moderate divergence}} \\
 United States (US)  & 3/10 & US-GAAP (FASB ASC); convergence ongoing & Fully Mapped \\
 India (IN)          & 4/10 & Ind-AS (IFRS converged, carve-outs apply) & Fully Mapped \\
 Germany (DE)        & 4/10 & HGB commercial code statutory divergence & Mapped (IKR Overlay) \\
 UAE (AE)            & 4/10 & Federal corporate tax introduced 2023 (MoF) & Fully Mapped \\
-\hline
-\multicolumn{4}{l}{\textit{Tier 5: Mandatory national chart + digital-tax metadata}} \\ \hline
+\midrule
+\multicolumn{4}{l}{\textit{Tier 5: Mandatory national chart + digital-tax metadata}} \\
 Japan (JP)          & 5/10 & J-GAAP (ASBJ); mandatory corporate-tax schedules & Fully Mapped \\
 Mexico (MX)         & 5/10 & Strict SAT 5-digit catalog tagging & Fully Mapped \\
 Colombia (CO)       & 5/10 & Rigid PUC numeric hierarchy & Fully Mapped \\
 Panama (PA)         & 5/10 & DGI/SMV dual-standard reporting & Fully Mapped \\
 South Africa (ZA)   & 5/10 & SARS guidelines; IFRS adopted via SAICA & Fully Mapped \\
-\hline
-\multicolumn{4}{l}{\textit{Tier 6: Codified national plans + inflation}} \\ \hline
+\midrule
+\multicolumn{4}{l}{\textit{Tier 6: Codified national plans + inflation}} \\
 France (FR)         & 6/10 & Mandatory Plan Comptable G\'{e}n\'{e}ral (PCG) & Mapped (PCG Overlay) \\
 Spain (ES)          & 6/10 & PGC 8-group structure; strict numbering & Fully Mapped \\
 China (CN)          & 6/10 & CAS standard divergence; VAT reform & Fully Mapped \\
 Russia (RU)         & 6/10 & RAS standard; transitioning to IFRS & Mapped (RAS Overlay) \\
 Turkey (TR)         & 6/10 & TAS inflation accounting rules (IAS~29 border) & Fully Mapped \\
-\hline
-\multicolumn{4}{l}{\textit{Tier 7: Complex tax regimes / strict government charts}} \\ \hline
+\midrule
+\multicolumn{4}{l}{\textit{Tier 7: Complex tax regimes / strict government charts}} \\
 Brazil (BR)         & 7/10 & SPED e-reporting; ICMS/PIS/COFINS tax credits & Fully Mapped \\
 Saudi Arabia (SA)   & 7/10 & Zakat religious tax base (SOCPA) & Mapped (Zakat Overlay) \\
 Vietnam (VN)        & 7/10 & Strict VAS 2014 government chart mandates & Mapped (VAS Overlay) \\
-\hline
-\multicolumn{4}{l}{\textit{Tier 10: IAS 29 hyperinflation stress case}} \\ \hline
+\midrule
+\multicolumn{4}{l}{\textit{Tier 10: IAS 29 hyperinflation stress case}} \\
 Venezuela (VE)      & 10/10 & IAS~29 hyperinflation; dual-currency parallel rates & Stress Tested \\
-\hline
+\bottomrule
 \end{tabular}%
 }
 \caption{Stratified representative sample (21 of 195 mapped jurisdictions) illustrating the full complexity-tier range of the Kontablo ontology. Complexity scores reflect: IFRS alignment, mandatory national chart strictness, digital-tax metadata requirements, and currency/inflation treatment. Mean complexity for this sample: 5.6/10. US-GAAP source: FASB ASC (fasb.org); Ind-AS source: MCA notification 2015 (mca.gov.in); J-GAAP source: ASBJ (asb.or.jp). Full 195-jurisdiction dataset available in the project repository.}
@@ -62,8 +63,8 @@ Venezuela (VE)      & 10/10 & IAS~29 hyperinflation; dual-currency parallel rate
 \subsection{Coverage and Data Quality}
 The AI-augmented graph successfully mapped 100\% of the sample transaction sets to Kontablo's core `asset.current.cash` and `asset.current.receivables` universal IDs. The engine normalizes each subsidiary's local-currency balances to a common reporting currency before aggregation, demonstrating that Kontablo can consolidate localized ledgers into a unified global balance sheet. Two foreign-exchange regimes are deliberately kept separate. The \emph{reproducible validation} prices every balance from a \emph{pinned} rate table so the published figures regenerate byte-for-byte (the claims--evidence gate of Section~\ref{subsec:expanded_validation}); a hyperinflation entity additionally carries an explicit parallel/IAS~29 rate to exercise dual-rate divergence. The \emph{reference implementation}, by contrast, resolves rates at runtime from public reference sources --- European Central Bank reference rates via Frankfurter,\footnote{\url{https://api.frankfurter.dev}} with a broader-coverage fallback via the ExchangeRate-API open endpoint\footnote{\url{https://open.er-api.com}} for the exotic and hyperinflationary currencies the ECB set does not publish, and the pinned table as the offline last resort --- so a live deployment prices balances at current rates rather than frozen demonstration values. Foreign-exchange selection is deterministic and the rate is never inferred by the language model. Crucially, every conversion is \emph{auditable at the transaction level}: each priced balance carries an attached provenance record --- the rate applied, the source that supplied it (\texttt{frankfurter-ecb}, \texttt{open-er-api}, \texttt{static-pinned}, or \texttt{manual}), the rate's upstream as-of date, and the timestamp at which it was applied. Asynchronous transactions that must be priced at a historical or contractually agreed rate (e.g.\ an invoice-date or intercompany contract rate) are supported through an explicit manual override that is recorded with the same provenance fields --- its effective as-of date and a free-text rationale --- so a hand-entered rate is exactly as traceable as a fetched one.
 A separate, reproducible transaction-frequency benchmark
-(\texttt{scripts/coverage\_benchmark.py}, dataset and provenance in
-\texttt{research/coverage\_benchmark/}) estimates that the 30 Level~3 accounts
+(\pathtt{scripts/coverage_benchmark.py}, dataset and provenance in
+\pathtt{research/coverage_benchmark/}) estimates that the 30 Level~3 accounts
 cover \textbf{$\sim$94\% of routine transaction volume by posting-line count}
 (and $\sim$87\% counted by whole transaction). We are explicit about the
 evidentiary status of this figure: it is a \emph{model-based estimate} computed
@@ -198,8 +199,8 @@ universal IFRS-anchored layer and a verifiable, conservatively-bounded statutory
 overlay --- not an assertion of 195 transcribed national charts.
 
 To test the pipeline beyond the initial proof, we ran a broader, fully
-reproducible consolidation (script \texttt{scripts/mass\_consolidation\_v2.py};
-artifacts in \texttt{research/experiments/consolidation\_v2/}). The trial
+reproducible consolidation (script \pathtt{scripts/mass_consolidation_v2.py};
+artifacts in \pathtt{research/experiments/consolidation_v2/}). The trial
 balances are \emph{generated directly from the ontology and chart families
 themselves}: for every jurisdiction with real \texttt{local\_codes} (inline or
 via a chart family), an entity is constructed from those exact codes, so Tier-1
@@ -338,7 +339,7 @@ Parametric Knowledge Effect (IPKE)} identified in independent empirical work
 adds most value precisely where LLM pretraining coverage of the target domain
 is structurally thinnest.
 
-The committed run (\texttt{research/experiments/consolidation\_v1/results.json})
+The committed run (\pathtt{research/experiments/consolidation_v1/results.json})
 shows the two sides of this effect. For Saudi Arabia (SOCPA with Zakat
 overlay), the deterministic tiers resolve only 5 of 12 lines --- one
 ontology-carried SOCPA code at Tier~1, four Arabic names matched by the

@@ -6,9 +6,9 @@ The following table lists a comprehensive selection of the core Level 3 accounts
 \centering
 \small
 \resizebox{\textwidth}{!}{%
-\begin{tabular}{l|l|c|l|p{6.5cm}}
-\hline
-\textbf{Level 3 ID} & \textbf{UUID} & \textbf{Nature} & \textbf{IFRS Tag} & \textbf{Local Code Mappings (MX, CO, PA, VN, FR)} \\ \hline
+\begin{tabular}{llclp{6.5cm}}
+\toprule
+\textbf{Level 3 ID} & \textbf{UUID} & \textbf{Nature} & \textbf{IFRS Tag} & \textbf{Local Code Mappings (MX, CO, PA, VN, FR)} \\ \midrule
 \texttt{asset.current.cash} & \texttt{...0101} & Debit & \texttt{CashAndCashEquivalents} & MX: 101, CO: 1105, PA: 1.1.01, VN: 111, FR: 512 \\
 \texttt{asset.current.bank} & \texttt{...0102} & Debit & \texttt{CashAndCashEquivalents} & MX: 102, CO: 1110, PA: 1.1.02, VN: 112, FR: 512 \\
 \texttt{asset.current.receivables} & \texttt{...0104} & Debit & \texttt{TradeAndOtherReceivables} & MX: 105, CO: 1305, PA: 1.1.05, VN: 131, FR: 411 \\
@@ -32,7 +32,7 @@ The following table lists a comprehensive selection of the core Level 3 accounts
 \texttt{expense.depreciation} & \texttt{...0503} & Debit & \texttt{DepreciationExpense} & MX: 506, CO: 5160, PA: 7.2.05, VN: 214, FR: 681 \\
 \texttt{expense.interest} & \texttt{...0505} & Debit & \texttt{FinanceCosts} & MX: 509, CO: 5305, PA: 7.3.01, VN: 635, FR: 661 \\
 \texttt{expense.tax} & \texttt{...0507} & Debit & \texttt{TaxExpense} & MX: 510, CO: 5405, PA: 7.4.01, VN: 821, FR: 695 \\
-\hline
+\bottomrule
 \end{tabular}%
 }
 \caption{Comprehensive list of Level 3 Accounts showing mapped local codes across representative jurisdictions.}

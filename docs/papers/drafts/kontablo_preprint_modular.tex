@@ -8,6 +8,10 @@
 \usepackage{amssymb}
 \usepackage{float}
 \usepackage{url}
+% Breakable monospace path macro: long inline file paths wrap at separators
+% (using the aggressive \UrlBreaks set defined in clapps.cls) instead of
+% overflowing the right margin. Underscores are written literally inside it.
+\DeclareUrlCommand\pathtt{\urlstyle{tt}}
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows.meta, positioning, fit, backgrounds}
 
