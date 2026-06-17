@@ -2,7 +2,10 @@
 
 **Kontablo is a graph-based, UUID-keyed universal accounting ontology** that bridges
 local jurisdictional chart-of-accounts standards, international reporting frameworks
-(IFRS/XBRL), the agentic economy (MCP, A2A, AP2), and blockchain/DeFi protocols —
+([IFRS](https://www.ifrs.org/)/[XBRL](https://www.xbrl.org/)), the agentic economy
+([MCP](https://modelcontextprotocol.io/specification),
+[A2A](https://a2a-protocol.org/), [AP2](https://ap2-protocol.org/specification/)),
+and blockchain/DeFi protocols —
 enabling deterministic, machine-verifiable financial data exchange across all 195
 sovereign jurisdictions (complete global coverage), with statutory chart-of-accounts
 overlays for the 60 jurisdictions that mandate a national chart.
@@ -93,9 +96,9 @@ Kontablo exposes three agent-economy interfaces above the core API:
 
 | Protocol | Role |
 |---|---|
-| **MCP** (Model Context Protocol) | LLM/agent tool consumption — query the ledger, resolve UUIDs, validate transactions |
-| **A2A** (Agent2Agent) | Agent-to-agent interoperation across financial workflows |
-| **AP2** (Agent Payments Protocol) | Settlement coordination between autonomous agents |
+| **[MCP](https://modelcontextprotocol.io/specification)** (Model Context Protocol) | LLM/agent tool consumption — query the ledger, resolve UUIDs, validate transactions |
+| **[A2A](https://a2a-protocol.org/)** (Agent2Agent) | Agent-to-agent interoperation across financial workflows |
+| **[AP2](https://ap2-protocol.org/specification/)** (Agent Payments Protocol) | Settlement coordination between autonomous agents |
 
 The REST API is the canonical data interface and is fully implemented (FastAPI).
 A gRPC interface is defined in [`api/grpc/kontablo.proto`](api/grpc/kontablo.proto)
@@ -159,9 +162,11 @@ All **195 sovereign jurisdictions** are mapped (complete global coverage), with
   Hungarian, Bulgarian, Ukrainian, Kazakh, Tunisian, Belarusian, Serbian, Croatian,
   Slovenian, Moldovan and Greek national charts.
 
-Special contexts modeled: IAS 29 hyperinflation (Venezuela, Lebanon, Zimbabwe,
-Argentina, and others), Islamic finance jurisdictions, and distribution-only
-corporate income tax regimes (Estonia, Latvia, Georgia).
+Special contexts modeled:
+[IAS 29](https://www.ifrs.org/issued-standards/list-of-standards/ias-29-financial-reporting-in-hyperinflationary-economies/)
+hyperinflation (Venezuela, Lebanon, Zimbabwe, Argentina, and others), Islamic
+finance jurisdictions, and distribution-only corporate income tax regimes
+(Estonia, Latvia, Georgia).
 
 Multi-lingual semantic mapping is operational for Spanish, French, Arabic, and Vietnamese.
 
@@ -246,7 +251,7 @@ documented in the preprint (Appendix and Section on expanded validation).
   year         = {2026},
   note         = {Preprint. SSRN/Zenodo submission pending. Available at
                   \url{https://github.com/ChristianLuciani/accounting-esperanto}},
-  institution  = {Independent Researcher , Cuenca, Ecuador},
+  institution  = {Independent Researcher, Cuenca, Ecuador},
   orcid        = {0000-0002-6955-5384}
 }
 ```

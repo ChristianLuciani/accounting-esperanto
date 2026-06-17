@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kontablo — A Graph-Based Universal Accounting Ontology for the M2M Agentic Economy</title>
+  <meta name="description" content="Kontablo is a graph-based, UUID-keyed universal accounting ontology mapped across all 195 sovereign jurisdictions, bridging IFRS/XBRL, the agentic economy (MCP, A2A, AP2), and blockchain/DeFi. Author: Christian Luciani, Independent Researcher, Cuenca, Ecuador. ORCID 0000-0002-6955-5384." />
+  <meta name="author" content="Christian Luciani" />
+  <link rel="canonical" href="https://github.com/ChristianLuciani/accounting-esperanto" />
+
+  <!-- Open Graph (social / crawler hinting) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Kontablo — A Graph-Based Universal Accounting Ontology" />
+  <meta property="og:description" content="A universal, UUID-keyed accounting ontology mapped across all 195 sovereign jurisdictions, with a Deterministic Boundary Library that eliminates the classical class of accounting hallucination at the harness level." />
+  <meta property="og:url" content="https://github.com/ChristianLuciani/accounting-esperanto" />
+
+  <!--
+    JSON-LD: SoftwareApplication
+    GEO/AEO requirement (CLAUDE.md §AI Discoverability #5). When the Zenodo DOI is
+    minted (launch Part B), replace the DOI_PLACEHOLDER strings below with the real
+    DOI in the same PR that updates README.md, CITATION.cff, .zenodo.json and the
+    preprint "Cite as" block.
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Kontablo",
+    "alternateName": "Universal Accounting Ontology",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Cross-platform",
+    "softwareVersion": "0.1.0",
+    "description": "Kontablo is a graph-based, UUID-keyed universal accounting ontology that bridges local jurisdictional chart-of-accounts standards, international reporting frameworks (IFRS/XBRL), the agentic economy (MCP, A2A, AP2), and blockchain/DeFi protocols, enabling deterministic, machine-verifiable financial data exchange across all 195 sovereign jurisdictions.",
+    "url": "https://github.com/ChristianLuciani/accounting-esperanto",
+    "codeRepository": "https://github.com/ChristianLuciani/accounting-esperanto",
+    "license": "https://spdx.org/licenses/BUSL-1.1.html",
+    "programmingLanguage": ["Python", "YAML"],
+    "keywords": "accounting ontology, IFRS, XBRL, multi-jurisdictional, agentic economy, MCP, A2A, AP2, graph database, UUID, ERP consolidation, deterministic boundary library, co-responsibility architecture, hyperinflation, sovereign AI",
+    "author": {
+      "@type": "Person",
+      "name": "Christian Luciani",
+      "identifier": "https://orcid.org/0000-0002-6955-5384",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Independent Researcher, Cuenca, Ecuador"
+      }
+    }
+  }
+  </script>
+
+  <!--
+    JSON-LD: ScholarlyArticle (the preprint). DOI fields are intentionally placeholders
+    until the Zenodo deposit mints the DOI; fill them in the Part B propagation PR.
+  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "Kontablo: A Graph-Based Universal Accounting Ontology for the M2M Agentic Economy",
+    "name": "Kontablo: A Graph-Based Universal Accounting Ontology for the M2M Agentic Economy",
+    "datePublished": "2026",
+    "inLanguage": "en",
+    "description": "An open, graph-based universal accounting ontology anchored to IFRS and mapped across all 195 sovereign jurisdictions, with statutory chart-of-accounts overlays for the 60 jurisdictions that mandate a national chart (56 exercised against primary-source-cited charts). Introduces a Three-Tier Resolution Strategy, a Deterministic Boundary Library, and a Co-responsibility Architecture.",
+    "url": "https://github.com/ChristianLuciani/accounting-esperanto/blob/main/docs/papers/drafts/kontablo_preprint_modular.pdf",
+    "license": "https://spdx.org/licenses/BUSL-1.1.html",
+    "author": {
+      "@type": "Person",
+      "name": "Christian Luciani",
+      "givenName": "Christian",
+      "familyName": "Luciani",
+      "identifier": "https://orcid.org/0000-0002-6955-5384",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Independent Researcher, Cuenca, Ecuador"
+      }
+    },
+    "keywords": "Accounting Standards, Knowledge Graphs, IFRS, Agentic Economy, M2M Transactions, ERP Interoperability, Co-responsibility Architecture, AI Governance, Sovereign AI"
+  }
+  </script>
+
+  <style>
+    :root { color-scheme: light dark; }
+    body { max-width: 56rem; margin: 0 auto; padding: 2rem 1.25rem; font: 16px/1.65 system-ui, -apple-system, sans-serif; }
+    h1 { font-size: 1.9rem; line-height: 1.2; }
+    h2 { margin-top: 2.2rem; font-size: 1.25rem; }
+    .lede { font-size: 1.1rem; }
+    .meta { font-size: 0.9rem; opacity: 0.85; }
+    table { border-collapse: collapse; width: 100%; margin: 0.5rem 0; }
+    th, td { text-align: left; padding: 0.4rem 0.6rem; border-bottom: 1px solid rgba(127,127,127,0.3); vertical-align: top; }
+    code { font-size: 0.9em; }
+    footer { margin-top: 3rem; font-size: 0.85rem; opacity: 0.8; }
+  </style>
+</head>
+<body>
+  <h1>Kontablo — A Graph-Based Universal Accounting Ontology for the M2M Agentic Economy</h1>
+
+  <p class="lede"><strong>Kontablo is a graph-based, UUID-keyed universal accounting ontology</strong>
+  that bridges local jurisdictional chart-of-accounts standards, international reporting frameworks
+  (<a href="https://www.ifrs.org/">IFRS</a>/<a href="https://www.xbrl.org/">XBRL</a>), the agentic
+  economy (<a href="https://modelcontextprotocol.io/specification">MCP</a>,
+  <a href="https://a2a-protocol.org/">A2A</a>, <a href="https://ap2-protocol.org/specification/">AP2</a>),
+  and blockchain/DeFi protocols — enabling deterministic, machine-verifiable financial data exchange
+  across all <strong>195 sovereign jurisdictions</strong>, with statutory chart-of-accounts overlays
+  for the <strong>60 jurisdictions</strong> that mandate a national chart.</p>
+
+  <p class="meta">Author: <strong>Christian Luciani</strong> ·
+  <a href="https://orcid.org/0000-0002-6955-5384">ORCID 0000-0002-6955-5384</a> ·
+  Independent Researcher, Cuenca, Ecuador. Praxia (an Ecuadorian technology firm, in
+  incorporation) is the initiative's planned commercial entity.</p>
+
+  <h2>What problem does Kontablo solve?</h2>
+  <p>Every major jurisdiction maintains its own chart of accounts. These standards share underlying
+  economic concepts but differ in structure, naming, and hierarchy — the "Accounting Babel." Kontablo
+  resolves them to a single UUID-keyed graph where economic nodes are jurisdiction-independent and
+  local codes are metadata, not identity.</p>
+
+  <h2>What is verified, and how?</h2>
+  <table>
+    <tr><th>Claim</th><th>Basis</th></tr>
+    <tr><td>195 sovereign jurisdictions mapped; 60 statutory-chart overlays (56 exercised against primary-source-cited charts)</td><td>Coverage manifest — <code>scripts/build_jurisdiction_manifest.py</code></td></tr>
+    <tr><td>~94% routine transaction volume covered by the 30-account core (~99% with a 34-account extended core)</td><td>Model-based estimate over a labeled synthetic distribution — <code>scripts/coverage_benchmark.py</code></td></tr>
+    <tr><td>75 entities, 68 jurisdictions, 97% deterministic resolution, 4 escalations</td><td>Reproducible mass-consolidation engine on <strong>synthetic</strong> trial balances — <code>scripts/mass_consolidation_v2.py</code></td></tr>
+  </table>
+  <p>The validation data is synthetic, not production ledger data, and is labeled as such.
+  Every quantitative claim regenerates from a committed, deterministic command; CI fails the
+  build if any published number stops reproducing.</p>
+
+  <h2>What is the Deterministic Boundary Library?</h2>
+  <p>A set of hard logical constraints enforced before any agent decision. An agent cannot emit a
+  UUID that does not exist in the ontology graph — this eliminates the classical class of accounting
+  hallucination at the harness level and relocates residual error to the boundary of semantic
+  coverage, which escalates to a human under the Co-responsibility Architecture.</p>
+
+  <h2>Where can I read and cite the preprint?</h2>
+  <ul>
+    <li><strong>Repository:</strong> <a href="https://github.com/ChristianLuciani/accounting-esperanto">github.com/ChristianLuciani/accounting-esperanto</a></li>
+    <li><strong>Preprint (PDF):</strong> <a href="https://github.com/ChristianLuciani/accounting-esperanto/blob/main/docs/papers/drafts/kontablo_preprint_modular.pdf">kontablo_preprint_modular.pdf</a></li>
+    <li><strong>Zenodo:</strong> DOI pending (minted on first GitHub release)</li>
+    <li><strong>SSRN:</strong> URL pending (assigned after editorial review)</li>
+  </ul>
+
+  <h2>Security posture</h2>
+  <p>Threat horizon is multi-decade (financial records are long-lived), so the roadmap targets hybrid
+  classical + post-quantum signatures using
+  <a href="https://csrc.nist.gov/pubs/fips/203/final">NIST FIPS 203 (ML-KEM)</a> and
+  <a href="https://csrc.nist.gov/pubs/fips/204/final">NIST FIPS 204 (ML-DSA)</a> on spec version hashes.</p>
+
+  <footer>
+    <p>License: <a href="https://spdx.org/licenses/BUSL-1.1.html">Business Source License 1.1</a>,
+    converting to Apache 2.0 on 2030-05-28. ERPNext/Frappe and Odoo connectors: Apache 2.0.</p>
+    <p>© 2026 Christian Luciani. Contact: cluciani@gmail.com</p>
+  </footer>
+</body>
+</html>

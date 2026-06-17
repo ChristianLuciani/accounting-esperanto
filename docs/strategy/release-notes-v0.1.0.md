@@ -26,7 +26,7 @@ All 195 UN-recognized sovereign states. Special contexts included:
 
 ## License
 
-**Core**: Business Source License 1.1 — converts to Apache 2.0 on **2030-06-01**.
+**Core**: Business Source License 1.1 — converts to Apache 2.0 on **2030-05-28** (the Change Date in `LICENSE`).
 **ERPNext connector**: Apache 2.0.
 
 See `LICENSE` and `LICENSING.md` for full terms.
