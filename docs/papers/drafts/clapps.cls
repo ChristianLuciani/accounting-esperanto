@@ -83,15 +83,15 @@
 
 % --- Title block (base \@maketitle override; no titling dependency) ----------
 \renewcommand{\maketitle}{%
-  \newpage\thispagestyle{plain}\null\vskip 2em%
+  \thispagestyle{plain}\vskip 0.5em%
   \begin{center}%
     {\sffamily\LARGE\bfseries\color{clappsInk}\@title \par}%
-    \vskip 0.5em{\color{clappsAccent}\rule{0.18\textwidth}{1.2pt}}\par
-    \vskip 1em{\sffamily\large\color{clappsInk}\@author \par}%
-    \vskip 1em{\sffamily\small\color{clappsMuted}\@date \par}%
+    \vskip 0.4em{\color{clappsAccent}\rule{0.18\textwidth}{1.2pt}}\par
+    \vskip 0.7em{\sffamily\large\color{clappsInk}\@author \par}%
+    \vskip 0.5em{\sffamily\small\color{clappsMuted}\@date \par}%
   \end{center}\par
   \@thanks
-  \vskip 1.5em%
+  \vskip 1em%
   \setcounter{footnote}{0}%
   \global\let\thanks\relax%
   \global\let\maketitle\relax}
@@ -111,9 +111,9 @@
   \newcommand{\clappsepigraph}[2]{\epigraph{#1}{#2}}
 \else
   \newcommand{\clappsepigraph}[2]{%
-    \begin{center}\begin{minipage}{0.6\textwidth}\raggedleft\small\itshape
-      #1\par\vskip0.3em\upshape\normalfont\footnotesize\color{clappsMuted}--- #2
-    \end{minipage}\end{center}\vskip1em}
+    \par\vspace{0.5em}\hfill\begin{minipage}{0.6\textwidth}\raggedleft\small\itshape
+      #1\par\vskip0.2em\upshape\normalfont\footnotesize\color{clappsMuted}--- #2
+    \end{minipage}\par\vspace{0.6em}}
 \fi
 
 % --- Dual-readership block: tcolorbox if present, else plain framed box -------
@@ -133,6 +133,29 @@
     \par\vskip4pt\color{clappsAccent}\rule{\linewidth}{0.6pt}%
     \end{minipage}\par\vskip0.5em}
 \fi
+
+% --- Aggressive URL breaking (stop long DOIs/paths bleeding past the margin) --
+\AtBeginDocument{%
+  \Urlmuskip=0mu plus 1mu\relax
+  \def\UrlBreaks{\do\/\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+    \do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x%
+    \do\y\do\z\do\.\do\-\do\_\do\=\do\&\do\?\do\#\do\:\do\0\do\1\do\2\do\3%
+    \do\4\do\5\do\6\do\7\do\8\do\9}}
+
+% --- Figure sizing: shrink-only fit ------------------------------------------
+% \fitwidth{<content>} caps content at \linewidth but NEVER enlarges it. Using
+% this instead of \resizebox{\textwidth}{!}{...} keeps the in-figure font at its
+% true declared size (e.g. font=\small) for every diagram that already fits, so
+% figures share a consistent font size; only genuinely over-wide diagrams scale
+% down.
+\newsavebox{\clapps@figbox}
+\newcommand{\fitwidth}[1]{%
+  \sbox{\clapps@figbox}{#1}%
+  \ifdim\wd\clapps@figbox>\linewidth
+    \resizebox{\linewidth}{!}{\usebox{\clapps@figbox}}%
+  \else
+    \usebox{\clapps@figbox}%
+  \fi}
 
 % --- Compact, sections-only contents for the abstract page -------------------
 \newcommand{\compactcontents}{%
