@@ -33,7 +33,7 @@ See `LICENSE` and `LICENSING.md` for full terms.
 
 ## Citation
 
-Preprint DOI: [10.5281/zenodo.20738796](https://doi.org/10.5281/zenodo.20738796) (Zenodo). SSRN URL pending.
+Preprint DOI: [10.5281/zenodo.20738796](https://doi.org/10.5281/zenodo.20738796) (Zenodo). SSRN: [abstract 6960598](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598).
 
 ```bibtex
 @misc{luciani2026kontablo,
