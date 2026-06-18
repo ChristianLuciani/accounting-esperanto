@@ -31,6 +31,9 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.20738796"
     description: "Zenodo deposit of the v0.1.0 release"
+  - type: url
+    value: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598"
+    description: "SSRN preprint (abstract 6960598)"
 license: BUSL-1.1
 version: "0.1.0"
 date-released: "2026-06-18"
@@ -59,5 +62,5 @@ preferred-citation:
       affiliation: "Independent Researcher, Cuenca, Ecuador"
   year: 2026
   doi: "10.5281/zenodo.20738796"
-  notes: "Preprint on Zenodo (DOI 10.5281/zenodo.20738796). SSRN submission pending."
+  notes: "Preprint on Zenodo (DOI 10.5281/zenodo.20738796) and SSRN (abstract 6960598, https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598)."
   url: "https://doi.org/10.5281/zenodo.20738796"

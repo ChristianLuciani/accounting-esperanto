@@ -37,11 +37,16 @@
       "relation": "isDocumentedBy",
       "identifier": "https://github.com/ChristianLuciani/accounting-esperanto/blob/main/docs/papers/drafts/kontablo_preprint_modular.pdf",
       "resource_type": "publication-preprint"
+    },
+    {
+      "relation": "isIdenticalTo",
+      "identifier": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598",
+      "resource_type": "publication-preprint"
     }
   ],
   "communities": [
     {"identifier": "zenodo"},
     {"identifier": "software"}
   ],
-  "notes": "Preprint deposited on Zenodo (DOI 10.5281/zenodo.20738796). SSRN URL will be linked once the SSRN deposit is approved. Source License: Business Source License 1.1, converting to Apache 2.0 on 2030-06-18 (the Change Date in LICENSE)."
+  "notes": "Preprint deposited on Zenodo (DOI 10.5281/zenodo.20738796) and SSRN (abstract 6960598, https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598). Source License: Business Source License 1.1, converting to Apache 2.0 on 2030-06-18 (the Change Date in LICENSE)."
 }
