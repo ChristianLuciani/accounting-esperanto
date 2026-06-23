@@ -26,16 +26,19 @@ authors:
     affiliation: "Independent Researcher, Cuenca, Ecuador"
     email: cluciani@gmail.com
 repository-code: "https://github.com/ChristianLuciani/accounting-esperanto"
-doi: "10.5281/zenodo.20738796"
+doi: "10.5281/zenodo.20738795"
 identifiers:
   - type: doi
-    value: "10.5281/zenodo.20738796"
-    description: "Zenodo deposit of the v0.1.0 release"
+    value: "10.5281/zenodo.20738795"
+    description: "Zenodo concept DOI — cites all versions and resolves to the latest release"
+  - type: doi
+    value: "10.5281/zenodo.20739765"
+    description: "Zenodo version DOI for the v0.1.1 release"
   - type: url
     value: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598"
     description: "SSRN preprint (abstract 6960598)"
 license: BUSL-1.1
-version: "0.1.0"
+version: "0.1.1"
 date-released: "2026-06-18"
 keywords:
   - accounting
@@ -61,6 +64,6 @@ preferred-citation:
       orcid: "https://orcid.org/0000-0002-6955-5384"
       affiliation: "Independent Researcher, Cuenca, Ecuador"
   year: 2026
-  doi: "10.5281/zenodo.20738796"
-  notes: "Preprint on Zenodo (DOI 10.5281/zenodo.20738796) and SSRN (abstract 6960598, https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598)."
-  url: "https://doi.org/10.5281/zenodo.20738796"
+  doi: "10.5281/zenodo.20738795"
+  notes: "Preprint on Zenodo (concept DOI 10.5281/zenodo.20738795, resolves to the latest version) and SSRN (abstract 6960598, https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598)."
+  url: "https://doi.org/10.5281/zenodo.20738795"
