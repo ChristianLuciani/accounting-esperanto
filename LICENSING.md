@@ -53,6 +53,23 @@ the full reasoning.
 Connectors for proprietary ERPs (NetSuite, SAP S/4HANA), when developed, will be
 distributed under a separate commercial license.
 
+## Preprint / paper license (CC BY 4.0 — separate from the code)
+
+The academic paper and preprint text under `docs/papers/` are **not** covered by
+BSL 1.1. The paper text and the source code are separate works with separate
+licenses:
+
+| Work | Location | License |
+|------|----------|---------|
+| Source code (core, API, scripts) | repository root | BSL 1.1 → Apache 2.0 (2030-06-18) |
+| Open-source ERP connectors | `connectors/erpnext/`, `connectors/odoo/` | Apache 2.0 |
+| **Preprint / paper text** | `docs/papers/` | **CC BY 4.0** |
+
+CC BY 4.0 is the standard choice for an open preprint: it maximizes citation and
+reuse and matches the license selected for the same paper on Zenodo, SSRN,
+ResearchGate, and (when posted) arXiv — one consistent license across every
+channel. See [`docs/papers/LICENSE`](docs/papers/LICENSE).
+
 ## General principle
 
 Open the interface — grow the ecosystem.
