@@ -1,0 +1,25 @@
+# License — Kontablo preprint / paper
+
+The academic paper and preprint text in this directory (including
+`drafts/kontablo_preprint_modular.pdf`, its `sections/*.tex` sources, and
+figures authored for it) are licensed under the
+
+**Creative Commons Attribution 4.0 International License (CC BY 4.0)**
+<https://creativecommons.org/licenses/by/4.0/>
+
+Author: Christian Luciani (ORCID 0000-0002-6955-5384),
+Independent Researcher, Cuenca, Ecuador.
+
+You are free to share and adapt this work, including for commercial purposes,
+provided you give appropriate credit (cite the work via its Zenodo concept DOI
+10.5281/zenodo.20738795 and/or SSRN abstract 6960598), link to the license, and
+indicate if changes were made.
+
+## Why this is separate from the code license
+
+The paper text and the source code are **separate works** with **separate
+licenses**. The Kontablo *source code* is licensed under the Business Source
+License 1.1 (see the repository-root `LICENSE` and `LICENSING.md`); the *paper
+text* is CC BY 4.0 as stated above. This matches the license selected for the
+same preprint on Zenodo, SSRN, ResearchGate, and (when posted) arXiv, so the
+paper carries one consistent license across every distribution channel.
