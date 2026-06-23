@@ -13,8 +13,8 @@ overlays for the 60 jurisdictions that mandate a national chart.
 | | |
 |---|---|
 | **Status** | Phase 3 — Pre-Publication |
-| **Preprint** | [DOI 10.5281/zenodo.20738795](https://doi.org/10.5281/zenodo.20738795) · [SSRN abstract 6960598](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598) · `docs/papers/drafts/kontablo_preprint_modular.pdf` |
-| **License** | [BSL 1.1](LICENSE) → Apache 2.0 on 2030-06-18 · ERPNext & Odoo connectors: [Apache 2.0](connectors/erpnext/LICENSE) |
+| **Preprint** | [DOI 10.5281/zenodo.20738795](https://doi.org/10.5281/zenodo.20738795) · [SSRN abstract 6960598](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598) · [ResearchGate](https://www.researchgate.net/publication/407549570_Kontablo_A_Graph-Based_Universal_Accounting_Ontology_for_the_M2M_Agentic_Economy) · `docs/papers/drafts/kontablo_preprint_modular.pdf` |
+| **License** | Code: [BSL 1.1](LICENSE) → Apache 2.0 on 2030-06-18 · ERPNext & Odoo connectors: [Apache 2.0](connectors/erpnext/LICENSE) · Paper text: [CC BY 4.0](docs/papers/LICENSE) |
 | **Author** | Christian Luciani · [ORCID 0000-0002-6955-5384](https://orcid.org/0000-0002-6955-5384) |
 
 ---
@@ -308,6 +308,10 @@ automatically to Apache 2.0 on **June 18, 2030**. See [LICENSE](LICENSE) and
 [LICENSING.md](LICENSING.md) for the full terms, Additional Use Grant, and rationale.
 
 ERPNext/Frappe and Odoo connectors: **Apache 2.0**. See [connectors/erpnext/LICENSE](connectors/erpnext/LICENSE) and [connectors/odoo/LICENSE](connectors/odoo/LICENSE).
+
+The preprint/paper text under `docs/papers/` is a separate work licensed
+**CC BY 4.0** (not BSL) — consistent across Zenodo, SSRN, ResearchGate, and arXiv.
+See [docs/papers/LICENSE](docs/papers/LICENSE).
 
 Contributing guidelines, branch naming, and the Contributor License Agreement
 (required for BSL projects) are documented in [CONTRIBUTING.md](CONTRIBUTING.md)
