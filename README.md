@@ -17,6 +17,8 @@ overlays for the 60 jurisdictions that mandate a national chart.
 | **License** | Code: [BSL 1.1](LICENSE) → Apache 2.0 on 2030-06-18 · ERPNext & Odoo connectors: [Apache 2.0](connectors/erpnext/LICENSE) · Paper text: [CC BY 4.0](docs/papers/LICENSE) |
 | **Author** | Christian Luciani · [ORCID 0000-0002-6955-5384](https://orcid.org/0000-0002-6955-5384) |
 
+> **New to the project?** Read the essay [*Why AI agents can't handle money without a universal accounting ontology*](https://christianluciani.github.io/accounting-esperanto/essays/why-ai-agents-need-an-accounting-ontology.html) — the Accounting Babel problem, the Venezuela/IAS 29 origin story, and why the missing layer has to be deterministic.
+
 ---
 
 ## What problem does Kontablo solve?
