@@ -28,12 +28,13 @@ Run (stdio transport, the default MCP transport for local agents):
 
 from __future__ import annotations
 
+import math
 import os
 import sys
 from typing import List, Optional
 
 import yaml
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
@@ -59,6 +60,22 @@ _TIER_TO_MATCH = {
     "escalated": "not_found",
 }
 
+_VALID_NATURES = ("debit", "credit")
+
+
+def _require_finite(value: float, field: str) -> float:
+    """Reject NaN / ±Infinity. A non-finite monetary amount silently defeats the
+    double-entry check (``abs(nan) > tol`` is False, so a NaN "balances") and is
+    not even valid JSON on the wire — neither is acceptable in an accounting
+    standard. Caught at the input boundary so the client gets a clean error, not
+    a corrupted result."""
+    if not math.isfinite(value):
+        raise ValueError(
+            f"{field} must be a finite number (got {value!r}); "
+            "NaN/Infinity are not valid accounting amounts."
+        )
+    return value
+
 
 # ---------------------------------------------------------------------------
 # Engine construction (one shared deterministic brain)
@@ -81,6 +98,11 @@ class TBEntryIn(BaseModel):
     debit: float = Field(0.0, description="Debit amount in the subsidiary's local currency.")
     credit: float = Field(0.0, description="Credit amount in the subsidiary's local currency.")
 
+    @field_validator("debit", "credit")
+    @classmethod
+    def _finite_amount(cls, v: float, info) -> float:
+        return _require_finite(v, info.field_name)
+
 
 class SubsidiaryIn(BaseModel):
     """A subsidiary's trial balance in its local currency."""
@@ -97,6 +119,22 @@ class SubsidiaryIn(BaseModel):
     fx_rate_as_of: Optional[str] = Field(None, description="Effective date of the manual rate.")
     fx_rate_note: Optional[str] = Field(None, description="Rationale for the manual rate.")
 
+    @field_validator("fx_rate_to_usd")
+    @classmethod
+    def _positive_finite_rate(cls, v: Optional[float]) -> Optional[float]:
+        if v is None:
+            return v
+        _require_finite(v, "fx_rate_to_usd")
+        if v <= 0:
+            # A zero rate silently zeroes every converted amount; a negative rate
+            # sign-flips them — both corrupt the consolidation while still being
+            # stamped into the FX audit trail as if legitimate.
+            raise ValueError(
+                f"fx_rate_to_usd must be > 0 (got {v!r}); a currency's USD value "
+                "cannot be zero or negative."
+            )
+        return v
+
 
 class EliminationIn(BaseModel):
     """An explicit intercompany pair to eliminate (deterministic, structured —
@@ -107,6 +145,11 @@ class EliminationIn(BaseModel):
     to_subsidiary: str
     to_kontablo_id: str
     amount_usd: float
+
+    @field_validator("amount_usd")
+    @classmethod
+    def _finite_amount(cls, v: float) -> float:
+        return _require_finite(v, "amount_usd")
 
 
 # ---------------------------------------------------------------------------
@@ -119,7 +162,19 @@ def resolve_account_impl(
     local_name: str = "",
     nature: Optional[str] = None,
 ) -> dict:
-    entry = LocalEntry(code=local_code, name=local_name, nature=nature)
+    # A non-empty nature must be a real accounting nature; otherwise the
+    # boundary-library nature check would silently flag every mapping. Reject it
+    # cleanly so the contract is unambiguous.
+    norm_nature = nature or None
+    if norm_nature is not None and norm_nature not in _VALID_NATURES:
+        return {
+            "jurisdiction": jurisdiction,
+            "local_code": local_code,
+            "local_name": local_name,
+            "resolved": False,
+            "error": f"nature must be one of {_VALID_NATURES} or omitted (got {nature!r}).",
+        }
+    entry = LocalEntry(code=local_code, name=local_name, nature=norm_nature)
     kid, tier, conf = engine.resolve(entry, jurisdiction)
     if kid is None:
         return {
@@ -140,7 +195,7 @@ def resolve_account_impl(
         }
     node = engine.accounts[kid]
     flags = cra_validate(
-        {"code": local_code, "name": local_name, "nature": nature}, kid, engine.accounts
+        {"code": local_code, "name": local_name, "nature": norm_nature}, kid, engine.accounts
     )
     return {
         "jurisdiction": jurisdiction,
@@ -192,7 +247,20 @@ def validate_balance_sheet_impl(entries: List[TBEntryIn]) -> dict:
     credits = round(sum(e.credit for e in entries), 2)
     diff = round(debits - credits, 2)
     errors = []
-    if abs(diff) > 0.01:
+    # Per-entry amounts are validated finite at the model boundary, but a sum of
+    # finite values can still overflow to ±inf (e.g. 1e308 + 1e308). Treat a
+    # non-finite total as an explicit error rather than reporting a NaN/inf diff.
+    if not (math.isfinite(debits) and math.isfinite(credits) and math.isfinite(diff)):
+        errors.append(
+            {
+                "code": "NON_FINITE_TOTAL",
+                "severity": "error",
+                "message": "Trial-balance totals overflowed to a non-finite value; "
+                "amounts are too large to sum safely.",
+            }
+        )
+        diff = None
+    elif abs(diff) > 0.01:
         errors.append(
             {
                 "code": "UNBALANCED",
@@ -202,8 +270,8 @@ def validate_balance_sheet_impl(entries: List[TBEntryIn]) -> dict:
         )
     return {
         "is_valid": not errors,
-        "total_debits": debits,
-        "total_credits": credits,
+        "total_debits": debits if math.isfinite(debits) else None,
+        "total_credits": credits if math.isfinite(credits) else None,
         "balance_difference": diff,
         "errors": errors,
     }

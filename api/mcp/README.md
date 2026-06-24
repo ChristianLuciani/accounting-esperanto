@@ -85,13 +85,36 @@ list_jurisdictions -> total=195, statutory_chart=60, tier1_codes_available=56
 }
 ```
 
+## Robustness / input validation
+
+For Kontablo to be a dependable interface for the agentic economy, a malformed
+agent request must fail cleanly — never silently corrupt an accounting result.
+The tool inputs are validated at the boundary (Pydantic + explicit checks):
+
+- **Monetary amounts must be finite.** `NaN`/`±Infinity` debits, credits, and
+  elimination amounts are rejected — a `NaN` would defeat the double-entry check
+  (`abs(NaN) > tol` is `False`, so a `NaN` "balances") and is not valid JSON on
+  the wire. A finite-input sum that overflows to `±inf` is reported as a
+  `NON_FINITE_TOTAL` error, never emitted as a non-finite number.
+- **Manual FX rates must be > 0 and finite.** A `0.0` rate would silently zero
+  every converted amount; a negative rate would sign-flip them — both are
+  rejected before reaching the FX audit trail.
+- **`nature` must be `debit`/`credit` (or omitted).** Negative amounts are
+  *allowed* (contra entries, reversals); only non-finite values are rejected.
+- **Resilience.** Wrong types / missing required fields are rejected with a
+  structured error (FastMCP `isError`), and the server stays alive — one bad
+  request never takes the session down. Resolution is deterministic: the same
+  input always yields byte-identical output (principle #5).
+
 ## Test
 
 `tests/mcp/test_mcp_server.py` asserts (not print-only) that every tool returns
-the same answers as the engine that backs REST and gRPC. It runs hermetically
-(no live FX, no LLM key — the session forces `KONTABLO_FX_MODE=static`) and
-exercises each tool both through its pure `*_impl` function and through the real
-FastMCP `call_tool` dispatch.
+the same answers as the engine that backs REST and gRPC, **and** that the input
+hardening above holds (non-finite amounts, invalid FX rates, and a malformed
+call that the server survives). It runs hermetically (no live FX, no LLM key —
+the session forces `KONTABLO_FX_MODE=static`) and exercises each tool both
+through its pure `*_impl` function and through the real FastMCP `call_tool`
+dispatch.
 
 ## License
 
