@@ -19,6 +19,9 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspa
 
 pytest.importorskip("mcp", reason="mcp SDK not installed")
 
+from mcp.server.fastmcp.exceptions import ToolError  # noqa: E402
+from pydantic import ValidationError  # noqa: E402
+
 from api.mcp.server import (  # noqa: E402
     EliminationIn,
     SubsidiaryIn,
@@ -250,3 +253,98 @@ async def test_list_jurisdictions_region_filter(server):
     out = await _call_json(server, "list_jurisdictions", {"region": "Africa"})
     assert out["count_returned"] > 0
     assert all(j["region"] == "Africa" for j in out["jurisdictions"])
+
+
+# ===========================================================================
+# Hardening / resilience — adversarial inputs must be rejected cleanly, never
+# silently corrupt a result. A non-finite or sign-flipping value that "passes"
+# a double-entry check would be disqualifying for an accounting standard.
+# ===========================================================================
+@pytest.mark.parametrize("bad", [float("nan"), float("inf"), float("-inf")])
+def test_non_finite_amounts_rejected_at_model(bad):
+    # A NaN debit defeats the balance check (abs(nan) > tol is False), so it must
+    # be rejected at the input boundary, not summed.
+    with pytest.raises(ValidationError):
+        TBEntryIn(debit=bad)
+    with pytest.raises(ValidationError):
+        TBEntryIn(credit=bad)
+    with pytest.raises(ValidationError):
+        EliminationIn(
+            from_subsidiary="a",
+            from_kontablo_id="x",
+            to_subsidiary="b",
+            to_kontablo_id="y",
+            amount_usd=bad,
+        )
+
+
+@pytest.mark.parametrize("bad_rate", [0.0, -1.0, -2.5, float("nan"), float("inf")])
+def test_invalid_manual_fx_rate_rejected(bad_rate):
+    # A zero rate silently zeroes every converted amount; a negative rate
+    # sign-flips them. Both must be rejected before they reach the FX audit trail.
+    with pytest.raises(ValidationError):
+        SubsidiaryIn(subsidiary_id="a", jurisdiction="mx", currency="MXN", fx_rate_to_usd=bad_rate)
+
+
+def test_valid_manual_fx_rate_accepted():
+    s = SubsidiaryIn(subsidiary_id="a", jurisdiction="mx", currency="MXN", fx_rate_to_usd=0.05)
+    assert s.fx_rate_to_usd == 0.05
+
+
+def test_negative_amounts_still_allowed():
+    # Negative debits/credits are legitimate (contra entries, reversals); only
+    # NON-FINITE values are rejected. A balanced pair of negatives is valid.
+    out = validate_balance_sheet_impl([TBEntryIn(debit=-100.0), TBEntryIn(credit=-100.0)])
+    assert out["is_valid"] is True
+    assert out["balance_difference"] == 0.0
+
+
+def test_finite_overflow_reported_not_silently_valid():
+    # Per-entry values are finite but their sum overflows to +inf. The tool must
+    # flag it, not report a NaN/inf difference (and never emit non-finite JSON).
+    out = validate_balance_sheet_impl([TBEntryIn(debit=1e308), TBEntryIn(debit=1e308)])
+    assert out["is_valid"] is False
+    assert out["errors"][0]["code"] == "NON_FINITE_TOTAL"
+    assert out["balance_difference"] is None
+    assert out["total_debits"] is None  # never an `inf` on the wire
+
+
+def test_invalid_nature_rejected_with_clean_error(engine):
+    out = resolve_account_impl(engine, "mx", "101", "Caja", nature="garbage")
+    assert out["resolved"] is False
+    assert "nature must be one of" in out["error"]
+
+
+@pytest.mark.parametrize("good_nature", [None, "", "debit", "credit"])
+def test_valid_natures_accepted(engine, good_nature):
+    out = resolve_account_impl(engine, "mx", "101", "Caja", nature=good_nature)
+    assert out["resolved"] is True
+    assert out["kontablo_id"] == "asset.current.cash"
+
+
+def test_determinism_same_input_identical_output(engine):
+    # Principle #5: the same adversarial name resolves identically every time.
+    name = "cash and bank and receivable mixed 银行"
+    outs = {
+        json.dumps(resolve_account_impl(engine, "zz", "", name), sort_keys=True)
+        for _ in range(25)
+    }
+    assert len(outs) == 1
+
+
+@pytest.mark.asyncio
+async def test_malformed_call_raises_then_server_survives(server):
+    """Resilience: a malformed tool call is rejected (ToolError) and the SAME
+    server instance still serves the next valid call — one bad agent request
+    must not take the server down."""
+    with pytest.raises(ToolError):
+        await server.call_tool("validate_balance_sheet", {"entries": [{"debit": float("nan")}]})
+    with pytest.raises(ToolError):
+        await server.call_tool(
+            "consolidate_trial_balances",
+            {"subsidiaries": [{"subsidiary_id": "a", "jurisdiction": "mx", "currency": "MXN",
+                               "entries": [], "fx_rate_to_usd": 0.0}]},
+        )
+    # Server is still alive and correct after the bad calls.
+    ok = await _call_json(server, "resolve_account", {"jurisdiction": "mx", "local_code": "101", "local_name": "Caja"})
+    assert ok["kontablo_id"] == "asset.current.cash"
