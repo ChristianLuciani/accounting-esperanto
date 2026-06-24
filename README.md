@@ -108,7 +108,22 @@ with a minimal server ([`api/grpc/server.py`](api/grpc/server.py)) that implemen
 the **deterministic** RPCs — account queries, mapping, consolidation with
 intercompany elimination, balance-sheet validation — over the same engine that
 backs REST. RPCs that would depend on stochastic LLM inference are intentionally
-left `UNIMPLEMENTED` rather than faked. The agent-native layer sits above the API.
+left `UNIMPLEMENTED` rather than faked.
+
+The **MCP deterministic core is implemented** as well
+([`api/mcp/server.py`](api/mcp/server.py), built on the official MCP/FastMCP SDK,
+stdio transport): five agent-consumable tools — `resolve_account`, `get_account`
+(by id or UUID), `validate_balance_sheet`, `consolidate_trial_balances` (with
+intercompany elimination), and `list_jurisdictions` — each mirroring a
+deterministic gRPC RPC over the **same** mapping/consolidation engine. No tool
+calls an LLM; the Tier-3 semantic fallback is intentionally **not** exposed as an
+MCP tool (it would hide stochasticity), so an unresolved mapping escalates to
+human review rather than guessing. This is the deterministic core, **not** full
+feature parity with REST — Tier-3/LLM tools are planned. A2A and AP2 are defined
+as the agent-economy direction but not yet implemented. See
+[`api/mcp/README.md`](api/mcp/README.md) to run it.
+
+The agent-native layer sits above the API.
 An ERP integrates via the API directly; an autonomous agent uses the agent-native layer.
 Neither is subordinate. Kontablo will adopt any agentic protocol that gains meaningful
 traction — the architecture names the category, not a single protocol.
@@ -213,7 +228,7 @@ documented in the preprint (Appendix and Section on expanded validation).
 /localizations  — Chart-of-accounts mappings for all 195 sovereign jurisdictions
 /spec           — The standard in human-readable and machine-readable form
 /openspec       — 6 OpenSpec change proposals (aggregation, versioning, multi-language, etc.)
-/api            — FastAPI REST service + gRPC server (deterministic RPCs) for mapping/consolidation
+/api            — FastAPI REST service + gRPC server + MCP server (deterministic RPCs/tools) for mapping/consolidation
 /frontend       — React + Framer Motion reference dashboard (local demo only)
 /examples       — Runnable transnational reconciliation walkthroughs (self-contained + two-ERP)
 /connectors     — ERP connectors (ERPNext/Frappe & Odoo: Apache 2.0; proprietary ERPs: separate license)
