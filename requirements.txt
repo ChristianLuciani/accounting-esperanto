@@ -16,3 +16,7 @@ requests
 # the proto changes (see api/grpc/README.md).
 grpcio~=1.68.0
 grpcio-tools~=1.68.0
+# MCP interface (api/mcp): the official Model Context Protocol Python SDK
+# (FastMCP). Exposes the deterministic engine as agent-consumable tools over
+# stdio. No LLM key required for the deterministic core.
+mcp>=1.10,<2
