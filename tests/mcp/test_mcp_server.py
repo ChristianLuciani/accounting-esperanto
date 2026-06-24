@@ -72,6 +72,26 @@ async def test_all_tools_registered(server):
     assert not any("classif" in t.lower() or "semantic" in t.lower() for t in tools)
 
 
+@pytest.mark.asyncio
+async def test_tools_are_self_describing_for_agents(server):
+    """Documentation bar: every tool carries a description AND every parameter in
+    its input schema carries a description — that schema is what an LLM agent
+    reads to decide how to call the tool. Guards against undocumented params
+    regressing back in."""
+    for t in await server.list_tools():
+        assert t.description and len(t.description) > 30, f"{t.name} lacks a description"
+        props = (t.inputSchema or {}).get("properties", {})
+        assert props, f"{t.name} exposes no parameters in its schema"
+        for pname, schema in props.items():
+            # Pydantic models referenced via $ref/$defs document their fields on
+            # the model itself (checked below); the top-level param still needs one.
+            assert schema.get("description"), f"{t.name}.{pname} has no description"
+        # Nested model fields (e.g. TBEntryIn.debit) must be documented too.
+        for model_name, model_schema in (t.inputSchema or {}).get("$defs", {}).items():
+            for fname, fschema in model_schema.get("properties", {}).items():
+                assert fschema.get("description"), f"{model_name}.{fname} has no description"
+
+
 # --- resolve_account (↔ MappingService.MapAccount) -------------------------
 def test_resolve_tier1_exact(engine):
     # The demo case: MX SAT code 101 "Caja" → universal cash node, Tier-1 exact.

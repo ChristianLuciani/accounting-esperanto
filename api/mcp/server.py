@@ -31,7 +31,7 @@ from __future__ import annotations
 import math
 import os
 import sys
-from typing import List, Optional
+from typing import Annotated, List, Optional
 
 import yaml
 from pydantic import BaseModel, Field, field_validator
@@ -110,7 +110,9 @@ class SubsidiaryIn(BaseModel):
     subsidiary_id: str = Field(..., description="Stable subsidiary identifier.")
     jurisdiction: str = Field(..., description="ISO 3166-1 alpha-2 code (e.g. 'mx').")
     currency: str = Field(..., description="ISO 4217 currency of the trial balance (e.g. 'MXN').")
-    entries: List[TBEntryIn] = Field(default_factory=list)
+    entries: List[TBEntryIn] = Field(
+        default_factory=list, description="The subsidiary's trial-balance rows in local currency."
+    )
     fx_rate_to_usd: Optional[float] = Field(
         None,
         description="Optional manual USD-per-unit override (audited as a 'manual' "
@@ -140,11 +142,17 @@ class EliminationIn(BaseModel):
     """An explicit intercompany pair to eliminate (deterministic, structured —
     never inferred from free text, per principle #5)."""
 
-    from_subsidiary: str
-    from_kontablo_id: str
-    to_subsidiary: str
-    to_kontablo_id: str
-    amount_usd: float
+    from_subsidiary: str = Field(..., description="subsidiary_id of the first leg.")
+    from_kontablo_id: str = Field(
+        ..., description="Kontablo node id of the first leg, e.g. 'asset.current.receivables'."
+    )
+    to_subsidiary: str = Field(..., description="subsidiary_id of the counterparty leg.")
+    to_kontablo_id: str = Field(
+        "",
+        description="Kontablo node id of the counterparty leg, e.g. 'liability.current.payables'. "
+        "Defaults to from_kontablo_id (single-node elimination) if omitted.",
+    )
+    amount_usd: float = Field(..., description="USD amount to remove from each leg (finite).")
 
     @field_validator("amount_usd")
     @classmethod
@@ -430,7 +438,27 @@ def build_mcp(engine: Optional[ConsolidationEngine] = None) -> FastMCP:
         "neither deterministic tier matches."
     )
     def resolve_account(
-        jurisdiction: str, local_code: str = "", local_name: str = "", nature: Optional[str] = None
+        jurisdiction: Annotated[
+            str,
+            Field(description="ISO 3166-1 alpha-2 jurisdiction code, e.g. 'mx', 'es', 'us' "
+            "(case-insensitive). Determines which Tier-1 statutory code index is searched."),
+        ],
+        local_code: Annotated[
+            str,
+            Field(description="Local statutory account code as a STRING, e.g. '101' or '1.1.01'. "
+            "Used for the Tier-1 exact lookup. Omit if you only have the name."),
+        ] = "",
+        local_name: Annotated[
+            str,
+            Field(description="Local account name in any supported language, e.g. 'Caja', "
+            "'Bancos', 'Trade Receivables'. Used for the Tier-2 multilingual keyword match "
+            "when the code does not resolve."),
+        ] = "",
+        nature: Annotated[
+            Optional[str],
+            Field(description="Optional account nature: 'debit' or 'credit' (or omit). Used only "
+            "for a boundary-library sanity check; any other value is rejected."),
+        ] = None,
     ) -> dict:
         return resolve_account_impl(engine, jurisdiction, local_code, local_name, nature)
 
@@ -439,7 +467,17 @@ def build_mcp(engine: Optional[ConsolidationEngine] = None) -> FastMCP:
         "'asset.current.cash') or by its UUID. Returns label, nature, statement, "
         "and the jurisdiction local-code overlay."
     )
-    def get_account(account_id: Optional[str] = None, uuid: Optional[str] = None) -> dict:
+    def get_account(
+        account_id: Annotated[
+            Optional[str],
+            Field(description="Kontablo node id, e.g. 'asset.current.cash'. Provide this OR uuid."),
+        ] = None,
+        uuid: Annotated[
+            Optional[str],
+            Field(description="Kontablo node UUID (e.g. as returned by resolve_account). "
+            "Provide this OR account_id."),
+        ] = None,
+    ) -> dict:
         return get_account_impl(engine, account_id, uuid)
 
     @server.tool(
@@ -447,7 +485,14 @@ def build_mcp(engine: Optional[ConsolidationEngine] = None) -> FastMCP:
         "Σdebits − Σcredits == 0 deterministically. Returns is_valid, the totals, "
         "the balance difference, and any errors."
     )
-    def validate_balance_sheet(entries: List[TBEntryIn]) -> dict:
+    def validate_balance_sheet(
+        entries: Annotated[
+            List[TBEntryIn],
+            Field(description="Trial-balance rows to check. Each row has debit and/or credit "
+            "amounts (finite numbers; negatives allowed). The tool sums all debits and all "
+            "credits and checks they are equal."),
+        ],
+    ) -> dict:
         return validate_balance_sheet_impl(entries)
 
     @server.tool(
@@ -458,10 +503,26 @@ def build_mcp(engine: Optional[ConsolidationEngine] = None) -> FastMCP:
         "eliminations applied, balance check, escalations, FX audit, and warnings."
     )
     def consolidate_trial_balances(
-        subsidiaries: List[SubsidiaryIn],
-        eliminations: Optional[List[EliminationIn]] = None,
-        target_currency: str = "USD",
-        parent_company_id: str = "",
+        subsidiaries: Annotated[
+            List[SubsidiaryIn],
+            Field(description="The subsidiary trial balances to consolidate, each in its own "
+            "local currency. Each is resolved to universal nodes and converted to USD."),
+        ],
+        eliminations: Annotated[
+            Optional[List[EliminationIn]],
+            Field(description="Optional explicit intercompany pairs to eliminate. Each names both "
+            "legs by (subsidiary_id, kontablo_id) and the USD amount to remove. Eliminations are "
+            "structured — never inferred from text."),
+        ] = None,
+        target_currency: Annotated[
+            str,
+            Field(description="Reporting currency. v0.x supports 'USD' only; any other value is "
+            "rejected with a clear error rather than mislabelling USD figures."),
+        ] = "USD",
+        parent_company_id: Annotated[
+            str,
+            Field(description="Optional label for the parent entity, echoed back in the response."),
+        ] = "",
     ) -> dict:
         return consolidate_trial_balances_impl(
             engine, subsidiaries, eliminations, target_currency, parent_company_id
@@ -475,9 +536,21 @@ def build_mcp(engine: Optional[ConsolidationEngine] = None) -> FastMCP:
         "tier1_codes_available) and the filtered jurisdiction list."
     )
     def list_jurisdictions(
-        region: Optional[str] = None,
-        mapping_mode: Optional[str] = None,
-        tier1_only: bool = False,
+        region: Annotated[
+            Optional[str],
+            Field(description="Optional region filter, e.g. 'Africa', 'Europe', 'Americas', "
+            "'Asia', 'Oceania' (case-insensitive)."),
+        ] = None,
+        mapping_mode: Annotated[
+            Optional[str],
+            Field(description="Optional filter: 'statutory_chart' (a mandated national chart "
+            "exists) or 'ifrs_direct' (mapped via the IFRS tag, no national numeric chart)."),
+        ] = None,
+        tier1_only: Annotated[
+            bool,
+            Field(description="If true, return only jurisdictions with verified, primary-source-"
+            "cited Tier-1 code sets (the strongest coverage claim)."),
+        ] = False,
     ) -> dict:
         return list_jurisdictions_impl(region, mapping_mode, tier1_only)
 
