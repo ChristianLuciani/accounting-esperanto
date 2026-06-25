@@ -13,7 +13,7 @@ overlays for the 60 jurisdictions that mandate a national chart.
 | | |
 |---|---|
 | **Website** | **[christianluciani.github.io/accounting-esperanto](https://christianluciani.github.io/accounting-esperanto/)** — project site & overview article |
-| **Status** | Published — v0.1.1 (public release, June 2026) |
+| **Status** | Published — v0.2.0 (agent-native MCP layer implemented, June 2026) |
 | **Preprint** | [DOI 10.5281/zenodo.20738795](https://doi.org/10.5281/zenodo.20738795) · [SSRN abstract 6960598](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598) · [ResearchGate](https://www.researchgate.net/publication/407549570_Kontablo_A_Graph-Based_Universal_Accounting_Ontology_for_the_M2M_Agentic_Economy) · `docs/papers/drafts/kontablo_preprint_modular.pdf` |
 | **License** | Code: [BSL 1.1](LICENSE) → Apache 2.0 on 2030-06-18 · ERPNext & Odoo connectors: [Apache 2.0](connectors/erpnext/LICENSE) · Paper text: [CC BY 4.0](docs/papers/LICENSE) |
 | **Author** | Christian Luciani · [ORCID 0000-0002-6955-5384](https://orcid.org/0000-0002-6955-5384) |

@@ -33,7 +33,7 @@ identifiers:
     description: "Zenodo concept DOI — cites all versions and resolves to the latest release"
   - type: doi
     value: "10.5281/zenodo.20739765"
-    description: "Zenodo version DOI for the v0.1.1 release"
+    description: "Zenodo version DOI for the v0.1.1 release (previous version; the v0.2.0 archive DOI is minted by Zenodo on release and should be added here afterward)"
   - type: url
     value: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598"
     description: "SSRN preprint (abstract 6960598)"
@@ -41,8 +41,8 @@ identifiers:
     value: "https://www.researchgate.net/publication/407549570_Kontablo_A_Graph-Based_Universal_Accounting_Ontology_for_the_M2M_Agentic_Economy"
     description: "ResearchGate preprint (publication 407549570)"
 license: BUSL-1.1
-version: "0.1.1"
-date-released: "2026-06-18"
+version: "0.2.0"
+date-released: "2026-06-25"
 keywords:
   - accounting
   - ontology
