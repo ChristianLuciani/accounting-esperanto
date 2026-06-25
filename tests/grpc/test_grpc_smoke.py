@@ -142,3 +142,38 @@ def test_planned_rpc_returns_unimplemented(channel):
     with pytest.raises(grpc.RpcError) as exc:
         stub.ValidateCompleteness(pb.CompletenessRequest(jurisdiction="es"))
     assert exc.value.code() == grpc.StatusCode.UNIMPLEMENTED
+
+
+# --- robustness: non-finite amounts / bad FX -> INVALID_ARGUMENT -----------
+def test_consolidate_rejects_non_finite_amount(channel):
+    stub = pb_grpc.ConsolidationServiceStub(channel)
+    req = pb.ConsolidationRequest(
+        target_currency="USD",
+        subsidiaries=[pb.SubsidiaryTrialBalance(
+            subsidiary_id="a", jurisdiction="mx", currency="MXN",
+            entries=[pb.TrialBalanceEntry(local_code="101", local_name="Caja", debit=float("nan"))])],
+    )
+    with pytest.raises(grpc.RpcError) as exc:
+        stub.ConsolidateTrialBalances(req)
+    assert exc.value.code() == grpc.StatusCode.INVALID_ARGUMENT
+
+
+def test_consolidate_rejects_negative_fx(channel):
+    stub = pb_grpc.ConsolidationServiceStub(channel)
+    req = pb.ConsolidationRequest(
+        target_currency="USD",
+        subsidiaries=[pb.SubsidiaryTrialBalance(
+            subsidiary_id="a", jurisdiction="mx", currency="MXN", fx_rate_to_target=-2.0,
+            entries=[pb.TrialBalanceEntry(local_code="101", local_name="Caja", debit=100)])],
+    )
+    with pytest.raises(grpc.RpcError) as exc:
+        stub.ConsolidateTrialBalances(req)
+    assert exc.value.code() == grpc.StatusCode.INVALID_ARGUMENT
+
+
+def test_validate_rejects_non_finite_amount(channel):
+    stub = pb_grpc.ValidationServiceStub(channel)
+    with pytest.raises(grpc.RpcError) as exc:
+        stub.ValidateBalanceSheet(pb.ValidationRequest(
+            entries=[pb.TrialBalanceEntry(local_code="101", debit=float("inf"))]))
+    assert exc.value.code() == grpc.StatusCode.INVALID_ARGUMENT

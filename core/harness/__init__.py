@@ -44,11 +44,19 @@ from core.harness.ontology import (
     merge_family_codes,
 )
 from core.harness.resolution import TIER2_RULES, resolve
+from core.harness.validation import (
+    ensure_finite,
+    ensure_positive_finite,
+    is_finite_number,
+)
 
 __all__ = [
     "resolve",
     "TIER2_RULES",
     "cra_validate",
+    "ensure_finite",
+    "ensure_positive_finite",
+    "is_finite_number",
     "load_ontology",
     "load_families",
     "merge_family_codes",

@@ -1,8 +1,12 @@
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi.encoders import jsonable_encoder
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+import math
 import uvicorn
 import os
-from typing import List, Optional
+from typing import Any, List, Optional
 from .models.kontablo import (
     KontabloAccount, SingleMappingRequest, SingleMappingResponse,
     BatchMappingRequest, BatchMappingResponse,
@@ -26,7 +30,19 @@ consolidation_service = ConsolidationService(mapping_service, ontology_service)
 
 app = FastAPI(
     title="Kontablo Universal Accounting API",
-    description="Universal accounting account mapping, transaction classification, and consolidation.",
+    description=(
+        "Universal, UUID-keyed accounting ontology over a deterministic engine. "
+        "Map local statutory accounts to universal nodes, query the ontology, and "
+        "consolidate multi-jurisdiction trial balances with auditable FX.\n\n"
+        "**Deterministic vs. LLM:** account mapping, ontology queries, and "
+        "consolidation are deterministic (graph lookup + rules + arithmetic). "
+        "`/classification/transaction` is the one LLM-dependent endpoint and is "
+        "stochastic by nature.\n\n"
+        "**Input robustness:** monetary amounts must be finite (NaN/±Infinity "
+        "rejected with 422); manual FX rates must be > 0 (422); a finite-sum "
+        "overflow is reported as 400, never an opaque 500. The same invariants "
+        "back the gRPC and MCP faces (`core.harness.validation`)."
+    ),
     version="1.0.0",
 )
 
@@ -42,6 +58,30 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+def _sanitize_non_finite(obj: Any) -> Any:
+    """Replace NaN/±Infinity floats with their string form, recursively.
+
+    FastAPI's 422 validation-error body echoes the offending input value; when
+    that value is a non-finite float, Starlette's JSON renderer (allow_nan=False)
+    raises on serialization and the clean 422 turns into an opaque 500. Scrubbing
+    the error payload keeps a malformed-amount request a clean, explained 422."""
+    if isinstance(obj, float) and not math.isfinite(obj):
+        return repr(obj)  # "nan" / "inf" / "-inf"
+    if isinstance(obj, dict):
+        return {k: _sanitize_non_finite(v) for k, v in obj.items()}
+    if isinstance(obj, (list, tuple)):
+        return [_sanitize_non_finite(v) for v in obj]
+    return obj
+
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+    # jsonable_encoder first (turns the ValueError in each error's ctx into a
+    # string), then scrub any non-finite input echo so the 422 serializes.
+    detail = _sanitize_non_finite(jsonable_encoder(exc.errors()))
+    return JSONResponse(status_code=422, content={"detail": detail})
+
 
 @app.get("/")
 async def root():
@@ -97,7 +137,11 @@ async def get_local_codes(account_id: str, jurisdiction: Optional[str] = None):
 # MAPPING
 # ─────────────────────────────────────────────
 
-@app.post("/mapping/account", response_model=SingleMappingResponse, tags=["mapping"])
+@app.post("/mapping/account", response_model=SingleMappingResponse, tags=["mapping"],
+          summary="Map one local account to a universal node",
+          description="Resolve a single local statutory account (jurisdiction + code/name) "
+          "to a universal Kontablo node via the deterministic resolver. Returns the node id, "
+          "UUID, confidence, and match_method ('exact_lookup' | 'semantic_ai' | 'not_found').")
 async def map_account(request: SingleMappingRequest):
     return await mapping_service.map_account(request)
 
@@ -116,12 +160,23 @@ async def map_batch(request: BatchMappingRequest):
         mappings=results
     )
 
-@app.post("/classification/transaction", tags=["classification"])
+@app.post("/classification/transaction", tags=["classification"],
+          summary="Classify a transaction narration (LLM-dependent)",
+          description="Classify a free-text narration to a Kontablo node. **Stochastic:** this "
+          "is the one LLM-backed endpoint; unlike mapping/consolidation it is not deterministic "
+          "and requires a configured provider key.")
 async def classify_transaction(request: TransactionClassificationRequest):
     ontology_summary = mapping_service._get_ontology_summary()
     return await ai_service.classify_transaction(request.narration, request.jurisdiction, ontology_summary)
 
-@app.post("/consolidation", tags=["reporting"])
+@app.post("/consolidation", tags=["reporting"],
+          summary="Consolidate multi-jurisdiction trial balances",
+          description="Consolidate subsidiary trial balances into one target-currency trial "
+          "balance. Each subsidiary is resolved deterministically and converted with an "
+          "auditable FX quote (manual `exchange_rate` > 0, else the runtime provider). The "
+          "response reports per-node debit/credit/net, totals, `balanced`/`balance_difference`, "
+          "and a per-entity `fx_audit`. Returns 400 for an unpriceable currency or a non-finite "
+          "overflow; 422 for a non-finite amount or non-positive FX rate.")
 async def consolidate_balances(request: ConsolidationRequest):
     try:
         return await consolidation_service.consolidate(request.trial_balances, request.target_currency)

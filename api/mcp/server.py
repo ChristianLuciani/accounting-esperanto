@@ -48,6 +48,7 @@ from core.engine import (  # noqa: E402
 )
 from core.harness import cra_validate  # noqa: E402
 from core.harness.fx_provider import get_fx_provider  # noqa: E402
+from core.harness.validation import ensure_finite, ensure_positive_finite  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 COVERAGE_PATH = os.path.join(ROOT, "core/schemas/jurisdiction_coverage.yaml")
@@ -62,19 +63,8 @@ _TIER_TO_MATCH = {
 
 _VALID_NATURES = ("debit", "credit")
 
-
-def _require_finite(value: float, field: str) -> float:
-    """Reject NaN / ±Infinity. A non-finite monetary amount silently defeats the
-    double-entry check (``abs(nan) > tol`` is False, so a NaN "balances") and is
-    not even valid JSON on the wire — neither is acceptable in an accounting
-    standard. Caught at the input boundary so the client gets a clean error, not
-    a corrupted result."""
-    if not math.isfinite(value):
-        raise ValueError(
-            f"{field} must be a finite number (got {value!r}); "
-            "NaN/Infinity are not valid accounting amounts."
-        )
-    return value
+# Monetary-amount invariants live in core.harness.validation (ensure_finite /
+# ensure_positive_finite) so REST, gRPC, and MCP all reject the same bad inputs.
 
 
 # ---------------------------------------------------------------------------
@@ -101,7 +91,7 @@ class TBEntryIn(BaseModel):
     @field_validator("debit", "credit")
     @classmethod
     def _finite_amount(cls, v: float, info) -> float:
-        return _require_finite(v, info.field_name)
+        return ensure_finite(v, info.field_name)
 
 
 class SubsidiaryIn(BaseModel):
@@ -124,18 +114,10 @@ class SubsidiaryIn(BaseModel):
     @field_validator("fx_rate_to_usd")
     @classmethod
     def _positive_finite_rate(cls, v: Optional[float]) -> Optional[float]:
-        if v is None:
-            return v
-        _require_finite(v, "fx_rate_to_usd")
-        if v <= 0:
-            # A zero rate silently zeroes every converted amount; a negative rate
-            # sign-flips them — both corrupt the consolidation while still being
-            # stamped into the FX audit trail as if legitimate.
-            raise ValueError(
-                f"fx_rate_to_usd must be > 0 (got {v!r}); a currency's USD value "
-                "cannot be zero or negative."
-            )
-        return v
+        # A zero rate silently zeroes every converted amount; a negative rate
+        # sign-flips them — both corrupt the consolidation while still being
+        # stamped into the FX audit trail as if legitimate.
+        return None if v is None else ensure_positive_finite(v, "fx_rate_to_usd")
 
 
 class EliminationIn(BaseModel):
@@ -157,7 +139,7 @@ class EliminationIn(BaseModel):
     @field_validator("amount_usd")
     @classmethod
     def _finite_amount(cls, v: float) -> float:
-        return _require_finite(v, "amount_usd")
+        return ensure_finite(v, "amount_usd")
 
 
 # ---------------------------------------------------------------------------
