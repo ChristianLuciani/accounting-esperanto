@@ -85,6 +85,184 @@ list_jurisdictions -> total=195, statutory_chart=60, tier1_codes_available=56
 }
 ```
 
+Once registered, an agent discovers the five tools automatically; every tool and
+every parameter is self-describing (the input JSON schema carries a description
+for each field, enforced by `tests/mcp/test_mcp_server.py`). The reference below
+is for humans — agents read the same information from the schema.
+
+## Tool reference (inputs & outputs)
+
+All amounts are plain numbers in the stated currency; all responses are JSON
+objects. Codes are strings (`"101"`, not `101`).
+
+### 1. `resolve_account`
+
+Map a local statutory account to a universal Kontablo node.
+
+| Param | Type | Required | Description |
+|---|---|---|---|
+| `jurisdiction` | string | ✅ | ISO 3166-1 alpha-2, e.g. `"mx"` (case-insensitive). |
+| `local_code` | string | – | Local statutory code, e.g. `"101"`. Drives the Tier-1 exact lookup. |
+| `local_name` | string | – | Local account name in any supported language. Drives the Tier-2 keyword match. |
+| `nature` | string | – | `"debit"` / `"credit"` or omit. Sanity-check only. |
+
+Provide `local_code`, `local_name`, or both.
+
+```jsonc
+// request
+{ "jurisdiction": "mx", "local_code": "101", "local_name": "Caja" }
+// response (resolved)
+{
+  "resolved": true,
+  "kontablo_id": "asset.current.cash",
+  "kontablo_uuid": "00000000-0000-4000-8000-000000000101",
+  "label_en": "Cash and Cash Equivalents",
+  "nature": "debit", "statement": "balance_sheet",
+  "tier": "tier1_exact", "match_method": "exact_lookup",
+  "confidence": 1.0, "cra_flags": [],
+  "note": "Resolved deterministically via tier1_exact."
+}
+```
+
+When nothing matches deterministically the tool **does not guess** — it returns
+`resolved: false` and escalates (Tier-3/LLM is not exposed over MCP):
+
+```jsonc
+// response (escalated)
+{ "resolved": false, "kontablo_id": null, "tier": "escalated",
+  "match_method": "not_found", "confidence": 0.0,
+  "note": "No deterministic mapping (Tier-1/Tier-2); escalate to human review ..." }
+```
+
+`tier` is `tier1_exact` (confidence 1.0), `tier2_keyword` (0.85), or `escalated`
+(0.0). `cra_flags` lists any Co-responsibility boundary warnings (e.g. a
+nature mismatch).
+
+### 2. `get_account`
+
+Look up an ontology node by id **or** UUID.
+
+| Param | Type | Required | Description |
+|---|---|---|---|
+| `account_id` | string | one of | Kontablo node id, e.g. `"asset.current.cash"`. |
+| `uuid` | string | one of | Kontablo node UUID (as returned by `resolve_account`). |
+
+```jsonc
+// request
+{ "account_id": "asset.current.cash" }
+// response
+{
+  "found": true,
+  "kontablo_id": "asset.current.cash",
+  "kontablo_uuid": "00000000-0000-4000-8000-000000000101",
+  "label_en": "Cash and Cash Equivalents",
+  "nature": "debit", "statement": "balance_sheet",
+  "local_codes": { "mx": "101", "co": "1105", "pa": "1.1.01", "...": "..." }
+}
+// not found -> { "found": false, "error": "account 'nope' not found" }
+```
+
+### 3. `validate_balance_sheet`
+
+Check the double-entry identity Σdebits − Σcredits == 0.
+
+| Param | Type | Required | Description |
+|---|---|---|---|
+| `entries` | array of `{local_code?, local_name?, debit?, credit?}` | ✅ | Trial-balance rows. Amounts must be finite; negatives allowed. |
+
+```jsonc
+// request
+{ "entries": [ { "local_code": "572", "debit": 100 },
+               { "local_code": "100", "credit": 100 } ] }
+// response
+{ "is_valid": true, "total_debits": 100.0, "total_credits": 100.0,
+  "balance_difference": 0.0, "errors": [] }
+```
+
+When unbalanced, `errors` carries `{"code": "UNBALANCED", ...}`; when the totals
+overflow to a non-finite value, `{"code": "NON_FINITE_TOTAL", ...}` and the
+numeric fields are `null` (never `inf`/`NaN`).
+
+### 4. `consolidate_trial_balances`
+
+Consolidate subsidiaries to USD with explicit intercompany elimination.
+
+| Param | Type | Required | Description |
+|---|---|---|---|
+| `subsidiaries` | array of subsidiary | ✅ | Each: `subsidiary_id`, `jurisdiction`, `currency`, `entries[]`, optional `fx_rate_to_usd` (+ `fx_rate_as_of`, `fx_rate_note`). |
+| `eliminations` | array | – | Each: `from_subsidiary`, `from_kontablo_id`, `to_subsidiary`, `to_kontablo_id`, `amount_usd`. |
+| `target_currency` | string | – | `"USD"` only in v0.x. |
+| `parent_company_id` | string | – | Echoed back. |
+
+A subsidiary is priced by: a manual `fx_rate_to_usd` (> 0) if given, else the
+runtime FX provider, else the pinned static table. Every conversion is recorded
+in `fx_audit`.
+
+```jsonc
+// request (single subsidiary, no elimination)
+{ "subsidiaries": [ { "subsidiary_id": "norte-mx", "jurisdiction": "mx",
+    "currency": "MXN", "entries": [
+      { "local_code": "102", "local_name": "Bancos", "debit": 1724137.93 },
+      { "local_code": "201", "local_name": "Proveedores", "credit": 1724137.93 } ] } ] }
+// response (abridged)
+{ "ok": true, "target_currency": "USD",
+  "trial_balance": [
+    { "kontablo_id": "asset.current.bank", "debit": 100000.0, "credit": 0.0, "net": 100000.0 },
+    { "kontablo_id": "liability.current.payables", "debit": 0.0, "credit": 100000.0, "net": -100000.0 } ],
+  "eliminations_applied": 0, "balanced": true, "balance_difference": 0.0,
+  "escalations": [],
+  "fx_audit": [ { "subsidiary_id": "norte-mx", "currency": "MXN",
+    "usd_per_unit": 0.058, "source": "static-pinned", "mode": "static",
+    "as_of": null, "note": null } ],
+  "warnings": [] }
+```
+
+To eliminate a parent receivable against a subsidiary payable, add
+`{"from_subsidiary":"iberica-es","from_kontablo_id":"asset.current.receivables",`
+`"to_subsidiary":"norte-mx","to_kontablo_id":"liability.current.payables","amount_usd":100000}`.
+Lines that fail to resolve appear in `escalations`; an unsupported currency
+returns `{"ok": false, "error": "..."}`.
+
+### 5. `list_jurisdictions`
+
+List coverage from the 195-jurisdiction manifest.
+
+| Param | Type | Required | Description |
+|---|---|---|---|
+| `region` | string | – | e.g. `"Africa"`, `"Europe"` (case-insensitive). |
+| `mapping_mode` | string | – | `"statutory_chart"` or `"ifrs_direct"`. |
+| `tier1_only` | bool | – | Only jurisdictions with verified Tier-1 codes. |
+
+```jsonc
+// request
+{ "tier1_only": true }
+// response
+{ "summary": { "total": 195, "statutory_chart": 60, "ifrs_direct": 135,
+               "tier1_codes_available": 56 },
+  "count_returned": 56,
+  "jurisdictions": [ { "iso": "dz", "name": "Algeria", "region": "Africa",
+                       "mapping_mode": "statutory_chart",
+                       "tier1_codes_available": true, "...": "..." } ],
+  "metadata": { "...": "..." } }
+```
+
+## Error model — two distinct response patterns
+
+Agents should branch on both:
+
+1. **Protocol error (`isError: true` / a raised `ToolError`).** The request
+   violated the tool *contract*: a missing required field, a wrong type, a
+   non-finite amount, or an invalid manual FX rate (`<= 0`). The message names
+   the offending field. The server stays alive — fix the call and retry.
+2. **In-band domain result.** The call was well-formed but the *accounting*
+   answer is "no": `resolve_account` → `resolved: false` (escalate to a human;
+   do not invent a UUID); `get_account` → `found: false`; `consolidate_trial_balances`
+   → `ok: false` (e.g. unsupported currency) or a populated `escalations` /
+   `warnings` array. These are normal outcomes, not failures.
+
+Determinism guarantee (principle #5): the same input always yields byte-identical
+output, so an agent can cache and reason about results safely.
+
 ## Robustness / input validation
 
 For Kontablo to be a dependable interface for the agentic economy, a malformed
