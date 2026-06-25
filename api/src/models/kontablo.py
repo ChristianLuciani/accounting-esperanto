@@ -1,8 +1,10 @@
-from pydantic import BaseModel, Field, UUID4
+from pydantic import BaseModel, Field, UUID4, field_validator
 from typing import List, Optional, Dict
 from enum import Enum
 from datetime import date
 from uuid import UUID
+
+from core.harness.validation import ensure_finite, ensure_positive_finite
 
 class StatementType(str, Enum):
     balance_sheet = "balance_sheet"
@@ -61,27 +63,41 @@ class BatchMappingResponse(BaseModel):
     mappings: List[SingleMappingResponse]
 
 class TransactionClassificationRequest(BaseModel):
-    narration: str
-    jurisdiction: str
-    amount: Optional[float] = None
-    currency: Optional[str] = None
+    narration: str = Field(..., description="Free-text transaction narration to classify")
+    jurisdiction: str = Field(..., description="ISO 3166-1 alpha-2, e.g. 'mx'")
+    amount: Optional[float] = Field(None, description="Optional transaction amount (must be finite)")
+    currency: Optional[str] = Field(None, description="Optional ISO 4217 currency, e.g. 'MXN'")
     debit_or_credit: Optional[AccountNature] = None
     context: Optional[dict] = None
     agent_id: Optional[str] = Field(None, description="Optional ID for M2M executed transactions under AP2/A2A protocols for liability auditing")
 
+    @field_validator("amount")
+    @classmethod
+    def _finite_amount(cls, v: Optional[float]) -> Optional[float]:
+        return None if v is None else ensure_finite(v, "amount")
+
 class TrialBalanceEntry(BaseModel):
-    local_code: str
-    local_name: Optional[str] = None
-    debit: float
-    credit: float
+    local_code: str = Field(..., description="Local statutory account code as a string, e.g. '101'")
+    local_name: Optional[str] = Field(None, description="Local account name, e.g. 'Caja'")
+    debit: float = Field(..., description="Debit amount in the trial balance's currency (finite; negatives allowed)")
+    credit: float = Field(..., description="Credit amount in the trial balance's currency (finite; negatives allowed)")
+
+    @field_validator("debit", "credit")
+    @classmethod
+    def _finite_amount(cls, v: float, info) -> float:
+        return ensure_finite(v, info.field_name)
 
 class TrialBalance(BaseModel):
-    subsidiary_id: str
-    jurisdiction: str
-    currency: str
-    reporting_date: date
-    entries: List[TrialBalanceEntry]
-    exchange_rate: Optional[float] = None  # Custom override for complex FX cases
+    subsidiary_id: str = Field(..., description="Stable subsidiary identifier")
+    jurisdiction: str = Field(..., description="ISO 3166-1 alpha-2, e.g. 'mx'")
+    currency: str = Field(..., description="ISO 4217 currency of this trial balance, e.g. 'MXN'")
+    reporting_date: date = Field(..., description="Reporting date (ISO 8601)")
+    entries: List[TrialBalanceEntry] = Field(..., description="Trial-balance rows in local currency")
+    exchange_rate: Optional[float] = Field(
+        None,
+        description="Optional manual FX rate to the target currency (must be > 0). "
+        "Overrides the runtime FX provider for asynchronous/contract-rate transactions.",
+    )
     # Audit metadata for a manual exchange_rate (asynchronous transactions
     # priced at a contract/invoice rate): its effective date and the rationale.
     exchange_rate_as_of: Optional[str] = Field(
@@ -91,6 +107,13 @@ class TrialBalance(BaseModel):
         None, description="Rationale for a manual exchange_rate, for the audit trail"
     )
 
+    @field_validator("exchange_rate")
+    @classmethod
+    def _positive_finite_rate(cls, v: Optional[float]) -> Optional[float]:
+        # A 0 rate zeroes every converted amount; a negative rate sign-flips
+        # them — both corrupt the consolidation while looking legitimate.
+        return None if v is None else ensure_positive_finite(v, "exchange_rate")
+
 class ConsolidationRequest(BaseModel):
-    target_currency: str = "USD"
-    trial_balances: List[TrialBalance]
+    target_currency: str = Field("USD", description="Reporting currency for the consolidated trial balance")
+    trial_balances: List[TrialBalance] = Field(..., description="Subsidiary trial balances to consolidate")

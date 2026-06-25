@@ -1,3 +1,4 @@
+import math
 from typing import List, Dict, Optional, Tuple
 from ..models.kontablo import TrialBalance, TrialBalanceEntry, SingleMappingRequest
 from .mapping import MappingService
@@ -104,21 +105,42 @@ class ConsolidationService:
                 consolidated_data[k_id]["debit"] += debit_val
                 consolidated_data[k_id]["credit"] += credit_val
 
-        # 3. Format result
+        # 3. Format result. Per-entry amounts are validated finite at the model
+        # boundary, but a sum of finite values can still overflow to ±inf; refuse
+        # to emit a non-finite figure (it would crash JSON serialization with a
+        # 500) and surface it as a clean caller error instead.
         formatted_results = []
+        total_debit = 0.0
+        total_credit = 0.0
         for k_id, values in consolidated_data.items():
             account_info = self.ontology_service.get_account(k_id)
+            debit = round(values["debit"], 2)
+            credit = round(values["credit"], 2)
+            if not (math.isfinite(debit) and math.isfinite(credit)):
+                raise ValueError(
+                    f"consolidated totals for {k_id} overflowed to a non-finite "
+                    "value; input amounts are too large to sum safely."
+                )
+            total_debit += debit
+            total_credit += credit
             formatted_results.append({
                 "kontablo_id": k_id,
                 "label_en": account_info.label_en if account_info else "Unknown",
-                "debit": round(values["debit"], 2),
-                "credit": round(values["credit"], 2),
-                "net_balance": round(values["debit"] - values["credit"], 2)
+                "debit": debit,
+                "credit": credit,
+                "net_balance": round(debit - credit, 2)
             })
 
+        balance_difference = round(total_debit - total_credit, 2)
         return {
             "target_currency": target_currency,
             "entities_consolidated": len(trial_balances),
             "results": formatted_results,
+            # Double-entry observability: does the consolidated trial balance
+            # balance? (Parity with the gRPC and MCP consolidation surfaces.)
+            "total_debit": round(total_debit, 2),
+            "total_credit": round(total_credit, 2),
+            "balance_difference": balance_difference,
+            "balanced": abs(balance_difference) <= 0.05,
             "fx_audit": fx_audit,
         }

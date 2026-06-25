@@ -38,6 +38,7 @@ from api.grpc.gen import kontablo_pb2 as pb  # noqa: E402
 from api.grpc.gen import kontablo_pb2_grpc as pb_grpc  # noqa: E402
 from api.src.services.ontology import OntologyService  # noqa: E402
 from core.harness.fx_provider import get_fx_provider  # noqa: E402
+from core.harness.validation import ensure_finite, ensure_positive_finite  # noqa: E402
 from core.engine import (  # noqa: E402
     ConsolidationEngine,
     IntercompanyLink,
@@ -179,26 +180,37 @@ class ConsolidationServicer(pb_grpc.ConsolidationServiceServicer):
         self.engine = engine
 
     def ConsolidateTrialBalances(self, request, context):
-        subs = []
-        for s in request.subsidiaries:
-            entries = [
-                LocalEntry(
-                    code=e.local_code,
-                    name=e.local_name,
-                    debit=e.debit,
-                    credit=e.credit,
+        # Reject non-finite amounts / non-positive FX at the boundary so a
+        # malformed request fails cleanly (INVALID_ARGUMENT) instead of
+        # producing a NaN-corrupted or sign-flipped consolidation.
+        try:
+            subs = []
+            for s in request.subsidiaries:
+                entries = [
+                    LocalEntry(
+                        code=e.local_code,
+                        name=e.local_name,
+                        debit=ensure_finite(e.debit, "debit"),
+                        credit=ensure_finite(e.credit, "credit"),
+                    )
+                    for e in s.entries
+                ]
+                fx = s.fx_rate_to_target or None
+                if fx is not None:
+                    ensure_positive_finite(fx, "fx_rate_to_target")
+                subs.append(
+                    SubsidiaryTB(
+                        subsidiary_id=s.subsidiary_id,
+                        jurisdiction=s.jurisdiction,
+                        currency=s.currency,
+                        entries=entries,
+                        fx_rate_to_usd=fx,
+                    )
                 )
-                for e in s.entries
-            ]
-            subs.append(
-                SubsidiaryTB(
-                    subsidiary_id=s.subsidiary_id,
-                    jurisdiction=s.jurisdiction,
-                    currency=s.currency,
-                    entries=entries,
-                    fx_rate_to_usd=s.fx_rate_to_target or None,
-                )
-            )
+            for el in request.eliminations:
+                ensure_finite(el.amount, "elimination amount")
+        except ValueError as e:
+            context.abort(grpc.StatusCode.INVALID_ARGUMENT, str(e))
         links = [
             IntercompanyLink(
                 from_subsidiary=el.from_subsidiary,
@@ -254,6 +266,13 @@ class ValidationServicer(pb_grpc.ValidationServiceServicer):
 
     def ValidateBalanceSheet(self, request, context):
         # Resolve entries, then check Σdebits − Σcredits == 0 deterministically.
+        # A NaN amount would "balance" (abs(NaN) > tol is False); reject it.
+        try:
+            for e in request.entries:
+                ensure_finite(e.debit, "debit")
+                ensure_finite(e.credit, "credit")
+        except ValueError as e:
+            context.abort(grpc.StatusCode.INVALID_ARGUMENT, str(e))
         debits = sum(e.debit for e in request.entries)
         credits = sum(e.credit for e in request.entries)
         diff = round(debits - credits, 2)
