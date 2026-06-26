@@ -32,8 +32,11 @@ identifiers:
     value: "10.5281/zenodo.20738795"
     description: "Zenodo concept DOI — cites all versions and resolves to the latest release"
   - type: doi
+    value: "10.5281/zenodo.20885749"
+    description: "Zenodo version DOI for the v0.2.1 release (current version)"
+  - type: doi
     value: "10.5281/zenodo.20739765"
-    description: "Zenodo version DOI for the v0.1.1 release (previous version; the v0.2.1 archive DOI is minted by Zenodo on release and should be added here afterward)"
+    description: "Zenodo version DOI for the v0.1.1 release (previous version)"
   - type: url
     value: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598"
     description: "SSRN preprint (abstract 6960598)"
