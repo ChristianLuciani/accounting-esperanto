@@ -98,7 +98,7 @@ SSRN [abstract 6960598](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960
 
 ## Release checklist (owner-gated — Christian)
 The code/docs are ready on `main`; cutting the public release is a manual step
-per `docs/strategy/launch-playbook.md`:
+per the internal launch playbook:
 1. `git tag v0.2.0 && git push origin v0.2.0`
 2. `gh release create v0.2.0 -F docs/strategy/release-notes-v0.2.0.md`
 3. Zenodo auto-archives the tag and mints a **v0.2.0 version DOI** under the

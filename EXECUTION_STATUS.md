@@ -2,7 +2,7 @@
 
 ## 🚀 Current Milestone: Phase 3 — Pre-Publication (Release Day Pending)
 
-Pasos 1–7 del workflow prepare-for-publication completados. Paso 8 (release day: Zenodo + SSRN + notificaciones) pendiente de ejecución. Ver `docs/strategy/launch-playbook.md`.
+Pasos 1–7 del workflow prepare-for-publication completados. Paso 8 (release day: Zenodo + SSRN + notificaciones) pendiente de ejecución. Ver el launch playbook interno (`docs/internal/`, fuera del repo público).
 
 Última actualización: 2026-06-05
 

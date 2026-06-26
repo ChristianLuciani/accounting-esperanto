@@ -12,7 +12,7 @@
 
 ## Current phase
 
-**Phase 3 — Pre-Publication (release day pending).** Source of truth: `EXECUTION_STATUS.md`. Steps 1–7 of the prepare-for-publication workflow are complete; Step 8 (release day) is gated on actions only Christian can take: make the repo public, enable the Zenodo GitHub toggle, `gh release create v0.1.0`, SSRN upload (sequence in `docs/strategy/launch-playbook.md`). `PHASE_0_COMPLETE.md` is a **historical snapshot** (January 2026) — never use it as state reference.
+**Phase 3 — Pre-Publication (release day pending).** Source of truth: `EXECUTION_STATUS.md`. Steps 1–7 of the prepare-for-publication workflow are complete; Step 8 (release day) is gated on actions only Christian can take: make the repo public, enable the Zenodo GitHub toggle, `gh release create v0.1.0`, SSRN upload (sequence in the internal launch playbook, `docs/internal/`, kept out of the public repo). `PHASE_0_COMPLETE.md` is a **historical snapshot** (January 2026) — never use it as state reference.
 
 Concrete state at last update (June 2026):
 - **195/195 sovereign jurisdictions mapped** (universal IFRS-anchored layer); **60 statutory-chart overlays**, of which **56 are exercised against primary-source-cited charts**; 7,000+ account mappings in `localizations/`. Non-sovereign extras: TW, HK, MO.
@@ -108,7 +108,7 @@ The two queued preprint updates shipped in v1.8: (1) the harness-architecture se
 
 ## Launch playbook (exists — execute, don't rewrite)
 
-`docs/strategy/launch-playbook.md` is operative: release-day sequence (Zenodo toggle → GitHub release v0.1.0 → DOI propagation → SSRN → coordinated posts), 25-person tiered notification list, and post drafts. `docs/strategy/release-notes-v0.1.0.md` is ready for `gh release create`. Sessions touching launch material should execute or refine the playbook, not produce parallel strategy documents.
+The launch playbook is **kept internally, outside the public repo** (it contains a named outreach/notification list and pitch angles — not for public view; moved to the gitignored `docs/internal/` in the June 2026 hygiene pass). It is operative: release-day sequence (Zenodo toggle → GitHub release → DOI propagation → SSRN → coordinated posts), tiered notification list, and post drafts. The public `docs/strategy/release-notes-*.md` files are ready for `gh release create`. Sessions touching launch material should execute or refine the internal playbook, not produce parallel strategy documents or re-commit it to the public tree.
 
 ## Anti-patterns specific to this repo
 

@@ -53,3 +53,6 @@ texput.log
 
 # graphify generated knowledge-graph output (regenerate with `graphify update .`)
 graphify-out/
+
+# Internal (non-public) working docs — launch playbook, submission notes, etc.
+docs/internal/

@@ -106,4 +106,4 @@ the CLI:
 4. Title `Kontablo v0.2.1 — Agent-native MCP layer`; body = this file.
 5. **Publish** → Zenodo auto-archives and mints a **v0.2.1 version DOI** under the
    concept DOI. Add that version DOI to `CITATION.cff` `identifiers` afterward.
-6. Optional coordinated posts per the launch playbook.
+6. Optional coordinated posts per the internal launch playbook.
