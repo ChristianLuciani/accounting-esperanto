@@ -1,16 +1,16 @@
-# Kontablo v0.2.0 — Agent-native layer goes real
-
-> ⚠️ **RETRACTED / SUPERSEDED BY [v0.2.1](release-notes-v0.2.1.md).** The `v0.2.0`
-> tag was created from a stale checkout (pre-MCP commit) and GitHub immutable
-> releases permanently burned the name. This file is kept for the audit trail;
-> the released artifact is **v0.2.1**, carrying the identical feature set.
-
+# Kontablo v0.2.1 — Agent-native layer goes real
 
 This is a **minor release** (backward-compatible new features) over
 [v0.1.1](release-notes-v0.1.0.md). The headline: the **agent-native layer the
 preprint describes is now implemented in code, not just asserted** — Kontablo
 ships a real MCP server, and all three machine-consumable faces (REST, gRPC, MCP)
 are hardened against malformed input behind one shared invariant.
+
+> **Why v0.2.1 and not v0.2.0?** The identical content was first tagged as
+> `v0.2.0`, but that tag was created from a stale local checkout (it pointed at a
+> pre-MCP commit) and GitHub's immutable-releases feature permanently burned the
+> `v0.2.0` name. `v0.2.1` is the first *valid* public release of this feature set;
+> `v0.2.0` is retracted.
 
 No headline numbers changed: still **195** sovereign jurisdictions, **60**
 statutory-chart overlays (**56** exercised against primary-source-cited charts),
@@ -97,11 +97,13 @@ Concept DOI (always resolves to the latest version):
 SSRN [abstract 6960598](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598).
 
 ## Release checklist (owner-gated — Christian)
-The code/docs are ready on `main`; cutting the public release is a manual step
-per `docs/strategy/launch-playbook.md`:
-1. `git tag v0.2.0 && git push origin v0.2.0`
-2. `gh release create v0.2.0 -F docs/strategy/release-notes-v0.2.0.md`
-3. Zenodo auto-archives the tag and mints a **v0.2.0 version DOI** under the
-   concept DOI. Add that version DOI to `CITATION.cff` `identifiers` afterward
-   (the concept DOI already resolves to it).
-4. Optional coordinated posts per the launch playbook.
+The code/docs are ready on `main`. Because `git push` of a tag is blocked by the
+repo ruleset (immutable releases), create the tag **through the Release UI**, not
+the CLI:
+1. GitHub → Releases → **Draft a new release**.
+2. **Choose a tag** → type `v0.2.1` → "Create new tag: v0.2.1 on publish".
+3. **Target:** `main` (server-side tip — guarantees the correct commit).
+4. Title `Kontablo v0.2.1 — Agent-native MCP layer`; body = this file.
+5. **Publish** → Zenodo auto-archives and mints a **v0.2.1 version DOI** under the
+   concept DOI. Add that version DOI to `CITATION.cff` `identifiers` afterward.
+6. Optional coordinated posts per the launch playbook.

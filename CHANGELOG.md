@@ -6,10 +6,15 @@ All notable changes to Kontablo are documented here. The format follows
 
 Full release notes live in `docs/strategy/release-notes-*.md`.
 
-## [0.2.0] — 2026-06-25
+## [0.2.1] — 2026-06-26
 
 The agent-native layer the preprint describes becomes real in code. No headline
 numbers changed (195 / 60 / 56; 75 entities / 68 jurisdictions / 97.3%).
+
+> **Note:** this content was originally prepared as `v0.2.0`, but that tag was
+> created from a stale checkout (pointing at a pre-MCP commit) and the name was
+> permanently burned by GitHub immutable releases. `v0.2.1` is the first valid
+> public release carrying this feature set; `v0.2.0` is retracted/never-released.
 
 ### Added
 - **MCP server** (`api/mcp/`) — five deterministic agent tools (`resolve_account`,
@@ -45,6 +50,6 @@ numbers changed (195 / 60 / 56; 75 entities / 68 jurisdictions / 97.3%).
   reproducible mass-consolidation validation. Full notes:
   `docs/strategy/release-notes-v0.1.0.md`.
 
-[0.2.0]: https://github.com/ChristianLuciani/accounting-esperanto/releases/tag/v0.2.0
+[0.2.1]: https://github.com/ChristianLuciani/accounting-esperanto/releases/tag/v0.2.1
 [0.1.1]: https://github.com/ChristianLuciani/accounting-esperanto/releases/tag/v0.1.1
 [0.1.0]: https://github.com/ChristianLuciani/accounting-esperanto/releases/tag/v0.1.0
