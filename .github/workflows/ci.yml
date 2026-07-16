@@ -45,12 +45,12 @@ jobs:
           # "Claims–evidence traceability").
           expected = {
               ("coverage_manifest", "sovereign_states"): 195,
-              ("coverage_manifest", "statutory_chart"): 60,
-              ("coverage_manifest", "tier1_code_sets_ready"): 56,
-              ("entities",): 75,
-              ("n_countries",): 68,
-              ("deterministic_coverage_pct",): 97.3,
-              ("distinct_nodes_hit",): 25,
+              ("coverage_manifest", "statutory_chart"): 61,
+              ("coverage_manifest", "tier1_code_sets_ready"): 57,
+              ("entities",): 76,
+              ("n_countries",): 69,
+              ("deterministic_coverage_pct",): 97.5,
+              ("distinct_nodes_hit",): 30,
               ("escalated",): 4,
           }
 

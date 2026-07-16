@@ -61,6 +61,7 @@ level3:
       tr: "102"
       vn: "111"
       za: "Cash"
+      ec: "1010101"
     hyperinflation_adjustment: true  # IAS 29 for VE, TR
     notes: "Universal account. In Venezuela apply IAS 29 monetary restatement. TR: inflation adjustment pre-2022."
 
@@ -79,6 +80,7 @@ level3:
       co: "1110"
       pa: "1.1.02"
       vn: "112"
+      ec: "1010103"  # Instituciones Financieras Privadas (1010102 = Publicas variant)
     notes: "Often merged with cash in IFRS presentation. Separate for local reporting clarity."
 
   - id: "asset.current.receivables"
@@ -98,6 +100,7 @@ level3:
       br: "1.1.1.2.01-0"
       ar: "1130"
       vn: "131"
+      ec: "1010205"
     notes: "CN requires aging schedule disclosure. Apply ECL model (IFRS 9) for impairment."
 
   - id: "asset.current.vat_input"
@@ -122,6 +125,7 @@ level3:
       in: "GST Input Credit"
       cn: "进项税额"
       br: "Impostos a Recuperar"
+      ec: "1010501"
     not_applicable: ["us", "sa"]  # No VAT in US; SA uses Zakat
     notes: "VAT rates vary: MX 16%, EU 20%avg, VN 0-10%, IN cascading GST. Not applicable in US (no VAT) or SA (Zakat)."
 
@@ -142,6 +146,7 @@ level3:
       vn: "152"
       de: "3100"
       fr: "371"
+      ec: "10103"
     valuation_methods: ["FIFO", "weighted_average"]  # IAS 2 (LIFO not permitted under IFRS)
     notes: "Service companies: set to 0 or N/A. Valuation: FIFO or weighted average (LIFO prohibited under IFRS)."
 
@@ -159,6 +164,7 @@ level3:
       mx: "122"
       vn: "121"
       fr: "488"
+      ec: "10104"
 
   # ─────────────────────────────────────────────
   # NON-CURRENT ASSETS
@@ -181,6 +187,7 @@ level3:
       vn: "211"
       de: "2100"
       fr: "211"
+      ec: "10201"
     depreciation_required: true
     notes: "Revaluation model (IAS 16) permitted in most jurisdictions except US."
 
@@ -194,6 +201,8 @@ level3:
     parent: "asset.noncurrent"
     level: 3
     is_aggregate: false
+    local_codes:
+      ec: "10207"
     optional: true
     min_standard_version: "IFRS_2019"
     notes: "IFRS 16 effective January 2019. Many developing markets still transitioning. Separate from PPE."
@@ -214,6 +223,7 @@ level3:
       pa: "2.2.01"
       vn: "213"
       de: "2800"
+      ec: "1020402"
     amortization_required: true
 
   - id: "asset.noncurrent.goodwill"
@@ -226,6 +236,8 @@ level3:
     parent: "asset.noncurrent"
     level: 3
     is_aggregate: false
+    local_codes:
+      ec: "1020401"
     impairment_tested_annually: true
     notes: "IFRS 3: goodwill not amortized, tested for impairment annually. Some local GAAP still amortize."
 
@@ -242,6 +254,7 @@ level3:
     local_codes:
       mx: "161"
       vn: "221"
+      ec: "10206"
 
 ---
 
@@ -268,6 +281,7 @@ level3:
       vn: "331"
       de: "3300"
       fr: "401"
+      ec: "20103"
 
   - id: "liability.current.vat_output"
     uuid: "00000000-0000-4000-8000-000000000203"
@@ -287,7 +301,7 @@ level3:
       vn: "3331"
       cn: "销项税额"
     not_applicable: ["us", "ca"]  # Sales tax is state-level in US, not VAT
-    notes: "SA: replace with Zakat base computation. US/CA: state sales tax varies (different mechanism)."
+    notes: "SA: replace with Zakat base computation. US/CA: state sales tax varies (different mechanism). EC: the Supercias NIIF presentation chart has no distinct output-VAT leaf; IVA payable aggregates into 2010701 (Con la Administracion Tributaria) together with other tax liabilities -- no ec local_code is claimed here to avoid overstating presentation-level precision."
 
   - id: "liability.current.tax"
     uuid: "00000000-0000-4000-8000-000000000205"
@@ -304,6 +318,7 @@ level3:
       vn: "3334"
       de: "3600"
       fr: "444"
+      ec: "2010702"
     notes: "Tax rates: US 21%, MX 30%, BR 34%, CN 25%, VN 20%, SA uses Zakat 2.5% of net assets."
 
   - id: "liability.current.accrued"
@@ -320,6 +335,7 @@ level3:
       mx: "270"
       vn: "333"
       de: "3900"
+      ec: "20105"
 
   - id: "liability.current.short_term_debt"
     uuid: "00000000-0000-4000-8000-000000000209"
@@ -334,6 +350,7 @@ level3:
     local_codes:
       mx: "211"
       vn: "311"
+      ec: "20104"
 
   # ─────────────────────────────────────────────
   # NON-CURRENT LIABILITIES
@@ -352,6 +369,7 @@ level3:
     local_codes:
       mx: "311"
       vn: "341"            # Circular 200: account 341 long-term borrowings & finance-lease (311 = short-term)
+      ec: "20203"
 
   - id: "liability.noncurrent.lease"
     uuid: "30000000-0000-4000-8000-000000000002"
@@ -363,6 +381,8 @@ level3:
     parent: "liability.noncurrent"
     level: 3
     is_aggregate: false
+    local_codes:
+      ec: "20201"
     optional: true
     min_standard_version: "IFRS_2019"
     notes: "IFRS 16 only. Split between current portion (12-month) and non-current."
@@ -377,6 +397,8 @@ level3:
     parent: "liability.noncurrent"
     level: 3
     is_aggregate: false
+    local_codes:
+      ec: "2020902"
     not_applicable: ["vn"]  # VAS does not use deferred tax
     notes: "VN: not applicable under VAS. US: calculated per ASC 740."
 
@@ -399,6 +421,7 @@ level3:
       co: "3105"
       pa: "5.1.01"
       vn: "411"
+      ec: "301"
     notes: "VN: Charter Capital (Vốn điều lệ). SA: registered capital under SOCPA."
 
   - id: "equity.retained"
@@ -415,6 +438,7 @@ level3:
       mx: "305"
       vn: "421"
       de: "800"
+      ec: "306"
     notes: "VE/TR: restated for inflation under IAS 29. RU: mandatory legal reserve portion."
 
   - id: "equity.reserves"
@@ -427,6 +451,8 @@ level3:
     parent: "equity"
     level: 3
     is_aggregate: false
+    local_codes:
+      ec: "304"
     notes: "RU: mandatory to maintain legal reserve of 5% of charter capital. SA: statutory reserves."
 
 ---
@@ -450,6 +476,7 @@ level3:
       pa: "6.1.01"
       vn: "511"
       fr: "701"
+      ec: "401"
     notes: "IFRS 15: 5-step revenue recognition model. BR: exclude ICMS/PIS/COFINS from gross revenue."
 
   - id: "revenue.other"
@@ -465,6 +492,7 @@ level3:
     local_codes:
       mx: "490"
       vn: "515"
+      ec: "403"
 
   - id: "expense.cogs"
     uuid: "00000000-0000-4000-8000-000000000404"
@@ -482,6 +510,7 @@ level3:
       pa: "7.1.01"
       vn: "632"
       fr: "607"
+      ec: "501"
     notes: "Service companies: typically 0 or replaced by direct labor costs."
 
   - id: "expense.admin"
@@ -499,6 +528,7 @@ level3:
       co: "5205"
       vn: "642"
       fr: "627"
+      ec: "50202"  # GASTOS ADMINISTRATIVOS (50201 GASTOS DE VENTA also rolls up here; ontology has no distinct selling-expense node)
 
   - id: "expense.depreciation"
     uuid: "00000000-0000-4000-8000-000000000503"
@@ -514,6 +544,7 @@ level3:
       mx: "506"
       vn: "214"
       fr: "681"
+      ec: "5020221"
     notes: "May be embedded in COGS or SG&A lines. Present separately for EBITDA calculation."
 
   - id: "expense.interest"
@@ -530,6 +561,7 @@ level3:
       mx: "701.04"         # SAT Anexo 24: 701.04 "Intereses a cargo" (financial expenses)
       vn: "635"            # VAS Circular 200: 635 "Chi phí tài chính" (interest is its principal component)
       fr: "661"
+      ec: "50203"
     notes: "VAS account 635 aggregates interest AND FX losses under one statutory code; Kontablo maps 635 to the interest leaf (its dominant component) and does not claim a distinct VAS leaf for FX loss (see expense.fx_loss)."
 
   - id: "expense.tax"
@@ -546,6 +578,7 @@ level3:
       mx: "510"
       vn: "821"
       fr: "695"
+      ec: "603"
 
   - id: "expense.fx_loss"
     uuid: "40000000-0000-4000-8000-000000000001"
@@ -560,6 +593,7 @@ level3:
     local_codes:
       mx: "701.01"         # SAT Anexo 24: 701.01 "Pérdida cambiaria" (FX loss)
       de: "6800"
+      ec: "5020307"
     notes: "Critical in VE (dual-currency system). VAS has no distinct statutory leaf code for FX loss: realized FX losses transit account 635 (financial expenses), which Kontablo maps to expense.interest; hence no vn code is claimed here to avoid a one-code-to-two-leaves collision."
 
 ---
@@ -716,6 +750,7 @@ extended_core:
       fr: "421"     # PCG: "Personnel - rémunérations dues"
       es: "465"     # PGC RD 1514/2007: "Remuneraciones pendientes de pago"
       vn: "334"     # VAS Circular 200: "Phải trả người lao động"
+      ec: "2010703"  # Supercias: "Con el IESS" (social security)
     notes: "Aggregates net wages payable plus employee/employer statutory deductions (income-tax withholding, social security). Largest single source of routine NON-core posting volume (payroll runs)."
 
   - id: "liability.current.deferred_revenue"
@@ -733,6 +768,7 @@ extended_core:
       fr: "487"     # PCG: "Produits constatés d'avance"
       es: "485"     # PGC: "Ingresos anticipados"
       vn: "3387"    # VAS Circular 200: "Doanh thu chưa thực hiện" (unearned revenue)
+      ec: "20110"   # Supercias: "Anticipos" (current)
     notes: "Billings/advances ahead of revenue recognition. Common in subscription and service SMEs; distinct from trade payables and accruals under IFRS 15."
 
   - id: "asset.current.withholding_tax"
@@ -749,6 +785,7 @@ extended_core:
     local_codes:
       co: "1355"    # PUC: "Anticipo de impuestos y contribuciones o saldos a favor" (retenciones)
       es: "473"     # PGC: "Hacienda Pública, retenciones y pagos a cuenta"
+      ec: "1010502"  # Supercias: "Crédito tributario a favor de la empresa (I.R.)"
     notes: "Income tax withheld by customers at source (retención) and advance-tax credits. High frequency in LatAm and parts of Asia/Africa; not applicable everywhere."
 
   - id: "asset.current.other_receivables"
@@ -765,4 +802,5 @@ extended_core:
     local_codes:
       fr: "425"     # PCG: "Personnel - avances et acomptes"
       es: "440"     # PGC: "Deudores varios"
+      ec: "1010206"  # Supercias: "Documentos y cuentas por cobrar relacionados"
     notes: "Employee advances, deposits, and other non-trade amounts receivable; distinct from trade receivables."

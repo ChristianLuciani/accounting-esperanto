@@ -574,10 +574,10 @@ jurisdictions:
   name: Ecuador
   region: Americas
   ifrs_status: IFRS required for domestic listed companies (IFRS Foundation profile)
-  mapping_mode: ifrs_direct
-  chart_family: null
-  tier1_codes_available: false
-  coverage_basis: IFRS tag (no mandated national chart)
+  mapping_mode: statutory_chart
+  chart_family: national_inline
+  tier1_codes_available: true
+  coverage_basis: statutory local_codes overlay + IFRS anchor
 - iso: sv
   name: El Salvador
   region: Americas
