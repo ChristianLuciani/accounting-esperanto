@@ -30,11 +30,13 @@ Tier 3 itself, rather than migrating individual patterns out of Tier 3 into Tier
 
 ### External evidence reviewed (2026-07-16)
 
-- **MiniCPM family (OpenBMB).** MiniCPM5-1B (released 2026-05-19, Apache 2.0) is SOTA in the
-  1B on-device class, with LoRA fine-tuning documented out of the box across TRL+PEFT,
-  LLaMA-Factory, ms-swift, unsloth, and xtuner, and native structured tool-call output
-  (XML → OpenAI-compatible `tool_calls`). MiniCPM4-8B reaches parity with Qwen3-8B using 4.5×
-  fewer training tokens, and is a more credible accuracy baseline than the 1B variant for a
+- **MiniCPM family (OpenBMB).** MiniCPM5-1B (released 2026-05-19, Apache 2.0; benchmark and
+  release details per github.com/openbmb/minicpm) reports a 1B-class SOTA average score of
+  42.57 vs. 35.61 for the next-best open-source model in that size class, with LoRA
+  fine-tuning documented out of the box across TRL+PEFT, LLaMA-Factory, ms-swift, unsloth, and
+  xtuner, and native structured tool-call output (XML → OpenAI-compatible `tool_calls`).
+  MiniCPM4-8B reaches parity with Qwen3-8B using 4.5× fewer training tokens (8T vs. 36T,
+  arXiv:2506.07900), and is a more credible accuracy baseline than the 1B variant for a
   195-jurisdiction semantic task. A 0.5B/1B variant is retained as the candidate for genuinely
   on-device, client-local deployment (see ADR-011 data-sovereignty framing).
 - **LoRA in financial/accounting domains.** FinLoRA (arXiv:2505.19819) benchmarks five LoRA
