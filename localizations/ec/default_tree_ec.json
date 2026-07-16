@@ -1,0 +1,2144 @@
+{
+ "Company Name": "Company Name",
+ "country_code": "ec",
+ "Activo": {
+  "is_group": 1,
+  "Activo Corriente": {
+   "is_group": 1,
+   "Efectivo Y Equivalentes De Efectivo": {
+    "is_group": 1,
+    "Caja": {
+     "account_number": "1010101",
+     "account_type": "Cash"
+    },
+    "Instituciones Financieras Públicas": {
+     "account_number": "1010102",
+     "account_type": "Bank"
+    },
+    "Instituciones Financieras Privadas": {
+     "account_number": "1010103",
+     "account_type": "Bank"
+    }
+   },
+   "Activos Financieros": {
+    "is_group": 1,
+    "Activos Financieros A Valor Razonable Con Cambios En Resultados": {
+     "is_group": 1,
+     "Renta Variable": {
+      "is_group": 1,
+      "Acciones Y Participaciones": {
+       "account_number": "10102010101"
+      },
+      "Cuotas De Fondos Colectivos": {
+       "account_number": "10102010102"
+      },
+      "Valores De Titularización De Participación": {
+       "account_number": "10102010103"
+      },
+      "Unidades De Participación": {
+       "account_number": "10102010104"
+      },
+      "Inversiones En El Exterior": {
+       "account_number": "10102010105"
+      },
+      "Otros": {
+       "account_number": "10102010106"
+      }
+     },
+     "Renta Fija": {
+      "is_group": 1,
+      "Avales": {
+       "account_number": "10102010201"
+      },
+      "Bonos Del Estado": {
+       "account_number": "10102010202"
+      },
+      "Bonos De Prenda": {
+       "account_number": "10102010203"
+      },
+      "Cédulas Hipotecarias": {
+       "account_number": "10102010204"
+      },
+      "Certificados Financieros": {
+       "account_number": "10102010205"
+      },
+      "Certificados De Inversión": {
+       "account_number": "10102010206"
+      },
+      "Certificados De Tesorería": {
+       "account_number": "10102010207"
+      },
+      "Certificados De Depósito": {
+       "account_number": "10102010208"
+      },
+      "Cupones": {
+       "account_number": "10102010209"
+      },
+      "Depósitos A Plazo": {
+       "account_number": "10102010210"
+      },
+      "Letras De Cambio": {
+       "account_number": "10102010211"
+      },
+      "Notas De Crédito": {
+       "account_number": "10102010212"
+      },
+      "Obligaciones": {
+       "account_number": "10102010213"
+      },
+      "Facturas Comerciales Negociables": {
+       "account_number": "10102010214"
+      },
+      "Overnights": {
+       "account_number": "10102010215"
+      },
+      "Obligaciones Convertibles En Acciones": {
+       "account_number": "10102010216"
+      },
+      "Papel Comercial": {
+       "account_number": "10102010217"
+      },
+      "Pagarés": {
+       "account_number": "10102010218"
+      },
+      "Pólizas De Acumulación": {
+       "account_number": "10102010219"
+      },
+      "Títulos Del Banco Central": {
+       "account_number": "10102010220"
+      },
+      "Valores De Titularización": {
+       "account_number": "10102010221"
+      },
+      "Inversiones En El Exterior": {
+       "account_number": "10102010222"
+      },
+      "Otros": {
+       "account_number": "10102010223"
+      }
+     },
+     "Derivados": {
+      "is_group": 1,
+      "Forward": {
+       "account_number": "10102010301"
+      },
+      "Futuros": {
+       "account_number": "10102010302"
+      },
+      "Opciones": {
+       "account_number": "10102010303"
+      },
+      "Otros": {
+       "account_number": "10102010304"
+      }
+     }
+    },
+    "Activos Financieros A Valor Razonable Con Cambios En Otro Resultado Integral": {
+     "is_group": 1,
+     "Renta Variable": {
+      "is_group": 1,
+      "Acciones Y Participaciones": {
+       "account_number": "10102020101"
+      },
+      "Cuotas De Fondos Colectivos": {
+       "account_number": "10102020102"
+      },
+      "Unidades De Participación": {
+       "account_number": "10102020103"
+      },
+      "Valores De Titularización De Participación": {
+       "account_number": "10102020104"
+      },
+      "Inversiones En El Exterior": {
+       "account_number": "10102020105"
+      },
+      "Otros": {
+       "account_number": "10102020106"
+      }
+     },
+     "Renta Fija": {
+      "is_group": 1,
+      "Avales": {
+       "account_number": "10102020201"
+      },
+      "Bonos Del Estado": {
+       "account_number": "10102020202"
+      },
+      "Bonos De Prenda": {
+       "account_number": "10102020203"
+      },
+      "Cédulas Hipotecarias": {
+       "account_number": "10102020204"
+      },
+      "Certificados Financieros": {
+       "account_number": "10102020205"
+      },
+      "Certificados De Inversión": {
+       "account_number": "10102020206"
+      },
+      "Certificados De Tesorería": {
+       "account_number": "10102020207"
+      },
+      "Certificados De Depósito": {
+       "account_number": "10102020208"
+      },
+      "Cupones": {
+       "account_number": "10102020209"
+      },
+      "Depósitos A Plazo": {
+       "account_number": "10102020210"
+      },
+      "Letras De Cambio": {
+       "account_number": "10102020211"
+      },
+      "Notas De Crédito": {
+       "account_number": "10102020212"
+      },
+      "Obligaciones": {
+       "account_number": "10102020213"
+      },
+      "Facturas Comerciales Negociables": {
+       "account_number": "10102020214"
+      },
+      "Overnights": {
+       "account_number": "10102020215"
+      },
+      "Obligaciones Convertibles En Acciones": {
+       "account_number": "10102020216"
+      },
+      "Papel Comercial": {
+       "account_number": "10102020217"
+      },
+      "Pagarés": {
+       "account_number": "10102020218"
+      },
+      "Pólizas De Acumulación": {
+       "account_number": "10102020219"
+      },
+      "Títulos Del Banco Central": {
+       "account_number": "10102020220"
+      },
+      "Valores De Titularización": {
+       "account_number": "10102020221"
+      },
+      "Inversiones En El Exterior": {
+       "account_number": "10102020222"
+      },
+      "Otros": {
+       "account_number": "10102020223"
+      }
+     }
+    },
+    "Activos Financieros Al Costo Amortizado": {
+     "is_group": 1,
+     "Renta Fija": {
+      "is_group": 1,
+      "Avales": {
+       "account_number": "10102030201"
+      },
+      "Bonos Del Estado": {
+       "account_number": "10102030202"
+      },
+      "Bonos De Prenda": {
+       "account_number": "10102030203"
+      },
+      "Cédulas Hipotecarias": {
+       "account_number": "10102030204"
+      },
+      "Certificados Financieros": {
+       "account_number": "10102030205"
+      },
+      "Certificados De Inversión": {
+       "account_number": "10102030206"
+      },
+      "Certificados De Tesorería": {
+       "account_number": "10102030207"
+      },
+      "Certificados De Depósito": {
+       "account_number": "10102030208"
+      },
+      "Cupones": {
+       "account_number": "10102030209"
+      },
+      "Depósitos A Plazo": {
+       "account_number": "10102030210"
+      },
+      "Letras De Cambio": {
+       "account_number": "10102030211"
+      },
+      "Notas De Crédito": {
+       "account_number": "10102030212"
+      },
+      "Obligaciones": {
+       "account_number": "10102030213"
+      },
+      "Facturas Comerciales Negociables": {
+       "account_number": "10102030214"
+      },
+      "Overnights": {
+       "account_number": "10102030215"
+      },
+      "Obligaciones Convertibles En Acciones": {
+       "account_number": "10102030216"
+      },
+      "Papel Comercial": {
+       "account_number": "10102030217"
+      },
+      "Pagarés": {
+       "account_number": "10102030218"
+      },
+      "Pólizas De Acumulación": {
+       "account_number": "10102030219"
+      },
+      "Títulos Del Banco Central": {
+       "account_number": "10102030220"
+      },
+      "Valores De Titularización": {
+       "account_number": "10102030221"
+      },
+      "Inversiones En El Exterior": {
+       "account_number": "10102030222"
+      },
+      "Otros": {
+       "account_number": "10102030223"
+      }
+     }
+    },
+    "Provisión Por Deterioro De Activos Financieros": {
+     "is_group": 1,
+     "Activos Financieros A Valor Razonable Con Cambios En Resultados": {
+      "account_number": "101020401"
+     },
+     "Activos Financieros Al Costo Amortizado": {
+      "account_number": "101020402"
+     },
+     "Activos Financieros A Valor Razonable Con Cambios En Otro Resultado Integral": {
+      "account_number": "101020403"
+     }
+    },
+    "Deudores Comerciales Y Otras Cuentas Por Cobrar No Relacionados": {
+     "is_group": 1,
+     "De Actividades Ordinarias Que Generen Intereses": {
+      "is_group": 1,
+      "Cuentas Y Documentos A Cobrar A Clientes": {
+       "account_number": "10102050101",
+       "account_type": "Receivable"
+      },
+      "Cuentas Y Documentos A Cobrar A Terceros": {
+       "account_number": "10102050102",
+       "account_type": "Receivable"
+      }
+     },
+     "De Actividades Ordinarias Que No Generen Intereses": {
+      "is_group": 1,
+      "Cuentas Y Documentos A Cobrar A Clientes": {
+       "account_number": "10102050201",
+       "account_type": "Receivable"
+      },
+      "Cuentas Y Documentos A Cobrar A Terceros": {
+       "account_number": "10102050202",
+       "account_type": "Receivable"
+      },
+      "Cuentas Por Cobrar Al Originador": {
+       "account_number": "10102050203",
+       "account_type": "Receivable"
+      },
+      "Comisiones Por Operaciones Bursátiles": {
+       "account_number": "10102050204",
+       "account_type": "Receivable"
+      },
+      "Contrato De Underwriting": {
+       "account_number": "10102050207",
+       "account_type": "Receivable"
+      },
+      "Por Administración Y Manejo De Portafolios De Terceros": {
+       "account_number": "10102050208",
+       "account_type": "Receivable"
+      },
+      "Por Administración Y Manejo De Fondos Administrados": {
+       "account_number": "10102050209",
+       "account_type": "Receivable"
+      },
+      "Por Administración Y Manejo De Negocios Fiduciarios": {
+       "account_number": "10102050210",
+       "account_type": "Receivable"
+      },
+      "Por Custodia Y Conservación De Valores Materializados": {
+       "account_number": "10102050211",
+       "account_type": "Receivable"
+      },
+      "Por Custodia Y Conservación De Valores Desmaterializados": {
+       "account_number": "10102050212",
+       "account_type": "Receivable"
+      },
+      "Por Manejo De Libro De Acciones Y Accionistas": {
+       "account_number": "10102050213",
+       "account_type": "Receivable"
+      },
+      "Por Asesoría": {
+       "account_number": "10102050214",
+       "account_type": "Receivable"
+      },
+      "Dividendos Por Cobrar": {
+       "account_number": "10102050215",
+       "account_type": "Receivable"
+      },
+      "Intereses Por Cobrar": {
+       "account_number": "10102050216",
+       "account_type": "Receivable"
+      },
+      "Deudores Por Intermediación De Valores": {
+       "account_number": "10102050217",
+       "account_type": "Receivable"
+      },
+      "Anticipo A Comitentes": {
+       "account_number": "10102050218",
+       "account_type": "Receivable"
+      },
+      "Anticipo A Constructor Por Avance De Obra": {
+       "account_number": "10102050219",
+       "account_type": "Receivable"
+      },
+      "Derechos Por Compromiso De Recompra": {
+       "account_number": "10102050220",
+       "account_type": "Receivable"
+      },
+      "Otras Cuentas Por Cobrar No Relacionadas": {
+       "account_number": "10102050221",
+       "account_type": "Receivable"
+      }
+     }
+    },
+    "Documentos Y Cuentas Por Cobrar Relacionados": {
+     "is_group": 1,
+     "Por Cobrar A Accionistas": {
+      "account_number": "101020601"
+     },
+     "Por Cobrar A Compañías Relacionadas": {
+      "account_number": "101020602"
+     },
+     "Por Cobrar A Clientes": {
+      "account_number": "101020603"
+     },
+     "Otras Cuentas Por Cobrar Relacionadas": {
+      "account_number": "101020604"
+     }
+    },
+    "Provisión Por Cuentas Incobrables Y Deterioro": {
+     "account_number": "1010207",
+     "account_type": "Receivable"
+    }
+   },
+   "Inventarios": {
+    "is_group": 1,
+    "Inventarios De Materia Prima": {
+     "account_number": "1010301",
+     "account_type": "Stock"
+    },
+    "Inventarios De Productos En Proceso": {
+     "account_number": "1010302",
+     "account_type": "Stock"
+    },
+    "Inventarios De Suministros O Materiales A Ser Consumidos En El Proceso De Produccion": {
+     "account_number": "1010303",
+     "account_type": "Stock"
+    },
+    "Inventarios De Suministros O Materiales A Ser Consumidos En La Prestacion Del Servicio": {
+     "account_number": "1010304",
+     "account_type": "Stock"
+    },
+    "Inventarios De Prod. Term. Y Mercad. En Almacén - Producido Por La Compañía": {
+     "account_number": "1010305",
+     "account_type": "Stock"
+    },
+    "Inventarios De Prod. Term. Y Mercad. En Almacén - Comprado A Terceros": {
+     "account_number": "1010306",
+     "account_type": "Stock"
+    },
+    "Mercaderías En Tránsito": {
+     "account_number": "1010307",
+     "account_type": "Stock"
+    },
+    "Obras En Construccion": {
+     "account_number": "1010308",
+     "account_type": "Stock"
+    },
+    "Obras Terminadas": {
+     "account_number": "1010309",
+     "account_type": "Stock"
+    },
+    "Materiales O Bienes Para La Construccion": {
+     "account_number": "1010310",
+     "account_type": "Stock"
+    },
+    "Inventarios Repuestos, Herramientas Y Accesorios": {
+     "account_number": "1010311",
+     "account_type": "Stock"
+    },
+    "Otros Inventarios": {
+     "account_number": "1010312",
+     "account_type": "Stock"
+    },
+    "(-) Provisión Por Valor Neto De Realización Y Otras Perdidas En Inventario": {
+     "account_number": "1010313",
+     "account_type": "Stock"
+    }
+   },
+   "Servicios Y Otros Pagos Anticipados": {
+    "is_group": 1,
+    "Seguros Pagados Por Anticipado": {
+     "account_number": "1010401"
+    },
+    "Arriendos Pagados Por Anticipado": {
+     "account_number": "1010402"
+    },
+    "Anticipos A Proveedores": {
+     "account_number": "1010403"
+    },
+    "Otros Anticipos Entregados": {
+     "account_number": "1010404"
+    }
+   },
+   "Activos Por Impuestos Corrientes": {
+    "is_group": 1,
+    "Crédito Tributario A Favor De La Empresa (Iva)": {
+     "account_number": "1010501",
+     "account_type": "Tax"
+    },
+    "Crédito Tributario A Favor De La Empresa ( I. R.)": {
+     "account_number": "1010502"
+    },
+    "Anticipo De Impuesto A La Renta": {
+     "account_number": "1010503"
+    }
+   },
+   "Activos Corrientes Mantenidos Para La Venta Y Operaciones Discontinuadas": {
+    "account_number": "10106"
+   },
+   "Construcciones En Proceso (Nic 11 Y Secc.23 Pymes)": {
+    "account_number": "10107"
+   },
+   "Otros Activos Corrientes": {
+    "account_number": "10108"
+   }
+  },
+  "Activos No Corrientes": {
+   "is_group": 1,
+   "Propiedad, Planta Y Equipo": {
+    "is_group": 1,
+    "Terrenos": {
+     "account_number": "1020101",
+     "account_type": "Fixed Asset"
+    },
+    "Edificios": {
+     "account_number": "1020102",
+     "account_type": "Fixed Asset"
+    },
+    "Construcciones En Curso": {
+     "account_number": "1020103",
+     "account_type": "Fixed Asset"
+    },
+    "Instalaciones": {
+     "account_number": "1020104",
+     "account_type": "Fixed Asset"
+    },
+    "Muebles Y Enseres": {
+     "account_number": "1020105",
+     "account_type": "Fixed Asset"
+    },
+    "Maquinaria Y Equipo": {
+     "account_number": "1020106",
+     "account_type": "Fixed Asset"
+    },
+    "Naves, Aereonaves, Barcazas Y Similares": {
+     "account_number": "1020107",
+     "account_type": "Fixed Asset"
+    },
+    "Equipo De Computación": {
+     "account_number": "1020108",
+     "account_type": "Fixed Asset"
+    },
+    "Vehículos, Equipos De Trasporte Y Equipo Caminero Móvil": {
+     "account_number": "1020109",
+     "account_type": "Fixed Asset"
+    },
+    "Otros Propiedades, Planta Y Equipo": {
+     "account_number": "1020110",
+     "account_type": "Fixed Asset"
+    },
+    "Repuestos Y Herramientas": {
+     "account_number": "1020111",
+     "account_type": "Fixed Asset"
+    },
+    "(-) Depreciación Acumulada Propiedades, Planta Y Equipo": {
+     "account_number": "1020112",
+     "account_type": "Fixed Asset"
+    },
+    "(-) Deterioro Acumulado De Propiedades, Planta Y Equipo": {
+     "account_number": "1020113",
+     "account_type": "Fixed Asset"
+    },
+    "Activos De Exploracion Y Explotacion": {
+     "is_group": 1,
+     "Activos De Exploracion Y Explotacion": {
+      "account_number": "102011401",
+      "account_type": "Fixed Asset"
+     },
+     "(-) Amortizacion Acumulada De Activos De Exploración Y Explotación": {
+      "account_number": "102011402",
+      "account_type": "Fixed Asset"
+     },
+     "(-) Deterioro Acumulado De Activos De Exploración Y Explotación": {
+      "account_number": "102011403",
+      "account_type": "Fixed Asset"
+     }
+    }
+   },
+   "Propiedades De Inversión": {
+    "is_group": 1,
+    "Terrenos": {
+     "is_group": 1,
+     "Terrenos": {
+      "account_number": "102020101"
+     },
+     "Derechos De Uso Sobre Terrenos Subarrendados": {
+      "account_number": "102020102"
+     }
+    },
+    "Edificios": {
+     "is_group": 1,
+     "Edificios": {
+      "account_number": "102020201"
+     },
+     "Derechos De Uso Sobre Edificios Subarrendados": {
+      "account_number": "102020202"
+     }
+    },
+    "(-) Depreciacion Acumulada De Propiedades De Inversión": {
+     "account_number": "1020203"
+    },
+    "(-) Deterioro Acumulado De Propiedades De Inversión": {
+     "account_number": "1020204"
+    }
+   },
+   "Activos Biologicos": {
+    "is_group": 1,
+    "Animales Vivos En Crecimiento": {
+     "account_number": "1020301"
+    },
+    "Animales Vivos En Produccion": {
+     "account_number": "1020302"
+    },
+    "Plantas En Crecimiento": {
+     "account_number": "1020303"
+    },
+    "Plantas En Produccion": {
+     "account_number": "1020304"
+    },
+    "(-) Depreciacion Acumulada De Activos Biológicos": {
+     "account_number": "1020305"
+    },
+    "(-) Deterioro Acumulado De Activos Biologícos": {
+     "account_number": "1020306"
+    }
+   },
+   "Activo Intangible": {
+    "is_group": 1,
+    "Plusvalías": {
+     "account_number": "1020401",
+     "account_type": "Fixed Asset"
+    },
+    "Marcas, Patentes, Derechos De Llave , Cuotas Patrimoniales Y Otros Similares": {
+     "account_number": "1020402",
+     "account_type": "Fixed Asset"
+    },
+    "Concesiones Y Licencias": {
+     "account_number": "1020403",
+     "account_type": "Fixed Asset"
+    },
+    "Activos De Exploracion Y Explotacion": {
+     "account_number": "1020404",
+     "account_type": "Fixed Asset"
+    },
+    "(-) Amortización Acumulada De Activos Intangible": {
+     "account_number": "1020405",
+     "account_type": "Fixed Asset"
+    },
+    "(-) Deterioro Acumulado De Activo Intangible": {
+     "account_number": "1020406",
+     "account_type": "Fixed Asset"
+    },
+    "Otros Intangibles": {
+     "account_number": "1020407",
+     "account_type": "Fixed Asset"
+    }
+   },
+   "Activos Por Impuestos Diferidos": {
+    "account_number": "10205"
+   },
+   "Activos Financieros No Corrientes": {
+    "is_group": 1,
+    "Activos Financieros A Valor Razonable Con Cambios En Otro Resultado Integral": {
+     "account_number": "1020601"
+    },
+    "(-) Provision Por Deterioro De Activos Financieros A Valor Razonable Con Cambios En Otro": {
+     "account_number": "1020602"
+    },
+    "Activos Financieros A Costo Amortizado": {
+     "account_number": "1020603"
+    },
+    "(-) Provisión Por Deterioro De Activos Financieros A Costo Amortizado": {
+     "account_number": "1020604"
+    },
+    "Activos Financieros A Valor Razonable Con Cambios En Resultados": {
+     "account_number": "1020605"
+    },
+    "(-)Provisión Por Deterioro De Activos Financieros A Valor Razonable Con Cambios En Resultados": {
+     "account_number": "1020606"
+    }
+   },
+   "Derecho De Uso Por Activos Arrendados": {
+    "is_group": 1,
+    "(-) Depreciación Acumulada De Activos Provenientes Por Derechos De Uso": {
+     "account_number": "1020701"
+    },
+    "(-) Deterioro Acumulado De Activos Provenientes Por Derechos De Uso": {
+     "account_number": "1020702"
+    },
+    "Derecho De Uso Por Activos Arrendados": {
+     "account_number": "1020703"
+    }
+   },
+   "Otros Activos No Corrientes": {
+    "is_group": 1,
+    "Derechos Fiduciarios": {
+     "account_number": "1020801"
+    },
+    "Depósitos En Garantía": {
+     "account_number": "1020802"
+    },
+    "Depósitos En Garantía Por Operaciones Bursátiles": {
+     "account_number": "1020803"
+    },
+    "Acciones Del Depósito Centralizado De Valores": {
+     "account_number": "1020805"
+    },
+    "Inversiones Subsidiarias": {
+     "account_number": "1020806"
+    },
+    "Inversiones Asociadas": {
+     "account_number": "1020807"
+    },
+    "Inversiones Negocios Conjuntos": {
+     "account_number": "1020808"
+    },
+    "Otras Inversiones": {
+     "account_number": "1020809"
+    },
+    "(-) Provisión Valuación De Inversiones": {
+     "account_number": "1020810"
+    },
+    "Otros Activos No Corrientes": {
+     "account_number": "1020811"
+    }
+   },
+   "Documentos Y Cuentas Por Cobrar No Relacionados": {
+    "is_group": 1,
+    "Cuentas Y Documentos A Cobrar A Clientes": {
+     "account_number": "1020901"
+    },
+    "Cuentas Y Documentos A Cobrar A Terceros": {
+     "account_number": "1020902"
+    },
+    "Otras Cuentas Por Cobrar No Relacionadas": {
+     "account_number": "1020903"
+    }
+   },
+   "Documentos Y Cuentas Por Cobrar Relacionados": {
+    "is_group": 1,
+    "Por Cobrar A Accionistas": {
+     "account_number": "1021001"
+    },
+    "Por Cobrar A Compañías Relacionadas": {
+     "account_number": "1021002"
+    },
+    "Por Cobrar A Clientes": {
+     "account_number": "1021003"
+    },
+    "Otras Cuentas Por Cobrar Relacionadas": {
+     "account_number": "1021004"
+    }
+   }
+  },
+  "root_type": "Asset"
+ },
+ "Pasivo": {
+  "is_group": 1,
+  "Pasivo Corriente": {
+   "is_group": 1,
+   "Pasivos Financieros A Valor Razonable Con Cambios En Resultados": {
+    "account_number": "20101",
+    "account_type": "Payable"
+   },
+   "Pasivos Por Contratos De Arrendamiento": {
+    "account_number": "20102"
+   },
+   "Cuentas Y Documentos Por Pagar": {
+    "is_group": 1,
+    "Locales": {
+     "is_group": 1,
+     "Préstamos": {
+      "account_number": "201030101",
+      "account_type": "Payable"
+     },
+     "Proveedores": {
+      "account_number": "201030102",
+      "account_type": "Payable"
+     },
+     "Otras": {
+      "account_number": "201030103",
+      "account_type": "Payable"
+     }
+    },
+    "Del Exterior": {
+     "is_group": 1,
+     "Préstamos": {
+      "account_number": "201030201",
+      "account_type": "Payable"
+     },
+     "Proveedores": {
+      "account_number": "201030202",
+      "account_type": "Payable"
+     },
+     "Otras": {
+      "account_number": "201030203",
+      "account_type": "Payable"
+     }
+    }
+   },
+   "Obligaciones Con Instituciones Financieras": {
+    "is_group": 1,
+    "Locales": {
+     "account_number": "2010401",
+     "account_type": "Payable"
+    },
+    "Del Exterior": {
+     "account_number": "2010402",
+     "account_type": "Payable"
+    }
+   },
+   "Provisiones": {
+    "is_group": 1,
+    "Locales": {
+     "account_number": "2010501"
+    },
+    "Del Exterior": {
+     "account_number": "2010502"
+    }
+   },
+   "Porción Corriente De Valores Emitidos": {
+    "is_group": 1,
+    "Obligaciones": {
+     "account_number": "2010601",
+     "account_type": "Payable"
+    },
+    "Papel Comercial": {
+     "account_number": "2010602",
+     "account_type": "Payable"
+    },
+    "Valores De Titularización": {
+     "account_number": "2010603",
+     "account_type": "Payable"
+    },
+    "Otros": {
+     "account_number": "2010604",
+     "account_type": "Payable"
+    },
+    "Intereses Por Pagar": {
+     "account_number": "2010605",
+     "account_type": "Payable"
+    }
+   },
+   "Otras Obligaciones Corrientes": {
+    "is_group": 1,
+    "Con La Administración Tributaria": {
+     "account_number": "2010701",
+     "account_type": "Tax"
+    },
+    "Impuesto A La Renta Por Pagar Del Ejercicio": {
+     "account_number": "2010702",
+     "account_type": "Tax"
+    },
+    "Con El Iess": {
+     "account_number": "2010703"
+    },
+    "Por Beneficios De Ley A Empleados": {
+     "account_number": "2010704"
+    },
+    "Participación Trabajadores Por Pagar Del Ejercicio": {
+     "account_number": "2010705"
+    },
+    "Dividendos Por Pagar": {
+     "account_number": "2010706"
+    },
+    "Otros": {
+     "account_number": "2010707"
+    }
+   },
+   "Cuentas Por Pagar A Relacionadas": {
+    "is_group": 1,
+    "Locales": {
+     "is_group": 1,
+     "Préstamos De Accionistas": {
+      "account_number": "201080101",
+      "account_type": "Payable"
+     },
+     "Préstamos De Compañías Relacionadas": {
+      "account_number": "201080102",
+      "account_type": "Payable"
+     },
+     "Proveedores": {
+      "account_number": "201080103",
+      "account_type": "Payable"
+     },
+     "Otros": {
+      "account_number": "201080104",
+      "account_type": "Payable"
+     }
+    },
+    "Del Exterior": {
+     "is_group": 1,
+     "Préstamos De Accionistas": {
+      "account_number": "201080201",
+      "account_type": "Payable"
+     },
+     "Préstamos De Compañías Relacionadas": {
+      "account_number": "201080202",
+      "account_type": "Payable"
+     },
+     "Proveedores": {
+      "account_number": "201080203",
+      "account_type": "Payable"
+     },
+     "Otros": {
+      "account_number": "201080204",
+      "account_type": "Payable"
+     }
+    }
+   },
+   "Otros Pasivos Financieros": {
+    "account_number": "20109",
+    "account_type": "Payable"
+   },
+   "Anticipos": {
+    "is_group": 1,
+    "Anticipos De Clientes": {
+     "account_number": "2011001"
+    },
+    "Otros Anticipos Recibidos": {
+     "account_number": "2011002"
+    }
+   },
+   "Pasivos Directamente Asociados Con Los Activos No Corrientes Y Operaciones Discontinuadas": {
+    "account_number": "20111"
+   },
+   "Porcion Corriente De Provisiones Por Beneficios A Empleados": {
+    "is_group": 1,
+    "Jubilacion Patronal": {
+     "account_number": "2011201"
+    },
+    "Otros Beneficios Para Los Empleados": {
+     "account_number": "2011202"
+    }
+   },
+   "Otros Pasivos Corrientes": {
+    "is_group": 1,
+    "Comisiones Por Pagar": {
+     "account_number": "2011301"
+    },
+    "Por Operaciones Bursátiles": {
+     "account_number": "2011302"
+    },
+    "Por Custodia": {
+     "account_number": "2011303"
+    },
+    "Por Administración": {
+     "account_number": "2011304"
+    },
+    "Otras Comisiones": {
+     "account_number": "2011305"
+    },
+    "Sanciones Y Multas": {
+     "account_number": "2011306"
+    },
+    "Indemnizaciones": {
+     "account_number": "2011307"
+    },
+    "Obligaciones Judiciales": {
+     "account_number": "2011308"
+    },
+    "Acreedores Por Intermediación": {
+     "account_number": "2011309"
+    },
+    "Obligación Por Compromiso De Recompra": {
+     "account_number": "2011310"
+    },
+    "Por Contratos De Underwriting": {
+     "account_number": "2011311"
+    },
+    "Otros": {
+     "account_number": "2011312"
+    }
+   },
+   "Pasivos Financieros Al Costo Amortizado": {
+    "account_number": "20114",
+    "account_type": "Payable"
+   }
+  },
+  "Pasivo No Corriente": {
+   "is_group": 1,
+   "Pasivos Por Contratos De Arrendamiento": {
+    "account_number": "20201"
+   },
+   "Cuentas Y Documentos Por Pagar": {
+    "is_group": 1,
+    "Locales": {
+     "is_group": 1,
+     "Préstamos": {
+      "account_number": "202020101",
+      "account_type": "Payable"
+     },
+     "Proveedores": {
+      "account_number": "202020102",
+      "account_type": "Payable"
+     },
+     "Otras": {
+      "account_number": "202020103",
+      "account_type": "Payable"
+     }
+    },
+    "Del Exterior": {
+     "is_group": 1,
+     "Préstamos": {
+      "account_number": "202020201",
+      "account_type": "Payable"
+     },
+     "Proveedores": {
+      "account_number": "202020202",
+      "account_type": "Payable"
+     },
+     "Otras": {
+      "account_number": "202020203",
+      "account_type": "Payable"
+     }
+    }
+   },
+   "Obligaciones Con Instituciones Financieras": {
+    "is_group": 1,
+    "Locales": {
+     "account_number": "2020301",
+     "account_type": "Payable"
+    },
+    "Del Exterior": {
+     "account_number": "2020302",
+     "account_type": "Payable"
+    }
+   },
+   "Cuentas Por Pagar A Relacionadas": {
+    "is_group": 1,
+    "Locales": {
+     "is_group": 1,
+     "Préstamos De Accionistas": {
+      "account_number": "202040101",
+      "account_type": "Payable"
+     },
+     "Préstamos De Compañías Relacionadas": {
+      "account_number": "202040102",
+      "account_type": "Payable"
+     },
+     "Proveedores": {
+      "account_number": "202040103",
+      "account_type": "Payable"
+     },
+     "Otros": {
+      "account_number": "202040104",
+      "account_type": "Payable"
+     }
+    },
+    "Del Exterior": {
+     "is_group": 1,
+     "Préstamos De Accionistas": {
+      "account_number": "202040201",
+      "account_type": "Payable"
+     },
+     "Préstamos De Compañías Relacionadas": {
+      "account_number": "202040202",
+      "account_type": "Payable"
+     },
+     "Proveedores": {
+      "account_number": "202040203",
+      "account_type": "Payable"
+     },
+     "Otros": {
+      "account_number": "202040204",
+      "account_type": "Payable"
+     }
+    }
+   },
+   "Porción No Corriente De Valores Emitidos": {
+    "is_group": 1,
+    "Obligaciones": {
+     "account_number": "2020501",
+     "account_type": "Payable"
+    },
+    "Papel Comercial": {
+     "account_number": "2020502",
+     "account_type": "Payable"
+    },
+    "Valores De Titularización": {
+     "account_number": "2020503",
+     "account_type": "Payable"
+    },
+    "Otros": {
+     "account_number": "2020504",
+     "account_type": "Payable"
+    },
+    "Intereses Por Pagar": {
+     "account_number": "2020505",
+     "account_type": "Payable"
+    }
+   },
+   "Anticipos": {
+    "is_group": 1,
+    "Anticipos De Clientes": {
+     "account_number": "2020601"
+    },
+    "Otros Anticipos Recibidos": {
+     "account_number": "2020602"
+    }
+   },
+   "Provisiones Por Beneficios A Empleados": {
+    "is_group": 1,
+    "Jubilacion Patronal": {
+     "account_number": "2020701"
+    },
+    "Otros Beneficios No Corrientes Para Los Empleados": {
+     "account_number": "2020702"
+    }
+   },
+   "Otras Provisiones": {
+    "account_number": "20208"
+   },
+   "Pasivo Diferido": {
+    "is_group": 1,
+    "Ingresos Diferidos": {
+     "account_number": "2020901"
+    },
+    "Pasivos Por Impuestos Diferidos": {
+     "account_number": "2020902"
+    }
+   },
+   "Otros Pasivos No Corrientes": {
+    "account_number": "20210",
+    "account_type": "Payable"
+   }
+  },
+  "root_type": "Liability"
+ },
+ "Patrimonio Neto": {
+  "is_group": 1,
+  "Patrimonio Neto Atribuible A Los Propietarios De La Controladora": {
+   "is_group": 1,
+   "Capital": {
+    "is_group": 1,
+    "Capital Suscrito O Asignado": {
+     "account_number": "30101",
+     "account_type": "Equity"
+    },
+    "(-) Capital Suscrito No Pagado, Acciones En Tesorería": {
+     "account_number": "30102",
+     "account_type": "Equity"
+    },
+    "Fondo Patrimonial": {
+     "account_number": "30103",
+     "account_type": "Equity"
+    },
+    "Patrimonio De Los Negocios Fiduciarios": {
+     "account_number": "30104",
+     "account_type": "Equity"
+    },
+    "Patrimonio De Los Fondos De Inversión": {
+     "is_group": 1,
+     "Patrimonio Del Fondo Administrado": {
+      "account_number": "3010501",
+      "account_type": "Equity"
+     },
+     "Patrimonio Del Fondo Colectivo": {
+      "account_number": "3010502",
+      "account_type": "Equity"
+     }
+    }
+   },
+   "Aportes De Socios O Accionistas Para Futura Capitalización": {
+    "account_number": "302",
+    "account_type": "Equity"
+   },
+   "Prima Por Emisión Primaria De Acciones": {
+    "account_number": "303",
+    "account_type": "Equity"
+   },
+   "Reservas": {
+    "is_group": 1,
+    "Reserva Legal": {
+     "account_number": "30401",
+     "account_type": "Equity"
+    },
+    "Reservas Facultativa Y Estatutaria": {
+     "account_number": "30402",
+     "account_type": "Equity"
+    }
+   },
+   "Otros Resultados Integrales": {
+    "is_group": 1,
+    "Superavit De Activos Financieros A Valor Razonable Con Cambios En Otro Resultado Integral": {
+     "account_number": "30501",
+     "account_type": "Equity"
+    },
+    "Superavit Por Revaluación De Propiedades, Planta Y Equipo": {
+     "account_number": "30502",
+     "account_type": "Equity"
+    },
+    "Superavit Por Revaluacion De Activos Intangibles": {
+     "account_number": "30503",
+     "account_type": "Equity"
+    },
+    "Otros Superavit Por Revaluacion": {
+     "account_number": "30504",
+     "account_type": "Equity"
+    }
+   },
+   "Resultados Acumulados": {
+    "is_group": 1,
+    "Ganancias Acumuladas": {
+     "account_number": "30601",
+     "account_type": "Equity"
+    },
+    "(-) Pérdidas Acumuladas": {
+     "account_number": "30602",
+     "account_type": "Equity"
+    },
+    "Resultados Acumulados Provenientes De La Adopcion Por Primera Vez De Las Niif": {
+     "account_number": "30603",
+     "account_type": "Equity"
+    },
+    "Reserva De Capital": {
+     "account_number": "30604",
+     "account_type": "Equity"
+    },
+    "Reserva Por Donaciones": {
+     "account_number": "30605",
+     "account_type": "Equity"
+    },
+    "Reserva Por Valuación": {
+     "account_number": "30606",
+     "account_type": "Equity"
+    },
+    "Superávit Por Revaluación De Inversiones": {
+     "account_number": "30607",
+     "account_type": "Equity"
+    }
+   },
+   "Resultados Del Ejercicio": {
+    "is_group": 1,
+    "Ganancia Neta Del Periodo": {
+     "account_number": "30701",
+     "account_type": "Equity"
+    },
+    "(-) Pérdida Neta Del Periodo": {
+     "account_number": "30702",
+     "account_type": "Equity"
+    }
+   }
+  },
+  "Participación Controladora": {
+   "account_number": "31"
+  },
+  "root_type": "Equity"
+ },
+ "Ingresos De Actividades Ordinarias": {
+  "is_group": 1,
+  "Venta De Bienes": {
+   "account_number": "40101",
+   "account_type": "Income Account"
+  },
+  "Prestacion De Servicios": {
+   "is_group": 1,
+   "Ingresos Por Asesoría": {
+    "account_number": "4010201",
+    "account_type": "Income Account"
+   },
+   "Ingresos Por Estructuración De Oferta Pública De Valores": {
+    "account_number": "4010202",
+    "account_type": "Income Account"
+   },
+   "Ingresos Por Estructuración De Negocios Fiduciarios": {
+    "account_number": "4010203",
+    "account_type": "Income Account"
+   },
+   "Otros": {
+    "account_number": "4010204",
+    "account_type": "Income Account"
+   }
+  },
+  "Contratos De Construccion": {
+   "account_number": "40103",
+   "account_type": "Income Account"
+  },
+  "Subvenciones Del Gobierno": {
+   "account_number": "40104",
+   "account_type": "Income Account"
+  },
+  "Regalías": {
+   "account_number": "40105",
+   "account_type": "Income Account"
+  },
+  "Intereses": {
+   "is_group": 1,
+   "Intereses Generados Por Ventas A Credito": {
+    "account_number": "4010601",
+    "account_type": "Income Account"
+   },
+   "Intereses Y Rendimientos Financieros": {
+    "account_number": "4010602",
+    "account_type": "Income Account"
+   },
+   "Otros Intereses Generados": {
+    "account_number": "4010603",
+    "account_type": "Income Account"
+   }
+  },
+  "Dividendos": {
+   "account_number": "40107",
+   "account_type": "Income Account"
+  },
+  "Ganancia Por Medicion A Valor Razonable De Activos Biologicos": {
+   "account_number": "40108",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Comisiones, Prestación De Servicios, Custodia, Registro, Compensación Y Liquidación": {
+   "is_group": 1,
+   "Comisiones Ganadas Por Intermediación De Valores": {
+    "is_group": 1,
+    "Por Operaciones Bursatiles": {
+     "account_number": "401090101",
+     "account_type": "Income Account"
+    },
+    "Por Contratos De Underwriting": {
+     "account_number": "401090103",
+     "account_type": "Income Account"
+    },
+    "Por Comisión En Operaciones": {
+     "account_number": "401090104",
+     "account_type": "Income Account"
+    },
+    "Por Inscripciones": {
+     "account_number": "401090105",
+     "account_type": "Income Account"
+    },
+    "Por Mantenimiento De Inscripción": {
+     "account_number": "401090106",
+     "account_type": "Income Account"
+    }
+   },
+   "Por Prestación De Servicios De Administración Y Manejo": {
+    "is_group": 1,
+    "Portafolio De Terceros": {
+     "account_number": "401090201",
+     "account_type": "Income Account"
+    },
+    "Fondos Administrados": {
+     "account_number": "401090202",
+     "account_type": "Income Account"
+    },
+    "Fondos Colectivos": {
+     "account_number": "401090203",
+     "account_type": "Income Account"
+    },
+    "Titularización": {
+     "account_number": "401090204",
+     "account_type": "Income Account"
+    },
+    "Fideicomisos Mercantiles": {
+     "account_number": "401090205",
+     "account_type": "Income Account"
+    },
+    "Encargos Fiduciarios": {
+     "account_number": "401090206",
+     "account_type": "Income Account"
+    },
+    "Por Calificacion De Riesgo": {
+     "account_number": "401090207",
+     "account_type": "Income Account"
+    },
+    "Por Representacion De Obligacionistas": {
+     "account_number": "401090208",
+     "account_type": "Income Account"
+    }
+   },
+   "Custodia, Registro, Compensación Y Liquidación": {
+    "is_group": 1,
+    "Custodia Valores Materializados": {
+     "account_number": "401090301",
+     "account_type": "Income Account"
+    },
+    "Custodia Valores Desmaterializados": {
+     "account_number": "401090302",
+     "account_type": "Income Account"
+    },
+    "Compensación Y Liquidación De Valores": {
+     "account_number": "401090303",
+     "account_type": "Income Account"
+    },
+    "Otros": {
+     "account_number": "401090304",
+     "account_type": "Income Account"
+    }
+   }
+  },
+  "Ingresos Financieros": {
+   "is_group": 1,
+   "Dividendos": {
+    "account_number": "4011001",
+    "account_type": "Income Account"
+   },
+   "Intereses Financieros": {
+    "account_number": "4011002",
+    "account_type": "Income Account"
+   },
+   "Ganancia En Inversiones En Asociadas / Subsidiarias Y Otras": {
+    "account_number": "4011003",
+    "account_type": "Income Account"
+   },
+   "Valuacion De Instrumentos Financieros A Valor Razonable Con Cambio En Resultados": {
+    "account_number": "4011004",
+    "account_type": "Income Account"
+   },
+   "Ganancia En Venta De Titulos Valores": {
+    "account_number": "4011005",
+    "account_type": "Income Account"
+   },
+   "Otros Ingresos Financieros": {
+    "account_number": "4011006",
+    "account_type": "Income Account"
+   }
+  },
+  "(-) Descuento En Ventas": {
+   "account_number": "40112",
+   "account_type": "Income Account"
+  },
+  "(-) Devoluciones En Ventas": {
+   "account_number": "40113",
+   "account_type": "Income Account"
+  },
+  "(-) Bonificación En Producto": {
+   "account_number": "40114",
+   "account_type": "Income Account"
+  },
+  "(-) Otras Rebajas Comerciales": {
+   "account_number": "40115",
+   "account_type": "Income Account"
+  },
+  "Utilidad En Cambio": {
+   "account_number": "40116",
+   "account_type": "Income Account"
+  },
+  "root_type": "Income"
+ },
+ "Otros Ingresos": {
+  "is_group": 1,
+  "Ganancia En Venta De Propiedad, Planta Y Equipo": {
+   "account_number": "40301",
+   "account_type": "Income Account"
+  },
+  "Ganancia En Venta De Activos Biológicos": {
+   "account_number": "40302",
+   "account_type": "Income Account"
+  },
+  "Otros": {
+   "account_number": "40303",
+   "account_type": "Income Account"
+  },
+  "root_type": "Income"
+ },
+ "Costo De Ventas Y Producción": {
+  "is_group": 1,
+  "Materiales Utilizados O Productos Vendidos": {
+   "is_group": 1,
+   "(+) Inventario Inicial De Bienes No Producidos Por La Compañia": {
+    "account_number": "5010101",
+    "account_type": "Cost of Goods Sold"
+   },
+   "(+) Compras Netas Locales De Bienes No Producidos Por La Compañia": {
+    "account_number": "5010102",
+    "account_type": "Cost of Goods Sold"
+   },
+   "(+) Importaciones De Bienes No Producidos Por La Compañia": {
+    "account_number": "5010103",
+    "account_type": "Cost of Goods Sold"
+   },
+   "(-) Inventario Final De Bienes No Producidos Por La Compañia": {
+    "account_number": "5010104",
+    "account_type": "Cost of Goods Sold"
+   },
+   "(+) Inventario Inicial De Materia Prima": {
+    "account_number": "5010105",
+    "account_type": "Cost of Goods Sold"
+   },
+   "(+) Compras Netas Locales De Materia Prima": {
+    "account_number": "5010106",
+    "account_type": "Cost of Goods Sold"
+   },
+   "(+) Importaciones De Materia Prima": {
+    "account_number": "5010107",
+    "account_type": "Cost of Goods Sold"
+   },
+   "(-) Inventario Final De Materia Prima": {
+    "account_number": "5010108",
+    "account_type": "Cost of Goods Sold"
+   },
+   "(+) Inventario Inicial De Productos En Proceso": {
+    "account_number": "5010109",
+    "account_type": "Cost of Goods Sold"
+   },
+   "(-) Inventario Final De Productos En Proceso": {
+    "account_number": "5010110",
+    "account_type": "Cost of Goods Sold"
+   },
+   "(+) Inventario Inicial Productos Terminados": {
+    "account_number": "5010111",
+    "account_type": "Cost of Goods Sold"
+   },
+   "(-) Inventario Final De Productos Terminados": {
+    "account_number": "5010112",
+    "account_type": "Cost of Goods Sold"
+   }
+  },
+  "(+) Mano De Obra Directa": {
+   "is_group": 1,
+   "Sueldos Y Beneficios Sociales": {
+    "account_number": "5010201",
+    "account_type": "Cost of Goods Sold"
+   },
+   "Gastos Planes De Beneficios A Empleados": {
+    "account_number": "5010202",
+    "account_type": "Cost of Goods Sold"
+   }
+  },
+  "(+) Mano De Obra Indirecta": {
+   "is_group": 1,
+   "Sueldos Y Beneficios Sociales": {
+    "account_number": "5010301",
+    "account_type": "Cost of Goods Sold"
+   },
+   "Gasto Planes De Beneficios A Empleados": {
+    "account_number": "5010302",
+    "account_type": "Cost of Goods Sold"
+   }
+  },
+  "(+) Otros Costos Indirectos De Fabricacion": {
+   "is_group": 1,
+   "Depreciación Propiedades, Planta Y Equipo": {
+    "account_number": "5010401",
+    "account_type": "Cost of Goods Sold"
+   },
+   "Deterioro O Perdidas De Activos Biologicos": {
+    "account_number": "5010402",
+    "account_type": "Cost of Goods Sold"
+   },
+   "Deterioro De Propiedad, Planta Y Equipo": {
+    "account_number": "5010403",
+    "account_type": "Cost of Goods Sold"
+   },
+   "Efecto Valor Neto De Realizacion De Inventarios": {
+    "account_number": "5010404",
+    "account_type": "Cost of Goods Sold"
+   },
+   "Gasto Por Garantias En Venta De Productos O Servicios": {
+    "account_number": "5010405",
+    "account_type": "Cost of Goods Sold"
+   },
+   "Mantenimiento Y Reparaciones": {
+    "account_number": "5010406",
+    "account_type": "Cost of Goods Sold"
+   },
+   "Suministros Materiales Y Repuestos": {
+    "account_number": "5010407",
+    "account_type": "Cost of Goods Sold"
+   },
+   "Otros Costos De Producción": {
+    "account_number": "5010408",
+    "account_type": "Cost of Goods Sold"
+   }
+  },
+  "Costos De Contratos De Construcciones": {
+   "is_group": 1,
+   "Costos De Acuerdo A Porcentajes O Grados De Terminación": {
+    "account_number": "5010501",
+    "account_type": "Cost of Goods Sold"
+   }
+  },
+  "root_type": "Expense"
+ },
+ "Gastos": {
+  "is_group": 1,
+  "Gastos De Venta": {
+   "is_group": 1,
+   "Sueldos, Salarios Y Demás Remuneraciones": {
+    "account_number": "5020101",
+    "account_type": "Expense Account"
+   },
+   "Aportes A La Seguridad Social (Incluido Fondo De Reserva)": {
+    "account_number": "5020102",
+    "account_type": "Expense Account"
+   },
+   "Beneficios Sociales E Indemnizaciones": {
+    "account_number": "5020103",
+    "account_type": "Expense Account"
+   },
+   "Gasto Planes De Beneficios A Empleados": {
+    "account_number": "5020104",
+    "account_type": "Expense Account"
+   },
+   "Honorarios, Comisiones Y Dietas A Personas Naturales": {
+    "account_number": "5020105",
+    "account_type": "Expense Account"
+   },
+   "Remuneraciones A Otros Trabajadores Autónomos": {
+    "account_number": "5020106",
+    "account_type": "Expense Account"
+   },
+   "Honorarios A Extranjeros Por Servicios Ocasionales": {
+    "account_number": "5020107",
+    "account_type": "Expense Account"
+   },
+   "Mantenimiento Y Reparaciones": {
+    "account_number": "5020108",
+    "account_type": "Expense Account"
+   },
+   "Arrendamiento": {
+    "account_number": "5020109",
+    "account_type": "Expense Account"
+   },
+   "Comisiones": {
+    "account_number": "5020110",
+    "account_type": "Expense Account"
+   },
+   "Promoción Y Publicidad": {
+    "account_number": "5020111",
+    "account_type": "Expense Account"
+   },
+   "Combustibles": {
+    "account_number": "5020112",
+    "account_type": "Expense Account"
+   },
+   "Lubricantes": {
+    "account_number": "5020113",
+    "account_type": "Expense Account"
+   },
+   "Seguros Y Reaseguros (Primas Y Cesiones)": {
+    "account_number": "5020114",
+    "account_type": "Expense Account"
+   },
+   "Transporte": {
+    "account_number": "5020115",
+    "account_type": "Expense Account"
+   },
+   "Gastos De Gestión (Agasajos A Accionistas, Trabajadores Y Clientes)": {
+    "account_number": "5020116",
+    "account_type": "Expense Account"
+   },
+   "Gastos De Viaje": {
+    "account_number": "5020117",
+    "account_type": "Expense Account"
+   },
+   "Agua, Energía, Luz, Y Telecomunicaciones": {
+    "account_number": "5020118",
+    "account_type": "Expense Account"
+   },
+   "Notarios Y Registradores De La Propiedad O Mercantiles": {
+    "account_number": "5020119",
+    "account_type": "Expense Account"
+   },
+   "Depreciaciones:": {
+    "is_group": 1,
+    "Propiedades, Planta Y Equipo": {
+     "account_number": "502012001",
+     "account_type": "Depreciation"
+    },
+    "Propiedades De Inversión": {
+     "account_number": "502012002",
+     "account_type": "Depreciation"
+    },
+    "Activos Por Derecho De Uso": {
+     "account_number": "502012003",
+     "account_type": "Depreciation"
+    }
+   },
+   "Amortizaciones": {
+    "is_group": 1,
+    "Intangibles": {
+     "account_number": "502012101",
+     "account_type": "Depreciation"
+    },
+    "Otros Activos": {
+     "account_number": "502012102",
+     "account_type": "Depreciation"
+    }
+   },
+   "Gasto Deterioro": {
+    "is_group": 1,
+    "Propiedades, Planta Y Equipo": {
+     "account_number": "502012201",
+     "account_type": "Expense Account"
+    },
+    "Inventarios": {
+     "account_number": "502012202",
+     "account_type": "Expense Account"
+    },
+    "Instrumentos Financieros": {
+     "account_number": "502012203",
+     "account_type": "Expense Account"
+    },
+    "Intangibles": {
+     "account_number": "502012204",
+     "account_type": "Expense Account"
+    },
+    "Cuentas Por Cobrar": {
+     "account_number": "502012205",
+     "account_type": "Expense Account"
+    },
+    "Otros Activos": {
+     "account_number": "502012206",
+     "account_type": "Expense Account"
+    },
+    "Derechos De Uso Por Activos Arrendados": {
+     "account_number": "502012207",
+     "account_type": "Expense Account"
+    }
+   },
+   "Gastos Por Cantidades Anormales De Utilizacion En El Proceso De Producción:": {
+    "is_group": 1,
+    "Mano De Obra": {
+     "account_number": "502012301",
+     "account_type": "Expense Account"
+    },
+    "Materiales": {
+     "account_number": "502012302",
+     "account_type": "Expense Account"
+    },
+    "Costos De Produccion": {
+     "account_number": "502012303",
+     "account_type": "Expense Account"
+    }
+   },
+   "Gasto Por Reestructuracion": {
+    "account_number": "5020124",
+    "account_type": "Expense Account"
+   },
+   "Valor Neto De Realizacion De Inventarios": {
+    "account_number": "5020125",
+    "account_type": "Expense Account"
+   },
+   "Gasto Impuesto A La Renta (Activos Y Pasivos Diferidos)": {
+    "account_number": "5020126",
+    "account_type": "Expense Account"
+   },
+   "Suministros Y Materiales": {
+    "account_number": "5020127",
+    "account_type": "Expense Account"
+   },
+   "Otros Gastos": {
+    "account_number": "5020128",
+    "account_type": "Expense Account"
+   }
+  },
+  "Gastos Administrativos": {
+   "is_group": 1,
+   "Sueldos, Salarios Y Demás Remuneraciones": {
+    "account_number": "5020201",
+    "account_type": "Expense Account"
+   },
+   "Aportes A La Seguridad Social (Incluido Fondo De Reserva)": {
+    "account_number": "5020202",
+    "account_type": "Expense Account"
+   },
+   "Beneficios Sociales E Indemnizaciones": {
+    "account_number": "5020203",
+    "account_type": "Expense Account"
+   },
+   "Gasto Planes De Beneficios A Empleados": {
+    "account_number": "5020204",
+    "account_type": "Expense Account"
+   },
+   "Honorarios, Comisiones Y Dietas A Personas Naturales": {
+    "account_number": "5020205",
+    "account_type": "Expense Account"
+   },
+   "Remuneraciones A Otros Trabajadores Autónomos": {
+    "account_number": "5020206",
+    "account_type": "Expense Account"
+   },
+   "Honorarios A Extranjeros Por Servicios Ocasionales": {
+    "account_number": "5020207",
+    "account_type": "Expense Account"
+   },
+   "Mantenimiento Y Reparaciones": {
+    "account_number": "5020208",
+    "account_type": "Expense Account"
+   },
+   "Arrendamiento": {
+    "account_number": "5020209",
+    "account_type": "Expense Account"
+   },
+   "Comisiones": {
+    "account_number": "5020210",
+    "account_type": "Expense Account"
+   },
+   "Promoción Y Publicidad": {
+    "account_number": "5020211",
+    "account_type": "Expense Account"
+   },
+   "Combustibles": {
+    "account_number": "5020212",
+    "account_type": "Expense Account"
+   },
+   "Lubricantes": {
+    "account_number": "5020213",
+    "account_type": "Expense Account"
+   },
+   "Seguros Y Reaseguros (Primas Y Cesiones)": {
+    "account_number": "5020214",
+    "account_type": "Expense Account"
+   },
+   "Transporte": {
+    "account_number": "5020215",
+    "account_type": "Expense Account"
+   },
+   "Gastos De Gestión (Agasajos A Accionistas, Trabajadores Y Clientes)": {
+    "account_number": "5020216",
+    "account_type": "Expense Account"
+   },
+   "Gastos De Viaje": {
+    "account_number": "5020217",
+    "account_type": "Expense Account"
+   },
+   "Agua, Energía, Luz, Y Telecomunicaciones": {
+    "account_number": "5020218",
+    "account_type": "Expense Account"
+   },
+   "Notarios Y Registradores De La Propiedad O Mercantiles": {
+    "account_number": "5020219",
+    "account_type": "Expense Account"
+   },
+   "Impuestos, Contribuciones Y Otros": {
+    "account_number": "5020220",
+    "account_type": "Depreciation"
+   },
+   "Depreciaciones": {
+    "is_group": 1,
+    "Propiedades, Planta Y Equipo": {
+     "account_number": "502022101",
+     "account_type": "Depreciation"
+    },
+    "Propiedades De Inversión": {
+     "account_number": "502022102",
+     "account_type": "Depreciation"
+    },
+    "Activos Por Derecho De Uso": {
+     "account_number": "502022103",
+     "account_type": "Depreciation"
+    }
+   },
+   "Amortizaciones": {
+    "is_group": 1,
+    "Intangibles": {
+     "account_number": "502022201",
+     "account_type": "Depreciation"
+    },
+    "Otros Activos": {
+     "account_number": "502022202",
+     "account_type": "Depreciation"
+    }
+   },
+   "Gasto Deterioro:": {
+    "is_group": 1,
+    "Propiedades, Planta Y Equipo": {
+     "account_number": "502022301",
+     "account_type": "Expense Account"
+    },
+    "Inventarios": {
+     "account_number": "502022302",
+     "account_type": "Expense Account"
+    },
+    "Instrumentos Financieros": {
+     "account_number": "502022303",
+     "account_type": "Expense Account"
+    },
+    "Intangibles": {
+     "account_number": "502022304",
+     "account_type": "Expense Account"
+    },
+    "Cuentas Por Cobrar": {
+     "account_number": "502022305",
+     "account_type": "Expense Account"
+    },
+    "Otros Activos": {
+     "account_number": "502022306",
+     "account_type": "Expense Account"
+    },
+    "Derechos De Uso Por Activos Arrendados": {
+     "account_number": "502022307",
+     "account_type": "Expense Account"
+    }
+   },
+   "Gastos Por Cantidades Anormales De Utilizacion En El Proceso De Producción": {
+    "is_group": 1,
+    "Mano De Obra": {
+     "account_number": "502022401",
+     "account_type": "Expense Account"
+    },
+    "Materiales": {
+     "account_number": "502022402",
+     "account_type": "Expense Account"
+    },
+    "Costos De Produccion": {
+     "account_number": "502022403",
+     "account_type": "Expense Account"
+    }
+   },
+   "Gasto Por Reestructuracion": {
+    "account_number": "5020225",
+    "account_type": "Expense Account"
+   },
+   "Valor Neto De Realizacion De Inventarios": {
+    "account_number": "5020226",
+    "account_type": "Expense Account"
+   },
+   "Gasto Impuesto A La Renta (Activos Y Pasivos Diferidos)": {
+    "account_number": "5020227",
+    "account_type": "Expense Account"
+   },
+   "Suministros Y Materiales": {
+    "account_number": "5020228",
+    "account_type": "Expense Account"
+   },
+   "Otros Gastos": {
+    "account_number": "5020229",
+    "account_type": "Expense Account"
+   }
+  },
+  "Gastos Financieros": {
+   "is_group": 1,
+   "Intereses": {
+    "is_group": 1,
+    "Intereses Por Prestamos": {
+     "account_number": "502030101",
+     "account_type": "Expense Account"
+    },
+    "Intereses Por Arrendamientos": {
+     "account_number": "502030102",
+     "account_type": "Expense Account"
+    },
+    "Intereses Por Valores Emitidos": {
+     "account_number": "502030103",
+     "account_type": "Expense Account"
+    },
+    "Otros Intereses": {
+     "account_number": "502030104",
+     "account_type": "Expense Account"
+    }
+   },
+   "Comisiones": {
+    "is_group": 1,
+    "Comisiones Pagadas Por Intermediación De Valores:": {
+     "is_group": 1,
+     "Por Operaciones Bursatiles": {
+      "account_number": "50203020101",
+      "account_type": "Expense Account"
+     },
+     "Por Contratos De Underwriting": {
+      "account_number": "50203020103",
+      "account_type": "Expense Account"
+     },
+     "Por Comisión En Operaciones": {
+      "account_number": "50203020104",
+      "account_type": "Expense Account"
+     },
+     "Por Inscripciones": {
+      "account_number": "50203020105",
+      "account_type": "Expense Account"
+     },
+     "Por Mantenimiento De Inscripción": {
+      "account_number": "50203020106",
+      "account_type": "Expense Account"
+     }
+    }
+   },
+   "Por Prestación De Servicios De Administración Y Manejo": {
+    "is_group": 1,
+    "Portafolio De Terceros": {
+     "account_number": "502030301",
+     "account_type": "Expense Account"
+    },
+    "Fondos Administrados": {
+     "account_number": "502030302",
+     "account_type": "Expense Account"
+    },
+    "Fondos Colectivos": {
+     "account_number": "502030303",
+     "account_type": "Expense Account"
+    },
+    "Titularización": {
+     "account_number": "502030304",
+     "account_type": "Expense Account"
+    },
+    "Fideicomisos Mercantiles": {
+     "account_number": "502030305",
+     "account_type": "Expense Account"
+    },
+    "Encargos Fiduciarios": {
+     "account_number": "502030306",
+     "account_type": "Expense Account"
+    },
+    "Por Calificacion De Riesgo": {
+     "account_number": "502030307",
+     "account_type": "Expense Account"
+    },
+    "Por Representacion De Obligacionistas": {
+     "account_number": "502030308",
+     "account_type": "Expense Account"
+    }
+   },
+   "Custodia, Registro, Compensación Y Liquidación": {
+    "is_group": 1,
+    "Custodia Valores Materializados": {
+     "account_number": "502030401",
+     "account_type": "Expense Account"
+    },
+    "Custodia Valores Desmaterializados": {
+     "account_number": "502030402",
+     "account_type": "Expense Account"
+    },
+    "Compensación Y Liquidación De Valores": {
+     "account_number": "502030403",
+     "account_type": "Expense Account"
+    },
+    "Otros": {
+     "account_number": "502030404",
+     "account_type": "Expense Account"
+    }
+   },
+   "Gastos Por Servicios De Asesoria Y Estructuracion": {
+    "is_group": 1,
+    "Por Asesoría": {
+     "account_number": "502030501",
+     "account_type": "Expense Account"
+    },
+    "Por Estructuración De Oferta Pública De Valores": {
+     "account_number": "502030502",
+     "account_type": "Expense Account"
+    },
+    "Por Estructuración De Negocios Fiduciarios": {
+     "account_number": "502030503",
+     "account_type": "Expense Account"
+    },
+    "Otros": {
+     "account_number": "502030504",
+     "account_type": "Expense Account"
+    }
+   },
+   "Gastos De Financiamiento De Activos": {
+    "account_number": "5020306",
+    "account_type": "Expense Account"
+   },
+   "Diferencia En Cambio": {
+    "account_number": "5020307"
+   },
+   "Valuacion De Instrumentos Financieros A Valor Razonable Con Cambio En Resultados": {
+    "account_number": "5020308",
+    "account_type": "Expense Account"
+   },
+   "Perdida En Venta De Titulos Valores": {
+    "account_number": "5020309",
+    "account_type": "Expense Account"
+   },
+   "Perdida En Venta De Propiedad, Planta Y Equipo": {
+    "account_number": "5020310",
+    "account_type": "Expense Account"
+   },
+   "Perdida En Venta De Activos Biologicos": {
+    "account_number": "5020311",
+    "account_type": "Expense Account"
+   },
+   "Otros Gastos Financieros": {
+    "account_number": "5020312",
+    "account_type": "Expense Account"
+   }
+  },
+  "Otros Gastos": {
+   "is_group": 1,
+   "Perdida En Inversiones En Asociadas / Subsidiarias Y Otras": {
+    "account_number": "5020401"
+   },
+   "Otros": {
+    "account_number": "5020402"
+   }
+  },
+  "root_type": "Expense"
+ },
+ "Impuesto A La Renta Causado": {
+  "account_number": "603",
+  "account_type": "Tax",
+  "root_type": "Expense"
+ },
+ "Impuesto A La Renta Causado (705)": {
+  "account_number": "705",
+  "account_type": "Tax",
+  "root_type": "Expense"
+ },
+ "Otro Resultado Integral": {
+  "is_group": 1,
+  "Componentes Del Otro Resultado Integral": {
+   "account_number": "80001"
+  },
+  "Diferencia De Cambio Por Conversión": {
+   "account_number": "80002"
+  },
+  "Valuación De Activos Financieros A Valor Razonable Con Cambio En Otro Resultado Integral": {
+   "account_number": "80003"
+  },
+  "Ganancias Por Revaluación De Propiedades, Planta Y Equipo": {
+   "account_number": "80004"
+  },
+  "Ganancias (Pérdidas) Actuariales Por Planes De Beneficios Definidos": {
+   "account_number": "80005"
+  },
+  "Reversion Del Deterioro (Pérdida Por Deterioro) De Un Activo Revaluado": {
+   "account_number": "80006"
+  },
+  "Participacion De Otro Resultado Integral De Asociadas": {
+   "account_number": "80007"
+  },
+  "Impuesto Sobre Las Ganancias Relativo A Otro Resultado Integral": {
+   "account_number": "80008"
+  },
+  "Otros (Detallar En Notas)": {
+   "account_number": "80009"
+  },
+  "root_type": "Equity"
+ },
+ "Resultado Integral Total Del Año": {
+  "is_group": 1,
+  "root_type": "Equity"
+ }
+}

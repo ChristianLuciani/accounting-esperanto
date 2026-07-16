@@ -8,12 +8,12 @@ abstract: >
   (IFRS/XBRL), the agentic economy (MCP, A2A, AP2), and blockchain/DeFi protocols.
   It enables deterministic, machine-verifiable financial data exchange across
   all 195 sovereign jurisdictions (with statutory chart-of-accounts overlays for
-  the 60 jurisdictions that mandate a national chart, 56 of them exercised
+  the 61 jurisdictions that mandate a national chart, 57 of them exercised
   against primary-source-cited code sets) through a Tree-to-Graph Universal
   Bridge and a Deterministic Boundary Library that eliminates the classical
   class of accounting hallucination at the harness level. A reproducible
   mass-consolidation validation on a synthetic matrix built from the ontology's
-  own committed code sets spans 75 entities in 68 jurisdictions across
+  own committed code sets spans 76 entities in 69 jurisdictions across
   fourteen languages and five writing systems, with the
   deterministic tiers resolving 97% of entries.
   Its 30-account Level 3 minimum core covers an estimated ~94% of routine

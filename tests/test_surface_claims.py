@@ -28,9 +28,9 @@ SURFACES = {
 # phrasing that anchors them to their object (bare digits would false-match).
 REQUIRED = [
     "195",                # sovereign jurisdictions mapped
-    "75 entities",        # validation matrix size
-    "68 jurisdictions",   # validation matrix breadth
-    "56",                 # statutory charts exercised against primary sources
+    "76 entities",        # validation matrix size
+    "69 jurisdictions",   # validation matrix breadth
+    "57",                 # statutory charts exercised against primary sources
 ]
 
 # Retired / superseded numbers that must never reappear on a citable surface.
@@ -42,6 +42,11 @@ BANNED = [
     "9 countries",
     "20 entities",        # pre-v2 matrix size
     "17 jurisdictions",   # pre-v2 matrix breadth
+    "75 entities",        # pre-Ecuador-fidelity-fix matrix size (2026-07-16)
+    "68 jurisdictions",   # pre-Ecuador-fidelity-fix matrix breadth
+    "56 of the 60",       # pre-Ecuador-fidelity-fix Tier-1/statutory phrasing
+    "60 jurisdictions that mandate",  # pre-Ecuador-fidelity-fix statutory phrasing
+    "60 statutory charts",            # pre-Ecuador-fidelity-fix README phrasing
 ]
 
 # Citation hygiene: the canonical surfaces must cite the Zenodo *concept* DOI,

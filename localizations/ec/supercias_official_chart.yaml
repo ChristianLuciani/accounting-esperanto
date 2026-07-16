@@ -1,0 +1,3618 @@
+metadata:
+  jurisdiction: ec
+  authority: Superintendencia de Companias, Valores y Seguros (Ecuador)
+  source_url: https://appscvsmovil.supercias.gob.ec/balances/PLAN_CUENTAS.pdf
+  extraction_command: pdftotext -layout <official.pdf> <output.txt>
+  parser: scripts/coa_fidelity/parse_official_chart.py
+  total_accounts: 721
+  duplicate_codes: null
+  note: Verbatim transcription of the primary-source official chart. No Kontablo UUID classification here
+    by design - that mapping is a separate, human-reviewable step so a parsing bug can never silently
+    corrupt the semantic mapping.
+accounts:
+- code: '1'
+  name: ACTIVO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 1
+- code: '101'
+  name: ACTIVO CORRIENTE
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 3
+- code: '10101'
+  name: EFECTIVO Y EQUIVALENTES DE EFECTIVO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '1010101'
+  name: CAJA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1010102'
+  name: INSTITUCIONES FINANCIERAS PÚBLICAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1010103'
+  name: INSTITUCIONES FINANCIERAS PRIVADAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '10102'
+  name: ACTIVOS FINANCIEROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '1010201'
+  name: ACTIVOS FINANCIEROS A VALOR RAZONABLE CON CAMBIOS EN RESULTADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '101020101'
+  name: RENTA VARIABLE
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '10102010101'
+  name: ACCIONES Y PARTICIPACIONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010102'
+  name: CUOTAS DE FONDOS COLECTIVOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010103'
+  name: VALORES DE TITULARIZACIÓN DE PARTICIPACIÓN
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010104'
+  name: UNIDADES DE PARTICIPACIÓN
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010105'
+  name: INVERSIONES EN EL EXTERIOR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010106'
+  name: OTROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '101020102'
+  name: RENTA FIJA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '10102010201'
+  name: AVALES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010202'
+  name: BONOS DEL ESTADO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010203'
+  name: BONOS DE PRENDA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010204'
+  name: CÉDULAS HIPOTECARIAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010205'
+  name: CERTIFICADOS FINANCIEROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010206'
+  name: CERTIFICADOS DE INVERSIÓN
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010207'
+  name: CERTIFICADOS DE TESORERÍA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010208'
+  name: CERTIFICADOS DE DEPÓSITO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010209'
+  name: CUPONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010210'
+  name: DEPÓSITOS A PLAZO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010211'
+  name: LETRAS DE CAMBIO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010212'
+  name: NOTAS DE CRÉDITO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010213'
+  name: OBLIGACIONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010214'
+  name: FACTURAS COMERCIALES NEGOCIABLES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010215'
+  name: OVERNIGHTS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010216'
+  name: OBLIGACIONES CONVERTIBLES EN ACCIONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010217'
+  name: PAPEL COMERCIAL
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010218'
+  name: PAGARÉS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010219'
+  name: PÓLIZAS DE ACUMULACIÓN
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010220'
+  name: TÍTULOS DEL BANCO CENTRAL
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010221'
+  name: VALORES DE TITULARIZACIÓN
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010222'
+  name: INVERSIONES EN EL EXTERIOR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010223'
+  name: OTROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '101020103'
+  name: DERIVADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '10102010301'
+  name: FORWARD
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010302'
+  name: FUTUROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010303'
+  name: OPCIONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102010304'
+  name: OTROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '1010202'
+  name: ACTIVOS FINANCIEROS A VALOR RAZONABLE CON CAMBIOS EN OTRO RESULTADO INTEGRAL
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '101020201'
+  name: RENTA VARIABLE
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '10102020101'
+  name: ACCIONES Y PARTICIPACIONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020102'
+  name: CUOTAS DE FONDOS COLECTIVOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020103'
+  name: UNIDADES DE PARTICIPACIÓN
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020104'
+  name: VALORES DE TITULARIZACIÓN DE PARTICIPACIÓN
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020105'
+  name: INVERSIONES EN EL EXTERIOR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020106'
+  name: OTROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '101020202'
+  name: RENTA FIJA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '10102020201'
+  name: AVALES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020202'
+  name: BONOS DEL ESTADO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020203'
+  name: BONOS DE PRENDA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020204'
+  name: CÉDULAS HIPOTECARIAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020205'
+  name: CERTIFICADOS FINANCIEROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020206'
+  name: CERTIFICADOS DE INVERSIÓN
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020207'
+  name: CERTIFICADOS DE TESORERÍA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020208'
+  name: CERTIFICADOS DE DEPÓSITO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020209'
+  name: CUPONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020210'
+  name: DEPÓSITOS A PLAZO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020211'
+  name: LETRAS DE CAMBIO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020212'
+  name: NOTAS DE CRÉDITO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020213'
+  name: OBLIGACIONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020214'
+  name: FACTURAS COMERCIALES NEGOCIABLES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020215'
+  name: OVERNIGHTS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020216'
+  name: OBLIGACIONES CONVERTIBLES EN ACCIONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020217'
+  name: PAPEL COMERCIAL
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020218'
+  name: PAGARÉS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020219'
+  name: PÓLIZAS DE ACUMULACIÓN
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020220'
+  name: TÍTULOS DEL BANCO CENTRAL
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020221'
+  name: VALORES DE TITULARIZACIÓN
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020222'
+  name: INVERSIONES EN EL EXTERIOR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102020223'
+  name: OTROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '1010203'
+  name: ACTIVOS FINANCIEROS AL COSTO AMORTIZADO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '101020302'
+  name: RENTA FIJA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '10102030201'
+  name: AVALES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030202'
+  name: BONOS DEL ESTADO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030203'
+  name: BONOS DE PRENDA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030204'
+  name: CÉDULAS HIPOTECARIAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030205'
+  name: CERTIFICADOS FINANCIEROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030206'
+  name: CERTIFICADOS DE INVERSIÓN
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030207'
+  name: CERTIFICADOS DE TESORERÍA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030208'
+  name: CERTIFICADOS DE DEPÓSITO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030209'
+  name: CUPONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030210'
+  name: DEPÓSITOS A PLAZO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030211'
+  name: LETRAS DE CAMBIO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030212'
+  name: NOTAS DE CRÉDITO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030213'
+  name: OBLIGACIONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030214'
+  name: FACTURAS COMERCIALES NEGOCIABLES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030215'
+  name: OVERNIGHTS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030216'
+  name: OBLIGACIONES CONVERTIBLES EN ACCIONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030217'
+  name: PAPEL COMERCIAL
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030218'
+  name: PAGARÉS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030219'
+  name: PÓLIZAS DE ACUMULACIÓN
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030220'
+  name: TÍTULOS DEL BANCO CENTRAL
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030221'
+  name: VALORES DE TITULARIZACIÓN
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030222'
+  name: INVERSIONES EN EL EXTERIOR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102030223'
+  name: OTROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '1010204'
+  name: PROVISIÓN POR DETERIORO DE ACTIVOS FINANCIEROS
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '101020401'
+  name: ACTIVOS FINANCIEROS A VALOR RAZONABLE CON CAMBIOS EN RESULTADOS
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '101020402'
+  name: ACTIVOS FINANCIEROS AL COSTO AMORTIZADO
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '101020403'
+  name: ACTIVOS FINANCIEROS A VALOR RAZONABLE CON CAMBIOS EN OTRO RESULTADO INTEGRAL
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '1010205'
+  name: DEUDORES COMERCIALES Y OTRAS CUENTAS POR COBRAR NO RELACIONADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '101020501'
+  name: DE ACTIVIDADES ORDINARIAS QUE GENEREN INTERESES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '10102050101'
+  name: CUENTAS Y DOCUMENTOS A COBRAR A CLIENTES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102050102'
+  name: CUENTAS Y DOCUMENTOS A COBRAR A TERCEROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '101020502'
+  name: DE ACTIVIDADES ORDINARIAS QUE NO GENEREN INTERESES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '10102050201'
+  name: CUENTAS Y DOCUMENTOS A COBRAR A CLIENTES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102050202'
+  name: CUENTAS Y DOCUMENTOS A COBRAR A TERCEROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102050203'
+  name: CUENTAS POR COBRAR AL ORIGINADOR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102050204'
+  name: COMISIONES POR OPERACIONES BURSÁTILES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102050207'
+  name: CONTRATO DE UNDERWRITING
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102050208'
+  name: POR ADMINISTRACIÓN Y MANEJO DE PORTAFOLIOS DE TERCEROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102050209'
+  name: POR ADMINISTRACIÓN Y MANEJO DE FONDOS ADMINISTRADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102050210'
+  name: POR ADMINISTRACIÓN Y MANEJO DE NEGOCIOS FIDUCIARIOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102050211'
+  name: POR CUSTODIA Y CONSERVACIÓN DE VALORES MATERIALIZADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102050212'
+  name: POR CUSTODIA Y CONSERVACIÓN DE VALORES DESMATERIALIZADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102050213'
+  name: POR MANEJO DE LIBRO DE ACCIONES Y ACCIONISTAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102050214'
+  name: POR ASESORÍA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102050215'
+  name: DIVIDENDOS POR COBRAR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102050216'
+  name: INTERESES POR COBRAR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102050217'
+  name: DEUDORES POR INTERMEDIACIÓN DE VALORES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102050218'
+  name: ANTICIPO A COMITENTES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102050219'
+  name: ANTICIPO A CONSTRUCTOR POR AVANCE DE OBRA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102050220'
+  name: DERECHOS POR COMPROMISO DE RECOMPRA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '10102050221'
+  name: OTRAS CUENTAS POR COBRAR NO RELACIONADAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 11
+- code: '1010206'
+  name: DOCUMENTOS Y CUENTAS POR COBRAR RELACIONADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '101020601'
+  name: POR COBRAR A ACCIONISTAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '101020602'
+  name: POR COBRAR A COMPAÑÍAS RELACIONADAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '101020603'
+  name: POR COBRAR A CLIENTES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '101020604'
+  name: OTRAS CUENTAS POR COBRAR RELACIONADAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '1010207'
+  name: PROVISIÓN POR CUENTAS INCOBRABLES Y DETERIORO
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '10103'
+  name: INVENTARIOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '1010301'
+  name: INVENTARIOS DE MATERIA PRIMA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1010302'
+  name: INVENTARIOS DE PRODUCTOS EN PROCESO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1010303'
+  name: INVENTARIOS DE SUMINISTROS O MATERIALES A SER CONSUMIDOS EN EL PROCESO DE PRODUCCION
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1010304'
+  name: INVENTARIOS DE SUMINISTROS O MATERIALES A SER CONSUMIDOS EN LA PRESTACION DEL SERVICIO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1010305'
+  name: INVENTARIOS DE PROD. TERM. Y MERCAD. EN ALMACÉN - PRODUCIDO POR LA COMPAÑÍA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1010306'
+  name: INVENTARIOS DE PROD. TERM. Y MERCAD. EN ALMACÉN - COMPRADO A TERCEROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1010307'
+  name: MERCADERÍAS EN TRÁNSITO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1010308'
+  name: OBRAS EN CONSTRUCCION
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1010309'
+  name: OBRAS TERMINADAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1010310'
+  name: MATERIALES O BIENES PARA LA CONSTRUCCION
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1010311'
+  name: INVENTARIOS REPUESTOS, HERRAMIENTAS Y ACCESORIOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1010312'
+  name: OTROS INVENTARIOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1010313'
+  name: (-) PROVISIÓN POR VALOR NETO DE REALIZACIÓN Y OTRAS PERDIDAS EN INVENTARIO
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '10104'
+  name: SERVICIOS Y OTROS PAGOS ANTICIPADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '1010401'
+  name: SEGUROS PAGADOS POR ANTICIPADO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1010402'
+  name: ARRIENDOS PAGADOS POR ANTICIPADO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1010403'
+  name: ANTICIPOS A PROVEEDORES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1010404'
+  name: OTROS ANTICIPOS ENTREGADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '10105'
+  name: ACTIVOS POR IMPUESTOS CORRIENTES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '1010501'
+  name: CRÉDITO TRIBUTARIO A FAVOR DE LA EMPRESA (IVA)
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1010502'
+  name: CRÉDITO TRIBUTARIO A FAVOR DE LA EMPRESA ( I. R.)
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1010503'
+  name: ANTICIPO DE IMPUESTO A LA RENTA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '10106'
+  name: ACTIVOS CORRIENTES MANTENIDOS PARA LA VENTA Y OPERACIONES DISCONTINUADAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '10107'
+  name: CONSTRUCCIONES EN PROCESO (NIC 11 Y SECC.23 PYMES)
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '10108'
+  name: OTROS ACTIVOS CORRIENTES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '102'
+  name: ACTIVOS NO CORRIENTES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 3
+- code: '10201'
+  name: PROPIEDAD, PLANTA Y EQUIPO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '1020101'
+  name: TERRENOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020102'
+  name: EDIFICIOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020103'
+  name: CONSTRUCCIONES EN CURSO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020104'
+  name: INSTALACIONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020105'
+  name: MUEBLES Y ENSERES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020106'
+  name: MAQUINARIA Y EQUIPO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020107'
+  name: NAVES, AEREONAVES, BARCAZAS Y SIMILARES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020108'
+  name: EQUIPO DE COMPUTACIÓN
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020109'
+  name: VEHÍCULOS, EQUIPOS DE TRASPORTE Y EQUIPO CAMINERO MÓVIL
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020110'
+  name: OTROS PROPIEDADES, PLANTA Y EQUIPO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020111'
+  name: REPUESTOS Y HERRAMIENTAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020112'
+  name: (-) DEPRECIACIÓN ACUMULADA PROPIEDADES, PLANTA Y EQUIPO
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020113'
+  name: (-) DETERIORO ACUMULADO DE PROPIEDADES, PLANTA Y EQUIPO
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020114'
+  name: ACTIVOS DE EXPLORACION Y EXPLOTACION
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '102011401'
+  name: ACTIVOS DE EXPLORACION Y EXPLOTACION
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '102011402'
+  name: (-) AMORTIZACION ACUMULADA DE ACTIVOS DE EXPLORACIÓN Y EXPLOTACIÓN
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '102011403'
+  name: (-) DETERIORO ACUMULADO DE ACTIVOS DE EXPLORACIÓN Y EXPLOTACIÓN
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '10202'
+  name: PROPIEDADES DE INVERSIÓN
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '1020201'
+  name: TERRENOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '102020101'
+  name: TERRENOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '102020102'
+  name: DERECHOS DE USO SOBRE TERRENOS SUBARRENDADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '1020202'
+  name: EDIFICIOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '102020201'
+  name: EDIFICIOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '102020202'
+  name: DERECHOS DE USO SOBRE EDIFICIOS SUBARRENDADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '1020203'
+  name: (-) DEPRECIACION ACUMULADA DE PROPIEDADES DE INVERSIÓN
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020204'
+  name: (-) DETERIORO ACUMULADO DE PROPIEDADES DE INVERSIÓN
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '10203'
+  name: ACTIVOS BIOLOGICOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '1020301'
+  name: ANIMALES VIVOS EN CRECIMIENTO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020302'
+  name: ANIMALES VIVOS EN PRODUCCION
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020303'
+  name: PLANTAS EN CRECIMIENTO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020304'
+  name: PLANTAS EN PRODUCCION
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020305'
+  name: (-) DEPRECIACION ACUMULADA DE ACTIVOS BIOLÓGICOS
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020306'
+  name: (-) DETERIORO ACUMULADO DE ACTIVOS BIOLOGÍCOS
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '10204'
+  name: ACTIVO INTANGIBLE
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '1020401'
+  name: PLUSVALÍAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020402'
+  name: MARCAS, PATENTES, DERECHOS DE LLAVE , CUOTAS PATRIMONIALES Y OTROS SIMILARES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020403'
+  name: CONCESIONES Y LICENCIAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020404'
+  name: ACTIVOS DE EXPLORACION Y EXPLOTACION
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020405'
+  name: (-) AMORTIZACIÓN ACUMULADA DE ACTIVOS INTANGIBLE
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020406'
+  name: (-) DETERIORO ACUMULADO DE ACTIVO INTANGIBLE
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020407'
+  name: OTROS INTANGIBLES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '10205'
+  name: ACTIVOS POR IMPUESTOS DIFERIDOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '10206'
+  name: ACTIVOS FINANCIEROS NO CORRIENTES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '1020601'
+  name: ACTIVOS FINANCIEROS A VALOR RAZONABLE CON CAMBIOS EN OTRO RESULTADO INTEGRAL
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020602'
+  name: (-) PROVISION POR DETERIORO DE ACTIVOS FINANCIEROS A VALOR RAZONABLE CON CAMBIOS EN OTRO
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020603'
+  name: ACTIVOS FINANCIEROS A COSTO AMORTIZADO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020604'
+  name: (-) PROVISIÓN POR DETERIORO DE ACTIVOS FINANCIEROS A COSTO AMORTIZADO
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020605'
+  name: ACTIVOS FINANCIEROS A VALOR RAZONABLE CON CAMBIOS EN RESULTADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020606'
+  name: (-)PROVISIÓN POR DETERIORO DE ACTIVOS FINANCIEROS A VALOR RAZONABLE CON CAMBIOS EN RESULTADOS
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '10207'
+  name: DERECHO DE USO POR ACTIVOS ARRENDADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '1020701'
+  name: (-) DEPRECIACIÓN ACUMULADA DE ACTIVOS PROVENIENTES POR DERECHOS DE USO
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020702'
+  name: (-) DETERIORO ACUMULADO DE ACTIVOS PROVENIENTES POR DERECHOS DE USO
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020703'
+  name: DERECHO DE USO POR ACTIVOS ARRENDADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '10208'
+  name: OTROS ACTIVOS NO CORRIENTES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '1020801'
+  name: DERECHOS FIDUCIARIOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020802'
+  name: DEPÓSITOS EN GARANTÍA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020803'
+  name: DEPÓSITOS EN GARANTÍA POR OPERACIONES BURSÁTILES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020805'
+  name: ACCIONES DEL DEPÓSITO CENTRALIZADO DE VALORES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020806'
+  name: INVERSIONES SUBSIDIARIAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020807'
+  name: INVERSIONES ASOCIADAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020808'
+  name: INVERSIONES NEGOCIOS CONJUNTOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020809'
+  name: OTRAS INVERSIONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020810'
+  name: (-) PROVISIÓN VALUACIÓN DE INVERSIONES
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020811'
+  name: OTROS ACTIVOS NO CORRIENTES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '10209'
+  name: DOCUMENTOS Y CUENTAS POR COBRAR NO RELACIONADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '1020901'
+  name: CUENTAS Y DOCUMENTOS A COBRAR A CLIENTES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020902'
+  name: CUENTAS Y DOCUMENTOS A COBRAR A TERCEROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1020903'
+  name: OTRAS CUENTAS POR COBRAR NO RELACIONADAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '10210'
+  name: DOCUMENTOS Y CUENTAS POR COBRAR RELACIONADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '1021001'
+  name: POR COBRAR A ACCIONISTAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1021002'
+  name: POR COBRAR A COMPAÑÍAS RELACIONADAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1021003'
+  name: POR COBRAR A CLIENTES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '1021004'
+  name: OTRAS CUENTAS POR COBRAR RELACIONADAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2'
+  name: PASIVO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 1
+- code: '201'
+  name: PASIVO CORRIENTE
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 3
+- code: '20101'
+  name: PASIVOS FINANCIEROS A VALOR RAZONABLE CON CAMBIOS EN RESULTADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '20102'
+  name: PASIVOS POR CONTRATOS DE ARRENDAMIENTO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '20103'
+  name: CUENTAS Y DOCUMENTOS POR PAGAR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '2010301'
+  name: LOCALES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '201030101'
+  name: PRÉSTAMOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '201030102'
+  name: PROVEEDORES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '201030103'
+  name: OTRAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '2010302'
+  name: DEL EXTERIOR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '201030201'
+  name: PRÉSTAMOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '201030202'
+  name: PROVEEDORES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '201030203'
+  name: OTRAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '20104'
+  name: OBLIGACIONES CON INSTITUCIONES FINANCIERAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '2010401'
+  name: LOCALES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2010402'
+  name: DEL EXTERIOR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '20105'
+  name: PROVISIONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '2010501'
+  name: LOCALES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2010502'
+  name: DEL EXTERIOR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '20106'
+  name: PORCIÓN CORRIENTE DE VALORES EMITIDOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '2010601'
+  name: OBLIGACIONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2010602'
+  name: PAPEL COMERCIAL
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2010603'
+  name: VALORES DE TITULARIZACIÓN
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2010604'
+  name: OTROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2010605'
+  name: INTERESES POR PAGAR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '20107'
+  name: OTRAS OBLIGACIONES CORRIENTES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '2010701'
+  name: CON LA ADMINISTRACIÓN TRIBUTARIA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2010702'
+  name: IMPUESTO A LA RENTA POR PAGAR DEL EJERCICIO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2010703'
+  name: CON EL IESS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2010704'
+  name: POR BENEFICIOS DE LEY A EMPLEADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2010705'
+  name: PARTICIPACIÓN TRABAJADORES POR PAGAR DEL EJERCICIO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2010706'
+  name: DIVIDENDOS POR PAGAR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2010707'
+  name: OTROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '20108'
+  name: CUENTAS POR PAGAR A RELACIONADAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '2010801'
+  name: LOCALES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '201080101'
+  name: PRÉSTAMOS DE ACCIONISTAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '201080102'
+  name: PRÉSTAMOS DE COMPAÑÍAS RELACIONADAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '201080103'
+  name: PROVEEDORES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '201080104'
+  name: OTROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '2010802'
+  name: DEL EXTERIOR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '201080201'
+  name: PRÉSTAMOS DE ACCIONISTAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '201080202'
+  name: PRÉSTAMOS DE COMPAÑÍAS RELACIONADAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '201080203'
+  name: PROVEEDORES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '201080204'
+  name: OTROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '20109'
+  name: OTROS PASIVOS FINANCIEROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '20110'
+  name: ANTICIPOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '2011001'
+  name: ANTICIPOS DE CLIENTES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2011002'
+  name: OTROS ANTICIPOS RECIBIDOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '20111'
+  name: PASIVOS DIRECTAMENTE ASOCIADOS CON LOS ACTIVOS NO CORRIENTES Y OPERACIONES DISCONTINUADAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '20112'
+  name: PORCION CORRIENTE DE PROVISIONES POR BENEFICIOS A EMPLEADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '2011201'
+  name: JUBILACION PATRONAL
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2011202'
+  name: OTROS BENEFICIOS PARA LOS EMPLEADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '20113'
+  name: OTROS PASIVOS CORRIENTES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '2011301'
+  name: COMISIONES POR PAGAR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2011302'
+  name: POR OPERACIONES BURSÁTILES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2011303'
+  name: POR CUSTODIA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2011304'
+  name: POR ADMINISTRACIÓN
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2011305'
+  name: OTRAS COMISIONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2011306'
+  name: SANCIONES Y MULTAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2011307'
+  name: INDEMNIZACIONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2011308'
+  name: OBLIGACIONES JUDICIALES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2011309'
+  name: ACREEDORES POR INTERMEDIACIÓN
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2011310'
+  name: OBLIGACIÓN POR COMPROMISO DE RECOMPRA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2011311'
+  name: POR CONTRATOS DE UNDERWRITING
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2011312'
+  name: OTROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '20114'
+  name: PASIVOS FINANCIEROS AL COSTO AMORTIZADO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '202'
+  name: PASIVO NO CORRIENTE
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 3
+- code: '20201'
+  name: PASIVOS POR CONTRATOS DE ARRENDAMIENTO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '20202'
+  name: CUENTAS Y DOCUMENTOS POR PAGAR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '2020201'
+  name: LOCALES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '202020101'
+  name: PRÉSTAMOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '202020102'
+  name: PROVEEDORES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '202020103'
+  name: OTRAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '2020202'
+  name: DEL EXTERIOR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '202020201'
+  name: PRÉSTAMOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '202020202'
+  name: PROVEEDORES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '202020203'
+  name: OTRAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '20203'
+  name: OBLIGACIONES CON INSTITUCIONES FINANCIERAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '2020301'
+  name: LOCALES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2020302'
+  name: DEL EXTERIOR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '20204'
+  name: CUENTAS POR PAGAR A RELACIONADAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '2020401'
+  name: LOCALES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '202040101'
+  name: PRÉSTAMOS DE ACCIONISTAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '202040102'
+  name: PRÉSTAMOS DE COMPAÑÍAS RELACIONADAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '202040103'
+  name: PROVEEDORES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '202040104'
+  name: OTROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '2020402'
+  name: DEL EXTERIOR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '202040201'
+  name: PRÉSTAMOS DE ACCIONISTAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '202040202'
+  name: PRÉSTAMOS DE COMPAÑÍAS RELACIONADAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '202040203'
+  name: PROVEEDORES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '202040204'
+  name: OTROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 9
+- code: '20205'
+  name: PORCIÓN NO CORRIENTE DE VALORES EMITIDOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '2020501'
+  name: OBLIGACIONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2020502'
+  name: PAPEL COMERCIAL
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2020503'
+  name: VALORES DE TITULARIZACIÓN
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2020504'
+  name: OTROS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2020505'
+  name: INTERESES POR PAGAR
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '20206'
+  name: ANTICIPOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '2020601'
+  name: ANTICIPOS DE CLIENTES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2020602'
+  name: OTROS ANTICIPOS RECIBIDOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '20207'
+  name: PROVISIONES POR BENEFICIOS A EMPLEADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '2020701'
+  name: JUBILACION PATRONAL
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2020702'
+  name: OTROS BENEFICIOS NO CORRIENTES PARA LOS EMPLEADOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '20208'
+  name: OTRAS PROVISIONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '20209'
+  name: PASIVO DIFERIDO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '2020901'
+  name: INGRESOS DIFERIDOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '2020902'
+  name: PASIVOS POR IMPUESTOS DIFERIDOS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '20210'
+  name: OTROS PASIVOS NO CORRIENTES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '3'
+  name: PATRIMONIO NETO
+  sign: DUAL
+  statement: Estado de Situación Financiera
+  depth: 1
+- code: '30'
+  name: PATRIMONIO NETO ATRIBUIBLE A LOS PROPIETARIOS DE LA CONTROLADORA
+  sign: DUAL
+  statement: Estado de Situación Financiera
+  depth: 2
+- code: '301'
+  name: CAPITAL
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 3
+- code: '30101'
+  name: CAPITAL SUSCRITO O ASIGNADO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '30102'
+  name: (-) CAPITAL SUSCRITO NO PAGADO, ACCIONES EN TESORERÍA
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '30103'
+  name: FONDO PATRIMONIAL
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '30104'
+  name: PATRIMONIO DE LOS NEGOCIOS FIDUCIARIOS
+  sign: DUAL
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '30105'
+  name: PATRIMONIO DE LOS FONDOS DE INVERSIÓN
+  sign: DUAL
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '3010501'
+  name: PATRIMONIO DEL FONDO ADMINISTRADO
+  sign: DUAL
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '3010502'
+  name: PATRIMONIO DEL FONDO COLECTIVO
+  sign: DUAL
+  statement: Estado de Situación Financiera
+  depth: 7
+- code: '302'
+  name: APORTES DE SOCIOS O ACCIONISTAS PARA FUTURA CAPITALIZACIÓN
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 3
+- code: '303'
+  name: PRIMA POR EMISIÓN PRIMARIA DE ACCIONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 3
+- code: '304'
+  name: RESERVAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 3
+- code: '30401'
+  name: RESERVA LEGAL
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '30402'
+  name: RESERVAS FACULTATIVA Y ESTATUTARIA
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '305'
+  name: OTROS RESULTADOS INTEGRALES
+  sign: DUAL
+  statement: Estado de Situación Financiera
+  depth: 3
+- code: '30501'
+  name: SUPERAVIT DE ACTIVOS FINANCIEROS A VALOR RAZONABLE CON CAMBIOS EN OTRO RESULTADO INTEGRAL
+  sign: DUAL
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '30502'
+  name: SUPERAVIT POR REVALUACIÓN DE PROPIEDADES, PLANTA Y EQUIPO
+  sign: DUAL
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '30503'
+  name: SUPERAVIT POR REVALUACION DE ACTIVOS INTANGIBLES
+  sign: DUAL
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '30504'
+  name: OTROS SUPERAVIT POR REVALUACION
+  sign: DUAL
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '306'
+  name: RESULTADOS ACUMULADOS
+  sign: DUAL
+  statement: Estado de Situación Financiera
+  depth: 3
+- code: '30601'
+  name: GANANCIAS ACUMULADAS
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '30602'
+  name: (-) PÉRDIDAS ACUMULADAS
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '30603'
+  name: RESULTADOS ACUMULADOS PROVENIENTES DE LA ADOPCION POR PRIMERA VEZ DE LAS NIIF
+  sign: DUAL
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '30604'
+  name: RESERVA DE CAPITAL
+  sign: DUAL
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '30605'
+  name: RESERVA POR DONACIONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '30606'
+  name: RESERVA POR VALUACIÓN
+  sign: DUAL
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '30607'
+  name: SUPERÁVIT POR REVALUACIÓN DE INVERSIONES
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '307'
+  name: RESULTADOS DEL EJERCICIO
+  sign: DUAL
+  statement: Estado de Situación Financiera
+  depth: 3
+- code: '30701'
+  name: GANANCIA NETA DEL PERIODO
+  sign: POSITIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '30702'
+  name: (-) PÉRDIDA NETA DEL PERIODO
+  sign: NEGATIVO
+  statement: Estado de Situación Financiera
+  depth: 5
+- code: '31'
+  name: PARTICIPACIÓN CONTROLADORA
+  sign: DUAL
+  statement: Estado de Situación Financiera
+  depth: 2
+- code: '401'
+  name: INGRESOS DE ACTIVIDADES ORDINARIAS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '40101'
+  name: VENTA DE BIENES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '40102'
+  name: PRESTACION DE SERVICIOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '4010201'
+  name: INGRESOS POR ASESORÍA
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '4010202'
+  name: INGRESOS POR ESTRUCTURACIÓN DE OFERTA PÚBLICA DE VALORES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '4010203'
+  name: INGRESOS POR ESTRUCTURACIÓN DE NEGOCIOS FIDUCIARIOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '4010204'
+  name: OTROS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '40103'
+  name: CONTRATOS DE CONSTRUCCION
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '40104'
+  name: SUBVENCIONES DEL GOBIERNO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '40105'
+  name: REGALÍAS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '40106'
+  name: INTERESES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '4010601'
+  name: INTERESES GENERADOS POR VENTAS A CREDITO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '4010602'
+  name: INTERESES Y RENDIMIENTOS FINANCIEROS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '4010603'
+  name: OTROS INTERESES GENERADOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '40107'
+  name: DIVIDENDOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '40108'
+  name: GANANCIA POR MEDICION A VALOR RAZONABLE DE ACTIVOS BIOLOGICOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '40109'
+  name: INGRESOS POR COMISIONES, PRESTACIÓN DE SERVICIOS, CUSTODIA, REGISTRO, COMPENSACIÓN Y LIQUIDACIÓN
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '4010901'
+  name: COMISIONES GANADAS POR INTERMEDIACIÓN DE VALORES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '401090101'
+  name: POR OPERACIONES BURSATILES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '401090103'
+  name: POR CONTRATOS DE UNDERWRITING
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '401090104'
+  name: POR COMISIÓN EN OPERACIONES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '401090105'
+  name: POR INSCRIPCIONES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '401090106'
+  name: POR MANTENIMIENTO DE INSCRIPCIÓN
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '4010902'
+  name: POR PRESTACIÓN DE SERVICIOS DE ADMINISTRACIÓN Y MANEJO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '401090201'
+  name: PORTAFOLIO DE TERCEROS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '401090202'
+  name: FONDOS ADMINISTRADOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '401090203'
+  name: FONDOS COLECTIVOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '401090204'
+  name: TITULARIZACIÓN
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '401090205'
+  name: FIDEICOMISOS MERCANTILES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '401090206'
+  name: ENCARGOS FIDUCIARIOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '401090207'
+  name: POR CALIFICACION DE RIESGO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '401090208'
+  name: POR REPRESENTACION DE OBLIGACIONISTAS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '4010903'
+  name: CUSTODIA, REGISTRO, COMPENSACIÓN Y LIQUIDACIÓN
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '401090301'
+  name: CUSTODIA VALORES MATERIALIZADOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '401090302'
+  name: CUSTODIA VALORES DESMATERIALIZADOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '401090303'
+  name: COMPENSACIÓN Y LIQUIDACIÓN DE VALORES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '401090304'
+  name: OTROS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '40110'
+  name: INGRESOS FINANCIEROS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '4011001'
+  name: DIVIDENDOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '4011002'
+  name: INTERESES FINANCIEROS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '4011003'
+  name: GANANCIA EN INVERSIONES EN ASOCIADAS / SUBSIDIARIAS Y OTRAS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '4011004'
+  name: VALUACION DE INSTRUMENTOS FINANCIEROS A VALOR RAZONABLE CON CAMBIO EN RESULTADOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '4011005'
+  name: GANANCIA EN VENTA DE TITULOS VALORES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '4011006'
+  name: OTROS INGRESOS FINANCIEROS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '40112'
+  name: (-) DESCUENTO EN VENTAS
+  sign: NEGATIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '40113'
+  name: (-) DEVOLUCIONES EN VENTAS
+  sign: NEGATIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '40114'
+  name: (-) BONIFICACIÓN EN PRODUCTO
+  sign: NEGATIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '40115'
+  name: (-) OTRAS REBAJAS COMERCIALES
+  sign: NEGATIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '40116'
+  name: UTILIDAD EN CAMBIO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '402'
+  name: GANANCIA BRUTA
+  sign: DUAL
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '403'
+  name: OTROS INGRESOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '40301'
+  name: GANANCIA EN VENTA DE PROPIEDAD, PLANTA Y EQUIPO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '40302'
+  name: GANANCIA EN VENTA DE ACTIVOS BIOLÓGICOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '40303'
+  name: OTROS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '501'
+  name: COSTO DE VENTAS Y PRODUCCIÓN
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '50101'
+  name: MATERIALES UTILIZADOS O PRODUCTOS VENDIDOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '5010101'
+  name: (+) INVENTARIO INICIAL DE BIENES NO PRODUCIDOS POR LA COMPAÑIA
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5010102'
+  name: (+) COMPRAS NETAS LOCALES DE BIENES NO PRODUCIDOS POR LA COMPAÑIA
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5010103'
+  name: (+) IMPORTACIONES DE BIENES NO PRODUCIDOS POR LA COMPAÑIA
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5010104'
+  name: (-) INVENTARIO FINAL DE BIENES NO PRODUCIDOS POR LA COMPAÑIA
+  sign: NEGATIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5010105'
+  name: (+) INVENTARIO INICIAL DE MATERIA PRIMA
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5010106'
+  name: (+) COMPRAS NETAS LOCALES DE MATERIA PRIMA
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5010107'
+  name: (+) IMPORTACIONES DE MATERIA PRIMA
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5010108'
+  name: (-) INVENTARIO FINAL DE MATERIA PRIMA
+  sign: NEGATIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5010109'
+  name: (+) INVENTARIO INICIAL DE PRODUCTOS EN PROCESO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5010110'
+  name: (-) INVENTARIO FINAL DE PRODUCTOS EN PROCESO
+  sign: NEGATIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5010111'
+  name: (+) INVENTARIO INICIAL PRODUCTOS TERMINADOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5010112'
+  name: (-) INVENTARIO FINAL DE PRODUCTOS TERMINADOS
+  sign: NEGATIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '50102'
+  name: (+) MANO DE OBRA DIRECTA
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '5010201'
+  name: SUELDOS Y BENEFICIOS SOCIALES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5010202'
+  name: GASTOS PLANES DE BENEFICIOS A EMPLEADOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '50103'
+  name: (+) MANO DE OBRA INDIRECTA
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '5010301'
+  name: SUELDOS Y BENEFICIOS SOCIALES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5010302'
+  name: GASTO PLANES DE BENEFICIOS A EMPLEADOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '50104'
+  name: (+) OTROS COSTOS INDIRECTOS DE FABRICACION
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '5010401'
+  name: DEPRECIACIÓN PROPIEDADES, PLANTA Y EQUIPO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5010402'
+  name: DETERIORO O PERDIDAS DE ACTIVOS BIOLOGICOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5010403'
+  name: DETERIORO DE PROPIEDAD, PLANTA Y EQUIPO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5010404'
+  name: EFECTO VALOR NETO DE REALIZACION DE INVENTARIOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5010405'
+  name: GASTO POR GARANTIAS EN VENTA DE PRODUCTOS O SERVICIOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5010406'
+  name: MANTENIMIENTO Y REPARACIONES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5010407'
+  name: SUMINISTROS MATERIALES Y REPUESTOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5010408'
+  name: OTROS COSTOS DE PRODUCCIÓN
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '50105'
+  name: COSTOS DE CONTRATOS DE CONSTRUCCIONES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '5010501'
+  name: COSTOS DE ACUERDO A PORCENTAJES O GRADOS DE TERMINACIÓN
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '502'
+  name: GASTOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '50201'
+  name: GASTOS DE VENTA
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '5020101'
+  name: SUELDOS, SALARIOS Y DEMÁS REMUNERACIONES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020102'
+  name: APORTES A LA SEGURIDAD SOCIAL (INCLUIDO FONDO DE RESERVA)
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020103'
+  name: BENEFICIOS SOCIALES E INDEMNIZACIONES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020104'
+  name: GASTO PLANES DE BENEFICIOS A EMPLEADOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020105'
+  name: HONORARIOS, COMISIONES Y DIETAS A PERSONAS NATURALES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020106'
+  name: REMUNERACIONES A OTROS TRABAJADORES AUTÓNOMOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020107'
+  name: HONORARIOS A EXTRANJEROS POR SERVICIOS OCASIONALES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020108'
+  name: MANTENIMIENTO Y REPARACIONES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020109'
+  name: ARRENDAMIENTO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020110'
+  name: COMISIONES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020111'
+  name: PROMOCIÓN Y PUBLICIDAD
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020112'
+  name: COMBUSTIBLES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020113'
+  name: LUBRICANTES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020114'
+  name: SEGUROS Y REASEGUROS (PRIMAS Y CESIONES)
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020115'
+  name: TRANSPORTE
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020116'
+  name: GASTOS DE GESTIÓN (AGASAJOS A ACCIONISTAS, TRABAJADORES Y CLIENTES)
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020117'
+  name: GASTOS DE VIAJE
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020118'
+  name: AGUA, ENERGÍA, LUZ, Y TELECOMUNICACIONES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020119'
+  name: NOTARIOS Y REGISTRADORES DE LA PROPIEDAD O MERCANTILES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020120'
+  name: 'DEPRECIACIONES:'
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '502012001'
+  name: PROPIEDADES, PLANTA Y EQUIPO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502012002'
+  name: PROPIEDADES DE INVERSIÓN
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502012003'
+  name: ACTIVOS POR DERECHO DE USO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '5020121'
+  name: AMORTIZACIONES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '502012101'
+  name: INTANGIBLES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502012102'
+  name: OTROS ACTIVOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '5020122'
+  name: GASTO DETERIORO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '502012201'
+  name: PROPIEDADES, PLANTA Y EQUIPO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502012202'
+  name: INVENTARIOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502012203'
+  name: INSTRUMENTOS FINANCIEROS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502012204'
+  name: INTANGIBLES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502012205'
+  name: CUENTAS POR COBRAR
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502012206'
+  name: OTROS ACTIVOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502012207'
+  name: DERECHOS DE USO POR ACTIVOS ARRENDADOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '5020123'
+  name: 'GASTOS POR CANTIDADES ANORMALES DE UTILIZACION EN EL PROCESO DE PRODUCCIÓN:'
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '502012301'
+  name: MANO DE OBRA
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502012302'
+  name: MATERIALES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502012303'
+  name: COSTOS DE PRODUCCION
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '5020124'
+  name: GASTO POR REESTRUCTURACION
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020125'
+  name: VALOR NETO DE REALIZACION DE INVENTARIOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020126'
+  name: GASTO IMPUESTO A LA RENTA (ACTIVOS Y PASIVOS DIFERIDOS)
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020127'
+  name: SUMINISTROS Y MATERIALES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020128'
+  name: OTROS GASTOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '50202'
+  name: GASTOS ADMINISTRATIVOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '5020201'
+  name: SUELDOS, SALARIOS Y DEMÁS REMUNERACIONES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020202'
+  name: APORTES A LA SEGURIDAD SOCIAL (INCLUIDO FONDO DE RESERVA)
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020203'
+  name: BENEFICIOS SOCIALES E INDEMNIZACIONES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020204'
+  name: GASTO PLANES DE BENEFICIOS A EMPLEADOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020205'
+  name: HONORARIOS, COMISIONES Y DIETAS A PERSONAS NATURALES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020206'
+  name: REMUNERACIONES A OTROS TRABAJADORES AUTÓNOMOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020207'
+  name: HONORARIOS A EXTRANJEROS POR SERVICIOS OCASIONALES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020208'
+  name: MANTENIMIENTO Y REPARACIONES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020209'
+  name: ARRENDAMIENTO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020210'
+  name: COMISIONES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020211'
+  name: PROMOCIÓN Y PUBLICIDAD
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020212'
+  name: COMBUSTIBLES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020213'
+  name: LUBRICANTES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020214'
+  name: SEGUROS Y REASEGUROS (PRIMAS Y CESIONES)
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020215'
+  name: TRANSPORTE
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020216'
+  name: GASTOS DE GESTIÓN (AGASAJOS A ACCIONISTAS, TRABAJADORES Y CLIENTES)
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020217'
+  name: GASTOS DE VIAJE
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020218'
+  name: AGUA, ENERGÍA, LUZ, Y TELECOMUNICACIONES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020219'
+  name: NOTARIOS Y REGISTRADORES DE LA PROPIEDAD O MERCANTILES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020220'
+  name: IMPUESTOS, CONTRIBUCIONES Y OTROS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020221'
+  name: DEPRECIACIONES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '502022101'
+  name: PROPIEDADES, PLANTA Y EQUIPO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502022102'
+  name: PROPIEDADES DE INVERSIÓN
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502022103'
+  name: ACTIVOS POR DERECHO DE USO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '5020222'
+  name: AMORTIZACIONES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '502022201'
+  name: INTANGIBLES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502022202'
+  name: OTROS ACTIVOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '5020223'
+  name: 'GASTO DETERIORO:'
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '502022301'
+  name: PROPIEDADES, PLANTA Y EQUIPO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502022302'
+  name: INVENTARIOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502022303'
+  name: INSTRUMENTOS FINANCIEROS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502022304'
+  name: INTANGIBLES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502022305'
+  name: CUENTAS POR COBRAR
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502022306'
+  name: OTROS ACTIVOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502022307'
+  name: DERECHOS DE USO POR ACTIVOS ARRENDADOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '5020224'
+  name: GASTOS POR CANTIDADES ANORMALES DE UTILIZACION EN EL PROCESO DE PRODUCCIÓN
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '502022401'
+  name: MANO DE OBRA
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502022402'
+  name: MATERIALES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502022403'
+  name: COSTOS DE PRODUCCION
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '5020225'
+  name: GASTO POR REESTRUCTURACION
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020226'
+  name: VALOR NETO DE REALIZACION DE INVENTARIOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020227'
+  name: GASTO IMPUESTO A LA RENTA (ACTIVOS Y PASIVOS DIFERIDOS)
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020228'
+  name: SUMINISTROS Y MATERIALES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020229'
+  name: OTROS GASTOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '50203'
+  name: GASTOS FINANCIEROS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '5020301'
+  name: INTERESES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '502030101'
+  name: INTERESES POR PRESTAMOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502030102'
+  name: INTERESES POR ARRENDAMIENTOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502030103'
+  name: INTERESES POR VALORES EMITIDOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502030104'
+  name: OTROS INTERESES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '5020302'
+  name: COMISIONES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '502030201'
+  name: 'COMISIONES PAGADAS POR INTERMEDIACIÓN DE VALORES:'
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '50203020101'
+  name: POR OPERACIONES BURSATILES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 11
+- code: '50203020103'
+  name: POR CONTRATOS DE UNDERWRITING
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 11
+- code: '50203020104'
+  name: POR COMISIÓN EN OPERACIONES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 11
+- code: '50203020105'
+  name: POR INSCRIPCIONES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 11
+- code: '50203020106'
+  name: POR MANTENIMIENTO DE INSCRIPCIÓN
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 11
+- code: '5020303'
+  name: POR PRESTACIÓN DE SERVICIOS DE ADMINISTRACIÓN Y MANEJO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '502030301'
+  name: PORTAFOLIO DE TERCEROS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502030302'
+  name: FONDOS ADMINISTRADOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502030303'
+  name: FONDOS COLECTIVOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502030304'
+  name: TITULARIZACIÓN
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502030305'
+  name: FIDEICOMISOS MERCANTILES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502030306'
+  name: ENCARGOS FIDUCIARIOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502030307'
+  name: POR CALIFICACION DE RIESGO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502030308'
+  name: POR REPRESENTACION DE OBLIGACIONISTAS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '5020304'
+  name: CUSTODIA, REGISTRO, COMPENSACIÓN Y LIQUIDACIÓN
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '502030401'
+  name: CUSTODIA VALORES MATERIALIZADOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502030402'
+  name: CUSTODIA VALORES DESMATERIALIZADOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502030403'
+  name: COMPENSACIÓN Y LIQUIDACIÓN DE VALORES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502030404'
+  name: OTROS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '5020305'
+  name: GASTOS POR SERVICIOS DE ASESORIA Y ESTRUCTURACION
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '502030501'
+  name: POR ASESORÍA
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502030502'
+  name: POR ESTRUCTURACIÓN DE OFERTA PÚBLICA DE VALORES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502030503'
+  name: POR ESTRUCTURACIÓN DE NEGOCIOS FIDUCIARIOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '502030504'
+  name: OTROS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 9
+- code: '5020306'
+  name: GASTOS DE FINANCIAMIENTO DE ACTIVOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020307'
+  name: DIFERENCIA EN CAMBIO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020308'
+  name: VALUACION DE INSTRUMENTOS FINANCIEROS A VALOR RAZONABLE CON CAMBIO EN RESULTADOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020309'
+  name: PERDIDA EN VENTA DE TITULOS VALORES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020310'
+  name: PERDIDA EN VENTA DE PROPIEDAD, PLANTA Y EQUIPO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020311'
+  name: PERDIDA EN VENTA DE ACTIVOS BIOLOGICOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020312'
+  name: OTROS GASTOS FINANCIEROS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '50204'
+  name: OTROS GASTOS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '5020401'
+  name: PERDIDA EN INVERSIONES EN ASOCIADAS / SUBSIDIARIAS Y OTRAS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '5020402'
+  name: OTROS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 7
+- code: '600'
+  name: GANANCIA (PÉRDIDA) ANTES DE 15% A TRABAJADORES E IMPUESTO A LA RENTA DE OPERACIONES CONTINUADAS
+  sign: DUAL
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '601'
+  name: 15% PARTICIPACIÓN TRABAJADORES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '602'
+  name: GANANCIA (PÉRDIDA) ANTES DE IMPUESTOS
+  sign: DUAL
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '603'
+  name: IMPUESTO A LA RENTA CAUSADO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '604'
+  name: GANANCIA (PÉRDIDA) DE OPERACIONES CONTINUADAS ANTES DEL IMPUESTO DIFERIDO
+  sign: DUAL
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '605'
+  name: (-) GASTO POR IMPUESTO DIFERIDO
+  sign: DUAL
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '606'
+  name: (+) INGRESO POR IMPUESTO DIFERIDO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '607'
+  name: GANANCIA (PERDIDA) DE OPERACIONES CONTINUADAS
+  sign: DUAL
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '700'
+  name: INGRESOS POR OPERACIONES DISCONTINUADAS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '701'
+  name: GASTOS POR OPERACIONES DISCONTINUADAS
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '702'
+  name: GANANCIA (PÉRDIDA) ANTES DE 15% A TRABAJADORES E IMPUESTO A LA RENTA DE OPERACIONES
+  sign: DUAL
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '703'
+  name: 15% PARTICIPACIÓN TRABAJADORES
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '704'
+  name: GANANCIA (PÉRDIDA) ANTES DE IMPUESTOS DE OPERACIONES DISCONTINUADAS
+  sign: DUAL
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '705'
+  name: IMPUESTO A LA RENTA CAUSADO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '706'
+  name: GANANCIA (PÉRDIDA) DE OPERACIONES DISCONTINUADAS
+  sign: DUAL
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '707'
+  name: GANANCIA (PÉRDIDA) NETA DEL PERIODO
+  sign: DUAL
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '800'
+  name: OTRO RESULTADO INTEGRAL
+  sign: DUAL
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '80001'
+  name: COMPONENTES DEL OTRO RESULTADO INTEGRAL
+  sign: DUAL
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '80002'
+  name: DIFERENCIA DE CAMBIO POR CONVERSIÓN
+  sign: DUAL
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '80003'
+  name: VALUACIÓN DE ACTIVOS FINANCIEROS A VALOR RAZONABLE CON CAMBIO EN OTRO RESULTADO INTEGRAL
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '80004'
+  name: GANANCIAS POR REVALUACIÓN DE PROPIEDADES, PLANTA Y EQUIPO
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '80005'
+  name: GANANCIAS (PÉRDIDAS) ACTUARIALES POR PLANES DE BENEFICIOS DEFINIDOS
+  sign: DUAL
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '80006'
+  name: REVERSION DEL DETERIORO (PÉRDIDA POR DETERIORO) DE UN ACTIVO REVALUADO
+  sign: NEGATIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '80007'
+  name: PARTICIPACION DE OTRO RESULTADO INTEGRAL DE ASOCIADAS
+  sign: DUAL
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '80008'
+  name: IMPUESTO SOBRE LAS GANANCIAS RELATIVO A OTRO RESULTADO INTEGRAL
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '80009'
+  name: OTROS (DETALLAR EN NOTAS)
+  sign: DUAL
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '801'
+  name: RESULTADO INTEGRAL TOTAL DEL AÑO
+  sign: DUAL
+  statement: Estado de Resultado Integral
+  depth: 3
+- code: '80101'
+  name: PROPIETARIOS DE LA CONTROLADORA
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '80102'
+  name: PARTICIPACION NO CONTROLADORA (INFORMATIVO)
+  sign: POSITIVO
+  statement: Estado de Resultado Integral
+  depth: 5
+- code: '95'
+  name: INCREMENTO NETO (DISMINUCIÓN) EN EL EFECTIVO Y EQUIVALENTES AL EFECTIVO, ANTES DEL EFECTO DE LOS
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 2
+- code: '9501'
+  name: FLUJOS DE EFECTIVO PROCEDENTES DE (UTILIZADOS EN) ACTIVIDADES DE OPERACIÓN
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '950101'
+  name: Clases de cobros por actividades de operación
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '95010101'
+  name: Cobros procedentes de las ventas de bienes y prestación de servicios
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 8
+- code: '95010102'
+  name: Cobros procedentes de regalías, cuotas, comisiones y otros ingresos de actividades ordinarias
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 8
+- code: '95010103'
+  name: Cobros procedentes de contratos mantenidos con propósitos de intermediación o para negociar
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 8
+- code: '95010104'
+  name: Cobros procedentes de primas y prestaciones, anualidades y otros beneficios de pólizas suscritas
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 8
+- code: '95010105'
+  name: Otros cobros por actividades de operación
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 8
+- code: '950102'
+  name: Clases de pagos por actividades de operación
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '95010201'
+  name: Pagos a proveedores por el suministro de bienes y servicios
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 8
+- code: '95010202'
+  name: Pagos procedentes de contratos mantenidos para intermediación o para negociar
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 8
+- code: '95010203'
+  name: Pagos a y por cuenta de los empleados
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 8
+- code: '95010204'
+  name: Pagos por primas y prestaciones, anualidades y otras obligaciones derivadas de las pólizas suscritas
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 8
+- code: '95010205'
+  name: Otros pagos por actividades de operación
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 8
+- code: '950103'
+  name: Dividendos pagados
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950104'
+  name: Dividendos recibidos
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950105'
+  name: Intereses pagados
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950106'
+  name: Intereses recibidos
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950107'
+  name: Impuestos a las ganancias pagados
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950108'
+  name: Otras entradas (salidas) de efectivo
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '9502'
+  name: FLUJOS DE EFECTIVO PROCEDENTES DE (UTILIZADOS EN) ACTIVIDADES DE INVERSIÓN
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '950201'
+  name: Efectivo procedentes de la venta de acciones en subsidiarias u otros negocios
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950202'
+  name: Efectivo utilizado para adquirir acciones en subsidiarias u otros negocios para tener el control
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950203'
+  name: Efectivo utilizado en la compra de participaciones no controladoras
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950204'
+  name: Otros cobros por la venta de acciones o instrumentos de deuda de otras entidades
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950205'
+  name: Otros pagos para adquirir acciones o instrumentos de deuda de otras entidades
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950206'
+  name: Otros cobros por la venta de participaciones en negocios conjuntos
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950207'
+  name: Otros pagos para adquirir participaciones en negocios conjuntos
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950208'
+  name: Importes procedentes por la venta de propiedades, planta y equipo
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950209'
+  name: Adquisiciones de propiedades, planta y equipo
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950210'
+  name: Importes procedentes de ventas de activos intangibles
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950211'
+  name: Compras de activos intangibles
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950212'
+  name: Importes procedentes de otros activos a largo plazo
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950213'
+  name: Compras de otros activos a largo plazo
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950214'
+  name: Importes procedentes de subvenciones del gobierno
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950215'
+  name: Anticipos de efectivo efectuados a terceros
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950216'
+  name: Cobros procedentes del reembolso de anticipos y préstamos concedidos a terceros
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950217'
+  name: Pagos derivados de contratos de futuro, a término, de opciones y de permuta financiera
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950218'
+  name: Cobros procedentes de contratos de futuro, a término, de opciones y de permuta financiera
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950219'
+  name: Dividendos recibidos
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950220'
+  name: Intereses recibidos
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950221'
+  name: Otras entradas (salidas) de efectivo
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '9503'
+  name: FLUJOS DE EFECTIVO PROCEDENTES DE (UTILIZADOS EN) ACTIVIDADES DE FINANCIACIÓN
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '950301'
+  name: Aporte en efectivo por aumento de capital
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950302'
+  name: Financiamiento por emisión de títulos valores
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950303'
+  name: Pagos por adquirir o rescatar las acciones de la entidad
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950304'
+  name: Financiación por préstamos a largo plazo
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950305'
+  name: Pagos de préstamos
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950306'
+  name: Pagos de pasivos por arrendamientos financieros
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950307'
+  name: Importes procedentes de subvenciones del gobierno
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950308'
+  name: Dividendos pagados
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950309'
+  name: Intereses recibidos
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '950310'
+  name: Otras entradas (salidas) de efectivo
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '9504'
+  name: EFECTOS DE LA VARIACION EN LA TASA DE CAMBIO SOBRE EL EFECTIVO Y EQUIVALENTES AL EFECTIVO
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '950401'
+  name: Efectos de la variación en la tasa de cambio sobre el efectivo y equivalentes al efectivo
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 6
+- code: '9505'
+  name: INCREMENTO (DISMINUCIÓN) NETO DE EFECTIVO Y EQUIVALENTES AL EFECTIVO
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9506'
+  name: EFECTIVO Y EQUIVALENTES AL EFECTIVO AL PRINCIPIO DEL PERIODO
+  sign: POSITIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9507'
+  name: EFECTIVO Y EQUIVALENTES AL EFECTIVO AL FINAL DEL PERIODO
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '96'
+  name: GANANCIA (PÉRDIDA) ANTES DE 15% A TRABAJADORES E IMPUESTO A LA RENTA
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 2
+- code: '97'
+  name: AJUSTE POR PARTIDAS DISTINTAS AL EFECTIVO
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 2
+- code: '9701'
+  name: Ajustes por gasto de depreciación y amortización
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9702'
+  name: Ajustes por gastos por deterioro (reversiones por deterioro) reconocidas en los resultados del
+    periodo
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9703'
+  name: Pérdida (ganancia) de moneda extranjera no realizada
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9704'
+  name: Pérdidas en cambio de moneda extranjera
+  sign: NEGATIVO
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9705'
+  name: Ajustes por gastos en provisiones
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9706'
+  name: Ajuste por participaciones no controladoras
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9707'
+  name: Ajuste por pagos basados en acciones
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9708'
+  name: Ajustes por ganancias (pérdidas) en valor razonable
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9709'
+  name: Ajustes por gasto por impuesto a la renta
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9710'
+  name: Ajustes por gasto por participación trabajadores
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9711'
+  name: Otros ajustes por partidas distintas al efectivo
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '98'
+  name: CAMBIOS EN ACTIVOS Y PASIVOS
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 2
+- code: '9801'
+  name: (Incremento) disminución en cuentas por cobrar clientes
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9802'
+  name: (Incremento) disminución en otras cuentas por cobrar
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9803'
+  name: (Incremento) disminución en anticipos de proveedores
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9804'
+  name: (Incremento) disminución en inventarios
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9805'
+  name: (Incremento) disminución en otros activos
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9806'
+  name: Incremento (disminución) en cuentas por pagar comerciales
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9807'
+  name: Incremento (disminución) en otras cuentas por pagar
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9808'
+  name: Incremento (disminución) en beneficios empleados
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9809'
+  name: Incremento (disminución) en anticipos de clientes
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9810'
+  name: Incremento (disminución) en otros pasivos
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '9820'
+  name: Flujos de efectivo netos procedentes de (utilizados en) actividades de operación
+  sign: DUAL
+  statement: Estado de Flujo de Efectivo
+  depth: 4
+- code: '99'
+  name: SALDO AL FINAL DEL PERÍODO
+  sign: DUAL
+  statement: Estado de Cambios en el Patrimonio
+  depth: 2
+- code: '9901'
+  name: SALDO REEXPRESADO DEL PERIODO INMEDIATO ANTERIOR
+  sign: DUAL
+  statement: Estado de Cambios en el Patrimonio
+  depth: 4
+- code: '9902'
+  name: 'CAMBIOS DEL AÑO EN EL PATRIMONIO:'
+  sign: DUAL
+  statement: Estado de Cambios en el Patrimonio
+  depth: 4
+- code: '990101'
+  name: SALDO DEL PERÍODO INMEDIATO ANTERIOR
+  sign: DUAL
+  statement: Estado de Cambios en el Patrimonio
+  depth: 6
+- code: '990102'
+  name: 'CAMBIOS EN POLITICAS CONTABLES:'
+  sign: DUAL
+  statement: Estado de Cambios en el Patrimonio
+  depth: 6
+- code: '990103'
+  name: CORRECCION DE ERRORES
+  sign: DUAL
+  statement: Estado de Cambios en el Patrimonio
+  depth: 6
+- code: '990201'
+  name: Aumento (disminución) de capital social
+  sign: DUAL
+  statement: Estado de Cambios en el Patrimonio
+  depth: 6
+- code: '990202'
+  name: Aportes para futuras capitalizaciones
+  sign: DUAL
+  statement: Estado de Cambios en el Patrimonio
+  depth: 6
+- code: '990203'
+  name: Prima por emisión primaria de acciones
+  sign: DUAL
+  statement: Estado de Cambios en el Patrimonio
+  depth: 6
+- code: '990204'
+  name: Dividendos
+  sign: DUAL
+  statement: Estado de Cambios en el Patrimonio
+  depth: 6
+- code: '990205'
+  name: Transferencia de Resultados a otras cuentas patrimoniales
+  sign: DUAL
+  statement: Estado de Cambios en el Patrimonio
+  depth: 6
+- code: '990206'
+  name: Realización de la Reserva por Valuación de Activos Financieros Disponibles para la venta
+  sign: DUAL
+  statement: Estado de Cambios en el Patrimonio
+  depth: 6
+- code: '990207'
+  name: Realización de la Reserva por Valuación de Propiedades, planta y equipo
+  sign: DUAL
+  statement: Estado de Cambios en el Patrimonio
+  depth: 6
+- code: '990208'
+  name: Realización de la Reserva por Valuación de Activos Intangibles
+  sign: DUAL
+  statement: Estado de Cambios en el Patrimonio
+  depth: 6
+- code: '990209'
+  name: Otros cambios (detallar)
+  sign: DUAL
+  statement: Estado de Cambios en el Patrimonio
+  depth: 6
+- code: '990210'
+  name: Resultado Integral Total del Año (Ganancia o pérdida del ejercicio)
+  sign: DUAL
+  statement: Estado de Cambios en el Patrimonio
+  depth: 6

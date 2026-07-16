@@ -255,16 +255,16 @@ async def test_consolidate_via_mcp_dispatch(server):
 # --- list_jurisdictions (coverage manifest) --------------------------------
 def test_list_jurisdictions_headline_numbers():
     """The coverage tool must report the published headline numbers unchanged
-    (CLAIMS-evidence: 195 sovereign / 60 statutory / 56 Tier-1-ready)."""
+    (CLAIMS-evidence: 195 sovereign / 61 statutory / 57 Tier-1-ready)."""
     out = list_jurisdictions_impl()
     assert out["summary"]["total"] == 195
-    assert out["summary"]["statutory_chart"] == 60
-    assert out["summary"]["tier1_codes_available"] == 56
+    assert out["summary"]["statutory_chart"] == 61
+    assert out["summary"]["tier1_codes_available"] == 57
 
 
 def test_list_jurisdictions_tier1_filter():
     out = list_jurisdictions_impl(tier1_only=True)
-    assert out["count_returned"] == 56
+    assert out["count_returned"] == 57
     assert all(j["tier1_codes_available"] for j in out["jurisdictions"])
 
 

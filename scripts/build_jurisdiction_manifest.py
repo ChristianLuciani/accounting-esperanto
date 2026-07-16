@@ -130,7 +130,12 @@ CHART_FAMILY.update({
     "ma":"CGNC_MA","tn":"TN_chart","dz":"SCF_DZ",
     # Latin America: only states with a genuinely mandated national chart.
     # ifrs_direct (IFRS mandatory, no mandated numeric chart): Chile, Costa Rica,
-    # Uruguay, Dominican Rep., Paraguay, Ecuador, Bolivia.
+    # Uruguay, Dominican Rep., Paraguay, Bolivia.
+    # Ecuador reclassified to statutory_chart 2026-07-16: the Supercias "Plan
+    # de Cuentas" IS a mandated national chart (verified against the primary
+    # source PDF); it has no named supranational family here, so it is picked
+    # up via the "national_inline" path (real digit-bearing local_codes in
+    # core/schemas/level3_accounts.yaml), not via this dict.
     "co":"PUC_CO","pe":"PCGE_PE",
     "mx":"SAT","br":"SPED","ar":"PCGA_AR","ve":"PUC_VE",
     # CIS: only those retaining a mandated national chart. ifrs_direct (adopted
