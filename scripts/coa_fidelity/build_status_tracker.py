@@ -98,6 +98,12 @@ def build(out_path, preserve_manual=True):
             "source_authority": seed.get("source_authority", prior.get("source_authority")),
             "last_verified": seed.get("last_verified", prior.get("last_verified")),
             "notes": seed.get("notes", prior.get("notes")),
+            # Written/maintained by scripts/coa_fidelity/hermes_watch.py, not by
+            # this script -- preserved as-is across reruns of this builder.
+            "source_content_hash": prior.get("source_content_hash"),
+            "source_etag": prior.get("source_etag"),
+            "source_last_modified_header": prior.get("source_last_modified_header"),
+            "last_checked": prior.get("last_checked"),
         }
         rows.append(row)
 
@@ -129,6 +135,10 @@ def build(out_path, preserve_manual=True):
                 "extracted": "Official chart transcribed verbatim (parse_official_chart.py output exists).",
                 "classified": "Verbatim chart classified onto Kontablo Level-3 nodes (map_official_chart.py output exists).",
                 "verified": "Extracted + classified + spot-checked + ERPNext tree built + README written.",
+                "drift_detected_needs_review": ("hermes_watch.py found the official source's content hash "
+                                                 "no longer matches what was verified -- the country may have "
+                                                 "revised its chart. A human/session must re-verify; never "
+                                                 "auto-re-mapped."),
                 "n/a_no_statutory_chart": ("ifrs_direct jurisdiction: no mandated national numeric "
                                             "chart exists to be exhaustive against. Lower priority; "
                                             "fidelity here means the IFRS-tag mapping is reasonable, "
