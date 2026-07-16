@@ -16,8 +16,9 @@ the 195-jurisdiction list has exactly one source of truth.
 
 Usage:
     python3 scripts/coa_fidelity/build_status_tracker.py \
-        --out research/coa_fidelity/STATUS.yaml \
-        [--preserve-manual-fields]   # keep existing status/notes on rerun
+        --out research/coa_fidelity/STATUS.yaml
+        # add --no-preserve-manual-fields to force a clean rebuild instead of
+        # keeping existing fidelity_status/notes on a rerun (default: keep them)
 """
 import argparse
 import importlib.util
@@ -153,7 +154,12 @@ def build(out_path, preserve_manual=True):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="research/coa_fidelity/STATUS.yaml")
-    ap.add_argument("--preserve-manual-fields", action="store_true", default=True)
+    ap.add_argument(
+        "--preserve-manual-fields",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="keep prior fidelity_status/notes/etc. on rerun (pass --no-preserve-manual-fields to force a clean rebuild)",
+    )
     args = ap.parse_args()
     build(args.out, preserve_manual=args.preserve_manual_fields)
 

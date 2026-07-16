@@ -20,7 +20,7 @@ local jurisdictional chart-of-accounts standards, international reporting framew
 and blockchain/DeFi protocols —
 enabling deterministic, machine-verifiable financial data exchange across all 195
 sovereign jurisdictions (complete global coverage), with statutory chart-of-accounts
-overlays for the 60 jurisdictions that mandate a national chart.
+overlays for the 61 jurisdictions that mandate a national chart.
 
 | | |
 |---|---|
@@ -183,7 +183,7 @@ All **195 sovereign jurisdictions** are mapped (complete global coverage), with
 - **Universal IFRS-anchored layer** — every jurisdiction is covered by the
   UUID-keyed Level 3 taxonomy, including jurisdictions with no mandated national
   chart (IFRS-pure, e.g. United Kingdom, Estonia, Botswana, Namibia).
-- **Statutory chart overlays** — the **60 jurisdictions that mandate a national
+- **Statutory chart overlays** — the **61 jurisdictions that mandate a national
   chart of accounts** additionally receive code-level mappings against
   primary-source-cited statutory charts. Examples: SYSCOHADA (shared by 17 OHADA
   member states), French PCG (also applied in Monaco), Spanish PGC, Portuguese SNC,
@@ -226,7 +226,7 @@ stops reproducing (see `.github/workflows/ci.yml`).
 
 Honest bounds on what is claimed: the validation matrix uses **synthetic
 trial balances**, not production ledger data; statutory-chart coverage is
-exercised against primary-source-cited charts for **56 of the 60**
+exercised against primary-source-cited charts for **57 of the 61**
 statutory-chart jurisdictions; no account codes are fabricated, and
 jurisdictions without a mandated chart are covered by the IFRS-anchored
 layer, not asserted to have national codes. The construction protocol is

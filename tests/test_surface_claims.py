@@ -44,6 +44,9 @@ BANNED = [
     "17 jurisdictions",   # pre-v2 matrix breadth
     "75 entities",        # pre-Ecuador-fidelity-fix matrix size (2026-07-16)
     "68 jurisdictions",   # pre-Ecuador-fidelity-fix matrix breadth
+    "56 of the 60",       # pre-Ecuador-fidelity-fix Tier-1/statutory phrasing
+    "60 jurisdictions that mandate",  # pre-Ecuador-fidelity-fix statutory phrasing
+    "60 statutory charts",            # pre-Ecuador-fidelity-fix README phrasing
 ]
 
 # Citation hygiene: the canonical surfaces must cite the Zenodo *concept* DOI,

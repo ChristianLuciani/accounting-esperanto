@@ -22,7 +22,6 @@ Usage:
     python3 scripts/coa_fidelity/map_official_chart.py \
         --official localizations/ec/supercias_official_chart.yaml \
         --jurisdiction ec \
-        --rules ec \
         --out localizations/ec/supercias_mapping.yaml
 """
 import argparse
