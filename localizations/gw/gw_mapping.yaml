@@ -1,0 +1,145 @@
+metadata:
+  country: GW
+  authority: OHADA (Organisation pour l'Harmonisation en Afrique du Droit des Affaires)
+  standard: SYSCOHADA_REVISE_2018
+  kontablo_version: 0.2.0
+  last_updated: '2026-07-16'
+  currency: XOF
+  note: Guinea-Bissau (Guine-Bissau), UEMOA/OHADA member. This file previously did not exist -- unlike
+    its 16 sibling SYSCOHADA states, gw had zero localization presence at all. Built this round directly
+    from core/schemas/chart_families.yaml's verified SYSCOHADA codes table (the same shared, source-cited
+    table used by all 17 members), not hand-picked. See localizations/gw/README.md and localizations/_syscohada/README.md
+    for the full verbatim/classified chart.
+mappings:
+  '571':
+    name: Cash and Cash Equivalents
+    kontablo_node: asset.current.cash
+    kontablo_uuid: 00000000-0000-4000-8000-000000000101
+  '521':
+    name: Bank Deposits
+    kontablo_node: asset.current.bank
+    kontablo_uuid: 00000000-0000-4000-8000-000000000102
+  '411':
+    name: Trade Receivables
+    kontablo_node: asset.current.receivables
+    kontablo_uuid: 00000000-0000-4000-8000-000000000104
+  '462':
+    name: Other / Non-trade Receivables
+    kontablo_node: asset.current.other_receivables
+    kontablo_uuid: 50000000-0000-4000-8000-000000000004
+  '31':
+    name: Inventory
+    kontablo_node: asset.current.inventory
+    kontablo_uuid: 00000000-0000-4000-8000-000000000106
+  '476':
+    name: Prepaid Expenses
+    kontablo_node: asset.current.prepaid
+    kontablo_uuid: 20000000-0000-4000-8000-000000000001
+  '4452':
+    name: Input VAT Recoverable
+    kontablo_node: asset.current.vat_input
+    kontablo_uuid: 10000000-0000-4000-8000-000000000001
+  '447':
+    name: Tax Withheld at Source / Tax Credits Receivable
+    kontablo_node: asset.current.withholding_tax
+    kontablo_uuid: 50000000-0000-4000-8000-000000000003
+  '21':
+    name: Intangible Assets
+    kontablo_node: asset.noncurrent.intangibles
+    kontablo_uuid: 20000000-0000-4000-8000-000000000002
+  '215':
+    name: Goodwill
+    kontablo_node: asset.noncurrent.goodwill
+    kontablo_uuid: 20000000-0000-4000-8000-000000000003
+  '22':
+    name: Property, Plant and Equipment
+    kontablo_node: asset.noncurrent.ppe
+    kontablo_uuid: 00000000-0000-4000-8000-000000000110
+  '261':
+    name: Long-term Investments
+    kontablo_node: asset.noncurrent.investments
+    kontablo_uuid: 00000000-0000-4000-8000-000000000108
+  '401':
+    name: Trade Payables
+    kontablo_node: liability.current.payables
+    kontablo_uuid: 00000000-0000-4000-8000-000000000201
+  '4431':
+    name: Output VAT Payable
+    kontablo_node: liability.current.vat_output
+    kontablo_uuid: 00000000-0000-4000-8000-000000000203
+  '442':
+    name: Income Tax Payable
+    kontablo_node: liability.current.tax
+    kontablo_uuid: 00000000-0000-4000-8000-000000000205
+  '422':
+    name: Payroll Liabilities (Wages & Statutory Withholdings)
+    kontablo_node: liability.current.payroll
+    kontablo_uuid: 50000000-0000-4000-8000-000000000001
+  '428':
+    name: Accrued Liabilities
+    kontablo_node: liability.current.accrued
+    kontablo_uuid: 00000000-0000-4000-8000-000000000207
+  '477':
+    name: Contract Liabilities / Deferred Revenue (IFRS 15)
+    kontablo_node: liability.current.deferred_revenue
+    kontablo_uuid: 50000000-0000-4000-8000-000000000002
+  '56':
+    name: Short-term Borrowings
+    kontablo_node: liability.current.short_term_debt
+    kontablo_uuid: 00000000-0000-4000-8000-000000000209
+  '16':
+    name: Long-term Debt
+    kontablo_node: liability.noncurrent.debt
+    kontablo_uuid: 00000000-0000-4000-8000-000000000211
+  '172':
+    name: Lease Liabilities (IFRS 16)
+    kontablo_node: liability.noncurrent.lease
+    kontablo_uuid: 30000000-0000-4000-8000-000000000002
+  '151':
+    name: Deferred Tax Liability
+    kontablo_node: liability.noncurrent.deferred_tax
+    kontablo_uuid: 00000000-0000-4000-8000-000000000213
+  '101':
+    name: Paid-in Capital
+    kontablo_node: equity.capital
+    kontablo_uuid: 00000000-0000-4000-8000-000000000008
+  '11':
+    name: Other Reserves
+    kontablo_node: equity.reserves
+    kontablo_uuid: 00000000-0000-4000-8000-000000000010
+  '12':
+    name: Retained Earnings
+    kontablo_node: equity.retained
+    kontablo_uuid: 00000000-0000-4000-8000-000000000009
+  '701':
+    name: Operating Revenue
+    kontablo_node: revenue.operating
+    kontablo_uuid: 00000000-0000-4000-8000-000000000301
+  '77':
+    name: Other Income
+    kontablo_node: revenue.other
+    kontablo_uuid: 00000000-0000-4000-8000-000000000303
+  '601':
+    name: Cost of Goods Sold
+    kontablo_node: expense.cogs
+    kontablo_uuid: 00000000-0000-4000-8000-000000000404
+  '62':
+    name: General & Administrative Expenses
+    kontablo_node: expense.admin
+    kontablo_uuid: 00000000-0000-4000-8000-000000000501
+  '681':
+    name: Depreciation and Amortization
+    kontablo_node: expense.depreciation
+    kontablo_uuid: 00000000-0000-4000-8000-000000000503
+  '671':
+    name: Finance Costs
+    kontablo_node: expense.interest
+    kontablo_uuid: 00000000-0000-4000-8000-000000000505
+  '676':
+    name: Foreign Exchange Losses
+    kontablo_node: expense.fx_loss
+    kontablo_uuid: 40000000-0000-4000-8000-000000000001
+  '891':
+    name: Income Tax Expense
+    kontablo_node: expense.tax
+    kontablo_uuid: 00000000-0000-4000-8000-000000000507
