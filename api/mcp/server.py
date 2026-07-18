@@ -165,7 +165,7 @@ def resolve_account_impl(
             "error": f"nature must be one of {_VALID_NATURES} or omitted (got {nature!r}).",
         }
     entry = LocalEntry(code=local_code, name=local_name, nature=norm_nature)
-    kid, tier, conf = engine.resolve(entry, jurisdiction)
+    kid, tier, conf, rule = engine.resolve_full(entry, jurisdiction)
     if kid is None:
         return {
             "jurisdiction": jurisdiction,
@@ -178,6 +178,7 @@ def resolve_account_impl(
             "tier": tier,
             "match_method": _TIER_TO_MATCH.get(tier, "not_found"),
             "confidence": conf,
+            "rule_id": None,
             "cra_flags": [],
             "note": "No deterministic mapping (Tier-1/Tier-2); escalate to human "
             "review (Co-responsibility Architecture). Tier-3 LLM fallback is not "
@@ -200,6 +201,8 @@ def resolve_account_impl(
         "tier": tier,
         "match_method": _TIER_TO_MATCH.get(tier, "exact_lookup"),
         "confidence": conf,
+        # Mapping provenance (ADR-014): the exact deterministic rule that fired.
+        "rule_id": rule,
         "cra_flags": flags,
         "note": f"Resolved deterministically via {tier}.",
     }
@@ -320,6 +323,9 @@ def consolidate_trial_balances_impl(
                 "debit": l.debit_usd,
                 "credit": l.credit_usd,
                 "net": l.net_usd,
+                # Fiber size: how many source entries aggregated into this
+                # line (the entries themselves are in mapping_audit).
+                "source_entries": l.source_count,
             }
             for l in result.lines
         ],
@@ -345,6 +351,28 @@ def consolidate_trial_balances_impl(
                 "note": q.note,
             }
             for sid, q in result.fx_quotes.items()
+        ],
+        # Per-entry mapping provenance (ADR-014, the fx_audit pattern applied
+        # to the mapping decision): local code/name, resolved node, the
+        # deterministic tier/rule, and both local and USD amounts — every
+        # consolidated line is reconstructible down to its source rows, and
+        # escalated entries appear here too (explicit, never silent).
+        "mapping_audit": [
+            {
+                "subsidiary_id": r.subsidiary_id,
+                "jurisdiction": r.jurisdiction,
+                "local_code": r.local_code,
+                "local_name": r.local_name,
+                "kontablo_id": r.kontablo_id,
+                "tier": r.tier,
+                "rule_id": r.mapping.rule_id if r.mapping else None,
+                "confidence": r.confidence,
+                "debit_local": r.debit_local,
+                "credit_local": r.credit_local,
+                "debit_usd": r.debit_usd,
+                "credit_usd": r.credit_usd,
+            }
+            for r in result.resolved
         ],
         "warnings": warnings,
     }
@@ -415,7 +443,8 @@ def build_mcp(engine: Optional[ConsolidationEngine] = None) -> FastMCP:
         description="Resolve a local statutory account (jurisdiction + local "
         "code and/or name) to a universal Kontablo node UUID via the deterministic "
         "three-tier resolver (Tier-1 exact code lookup, Tier-2 multilingual "
-        "keyword rules). Returns the kontablo_id, UUID, tier, confidence, and any "
+        "keyword rules). Returns the kontablo_id, UUID, tier, confidence, the "
+        "exact deterministic rule_id that fired (mapping provenance), and any "
         "Co-responsibility boundary flags. Returns resolved=false (no guess) when "
         "neither deterministic tier matches."
     )
@@ -481,8 +510,11 @@ def build_mcp(engine: Optional[ConsolidationEngine] = None) -> FastMCP:
         description="Consolidate subsidiary trial balances into a single USD trial "
         "balance, applying explicit (structured) intercompany eliminations. Each "
         "subsidiary is resolved deterministically and normalised to USD with an "
-        "auditable per-entity FX quote. Returns the consolidated lines, "
-        "eliminations applied, balance check, escalations, FX audit, and warnings."
+        "auditable per-entity FX quote. Returns the consolidated lines (each with "
+        "its source_entries fiber size), eliminations applied, balance check, "
+        "escalations, FX audit, a per-entry mapping_audit (local code/name, "
+        "tier, rule_id, local and USD amounts — full lineage of every "
+        "consolidated figure), and warnings."
     )
     def consolidate_trial_balances(
         subsidiaries: Annotated[

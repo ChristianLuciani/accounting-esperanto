@@ -188,6 +188,12 @@ message MapAccountResponse {
   MatchMethod match_method = 6;
   string justification = 7;
   repeated AlternativeMapping alternatives = 8;
+  // Resolution tier in the shared harness vocabulary (mapping provenance,
+  // ADR-014): "tier1_exact" | "tier2_keyword" | "escalated".
+  string tier = 9;
+  // Deterministic rule identifier that produced the mapping, e.g.
+  // "tier1:es:572" or "tier2:asset.current.cash:cash". Empty on escalation.
+  string rule_id = 10;
 }
 
 message AlternativeMapping {
@@ -278,6 +284,39 @@ message ConsolidatedEntry {
   double debit = 3;
   double credit = 4;
   double net = 5;
+  // Fiber size: number of resolved source entries aggregated into this line.
+  // The entries themselves are in ConsolidationResponse.mapping_audit.
+  int32 source_entries = 6;
+}
+
+// Per-entry mapping provenance (ADR-014): the local code/name, the resolved
+// node, the deterministic tier/rule, and both local and converted amounts —
+// so every consolidated line is reconstructible down to its source rows.
+message MappingAuditEntry {
+  string subsidiary_id = 1;
+  string jurisdiction = 2;
+  string local_code = 3;
+  string local_name = 4;
+  string kontablo_id = 5;      // empty = escalated (explicit, never silent)
+  string tier = 6;             // "tier1_exact" | "tier2_keyword" | "escalated"
+  string rule_id = 7;          // deterministic rule id; empty on escalation
+  double confidence = 8;
+  double debit_local = 9;      // original local-currency amounts
+  double credit_local = 10;
+  double debit = 11;           // converted (target-currency) amounts
+  double credit = 12;
+}
+
+// Per-subsidiary FX provenance (parity with the REST fx_audit array).
+message FXAuditEntry {
+  string subsidiary_id = 1;
+  string currency = 2;
+  double usd_per_unit = 3;
+  string source = 4;           // frankfurter-ecb | open-er-api | static-pinned | manual
+  string mode = 5;             // live | static | manual
+  string as_of = 6;
+  string retrieved_at = 7;
+  string note = 8;
 }
 
 message ConsolidationResponse {
@@ -287,6 +326,10 @@ message ConsolidationResponse {
   repeated ConsolidatedEntry trial_balance = 4;
   int32 eliminations_applied = 5;
   repeated string warnings = 6;
+  // Lossless-translation audit trail (ADR-014): per-entry mapping provenance
+  // and per-subsidiary FX provenance.
+  repeated MappingAuditEntry mapping_audit = 7;
+  repeated FXAuditEntry fx_audit = 8;
 }
 
 message KontabloTrialBalanceEntry {

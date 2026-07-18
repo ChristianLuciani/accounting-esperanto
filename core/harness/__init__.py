@@ -43,7 +43,8 @@ from core.harness.ontology import (
     load_ontology,
     merge_family_codes,
 )
-from core.harness.resolution import TIER2_RULES, resolve
+from core.harness.provenance import MappingQuote, mapping_quote
+from core.harness.resolution import TIER2_RULES, resolve, resolve_with_rule
 from core.harness.validation import (
     ensure_finite,
     ensure_positive_finite,
@@ -52,6 +53,9 @@ from core.harness.validation import (
 
 __all__ = [
     "resolve",
+    "resolve_with_rule",
+    "MappingQuote",
+    "mapping_quote",
     "TIER2_RULES",
     "cra_validate",
     "ensure_finite",

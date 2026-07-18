@@ -49,6 +49,13 @@ class SingleMappingResponse(BaseModel):
     label_en: str
     confidence_score: float = Field(..., ge=0, le=1)
     match_method: str = Field(..., description="Method used: exact_lookup, semantic_ai, fuzzy_string, not_found")
+    tier: Optional[str] = Field(
+        None,
+        description="Resolution tier in the harness vocabulary shared with gRPC/MCP: "
+        "tier1_exact (deterministic code lookup), tier3_semantic (stochastic AI "
+        "fallback), escalated (no mapping; human review). Part of the mapping "
+        "provenance (ADR-014).",
+    )
     justification: Optional[str] = None
     inconsistency_flag: bool = Field(False, description="True if a human-provided mapping contradicts a deterministic AI boundary")
     inconsistency_note: Optional[str] = Field(None, description="Detailed warning or explanation left by the AI/Human for audit trails")

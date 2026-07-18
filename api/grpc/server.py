@@ -129,7 +129,7 @@ class MappingServicer(pb_grpc.MappingServiceServicer):
             name=req.local_name,
             nature=_PB_TO_NATURE.get(req.nature),
         )
-        kid, tier, conf = self.engine.resolve(entry, req.jurisdiction)
+        kid, tier, conf, rule = self.engine.resolve_full(entry, req.jurisdiction)
         if kid is None:
             return pb.MapAccountResponse(
                 local_code=req.local_code,
@@ -139,6 +139,8 @@ class MappingServicer(pb_grpc.MappingServiceServicer):
                 confidence_score=0.0,
                 match_method=pb.MATCH_NOT_FOUND,
                 justification="No deterministic mapping (Tier-1/Tier-2); escalate to human review.",
+                tier=tier,
+                rule_id="",
             )
         node = self.engine.accounts[kid]
         return pb.MapAccountResponse(
@@ -149,6 +151,8 @@ class MappingServicer(pb_grpc.MappingServiceServicer):
             confidence_score=conf,
             match_method=_TIER_TO_MATCH.get(tier, pb.MATCH_UNSPECIFIED),
             justification=f"Resolved via {tier}.",
+            tier=tier,
+            rule_id=rule or "",
         )
 
     def MapAccount(self, request, context):
@@ -237,8 +241,42 @@ class ConsolidationServicer(pb_grpc.ConsolidationServiceServicer):
                 debit=l.debit_usd,
                 credit=l.credit_usd,
                 net=l.net_usd,
+                source_entries=l.source_count,
             )
             for l in result.lines
+        ]
+        # Lossless-translation audit trail (ADR-014): one mapping-provenance
+        # record per source entry, one FX record per subsidiary — parity with
+        # the REST mapping_audit/fx_audit arrays.
+        mapping_audit = [
+            pb.MappingAuditEntry(
+                subsidiary_id=r.subsidiary_id,
+                jurisdiction=r.jurisdiction,
+                local_code=r.local_code,
+                local_name=r.local_name,
+                kontablo_id=r.kontablo_id or "",
+                tier=r.tier,
+                rule_id=(r.mapping.rule_id if r.mapping else None) or "",
+                confidence=r.confidence,
+                debit_local=r.debit_local,
+                credit_local=r.credit_local,
+                debit=r.debit_usd,
+                credit=r.credit_usd,
+            )
+            for r in result.resolved
+        ]
+        fx_audit = [
+            pb.FXAuditEntry(
+                subsidiary_id=sid,
+                currency=q.currency,
+                usd_per_unit=q.usd_per_unit,
+                source=q.source,
+                mode=q.mode,
+                as_of=q.as_of or "",
+                retrieved_at=q.retrieved_at or "",
+                note=q.note or "",
+            )
+            for sid, q in result.fx_quotes.items()
         ]
         warnings = list(result.cra_flags)
         if not result.is_balanced():
@@ -250,6 +288,8 @@ class ConsolidationServicer(pb_grpc.ConsolidationServiceServicer):
             trial_balance=tb,
             eliminations_applied=result.eliminations_applied,
             warnings=warnings,
+            mapping_audit=mapping_audit,
+            fx_audit=fx_audit,
         )
 
     def GenerateFinancialStatements(self, request, context):

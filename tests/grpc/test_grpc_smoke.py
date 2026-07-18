@@ -56,6 +56,9 @@ def test_map_account_tier1_exact(channel):
     assert resp.match_method == pb.MATCH_EXACT_LOOKUP
     assert resp.confidence_score == 1.0
     assert resp.kontablo_uuid  # non-empty UUID round-tripped
+    # Mapping provenance (ADR-014): tier + exact deterministic rule.
+    assert resp.tier == "tier1_exact"
+    assert resp.rule_id == "tier1:es:572"
 
 
 def test_map_batch_streaming(channel):
@@ -112,6 +115,24 @@ def test_consolidate_with_intercompany_elimination(channel):
     total_debit = sum(e.debit for e in resp.trial_balance)
     total_credit = sum(e.credit for e in resp.trial_balance)
     assert round(total_debit - total_credit, 2) == 0.0
+
+    # Lossless-translation audit trail (ADR-014): one mapping record per
+    # source entry (4), one FX record per subsidiary (2) — nothing dropped.
+    assert len(resp.mapping_audit) == 4
+    for rec in resp.mapping_audit:
+        assert rec.local_code and rec.kontablo_id
+        assert rec.tier == "tier1_exact"
+        assert rec.rule_id.startswith("tier1:")
+        assert rec.debit_local or rec.credit_local
+    assert {f.subsidiary_id for f in resp.fx_audit} == {"iberica-es", "norte-mx"}
+    for f in resp.fx_audit:
+        assert f.source and f.mode and f.usd_per_unit > 0
+    # Fiber sizes: every line's source_entries counts its audit records.
+    audit_by_kid = {}
+    for rec in resp.mapping_audit:
+        audit_by_kid[rec.kontablo_id] = audit_by_kid.get(rec.kontablo_id, 0) + 1
+    for line in resp.trial_balance:
+        assert line.source_entries == audit_by_kid[line.kontablo_id]
 
 
 def test_validate_balance_sheet(channel):

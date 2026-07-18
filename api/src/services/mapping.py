@@ -74,6 +74,7 @@ class MappingService:
                     label_en=account.label_en,
                     confidence_score=1.0,
                     match_method="exact_lookup",
+                    tier="tier1_exact",
                     justification=f"Direct match found in Kontablo {jurisdiction.upper()} ontology."
                 )
 
@@ -122,6 +123,7 @@ class MappingService:
                         label_en=k_account.label_en,
                         confidence_score=ai_result.get("confidence_score", 0.5),
                         match_method="semantic_ai",
+                        tier="tier3_semantic",
                         justification=ai_result.get("justification", "Identified by AI mapping.")
                     )
 
@@ -133,6 +135,7 @@ class MappingService:
             label_en="Unmapped Account",
             confidence_score=0.0,
             match_method="not_found",
+            tier="escalated",
             justification="No mapping found through lookup or AI fallback."
         )
     def validate_co_responsibility(self, request: SingleMappingRequest, response: SingleMappingResponse, k_account):

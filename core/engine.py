@@ -32,7 +32,9 @@ from core.harness import (
     load_ontology,
     merge_family_codes,
     resolve as harness_resolve,
+    resolve_with_rule as harness_resolve_with_rule,
 )
+from core.harness.provenance import MappingQuote, mapping_quote
 from core.harness import FX as _HARNESS_FX
 from core.harness import JCCY as _HARNESS_JCCY
 from core.harness.fx_provider import (
@@ -107,6 +109,16 @@ class ResolvedEntry:
     # the rate, its upstream as-of date, when it was applied, and the mode
     # (live | static | manual). ``None`` only if the line never resolved.
     fx: Optional[FXQuote] = None
+    # Original local-currency amounts, BEFORE FX conversion. Kept so the source
+    # trial balance is reconstructible from the lineage byte-for-byte (the
+    # rounded USD amounts are not invertible through the FX rate) — the
+    # entry-level lossless-translation guarantee (ADR-014).
+    debit_local: float = 0.0
+    credit_local: float = 0.0
+    # Provenance of the account resolution itself: which deterministic tier
+    # answered, which exact rule fired, and with what confidence (the
+    # ``FXQuote`` pattern applied to the mapping decision).
+    mapping: Optional[MappingQuote] = None
 
 
 @dataclass
@@ -117,6 +129,10 @@ class ConsolidatedLine:
     statement: str
     debit_usd: float
     credit_usd: float
+    # How many resolved source entries aggregated into this line (its fiber
+    # size). The entries themselves are recoverable via
+    # ``ConsolidationResult.lineage()``.
+    source_count: int = 0
 
     @property
     def net_usd(self) -> float:
@@ -134,6 +150,20 @@ class ConsolidationResult:
     # subsidiary_id -> the FX quote used to normalise that subsidiary to USD,
     # so the consolidated statement carries a per-entity FX audit trail.
     fx_quotes: Dict[str, FXQuote] = field(default_factory=dict)
+
+    def lineage(self) -> Dict[str, List["ResolvedEntry"]]:
+        """kontablo_id -> the resolved source entries that aggregated into that
+        consolidated line (its fiber). Together with each entry's local amounts
+        and its ``mapping``/``fx`` quotes, every consolidated figure is
+        reconstructible down to the original local trial-balance rows —
+        the entry-level lossless-translation guarantee (ADR-014). Escalated
+        entries are not part of any line's fiber; they are listed (never
+        silently dropped) in ``escalations``."""
+        fibers: Dict[str, List[ResolvedEntry]] = {}
+        for rec in self.resolved:
+            if rec.kontablo_id is not None:
+                fibers.setdefault(rec.kontablo_id, []).append(rec)
+        return fibers
 
     @property
     def total_debits(self) -> float:
@@ -172,11 +202,38 @@ class ConsolidationEngine:
     # -- resolution ---------------------------------------------------------
     def resolve(self, entry: LocalEntry, jurisdiction: str) -> Tuple[Optional[str], str, float]:
         """Return (kontablo_id, tier, confidence) using the harness resolver."""
-        return harness_resolve(
+        kid, tier, conf, _rule = self.resolve_full(entry, jurisdiction)
+        return kid, tier, conf
+
+    def resolve_full(
+        self, entry: LocalEntry, jurisdiction: str
+    ) -> Tuple[Optional[str], str, float, Optional[str]]:
+        """Like :meth:`resolve`, additionally returning the deterministic
+        ``rule_id`` that fired (``None`` on escalation) for the mapping audit
+        trail."""
+        return harness_resolve_with_rule(
             {"code": entry.code, "name": entry.name, "nature": entry.nature},
             jurisdiction.lower(),
             self.accounts,
             self.by_code,
+        )
+
+    def mapping_quote_for(
+        self, entry: LocalEntry, jurisdiction: str
+    ) -> MappingQuote:
+        """Resolve a local entry *with its provenance* (the ``FXQuote`` pattern
+        applied to the mapping decision)."""
+        kid, tier, conf, rule = self.resolve_full(entry, jurisdiction)
+        node = self.accounts.get(kid) if kid else None
+        return mapping_quote(
+            local_code=entry.code,
+            local_name=entry.name,
+            jurisdiction=jurisdiction.lower(),
+            kontablo_id=kid,
+            kontablo_uuid=str(node.get("uuid")) if node and node.get("uuid") else None,
+            tier=tier,
+            confidence=conf,
+            rule_id=rule,
         )
 
     def fx_quote_for(self, tb: SubsidiaryTB) -> FXQuote:
@@ -240,7 +297,8 @@ class ConsolidationEngine:
             rate = quote.usd_per_unit
             fx_quotes[tb.subsidiary_id] = quote
             for e in tb.entries:
-                kid, tier, conf = self.resolve(e, tb.jurisdiction)
+                mq = self.mapping_quote_for(e, tb.jurisdiction)
+                kid, tier, conf = mq.kontablo_id, mq.tier, mq.confidence
                 debit_usd = round(e.debit * rate, 2)
                 credit_usd = round(e.credit * rate, 2)
                 flags = cra_validate(
@@ -260,6 +318,9 @@ class ConsolidationEngine:
                     credit_usd=credit_usd,
                     cra_flags=flags,
                     fx=quote,
+                    debit_local=e.debit,
+                    credit_local=e.credit,
+                    mapping=mq,
                 )
                 resolved.append(rec)
                 if flags:
@@ -267,9 +328,10 @@ class ConsolidationEngine:
                 if kid is None:
                     escalations.append(rec)
                     continue
-                slot = agg.setdefault(kid, {"debit": 0.0, "credit": 0.0})
+                slot = agg.setdefault(kid, {"debit": 0.0, "credit": 0.0, "sources": 0})
                 slot["debit"] += debit_usd
                 slot["credit"] += credit_usd
+                slot["sources"] += 1
 
         # -- intercompany elimination (deterministic, structured) ----------
         applied = 0
@@ -303,6 +365,7 @@ class ConsolidationEngine:
                     statement=node["statement"],
                     debit_usd=round(v["debit"], 2),
                     credit_usd=round(v["credit"], 2),
+                    source_count=int(v.get("sources", 0)),
                 )
             )
 
