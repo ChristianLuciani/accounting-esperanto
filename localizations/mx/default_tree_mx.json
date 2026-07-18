@@ -1,0 +1,3853 @@
+{
+ "Company Name": "Company Name",
+ "country_code": "mx",
+ "Activo": {
+  "is_group": 1,
+  "Activo A Corto Plazo": {
+   "account_number": "100.01"
+  },
+  "Activo A Largo Plazo": {
+   "account_number": "100.02"
+  },
+  "root_type": "Asset"
+ },
+ "Caja": {
+  "is_group": 1,
+  "Caja Y Efectivo": {
+   "account_number": "101.01",
+   "account_type": "Cash"
+  },
+  "root_type": "Asset"
+ },
+ "Bancos": {
+  "is_group": 1,
+  "Bancos Nacionales": {
+   "account_number": "102.01",
+   "account_type": "Bank"
+  },
+  "Bancos Extranjeros": {
+   "account_number": "102.02",
+   "account_type": "Bank"
+  },
+  "root_type": "Asset"
+ },
+ "Inversiones": {
+  "is_group": 1,
+  "Inversiones Temporales": {
+   "account_number": "103.01"
+  },
+  "Inversiones En Fideicomisos": {
+   "account_number": "103.02"
+  },
+  "Otras Inversiones": {
+   "account_number": "103.03"
+  },
+  "root_type": "Asset"
+ },
+ "Otros Instrumentos Financieros": {
+  "is_group": 1,
+  "Otros Instrumentos Financieros": {
+   "account_number": "104.01"
+  },
+  "root_type": "Asset"
+ },
+ "Clientes": {
+  "is_group": 1,
+  "Clientes Nacionales": {
+   "account_number": "105.01",
+   "account_type": "Receivable"
+  },
+  "Clientes Extranjeros": {
+   "account_number": "105.02",
+   "account_type": "Receivable"
+  },
+  "Clientes Nacionales Parte Relacionada": {
+   "account_number": "105.03",
+   "account_type": "Receivable"
+  },
+  "Clientes Extranjeros Parte Relacionada": {
+   "account_number": "105.04",
+   "account_type": "Receivable"
+  },
+  "root_type": "Asset"
+ },
+ "Cuentas Y Documentos Por Cobrar A Corto Plazo": {
+  "is_group": 1,
+  "Cuentas Y Documentos Por Cobrar A Corto Plazo Nacional": {
+   "account_number": "106.01",
+   "account_type": "Receivable"
+  },
+  "Cuentas Y Documentos Por Cobrar A Corto Plazo Extranjero": {
+   "account_number": "106.02",
+   "account_type": "Receivable"
+  },
+  "Cuentas Y Documentos Por Cobrar A Corto Plazo Nacional Parte Relacionada": {
+   "account_number": "106.03",
+   "account_type": "Receivable"
+  },
+  "Cuentas Y Documentos Por Cobrar A Corto Plazo Extranjero Parte Relacionada": {
+   "account_number": "106.04",
+   "account_type": "Receivable"
+  },
+  "Intereses Por Cobrar A Corto Plazo Nacional": {
+   "account_number": "106.05",
+   "account_type": "Receivable"
+  },
+  "Intereses Por Cobrar A Corto Plazo Extranjero": {
+   "account_number": "106.06",
+   "account_type": "Receivable"
+  },
+  "Intereses Por Cobrar A Corto Plazo Nacional Parte Relacionada": {
+   "account_number": "106.07",
+   "account_type": "Receivable"
+  },
+  "Intereses Por Cobrar A Corto Plazo Extranjero Parte Relacionada": {
+   "account_number": "106.08",
+   "account_type": "Receivable"
+  },
+  "Otras Cuentas Y Documentos Por Cobrar A Corto Plazo": {
+   "account_number": "106.09",
+   "account_type": "Receivable"
+  },
+  "Otras Cuentas Y Documentos Por Cobrar A Corto Plazo Parte Relacionada": {
+   "account_number": "106.10",
+   "account_type": "Receivable"
+  },
+  "root_type": "Asset"
+ },
+ "Deudores Diversos": {
+  "is_group": 1,
+  "Funcionarios Y Empleados": {
+   "account_number": "107.01"
+  },
+  "Socios Y Accionistas": {
+   "account_number": "107.02"
+  },
+  "Partes Relacionadas Nacionales": {
+   "account_number": "107.03"
+  },
+  "Partes Relacionadas Extranjeros": {
+   "account_number": "107.04"
+  },
+  "Otros Deudores Diversos": {
+   "account_number": "107.05"
+  },
+  "root_type": "Asset"
+ },
+ "Estimación De Cuentas Incobrables": {
+  "is_group": 1,
+  "Estimación De Cuentas Incobrables Nacional": {
+   "account_number": "108.01"
+  },
+  "Estimación De Cuentas Incobrables Extranjero": {
+   "account_number": "108.02"
+  },
+  "Estimación De Cuentas Incobrables Nacional Parte Relacionada": {
+   "account_number": "108.03"
+  },
+  "Estimación De Cuentas Incobrables Extranjero Parte Relacionada": {
+   "account_number": "108.04"
+  },
+  "root_type": "Asset"
+ },
+ "Pagos Anticipados": {
+  "is_group": 1,
+  "Seguros Y Fianzas Pagados Por Anticipado Nacional": {
+   "account_number": "109.01"
+  },
+  "Seguros Y Fianzas Pagados Por Anticipado Extranjero": {
+   "account_number": "109.02"
+  },
+  "Seguros Y Fianzas Pagados Por Anticipado Nacional Parte Relacionada": {
+   "account_number": "109.03"
+  },
+  "Seguros Y Fianzas Pagados Por Anticipado Extranjero Parte Relacionada": {
+   "account_number": "109.04"
+  },
+  "Rentas Pagados Por Anticipado Nacional": {
+   "account_number": "109.05"
+  },
+  "Rentas Pagados Por Anticipado Extranjero": {
+   "account_number": "109.06"
+  },
+  "Rentas Pagados Por Anticipado Nacional Parte Relacionada": {
+   "account_number": "109.07"
+  },
+  "Rentas Pagados Por Anticipado Extranjero Parte Relacionada": {
+   "account_number": "109.08"
+  },
+  "Intereses Pagados Por Anticipado Nacional": {
+   "account_number": "109.09"
+  },
+  "Intereses Pagados Por Anticipado Extranjero": {
+   "account_number": "109.10"
+  },
+  "Intereses Pagados Por Anticipado Nacional Parte Relacionada": {
+   "account_number": "109.11"
+  },
+  "Intereses Pagados Por Anticipado Extranjero Parte Relacionada": {
+   "account_number": "109.12"
+  },
+  "Factoraje Financiero Pagados Por Anticipado Nacional": {
+   "account_number": "109.13"
+  },
+  "Factoraje Financiero Pagados Por Anticipado Extranjero": {
+   "account_number": "109.14"
+  },
+  "Factoraje Financiero Pagados Por Anticipado Nacional Parte Relacionada": {
+   "account_number": "109.15"
+  },
+  "Factoraje Financiero Pagados Por Anticipado Extranjero Parte Relacionada": {
+   "account_number": "109.16"
+  },
+  "Arrendamiento Financiero Pagados Por Anticipado Nacional": {
+   "account_number": "109.17"
+  },
+  "Arrendamiento Financiero Pagados Por Anticipado Extranjero": {
+   "account_number": "109.18"
+  },
+  "Arrendamiento Financiero Pagados Por Anticipado Nacional Parte Relacionada": {
+   "account_number": "109.19"
+  },
+  "Arrendamiento Financiero Pagados Por Anticipado Extranjero Parte Relacionada": {
+   "account_number": "109.20"
+  },
+  "Pérdida Por Deterioro De Pagos Anticipados": {
+   "account_number": "109.21"
+  },
+  "Derechos Fiduciarios": {
+   "account_number": "109.22"
+  },
+  "Otros Pagos Anticipados": {
+   "account_number": "109.23"
+  },
+  "root_type": "Asset"
+ },
+ "Subsidio Al Empleo Por Aplicar": {
+  "is_group": 1,
+  "Subsidio Al Empleo Por Aplicar": {
+   "account_number": "110.01"
+  },
+  "root_type": "Asset"
+ },
+ "Crédito Al Diésel Por Acreditar": {
+  "is_group": 1,
+  "Crédito Al Diésel Por Acreditar": {
+   "account_number": "111.01"
+  },
+  "root_type": "Asset"
+ },
+ "Otros Estímulos": {
+  "is_group": 1,
+  "Otros Estímulos": {
+   "account_number": "112.01"
+  },
+  "root_type": "Asset"
+ },
+ "Impuestos A Favor": {
+  "is_group": 1,
+  "Iva A Favor": {
+   "account_number": "113.01",
+   "account_type": "Tax"
+  },
+  "Isr A Favor": {
+   "account_number": "113.02"
+  },
+  "Ietu A Favor": {
+   "account_number": "113.03"
+  },
+  "Ide A Favor": {
+   "account_number": "113.04"
+  },
+  "Ia A Favor": {
+   "account_number": "113.05"
+  },
+  "Subsidio Al Empleo": {
+   "account_number": "113.06"
+  },
+  "Pago De Lo Indebido": {
+   "account_number": "113.07"
+  },
+  "Otros Impuestos A Favor": {
+   "account_number": "113.08"
+  },
+  "root_type": "Asset"
+ },
+ "Pagos Provisionales": {
+  "is_group": 1,
+  "Pagos Provisionales De Isr": {
+   "account_number": "114.01"
+  },
+  "root_type": "Asset"
+ },
+ "Inventario": {
+  "is_group": 1,
+  "Inventario": {
+   "account_number": "115.01",
+   "account_type": "Stock"
+  },
+  "Materia Prima Y Materiales": {
+   "account_number": "115.02",
+   "account_type": "Stock"
+  },
+  "Producción En Proceso": {
+   "account_number": "115.03",
+   "account_type": "Stock"
+  },
+  "Productos Terminados": {
+   "account_number": "115.04",
+   "account_type": "Stock"
+  },
+  "Mercancías En Tránsito": {
+   "account_number": "115.05",
+   "account_type": "Stock"
+  },
+  "Mercancías En Poder De Terceros": {
+   "account_number": "115.06",
+   "account_type": "Stock"
+  },
+  "Otros": {
+   "account_number": "115.07",
+   "account_type": "Stock"
+  },
+  "root_type": "Asset"
+ },
+ "Estimación De Inventarios Obsoletos Y De Lento Movimiento": {
+  "is_group": 1,
+  "Estimación De Inventarios Obsoletos Y De Lento Movimiento": {
+   "account_number": "116.01"
+  },
+  "root_type": "Asset"
+ },
+ "Obras En Proceso De Inmuebles": {
+  "is_group": 1,
+  "Obras En Proceso De Inmuebles": {
+   "account_number": "117.01",
+   "account_type": "Stock"
+  },
+  "root_type": "Asset"
+ },
+ "Impuestos Acreditables Pagados": {
+  "is_group": 1,
+  "Iva Acreditable Pagado": {
+   "account_number": "118.01",
+   "account_type": "Tax"
+  },
+  "Iva Acreditable De Importación Pagado": {
+   "account_number": "118.02",
+   "account_type": "Tax"
+  },
+  "Ieps Acreditable Pagado": {
+   "account_number": "118.03",
+   "account_type": "Tax"
+  },
+  "Ieps Pagado En Importación": {
+   "account_number": "118.04",
+   "account_type": "Tax"
+  },
+  "root_type": "Asset"
+ },
+ "Impuestos Acreditables Por Pagar": {
+  "is_group": 1,
+  "Iva Pendiente De Pago": {
+   "account_number": "119.01"
+  },
+  "Iva De Importación Pendiente De Pago": {
+   "account_number": "119.02"
+  },
+  "Ieps Pendiente De Pago": {
+   "account_number": "119.03"
+  },
+  "Ieps Pendiente De Pago En Importación": {
+   "account_number": "119.04"
+  },
+  "root_type": "Asset"
+ },
+ "Anticipo A Proveedores": {
+  "is_group": 1,
+  "Anticipo A Proveedores Nacional": {
+   "account_number": "120.01"
+  },
+  "Anticipo A Proveedores Extranjero": {
+   "account_number": "120.02"
+  },
+  "Anticipo A Proveedores Nacional Parte Relacionada": {
+   "account_number": "120.03"
+  },
+  "Anticipo A Proveedores Extranjero Parte Relacionada": {
+   "account_number": "120.04"
+  },
+  "root_type": "Asset"
+ },
+ "Otros Activos A Corto Plazo": {
+  "is_group": 1,
+  "Otros Activos A Corto Plazo": {
+   "account_number": "121.01"
+  },
+  "root_type": "Asset"
+ },
+ "Terrenos": {
+  "is_group": 1,
+  "Terrenos": {
+   "account_number": "151.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Edificios": {
+  "is_group": 1,
+  "Edificios": {
+   "account_number": "152.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Maquinaria Y Equipo": {
+  "is_group": 1,
+  "Maquinaria Y Equipo": {
+   "account_number": "153.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Automóviles, Autobuses, Camiones De Carga, Tractocamiones, Montacargas Y Remolques": {
+  "is_group": 1,
+  "Automóviles, Autobuses, Camiones De Carga, Tractocamiones, Montacargas Y Remolques": {
+   "account_number": "154.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Mobiliario Y Equipo De Oficina": {
+  "is_group": 1,
+  "Mobiliario Y Equipo De Oficina": {
+   "account_number": "155.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Equipo De Cómputo": {
+  "is_group": 1,
+  "Equipo De Cómputo": {
+   "account_number": "156.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Equipo De Comunicación": {
+  "is_group": 1,
+  "Equipo De Comunicación": {
+   "account_number": "157.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Activos Biológicos, Vegetales Y Semovientes": {
+  "is_group": 1,
+  "Activos Biológicos, Vegetales Y Semovientes": {
+   "account_number": "158.01"
+  },
+  "root_type": "Asset"
+ },
+ "Obras En Proceso De Activos Fijos": {
+  "is_group": 1,
+  "Obras En Proceso De Activos Fijos": {
+   "account_number": "159.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Otros Activos Fijos": {
+  "is_group": 1,
+  "Otros Activos Fijos": {
+   "account_number": "160.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Ferrocarriles": {
+  "is_group": 1,
+  "Ferrocarriles": {
+   "account_number": "161.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Embarcaciones": {
+  "is_group": 1,
+  "Embarcaciones": {
+   "account_number": "162.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Aviones": {
+  "is_group": 1,
+  "Aviones": {
+   "account_number": "163.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Troqueles, Moldes, Matrices Y Herramental": {
+  "is_group": 1,
+  "Troqueles, Moldes, Matrices Y Herramental": {
+   "account_number": "164.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Equipo De Comunicaciones Telefónicas": {
+  "is_group": 1,
+  "Equipo De Comunicaciones Telefónicas": {
+   "account_number": "165.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Equipo De Comunicación Satelital": {
+  "is_group": 1,
+  "Equipo De Comunicación Satelital": {
+   "account_number": "166.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Equipo De Adaptaciones Para Personas Con Capacidades Diferentes": {
+  "is_group": 1,
+  "Equipo De Adaptaciones Para Personas Con Capacidades Diferentes": {
+   "account_number": "167.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Maquinaria Y Equipo De Generación De Energía De Fuentes Renovables O De Sistemas De": {
+  "is_group": 1,
+  "Maquinaria Y Equipo De Generación De Energía De Fuentes Renovables O De Sistemas De": {
+   "account_number": "168.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Otra Maquinaria Y Equipo": {
+  "is_group": 1,
+  "Otra Maquinaria Y Equipo": {
+   "account_number": "169.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Adaptaciones Y Mejoras": {
+  "is_group": 1,
+  "Adaptaciones Y Mejoras": {
+   "account_number": "170.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Depreciación Acumulada De Activos Fijos": {
+  "is_group": 1,
+  "Depreciación Acumulada De Edificios": {
+   "account_number": "171.01"
+  },
+  "Depreciación Acumulada De Maquinaria Y Equipo": {
+   "account_number": "171.02"
+  },
+  "Depreciación Acumulada De Automóviles, Autobuses, Camiones De Carga, Tractocamiones,": {
+   "account_number": "171.03"
+  },
+  "Depreciación Acumulada De Mobiliario Y Equipo De Oficina": {
+   "account_number": "171.04"
+  },
+  "Depreciación Acumulada De Equipo De Cómputo": {
+   "account_number": "171.05"
+  },
+  "Depreciación Acumulada De Equipo De Comunicación": {
+   "account_number": "171.06"
+  },
+  "Depreciación Acumulada De Activos Biológicos, Vegetales Y Semovientes": {
+   "account_number": "171.07"
+  },
+  "Depreciación Acumulada De Otros Activos Fijos": {
+   "account_number": "171.08"
+  },
+  "Depreciación Acumulada De Ferrocarriles": {
+   "account_number": "171.09"
+  },
+  "Depreciación Acumulada De Embarcaciones": {
+   "account_number": "171.10"
+  },
+  "Depreciación Acumulada De Aviones": {
+   "account_number": "171.11"
+  },
+  "Depreciación Acumulada De Troqueles, Moldes, Matrices Y Herramental": {
+   "account_number": "171.12"
+  },
+  "Depreciación Acumulada De Equipo De Comunicaciones Telefónicas": {
+   "account_number": "171.13"
+  },
+  "Depreciación Acumulada De Equipo De Comunicación Satelital": {
+   "account_number": "171.14"
+  },
+  "Depreciación Acumulada De Equipo De Adaptaciones Para Personas Con Capacidades Diferentes": {
+   "account_number": "171.15"
+  },
+  "Depreciación Acumulada De Maquinaria Y Equipo De Generación De Energía De Fuentes": {
+   "account_number": "171.16"
+  },
+  "Depreciación Acumulada De Adaptaciones Y Mejoras": {
+   "account_number": "171.17"
+  },
+  "Depreciación Acumulada De Otra Maquinaria Y Equipo": {
+   "account_number": "171.18"
+  },
+  "root_type": "Asset"
+ },
+ "Pérdida Por Deterioro Acumulado De Activos Fijos": {
+  "is_group": 1,
+  "Pérdida Por Deterioro Acumulado De Edificios": {
+   "account_number": "172.01"
+  },
+  "Pérdida Por Deterioro Acumulado De Maquinaria Y Equipo": {
+   "account_number": "172.02"
+  },
+  "Pérdida Por Deterioro Acumulado De             Automóviles,   Autobuses,   Camiones   De   Carga,": {
+   "account_number": "172.03"
+  },
+  "Pérdida Por Deterioro Acumulado De Mobiliario Y Equipo De Oficina": {
+   "account_number": "172.04"
+  },
+  "Pérdida Por Deterioro Acumulado De Equipo De Cómputo": {
+   "account_number": "172.05"
+  },
+  "Pérdida Por Deterioro Acumulado De Equipo De Comunicación": {
+   "account_number": "172.06"
+  },
+  "Pérdida Por Deterioro Acumulado De Activos Biológicos, Vegetales Y Semovientes": {
+   "account_number": "172.07"
+  },
+  "Pérdida Por Deterioro Acumulado De Otros Activos Fijos": {
+   "account_number": "172.08"
+  },
+  "Pérdida Por Deterioro Acumulado De Ferrocarriles": {
+   "account_number": "172.09"
+  },
+  "Pérdida Por Deterioro Acumulado De Embarcaciones": {
+   "account_number": "172.10"
+  },
+  "Pérdida Por Deterioro Acumulado De Aviones": {
+   "account_number": "172.11"
+  },
+  "Pérdida Por Deterioro Acumulado De Troqueles, Moldes, Matrices Y Herramental": {
+   "account_number": "172.12"
+  },
+  "Pérdida Por Deterioro Acumulado De Equipo De Comunicaciones Telefónicas": {
+   "account_number": "172.13"
+  },
+  "Pérdida Por Deterioro Acumulado De Equipo De Comunicación Satelital": {
+   "account_number": "172.14"
+  },
+  "Pérdida Por Deterioro Acumulado De Equipo De Adaptaciones Para Personas Con Capacidades": {
+   "account_number": "172.15"
+  },
+  "Pérdida Por Deterioro Acumulado De Maquinaria Y Equipo De Generación De Energía De Fuentes": {
+   "account_number": "172.16"
+  },
+  "Pérdida Por Deterioro Acumulado De Adaptaciones Y Mejoras": {
+   "account_number": "172.17"
+  },
+  "Pérdida Por Deterioro Acumulado De Otra Maquinaria Y Equipo": {
+   "account_number": "172.18"
+  },
+  "root_type": "Asset"
+ },
+ "Gastos Diferidos": {
+  "is_group": 1,
+  "Gastos Diferidos": {
+   "account_number": "173.01"
+  },
+  "root_type": "Asset"
+ },
+ "Gastos Pre Operativos": {
+  "is_group": 1,
+  "Gastos Pre Operativos": {
+   "account_number": "174.01"
+  },
+  "root_type": "Asset"
+ },
+ "Regalías, Asistencia Técnica Y Otros Gastos Diferidos": {
+  "is_group": 1,
+  "Regalías, Asistencia Técnica Y Otros Gastos Diferidos": {
+   "account_number": "175.01"
+  },
+  "root_type": "Asset"
+ },
+ "Activos Intangibles": {
+  "is_group": 1,
+  "Activos Intangibles": {
+   "account_number": "176.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Gastos De Organización": {
+  "is_group": 1,
+  "Gastos De Organización": {
+   "account_number": "177.01"
+  },
+  "root_type": "Asset"
+ },
+ "Investigación Y Desarrollo De Mercado": {
+  "is_group": 1,
+  "Investigación Y Desarrollo De Mercado": {
+   "account_number": "178.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Marcas Y Patentes": {
+  "is_group": 1,
+  "Marcas Y Patentes": {
+   "account_number": "179.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Crédito Mercantil": {
+  "is_group": 1,
+  "Crédito Mercantil": {
+   "account_number": "180.01",
+   "account_type": "Fixed Asset"
+  },
+  "root_type": "Asset"
+ },
+ "Gastos De Instalación": {
+  "is_group": 1,
+  "Gastos De Instalación": {
+   "account_number": "181.01"
+  },
+  "root_type": "Asset"
+ },
+ "Otros Activos Diferidos": {
+  "is_group": 1,
+  "Otros Activos Diferidos": {
+   "account_number": "182.01"
+  },
+  "root_type": "Asset"
+ },
+ "Amortización Acumulada De Activos Diferidos": {
+  "is_group": 1,
+  "Amortización Acumulada De Gastos Diferidos": {
+   "account_number": "183.01"
+  },
+  "Amortización Acumulada De Gastos Pre Operativos": {
+   "account_number": "183.02"
+  },
+  "Amortización Acumulada De Regalías, Asistencia Técnica Y Otros Gastos Diferidos": {
+   "account_number": "183.03"
+  },
+  "Amortización Acumulada De Activos Intangibles": {
+   "account_number": "183.04"
+  },
+  "Amortización Acumulada De Gastos De Organización": {
+   "account_number": "183.05"
+  },
+  "Amortización Acumulada De Investigación Y Desarrollo De Mercado": {
+   "account_number": "183.06"
+  },
+  "Amortización Acumulada De Marcas Y Patentes": {
+   "account_number": "183.07"
+  },
+  "Amortización Acumulada De Crédito Mercantil": {
+   "account_number": "183.08"
+  },
+  "Amortización Acumulada De Gastos De Instalación": {
+   "account_number": "183.09"
+  },
+  "Amortización Acumulada De Otros Activos Diferidos": {
+   "account_number": "183.10"
+  },
+  "root_type": "Asset"
+ },
+ "Depósitos En Garantía": {
+  "is_group": 1,
+  "Depósitos De Fianzas": {
+   "account_number": "184.01"
+  },
+  "Depósitos De Arrendamiento De Bienes Inmuebles": {
+   "account_number": "184.02"
+  },
+  "Otros Depósitos En Garantía": {
+   "account_number": "184.03"
+  },
+  "root_type": "Asset"
+ },
+ "Impuestos Diferidos": {
+  "is_group": 1,
+  "Impuestos Diferidos Isr": {
+   "account_number": "185.01"
+  },
+  "root_type": "Asset"
+ },
+ "Cuentas Y Documentos Por Cobrar A Largo Plazo": {
+  "is_group": 1,
+  "Cuentas Y Documentos Por Cobrar A Largo Plazo Nacional": {
+   "account_number": "186.01"
+  },
+  "Cuentas Y Documentos Por Cobrar A Largo Plazo Extranjero": {
+   "account_number": "186.02"
+  },
+  "Cuentas Y Documentos Por Cobrar A Largo Plazo Nacional Parte Relacionada": {
+   "account_number": "186.03"
+  },
+  "Cuentas Y Documentos Por Cobrar A Largo Plazo Extranjero Parte Relacionada": {
+   "account_number": "186.04"
+  },
+  "Intereses Por Cobrar A Largo Plazo Nacional": {
+   "account_number": "186.05"
+  },
+  "Intereses Por Cobrar A Largo Plazo Extranjero": {
+   "account_number": "186.06"
+  },
+  "Intereses Por Cobrar A Largo Plazo Nacional Parte Relacionada": {
+   "account_number": "186.07"
+  },
+  "Intereses Por Cobrar A Largo Plazo Extranjero Parte Relacionada": {
+   "account_number": "186.08"
+  },
+  "Otras Cuentas Y Documentos Por Cobrar A Largo Plazo": {
+   "account_number": "186.09"
+  },
+  "Otras Cuentas Y Documentos Por Cobrar A Largo Plazo Parte Relacionada": {
+   "account_number": "186.10"
+  },
+  "root_type": "Asset"
+ },
+ "Participación De Los Trabajadores En Las Utilidades Diferidas": {
+  "is_group": 1,
+  "Participación De Los Trabajadores En Las Utilidades Diferidas": {
+   "account_number": "187.01"
+  },
+  "root_type": "Asset"
+ },
+ "Inversiones Permanentes En Acciones": {
+  "is_group": 1,
+  "Inversiones A Largo Plazo En Subsidiarias": {
+   "account_number": "188.01"
+  },
+  "Inversiones A Largo Plazo En Asociadas": {
+   "account_number": "188.02"
+  },
+  "Otras Inversiones Permanentes En Acciones": {
+   "account_number": "188.03"
+  },
+  "root_type": "Asset"
+ },
+ "Estimación Por Deterioro De Inversiones Permanentes En Acciones": {
+  "is_group": 1,
+  "Estimación Por Deterioro De Inversiones Permanentes En Acciones": {
+   "account_number": "189.01"
+  },
+  "root_type": "Asset"
+ },
+ "Otros Instrumentos Financieros (190)": {
+  "is_group": 1,
+  "Otros Instrumentos Financieros": {
+   "account_number": "190.01"
+  },
+  "root_type": "Asset"
+ },
+ "Otros Activos A Largo Plazo": {
+  "is_group": 1,
+  "Otros Activos A Largo Plazo": {
+   "account_number": "191.01"
+  },
+  "root_type": "Asset"
+ },
+ "Pasivo": {
+  "is_group": 1,
+  "Pasivo A Corto Plazo": {
+   "account_number": "200.01"
+  },
+  "Pasivo A Largo Plazo": {
+   "account_number": "200.02"
+  },
+  "root_type": "Liability"
+ },
+ "Proveedores": {
+  "is_group": 1,
+  "Proveedores Nacionales": {
+   "account_number": "201.01",
+   "account_type": "Payable"
+  },
+  "Proveedores Extranjeros": {
+   "account_number": "201.02",
+   "account_type": "Payable"
+  },
+  "Proveedores Nacionales Parte Relacionada": {
+   "account_number": "201.03",
+   "account_type": "Payable"
+  },
+  "Proveedores Extranjeros Parte Relacionada": {
+   "account_number": "201.04",
+   "account_type": "Payable"
+  },
+  "root_type": "Liability"
+ },
+ "Cuentas Por Pagar A Corto Plazo": {
+  "is_group": 1,
+  "Documentos Por Pagar Bancario Y Financiero Nacional": {
+   "account_number": "202.01",
+   "account_type": "Payable"
+  },
+  "Documentos Por Pagar Bancario Y Financiero Extranjero": {
+   "account_number": "202.02",
+   "account_type": "Payable"
+  },
+  "Documentos Y Cuentas Por Pagar A Corto Plazo Nacional": {
+   "account_number": "202.03",
+   "account_type": "Payable"
+  },
+  "Documentos Y Cuentas Por Pagar A Corto Plazo Extranjero": {
+   "account_number": "202.04",
+   "account_type": "Payable"
+  },
+  "Documentos Y Cuentas Por Pagar A Corto Plazo Nacional Parte Relacionada": {
+   "account_number": "202.05",
+   "account_type": "Payable"
+  },
+  "Documentos Y Cuentas Por Pagar A Corto Plazo Extranjero Parte Relacionada": {
+   "account_number": "202.06",
+   "account_type": "Payable"
+  },
+  "Intereses Por Pagar A Corto Plazo Nacional": {
+   "account_number": "202.07"
+  },
+  "Intereses Por Pagar A Corto Plazo Extranjero": {
+   "account_number": "202.08"
+  },
+  "Intereses Por Pagar A Corto Plazo Nacional Parte Relacionada": {
+   "account_number": "202.09"
+  },
+  "Intereses Por Pagar A Corto Plazo Extranjero Parte Relacionada": {
+   "account_number": "202.10"
+  },
+  "Dividendo Por Pagar Nacional": {
+   "account_number": "202.11"
+  },
+  "Dividendo Por Pagar Extranjero": {
+   "account_number": "202.12"
+  },
+  "root_type": "Liability"
+ },
+ "Cobros Anticipados A Corto Plazo": {
+  "is_group": 1,
+  "Rentas Cobradas Por Anticipado A Corto Plazo Nacional": {
+   "account_number": "203.01"
+  },
+  "Rentas Cobradas Por Anticipado A Corto Plazo Extranjero": {
+   "account_number": "203.02"
+  },
+  "Rentas Cobradas Por Anticipado A Corto Plazo Nacional Parte Relacionada": {
+   "account_number": "203.03"
+  },
+  "Rentas Cobradas Por Anticipado A Corto Plazo Extranjero Parte Relacionada": {
+   "account_number": "203.04"
+  },
+  "Intereses Cobrados Por Anticipado A Corto Plazo Nacional": {
+   "account_number": "203.05"
+  },
+  "Intereses Cobrados Por Anticipado A Corto Plazo Extranjero": {
+   "account_number": "203.06"
+  },
+  "Intereses Cobrados Por Anticipado A Corto Plazo Nacional Parte Relacionada": {
+   "account_number": "203.07"
+  },
+  "Intereses Cobrados Por Anticipado A Corto Plazo Extranjero Parte Relacionada": {
+   "account_number": "203.08"
+  },
+  "Factoraje Financiero Cobrados Por Anticipado A Corto Plazo Nacional": {
+   "account_number": "203.09"
+  },
+  "Factoraje Financiero Cobrados Por Anticipado A Corto Plazo Extranjero": {
+   "account_number": "203.10"
+  },
+  "Factoraje Financiero Cobrados Por Anticipado A Corto Plazo Nacional Parte Relacionada": {
+   "account_number": "203.11"
+  },
+  "Factoraje Financiero Cobrados Por Anticipado A Corto Plazo Extranjero Parte Relacionada": {
+   "account_number": "203.12"
+  },
+  "Arrendamiento Financiero Cobrados Por Anticipado A Corto Plazo Nacional": {
+   "account_number": "203.13"
+  },
+  "Arrendamiento Financiero Cobrados Por Anticipado A Corto Plazo Extranjero": {
+   "account_number": "203.14"
+  },
+  "Arrendamiento Financiero Cobrados Por Anticipado A Corto Plazo Nacional Parte Relacionada": {
+   "account_number": "203.15"
+  },
+  "Arrendamiento Financiero Cobrados Por Anticipado A Corto Plazo Extranjero Parte Relacionada": {
+   "account_number": "203.16"
+  },
+  "Derechos Fiduciarios": {
+   "account_number": "203.17"
+  },
+  "Otros Cobros Anticipados": {
+   "account_number": "203.18"
+  },
+  "root_type": "Liability"
+ },
+ "Instrumentos Financieros A Corto Plazo": {
+  "is_group": 1,
+  "Instrumentos Financieros A Corto Plazo": {
+   "account_number": "204.01"
+  },
+  "root_type": "Liability"
+ },
+ "Acreedores Diversos A Corto Plazo": {
+  "is_group": 1,
+  "Socios, Accionistas O Representante Legal": {
+   "account_number": "205.01",
+   "account_type": "Payable"
+  },
+  "Acreedores Diversos A Corto Plazo Nacional": {
+   "account_number": "205.02",
+   "account_type": "Payable"
+  },
+  "Acreedores Diversos A Corto Plazo Extranjero": {
+   "account_number": "205.03",
+   "account_type": "Payable"
+  },
+  "Acreedores Diversos A Corto Plazo Nacional Parte Relacionada": {
+   "account_number": "205.04",
+   "account_type": "Payable"
+  },
+  "Acreedores Diversos A Corto Plazo Extranjero Parte Relacionada": {
+   "account_number": "205.05",
+   "account_type": "Payable"
+  },
+  "Otros Acreedores Diversos A Corto Plazo": {
+   "account_number": "205.06",
+   "account_type": "Payable"
+  },
+  "root_type": "Liability"
+ },
+ "Anticipo De Cliente": {
+  "is_group": 1,
+  "Anticipo De Cliente Nacional": {
+   "account_number": "206.01"
+  },
+  "Anticipo De Cliente Extranjero": {
+   "account_number": "206.02"
+  },
+  "Anticipo De Cliente Nacional Parte Relacionada": {
+   "account_number": "206.03"
+  },
+  "Anticipo De Cliente Extranjero Parte Relacionada": {
+   "account_number": "206.04"
+  },
+  "Otros Anticipos De Clientes": {
+   "account_number": "206.05"
+  },
+  "root_type": "Liability"
+ },
+ "Impuestos Trasladados": {
+  "is_group": 1,
+  "Iva Trasladado": {
+   "account_number": "207.01"
+  },
+  "Ieps Trasladado": {
+   "account_number": "207.02"
+  },
+  "root_type": "Liability"
+ },
+ "Impuestos Trasladados Cobrados": {
+  "is_group": 1,
+  "Iva Trasladado Cobrado": {
+   "account_number": "208.01"
+  },
+  "Ieps Trasladado Cobrado": {
+   "account_number": "208.02"
+  },
+  "root_type": "Liability"
+ },
+ "Impuestos Trasladados No Cobrados": {
+  "is_group": 1,
+  "Iva Trasladado No Cobrado": {
+   "account_number": "209.01"
+  },
+  "Ieps Trasladado No Cobrado": {
+   "account_number": "209.02"
+  },
+  "root_type": "Liability"
+ },
+ "Provisión De Sueldos Y Salarios Por Pagar": {
+  "is_group": 1,
+  "Provisión De Sueldos Y Salarios Por Pagar": {
+   "account_number": "210.01"
+  },
+  "Provisión De Vacaciones Por Pagar": {
+   "account_number": "210.02"
+  },
+  "Provisión De Aguinaldo Por Pagar": {
+   "account_number": "210.03"
+  },
+  "Provisión De Fondo De Ahorro Por Pagar": {
+   "account_number": "210.04"
+  },
+  "Provisión De Asimilados A Salarios Por Pagar": {
+   "account_number": "210.05"
+  },
+  "Provisión De Anticipos O Remanentes Por Distribuir": {
+   "account_number": "210.06"
+  },
+  "Provisión De Otros Sueldos Y Salarios Por Pagar": {
+   "account_number": "210.07"
+  },
+  "root_type": "Liability"
+ },
+ "Provisión De Contribuciones De Seguridad Social Por Pagar": {
+  "is_group": 1,
+  "Provisión De Imss Patronal Por Pagar": {
+   "account_number": "211.01"
+  },
+  "Provisión De Sar Por Pagar": {
+   "account_number": "211.02"
+  },
+  "Provisión De Infonavit Por Pagar": {
+   "account_number": "211.03"
+  },
+  "root_type": "Liability"
+ },
+ "Provisión De Impuesto Estatal Sobre Nómina Por Pagar": {
+  "is_group": 1,
+  "Provisión De Impuesto Estatal Sobre Nómina Por Pagar": {
+   "account_number": "212.01"
+  },
+  "root_type": "Liability"
+ },
+ "Impuestos Y Derechos Por Pagar": {
+  "is_group": 1,
+  "Iva Por Pagar": {
+   "account_number": "213.01"
+  },
+  "Ieps Por Pagar": {
+   "account_number": "213.02"
+  },
+  "Isr Por Pagar": {
+   "account_number": "213.03",
+   "account_type": "Tax"
+  },
+  "Impuesto Estatal Sobre Nómina Por Pagar": {
+   "account_number": "213.04"
+  },
+  "Impuesto Estatal Y Municipal Por Pagar": {
+   "account_number": "213.05",
+   "account_type": "Tax"
+  },
+  "Derechos Por Pagar": {
+   "account_number": "213.06"
+  },
+  "Otros Impuestos Por Pagar": {
+   "account_number": "213.07",
+   "account_type": "Tax"
+  },
+  "root_type": "Liability"
+ },
+ "Dividendos Por Pagar": {
+  "is_group": 1,
+  "Dividendos Por Pagar": {
+   "account_number": "214.01"
+  },
+  "root_type": "Liability"
+ },
+ "Ptu Por Pagar": {
+  "is_group": 1,
+  "Ptu Por Pagar": {
+   "account_number": "215.01"
+  },
+  "Ptu Por Pagar De Ejercicios Anteriores": {
+   "account_number": "215.02"
+  },
+  "Provisión De Ptu Por Pagar": {
+   "account_number": "215.03"
+  },
+  "root_type": "Liability"
+ },
+ "Impuestos Retenidos": {
+  "is_group": 1,
+  "Impuestos Retenidos De Isr Por Sueldos Y Salarios": {
+   "account_number": "216.01",
+   "account_type": "Tax"
+  },
+  "Impuestos Retenidos De Isr Por Asimilados A Salarios": {
+   "account_number": "216.02",
+   "account_type": "Tax"
+  },
+  "Impuestos Retenidos De Isr Por Arrendamiento": {
+   "account_number": "216.03",
+   "account_type": "Tax"
+  },
+  "Impuestos Retenidos De Isr Por Servicios Profesionales": {
+   "account_number": "216.04",
+   "account_type": "Tax"
+  },
+  "Impuestos Retenidos De Isr Por Dividendos": {
+   "account_number": "216.05",
+   "account_type": "Tax"
+  },
+  "Impuestos Retenidos De Isr Por Intereses": {
+   "account_number": "216.06",
+   "account_type": "Tax"
+  },
+  "Impuestos Retenidos De Isr Por Pagos Al Extranjero": {
+   "account_number": "216.07",
+   "account_type": "Tax"
+  },
+  "Impuestos Retenidos De Isr Por Venta De Acciones": {
+   "account_number": "216.08",
+   "account_type": "Tax"
+  },
+  "Impuestos Retenidos De Isr Por Venta De Partes Sociales": {
+   "account_number": "216.09",
+   "account_type": "Tax"
+  },
+  "Impuestos Retenidos De Iva": {
+   "account_number": "216.10",
+   "account_type": "Tax"
+  },
+  "Retenciones De Imss A Los Trabajadores": {
+   "account_number": "216.11",
+   "account_type": "Tax"
+  },
+  "Otras Impuestos Retenidos": {
+   "account_number": "216.12",
+   "account_type": "Tax"
+  },
+  "root_type": "Liability"
+ },
+ "Pagos Realizados Por Cuenta De Terceros": {
+  "is_group": 1,
+  "Pagos Realizados Por Cuenta De Terceros": {
+   "account_number": "217.01"
+  },
+  "root_type": "Liability"
+ },
+ "Otros Pasivos A Corto Plazo": {
+  "is_group": 1,
+  "Otros Pasivos A Corto Plazo": {
+   "account_number": "218.01"
+  },
+  "root_type": "Liability"
+ },
+ "Acreedores Diversos A Largo Plazo": {
+  "is_group": 1,
+  "Socios, Accionistas O Representante Legal": {
+   "account_number": "251.01",
+   "account_type": "Payable"
+  },
+  "Acreedores Diversos A Largo Plazo Nacional": {
+   "account_number": "251.02",
+   "account_type": "Payable"
+  },
+  "Acreedores Diversos A Largo Plazo Extranjero": {
+   "account_number": "251.03",
+   "account_type": "Payable"
+  },
+  "Acreedores Diversos A Largo Plazo Nacional Parte Relacionada": {
+   "account_number": "251.04",
+   "account_type": "Payable"
+  },
+  "Acreedores Diversos A Largo Plazo Extranjero Parte Relacionada": {
+   "account_number": "251.05",
+   "account_type": "Payable"
+  },
+  "Otros Acreedores Diversos A Largo Plazo": {
+   "account_number": "251.06",
+   "account_type": "Payable"
+  },
+  "root_type": "Liability"
+ },
+ "Cuentas Por Pagar A Largo Plazo": {
+  "is_group": 1,
+  "Documentos Bancarios Y Financieros Por Pagar A Largo Plazo Nacional": {
+   "account_number": "252.01",
+   "account_type": "Payable"
+  },
+  "Documentos Bancarios Y Financieros Por Pagar A Largo Plazo Extranjero": {
+   "account_number": "252.02",
+   "account_type": "Payable"
+  },
+  "Documentos Y Cuentas Por Pagar A Largo Plazo Nacional": {
+   "account_number": "252.03",
+   "account_type": "Payable"
+  },
+  "Documentos Y Cuentas Por Pagar A Largo Plazo Extranjero": {
+   "account_number": "252.04",
+   "account_type": "Payable"
+  },
+  "Documentos Y Cuentas Por Pagar A Largo Plazo Nacional Parte Relacionada": {
+   "account_number": "252.05",
+   "account_type": "Payable"
+  },
+  "Documentos Y Cuentas Por Pagar A Largo Plazo Extranjero Parte Relacionada": {
+   "account_number": "252.06",
+   "account_type": "Payable"
+  },
+  "Hipotecas Por Pagar A Largo Plazo Nacional": {
+   "account_number": "252.07",
+   "account_type": "Payable"
+  },
+  "Hipotecas Por Pagar A Largo Plazo Extranjero": {
+   "account_number": "252.08",
+   "account_type": "Payable"
+  },
+  "Hipotecas Por Pagar A Largo Plazo Nacional Parte Relacionada": {
+   "account_number": "252.09",
+   "account_type": "Payable"
+  },
+  "Hipotecas Por Pagar A Largo Plazo Extranjero Parte Relacionada": {
+   "account_number": "252.10",
+   "account_type": "Payable"
+  },
+  "Intereses Por Pagar A Largo Plazo Nacional": {
+   "account_number": "252.11",
+   "account_type": "Payable"
+  },
+  "Intereses Por Pagar A Largo Plazo Extranjero": {
+   "account_number": "252.12",
+   "account_type": "Payable"
+  },
+  "Intereses Por Pagar A Largo Plazo Nacional Parte Relacionada": {
+   "account_number": "252.13",
+   "account_type": "Payable"
+  },
+  "Intereses Por Pagar A Largo Plazo Extranjero Parte Relacionada": {
+   "account_number": "252.14",
+   "account_type": "Payable"
+  },
+  "Dividendos Por Pagar Nacionales": {
+   "account_number": "252.15"
+  },
+  "Dividendos Por Pagar Extranjeros": {
+   "account_number": "252.16"
+  },
+  "Otras Cuentas Y Documentos Por Pagar A Largo Plazo": {
+   "account_number": "252.17",
+   "account_type": "Payable"
+  },
+  "root_type": "Liability"
+ },
+ "Cobros Anticipados A Largo Plazo": {
+  "is_group": 1,
+  "Rentas Cobradas Por Anticipado A Largo Plazo Nacional": {
+   "account_number": "253.01"
+  },
+  "Rentas Cobradas Por Anticipado A Largo Plazo Extranjero": {
+   "account_number": "253.02"
+  },
+  "Rentas Cobradas Por Anticipado A Largo Plazo Nacional Parte Relacionada": {
+   "account_number": "253.03"
+  },
+  "Rentas Cobradas Por Anticipado A Largo Plazo Extranjero Parte Relacionada": {
+   "account_number": "253.04"
+  },
+  "Intereses Cobrados Por Anticipado A Largo Plazo Nacional": {
+   "account_number": "253.05"
+  },
+  "Intereses Cobrados Por Anticipado A Largo Plazo Extranjero": {
+   "account_number": "253.06"
+  },
+  "Intereses Cobrados Por Anticipado A Largo Plazo Nacional Parte Relacionada": {
+   "account_number": "253.07"
+  },
+  "Intereses Cobrados Por Anticipado A Largo Plazo Extranjero Parte Relacionada": {
+   "account_number": "253.08"
+  },
+  "Factoraje Financiero Cobrados Por Anticipado A Largo Plazo Nacional": {
+   "account_number": "253.09"
+  },
+  "Factoraje Financiero Cobrados Por Anticipado A Largo Plazo Extranjero": {
+   "account_number": "253.10"
+  },
+  "Factoraje Financiero Cobrados Por Anticipado A Largo Plazo Nacional Parte Relacionada": {
+   "account_number": "253.11"
+  },
+  "Factoraje Financiero Cobrados Por Anticipado A Largo Plazo Extranjero Parte Relacionada": {
+   "account_number": "253.12"
+  },
+  "Arrendamiento Financiero Cobrados Por Anticipado A Largo Plazo Nacional": {
+   "account_number": "253.13"
+  },
+  "Arrendamiento Financiero Cobrados Por Anticipado A Largo Plazo Extranjero": {
+   "account_number": "253.14"
+  },
+  "Arrendamiento Financiero Cobrados Por Anticipado A Largo Plazo Nacional Parte Relacionada": {
+   "account_number": "253.15"
+  },
+  "Arrendamiento Financiero Cobrados Por Anticipado A Largo Plazo Extranjero Parte Relacionada": {
+   "account_number": "253.16"
+  },
+  "Derechos Fiduciarios": {
+   "account_number": "253.17"
+  },
+  "Otros Cobros Anticipados": {
+   "account_number": "253.18"
+  },
+  "root_type": "Liability"
+ },
+ "Instrumentos Financieros A Largo Plazo": {
+  "is_group": 1,
+  "Instrumentos Financieros A Largo Plazo": {
+   "account_number": "254.01"
+  },
+  "root_type": "Liability"
+ },
+ "Pasivos Por Beneficios A Los Empleados A Largo Plazo": {
+  "is_group": 1,
+  "Pasivos Por Beneficios A Los Empleados A Largo Plazo": {
+   "account_number": "255.01"
+  },
+  "root_type": "Liability"
+ },
+ "Otros Pasivos A Largo Plazo": {
+  "is_group": 1,
+  "Otros Pasivos A Largo Plazo": {
+   "account_number": "256.01"
+  },
+  "root_type": "Liability"
+ },
+ "Participación De Los Trabajadores En Las Utilidades Diferida": {
+  "is_group": 1,
+  "Participación De Los Trabajadores En Las Utilidades Diferida": {
+   "account_number": "257.01"
+  },
+  "root_type": "Liability"
+ },
+ "Obligaciones Contraídas De Fideicomisos": {
+  "is_group": 1,
+  "Obligaciones Contraídas De Fideicomisos": {
+   "account_number": "258.01"
+  },
+  "root_type": "Liability"
+ },
+ "Impuestos Diferidos (259)": {
+  "is_group": 1,
+  "Isr Diferido": {
+   "account_number": "259.01"
+  },
+  "Isr Por Dividendo Diferido": {
+   "account_number": "259.02"
+  },
+  "Otros Impuestos Diferidos": {
+   "account_number": "259.03"
+  },
+  "root_type": "Liability"
+ },
+ "Pasivos Diferidos": {
+  "is_group": 1,
+  "Pasivos Diferidos": {
+   "account_number": "260.01"
+  },
+  "root_type": "Liability"
+ },
+ "Capital Contable": {
+  "account_number": "300",
+  "root_type": "Equity"
+ },
+ "Capital Social": {
+  "is_group": 1,
+  "Capital Fijo": {
+   "account_number": "301.01",
+   "account_type": "Equity"
+  },
+  "Capital Variable": {
+   "account_number": "301.02",
+   "account_type": "Equity"
+  },
+  "Aportaciones Para Futuros Aumentos De Capital": {
+   "account_number": "301.03",
+   "account_type": "Equity"
+  },
+  "Prima En Suscripción De Acciones": {
+   "account_number": "301.04",
+   "account_type": "Equity"
+  },
+  "Prima En Suscripción De Partes Sociales": {
+   "account_number": "301.05",
+   "account_type": "Equity"
+  },
+  "root_type": "Equity"
+ },
+ "Patrimonio": {
+  "is_group": 1,
+  "Patrimonio": {
+   "account_number": "302.01",
+   "account_type": "Equity"
+  },
+  "Aportación Patrimonial": {
+   "account_number": "302.02",
+   "account_type": "Equity"
+  },
+  "Déficit O Remanente Del Ejercicio": {
+   "account_number": "302.03",
+   "account_type": "Equity"
+  },
+  "root_type": "Equity"
+ },
+ "Reserva Legal": {
+  "is_group": 1,
+  "Reserva Legal": {
+   "account_number": "303.01",
+   "account_type": "Equity"
+  },
+  "root_type": "Equity"
+ },
+ "Resultado De Ejercicios Anteriores": {
+  "is_group": 1,
+  "Utilidad De Ejercicios Anteriores": {
+   "account_number": "304.01",
+   "account_type": "Equity"
+  },
+  "Pérdida De Ejercicios Anteriores": {
+   "account_number": "304.02",
+   "account_type": "Equity"
+  },
+  "Resultado Integral De Ejercicios Anteriores": {
+   "account_number": "304.03",
+   "account_type": "Equity"
+  },
+  "Déficit O Remanente De Ejercicio Anteriores": {
+   "account_number": "304.04",
+   "account_type": "Equity"
+  },
+  "root_type": "Equity"
+ },
+ "Resultado Del Ejercicio": {
+  "is_group": 1,
+  "Utilidad Del Ejercicio": {
+   "account_number": "305.01",
+   "account_type": "Equity"
+  },
+  "Pérdida Del Ejercicio": {
+   "account_number": "305.02",
+   "account_type": "Equity"
+  },
+  "Resultado Integral": {
+   "account_number": "305.03",
+   "account_type": "Equity"
+  },
+  "root_type": "Equity"
+ },
+ "Otras Cuentas De Capital": {
+  "is_group": 1,
+  "Otras Cuentas De Capital": {
+   "account_number": "306.01",
+   "account_type": "Equity"
+  },
+  "root_type": "Equity"
+ },
+ "Ingresos": {
+  "account_number": "400",
+  "root_type": "Income"
+ },
+ "Ingresos (401)": {
+  "is_group": 1,
+  "Ventas Y/O Servicios Gravados A La Tasa General": {
+   "account_number": "401.01",
+   "account_type": "Income Account"
+  },
+  "Ventas Y/O Servicios Gravados A La Tasa General De Contado": {
+   "account_number": "401.02",
+   "account_type": "Income Account"
+  },
+  "Ventas Y/O Servicios Gravados A La Tasa General A Crédito": {
+   "account_number": "401.03",
+   "account_type": "Income Account"
+  },
+  "Ventas Y/O Servicios Gravados Al 0%": {
+   "account_number": "401.04",
+   "account_type": "Income Account"
+  },
+  "Ventas Y/O Servicios Gravados Al 0% De Contado": {
+   "account_number": "401.05",
+   "account_type": "Income Account"
+  },
+  "Ventas Y/O Servicios Gravados Al 0% A Crédito": {
+   "account_number": "401.06",
+   "account_type": "Income Account"
+  },
+  "Ventas Y/O Servicios Exentos": {
+   "account_number": "401.07",
+   "account_type": "Income Account"
+  },
+  "Ventas Y/O Servicios Exentos De Contado": {
+   "account_number": "401.08",
+   "account_type": "Income Account"
+  },
+  "Ventas Y/O Servicios Exentos A Crédito": {
+   "account_number": "401.09",
+   "account_type": "Income Account"
+  },
+  "Ventas Y/O Servicios Gravados A La Tasa General Nacionales Partes Relacionadas": {
+   "account_number": "401.10",
+   "account_type": "Income Account"
+  },
+  "Ventas Y/O Servicios Gravados A La Tasa General Extranjeros Partes Relacionadas": {
+   "account_number": "401.11",
+   "account_type": "Income Account"
+  },
+  "Ventas Y/O Servicios Gravados Al 0% Nacionales Partes Relacionadas": {
+   "account_number": "401.12",
+   "account_type": "Income Account"
+  },
+  "Ventas Y/O Servicios Gravados Al 0% Extranjeros Partes Relacionadas": {
+   "account_number": "401.13",
+   "account_type": "Income Account"
+  },
+  "Ventas Y/O Servicios Exentos Nacionales Partes Relacionadas": {
+   "account_number": "401.14",
+   "account_type": "Income Account"
+  },
+  "Ventas Y/O Servicios Exentos Extranjeros Partes Relacionadas": {
+   "account_number": "401.15",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Servicios Administrativos": {
+   "account_number": "401.16",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Servicios Administrativos Nacionales Partes Relacionadas": {
+   "account_number": "401.17",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Servicios Administrativos Extranjeros Partes Relacionadas": {
+   "account_number": "401.18",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Servicios Profesionales": {
+   "account_number": "401.19",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Servicios Profesionales Nacionales Partes Relacionadas": {
+   "account_number": "401.20",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Servicios Profesionales Extranjeros Partes Relacionadas": {
+   "account_number": "401.21",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Arrendamiento": {
+   "account_number": "401.22",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Arrendamiento Nacionales Partes Relacionadas": {
+   "account_number": "401.23",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Arrendamiento Extranjeros Partes Relacionadas": {
+   "account_number": "401.24",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Exportación": {
+   "account_number": "401.25",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Comisiones": {
+   "account_number": "401.26",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Maquila": {
+   "account_number": "401.27",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Coordinados": {
+   "account_number": "401.28",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Regalías": {
+   "account_number": "401.29",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Asistencia Técnica": {
+   "account_number": "401.30",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Donativos": {
+   "account_number": "401.31",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Intereses (Actividad Propia)": {
+   "account_number": "401.32",
+   "account_type": "Income Account"
+  },
+  "Ingresos De Copropiedad": {
+   "account_number": "401.33",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Fideicomisos": {
+   "account_number": "401.34",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Factoraje Financiero": {
+   "account_number": "401.35",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Arrendamiento Financiero": {
+   "account_number": "401.36",
+   "account_type": "Income Account"
+  },
+  "Ingresos De Extranjeros Con Establecimiento En El País": {
+   "account_number": "401.37",
+   "account_type": "Income Account"
+  },
+  "Otros Ingresos Propios": {
+   "account_number": "401.38",
+   "account_type": "Income Account"
+  },
+  "Ventas Y/O Servicios Gravados Realizados En Zona Fronteriza Norte": {
+   "account_number": "401.39",
+   "account_type": "Income Account"
+  },
+  "Ventas Y/O Servicios Gravados Realizados En Zona Fronteriza Norte De Contado": {
+   "account_number": "401.40",
+   "account_type": "Income Account"
+  },
+  "Ventas Y/O Servicios Gravados Realizados En Zona Fronteriza Norte A Crédito": {
+   "account_number": "401.41",
+   "account_type": "Income Account"
+  },
+  "root_type": "Income"
+ },
+ "Devoluciones, Descuentos O Bonificaciones Sobre Ingresos": {
+  "is_group": 1,
+  "Devoluciones, Descuentos O Bonificaciones Sobre Ventas Y/O Servicios A La Tasa General": {
+   "account_number": "402.01"
+  },
+  "Devoluciones, Descuentos O Bonificaciones Sobre Ventas Y/O Servicios Al 0%": {
+   "account_number": "402.02"
+  },
+  "Devoluciones, Descuentos O Bonificaciones Sobre Ventas Y/O Servicios Exentos": {
+   "account_number": "402.03"
+  },
+  "Devoluciones, Descuentos O Bonificaciones De Otros Ingresos": {
+   "account_number": "402.04"
+  },
+  "Devoluciones, Descuentos O Bonificaciones Sobre Ventas Y/O Servicios En Zona Fronteriza Norte": {
+   "account_number": "402.05"
+  },
+  "root_type": "Income"
+ },
+ "Otros Ingresos": {
+  "is_group": 1,
+  "Otros Ingresos": {
+   "account_number": "403.01",
+   "account_type": "Income Account"
+  },
+  "Otros Ingresos Nacionales Parte Relacionada": {
+   "account_number": "403.02",
+   "account_type": "Income Account"
+  },
+  "Otros Ingresos Extranjeros Parte Relacionada": {
+   "account_number": "403.03",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Operaciones Discontinuas": {
+   "account_number": "403.04",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Condonación De Adeudo": {
+   "account_number": "403.05",
+   "account_type": "Income Account"
+  },
+  "root_type": "Income"
+ },
+ "Costos": {
+  "account_number": "500",
+  "root_type": "Expense"
+ },
+ "Costo De Venta Y/O Servicio": {
+  "is_group": 1,
+  "Costo De Venta": {
+   "account_number": "501.01",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Costo De Servicios (Mano De Obra)": {
+   "account_number": "501.02",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Materia Prima Directa Utilizada Para La Producción": {
+   "account_number": "501.03",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Materia Prima Consumida En El Proceso Productivo": {
+   "account_number": "501.04",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Mano De Obra Directa Consumida": {
+   "account_number": "501.05",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Mano De Obra Directa": {
+   "account_number": "501.06",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Cargos Indirectos De Producción": {
+   "account_number": "501.07",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Otros Conceptos De Costo": {
+   "account_number": "501.08",
+   "account_type": "Cost of Goods Sold"
+  },
+  "root_type": "Expense"
+ },
+ "Compras": {
+  "is_group": 1,
+  "Compras Nacionales": {
+   "account_number": "502.01",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Compras Nacionales Parte Relacionada": {
+   "account_number": "502.02",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Compras De Importación": {
+   "account_number": "502.03",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Compras De Importación Partes Relacionadas": {
+   "account_number": "502.04",
+   "account_type": "Cost of Goods Sold"
+  },
+  "root_type": "Expense"
+ },
+ "Devoluciones, Descuentos O Bonificaciones Sobre Compras": {
+  "is_group": 1,
+  "Devoluciones, Descuentos O Bonificaciones Sobre Compras": {
+   "account_number": "503.01"
+  },
+  "root_type": "Expense"
+ },
+ "Otras Cuentas De Costos": {
+  "is_group": 1,
+  "Gastos Indirectos De Fabricación": {
+   "account_number": "504.01",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Gastos Indirectos De Fabricación De Partes Relacionadas Nacionales": {
+   "account_number": "504.02",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Gastos Indirectos De Fabricación De Partes Relacionadas Extranjeras": {
+   "account_number": "504.03",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Otras Cuentas De Costos Incurridos": {
+   "account_number": "504.04",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Otras Cuentas De Costos Incurridos Con Partes Relacionadas Nacionales": {
+   "account_number": "504.05",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Otras Cuentas De Costos Incurridos Con Partes Relacionadas Extranjeras": {
+   "account_number": "504.06",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Depreciación De Edificios": {
+   "account_number": "504.07",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Maquinaria Y Equipo": {
+   "account_number": "504.08",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Automóviles, Autobuses, Camiones De Carga, Tractocamiones, Montacargas Y": {
+   "account_number": "504.09",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Mobiliario Y Equipo De Oficina": {
+   "account_number": "504.10",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Equipo De Cómputo": {
+   "account_number": "504.11",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Equipo De Comunicación": {
+   "account_number": "504.12",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Activos Biológicos, Vegetales Y Semovientes": {
+   "account_number": "504.13",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Otros Activos Fijos": {
+   "account_number": "504.14",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Ferrocarriles": {
+   "account_number": "504.15",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Embarcaciones": {
+   "account_number": "504.16",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Aviones": {
+   "account_number": "504.17",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Troqueles, Moldes, Matrices Y Herramental": {
+   "account_number": "504.18",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Equipo De Comunicaciones Telefónicas": {
+   "account_number": "504.19",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Equipo De Comunicación Satelital": {
+   "account_number": "504.20",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Equipo De Adaptaciones Para Personas Con Capacidades Diferentes": {
+   "account_number": "504.21",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Maquinaria Y Equipo De Generación De Energía De Fuentes Renovables O De": {
+   "account_number": "504.22",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Adaptaciones Y Mejoras": {
+   "account_number": "504.23",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Otra Maquinaria Y Equipo": {
+   "account_number": "504.24",
+   "account_type": "Depreciation"
+  },
+  "Otras Cuentas De Costos": {
+   "account_number": "504.25",
+   "account_type": "Cost of Goods Sold"
+  },
+  "root_type": "Expense"
+ },
+ "Costo De Activo Fijo": {
+  "is_group": 1,
+  "Costo Por Venta De Activo Fijo": {
+   "account_number": "505.01"
+  },
+  "Costo Por Baja De Activo Fijo": {
+   "account_number": "505.02"
+  },
+  "root_type": "Expense"
+ },
+ "Gastos": {
+  "account_number": "600",
+  "root_type": "Expense"
+ },
+ "Gastos Generales": {
+  "is_group": 1,
+  "Sueldos Y Salarios": {
+   "account_number": "601.01",
+   "account_type": "Expense Account"
+  },
+  "Compensaciones": {
+   "account_number": "601.02",
+   "account_type": "Expense Account"
+  },
+  "Tiempos Extras": {
+   "account_number": "601.03",
+   "account_type": "Expense Account"
+  },
+  "Premios De Asistencia": {
+   "account_number": "601.04",
+   "account_type": "Expense Account"
+  },
+  "Premios De Puntualidad": {
+   "account_number": "601.05",
+   "account_type": "Expense Account"
+  },
+  "Vacaciones": {
+   "account_number": "601.06",
+   "account_type": "Expense Account"
+  },
+  "Prima Vacacional": {
+   "account_number": "601.07",
+   "account_type": "Expense Account"
+  },
+  "Prima Dominical": {
+   "account_number": "601.08",
+   "account_type": "Expense Account"
+  },
+  "Días Festivos": {
+   "account_number": "601.09",
+   "account_type": "Expense Account"
+  },
+  "Gratificaciones": {
+   "account_number": "601.10",
+   "account_type": "Expense Account"
+  },
+  "Primas De Antigüedad": {
+   "account_number": "601.11",
+   "account_type": "Expense Account"
+  },
+  "Aguinaldo": {
+   "account_number": "601.12",
+   "account_type": "Expense Account"
+  },
+  "Indemnizaciones": {
+   "account_number": "601.13",
+   "account_type": "Expense Account"
+  },
+  "Destajo": {
+   "account_number": "601.14",
+   "account_type": "Expense Account"
+  },
+  "Despensa": {
+   "account_number": "601.15",
+   "account_type": "Expense Account"
+  },
+  "Transporte": {
+   "account_number": "601.16",
+   "account_type": "Expense Account"
+  },
+  "Servicio Médico": {
+   "account_number": "601.17",
+   "account_type": "Expense Account"
+  },
+  "Ayuda En Gastos Funerarios": {
+   "account_number": "601.18",
+   "account_type": "Expense Account"
+  },
+  "Fondo De Ahorro": {
+   "account_number": "601.19",
+   "account_type": "Expense Account"
+  },
+  "Cuotas Sindicales": {
+   "account_number": "601.20",
+   "account_type": "Expense Account"
+  },
+  "Ptu": {
+   "account_number": "601.21",
+   "account_type": "Expense Account"
+  },
+  "Estímulo Al Personal": {
+   "account_number": "601.22",
+   "account_type": "Expense Account"
+  },
+  "Previsión Social": {
+   "account_number": "601.23",
+   "account_type": "Expense Account"
+  },
+  "Aportaciones Para El Plan De Jubilación": {
+   "account_number": "601.24",
+   "account_type": "Expense Account"
+  },
+  "Otras Prestaciones Al Personal": {
+   "account_number": "601.25",
+   "account_type": "Expense Account"
+  },
+  "Cuotas Al Imss": {
+   "account_number": "601.26",
+   "account_type": "Expense Account"
+  },
+  "Aportaciones Al Infonavit": {
+   "account_number": "601.27",
+   "account_type": "Expense Account"
+  },
+  "Aportaciones Al Sar": {
+   "account_number": "601.28",
+   "account_type": "Expense Account"
+  },
+  "Impuesto Estatal Sobre Nóminas": {
+   "account_number": "601.29",
+   "account_type": "Expense Account"
+  },
+  "Otras Aportaciones": {
+   "account_number": "601.30",
+   "account_type": "Expense Account"
+  },
+  "Asimilados A Salarios": {
+   "account_number": "601.31",
+   "account_type": "Expense Account"
+  },
+  "Servicios Administrativos": {
+   "account_number": "601.32",
+   "account_type": "Expense Account"
+  },
+  "Servicios Administrativos Partes Relacionadas": {
+   "account_number": "601.33",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Físicas Residentes Nacionales": {
+   "account_number": "601.34",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Físicas Residentes Nacionales Partes Relacionadas": {
+   "account_number": "601.35",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Físicas Residentes Del Extranjero": {
+   "account_number": "601.36",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Físicas Residentes Del Extranjero Partes Relacionadas": {
+   "account_number": "601.37",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Morales Residentes Nacionales": {
+   "account_number": "601.38",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Morales Residentes Nacionales Partes Relacionadas": {
+   "account_number": "601.39",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Morales Residentes Del Extranjero": {
+   "account_number": "601.40",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Morales Residentes Del Extranjero Partes Relacionadas": {
+   "account_number": "601.41",
+   "account_type": "Expense Account"
+  },
+  "Honorarios Aduanales Personas Físicas": {
+   "account_number": "601.42",
+   "account_type": "Expense Account"
+  },
+  "Honorarios Aduanales Personas Morales": {
+   "account_number": "601.43",
+   "account_type": "Expense Account"
+  },
+  "Honorarios Al Consejo De Administración": {
+   "account_number": "601.44",
+   "account_type": "Expense Account"
+  },
+  "Arrendamiento A Personas Físicas Residentes Nacionales": {
+   "account_number": "601.45",
+   "account_type": "Expense Account"
+  },
+  "Arrendamiento A Personas Morales Residentes Nacionales": {
+   "account_number": "601.46",
+   "account_type": "Expense Account"
+  },
+  "Arrendamiento A Residentes Del Extranjero": {
+   "account_number": "601.47",
+   "account_type": "Expense Account"
+  },
+  "Combustibles Y Lubricantes": {
+   "account_number": "601.48",
+   "account_type": "Expense Account"
+  },
+  "Viáticos Y Gastos De Viaje": {
+   "account_number": "601.49",
+   "account_type": "Expense Account"
+  },
+  "Teléfono, Internet": {
+   "account_number": "601.50",
+   "account_type": "Expense Account"
+  },
+  "Agua": {
+   "account_number": "601.51",
+   "account_type": "Expense Account"
+  },
+  "Energía Eléctrica": {
+   "account_number": "601.52",
+   "account_type": "Expense Account"
+  },
+  "Vigilancia Y Seguridad": {
+   "account_number": "601.53",
+   "account_type": "Expense Account"
+  },
+  "Limpieza": {
+   "account_number": "601.54",
+   "account_type": "Expense Account"
+  },
+  "Papelería Y Artículos De Oficina": {
+   "account_number": "601.55",
+   "account_type": "Expense Account"
+  },
+  "Mantenimiento Y Conservación": {
+   "account_number": "601.56",
+   "account_type": "Expense Account"
+  },
+  "Seguros Y Fianzas": {
+   "account_number": "601.57",
+   "account_type": "Expense Account"
+  },
+  "Otros Impuestos Y Derechos": {
+   "account_number": "601.58",
+   "account_type": "Expense Account"
+  },
+  "Recargos Fiscales": {
+   "account_number": "601.59",
+   "account_type": "Expense Account"
+  },
+  "Cuotas Y Suscripciones": {
+   "account_number": "601.60",
+   "account_type": "Expense Account"
+  },
+  "Propaganda Y Publicidad": {
+   "account_number": "601.61",
+   "account_type": "Expense Account"
+  },
+  "Capacitación Al Personal": {
+   "account_number": "601.62",
+   "account_type": "Expense Account"
+  },
+  "Donativos Y Ayudas": {
+   "account_number": "601.63",
+   "account_type": "Expense Account"
+  },
+  "Asistencia Técnica": {
+   "account_number": "601.64",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sujetas A Otros Porcentajes": {
+   "account_number": "601.65",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sujetas Al 5%": {
+   "account_number": "601.66",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sujetas Al 10%": {
+   "account_number": "601.67",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sujetas Al 15%": {
+   "account_number": "601.68",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sujetas Al 25%": {
+   "account_number": "601.69",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sujetas Al 30%": {
+   "account_number": "601.70",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sin Retención": {
+   "account_number": "601.71",
+   "account_type": "Expense Account"
+  },
+  "Fletes Y Acarreos": {
+   "account_number": "601.72",
+   "account_type": "Expense Account"
+  },
+  "Gastos De Importación": {
+   "account_number": "601.73",
+   "account_type": "Expense Account"
+  },
+  "Comisiones Sobre Ventas": {
+   "account_number": "601.74",
+   "account_type": "Expense Account"
+  },
+  "Comisiones Por Tarjetas De Crédito": {
+   "account_number": "601.75",
+   "account_type": "Expense Account"
+  },
+  "Patentes Y Marcas": {
+   "account_number": "601.76",
+   "account_type": "Expense Account"
+  },
+  "Uniformes": {
+   "account_number": "601.77",
+   "account_type": "Expense Account"
+  },
+  "Prediales": {
+   "account_number": "601.78",
+   "account_type": "Expense Account"
+  },
+  "Gastos Generales De Urbanización": {
+   "account_number": "601.79",
+   "account_type": "Expense Account"
+  },
+  "Gastos Generales De Construcción": {
+   "account_number": "601.80",
+   "account_type": "Expense Account"
+  },
+  "Fletes Del Extranjero": {
+   "account_number": "601.81",
+   "account_type": "Expense Account"
+  },
+  "Recolección De Bienes Del Sector Agropecuario Y/O Ganadero": {
+   "account_number": "601.82",
+   "account_type": "Expense Account"
+  },
+  "Gastos No Deducibles (Sin Requisitos Fiscales)": {
+   "account_number": "601.83",
+   "account_type": "Expense Account"
+  },
+  "Otros Gastos Generales": {
+   "account_number": "601.84",
+   "account_type": "Expense Account"
+  },
+  "root_type": "Expense"
+ },
+ "Gastos De Venta": {
+  "is_group": 1,
+  "Sueldos Y Salarios": {
+   "account_number": "602.01",
+   "account_type": "Expense Account"
+  },
+  "Compensaciones": {
+   "account_number": "602.02",
+   "account_type": "Expense Account"
+  },
+  "Tiempos Extras": {
+   "account_number": "602.03",
+   "account_type": "Expense Account"
+  },
+  "Premios De Asistencia": {
+   "account_number": "602.04",
+   "account_type": "Expense Account"
+  },
+  "Premios De Puntualidad": {
+   "account_number": "602.05",
+   "account_type": "Expense Account"
+  },
+  "Vacaciones": {
+   "account_number": "602.06",
+   "account_type": "Expense Account"
+  },
+  "Prima Vacacional": {
+   "account_number": "602.07",
+   "account_type": "Expense Account"
+  },
+  "Prima Dominical": {
+   "account_number": "602.08",
+   "account_type": "Expense Account"
+  },
+  "Días Festivos": {
+   "account_number": "602.09",
+   "account_type": "Expense Account"
+  },
+  "Gratificaciones": {
+   "account_number": "602.10",
+   "account_type": "Expense Account"
+  },
+  "Primas De Antigüedad": {
+   "account_number": "602.11",
+   "account_type": "Expense Account"
+  },
+  "Aguinaldo": {
+   "account_number": "602.12",
+   "account_type": "Expense Account"
+  },
+  "Indemnizaciones": {
+   "account_number": "602.13",
+   "account_type": "Expense Account"
+  },
+  "Destajo": {
+   "account_number": "602.14",
+   "account_type": "Expense Account"
+  },
+  "Despensa": {
+   "account_number": "602.15",
+   "account_type": "Expense Account"
+  },
+  "Transporte": {
+   "account_number": "602.16",
+   "account_type": "Expense Account"
+  },
+  "Servicio Médico": {
+   "account_number": "602.17",
+   "account_type": "Expense Account"
+  },
+  "Ayuda En Gastos Funerarios": {
+   "account_number": "602.18",
+   "account_type": "Expense Account"
+  },
+  "Fondo De Ahorro": {
+   "account_number": "602.19",
+   "account_type": "Expense Account"
+  },
+  "Cuotas Sindicales": {
+   "account_number": "602.20",
+   "account_type": "Expense Account"
+  },
+  "Ptu": {
+   "account_number": "602.21",
+   "account_type": "Expense Account"
+  },
+  "Estímulo Al Personal": {
+   "account_number": "602.22",
+   "account_type": "Expense Account"
+  },
+  "Previsión Social": {
+   "account_number": "602.23",
+   "account_type": "Expense Account"
+  },
+  "Aportaciones Para El Plan De Jubilación": {
+   "account_number": "602.24",
+   "account_type": "Expense Account"
+  },
+  "Otras Prestaciones Al Personal": {
+   "account_number": "602.25",
+   "account_type": "Expense Account"
+  },
+  "Cuotas Al Imss": {
+   "account_number": "602.26",
+   "account_type": "Expense Account"
+  },
+  "Aportaciones Al Infonavit": {
+   "account_number": "602.27",
+   "account_type": "Expense Account"
+  },
+  "Aportaciones Al Sar": {
+   "account_number": "602.28",
+   "account_type": "Expense Account"
+  },
+  "Impuesto Estatal Sobre Nóminas": {
+   "account_number": "602.29",
+   "account_type": "Expense Account"
+  },
+  "Otras Aportaciones": {
+   "account_number": "602.30",
+   "account_type": "Expense Account"
+  },
+  "Asimilados A Salarios": {
+   "account_number": "602.31",
+   "account_type": "Expense Account"
+  },
+  "Servicios Administrativos": {
+   "account_number": "602.32",
+   "account_type": "Expense Account"
+  },
+  "Servicios Administrativos Partes Relacionadas": {
+   "account_number": "602.33",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Físicas Residentes Nacionales": {
+   "account_number": "602.34",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Físicas Residentes Nacionales Partes Relacionadas": {
+   "account_number": "602.35",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Físicas Residentes Del Extranjero": {
+   "account_number": "602.36",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Físicas Residentes Del Extranjero Partes Relacionadas": {
+   "account_number": "602.37",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Morales Residentes Nacionales": {
+   "account_number": "602.38",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Morales Residentes Nacionales Partes Relacionadas": {
+   "account_number": "602.39",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Morales Residentes Del Extranjero": {
+   "account_number": "602.40",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Morales Residentes Del Extranjero Partes Relacionadas": {
+   "account_number": "602.41",
+   "account_type": "Expense Account"
+  },
+  "Honorarios Aduanales Personas Físicas": {
+   "account_number": "602.42",
+   "account_type": "Expense Account"
+  },
+  "Honorarios Aduanales Personas Morales": {
+   "account_number": "602.43",
+   "account_type": "Expense Account"
+  },
+  "Honorarios Al Consejo De Administración": {
+   "account_number": "602.44",
+   "account_type": "Expense Account"
+  },
+  "Arrendamiento A Personas Físicas Residentes Nacionales": {
+   "account_number": "602.45",
+   "account_type": "Expense Account"
+  },
+  "Arrendamiento A Personas Morales Residentes Nacionales": {
+   "account_number": "602.46",
+   "account_type": "Expense Account"
+  },
+  "Arrendamiento A Residentes Del Extranjero": {
+   "account_number": "602.47",
+   "account_type": "Expense Account"
+  },
+  "Combustibles Y Lubricantes": {
+   "account_number": "602.48",
+   "account_type": "Expense Account"
+  },
+  "Viáticos Y Gastos De Viaje": {
+   "account_number": "602.49",
+   "account_type": "Expense Account"
+  },
+  "Teléfono, Internet": {
+   "account_number": "602.50",
+   "account_type": "Expense Account"
+  },
+  "Agua": {
+   "account_number": "602.51",
+   "account_type": "Expense Account"
+  },
+  "Energía Eléctrica": {
+   "account_number": "602.52",
+   "account_type": "Expense Account"
+  },
+  "Vigilancia Y Seguridad": {
+   "account_number": "602.53",
+   "account_type": "Expense Account"
+  },
+  "Limpieza": {
+   "account_number": "602.54",
+   "account_type": "Expense Account"
+  },
+  "Papelería Y Artículos De Oficina": {
+   "account_number": "602.55",
+   "account_type": "Expense Account"
+  },
+  "Mantenimiento Y Conservación": {
+   "account_number": "602.56",
+   "account_type": "Expense Account"
+  },
+  "Seguros Y Fianzas": {
+   "account_number": "602.57",
+   "account_type": "Expense Account"
+  },
+  "Otros Impuestos Y Derechos": {
+   "account_number": "602.58",
+   "account_type": "Expense Account"
+  },
+  "Recargos Fiscales": {
+   "account_number": "602.59",
+   "account_type": "Expense Account"
+  },
+  "Cuotas Y Suscripciones": {
+   "account_number": "602.60",
+   "account_type": "Expense Account"
+  },
+  "Propaganda Y Publicidad": {
+   "account_number": "602.61",
+   "account_type": "Expense Account"
+  },
+  "Capacitación Al Personal": {
+   "account_number": "602.62",
+   "account_type": "Expense Account"
+  },
+  "Donativos Y Ayudas": {
+   "account_number": "602.63",
+   "account_type": "Expense Account"
+  },
+  "Asistencia Técnica": {
+   "account_number": "602.64",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sujetas A Otros Porcentajes": {
+   "account_number": "602.65",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sujetas Al 5%": {
+   "account_number": "602.66",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sujetas Al 10%": {
+   "account_number": "602.67",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sujetas Al 15%": {
+   "account_number": "602.68",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sujetas Al 25%": {
+   "account_number": "602.69",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sujetas Al 30%": {
+   "account_number": "602.70",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sin Retención": {
+   "account_number": "602.71",
+   "account_type": "Expense Account"
+  },
+  "Fletes Y Acarreos": {
+   "account_number": "602.72",
+   "account_type": "Expense Account"
+  },
+  "Gastos De Importación": {
+   "account_number": "602.73",
+   "account_type": "Expense Account"
+  },
+  "Comisiones Sobre Ventas": {
+   "account_number": "602.74",
+   "account_type": "Expense Account"
+  },
+  "Comisiones Por Tarjetas De Crédito": {
+   "account_number": "602.75",
+   "account_type": "Expense Account"
+  },
+  "Patentes Y Marcas": {
+   "account_number": "602.76",
+   "account_type": "Expense Account"
+  },
+  "Uniformes": {
+   "account_number": "602.77",
+   "account_type": "Expense Account"
+  },
+  "Prediales": {
+   "account_number": "602.78",
+   "account_type": "Expense Account"
+  },
+  "Gastos De Venta De Urbanización": {
+   "account_number": "602.79",
+   "account_type": "Expense Account"
+  },
+  "Gastos De Venta De Construcción": {
+   "account_number": "602.80",
+   "account_type": "Expense Account"
+  },
+  "Fletes Del Extranjero": {
+   "account_number": "602.81",
+   "account_type": "Expense Account"
+  },
+  "Recolección De Bienes Del Sector Agropecuario Y/O Ganadero": {
+   "account_number": "602.82",
+   "account_type": "Expense Account"
+  },
+  "Gastos No Deducibles (Sin Requisitos Fiscales)": {
+   "account_number": "602.83",
+   "account_type": "Expense Account"
+  },
+  "Otros Gastos De Venta": {
+   "account_number": "602.84",
+   "account_type": "Expense Account"
+  },
+  "root_type": "Expense"
+ },
+ "Gastos De Administración": {
+  "is_group": 1,
+  "Sueldos Y Salarios": {
+   "account_number": "603.01",
+   "account_type": "Expense Account"
+  },
+  "Compensaciones": {
+   "account_number": "603.02",
+   "account_type": "Expense Account"
+  },
+  "Tiempos Extras": {
+   "account_number": "603.03",
+   "account_type": "Expense Account"
+  },
+  "Premios De Asistencia": {
+   "account_number": "603.04",
+   "account_type": "Expense Account"
+  },
+  "Premios De Puntualidad": {
+   "account_number": "603.05",
+   "account_type": "Expense Account"
+  },
+  "Vacaciones": {
+   "account_number": "603.06",
+   "account_type": "Expense Account"
+  },
+  "Prima Vacacional": {
+   "account_number": "603.07",
+   "account_type": "Expense Account"
+  },
+  "Prima Dominical": {
+   "account_number": "603.08",
+   "account_type": "Expense Account"
+  },
+  "Días Festivos": {
+   "account_number": "603.09",
+   "account_type": "Expense Account"
+  },
+  "Gratificaciones": {
+   "account_number": "603.10",
+   "account_type": "Expense Account"
+  },
+  "Primas De Antigüedad": {
+   "account_number": "603.11",
+   "account_type": "Expense Account"
+  },
+  "Aguinaldo": {
+   "account_number": "603.12",
+   "account_type": "Expense Account"
+  },
+  "Indemnizaciones": {
+   "account_number": "603.13",
+   "account_type": "Expense Account"
+  },
+  "Destajo": {
+   "account_number": "603.14",
+   "account_type": "Expense Account"
+  },
+  "Despensa": {
+   "account_number": "603.15",
+   "account_type": "Expense Account"
+  },
+  "Transporte": {
+   "account_number": "603.16",
+   "account_type": "Expense Account"
+  },
+  "Servicio Médico": {
+   "account_number": "603.17",
+   "account_type": "Expense Account"
+  },
+  "Ayuda En Gastos Funerarios": {
+   "account_number": "603.18",
+   "account_type": "Expense Account"
+  },
+  "Fondo De Ahorro": {
+   "account_number": "603.19",
+   "account_type": "Expense Account"
+  },
+  "Cuotas Sindicales": {
+   "account_number": "603.20",
+   "account_type": "Expense Account"
+  },
+  "Ptu": {
+   "account_number": "603.21",
+   "account_type": "Expense Account"
+  },
+  "Estímulo Al Personal": {
+   "account_number": "603.22",
+   "account_type": "Expense Account"
+  },
+  "Previsión Social": {
+   "account_number": "603.23",
+   "account_type": "Expense Account"
+  },
+  "Aportaciones Para El Plan De Jubilación": {
+   "account_number": "603.24",
+   "account_type": "Expense Account"
+  },
+  "Otras Prestaciones Al Personal": {
+   "account_number": "603.25",
+   "account_type": "Expense Account"
+  },
+  "Cuotas Al Imss": {
+   "account_number": "603.26",
+   "account_type": "Expense Account"
+  },
+  "Aportaciones Al Infonavit": {
+   "account_number": "603.27",
+   "account_type": "Expense Account"
+  },
+  "Aportaciones Al Sar": {
+   "account_number": "603.28",
+   "account_type": "Expense Account"
+  },
+  "Impuesto Estatal Sobre Nóminas": {
+   "account_number": "603.29",
+   "account_type": "Expense Account"
+  },
+  "Otras Aportaciones": {
+   "account_number": "603.30",
+   "account_type": "Expense Account"
+  },
+  "Asimilados A Salarios": {
+   "account_number": "603.31",
+   "account_type": "Expense Account"
+  },
+  "Servicios Administrativos": {
+   "account_number": "603.32",
+   "account_type": "Expense Account"
+  },
+  "Servicios Administrativos Partes Relacionadas": {
+   "account_number": "603.33",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Físicas Residentes Nacionales": {
+   "account_number": "603.34",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Físicas Residentes Nacionales Partes Relacionadas": {
+   "account_number": "603.35",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Físicas Residentes Del Extranjero": {
+   "account_number": "603.36",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Físicas Residentes Del Extranjero Partes Relacionadas": {
+   "account_number": "603.37",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Morales Residentes Nacionales": {
+   "account_number": "603.38",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Morales Residentes Nacionales Partes Relacionadas": {
+   "account_number": "603.39",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Morales Residentes Del Extranjero": {
+   "account_number": "603.40",
+   "account_type": "Expense Account"
+  },
+  "Honorarios A Personas Morales Residentes Del Extranjero Partes Relacionadas": {
+   "account_number": "603.41",
+   "account_type": "Expense Account"
+  },
+  "Honorarios Aduanales Personas Físicas": {
+   "account_number": "603.42",
+   "account_type": "Expense Account"
+  },
+  "Honorarios Aduanales Personas Morales": {
+   "account_number": "603.43",
+   "account_type": "Expense Account"
+  },
+  "Honorarios Al Consejo De Administración": {
+   "account_number": "603.44",
+   "account_type": "Expense Account"
+  },
+  "Arrendamiento A Personas Físicas Residentes Nacionales": {
+   "account_number": "603.45",
+   "account_type": "Expense Account"
+  },
+  "Arrendamiento A Personas Morales Residentes Nacionales": {
+   "account_number": "603.46",
+   "account_type": "Expense Account"
+  },
+  "Arrendamiento A Residentes Del Extranjero": {
+   "account_number": "603.47",
+   "account_type": "Expense Account"
+  },
+  "Combustibles Y Lubricantes": {
+   "account_number": "603.48",
+   "account_type": "Expense Account"
+  },
+  "Viáticos Y Gastos De Viaje": {
+   "account_number": "603.49",
+   "account_type": "Expense Account"
+  },
+  "Teléfono, Internet": {
+   "account_number": "603.50",
+   "account_type": "Expense Account"
+  },
+  "Agua": {
+   "account_number": "603.51",
+   "account_type": "Expense Account"
+  },
+  "Energía Eléctrica": {
+   "account_number": "603.52",
+   "account_type": "Expense Account"
+  },
+  "Vigilancia Y Seguridad": {
+   "account_number": "603.53",
+   "account_type": "Expense Account"
+  },
+  "Limpieza": {
+   "account_number": "603.54",
+   "account_type": "Expense Account"
+  },
+  "Papelería Y Artículos De Oficina": {
+   "account_number": "603.55",
+   "account_type": "Expense Account"
+  },
+  "Mantenimiento Y Conservación": {
+   "account_number": "603.56",
+   "account_type": "Expense Account"
+  },
+  "Seguros Y Fianzas": {
+   "account_number": "603.57",
+   "account_type": "Expense Account"
+  },
+  "Otros Impuestos Y Derechos": {
+   "account_number": "603.58",
+   "account_type": "Expense Account"
+  },
+  "Recargos Fiscales": {
+   "account_number": "603.59",
+   "account_type": "Expense Account"
+  },
+  "Cuotas Y Suscripciones": {
+   "account_number": "603.60",
+   "account_type": "Expense Account"
+  },
+  "Propaganda Y Publicidad": {
+   "account_number": "603.61",
+   "account_type": "Expense Account"
+  },
+  "Capacitación Al Personal": {
+   "account_number": "603.62",
+   "account_type": "Expense Account"
+  },
+  "Donativos Y Ayudas": {
+   "account_number": "603.63",
+   "account_type": "Expense Account"
+  },
+  "Asistencia Técnica": {
+   "account_number": "603.64",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sujetas A Otros Porcentajes": {
+   "account_number": "603.65",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sujetas Al 5%": {
+   "account_number": "603.66",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sujetas Al 10%": {
+   "account_number": "603.67",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sujetas Al 15%": {
+   "account_number": "603.68",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sujetas Al 25%": {
+   "account_number": "603.69",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sujetas Al 30%": {
+   "account_number": "603.70",
+   "account_type": "Expense Account"
+  },
+  "Regalías Sin Retención": {
+   "account_number": "603.71",
+   "account_type": "Expense Account"
+  },
+  "Fletes Y Acarreos": {
+   "account_number": "603.72",
+   "account_type": "Expense Account"
+  },
+  "Gastos De Importación": {
+   "account_number": "603.73",
+   "account_type": "Expense Account"
+  },
+  "Patentes Y Marcas": {
+   "account_number": "603.74",
+   "account_type": "Expense Account"
+  },
+  "Uniformes": {
+   "account_number": "603.75",
+   "account_type": "Expense Account"
+  },
+  "Prediales": {
+   "account_number": "603.76",
+   "account_type": "Expense Account"
+  },
+  "Gastos De Administración De Urbanización": {
+   "account_number": "603.77",
+   "account_type": "Expense Account"
+  },
+  "Gastos De Administración De Construcción": {
+   "account_number": "603.78",
+   "account_type": "Expense Account"
+  },
+  "Fletes Del Extranjero": {
+   "account_number": "603.79",
+   "account_type": "Expense Account"
+  },
+  "Recolección De Bienes Del Sector Agropecuario Y/O Ganadero": {
+   "account_number": "603.80",
+   "account_type": "Expense Account"
+  },
+  "Gastos No Deducibles (Sin Requisitos Fiscales)": {
+   "account_number": "603.81",
+   "account_type": "Expense Account"
+  },
+  "Otros Gastos De Administración": {
+   "account_number": "603.82",
+   "account_type": "Expense Account"
+  },
+  "root_type": "Expense"
+ },
+ "Gastos De Fabricación": {
+  "is_group": 1,
+  "Sueldos Y Salarios": {
+   "account_number": "604.01",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Compensaciones": {
+   "account_number": "604.02",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Tiempos Extras": {
+   "account_number": "604.03",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Premios De Asistencia": {
+   "account_number": "604.04",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Premios De Puntualidad": {
+   "account_number": "604.05",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Vacaciones": {
+   "account_number": "604.06",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Prima Vacacional": {
+   "account_number": "604.07",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Prima Dominical": {
+   "account_number": "604.08",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Días Festivos": {
+   "account_number": "604.09",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Gratificaciones": {
+   "account_number": "604.10",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Primas De Antigüedad": {
+   "account_number": "604.11",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Aguinaldo": {
+   "account_number": "604.12",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Indemnizaciones": {
+   "account_number": "604.13",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Destajo": {
+   "account_number": "604.14",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Despensa": {
+   "account_number": "604.15",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Transporte": {
+   "account_number": "604.16",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Servicio Médico": {
+   "account_number": "604.17",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Ayuda En Gastos Funerarios": {
+   "account_number": "604.18",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Fondo De Ahorro": {
+   "account_number": "604.19",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Cuotas Sindicales": {
+   "account_number": "604.20",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Ptu": {
+   "account_number": "604.21",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Estímulo Al Personal": {
+   "account_number": "604.22",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Previsión Social": {
+   "account_number": "604.23",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Aportaciones Para El Plan De Jubilación": {
+   "account_number": "604.24",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Otras Prestaciones Al Personal": {
+   "account_number": "604.25",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Cuotas Al Imss": {
+   "account_number": "604.26",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Aportaciones Al Infonavit": {
+   "account_number": "604.27",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Aportaciones Al Sar": {
+   "account_number": "604.28",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Impuesto Estatal Sobre Nóminas": {
+   "account_number": "604.29",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Otras Aportaciones": {
+   "account_number": "604.30",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Asimilados A Salarios": {
+   "account_number": "604.31",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Servicios Administrativos": {
+   "account_number": "604.32",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Servicios Administrativos Partes Relacionadas": {
+   "account_number": "604.33",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Honorarios A Personas Físicas Residentes Nacionales": {
+   "account_number": "604.34",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Honorarios A Personas Físicas Residentes Nacionales Partes Relacionadas": {
+   "account_number": "604.35",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Honorarios A Personas Físicas Residentes Del Extranjero": {
+   "account_number": "604.36",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Honorarios A Personas Físicas Residentes Del Extranjero Partes Relacionadas": {
+   "account_number": "604.37",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Honorarios A Personas Morales Residentes Nacionales": {
+   "account_number": "604.38",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Honorarios A Personas Morales Residentes Nacionales Partes Relacionadas": {
+   "account_number": "604.39",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Honorarios A Personas Morales Residentes Del Extranjero": {
+   "account_number": "604.40",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Honorarios A Personas Morales Residentes Del Extranjero Partes Relacionadas": {
+   "account_number": "604.41",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Honorarios Aduanales Personas Físicas": {
+   "account_number": "604.42",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Honorarios Aduanales Personas Morales": {
+   "account_number": "604.43",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Honorarios Al Consejo De Administración": {
+   "account_number": "604.44",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Arrendamiento A Personas Físicas Residentes Nacionales": {
+   "account_number": "604.45",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Arrendamiento A Personas Morales Residentes Nacionales": {
+   "account_number": "604.46",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Arrendamiento A Residentes Del Extranjero": {
+   "account_number": "604.47",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Combustibles Y Lubricantes": {
+   "account_number": "604.48",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Viáticos Y Gastos De Viaje": {
+   "account_number": "604.49",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Teléfono, Internet": {
+   "account_number": "604.50",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Agua": {
+   "account_number": "604.51",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Energía Eléctrica": {
+   "account_number": "604.52",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Vigilancia Y Seguridad": {
+   "account_number": "604.53",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Limpieza": {
+   "account_number": "604.54",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Papelería Y Artículos De Oficina": {
+   "account_number": "604.55",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Mantenimiento Y Conservación": {
+   "account_number": "604.56",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Seguros Y Fianzas": {
+   "account_number": "604.57",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Otros Impuestos Y Derechos": {
+   "account_number": "604.58",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Recargos Fiscales": {
+   "account_number": "604.59",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Cuotas Y Suscripciones": {
+   "account_number": "604.60",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Propaganda Y Publicidad": {
+   "account_number": "604.61",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Capacitación Al Personal": {
+   "account_number": "604.62",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Donativos Y Ayudas": {
+   "account_number": "604.63",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Asistencia Técnica": {
+   "account_number": "604.64",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Regalías Sujetas A Otros Porcentajes": {
+   "account_number": "604.65",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Regalías Sujetas Al 5%": {
+   "account_number": "604.66",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Regalías Sujetas Al 10%": {
+   "account_number": "604.67",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Regalías Sujetas Al 15%": {
+   "account_number": "604.68",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Regalías Sujetas Al 25%": {
+   "account_number": "604.69",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Regalías Sujetas Al 30%": {
+   "account_number": "604.70",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Regalías Sin Retención": {
+   "account_number": "604.71",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Fletes Y Acarreos": {
+   "account_number": "604.72",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Gastos De Importación": {
+   "account_number": "604.73",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Patentes Y Marcas": {
+   "account_number": "604.74",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Uniformes": {
+   "account_number": "604.75",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Prediales": {
+   "account_number": "604.76",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Gastos De Fabricación De Urbanización": {
+   "account_number": "604.77",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Gastos De Fabricación De Construcción": {
+   "account_number": "604.78",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Fletes Del Extranjero": {
+   "account_number": "604.79",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Recolección De Bienes Del Sector Agropecuario Y/O Ganadero": {
+   "account_number": "604.80",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Gastos No Deducibles (Sin Requisitos Fiscales)": {
+   "account_number": "604.81",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Otros Gastos De Fabricación": {
+   "account_number": "604.82",
+   "account_type": "Cost of Goods Sold"
+  },
+  "root_type": "Expense"
+ },
+ "Mano De Obra Directa": {
+  "is_group": 1,
+  "Mano De Obra": {
+   "account_number": "605.01",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Sueldos Y Salarios": {
+   "account_number": "605.02",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Compensaciones": {
+   "account_number": "605.03",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Tiempos Extras": {
+   "account_number": "605.04",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Premios De Asistencia": {
+   "account_number": "605.05",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Premios De Puntualidad": {
+   "account_number": "605.06",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Vacaciones": {
+   "account_number": "605.07",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Prima Vacacional": {
+   "account_number": "605.08",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Prima Dominical": {
+   "account_number": "605.09",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Días Festivos": {
+   "account_number": "605.10",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Gratificaciones": {
+   "account_number": "605.11",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Primas De Antigüedad": {
+   "account_number": "605.12",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Aguinaldo": {
+   "account_number": "605.13",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Indemnizaciones": {
+   "account_number": "605.14",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Destajo": {
+   "account_number": "605.15",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Despensa": {
+   "account_number": "605.16",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Transporte": {
+   "account_number": "605.17",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Servicio Médico": {
+   "account_number": "605.18",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Ayuda En Gastos Funerarios": {
+   "account_number": "605.19",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Fondo De Ahorro": {
+   "account_number": "605.20",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Cuotas Sindicales": {
+   "account_number": "605.21",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Ptu": {
+   "account_number": "605.22",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Estímulo Al Personal": {
+   "account_number": "605.23",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Previsión Social": {
+   "account_number": "605.24",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Aportaciones Para El Plan De Jubilación": {
+   "account_number": "605.25",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Otras Prestaciones Al Personal": {
+   "account_number": "605.26",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Asimilados A Salarios": {
+   "account_number": "605.27",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Cuotas Al Imss": {
+   "account_number": "605.28",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Aportaciones Al Infonavit": {
+   "account_number": "605.29",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Aportaciones Al Sar": {
+   "account_number": "605.30",
+   "account_type": "Cost of Goods Sold"
+  },
+  "Otros Costos De Mano De Obra Directa": {
+   "account_number": "605.31",
+   "account_type": "Cost of Goods Sold"
+  },
+  "root_type": "Expense"
+ },
+ "Facilidades Administrativas Fiscales": {
+  "is_group": 1,
+  "Facilidades Administrativas Fiscales": {
+   "account_number": "606.01"
+  },
+  "root_type": "Expense"
+ },
+ "Participación De Los Trabajadores En Las Utilidades": {
+  "is_group": 1,
+  "Participación De Los Trabajadores En Las Utilidades": {
+   "account_number": "607.01"
+  },
+  "root_type": "Expense"
+ },
+ "Participación En Resultados De Subsidiarias": {
+  "is_group": 1,
+  "Participación En Resultados De Subsidiarias": {
+   "account_number": "608.01"
+  },
+  "root_type": "Expense"
+ },
+ "Participación En Resultados De Asociadas": {
+  "is_group": 1,
+  "Participación En Resultados De Asociadas": {
+   "account_number": "609.01"
+  },
+  "root_type": "Expense"
+ },
+ "Participación De Los Trabajadores En Las Utilidades Diferida (610)": {
+  "is_group": 1,
+  "Participación De Los Trabajadores En Las Utilidades Diferida": {
+   "account_number": "610.01"
+  },
+  "root_type": "Expense"
+ },
+ "Impuesto Sobre La Renta": {
+  "is_group": 1,
+  "Impuesto Sobre La Renta": {
+   "account_number": "611.01",
+   "account_type": "Tax"
+  },
+  "Impuesto Sobre La Renta Por Remanente Distribuible": {
+   "account_number": "611.02",
+   "account_type": "Tax"
+  },
+  "root_type": "Expense"
+ },
+ "Gastos No Deducibles Para Cufin": {
+  "is_group": 1,
+  "Gastos No Deducibles Para Cufin": {
+   "account_number": "612.01"
+  },
+  "root_type": "Expense"
+ },
+ "Depreciación Contable": {
+  "is_group": 1,
+  "Depreciación De Edificios": {
+   "account_number": "613.01",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Maquinaria Y Equipo": {
+   "account_number": "613.02",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Automóviles, Autobuses, Camiones De Carga, Tractocamiones, Montacargas Y": {
+   "account_number": "613.03",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Mobiliario Y Equipo De Oficina": {
+   "account_number": "613.04",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Equipo De Cómputo": {
+   "account_number": "613.05",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Equipo De Comunicación": {
+   "account_number": "613.06",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Activos Biológicos, Vegetales Y Semovientes": {
+   "account_number": "613.07",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Otros Activos Fijos": {
+   "account_number": "613.08",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Ferrocarriles": {
+   "account_number": "613.09",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Embarcaciones": {
+   "account_number": "613.10",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Aviones": {
+   "account_number": "613.11",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Troqueles, Moldes, Matrices Y Herramental": {
+   "account_number": "613.12",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Equipo De Comunicaciones Telefónicas": {
+   "account_number": "613.13",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Equipo De Comunicación Satelital": {
+   "account_number": "613.14",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Equipo De Adaptaciones Para Personas Con Capacidades Diferentes": {
+   "account_number": "613.15",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Maquinaria Y Equipo De Generación De Energía De Fuentes Renovables O De": {
+   "account_number": "613.16",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Adaptaciones Y Mejoras": {
+   "account_number": "613.17",
+   "account_type": "Depreciation"
+  },
+  "Depreciación De Otra Maquinaria Y Equipo": {
+   "account_number": "613.18",
+   "account_type": "Depreciation"
+  },
+  "root_type": "Expense"
+ },
+ "Amortización Contable": {
+  "is_group": 1,
+  "Amortización De Gastos Diferidos": {
+   "account_number": "614.01",
+   "account_type": "Depreciation"
+  },
+  "Amortización De Gastos Pre Operativos": {
+   "account_number": "614.02",
+   "account_type": "Depreciation"
+  },
+  "Amortización De Regalías, Asistencia Técnica Y Otros Gastos Diferidos": {
+   "account_number": "614.03",
+   "account_type": "Depreciation"
+  },
+  "Amortización De Activos Intangibles": {
+   "account_number": "614.04",
+   "account_type": "Depreciation"
+  },
+  "Amortización De Gastos De Organización": {
+   "account_number": "614.05",
+   "account_type": "Depreciation"
+  },
+  "Amortización De Investigación Y Desarrollo De Mercado": {
+   "account_number": "614.06",
+   "account_type": "Depreciation"
+  },
+  "Amortización De Marcas Y Patentes": {
+   "account_number": "614.07",
+   "account_type": "Depreciation"
+  },
+  "Amortización De Crédito Mercantil": {
+   "account_number": "614.08",
+   "account_type": "Depreciation"
+  },
+  "Amortización De Gastos De Instalación": {
+   "account_number": "614.09",
+   "account_type": "Depreciation"
+  },
+  "Amortización De Otros Activos Diferidos": {
+   "account_number": "614.10",
+   "account_type": "Depreciation"
+  },
+  "root_type": "Expense"
+ },
+ "Resultado Integral De Financiamiento": {
+  "account_number": "700",
+  "root_type": "Expense"
+ },
+ "Gastos Financieros": {
+  "is_group": 1,
+  "Pérdida Cambiaria": {
+   "account_number": "701.01"
+  },
+  "Pérdida Cambiaria Nacional Parte Relacionada": {
+   "account_number": "701.02"
+  },
+  "Pérdida Cambiaria Extranjero Parte Relacionada": {
+   "account_number": "701.03"
+  },
+  "Intereses A Cargo Bancario Nacional": {
+   "account_number": "701.04",
+   "account_type": "Expense Account"
+  },
+  "Intereses A Cargo Bancario Extranjero": {
+   "account_number": "701.05",
+   "account_type": "Expense Account"
+  },
+  "Intereses A Cargo De Personas Físicas Nacional": {
+   "account_number": "701.06",
+   "account_type": "Expense Account"
+  },
+  "Intereses A Cargo De Personas Físicas Extranjero": {
+   "account_number": "701.07",
+   "account_type": "Expense Account"
+  },
+  "Intereses A Cargo De Personas Morales Nacional": {
+   "account_number": "701.08",
+   "account_type": "Expense Account"
+  },
+  "Intereses A Cargo De Personas Morales Extranjero": {
+   "account_number": "701.09",
+   "account_type": "Expense Account"
+  },
+  "Comisiones Bancarias": {
+   "account_number": "701.10",
+   "account_type": "Expense Account"
+  },
+  "Otros Gastos Financieros": {
+   "account_number": "701.11",
+   "account_type": "Expense Account"
+  },
+  "root_type": "Expense"
+ },
+ "Productos Financieros": {
+  "is_group": 1,
+  "Utilidad Cambiaria": {
+   "account_number": "702.01",
+   "account_type": "Income Account"
+  },
+  "Utilidad Cambiaria Nacional Parte Relacionada": {
+   "account_number": "702.02",
+   "account_type": "Income Account"
+  },
+  "Utilidad Cambiaria Extranjero Parte Relacionada": {
+   "account_number": "702.03",
+   "account_type": "Income Account"
+  },
+  "Intereses A Favor Bancarios Nacional": {
+   "account_number": "702.04",
+   "account_type": "Income Account"
+  },
+  "Intereses A Favor Bancarios Extranjero": {
+   "account_number": "702.05",
+   "account_type": "Income Account"
+  },
+  "Intereses A Favor De Personas Físicas Nacional": {
+   "account_number": "702.06",
+   "account_type": "Income Account"
+  },
+  "Intereses A Favor De Personas Físicas Extranjero": {
+   "account_number": "702.07",
+   "account_type": "Income Account"
+  },
+  "Intereses A Favor De Personas Morales Nacional": {
+   "account_number": "702.08",
+   "account_type": "Income Account"
+  },
+  "Intereses A Favor De Personas Morales Extranjero": {
+   "account_number": "702.09",
+   "account_type": "Income Account"
+  },
+  "Otros Productos Financieros": {
+   "account_number": "702.10",
+   "account_type": "Income Account"
+  },
+  "root_type": "Expense"
+ },
+ "Otros Gastos": {
+  "is_group": 1,
+  "Pérdida En Venta Y/O Baja De Terrenos": {
+   "account_number": "703.01"
+  },
+  "Pérdida En Venta Y/O Baja De Edificios": {
+   "account_number": "703.02"
+  },
+  "Pérdida En Venta Y/O Baja De Maquinaria Y Equipo": {
+   "account_number": "703.03"
+  },
+  "Pérdida En Venta Y/O Baja De Automóviles, Autobuses, Camiones De Carga, Tractocamiones,": {
+   "account_number": "703.04"
+  },
+  "Pérdida En Venta Y/O Baja De Mobiliario Y Equipo De Oficina": {
+   "account_number": "703.05"
+  },
+  "Pérdida En Venta Y/O Baja De Equipo De Cómputo": {
+   "account_number": "703.06"
+  },
+  "Pérdida En Venta Y/O Baja De Equipo De Comunicación": {
+   "account_number": "703.07"
+  },
+  "Pérdida En Venta Y/O Baja De Activos Biológicos, Vegetales Y Semovientes": {
+   "account_number": "703.08"
+  },
+  "Pérdida En Venta Y/O Baja De Otros Activos Fijos": {
+   "account_number": "703.09"
+  },
+  "Pérdida En Venta Y/O Baja De Ferrocarriles": {
+   "account_number": "703.10"
+  },
+  "Pérdida En Venta Y/O Baja De Embarcaciones": {
+   "account_number": "703.11"
+  },
+  "Pérdida En Venta Y/O Baja De Aviones": {
+   "account_number": "703.12"
+  },
+  "Pérdida En Venta Y/O Baja De Troqueles, Moldes, Matrices Y Herramental": {
+   "account_number": "703.13"
+  },
+  "Pérdida En Venta Y/O Baja De Equipo De Comunicaciones Telefónicas": {
+   "account_number": "703.14"
+  },
+  "Pérdida En Venta Y/O Baja De Equipo De Comunicación Satelital": {
+   "account_number": "703.15"
+  },
+  "Pérdida En Venta Y/O Baja De Equipo De Adaptaciones Para Personas Con Capacidades Diferentes": {
+   "account_number": "703.16"
+  },
+  "Pérdida En Venta Y/O Baja De Maquinaria Y Equipo De Generación De Energía De Fuentes": {
+   "account_number": "703.17"
+  },
+  "Pérdida En Venta Y/O Baja De Otra Maquinaria Y Equipo": {
+   "account_number": "703.18"
+  },
+  "Pérdida Por Enajenación De Acciones": {
+   "account_number": "703.19"
+  },
+  "Pérdida Por Enajenación De Partes Sociales": {
+   "account_number": "703.20"
+  },
+  "Otros Gastos": {
+   "account_number": "703.21"
+  },
+  "root_type": "Expense"
+ },
+ "Otros Productos": {
+  "is_group": 1,
+  "Ganancia En Venta Y/O Baja De Terrenos": {
+   "account_number": "704.01",
+   "account_type": "Income Account"
+  },
+  "Ganancia En Venta Y/O Baja De Edificios": {
+   "account_number": "704.02",
+   "account_type": "Income Account"
+  },
+  "Ganancia En Venta Y/O Baja De Maquinaria Y Equipo": {
+   "account_number": "704.03",
+   "account_type": "Income Account"
+  },
+  "Ganancia En Venta Y/O Baja De Automóviles, Autobuses, Camiones De Carga, Tractocamiones,": {
+   "account_number": "704.04",
+   "account_type": "Income Account"
+  },
+  "Ganancia En Venta Y/O Baja De Mobiliario Y Equipo De Oficina": {
+   "account_number": "704.05",
+   "account_type": "Income Account"
+  },
+  "Ganancia En Venta Y/O Baja De Equipo De Cómputo": {
+   "account_number": "704.06",
+   "account_type": "Income Account"
+  },
+  "Ganancia En Venta Y/O Baja De Equipo De Comunicación": {
+   "account_number": "704.07",
+   "account_type": "Income Account"
+  },
+  "Ganancia En Venta Y/O Baja De Activos Biológicos, Vegetales Y Semovientes": {
+   "account_number": "704.08",
+   "account_type": "Income Account"
+  },
+  "Ganancia En Venta Y/O Baja De Otros Activos Fijos": {
+   "account_number": "704.09",
+   "account_type": "Income Account"
+  },
+  "Ganancia En Venta Y/O Baja De Ferrocarriles": {
+   "account_number": "704.10",
+   "account_type": "Income Account"
+  },
+  "Ganancia En Venta Y/O Baja De Embarcaciones": {
+   "account_number": "704.11",
+   "account_type": "Income Account"
+  },
+  "Ganancia En Venta Y/O Baja De Aviones": {
+   "account_number": "704.12",
+   "account_type": "Income Account"
+  },
+  "Ganancia En Venta Y/O Baja De Troqueles, Moldes, Matrices Y Herramental": {
+   "account_number": "704.13",
+   "account_type": "Income Account"
+  },
+  "Ganancia En Venta Y/O Baja De Equipo De Comunicaciones Telefónicas": {
+   "account_number": "704.14",
+   "account_type": "Income Account"
+  },
+  "Ganancia En Venta Y/O Baja De Equipo De Comunicación Satelital": {
+   "account_number": "704.15",
+   "account_type": "Income Account"
+  },
+  "Ganancia En Venta Y/O Baja De Equipo De Adaptaciones Para Personas Con Capacidades": {
+   "account_number": "704.16",
+   "account_type": "Income Account"
+  },
+  "Ganancia En Venta De Maquinaria Y Equipo De Generación De Energía De Fuentes Renovables O De": {
+   "account_number": "704.17",
+   "account_type": "Income Account"
+  },
+  "Ganancia En Venta Y/O Baja De Otra Maquinaria Y Equipo": {
+   "account_number": "704.18",
+   "account_type": "Income Account"
+  },
+  "Ganancia Por Enajenación De Acciones": {
+   "account_number": "704.19",
+   "account_type": "Income Account"
+  },
+  "Ganancia Por Enajenación De Partes Sociales": {
+   "account_number": "704.20",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Estímulos Fiscales": {
+   "account_number": "704.21",
+   "account_type": "Income Account"
+  },
+  "Ingresos Por Condonación De Adeudo": {
+   "account_number": "704.22",
+   "account_type": "Income Account"
+  },
+  "Otros Productos": {
+   "account_number": "704.23",
+   "account_type": "Income Account"
+  },
+  "root_type": "Expense"
+ }
+}

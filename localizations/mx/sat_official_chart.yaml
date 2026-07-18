@@ -1,0 +1,6484 @@
+metadata:
+  jurisdiction: mx
+  authority: SAT (Servicio de Administración Tributaria)
+  source_url: https://www.sat.gob.mx/minisitio/NormatividadRMFyRGCE/documentos2026/rmf/anexos/Anexo_24_RMF2026-13012026.pdf
+  extraction_date: "2026-01-13"
+  parser: scripts/coa_fidelity/parse_sat_codigo_agrupador.py
+  total_accounts: 1079
+  note: Verbatim transcription of SAT Código Agrupador from Anexo 24 RMF 2026. SAT Anexo 24 does not assign codes to specific financial statements; statement field is set to "Catálogo de Cuentas" for all codes.
+
+accounts:
+- code: '100'
+  name: Activo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 0
+- code: '100.01'
+  name: Activo a corto plazo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 0
+- code: '101'
+  name: Caja
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '101.01'
+  name: Caja y efectivo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '102'
+  name: Bancos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '102.01'
+  name: Bancos nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '102.02'
+  name: Bancos extranjeros
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '103'
+  name: Inversiones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '103.01'
+  name: Inversiones temporales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '103.02'
+  name: Inversiones en fideicomisos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '103.03'
+  name: Otras inversiones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '104'
+  name: Otros instrumentos financieros
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '104.01'
+  name: Otros instrumentos financieros
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '105'
+  name: Clientes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '105.01'
+  name: Clientes nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '105.02'
+  name: Clientes extranjeros
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '105.03'
+  name: Clientes nacionales parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '105.04'
+  name: Clientes extranjeros parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '106'
+  name: Cuentas y documentos por cobrar a corto plazo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '106.01'
+  name: Cuentas y documentos por cobrar a corto plazo nacional
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '106.02'
+  name: Cuentas y documentos por cobrar a corto plazo extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '106.03'
+  name: Cuentas y documentos por cobrar a corto plazo nacional parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '106.04'
+  name: Cuentas y documentos por cobrar a corto plazo extranjero parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '106.05'
+  name: Intereses por cobrar a corto plazo nacional
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '106.06'
+  name: Intereses por cobrar a corto plazo extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '106.07'
+  name: Intereses por cobrar a corto plazo nacional parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '106.08'
+  name: Intereses por cobrar a corto plazo extranjero parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '106.09'
+  name: Otras cuentas y documentos por cobrar a corto plazo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '106.10'
+  name: Otras cuentas y documentos por cobrar a corto plazo parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '107'
+  name: Deudores diversos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '107.01'
+  name: Funcionarios y empleados
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '107.02'
+  name: Socios y accionistas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '107.03'
+  name: Partes relacionadas nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '107.04'
+  name: Partes relacionadas extranjeros
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '107.05'
+  name: Otros deudores diversos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '108'
+  name: Estimación de cuentas incobrables
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '108.01'
+  name: Estimación de cuentas incobrables nacional
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '108.02'
+  name: Estimación de cuentas incobrables extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '108.03'
+  name: Estimación de cuentas incobrables nacional parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '108.04'
+  name: Estimación de cuentas incobrables extranjero parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109'
+  name: Pagos anticipados
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '109.01'
+  name: Seguros y fianzas pagados por anticipado nacional
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.02'
+  name: Seguros y fianzas pagados por anticipado extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.03'
+  name: Seguros y fianzas pagados por anticipado nacional parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.04'
+  name: Seguros y fianzas pagados por anticipado extranjero parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.05'
+  name: Rentas pagados por anticipado nacional
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.06'
+  name: Rentas pagados por anticipado extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.07'
+  name: Rentas pagados por anticipado nacional parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.08'
+  name: Rentas pagados por anticipado extranjero parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.09'
+  name: Intereses pagados por anticipado nacional
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.10'
+  name: Intereses pagados por anticipado extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.11'
+  name: Intereses pagados por anticipado nacional parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.12'
+  name: Intereses pagados por anticipado extranjero parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.13'
+  name: Factoraje financiero pagados por anticipado nacional
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.14'
+  name: Factoraje financiero pagados por anticipado extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.15'
+  name: Factoraje financiero pagados por anticipado nacional parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.16'
+  name: Factoraje financiero pagados por anticipado extranjero parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.17'
+  name: Arrendamiento financiero pagados por anticipado nacional
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.18'
+  name: Arrendamiento financiero pagados por anticipado extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.19'
+  name: Arrendamiento financiero pagados por anticipado nacional parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.20'
+  name: Arrendamiento financiero pagados por anticipado extranjero parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.21'
+  name: Pérdida por deterioro de pagos anticipados
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.22'
+  name: Derechos fiduciarios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '109.23'
+  name: Otros pagos anticipados
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '110'
+  name: Subsidio al empleo por aplicar
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '110.01'
+  name: Subsidio al empleo por aplicar
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '111'
+  name: Crédito al diésel por acreditar
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '111.01'
+  name: Crédito al diésel por acreditar
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '112'
+  name: Otros estímulos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '112.01'
+  name: Otros estímulos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '113'
+  name: Impuestos a favor
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '113.01'
+  name: IVA a favor
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '113.02'
+  name: ISR a favor
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '113.03'
+  name: IETU a favor
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '113.04'
+  name: IDE a favor
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '113.05'
+  name: IA a favor
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '113.06'
+  name: Subsidio al empleo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '113.07'
+  name: Pago de lo indebido
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '113.08'
+  name: Otros impuestos a favor
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '114'
+  name: Pagos provisionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '114.01'
+  name: Pagos provisionales de ISR
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '115'
+  name: Inventario
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '115.01'
+  name: Inventario
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '115.02'
+  name: Materia prima y materiales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '115.03'
+  name: Producción en proceso
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '115.04'
+  name: Productos terminados
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '115.05'
+  name: Mercancías en tránsito
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '115.06'
+  name: Mercancías en poder de terceros
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '115.07'
+  name: Otros
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '116'
+  name: Estimación de inventarios obsoletos y de lento movimiento
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '116.01'
+  name: Estimación de inventarios obsoletos y de lento movimiento
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '117'
+  name: Obras en proceso de inmuebles
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '117.01'
+  name: Obras en proceso de inmuebles
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '118'
+  name: Impuestos acreditables pagados
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '118.01'
+  name: IVA acreditable pagado
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '118.02'
+  name: IVA acreditable de importación pagado
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '118.03'
+  name: IEPS acreditable pagado
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '118.04'
+  name: IEPS pagado en importación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '119'
+  name: Impuestos acreditables por pagar
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '119.01'
+  name: IVA pendiente de pago
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '119.02'
+  name: IVA de importación pendiente de pago
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '119.03'
+  name: IEPS pendiente de pago
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '119.04'
+  name: IEPS pendiente de pago en importación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '120'
+  name: Anticipo a proveedores
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '120.01'
+  name: Anticipo a proveedores nacional
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '120.02'
+  name: Anticipo a proveedores extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '120.03'
+  name: Anticipo a proveedores nacional parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '120.04'
+  name: Anticipo a proveedores extranjero parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '121'
+  name: Otros activos a corto plazo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '121.01'
+  name: Otros activos a corto plazo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '100.02'
+  name: Activo a largo plazo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 0
+- code: '151'
+  name: Terrenos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '151.01'
+  name: Terrenos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '152'
+  name: Edificios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '152.01'
+  name: Edificios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '153'
+  name: Maquinaria y equipo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '153.01'
+  name: Maquinaria y equipo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '154'
+  name: Automóviles, autobuses, camiones de carga, tractocamiones, montacargas y remolques
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '154.01'
+  name: Automóviles, autobuses, camiones de carga, tractocamiones, montacargas y remolques
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '155'
+  name: Mobiliario y equipo de oficina
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '155.01'
+  name: Mobiliario y equipo de oficina
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '156'
+  name: Equipo de cómputo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '156.01'
+  name: Equipo de cómputo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '157'
+  name: Equipo de comunicación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '157.01'
+  name: Equipo de comunicación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '158'
+  name: Activos biológicos, vegetales y semovientes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '158.01'
+  name: Activos biológicos, vegetales y semovientes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '159'
+  name: Obras en proceso de activos fijos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '159.01'
+  name: Obras en proceso de activos fijos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '160'
+  name: Otros activos fijos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '160.01'
+  name: Otros activos fijos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '161'
+  name: Ferrocarriles
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '161.01'
+  name: Ferrocarriles
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '162'
+  name: Embarcaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '162.01'
+  name: Embarcaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '163'
+  name: Aviones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '163.01'
+  name: Aviones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '164'
+  name: Troqueles, moldes, matrices y herramental
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '164.01'
+  name: Troqueles, moldes, matrices y herramental
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '165'
+  name: Equipo de comunicaciones telefónicas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '165.01'
+  name: Equipo de comunicaciones telefónicas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '166'
+  name: Equipo de comunicación satelital
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '166.01'
+  name: Equipo de comunicación satelital
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '167'
+  name: Equipo de adaptaciones para personas con capacidades diferentes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '167.01'
+  name: Equipo de adaptaciones para personas con capacidades diferentes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '168'
+  name: Maquinaria y equipo de generación de energía de fuentes renovables o de sistemas de
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '168.01'
+  name: Maquinaria y equipo de generación de energía de fuentes renovables o de sistemas de
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '169'
+  name: Otra maquinaria y equipo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '169.01'
+  name: Otra maquinaria y equipo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '170'
+  name: Adaptaciones y mejoras
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '170.01'
+  name: Adaptaciones y mejoras
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '171'
+  name: Depreciación acumulada de activos fijos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '171.01'
+  name: Depreciación acumulada de edificios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '171.02'
+  name: Depreciación acumulada de maquinaria y equipo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '171.03'
+  name: Depreciación acumulada de automóviles, autobuses, camiones de carga, tractocamiones,
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '171.04'
+  name: Depreciación acumulada de mobiliario y equipo de oficina
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '171.05'
+  name: Depreciación acumulada de equipo de cómputo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '171.06'
+  name: Depreciación acumulada de equipo de comunicación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '171.07'
+  name: Depreciación acumulada de activos biológicos, vegetales y semovientes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '171.08'
+  name: Depreciación acumulada de otros activos fijos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '171.09'
+  name: Depreciación acumulada de ferrocarriles
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '171.10'
+  name: Depreciación acumulada de embarcaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '171.11'
+  name: Depreciación acumulada de aviones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '171.12'
+  name: Depreciación acumulada de troqueles, moldes, matrices y herramental
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '171.13'
+  name: Depreciación acumulada de equipo de comunicaciones telefónicas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '171.14'
+  name: Depreciación acumulada de equipo de comunicación satelital
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '171.15'
+  name: Depreciación acumulada de equipo de adaptaciones para personas con capacidades diferentes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '171.16'
+  name: Depreciación acumulada de maquinaria y equipo de generación de energía de fuentes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '171.17'
+  name: Depreciación acumulada de adaptaciones y mejoras
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '171.18'
+  name: Depreciación acumulada de otra maquinaria y equipo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '172'
+  name: Pérdida por deterioro acumulado de activos fijos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '172.01'
+  name: Pérdida por deterioro acumulado de edificios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '172.02'
+  name: Pérdida por deterioro acumulado de maquinaria y equipo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '172.03'
+  name: Pérdida por deterioro acumulado de             automóviles,   autobuses,   camiones   de   carga,
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '172.04'
+  name: Pérdida por deterioro acumulado de mobiliario y equipo de oficina
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '172.05'
+  name: Pérdida por deterioro acumulado de equipo de cómputo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '172.06'
+  name: Pérdida por deterioro acumulado de equipo de comunicación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '172.07'
+  name: Pérdida por deterioro acumulado de activos biológicos, vegetales y semovientes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '172.08'
+  name: Pérdida por deterioro acumulado de otros activos fijos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '172.09'
+  name: Pérdida por deterioro acumulado de ferrocarriles
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '172.10'
+  name: Pérdida por deterioro acumulado de embarcaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '172.11'
+  name: Pérdida por deterioro acumulado de aviones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '172.12'
+  name: Pérdida por deterioro acumulado de troqueles, moldes, matrices y herramental
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '172.13'
+  name: Pérdida por deterioro acumulado de equipo de comunicaciones telefónicas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '172.14'
+  name: Pérdida por deterioro acumulado de equipo de comunicación satelital
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '172.15'
+  name: Pérdida por deterioro acumulado de equipo de adaptaciones para personas con capacidades
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '172.16'
+  name: Pérdida por deterioro acumulado de maquinaria y equipo de generación de energía de fuentes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '172.17'
+  name: Pérdida por deterioro acumulado de adaptaciones y mejoras
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '172.18'
+  name: Pérdida por deterioro acumulado de otra maquinaria y equipo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '173'
+  name: Gastos diferidos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '173.01'
+  name: Gastos diferidos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '174'
+  name: Gastos pre operativos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '174.01'
+  name: Gastos pre operativos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '175'
+  name: Regalías, asistencia técnica y otros gastos diferidos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '175.01'
+  name: Regalías, asistencia técnica y otros gastos diferidos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '176'
+  name: Activos intangibles
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '176.01'
+  name: Activos intangibles
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '177'
+  name: Gastos de organización
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '177.01'
+  name: Gastos de organización
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '178'
+  name: Investigación y desarrollo de mercado
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '178.01'
+  name: Investigación y desarrollo de mercado
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '179'
+  name: Marcas y patentes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '179.01'
+  name: Marcas y patentes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '180'
+  name: Crédito mercantil
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '180.01'
+  name: Crédito mercantil
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '181'
+  name: Gastos de instalación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '181.01'
+  name: Gastos de instalación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '182'
+  name: Otros activos diferidos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '182.01'
+  name: Otros activos diferidos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '183'
+  name: Amortización acumulada de activos diferidos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '183.01'
+  name: Amortización acumulada de gastos diferidos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '183.02'
+  name: Amortización acumulada de gastos pre operativos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '183.03'
+  name: Amortización acumulada de regalías, asistencia técnica y otros gastos diferidos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '183.04'
+  name: Amortización acumulada de activos intangibles
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '183.05'
+  name: Amortización acumulada de gastos de organización
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '183.06'
+  name: Amortización acumulada de investigación y desarrollo de mercado
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '183.07'
+  name: Amortización acumulada de marcas y patentes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '183.08'
+  name: Amortización acumulada de crédito mercantil
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '183.09'
+  name: Amortización acumulada de gastos de instalación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '183.10'
+  name: Amortización acumulada de otros activos diferidos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '184'
+  name: Depósitos en garantía
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '184.01'
+  name: Depósitos de fianzas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '184.02'
+  name: Depósitos de arrendamiento de bienes inmuebles
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '184.03'
+  name: Otros depósitos en garantía
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '185'
+  name: Impuestos diferidos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '185.01'
+  name: Impuestos diferidos ISR
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '186'
+  name: Cuentas y documentos por cobrar a largo plazo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '186.01'
+  name: Cuentas y documentos por cobrar a largo plazo nacional
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '186.02'
+  name: Cuentas y documentos por cobrar a largo plazo extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '186.03'
+  name: Cuentas y documentos por cobrar a largo plazo nacional parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '186.04'
+  name: Cuentas y documentos por cobrar a largo plazo extranjero parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '186.05'
+  name: Intereses por cobrar a largo plazo nacional
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '186.06'
+  name: Intereses por cobrar a largo plazo extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '186.07'
+  name: Intereses por cobrar a largo plazo nacional parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '186.08'
+  name: Intereses por cobrar a largo plazo extranjero parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '186.09'
+  name: Otras cuentas y documentos por cobrar a largo plazo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '186.10'
+  name: Otras cuentas y documentos por cobrar a largo plazo parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '187'
+  name: Participación de los trabajadores en las utilidades diferidas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '187.01'
+  name: Participación de los trabajadores en las utilidades diferidas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '188'
+  name: Inversiones permanentes en acciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '188.01'
+  name: Inversiones a largo plazo en subsidiarias
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '188.02'
+  name: Inversiones a largo plazo en asociadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '188.03'
+  name: Otras inversiones permanentes en acciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '189'
+  name: Estimación por deterioro de inversiones permanentes en acciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '189.01'
+  name: Estimación por deterioro de inversiones permanentes en acciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '190'
+  name: Otros instrumentos financieros
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '190.01'
+  name: Otros instrumentos financieros
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '191'
+  name: Otros activos a largo plazo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '191.01'
+  name: Otros activos a largo plazo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '200'
+  name: Pasivo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 0
+- code: '200.01'
+  name: Pasivo a corto plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 0
+- code: '201'
+  name: Proveedores
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '201.01'
+  name: Proveedores nacionales
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '201.02'
+  name: Proveedores extranjeros
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '201.03'
+  name: Proveedores nacionales parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '201.04'
+  name: Proveedores extranjeros parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '202'
+  name: Cuentas por pagar a corto plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '202.01'
+  name: Documentos por pagar bancario y financiero nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '202.02'
+  name: Documentos por pagar bancario y financiero extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '202.03'
+  name: Documentos y cuentas por pagar a corto plazo nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '202.04'
+  name: Documentos y cuentas por pagar a corto plazo extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '202.05'
+  name: Documentos y cuentas por pagar a corto plazo nacional parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '202.06'
+  name: Documentos y cuentas por pagar a corto plazo extranjero parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '202.07'
+  name: Intereses por pagar a corto plazo nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '202.08'
+  name: Intereses por pagar a corto plazo extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '202.09'
+  name: Intereses por pagar a corto plazo nacional parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '202.10'
+  name: Intereses por pagar a corto plazo extranjero parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '202.11'
+  name: Dividendo por pagar nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '202.12'
+  name: Dividendo por pagar extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '203'
+  name: Cobros anticipados a corto plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '203.01'
+  name: Rentas cobradas por anticipado a corto plazo nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '203.02'
+  name: Rentas cobradas por anticipado a corto plazo extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '203.03'
+  name: Rentas cobradas por anticipado a corto plazo nacional parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '203.04'
+  name: Rentas cobradas por anticipado a corto plazo extranjero parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '203.05'
+  name: Intereses cobrados por anticipado a corto plazo nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '203.06'
+  name: Intereses cobrados por anticipado a corto plazo extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '203.07'
+  name: Intereses cobrados por anticipado a corto plazo nacional parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '203.08'
+  name: Intereses cobrados por anticipado a corto plazo extranjero parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '203.09'
+  name: Factoraje financiero cobrados por anticipado a corto plazo nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '203.10'
+  name: Factoraje financiero cobrados por anticipado a corto plazo extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '203.11'
+  name: Factoraje financiero cobrados por anticipado a corto plazo nacional parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '203.12'
+  name: Factoraje financiero cobrados por anticipado a corto plazo extranjero parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '203.13'
+  name: Arrendamiento financiero cobrados por anticipado a corto plazo nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '203.14'
+  name: Arrendamiento financiero cobrados por anticipado a corto plazo extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '203.15'
+  name: Arrendamiento financiero cobrados por anticipado a corto plazo nacional parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '203.16'
+  name: Arrendamiento financiero cobrados por anticipado a corto plazo extranjero parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '203.17'
+  name: Derechos fiduciarios
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '203.18'
+  name: Otros cobros anticipados
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '204'
+  name: Instrumentos financieros a corto plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '204.01'
+  name: Instrumentos financieros a corto plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '205'
+  name: Acreedores diversos a corto plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '205.01'
+  name: Socios, accionistas o representante legal
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '205.02'
+  name: Acreedores diversos a corto plazo nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '205.03'
+  name: Acreedores diversos a corto plazo extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '205.04'
+  name: Acreedores diversos a corto plazo nacional parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '205.05'
+  name: Acreedores diversos a corto plazo extranjero parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '205.06'
+  name: Otros acreedores diversos a corto plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '206'
+  name: Anticipo de cliente
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '206.01'
+  name: Anticipo de cliente nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '206.02'
+  name: Anticipo de cliente extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '206.03'
+  name: Anticipo de cliente nacional parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '206.04'
+  name: Anticipo de cliente extranjero parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '206.05'
+  name: Otros anticipos de clientes
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '207'
+  name: Impuestos trasladados
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '207.01'
+  name: IVA trasladado
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '207.02'
+  name: IEPS trasladado
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '208'
+  name: Impuestos trasladados cobrados
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '208.01'
+  name: IVA trasladado cobrado
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '208.02'
+  name: IEPS trasladado cobrado
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '209'
+  name: Impuestos trasladados no cobrados
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '209.01'
+  name: IVA trasladado no cobrado
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '209.02'
+  name: IEPS trasladado no cobrado
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '210'
+  name: Provisión de sueldos y salarios por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '210.01'
+  name: Provisión de sueldos y salarios por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '210.02'
+  name: Provisión de vacaciones por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '210.03'
+  name: Provisión de aguinaldo por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '210.04'
+  name: Provisión de fondo de ahorro por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '210.05'
+  name: Provisión de asimilados a salarios por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '210.06'
+  name: Provisión de anticipos o remanentes por distribuir
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '210.07'
+  name: Provisión de otros sueldos y salarios por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '211'
+  name: Provisión de contribuciones de seguridad social por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '211.01'
+  name: Provisión de IMSS patronal por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '211.02'
+  name: Provisión de SAR por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '211.03'
+  name: Provisión de INFONAVIT por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '212'
+  name: Provisión de impuesto estatal sobre nómina por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '212.01'
+  name: Provisión de impuesto estatal sobre nómina por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '213'
+  name: Impuestos y derechos por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '213.01'
+  name: IVA por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '213.02'
+  name: IEPS por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '213.03'
+  name: ISR por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '213.04'
+  name: Impuesto estatal sobre nómina por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '213.05'
+  name: Impuesto estatal y municipal por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '213.06'
+  name: Derechos por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '213.07'
+  name: Otros impuestos por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '214'
+  name: Dividendos por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '214.01'
+  name: Dividendos por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '215'
+  name: PTU por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '215.01'
+  name: PTU por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '215.02'
+  name: PTU por pagar de ejercicios anteriores
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '215.03'
+  name: Provisión de PTU por pagar
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '216'
+  name: Impuestos retenidos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '216.01'
+  name: Impuestos retenidos de ISR por sueldos y salarios
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '216.02'
+  name: Impuestos retenidos de ISR por asimilados a salarios
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '216.03'
+  name: Impuestos retenidos de ISR por arrendamiento
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '216.04'
+  name: Impuestos retenidos de ISR por servicios profesionales
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '216.05'
+  name: Impuestos retenidos de ISR por dividendos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '216.06'
+  name: Impuestos retenidos de ISR por intereses
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '216.07'
+  name: Impuestos retenidos de ISR por pagos al extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '216.08'
+  name: Impuestos retenidos de ISR por venta de acciones
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '216.09'
+  name: Impuestos retenidos de ISR por venta de partes sociales
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '216.10'
+  name: Impuestos retenidos de IVA
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '216.11'
+  name: Retenciones de IMSS a los trabajadores
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '216.12'
+  name: Otras impuestos retenidos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '217'
+  name: Pagos realizados por cuenta de terceros
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '217.01'
+  name: Pagos realizados por cuenta de terceros
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '218'
+  name: Otros pasivos a corto plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '218.01'
+  name: Otros pasivos a corto plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '200.02'
+  name: Pasivo a largo plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 0
+- code: '251'
+  name: Acreedores diversos a largo plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '251.01'
+  name: Socios, accionistas o representante legal
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '251.02'
+  name: Acreedores diversos a largo plazo nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '251.03'
+  name: Acreedores diversos a largo plazo extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '251.04'
+  name: Acreedores diversos a largo plazo nacional parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '251.05'
+  name: Acreedores diversos a largo plazo extranjero parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '251.06'
+  name: Otros acreedores diversos a largo plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '252'
+  name: Cuentas por pagar a largo plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '252.01'
+  name: Documentos bancarios y financieros por pagar a largo plazo nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '252.02'
+  name: Documentos bancarios y financieros por pagar a largo plazo extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '252.03'
+  name: Documentos y cuentas por pagar a largo plazo nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '252.04'
+  name: Documentos y cuentas por pagar a largo plazo extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '252.05'
+  name: Documentos y cuentas por pagar a largo plazo nacional parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '252.06'
+  name: Documentos y cuentas por pagar a largo plazo extranjero parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '252.07'
+  name: Hipotecas por pagar a largo plazo nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '252.08'
+  name: Hipotecas por pagar a largo plazo extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '252.09'
+  name: Hipotecas por pagar a largo plazo nacional parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '252.10'
+  name: Hipotecas por pagar a largo plazo extranjero parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '252.11'
+  name: Intereses por pagar a largo plazo nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '252.12'
+  name: Intereses por pagar a largo plazo extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '252.13'
+  name: Intereses por pagar a largo plazo nacional parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '252.14'
+  name: Intereses por pagar a largo plazo extranjero parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '252.15'
+  name: Dividendos por pagar nacionales
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '252.16'
+  name: Dividendos por pagar extranjeros
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '252.17'
+  name: Otras cuentas y documentos por pagar a largo plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '253'
+  name: Cobros anticipados a largo plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '253.01'
+  name: Rentas cobradas por anticipado a largo plazo nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '253.02'
+  name: Rentas cobradas por anticipado a largo plazo extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '253.03'
+  name: Rentas cobradas por anticipado a largo plazo nacional parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '253.04'
+  name: Rentas cobradas por anticipado a largo plazo extranjero parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '253.05'
+  name: Intereses cobrados por anticipado a largo plazo nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '253.06'
+  name: Intereses cobrados por anticipado a largo plazo extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '253.07'
+  name: Intereses cobrados por anticipado a largo plazo nacional parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '253.08'
+  name: Intereses cobrados por anticipado a largo plazo extranjero parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '253.09'
+  name: Factoraje financiero cobrados por anticipado a largo plazo nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '253.10'
+  name: Factoraje financiero cobrados por anticipado a largo plazo extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '253.11'
+  name: Factoraje financiero cobrados por anticipado a largo plazo nacional parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '253.12'
+  name: Factoraje financiero cobrados por anticipado a largo plazo extranjero parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '253.13'
+  name: Arrendamiento financiero cobrados por anticipado a largo plazo nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '253.14'
+  name: Arrendamiento financiero cobrados por anticipado a largo plazo extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '253.15'
+  name: Arrendamiento financiero cobrados por anticipado a largo plazo nacional parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '253.16'
+  name: Arrendamiento financiero cobrados por anticipado a largo plazo extranjero parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '253.17'
+  name: Derechos fiduciarios
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '253.18'
+  name: Otros cobros anticipados
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '254'
+  name: Instrumentos financieros a largo plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '254.01'
+  name: Instrumentos financieros a largo plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '255'
+  name: Pasivos por beneficios a los empleados a largo plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '255.01'
+  name: Pasivos por beneficios a los empleados a largo plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '256'
+  name: Otros pasivos a largo plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '256.01'
+  name: Otros pasivos a largo plazo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '257'
+  name: Participación de los trabajadores en las utilidades diferida
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '257.01'
+  name: Participación de los trabajadores en las utilidades diferida
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '258'
+  name: Obligaciones contraídas de fideicomisos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '258.01'
+  name: Obligaciones contraídas de fideicomisos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '259'
+  name: Impuestos diferidos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '259.01'
+  name: ISR diferido
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '259.02'
+  name: ISR por dividendo diferido
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '259.03'
+  name: Otros impuestos diferidos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '260'
+  name: Pasivos diferidos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '260.01'
+  name: Pasivos diferidos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '300'
+  name: Capital contable
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 0
+- code: '301'
+  name: Capital social
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '301.01'
+  name: Capital fijo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '301.02'
+  name: Capital variable
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '301.03'
+  name: Aportaciones para futuros aumentos de capital
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '301.04'
+  name: Prima en suscripción de acciones
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '301.05'
+  name: Prima en suscripción de partes sociales
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '302'
+  name: Patrimonio
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '302.01'
+  name: Patrimonio
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '302.02'
+  name: Aportación patrimonial
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '302.03'
+  name: Déficit o remanente del ejercicio
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '303'
+  name: Reserva legal
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '303.01'
+  name: Reserva legal
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '304'
+  name: Resultado de ejercicios anteriores
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '304.01'
+  name: Utilidad de ejercicios anteriores
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '304.02'
+  name: Pérdida de ejercicios anteriores
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '304.03'
+  name: Resultado integral de ejercicios anteriores
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '304.04'
+  name: Déficit o remanente de ejercicio anteriores
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '305'
+  name: Resultado del ejercicio
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '305.01'
+  name: Utilidad del ejercicio
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '305.02'
+  name: Pérdida del ejercicio
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '305.03'
+  name: Resultado integral
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '306'
+  name: Otras cuentas de capital
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '306.01'
+  name: Otras cuentas de capital
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '400'
+  name: Ingresos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 0
+- code: '401'
+  name: Ingresos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '401.01'
+  name: Ventas y/o servicios gravados a la tasa general
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.02'
+  name: Ventas y/o servicios gravados a la tasa general de contado
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.03'
+  name: Ventas y/o servicios gravados a la tasa general a crédito
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.04'
+  name: Ventas y/o servicios gravados al 0%
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.05'
+  name: Ventas y/o servicios gravados al 0% de contado
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.06'
+  name: Ventas y/o servicios gravados al 0% a crédito
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.07'
+  name: Ventas y/o servicios exentos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.08'
+  name: Ventas y/o servicios exentos de contado
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.09'
+  name: Ventas y/o servicios exentos a crédito
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.10'
+  name: Ventas y/o servicios gravados a la tasa general nacionales partes relacionadas
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.11'
+  name: Ventas y/o servicios gravados a la tasa general extranjeros partes relacionadas
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.12'
+  name: Ventas y/o servicios gravados al 0% nacionales partes relacionadas
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.13'
+  name: Ventas y/o servicios gravados al 0% extranjeros partes relacionadas
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.14'
+  name: Ventas y/o servicios exentos nacionales partes relacionadas
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.15'
+  name: Ventas y/o servicios exentos extranjeros partes relacionadas
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.16'
+  name: Ingresos por servicios administrativos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.17'
+  name: Ingresos por servicios administrativos nacionales partes relacionadas
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.18'
+  name: Ingresos por servicios administrativos extranjeros partes relacionadas
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.19'
+  name: Ingresos por servicios profesionales
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.20'
+  name: Ingresos por servicios profesionales nacionales partes relacionadas
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.21'
+  name: Ingresos por servicios profesionales extranjeros partes relacionadas
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.22'
+  name: Ingresos por arrendamiento
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.23'
+  name: Ingresos por arrendamiento nacionales partes relacionadas
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.24'
+  name: Ingresos por arrendamiento extranjeros partes relacionadas
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.25'
+  name: Ingresos por exportación
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.26'
+  name: Ingresos por comisiones
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.27'
+  name: Ingresos por maquila
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.28'
+  name: Ingresos por coordinados
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.29'
+  name: Ingresos por regalías
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.30'
+  name: Ingresos por asistencia técnica
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.31'
+  name: Ingresos por donativos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.32'
+  name: Ingresos por intereses (actividad propia)
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.33'
+  name: Ingresos de copropiedad
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.34'
+  name: Ingresos por fideicomisos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.35'
+  name: Ingresos por factoraje financiero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.36'
+  name: Ingresos por arrendamiento financiero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.37'
+  name: Ingresos de extranjeros con establecimiento en el país
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.38'
+  name: Otros ingresos propios
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.39'
+  name: Ventas y/o servicios gravados realizados en zona fronteriza norte
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.40'
+  name: Ventas y/o servicios gravados realizados en zona fronteriza norte de contado
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '401.41'
+  name: Ventas y/o servicios gravados realizados en zona fronteriza norte a crédito
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '402'
+  name: Devoluciones, descuentos o bonificaciones sobre ingresos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '402.01'
+  name: Devoluciones, descuentos o bonificaciones sobre ventas y/o servicios a la tasa general
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '402.02'
+  name: Devoluciones, descuentos o bonificaciones sobre ventas y/o servicios al 0%
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 0
+- code: '402.03'
+  name: Devoluciones, descuentos o bonificaciones sobre ventas y/o servicios exentos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '402.04'
+  name: Devoluciones, descuentos o bonificaciones de otros ingresos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '402.05'
+  name: Devoluciones, descuentos o bonificaciones sobre ventas y/o servicios en zona fronteriza norte
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '403'
+  name: Otros ingresos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '403.01'
+  name: Otros Ingresos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '403.02'
+  name: Otros ingresos nacionales parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '403.03'
+  name: Otros ingresos extranjeros parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '403.04'
+  name: Ingresos por operaciones discontinuas
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '403.05'
+  name: Ingresos por condonación de adeudo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '500'
+  name: Costos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 0
+- code: '501'
+  name: Costo de venta y/o servicio
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '501.01'
+  name: Costo de venta
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '501.02'
+  name: Costo de servicios (Mano de obra)
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '501.03'
+  name: Materia prima directa utilizada para la producción
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '501.04'
+  name: Materia prima consumida en el proceso productivo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '501.05'
+  name: Mano de obra directa consumida
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '501.06'
+  name: Mano de obra directa
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '501.07'
+  name: Cargos indirectos de producción
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '501.08'
+  name: Otros conceptos de costo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '502'
+  name: Compras
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '502.01'
+  name: Compras nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '502.02'
+  name: Compras nacionales parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '502.03'
+  name: Compras de Importación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '502.04'
+  name: Compras de Importación partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '503'
+  name: Devoluciones, descuentos o bonificaciones sobre compras
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '503.01'
+  name: Devoluciones, descuentos o bonificaciones sobre compras
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504'
+  name: Otras cuentas de costos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '504.01'
+  name: Gastos indirectos de fabricación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.02'
+  name: Gastos indirectos de fabricación de partes relacionadas nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.03'
+  name: Gastos indirectos de fabricación de partes relacionadas extranjeras
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.04'
+  name: Otras cuentas de costos incurridos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.05'
+  name: Otras cuentas de costos incurridos con partes relacionadas nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.06'
+  name: Otras cuentas de costos incurridos con partes relacionadas extranjeras
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.07'
+  name: Depreciación de edificios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.08'
+  name: Depreciación de maquinaria y equipo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.09'
+  name: Depreciación de automóviles, autobuses, camiones de carga, tractocamiones, montacargas y
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.10'
+  name: Depreciación de mobiliario y equipo de oficina
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.11'
+  name: Depreciación de equipo de cómputo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.12'
+  name: Depreciación de equipo de comunicación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.13'
+  name: Depreciación de activos biológicos, vegetales y semovientes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.14'
+  name: Depreciación de otros activos fijos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.15'
+  name: Depreciación de ferrocarriles
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.16'
+  name: Depreciación de embarcaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.17'
+  name: Depreciación de aviones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.18'
+  name: Depreciación de troqueles, moldes, matrices y herramental
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.19'
+  name: Depreciación de equipo de comunicaciones telefónicas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.20'
+  name: Depreciación de equipo de comunicación satelital
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.21'
+  name: Depreciación de equipo de adaptaciones para personas con capacidades diferentes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.22'
+  name: Depreciación de maquinaria y equipo de generación de energía de fuentes renovables o de
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.23'
+  name: Depreciación de adaptaciones y mejoras
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.24'
+  name: Depreciación de otra maquinaria y equipo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '504.25'
+  name: Otras cuentas de costos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '505'
+  name: Costo de activo fijo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '505.01'
+  name: Costo por venta de activo fijo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '505.02'
+  name: Costo por baja de activo fijo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '600'
+  name: Gastos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 0
+- code: '601'
+  name: Gastos generales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '601.01'
+  name: Sueldos y salarios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.02'
+  name: Compensaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.03'
+  name: Tiempos extras
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.04'
+  name: Premios de asistencia
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.05'
+  name: Premios de puntualidad
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.06'
+  name: Vacaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.07'
+  name: Prima vacacional
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.08'
+  name: Prima dominical
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.09'
+  name: Días festivos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.10'
+  name: Gratificaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.11'
+  name: Primas de antigüedad
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.12'
+  name: Aguinaldo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.13'
+  name: Indemnizaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.14'
+  name: Destajo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.15'
+  name: Despensa
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.16'
+  name: Transporte
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.17'
+  name: Servicio médico
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.18'
+  name: Ayuda en gastos funerarios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.19'
+  name: Fondo de ahorro
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.20'
+  name: Cuotas sindicales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.21'
+  name: PTU
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.22'
+  name: Estímulo al personal
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.23'
+  name: Previsión social
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.24'
+  name: Aportaciones para el plan de jubilación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.25'
+  name: Otras prestaciones al personal
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.26'
+  name: Cuotas al IMSS
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.27'
+  name: Aportaciones al INFONAVIT
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.28'
+  name: Aportaciones al SAR
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.29'
+  name: Impuesto estatal sobre nóminas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.30'
+  name: Otras aportaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.31'
+  name: Asimilados a salarios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.32'
+  name: Servicios administrativos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.33'
+  name: Servicios administrativos partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.34'
+  name: Honorarios a personas físicas residentes nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.35'
+  name: Honorarios a personas físicas residentes nacionales partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.36'
+  name: Honorarios a personas físicas residentes del extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.37'
+  name: Honorarios a personas físicas residentes del extranjero partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.38'
+  name: Honorarios a personas morales residentes nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.39'
+  name: Honorarios a personas morales residentes nacionales partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.40'
+  name: Honorarios a personas morales residentes del extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.41'
+  name: Honorarios a personas morales residentes del extranjero partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.42'
+  name: Honorarios aduanales personas físicas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.43'
+  name: Honorarios aduanales personas morales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.44'
+  name: Honorarios al consejo de administración
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.45'
+  name: Arrendamiento a personas físicas residentes nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.46'
+  name: Arrendamiento a personas morales residentes nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.47'
+  name: Arrendamiento a residentes del extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.48'
+  name: Combustibles y lubricantes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.49'
+  name: Viáticos y gastos de viaje
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.50'
+  name: Teléfono, internet
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.51'
+  name: Agua
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.52'
+  name: Energía eléctrica
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.53'
+  name: Vigilancia y seguridad
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.54'
+  name: Limpieza
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.55'
+  name: Papelería y artículos de oficina
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.56'
+  name: Mantenimiento y conservación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.57'
+  name: Seguros y fianzas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.58'
+  name: Otros impuestos y derechos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.59'
+  name: Recargos fiscales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.60'
+  name: Cuotas y suscripciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.61'
+  name: Propaganda y publicidad
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.62'
+  name: Capacitación al personal
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.63'
+  name: Donativos y ayudas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.64'
+  name: Asistencia técnica
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.65'
+  name: Regalías sujetas a otros porcentajes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.66'
+  name: Regalías sujetas al 5%
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.67'
+  name: Regalías sujetas al 10%
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.68'
+  name: Regalías sujetas al 15%
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.69'
+  name: Regalías sujetas al 25%
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.70'
+  name: Regalías sujetas al 30%
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.71'
+  name: Regalías sin retención
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.72'
+  name: Fletes y acarreos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.73'
+  name: Gastos de importación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.74'
+  name: Comisiones sobre ventas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.75'
+  name: Comisiones por tarjetas de crédito
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.76'
+  name: Patentes y marcas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.77'
+  name: Uniformes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.78'
+  name: Prediales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.79'
+  name: Gastos generales de urbanización
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.80'
+  name: Gastos generales de construcción
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.81'
+  name: Fletes del extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.82'
+  name: Recolección de bienes del sector agropecuario y/o ganadero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.83'
+  name: Gastos no deducibles (sin requisitos fiscales)
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '601.84'
+  name: Otros gastos generales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602'
+  name: Gastos de venta
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '602.01'
+  name: Sueldos y salarios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.02'
+  name: Compensaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.03'
+  name: Tiempos extras
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.04'
+  name: Premios de asistencia
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.05'
+  name: Premios de puntualidad
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.06'
+  name: Vacaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.07'
+  name: Prima vacacional
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.08'
+  name: Prima dominical
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.09'
+  name: Días festivos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.10'
+  name: Gratificaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.11'
+  name: Primas de antigüedad
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.12'
+  name: Aguinaldo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.13'
+  name: Indemnizaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.14'
+  name: Destajo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.15'
+  name: Despensa
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.16'
+  name: Transporte
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.17'
+  name: Servicio médico
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.18'
+  name: Ayuda en gastos funerarios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.19'
+  name: Fondo de ahorro
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.20'
+  name: Cuotas sindicales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.21'
+  name: PTU
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.22'
+  name: Estímulo al personal
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.23'
+  name: Previsión social
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.24'
+  name: Aportaciones para el plan de jubilación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.25'
+  name: Otras prestaciones al personal
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.26'
+  name: Cuotas al IMSS
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.27'
+  name: Aportaciones al INFONAVIT
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.28'
+  name: Aportaciones al SAR
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.29'
+  name: Impuesto estatal sobre nóminas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.30'
+  name: Otras aportaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.31'
+  name: Asimilados a salarios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.32'
+  name: Servicios administrativos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.33'
+  name: Servicios administrativos partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.34'
+  name: Honorarios a personas físicas residentes nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.35'
+  name: Honorarios a personas físicas residentes nacionales partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.36'
+  name: Honorarios a personas físicas residentes del extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.37'
+  name: Honorarios a personas físicas residentes del extranjero partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.38'
+  name: Honorarios a personas morales residentes nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.39'
+  name: Honorarios a personas morales residentes nacionales partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.40'
+  name: Honorarios a personas morales residentes del extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.41'
+  name: Honorarios a personas morales residentes del extranjero partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.42'
+  name: Honorarios aduanales personas físicas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.43'
+  name: Honorarios aduanales personas morales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.44'
+  name: Honorarios al consejo de administración
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.45'
+  name: Arrendamiento a personas físicas residentes nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.46'
+  name: Arrendamiento a personas morales residentes nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.47'
+  name: Arrendamiento a residentes del extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.48'
+  name: Combustibles y lubricantes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.49'
+  name: Viáticos y gastos de viaje
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.50'
+  name: Teléfono, internet
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.51'
+  name: Agua
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.52'
+  name: Energía eléctrica
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.53'
+  name: Vigilancia y seguridad
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.54'
+  name: Limpieza
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.55'
+  name: Papelería y artículos de oficina
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.56'
+  name: Mantenimiento y conservación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.57'
+  name: Seguros y fianzas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.58'
+  name: Otros impuestos y derechos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.59'
+  name: Recargos fiscales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.60'
+  name: Cuotas y suscripciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.61'
+  name: Propaganda y publicidad
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.62'
+  name: Capacitación al personal
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.63'
+  name: Donativos y ayudas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.64'
+  name: Asistencia técnica
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.65'
+  name: Regalías sujetas a otros porcentajes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.66'
+  name: Regalías sujetas al 5%
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.67'
+  name: Regalías sujetas al 10%
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.68'
+  name: Regalías sujetas al 15%
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.69'
+  name: Regalías sujetas al 25%
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.70'
+  name: Regalías sujetas al 30%
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.71'
+  name: Regalías sin retención
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.72'
+  name: Fletes y acarreos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.73'
+  name: Gastos de importación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.74'
+  name: Comisiones sobre ventas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.75'
+  name: Comisiones por tarjetas de crédito
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.76'
+  name: Patentes y marcas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.77'
+  name: Uniformes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.78'
+  name: Prediales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.79'
+  name: Gastos de venta de urbanización
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.80'
+  name: Gastos de venta de construcción
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.81'
+  name: Fletes del extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.82'
+  name: Recolección de bienes del sector agropecuario y/o ganadero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.83'
+  name: Gastos no deducibles (sin requisitos fiscales)
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '602.84'
+  name: Otros gastos de venta
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603'
+  name: Gastos de administración
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '603.01'
+  name: Sueldos y salarios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.02'
+  name: Compensaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.03'
+  name: Tiempos extras
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.04'
+  name: Premios de asistencia
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.05'
+  name: Premios de puntualidad
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.06'
+  name: Vacaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.07'
+  name: Prima vacacional
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.08'
+  name: Prima dominical
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.09'
+  name: Días festivos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.10'
+  name: Gratificaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.11'
+  name: Primas de antigüedad
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.12'
+  name: Aguinaldo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.13'
+  name: Indemnizaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.14'
+  name: Destajo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.15'
+  name: Despensa
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.16'
+  name: Transporte
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.17'
+  name: Servicio médico
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.18'
+  name: Ayuda en gastos funerarios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.19'
+  name: Fondo de ahorro
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.20'
+  name: Cuotas sindicales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.21'
+  name: PTU
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.22'
+  name: Estímulo al personal
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.23'
+  name: Previsión social
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.24'
+  name: Aportaciones para el plan de jubilación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.25'
+  name: Otras prestaciones al personal
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.26'
+  name: Cuotas al IMSS
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.27'
+  name: Aportaciones al INFONAVIT
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.28'
+  name: Aportaciones al SAR
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.29'
+  name: Impuesto estatal sobre nóminas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.30'
+  name: Otras aportaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.31'
+  name: Asimilados a salarios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.32'
+  name: Servicios administrativos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.33'
+  name: Servicios administrativos partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.34'
+  name: Honorarios a personas físicas residentes nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.35'
+  name: Honorarios a personas físicas residentes nacionales partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.36'
+  name: Honorarios a personas físicas residentes del extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.37'
+  name: Honorarios a personas físicas residentes del extranjero partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.38'
+  name: Honorarios a personas morales residentes nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.39'
+  name: Honorarios a personas morales residentes nacionales partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.40'
+  name: Honorarios a personas morales residentes del extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.41'
+  name: Honorarios a personas morales residentes del extranjero partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.42'
+  name: Honorarios aduanales personas físicas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.43'
+  name: Honorarios aduanales personas morales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.44'
+  name: Honorarios al consejo de administración
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.45'
+  name: Arrendamiento a personas físicas residentes nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.46'
+  name: Arrendamiento a personas morales residentes nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.47'
+  name: Arrendamiento a residentes del extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.48'
+  name: Combustibles y lubricantes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.49'
+  name: Viáticos y gastos de viaje
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.50'
+  name: Teléfono, internet
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.51'
+  name: Agua
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.52'
+  name: Energía eléctrica
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.53'
+  name: Vigilancia y seguridad
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.54'
+  name: Limpieza
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.55'
+  name: Papelería y artículos de oficina
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.56'
+  name: Mantenimiento y conservación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.57'
+  name: Seguros y fianzas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.58'
+  name: Otros impuestos y derechos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.59'
+  name: Recargos fiscales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.60'
+  name: Cuotas y suscripciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.61'
+  name: Propaganda y publicidad
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.62'
+  name: Capacitación al personal
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.63'
+  name: Donativos y ayudas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.64'
+  name: Asistencia técnica
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.65'
+  name: Regalías sujetas a otros porcentajes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.66'
+  name: Regalías sujetas al 5%
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.67'
+  name: Regalías sujetas al 10%
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.68'
+  name: Regalías sujetas al 15%
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.69'
+  name: Regalías sujetas al 25%
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.70'
+  name: Regalías sujetas al 30%
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.71'
+  name: Regalías sin retención
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.72'
+  name: Fletes y acarreos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.73'
+  name: Gastos de importación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.74'
+  name: Patentes y marcas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.75'
+  name: Uniformes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.76'
+  name: Prediales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.77'
+  name: Gastos de administración de urbanización
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.78'
+  name: Gastos de administración de construcción
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.79'
+  name: Fletes del extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.80'
+  name: Recolección de bienes del sector agropecuario y/o ganadero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.81'
+  name: Gastos no deducibles (sin requisitos fiscales)
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '603.82'
+  name: Otros gastos de administración
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604'
+  name: Gastos de fabricación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '604.01'
+  name: Sueldos y salarios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.02'
+  name: Compensaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.03'
+  name: Tiempos extras
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.04'
+  name: Premios de asistencia
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.05'
+  name: Premios de puntualidad
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.06'
+  name: Vacaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.07'
+  name: Prima vacacional
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.08'
+  name: Prima dominical
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.09'
+  name: Días festivos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.10'
+  name: Gratificaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.11'
+  name: Primas de antigüedad
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.12'
+  name: Aguinaldo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.13'
+  name: Indemnizaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.14'
+  name: Destajo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.15'
+  name: Despensa
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.16'
+  name: Transporte
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.17'
+  name: Servicio médico
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.18'
+  name: Ayuda en gastos funerarios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.19'
+  name: Fondo de ahorro
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.20'
+  name: Cuotas sindicales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.21'
+  name: PTU
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.22'
+  name: Estímulo al personal
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.23'
+  name: Previsión social
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.24'
+  name: Aportaciones para el plan de jubilación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.25'
+  name: Otras prestaciones al personal
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.26'
+  name: Cuotas al IMSS
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.27'
+  name: Aportaciones al INFONAVIT
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.28'
+  name: Aportaciones al SAR
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.29'
+  name: Impuesto estatal sobre nóminas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.30'
+  name: Otras aportaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.31'
+  name: Asimilados a salarios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.32'
+  name: Servicios administrativos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.33'
+  name: Servicios administrativos partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.34'
+  name: Honorarios a personas físicas residentes nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.35'
+  name: Honorarios a personas físicas residentes nacionales partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.36'
+  name: Honorarios a personas físicas residentes del extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.37'
+  name: Honorarios a personas físicas residentes del extranjero partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.38'
+  name: Honorarios a personas morales residentes nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.39'
+  name: Honorarios a personas morales residentes nacionales partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.40'
+  name: Honorarios a personas morales residentes del extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.41'
+  name: Honorarios a personas morales residentes del extranjero partes relacionadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.42'
+  name: Honorarios aduanales personas físicas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.43'
+  name: Honorarios aduanales personas morales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.44'
+  name: Honorarios al consejo de administración
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.45'
+  name: Arrendamiento a personas físicas residentes nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.46'
+  name: Arrendamiento a personas morales residentes nacionales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.47'
+  name: Arrendamiento a residentes del extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.48'
+  name: Combustibles y lubricantes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.49'
+  name: Viáticos y gastos de viaje
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.50'
+  name: Teléfono, internet
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.51'
+  name: Agua
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.52'
+  name: Energía eléctrica
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.53'
+  name: Vigilancia y seguridad
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.54'
+  name: Limpieza
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.55'
+  name: Papelería y artículos de oficina
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.56'
+  name: Mantenimiento y conservación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.57'
+  name: Seguros y fianzas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.58'
+  name: Otros impuestos y derechos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.59'
+  name: Recargos fiscales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.60'
+  name: Cuotas y suscripciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.61'
+  name: Propaganda y publicidad
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.62'
+  name: Capacitación al personal
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.63'
+  name: Donativos y ayudas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.64'
+  name: Asistencia técnica
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.65'
+  name: Regalías sujetas a otros porcentajes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.66'
+  name: Regalías sujetas al 5%
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.67'
+  name: Regalías sujetas al 10%
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.68'
+  name: Regalías sujetas al 15%
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.69'
+  name: Regalías sujetas al 25%
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.70'
+  name: Regalías sujetas al 30%
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.71'
+  name: Regalías sin retención
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.72'
+  name: Fletes y acarreos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.73'
+  name: Gastos de importación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.74'
+  name: Patentes y marcas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.75'
+  name: Uniformes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.76'
+  name: Prediales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.77'
+  name: Gastos de fabricación de urbanización
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.78'
+  name: Gastos de fabricación de construcción
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.79'
+  name: Fletes del extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.80'
+  name: Recolección de bienes del sector agropecuario y/o ganadero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.81'
+  name: Gastos no deducibles (sin requisitos fiscales)
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '604.82'
+  name: Otros gastos de fabricación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605'
+  name: Mano de obra directa
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '605.01'
+  name: Mano de obra
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.02'
+  name: Sueldos y Salarios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.03'
+  name: Compensaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.04'
+  name: Tiempos extras
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.05'
+  name: Premios de asistencia
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.06'
+  name: Premios de puntualidad
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.07'
+  name: Vacaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.08'
+  name: Prima vacacional
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.09'
+  name: Prima dominical
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.10'
+  name: Días festivos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.11'
+  name: Gratificaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.12'
+  name: Primas de antigüedad
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.13'
+  name: Aguinaldo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.14'
+  name: Indemnizaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.15'
+  name: Destajo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.16'
+  name: Despensa
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.17'
+  name: Transporte
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.18'
+  name: Servicio médico
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.19'
+  name: Ayuda en gastos funerarios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.20'
+  name: Fondo de ahorro
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.21'
+  name: Cuotas sindicales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.22'
+  name: PTU
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.23'
+  name: Estímulo al personal
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.24'
+  name: Previsión social
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.25'
+  name: Aportaciones para el plan de jubilación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.26'
+  name: Otras prestaciones al personal
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.27'
+  name: Asimilados a salarios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.28'
+  name: Cuotas al IMSS
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.29'
+  name: Aportaciones al INFONAVIT
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.30'
+  name: Aportaciones al SAR
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '605.31'
+  name: Otros costos de mano de obra directa
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '606'
+  name: Facilidades administrativas fiscales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '606.01'
+  name: Facilidades administrativas fiscales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '607'
+  name: Participación de los trabajadores en las utilidades
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '607.01'
+  name: Participación de los trabajadores en las utilidades
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '608'
+  name: Participación en resultados de subsidiarias
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '608.01'
+  name: Participación en resultados de subsidiarias
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '609'
+  name: Participación en resultados de asociadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '609.01'
+  name: Participación en resultados de asociadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '610'
+  name: Participación de los trabajadores en las utilidades diferida
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '610.01'
+  name: Participación de los trabajadores en las utilidades diferida
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '611'
+  name: Impuesto Sobre la renta
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '611.01'
+  name: Impuesto Sobre la renta
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '611.02'
+  name: Impuesto Sobre la renta por remanente distribuible
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '612'
+  name: Gastos no deducibles para CUFIN
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '612.01'
+  name: Gastos no deducibles para CUFIN
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '613'
+  name: Depreciación contable
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '613.01'
+  name: Depreciación de edificios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '613.02'
+  name: Depreciación de maquinaria y equipo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '613.03'
+  name: Depreciación de automóviles, autobuses, camiones de carga, tractocamiones, montacargas y
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '613.04'
+  name: Depreciación de mobiliario y equipo de oficina
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '613.05'
+  name: Depreciación de equipo de cómputo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '613.06'
+  name: Depreciación de equipo de comunicación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '613.07'
+  name: Depreciación de activos biológicos, vegetales y semovientes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '613.08'
+  name: Depreciación de otros activos fijos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '613.09'
+  name: Depreciación de ferrocarriles
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '613.10'
+  name: Depreciación de embarcaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '613.11'
+  name: Depreciación de aviones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '613.12'
+  name: Depreciación de troqueles, moldes, matrices y herramental
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '613.13'
+  name: Depreciación de equipo de comunicaciones telefónicas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '613.14'
+  name: Depreciación de equipo de comunicación satelital
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '613.15'
+  name: Depreciación de equipo de adaptaciones para personas con capacidades diferentes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '613.16'
+  name: Depreciación de maquinaria y equipo de generación de energía de fuentes renovables o de
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '613.17'
+  name: Depreciación de adaptaciones y mejoras
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '613.18'
+  name: Depreciación de otra maquinaria y equipo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '614'
+  name: Amortización contable
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '614.01'
+  name: Amortización de gastos diferidos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '614.02'
+  name: Amortización de gastos pre operativos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '614.03'
+  name: Amortización de regalías, asistencia técnica y otros gastos diferidos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '614.04'
+  name: Amortización de activos intangibles
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '614.05'
+  name: Amortización de gastos de organización
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '614.06'
+  name: Amortización de investigación y desarrollo de mercado
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '614.07'
+  name: Amortización de marcas y patentes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '614.08'
+  name: Amortización de crédito mercantil
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '614.09'
+  name: Amortización de gastos de instalación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '614.10'
+  name: Amortización de otros activos diferidos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '700'
+  name: Resultado integral de financiamiento
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 0
+- code: '701'
+  name: Gastos financieros
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '701.01'
+  name: Pérdida cambiaria
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '701.02'
+  name: Pérdida cambiaria nacional parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '701.03'
+  name: Pérdida cambiaria extranjero parte relacionada
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '701.04'
+  name: Intereses a cargo bancario nacional
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '701.05'
+  name: Intereses a cargo bancario extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '701.06'
+  name: Intereses a cargo de personas físicas nacional
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '701.07'
+  name: Intereses a cargo de personas físicas extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '701.08'
+  name: Intereses a cargo de personas morales nacional
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '701.09'
+  name: Intereses a cargo de personas morales extranjero
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '701.10'
+  name: Comisiones bancarias
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '701.11'
+  name: Otros gastos financieros
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '702'
+  name: Productos financieros
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '702.01'
+  name: Utilidad cambiaria
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '702.02'
+  name: Utilidad cambiaria nacional parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '702.03'
+  name: Utilidad cambiaria extranjero parte relacionada
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '702.04'
+  name: Intereses a favor bancarios nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '702.05'
+  name: Intereses a favor bancarios extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '702.06'
+  name: Intereses a favor de personas físicas nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '702.07'
+  name: Intereses a favor de personas físicas extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '702.08'
+  name: Intereses a favor de personas morales nacional
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '702.09'
+  name: Intereses a favor de personas morales extranjero
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '702.10'
+  name: Otros productos financieros
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703'
+  name: Otros gastos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '703.01'
+  name: Pérdida en venta y/o baja de terrenos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703.02'
+  name: Pérdida en venta y/o baja de edificios
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703.03'
+  name: Pérdida en venta y/o baja de maquinaria y equipo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703.04'
+  name: Pérdida en venta y/o baja de automóviles, autobuses, camiones de carga, tractocamiones,
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703.05'
+  name: Pérdida en venta y/o baja de mobiliario y equipo de oficina
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703.06'
+  name: Pérdida en venta y/o baja de equipo de cómputo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703.07'
+  name: Pérdida en venta y/o baja de equipo de comunicación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703.08'
+  name: Pérdida en venta y/o baja de activos biológicos, vegetales y semovientes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703.09'
+  name: Pérdida en venta y/o baja de otros activos fijos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703.10'
+  name: Pérdida en venta y/o baja de ferrocarriles
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703.11'
+  name: Pérdida en venta y/o baja de embarcaciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703.12'
+  name: Pérdida en venta y/o baja de aviones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703.13'
+  name: Pérdida en venta y/o baja de troqueles, moldes, matrices y herramental
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703.14'
+  name: Pérdida en venta y/o baja de equipo de comunicaciones telefónicas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703.15'
+  name: Pérdida en venta y/o baja de equipo de comunicación satelital
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703.16'
+  name: Pérdida en venta y/o baja de equipo de adaptaciones para personas con capacidades diferentes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703.17'
+  name: Pérdida en venta y/o baja de maquinaria y equipo de generación de energía de fuentes
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703.18'
+  name: Pérdida en venta y/o baja de otra maquinaria y equipo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703.19'
+  name: Pérdida por enajenación de acciones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703.20'
+  name: Pérdida por enajenación de partes sociales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '703.21'
+  name: Otros gastos
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704'
+  name: Otros productos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '704.01'
+  name: Ganancia en venta y/o baja de terrenos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.02'
+  name: Ganancia en venta y/o baja de edificios
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.03'
+  name: Ganancia en venta y/o baja de maquinaria y equipo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.04'
+  name: Ganancia en venta y/o baja de automóviles, autobuses, camiones de carga, tractocamiones,
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.05'
+  name: Ganancia en venta y/o baja de mobiliario y equipo de oficina
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.06'
+  name: Ganancia en venta y/o baja de equipo de cómputo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.07'
+  name: Ganancia en venta y/o baja de equipo de comunicación
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.08'
+  name: Ganancia en venta y/o baja de activos biológicos, vegetales y semovientes
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.09'
+  name: Ganancia en venta y/o baja de otros activos fijos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.10'
+  name: Ganancia en venta y/o baja de ferrocarriles
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.11'
+  name: Ganancia en venta y/o baja de embarcaciones
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.12'
+  name: Ganancia en venta y/o baja de aviones
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.13'
+  name: Ganancia en venta y/o baja de troqueles, moldes, matrices y herramental
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.14'
+  name: Ganancia en venta y/o baja de equipo de comunicaciones telefónicas
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.15'
+  name: Ganancia en venta y/o baja de equipo de comunicación satelital
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.16'
+  name: Ganancia en venta y/o baja de equipo de adaptaciones para personas con capacidades
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.17'
+  name: Ganancia en venta de maquinaria y equipo de generación de energía de fuentes renovables o de
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.18'
+  name: Ganancia en venta y/o baja de otra maquinaria y equipo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.19'
+  name: Ganancia por enajenación de acciones
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.20'
+  name: Ganancia por enajenación de partes sociales
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.21'
+  name: Ingresos por estímulos fiscales
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.22'
+  name: Ingresos por condonación de adeudo
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '704.23'
+  name: Otros productos
+  nature: Credit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '800'
+  name: Cuentas de orden
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 0
+- code: '801'
+  name: UFIN del ejercicio
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '801.01'
+  name: UFIN
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '801.02'
+  name: Contra cuenta UFIN
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '802'
+  name: CUFIN del ejercicio
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '802.01'
+  name: CUFIN
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '802.02'
+  name: Contra cuenta CUFIN
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '803'
+  name: CUFIN de ejercicios anteriores
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '803.01'
+  name: CUFIN de ejercicios anteriores
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '803.02'
+  name: Contra cuenta CUFIN de ejercicios anteriores
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '804'
+  name: CUFINRE del ejercicio
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '804.01'
+  name: CUFINRE
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '804.02'
+  name: Contra cuenta CUFINRE
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '805'
+  name: CUFINRE de ejercicios anteriores
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '805.01'
+  name: CUFINRE de ejercicios anteriores
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '805.02'
+  name: Contra cuenta CUFINRE de ejercicios anteriores
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '806'
+  name: CUCA del ejercicio
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '806.01'
+  name: CUCA
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '806.02'
+  name: Contra cuenta CUCA
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '807'
+  name: CUCA de ejercicios anteriores
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '807.01'
+  name: CUCA de ejercicios anteriores
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '807.02'
+  name: Contra cuenta CUCA de ejercicios anteriores
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '808'
+  name: Ajuste anual por inflación acumulable
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '808.01'
+  name: Ajuste anual por inflación acumulable
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '808.02'
+  name: Acumulación del ajuste anual inflacionario
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '809'
+  name: Ajuste anual por inflación deducible
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '809.01'
+  name: Ajuste anual por inflación deducible
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '809.02'
+  name: Deducción del ajuste anual inflacionario
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '810'
+  name: Deducción de inversión
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '810.01'
+  name: Deducción de inversión
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '810.02'
+  name: Contra cuenta deducción de inversiones
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '811'
+  name: Utilidad o pérdida fiscal en venta y/o baja de activo fijo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '811.01'
+  name: Utilidad o pérdida fiscal en venta y/o baja de activo fijo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '811.02'
+  name: Contra cuenta utilidad o pérdida fiscal en venta y/o baja de activo fijo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '812'
+  name: Utilidad o pérdida fiscal en venta acciones o partes sociales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '812.01'
+  name: Utilidad o pérdida fiscal en venta acciones o partes sociales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '812.02'
+  name: Contra cuenta utilidad o pérdida fiscal en venta acciones o partes sociales
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '813'
+  name: Pérdidas fiscales pendientes de amortizar actualizadas de ejercicios anteriores
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '813.01'
+  name: Pérdidas fiscales pendientes de amortizar actualizadas de ejercicios anteriores
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '813.02'
+  name: Actualización de pérdidas fiscales pendientes de amortizar de ejercicios anteriores
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '814'
+  name: Mercancías recibidas en consignación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '814.01'
+  name: Mercancías recibidas en consignación
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '814.02'
+  name: Consignación de mercancías recibidas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '815'
+  name: Crédito fiscal de IVA e IEPS por la importación de mercancías para empresas certificadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '815.01'
+  name: Crédito fiscal de IVA e IEPS por la importación de mercancías
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '815.02'
+  name: Importación de mercancías con aplicación de crédito fiscal de IVA e IEPS
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '816'
+  name: Crédito fiscal de IVA e IEPS por la importación de activos fijos para empresas certificadas
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '816.01'
+  name: Crédito fiscal de IVA e IEPS por la importación de activo fijo
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '816.02'
+  name: Importación de activo fijo con aplicación de crédito fiscal de IVA e IEPS
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '899'
+  name: Otras cuentas de orden
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 1
+- code: '899.01'
+  name: Otras cuentas de orden
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
+- code: '899.02'
+  name: Contra cuenta otras cuentas de orden
+  nature: Debit
+  sign: POSITIVO
+  statement: Catálogo de Cuentas
+  depth: 2
