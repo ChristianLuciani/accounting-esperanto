@@ -17,20 +17,35 @@ families:
   SYSCOHADA:
     name: "Système Comptable OHADA (SYSCOHADA révisé)"
     members: [bj, bf, cm, cf, td, km, cg, cd, ci, gq, ga, gn, gw, ml, ne, sn, tg]
-    source: "OHADA, Acte uniforme relatif au droit comptable et à l'information financière (AUDCIF), SYSCOHADA révisé, in force 2018; plan de comptes. https://www.ohada.org/"
-    note: "PCG-derived 8-class chart, mandatory across all 17 OHADA member states."
+    source: "OHADA, Acte uniforme relatif au droit comptable et à l'information financière (AUDCIF), adopted 26 January 2017 (Journal Officiel OHADA, 15 February 2017), in force 1 January 2018; Titre VII, Chapitre 2, Section 3 'Liste des comptes'. https://www.ohada.org/en/uniform-act-relating-to-accounting-law-and-financial-information-audcif/"
+    note: "PCG-derived 9-class chart (class 9 optional), mandatory across all 17 OHADA member states. This table is a curated single-code-per-node representative sample for the deterministic Tier-1 engine (core/harness/ontology.py); the exhaustive verbatim transcription (1399 codes) and full longest-prefix classification live in localizations/_syscohada/ (see localizations/_syscohada/README.md)."
     codes:
-      asset.current.cash: "571"            # Caisse
-      asset.current.bank: "521"            # Banques (comptes locaux)
+      asset.current.cash: "571"            # Caisse siège social
+      asset.current.bank: "521"            # Banques locales
       asset.current.receivables: "411"     # Clients
-      asset.current.inventory: "31"        # Stocks de marchandises
+      asset.current.other_receivables: "462"  # Associés, comptes courants
+      asset.current.inventory: "31"        # Marchandises
+      asset.current.prepaid: "476"         # Charges constatées d'avance
       asset.current.vat_input: "4452"      # État, TVA récupérable sur achats
+      asset.current.withholding_tax: "447" # État, impôts retenus à la source
       asset.noncurrent.intangibles: "21"   # Immobilisations incorporelles
-      asset.noncurrent.ppe: "22"           # Immobilisations corporelles (terrains/bâtiments)
+      asset.noncurrent.goodwill: "215"     # Fonds commercial
+      asset.noncurrent.ppe: "22"           # Terrains
+      asset.noncurrent.investments: "261"  # Titres de participation dans des sociétés sous contrôle exclusif
       liability.current.payables: "401"    # Fournisseurs, dettes en compte
       liability.current.vat_output: "4431" # État, TVA facturée sur ventes
-      liability.current.tax: "44"          # État et collectivités publiques
+      liability.current.tax: "442"         # État, autres impôts et taxes
+      liability.current.payroll: "422"     # Personnel, rémunérations dues
+      liability.current.accrued: "428"     # Personnel, charges à payer et produits à recevoir
+      liability.current.deferred_revenue: "477"  # Produits constatés d'avance
+      liability.current.short_term_debt: "56"    # Banques, crédits de trésorerie et d'escompte
       liability.noncurrent.debt: "16"      # Emprunts et dettes assimilées
+      liability.noncurrent.lease: "172"    # Dettes de location acquisition / crédit-bail immobilier
+      # liability.noncurrent.deferred_tax: SYSCOHADA's class-15 "provisions
+      # réglementées" (incl. 151 amortissements dérogatoires) present as
+      # equity-side items locally, not as a liability -- no honest code here
+      # (see localizations/_syscohada/syscohada_mapping.yaml's needs_review
+      # entries for 151-158, and PR #79 Greptile review).
       equity.capital: "101"                # Capital social
       equity.reserves: "11"                # Réserves
       equity.retained: "12"                # Report à nouveau
