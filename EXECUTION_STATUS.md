@@ -1,10 +1,12 @@
 # Kontablo Global Accounting Protocol: Execution Status
 
-## 🚀 Current Milestone: Phase 3 — Pre-Publication (Release Day Pending)
+## 🚀 Current Milestone: Phase 4 — Post-Publication: Real-Data Validation (Round 2)
 
-Pasos 1–7 del workflow prepare-for-publication completados. Paso 8 (release day: Zenodo + SSRN + notificaciones) pendiente de ejecución. Ver el launch playbook interno (`docs/internal/`, fuera del repo público).
+**Kontablo v0.1.0 shipped 2026-06-17; current release v0.2.1 (2026-06-25).** Zenodo concept DOI [10.5281/zenodo.20738795](https://doi.org/10.5281/zenodo.20738795) (resolves to latest version), SSRN preprint (abstract 6960598), ResearchGate (publication 407549570) — see `CITATION.cff` / `.zenodo.json` for the authoritative, up-to-date record. This banner was stale until 2026-07-18 (it still said "release day pending" a month after release); **trust `CITATION.cff`/`.zenodo.json` over this file's phase banner if they ever disagree again.**
 
-Última actualización: 2026-06-05
+Active work: round-2 validation against real, publicly filed financial data (SEC EDGAR, ESEF/filings.xbrl.org, UK Companies House, IMF/Eurostat government finance statistics), complementing — not replacing — the synthetic 97.3% figure. Full pre-registered design: [`research/real_data_validation_plan.md`](research/real_data_validation_plan.md). This round also activates and validates the previously-drafted-but-unwired public-sector/IPSAS extension (see that plan, §2).
+
+Última actualización: 2026-07-18
 
 ---
 
@@ -52,12 +54,18 @@ Pasos 1–7 del workflow prepare-for-publication completados. Paso 8 (release da
 
 ## 🛠 Active Work & Next Steps
 
-### 1. Phase 3: Expert Validation (Upcoming)
-- [ ] Conduct structured validation interviews with 15 international CPAs.
-- [ ] Submit `kontablo_preprint_modular.pdf` to SSRN/arXiv.
+### 1. Phase 4: Real-Data Validation (Round 2) — Active
+- [ ] Tier A1: EDGAR us-gaap crosswalk + held-out resolution benchmark (H1, H2).
+- [ ] Tier A5: IMF GFS / Eurostat COFOG public-sector crosswalk (H5) — validates the drafted `public_sector_ipsas.yaml` extension.
+- [ ] Tier A2: ESEF/ifrs-full sample benchmark (H1, H2).
+- [ ] Tier B: UK Companies House real-subsidiary case study (H3, H4).
+- Full design, pre-registered hypotheses, and falsification thresholds: [`research/real_data_validation_plan.md`](research/real_data_validation_plan.md).
+
+### 2. Expert Validation (still open — not yet started as of 2026-07-18)
+- [ ] Conduct structured validation interviews with international CPAs.
 - [ ] Peer-review adjustments based on expert feedback.
 
-### 2. Production ERP Connectors
+### 3. Production ERP Connectors (backlog, no committed date)
 - [ ] Two-way API integration for **NetSuite** and **SAP S/4HANA**.
 - [ ] Production-grade authentication (JWT) for the consolidation API.
 
