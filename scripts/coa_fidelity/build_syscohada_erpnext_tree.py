@@ -162,12 +162,9 @@ def main():
     ap.add_argument("--out", required=True)
     args = ap.parse_args()
 
-    doc = yaml.safe_load(open(args.mapping, encoding="utf-8"))
+    with open(args.mapping, encoding="utf-8") as fh:
+        doc = yaml.safe_load(fh)
     tree = build_tree(doc["mappings"], args.company_placeholder)
-
-    with open(args.out, "w", encoding="utf-8") as f:
-        json.dump(tree, f, ensure_ascii=False, indent=1)
-        f.write("\n")
 
     def count_leaves(d):
         n = 0
@@ -178,6 +175,10 @@ def main():
                 elif "account_number" in v:
                     n += 1
         return n
+
+    with open(args.out, "w", encoding="utf-8") as f:
+        json.dump(tree, f, ensure_ascii=False, indent=1)
+        f.write("\n")
 
     print(f"Written: {args.out}")
     print(f"Postable leaf accounts in tree: {sum(count_leaves(v) for k, v in tree.items() if isinstance(v, dict))}")

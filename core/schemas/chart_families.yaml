@@ -41,7 +41,11 @@ families:
       liability.current.short_term_debt: "56"    # Banques, crédits de trésorerie et d'escompte
       liability.noncurrent.debt: "16"      # Emprunts et dettes assimilées
       liability.noncurrent.lease: "172"    # Dettes de location acquisition / crédit-bail immobilier
-      liability.noncurrent.deferred_tax: "151"   # Amortissements dérogatoires
+      # liability.noncurrent.deferred_tax: SYSCOHADA's class-15 "provisions
+      # réglementées" (incl. 151 amortissements dérogatoires) present as
+      # equity-side items locally, not as a liability -- no honest code here
+      # (see localizations/_syscohada/syscohada_mapping.yaml's needs_review
+      # entries for 151-158, and PR #79 Greptile review).
       equity.capital: "101"                # Capital social
       equity.reserves: "11"                # Réserves
       equity.retained: "12"                # Report à nouveau

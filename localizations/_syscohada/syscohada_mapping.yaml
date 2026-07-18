@@ -5,10 +5,10 @@ metadata:
   source_url: https://www.msg-innov.online/gallery/ACTE%20UNIFORME%20SYSCOHADA%20REVISE.pdf
   version: 0.1.0-full-chart
   total_official_codes: 1399
-  classified_to_kontablo_node: 950
+  classified_to_kontablo_node: 949
   statement_captions_not_postable: 55
   aggregate_header_rows: 79
-  needs_review_unclassified: 315
+  needs_review_unclassified: 316
   note: 'Every code from the official SYSCOHADA chart is present here -- no hand-picked subset. Classification
     onto Kontablo''s universal Level-3 ontology is many-to-one by design (principle: graph, not tree).
     is_aggregate=true means the code is a header/rollup row with more granular children in this same chart
@@ -647,11 +647,11 @@ mappings:
   '151':
     name: AMORTISSEMENTS DÉROGATOIRES
     class: '1'
-    kontablo_node: liability.noncurrent.deferred_tax
-    kontablo_uuid: 00000000-0000-4000-8000-000000000213
+    kontablo_node: null
+    kontablo_uuid: null
     is_statement_caption: false
     is_aggregate: false
-    needs_review: false
+    needs_review: true
   '152':
     name: PLUS-VALUES DE CESSION À RÉINVESTIR
     class: '1'

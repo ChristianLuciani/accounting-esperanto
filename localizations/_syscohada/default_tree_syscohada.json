@@ -252,8 +252,7 @@
  "Provisions Réglementées Et Fonds Assimilés": {
   "is_group": 1,
   "Amortissements Dérogatoires": {
-   "account_number": "151",
-   "account_type": "Payable"
+   "account_number": "151"
   },
   "Plus-Values De Cession À Réinvestir": {
    "account_number": "152"

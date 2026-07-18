@@ -78,7 +78,7 @@ further.
   analytique de gestion" — is, per the source itself, "d'application
   facultative" i.e. optional; it is transcribed for completeness but is not
   part of the mandatory postable ledger).
-- **950** classified onto an existing Kontablo Level-3 node (many-to-one is
+- **949** classified onto an existing Kontablo Level-3 node (many-to-one is
   by design — see `core/schemas/level3_accounts.yaml`'s "graph, not tree"
   principle).
 - **55** are `is_statement_caption: true` — SYSCOHADA class 9 (49 codes,
@@ -89,7 +89,7 @@ further.
   computed presentation subtotals, not independently posted accounts.
 - **79** are `is_aggregate: true` — header/rollup rows that have more
   granular children in this same chart, never independently postable.
-- **315** are genuine `needs_review`: leaf accounts with no existing
+- **316** are genuine `needs_review`: leaf accounts with no existing
   Kontablo Level-3 node fitting them. Honest ontology gaps, not silent
   guesses. The two largest, systematic categories:
   - **Contra-asset / contra-liability accumulated-depreciation and
@@ -103,7 +103,11 @@ further.
     codes `246`, `249`, `313`, `345`, `363`, `373` and their sub-accounts):
     identical IAS 41 gap already documented in `localizations/ec/README.md`.
   - Smaller genuine gaps: government investment grants (class `14`),
-    regulated/statutory reserves (class `15` minus `151`), inter-entity/
+    regulated/statutory reserves (class `15`, all of it, including `151`
+    "amortissements dérogatoires" — an IFRS/IAS-12 lens reads this as a
+    deferred-tax liability, but SYSCOHADA presents it as an equity-side item
+    locally, so it is left `needs_review` rather than force-mapped; see
+    Greptile's PR #79 review), inter-entity/
     branch liaison accounts (class `18`), international-body and
     joint-venture settlement accounts (classes `45`/`46`/`47` in part),
     financial derivatives and precious-metals treasury instruments (class

@@ -71,7 +71,7 @@ jurisdictions:
   source_url: "https://www.msg-innov.online/gallery/ACTE%20UNIFORME%20SYSCOHADA%20REVISE.pdf"
   source_authority: "OHADA (Organisation pour l'Harmonisation en Afrique du Droit des Affaires)"
   last_verified: "2026-07-16"
-  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (950 mapped / 55 statement captions / 79 aggregate headers / 315 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (33 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/bj/README.md and localizations/_syscohada/README.md."
+  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (949 mapped / 55 statement captions / 79 aggregate headers / 316 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (32 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/bj/README.md and localizations/_syscohada/README.md."
   source_content_hash: "260270ca5199278fafb0c354c09273f3ac0ba543010479d9c1d59bd4e74572ce"
   source_etag: '"95fa4d-641da3394d6b3"'
   source_last_modified_header: "Thu, 23 Oct 2025 21:34:44 GMT"
@@ -103,7 +103,7 @@ jurisdictions:
   source_url: "https://www.msg-innov.online/gallery/ACTE%20UNIFORME%20SYSCOHADA%20REVISE.pdf"
   source_authority: "OHADA (Organisation pour l'Harmonisation en Afrique du Droit des Affaires)"
   last_verified: "2026-07-16"
-  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (950 mapped / 55 statement captions / 79 aggregate headers / 315 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (33 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/bf/README.md and localizations/_syscohada/README.md."
+  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (949 mapped / 55 statement captions / 79 aggregate headers / 316 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (32 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/bf/README.md and localizations/_syscohada/README.md."
   source_content_hash: "260270ca5199278fafb0c354c09273f3ac0ba543010479d9c1d59bd4e74572ce"
   source_etag: '"95fa4d-641da3394d6b3"'
   source_last_modified_header: "Thu, 23 Oct 2025 21:34:44 GMT"
@@ -151,7 +151,7 @@ jurisdictions:
   source_url: "https://www.msg-innov.online/gallery/ACTE%20UNIFORME%20SYSCOHADA%20REVISE.pdf"
   source_authority: "OHADA (Organisation pour l'Harmonisation en Afrique du Droit des Affaires)"
   last_verified: "2026-07-16"
-  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (950 mapped / 55 statement captions / 79 aggregate headers / 315 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (33 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/cm/README.md and localizations/_syscohada/README.md."
+  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (949 mapped / 55 statement captions / 79 aggregate headers / 316 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (32 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/cm/README.md and localizations/_syscohada/README.md."
   source_content_hash: "260270ca5199278fafb0c354c09273f3ac0ba543010479d9c1d59bd4e74572ce"
   source_etag: '"95fa4d-641da3394d6b3"'
   source_last_modified_header: "Thu, 23 Oct 2025 21:34:44 GMT"
@@ -167,7 +167,7 @@ jurisdictions:
   source_url: "https://www.msg-innov.online/gallery/ACTE%20UNIFORME%20SYSCOHADA%20REVISE.pdf"
   source_authority: "OHADA (Organisation pour l'Harmonisation en Afrique du Droit des Affaires)"
   last_verified: "2026-07-16"
-  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (950 mapped / 55 statement captions / 79 aggregate headers / 315 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (33 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/cf/README.md and localizations/_syscohada/README.md."
+  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (949 mapped / 55 statement captions / 79 aggregate headers / 316 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (32 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/cf/README.md and localizations/_syscohada/README.md."
   source_content_hash: "260270ca5199278fafb0c354c09273f3ac0ba543010479d9c1d59bd4e74572ce"
   source_etag: '"95fa4d-641da3394d6b3"'
   source_last_modified_header: "Thu, 23 Oct 2025 21:34:44 GMT"
@@ -183,7 +183,7 @@ jurisdictions:
   source_url: "https://www.msg-innov.online/gallery/ACTE%20UNIFORME%20SYSCOHADA%20REVISE.pdf"
   source_authority: "OHADA (Organisation pour l'Harmonisation en Afrique du Droit des Affaires)"
   last_verified: "2026-07-16"
-  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (950 mapped / 55 statement captions / 79 aggregate headers / 315 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (33 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/td/README.md and localizations/_syscohada/README.md."
+  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (949 mapped / 55 statement captions / 79 aggregate headers / 316 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (32 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/td/README.md and localizations/_syscohada/README.md."
   source_content_hash: "260270ca5199278fafb0c354c09273f3ac0ba543010479d9c1d59bd4e74572ce"
   source_etag: '"95fa4d-641da3394d6b3"'
   source_last_modified_header: "Thu, 23 Oct 2025 21:34:44 GMT"
@@ -199,7 +199,7 @@ jurisdictions:
   source_url: "https://www.msg-innov.online/gallery/ACTE%20UNIFORME%20SYSCOHADA%20REVISE.pdf"
   source_authority: "OHADA (Organisation pour l'Harmonisation en Afrique du Droit des Affaires)"
   last_verified: "2026-07-16"
-  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (950 mapped / 55 statement captions / 79 aggregate headers / 315 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (33 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/km/README.md and localizations/_syscohada/README.md."
+  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (949 mapped / 55 statement captions / 79 aggregate headers / 316 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (32 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/km/README.md and localizations/_syscohada/README.md."
   source_content_hash: "260270ca5199278fafb0c354c09273f3ac0ba543010479d9c1d59bd4e74572ce"
   source_etag: '"95fa4d-641da3394d6b3"'
   source_last_modified_header: "Thu, 23 Oct 2025 21:34:44 GMT"
@@ -215,7 +215,7 @@ jurisdictions:
   source_url: "https://www.msg-innov.online/gallery/ACTE%20UNIFORME%20SYSCOHADA%20REVISE.pdf"
   source_authority: "OHADA (Organisation pour l'Harmonisation en Afrique du Droit des Affaires)"
   last_verified: "2026-07-16"
-  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (950 mapped / 55 statement captions / 79 aggregate headers / 315 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (33 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/cg/README.md and localizations/_syscohada/README.md."
+  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (949 mapped / 55 statement captions / 79 aggregate headers / 316 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (32 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/cg/README.md and localizations/_syscohada/README.md."
   source_content_hash: "260270ca5199278fafb0c354c09273f3ac0ba543010479d9c1d59bd4e74572ce"
   source_etag: '"95fa4d-641da3394d6b3"'
   source_last_modified_header: "Thu, 23 Oct 2025 21:34:44 GMT"
@@ -231,7 +231,7 @@ jurisdictions:
   source_url: "https://www.msg-innov.online/gallery/ACTE%20UNIFORME%20SYSCOHADA%20REVISE.pdf"
   source_authority: "OHADA (Organisation pour l'Harmonisation en Afrique du Droit des Affaires)"
   last_verified: "2026-07-16"
-  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (950 mapped / 55 statement captions / 79 aggregate headers / 315 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (33 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/ci/README.md and localizations/_syscohada/README.md."
+  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (949 mapped / 55 statement captions / 79 aggregate headers / 316 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (32 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/ci/README.md and localizations/_syscohada/README.md."
   source_content_hash: "260270ca5199278fafb0c354c09273f3ac0ba543010479d9c1d59bd4e74572ce"
   source_etag: '"95fa4d-641da3394d6b3"'
   source_last_modified_header: "Thu, 23 Oct 2025 21:34:44 GMT"
@@ -247,7 +247,7 @@ jurisdictions:
   source_url: "https://www.msg-innov.online/gallery/ACTE%20UNIFORME%20SYSCOHADA%20REVISE.pdf"
   source_authority: "OHADA (Organisation pour l'Harmonisation en Afrique du Droit des Affaires)"
   last_verified: "2026-07-16"
-  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (950 mapped / 55 statement captions / 79 aggregate headers / 315 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (33 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/cd/README.md and localizations/_syscohada/README.md."
+  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (949 mapped / 55 statement captions / 79 aggregate headers / 316 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (32 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/cd/README.md and localizations/_syscohada/README.md."
   source_content_hash: "260270ca5199278fafb0c354c09273f3ac0ba543010479d9c1d59bd4e74572ce"
   source_etag: '"95fa4d-641da3394d6b3"'
   source_last_modified_header: "Thu, 23 Oct 2025 21:34:44 GMT"
@@ -295,7 +295,7 @@ jurisdictions:
   source_url: "https://www.msg-innov.online/gallery/ACTE%20UNIFORME%20SYSCOHADA%20REVISE.pdf"
   source_authority: "OHADA (Organisation pour l'Harmonisation en Afrique du Droit des Affaires)"
   last_verified: "2026-07-16"
-  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (950 mapped / 55 statement captions / 79 aggregate headers / 315 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (33 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/gq/README.md and localizations/_syscohada/README.md."
+  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (949 mapped / 55 statement captions / 79 aggregate headers / 316 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (32 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/gq/README.md and localizations/_syscohada/README.md."
   source_content_hash: "260270ca5199278fafb0c354c09273f3ac0ba543010479d9c1d59bd4e74572ce"
   source_etag: '"95fa4d-641da3394d6b3"'
   source_last_modified_header: "Thu, 23 Oct 2025 21:34:44 GMT"
@@ -359,7 +359,7 @@ jurisdictions:
   source_url: "https://www.msg-innov.online/gallery/ACTE%20UNIFORME%20SYSCOHADA%20REVISE.pdf"
   source_authority: "OHADA (Organisation pour l'Harmonisation en Afrique du Droit des Affaires)"
   last_verified: "2026-07-16"
-  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (950 mapped / 55 statement captions / 79 aggregate headers / 315 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (33 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/ga/README.md and localizations/_syscohada/README.md."
+  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (949 mapped / 55 statement captions / 79 aggregate headers / 316 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (32 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/ga/README.md and localizations/_syscohada/README.md."
   source_content_hash: "260270ca5199278fafb0c354c09273f3ac0ba543010479d9c1d59bd4e74572ce"
   source_etag: '"95fa4d-641da3394d6b3"'
   source_last_modified_header: "Thu, 23 Oct 2025 21:34:44 GMT"
@@ -407,7 +407,7 @@ jurisdictions:
   source_url: "https://www.msg-innov.online/gallery/ACTE%20UNIFORME%20SYSCOHADA%20REVISE.pdf"
   source_authority: "OHADA (Organisation pour l'Harmonisation en Afrique du Droit des Affaires)"
   last_verified: "2026-07-16"
-  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (950 mapped / 55 statement captions / 79 aggregate headers / 315 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (33 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/gn/README.md and localizations/_syscohada/README.md."
+  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (949 mapped / 55 statement captions / 79 aggregate headers / 316 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (32 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/gn/README.md and localizations/_syscohada/README.md."
   source_content_hash: "260270ca5199278fafb0c354c09273f3ac0ba543010479d9c1d59bd4e74572ce"
   source_etag: '"95fa4d-641da3394d6b3"'
   source_last_modified_header: "Thu, 23 Oct 2025 21:34:44 GMT"
@@ -423,7 +423,7 @@ jurisdictions:
   source_url: "https://www.msg-innov.online/gallery/ACTE%20UNIFORME%20SYSCOHADA%20REVISE.pdf"
   source_authority: "OHADA (Organisation pour l'Harmonisation en Afrique du Droit des Affaires)"
   last_verified: "2026-07-16"
-  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (950 mapped / 55 statement captions / 79 aggregate headers / 315 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (33 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/gw/README.md and localizations/_syscohada/README.md."
+  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (949 mapped / 55 statement captions / 79 aggregate headers / 316 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (32 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/gw/README.md and localizations/_syscohada/README.md."
   source_content_hash: "260270ca5199278fafb0c354c09273f3ac0ba543010479d9c1d59bd4e74572ce"
   source_etag: '"95fa4d-641da3394d6b3"'
   source_last_modified_header: "Thu, 23 Oct 2025 21:34:44 GMT"
@@ -535,7 +535,7 @@ jurisdictions:
   source_url: "https://www.msg-innov.online/gallery/ACTE%20UNIFORME%20SYSCOHADA%20REVISE.pdf"
   source_authority: "OHADA (Organisation pour l'Harmonisation en Afrique du Droit des Affaires)"
   last_verified: "2026-07-16"
-  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (950 mapped / 55 statement captions / 79 aggregate headers / 315 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (33 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/ml/README.md and localizations/_syscohada/README.md."
+  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (949 mapped / 55 statement captions / 79 aggregate headers / 316 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (32 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/ml/README.md and localizations/_syscohada/README.md."
   source_content_hash: "260270ca5199278fafb0c354c09273f3ac0ba543010479d9c1d59bd4e74572ce"
   source_etag: '"95fa4d-641da3394d6b3"'
   source_last_modified_header: "Thu, 23 Oct 2025 21:34:44 GMT"
@@ -631,7 +631,7 @@ jurisdictions:
   source_url: "https://www.msg-innov.online/gallery/ACTE%20UNIFORME%20SYSCOHADA%20REVISE.pdf"
   source_authority: "OHADA (Organisation pour l'Harmonisation en Afrique du Droit des Affaires)"
   last_verified: "2026-07-16"
-  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (950 mapped / 55 statement captions / 79 aggregate headers / 315 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (33 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/ne/README.md and localizations/_syscohada/README.md."
+  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (949 mapped / 55 statement captions / 79 aggregate headers / 316 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (32 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/ne/README.md and localizations/_syscohada/README.md."
   source_content_hash: "260270ca5199278fafb0c354c09273f3ac0ba543010479d9c1d59bd4e74572ce"
   source_etag: '"95fa4d-641da3394d6b3"'
   source_last_modified_header: "Thu, 23 Oct 2025 21:34:44 GMT"
@@ -695,7 +695,7 @@ jurisdictions:
   source_url: "https://www.msg-innov.online/gallery/ACTE%20UNIFORME%20SYSCOHADA%20REVISE.pdf"
   source_authority: "OHADA (Organisation pour l'Harmonisation en Afrique du Droit des Affaires)"
   last_verified: "2026-07-16"
-  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (950 mapped / 55 statement captions / 79 aggregate headers / 315 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (33 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/sn/README.md and localizations/_syscohada/README.md."
+  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (949 mapped / 55 statement captions / 79 aggregate headers / 316 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (32 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/sn/README.md and localizations/_syscohada/README.md."
   source_content_hash: "260270ca5199278fafb0c354c09273f3ac0ba543010479d9c1d59bd4e74572ce"
   source_etag: '"95fa4d-641da3394d6b3"'
   source_last_modified_header: "Thu, 23 Oct 2025 21:34:44 GMT"
@@ -823,7 +823,7 @@ jurisdictions:
   source_url: "https://www.msg-innov.online/gallery/ACTE%20UNIFORME%20SYSCOHADA%20REVISE.pdf"
   source_authority: "OHADA (Organisation pour l'Harmonisation en Afrique du Droit des Affaires)"
   last_verified: "2026-07-16"
-  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (950 mapped / 55 statement captions / 79 aggregate headers / 315 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (33 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/tg/README.md and localizations/_syscohada/README.md."
+  notes: "Chart shared across all 17 OHADA member states via the SYSCOHADA statutory-chart family (one shared verification event, not per-country). Full official chart (1399 codes) transcribed verbatim in localizations/_syscohada/syscohada_official_chart.yaml, classified in syscohada_mapping.yaml (949 mapped / 55 statement captions / 79 aggregate headers / 316 needs_review). core/schemas/chart_families.yaml's SYSCOHADA codes table (32 of 34 Level-3 nodes) is what the deterministic engine indexes for this jurisdiction. ERPNext tree in localizations/_syscohada/default_tree_syscohada.json. See localizations/tg/README.md and localizations/_syscohada/README.md."
   source_content_hash: "260270ca5199278fafb0c354c09273f3ac0ba543010479d9c1d59bd4e74572ce"
   source_etag: '"95fa4d-641da3394d6b3"'
   source_last_modified_header: "Thu, 23 Oct 2025 21:34:44 GMT"

@@ -51,8 +51,13 @@ SYSCOHADA_RULES = {
     "138": "equity.retained",           # RÉSULTAT HORS ACTIVITÉS ORDINAIRES (parent code; real children 1381-1384 inherit via is_aggregate)
     "139": "equity.retained",           # RÉSULTAT NET : PERTE
     # 14 SUBVENTIONS D'INVESTISSEMENT: no deferred-income/grant node exists -- needs_review.
-    "151": "liability.noncurrent.deferred_tax",  # AMORTISSEMENTS DÉROGATOIRES -- a genuine tax-timing-difference provision
-    # 152-158 (other regulated reserves/funds): no matching node -- needs_review.
+    # 151 AMORTISSEMENTS DÉROGATOIRES: an IFRS/IAS-12 lens reads this as a deferred-tax
+    # liability (excess tax depreciation = taxable temporary difference), but SYSCOHADA
+    # presents all of class 15 "provisions réglementées" as equity-side ("capitaux propres
+    # et ressources assimilées"), not as a liability -- it does not behave as one locally.
+    # Left as needs_review rather than forced into liability.noncurrent.deferred_tax, same
+    # honesty standard as the IAS 41 biological-asset gap (Greptile PR #79 review).
+    # 151-158 (all of class 15, regulated reserves/funds): no matching node -- needs_review.
     "16": "liability.noncurrent.debt",  # EMPRUNTS ET DETTES ASSIMILÉES (161-168)
     "17": "liability.noncurrent.lease", # DETTES DE LOCATION ACQUISITION (172-178)
     # 18 (participations/liaison inter-entites) and 19 (provisions pour
@@ -201,17 +206,18 @@ def load_ontology_nodes():
     """Real, UUID-bearing Level-3 nodes only (see map_official_chart.py for
     the full rationale -- pending_accounts with no uuid are excluded)."""
     node_uuid = {}
-    for doc in yaml.safe_load_all(open(ONTOLOGY_PATH, encoding="utf-8")):
-        items = None
-        if isinstance(doc, list):
-            items = doc
-        elif isinstance(doc, dict) and "level3" in doc:
-            items = doc["level3"]
-        elif isinstance(doc, dict) and "extended_core" in doc:
-            items = doc["extended_core"]
-        for it in items or []:
-            if isinstance(it, dict) and it.get("uuid"):
-                node_uuid[it["id"]] = it["uuid"]
+    with open(ONTOLOGY_PATH, encoding="utf-8") as fh:
+        for doc in yaml.safe_load_all(fh):
+            items = None
+            if isinstance(doc, list):
+                items = doc
+            elif isinstance(doc, dict) and "level3" in doc:
+                items = doc["level3"]
+            elif isinstance(doc, dict) and "extended_core" in doc:
+                items = doc["extended_core"]
+            for it in items or []:
+                if isinstance(it, dict) and it.get("uuid"):
+                    node_uuid[it["id"]] = it["uuid"]
     return node_uuid
 
 
@@ -265,7 +271,8 @@ def main():
         if node_id != "needs_review" and node_id not in ontology_ids:
             raise ValueError(f"Rule references unknown ontology id: {node_id}")
 
-    official = yaml.safe_load(open(args.official, encoding="utf-8"))
+    with open(args.official, encoding="utf-8") as fh:
+        official = yaml.safe_load(fh)
     all_codes = [e["code"] for e in official["accounts"]]
     parent_codes = {
         a for a in all_codes
