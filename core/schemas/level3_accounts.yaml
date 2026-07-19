@@ -41,7 +41,7 @@ level3:
       mx: "101"
       co: "1105"
       pa: "1.1.01"
-      br: "1.1.1.1.01-9"
+      br: "1.01.01.01.01"  # Caixa Matriz -- corrected 2026-07-18 (was an illustrative pre-fidelity-sweep code with no real source)
       ar: "1100"
       ve: "101"  # Note: IAS 29 inflation adjustment required
       us: "Cash"
@@ -80,6 +80,7 @@ level3:
       co: "1110"
       pa: "1.1.02"
       vn: "112"
+      br: "1.01.01.02.01"  # Bancos Conta Movimento - No País
       ec: "1010103"  # Instituciones Financieras Privadas (1010102 = Publicas variant)
     notes: "Often merged with cash in IFRS presentation. Separate for local reporting clarity."
 
@@ -97,7 +98,7 @@ level3:
       mx: "105"
       co: "1305"
       pa: "1.1.05"
-      br: "1.1.1.2.01-0"
+      br: "1.01.02.02.01"  # Duplicatas a Receber - Op. com Partes Não Relacionadas - No País -- corrected 2026-07-18 (was an illustrative pre-fidelity-sweep code)
       ar: "1130"
       vn: "131"
       ec: "1010205"
@@ -124,7 +125,7 @@ level3:
       vn: "1331"
       in: "GST Input Credit"
       cn: "进项税额"
-      br: "Impostos a Recuperar"
+      br: "1.01.02.03.01"  # IPI a Recuperar -- corrected 2026-07-18 (was a free-text label, not a real code)
       ec: "1010501"
     not_applicable: ["us", "sa"]  # No VAT in US; SA uses Zakat
     notes: "VAT rates vary: MX 16%, EU 20%avg, VN 0-10%, IN cascading GST. Not applicable in US (no VAT) or SA (Zakat)."
@@ -146,6 +147,7 @@ level3:
       vn: "152"
       de: "3100"
       fr: "371"
+      br: "1.01.03.01.01"  # Mercadorias para Revenda
       ec: "10103"
     valuation_methods: ["FIFO", "weighted_average"]  # IAS 2 (LIFO not permitted under IFRS)
     notes: "Service companies: set to 0 or N/A. Valuation: FIFO or weighted average (LIFO prohibited under IFRS)."
@@ -164,6 +166,7 @@ level3:
       mx: "122"
       vn: "121"
       fr: "488"
+      br: "1.01.02.01.01"  # Adiantamentos a Fornecedores - No País - Circulante
       ec: "10104"
 
   # ─────────────────────────────────────────────
@@ -187,6 +190,7 @@ level3:
       vn: "211"
       de: "2100"
       fr: "211"
+      br: "1.02.03.01.01"  # Terrenos
       ec: "10201"
     depreciation_required: true
     notes: "Revaluation model (IAS 16) permitted in most jurisdictions except US."
@@ -202,6 +206,7 @@ level3:
     level: 3
     is_aggregate: false
     local_codes:
+      br: "1.02.03.02.01"  # Imobilizado - Bens Objeto de Arrendamento - Veículos (pairs with liability.noncurrent.lease)
       ec: "10207"
     optional: true
     min_standard_version: "IFRS_2019"
@@ -223,6 +228,7 @@ level3:
       pa: "2.2.01"
       vn: "213"
       de: "2800"
+      br: "1.02.05.01.01"  # Marcas
       ec: "1020402"
     amortization_required: true
 
@@ -237,6 +243,7 @@ level3:
     level: 3
     is_aggregate: false
     local_codes:
+      br: "1.02.05.01.21"  # Goodwill – Intangível
       ec: "1020401"
     impairment_tested_annually: true
     notes: "IFRS 3: goodwill not amortized, tested for impairment annually. Some local GAAP still amortize."
@@ -254,6 +261,7 @@ level3:
     local_codes:
       mx: "161"
       vn: "221"
+      br: "1.01.01.05.01"  # Títulos para Negociação - VJPR - No País (no dedicated short-term-investment node exists)
       ec: "10206"
 
 ---
@@ -281,6 +289,7 @@ level3:
       vn: "331"
       de: "3300"
       fr: "401"
+      br: "2.01.01.03.01"  # Fornecedores - Operações com Partes Não Relacionadas - No País - Circulante
       ec: "20103"
 
   - id: "liability.current.vat_output"
@@ -301,7 +310,7 @@ level3:
       vn: "3331"
       cn: "销项税额"
     not_applicable: ["us", "ca"]  # Sales tax is state-level in US, not VAT
-    notes: "SA: replace with Zakat base computation. US/CA: state sales tax varies (different mechanism). EC: the Supercias NIIF presentation chart has no distinct output-VAT leaf; IVA payable aggregates into 2010701 (Con la Administracion Tributaria) together with other tax liabilities -- no ec local_code is claimed here to avoid overstating presentation-level precision."
+    notes: "SA: replace with Zakat base computation. US/CA: state sales tax varies (different mechanism). EC: the Supercias NIIF presentation chart has no distinct output-VAT leaf; IVA payable aggregates into 2010701 (Con la Administracion Tributaria) together with other tax liabilities -- no ec local_code is claimed here to avoid overstating presentation-level precision. BR: the RFB Plano de Contas Referencial's 2.01.01.09 'Obrigações Fiscais - Circulante' header bundles ICMS/PIS/COFINS/IOF/CIDE/municipal-tax payables together with IRPJ/CSLL (income tax) at the same level -- classified onto liability.current.tax generically rather than a separate output-VAT leaf; no br local_code claimed here for the same overstating-precision reason as EC."
 
   - id: "liability.current.tax"
     uuid: "00000000-0000-4000-8000-000000000205"
@@ -318,6 +327,7 @@ level3:
       vn: "3334"
       de: "3600"
       fr: "444"
+      br: "2.01.01.09.01"  # IRRF a Recolher - Circulante
       ec: "2010702"
     notes: "Tax rates: US 21%, MX 30%, BR 34%, CN 25%, VN 20%, SA uses Zakat 2.5% of net assets."
 
@@ -335,6 +345,7 @@ level3:
       mx: "270"
       vn: "333"
       de: "3900"
+      br: "2.01.01.15.07"  # Provisões de Natureza Cível - Circulante
       ec: "20105"
 
   - id: "liability.current.short_term_debt"
@@ -350,6 +361,7 @@ level3:
     local_codes:
       mx: "211"
       vn: "311"
+      br: "2.01.01.07.02"  # Empréstimos ou Financiamentos - No País - Circulante
       ec: "20104"
 
   # ─────────────────────────────────────────────
@@ -369,6 +381,7 @@ level3:
     local_codes:
       mx: "311"
       vn: "341"            # Circular 200: account 341 long-term borrowings & finance-lease (311 = short-term)
+      br: "2.02.01.01.01"  # Fornecedores - No País - Longo Prazo
       ec: "20203"
 
   - id: "liability.noncurrent.lease"
@@ -382,6 +395,7 @@ level3:
     level: 3
     is_aggregate: false
     local_codes:
+      br: "2.02.01.01.09"  # Arrendamento no País - Longo Prazo
       ec: "20201"
     optional: true
     min_standard_version: "IFRS_2019"
@@ -398,6 +412,7 @@ level3:
     level: 3
     is_aggregate: false
     local_codes:
+      br: "2.02.01.05.01"  # Débitos Fiscais IRPJ - Diferenças Temporárias - Longo Prazo
       ec: "2020902"
     not_applicable: ["vn"]  # VAS does not use deferred tax
     notes: "VN: not applicable under VAS. US: calculated per ASC 740."
@@ -421,6 +436,7 @@ level3:
       co: "3105"
       pa: "5.1.01"
       vn: "411"
+      br: "2.03.01.01.01"  # Capital Subscrito de Domiciliados e Residentes no País
       ec: "301"
     notes: "VN: Charter Capital (Vốn điều lệ). SA: registered capital under SOCPA."
 
@@ -438,6 +454,7 @@ level3:
       mx: "305"
       vn: "421"
       de: "800"
+      br: "2.03.04.01.01"  # Lucros Acumulados e/ou Saldo à Disposição da Assembleia
       ec: "306"
     notes: "VE/TR: restated for inflation under IAS 29. RU: mandatory legal reserve portion."
 
@@ -452,6 +469,7 @@ level3:
     level: 3
     is_aggregate: false
     local_codes:
+      br: "2.03.02.01.01"  # Ágio na Emissão de Ações
       ec: "304"
     notes: "RU: mandatory to maintain legal reserve of 5% of charter capital. SA: statutory reserves."
 
@@ -476,6 +494,7 @@ level3:
       pa: "6.1.01"
       vn: "511"
       fr: "701"
+      br: "3.01.01.01.01.01"  # Receita de Exportação Direta de Mercadorias e Produtos
       ec: "401"
     notes: "IFRS 15: 5-step revenue recognition model. BR: exclude ICMS/PIS/COFINS from gross revenue."
 
@@ -492,6 +511,7 @@ level3:
     local_codes:
       mx: "490"
       vn: "515"
+      br: "3.01.01.05.01.01"  # Variações Cambiais Ativas
       ec: "403"
 
   - id: "expense.cogs"
@@ -510,6 +530,7 @@ level3:
       pa: "7.1.01"
       vn: "632"
       fr: "607"
+      br: "3.01.01.03.01.01"  # Custo dos Produtos de Fabricação Própria Vendidos
       ec: "501"
     notes: "Service companies: typically 0 or replaced by direct labor costs."
 
@@ -528,6 +549,7 @@ level3:
       co: "5205"
       vn: "642"
       fr: "627"
+      br: "3.01.01.07.01.01"  # Remuneração a Dirigentes e a Conselho de Administração (Despesas Operacionais -- flat payroll/admin-style list, no distinct selling-expense node)
       ec: "50202"  # GASTOS ADMINISTRATIVOS (50201 GASTOS DE VENTA also rolls up here; ontology has no distinct selling-expense node)
 
   - id: "expense.depreciation"
@@ -544,6 +566,7 @@ level3:
       mx: "506"
       vn: "214"
       fr: "681"
+      br: "3.01.01.07.01.23"  # Encargos de Depreciação
       ec: "5020221"
     notes: "May be embedded in COGS or SG&A lines. Present separately for EBITDA calculation."
 
@@ -561,6 +584,7 @@ level3:
       mx: "701.04"         # SAT Anexo 24: 701.04 "Intereses a cargo" (financial expenses)
       vn: "635"            # VAS Circular 200: 635 "Chi phí tài chính" (interest is its principal component)
       fr: "661"
+      br: "3.01.01.09.01.04"  # Despesas de Juros sobre o Capital Próprio
       ec: "50203"
     notes: "VAS account 635 aggregates interest AND FX losses under one statutory code; Kontablo maps 635 to the interest leaf (its dominant component) and does not claim a distinct VAS leaf for FX loss (see expense.fx_loss)."
 
@@ -578,6 +602,7 @@ level3:
       mx: "510"
       vn: "821"
       fr: "695"
+      br: "3.02.01.01.01.01"  # Provisão para Contribuição Social sobre o Lucro Líquido (Atividade Geral)
       ec: "603"
 
   - id: "expense.fx_loss"
@@ -593,6 +618,7 @@ level3:
     local_codes:
       mx: "701.01"         # SAT Anexo 24: 701.01 "Pérdida cambiaria" (FX loss)
       de: "6800"
+      br: "3.01.01.09.01.01"  # Variações Cambiais Passivas
       ec: "5020307"
     notes: "Critical in VE (dual-currency system). VAS has no distinct statutory leaf code for FX loss: realized FX losses transit account 635 (financial expenses), which Kontablo maps to expense.interest; hence no vn code is claimed here to avoid a one-code-to-two-leaves collision."
 
@@ -750,6 +776,7 @@ extended_core:
       fr: "421"     # PCG: "Personnel - rémunérations dues"
       es: "465"     # PGC RD 1514/2007: "Remuneraciones pendientes de pago"
       vn: "334"     # VAS Circular 200: "Phải trả người lao động"
+      br: "2.01.01.01.01"  # RFB Plano de Contas Referencial: "Salários e Remunerações a Pagar"
       ec: "2010703"  # Supercias: "Con el IESS" (social security)
     notes: "Aggregates net wages payable plus employee/employer statutory deductions (income-tax withholding, social security). Largest single source of routine NON-core posting volume (payroll runs)."
 
@@ -768,6 +795,7 @@ extended_core:
       fr: "487"     # PCG: "Produits constatés d'avance"
       es: "485"     # PGC: "Ingresos anticipados"
       vn: "3387"    # VAS Circular 200: "Doanh thu chưa thực hiện" (unearned revenue)
+      br: "2.01.01.05.01"  # RFB Plano de Contas Referencial: "Adiantamentos de Clientes - No País"
       ec: "20110"   # Supercias: "Anticipos" (current)
     notes: "Billings/advances ahead of revenue recognition. Common in subscription and service SMEs; distinct from trade payables and accruals under IFRS 15."
 
@@ -785,6 +813,7 @@ extended_core:
     local_codes:
       co: "1355"    # PUC: "Anticipo de impuestos y contribuciones o saldos a favor" (retenciones)
       es: "473"     # PGC: "Hacienda Pública, retenciones y pagos a cuenta"
+      br: "1.01.02.04.01"  # RFB Plano de Contas Referencial: "Imposto de Renda Retido na Fonte (IRRF)"
       ec: "1010502"  # Supercias: "Crédito tributario a favor de la empresa (I.R.)"
     notes: "Income tax withheld by customers at source (retención) and advance-tax credits. High frequency in LatAm and parts of Asia/Africa; not applicable everywhere."
 
@@ -802,5 +831,6 @@ extended_core:
     local_codes:
       fr: "425"     # PCG: "Personnel - avances et acomptes"
       es: "440"     # PGC: "Deudores varios"
+      br: "1.01.02.09.01"  # RFB Plano de Contas Referencial: "Mútuos com Partes Não Relacionadas – Circulante - No País"
       ec: "1010206"  # Supercias: "Documentos y cuentas por cobrar relacionados"
     notes: "Employee advances, deposits, and other non-trade amounts receivable; distinct from trade receivables."

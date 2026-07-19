@@ -909,6 +909,272 @@ MX_RULES = {
 }
 
 
+# --- Brazil (RFB SPED Plano de Contas Referencial, L100A + L300A) prefix ->
+# Level-3 id rules --------------------------------------------------------
+# Longest-prefix match wins. Codes follow the dot-segmented hierarchy
+# verbatim from the source (localizations/br/plano_referencial_official_chart.yaml,
+# all 1,123 codes -- 732 from L100A "Balanço Patrimonial" + 391 from L300A
+# "Demonstração do Resultado").
+#
+# Unlike EC/MX, Brazil's own source data carries TWO authoritative signals
+# EC/MX had to infer via prefix heuristics: TIPO ("S"=Sintética header,
+# "A"=Analítica leaf) and an explicit CONTA SUPERIOR parent code. classify()
+# uses entry["tipo"] directly for is_aggregate detection instead of a
+# parent_codes/SUBTOTAL_PREFIXES guess.
+#
+# Brazil ALSO marks contra-accounts with a literal "(-)" name prefix, parsed
+# into entry["is_contra"] -- but this means something different depending on
+# which sheet the code is from, verified against the actual account names,
+# not assumed:
+#   - In L100A (balance sheet): "(-)" marks genuine contra-asset/contra-
+#     liability/contra-equity accounts (allowances, accumulated depreciation/
+#     amortization/exhaustion, impairment losses, inventory write-downs,
+#     unearned-interest discounts, treasury shares, accumulated losses).
+#     These are the same kind of accounts EC/MX/SYSCOHADA leave needs_review
+#     because Kontablo has no dedicated contra-node yet -- classify() forces
+#     needs_review for every is_contra=true L100A leaf, which BR's reliable
+#     is_contra signal makes safe to do generically instead of enumerating
+#     every contra code by hand (verified: every is_contra=true code sampled
+#     from L100A is a genuine allowance/accumulated/impairment/discount
+#     account, never an ordinary expense).
+#   - In L300A (P&L): "(-)" is instead Brazil's SIGN CONVENTION for "this
+#     line subtracts from Resultado Líquido" -- it marks ordinary COGS/
+#     operating-expense/financial-expense lines just as often as genuine
+#     contra-revenue (sales deductions). Verified against the parsed chart:
+#     3.01.01.07 (Despesas Operacionais -- payroll, rent, utilities) and
+#     3.01.01.09 (Outras Despesas Operacionais -- interest, FX loss) are
+#     BOTH 100% is_contra=true, yet they are ordinary expense accounts, not
+#     an ontology gap. Forcing is_contra->needs_review here would silently
+#     dump the entire Despesas section into needs_review noise -- exactly
+#     the "don't assume a single signal means the same thing everywhere"
+#     trap this round's brief warned about. So for L300A, is_contra is NOT
+#     used as a needs_review trigger; only the specific contra-REVENUE
+#     prefix (Deduções da Receita Bruta, 3.01.01.01.02 / 3.11.01.01.02) is
+#     deliberately left OUT of BR_RULES so it falls through to needs_review
+#     via the normal "no rule matched" path -- same convention EC/MX use for
+#     their sales-return/discount contra-revenue sections.
+BR_RULES = {
+    # ===== L100A: ATIVO CIRCULANTE =====
+    "1.01.01.01": "asset.current.cash",              # Caixa Geral
+    "1.01.01.02": "asset.current.bank",              # Depósitos Bancários à Vista
+    "1.01.01.04": "asset.current.cash",              # Numerários em Trânsito
+    "1.01.01.05": "asset.noncurrent.investments",    # Títulos e Valores Mobiliários - No País (no dedicated short-term-investment node)
+    "1.01.01.06": "asset.noncurrent.investments",    # Valores Mobiliários - Hedge - No País
+    "1.01.01.09": "asset.noncurrent.investments",    # Títulos e Valores Mobiliários - No Exterior
+    "1.01.01.10": "asset.noncurrent.investments",    # Valores Mobiliários - Hedge - No Exterior
+    "1.01.01.40": "asset.current.bank",              # Recursos no Exterior Decorrentes de Exportação
+    "1.01.01.99": "asset.current.cash",              # Outras Disponibilidades
+    "1.01.02.01": "asset.current.prepaid",           # Adiantamentos (a fornecedores/funcionários/terceiros)
+    "1.01.02.02": "asset.current.receivables",       # Duplicatas a Receber
+    "1.01.02.03": "asset.current.vat_input",         # Tributos a Recuperar (ICMS/PIS/COFINS/IPI credits)
+    "1.01.02.04": "asset.current.withholding_tax",   # Tributos a Compensar (IRRF/IRPJ/CSLL withheld/estimated)
+    "1.01.02.09": "asset.current.other_receivables", # Outros Créditos - Circulante
+    "1.01.03": "asset.current.inventory",            # Estoques (mercadorias/produtos/imobiliária/rural/serviços/outros)
+    "1.01.05": "asset.current.prepaid",              # Despesas do Exercício Seguinte
+    # 1.01.10 Ativo Biológico - Circulante: no rule -- asset.noncurrent.biological
+    # is PLANNED status with no uuid yet (core/schemas/level3_accounts.yaml
+    # pending_accounts), same real ontology gap EC/MX hit. needs_review.
+    # 1.01.11 Ativo Não Circulante Mantido para Venda: no rule -- IFRS 5
+    # held-for-sale classification has no dedicated Kontablo node (distinct
+    # from ordinary PPE). needs_review.
+
+    # ===== L100A: ATIVO NÃO CIRCULANTE =====
+    # 1.02.01.01 Créditos e Valores - Longo Prazo: no rule -- only a CURRENT
+    # receivables node exists; forcing a long-term balance into it would
+    # misstate current vs noncurrent (same principle as MX's "186" gap).
+    "1.02.01.02": "asset.noncurrent.investments",    # Títulos e Valores Mobiliários - No País - Longo Prazo
+    "1.02.01.03": "asset.noncurrent.investments",    # ...No Exterior - Longo Prazo
+    # 1.02.01.05 Ativos Fiscais Diferidos - Longo Prazo: no rule -- this is a
+    # deferred tax ASSET; only liability.noncurrent.deferred_tax (a liability
+    # node) exists (same gap as MX's "185"). needs_review.
+    # 1.02.01.07 Créditos em Contencioso - Longo Prazo: no rule -- no dedicated node.
+    # 1.02.01.08 Tributos a Recuperar - Longo Prazo: no rule -- only current
+    # vat_input node exists.
+    # 1.02.01.09 Despesas Pagas Antecipadamente - Longo Prazo: no rule -- only
+    # current prepaid node exists.
+    # 1.02.01.10 Ativo Biológico - Longo Prazo: no rule -- same biological gap.
+    # 1.02.01.15 Outros Créditos - Longo Prazo: no rule -- only current
+    # other_receivables node exists.
+    "1.02.02.01": "asset.noncurrent.investments",    # Participações Permanentes - No País
+    "1.02.02.02": "asset.noncurrent.investments",    # Participações Permanentes - No Exterior
+    # 1.02.02.03 Propriedades para Investimento: no rule -- investment
+    # property (IAS 40) is distinct from both PPE and equity-method
+    # investments; no dedicated node. needs_review.
+    "1.02.02.10": "asset.noncurrent.investments",    # Outros Investimentos Permanentes
+    "1.02.03.01": "asset.noncurrent.ppe",            # Imobilizado - Aquisição
+    "1.02.03.02": "asset.noncurrent.rou_assets",     # Imobilizado - Bens Objeto de Arrendamento (pairs with the
+                                                      # liability.noncurrent.lease node on the passive side)
+    # 1.02.03.04 Ativo Biológico de Produção: no rule -- same biological gap.
+    "1.02.03.05": "asset.noncurrent.ppe",            # Outros Imobilizados
+    "1.02.05.01.21": "asset.noncurrent.goodwill",    # Goodwill – Intangível (exception nested inside Intangível)
+    "1.02.05": "asset.noncurrent.intangibles",       # Intangível (marcas, patentes, software, etc.)
+    # 1.02.06 Diferido: no rule -- legacy pre-Lei 11.941/2009 Brazilian-GAAP
+    # deferred-charge concept, no clean IFRS-anchored equivalent (same kind
+    # of gap as MX's "173-182" legacy deferred-charge family). needs_review.
+
+    # ===== L100A: PASSIVO CIRCULANTE =====
+    "2.01.01.01": "liability.current.payroll",       # Benefícios e Encargos Sociais - Circulante
+    "2.01.01.03": "liability.current.payables",      # Fornecedores - Circulante
+    "2.01.01.05": "liability.current.deferred_revenue",  # header says "Contas a Pagar" but every leaf is Adiantamentos de Clientes (customer advances)
+    "2.01.01.07": "liability.current.short_term_debt",   # Empréstimos ou Financiamentos - Circulante
+    "2.01.01.09": "liability.current.tax",           # Obrigações Fiscais - Circulante
+    # 2.01.01.11 / 2.01.01.12 Valores Mobiliários - Hedge: no rule -- derivative
+    # hedge liability, no dedicated node.
+    "2.01.01.13": "liability.current.short_term_debt",   # Títulos de Dívida - Circulante (debêntures, bonds, notas promissórias)
+    "2.01.01.15.01": "liability.current.tax",        # Provisão para o Imposto de Renda
+    "2.01.01.15.02": "liability.current.tax",        # Provisão para a CSLL
+    "2.01.01.15.03": "liability.current.payroll",    # Férias a Pagar
+    "2.01.01.15.04": "liability.current.payroll",    # 13º Salário a Pagar
+    "2.01.01.15.05": "liability.current.payroll",    # Provisões de Natureza Trabalhista
+    "2.01.01.15.06": "liability.current.tax",        # Provisões de Natureza Tributária
+    "2.01.01.15.07": "liability.current.accrued",    # Provisões de Natureza Cível
+    "2.01.01.15.28": "liability.current.accrued",    # Outras Provisões
+    "2.01.01.17.01": "liability.current.short_term_debt",  # Mútuos - Partes Não Relacionadas - No País
+    "2.01.01.17.02": "liability.current.short_term_debt",  # ...No Exterior
+    "2.01.01.17.03": "liability.current.short_term_debt",  # Mútuos - Partes Relacionadas - No País
+    "2.01.01.17.04": "liability.current.short_term_debt",  # ...No Exterior
+    "2.01.01.17.11": "liability.current.deferred_revenue", # Faturamento para Entrega Futura
+    "2.01.01.17.12": "liability.current.accrued",    # Juros sobre o Capital Próprio a Pagar
+    "2.01.01.17.13": "liability.current.accrued",    # Dividendos a Pagar
+    "2.01.01.17.25": "liability.current.payables",   # Direitos Creditórios a Pagar
+    "2.01.01.17.60": "liability.current.deferred_revenue", # CPC 47 - Passivos de Contrato
+    # 2.01.01.17.09/.10 (contraprestação/passivo contingente - business
+    # combination), .15/.16 (conta de controle de custo contratado/orçado -
+    # construction contract cost control), .28 (outras obrigações, too
+    # generic): no rule -- no dedicated node.
+    "2.01.01.19.01": "liability.current.deferred_revenue",  # Receitas Diferidas
+    "2.01.01.19.03": "liability.current.deferred_revenue",  # Subvenção Governamental a Apropriar
+
+    # ===== L100A: PASSIVO NÃO-CIRCULANTE =====
+    "2.02.01.01.01": "liability.noncurrent.debt",    # Fornecedores - No País - Longo Prazo
+    "2.02.01.01.02": "liability.noncurrent.debt",    # ...No Exterior
+    "2.02.01.01.03": "liability.noncurrent.debt",    # Credores por Financiamento
+    "2.02.01.01.04": "liability.noncurrent.debt",    # Títulos a Pagar
+    "2.02.01.01.05": "liability.noncurrent.debt",    # Duplicatas Descontadas
+    "2.02.01.01.06": "liability.noncurrent.debt",    # Empréstimos ou Financiamentos - No País
+    "2.02.01.01.07": "liability.noncurrent.debt",    # ...No Exterior
+    "2.02.01.01.08": "liability.noncurrent.debt",    # Adiantamentos de Contrato de Câmbio
+    "2.02.01.01.09": "liability.noncurrent.lease",   # Arrendamento - No País (dedicated lease node)
+    "2.02.01.01.10": "liability.noncurrent.lease",   # Arrendamento - No Exterior
+    # 2.02.01.01.11/.12 Adiantamentos de Clientes - Longo Prazo: no rule --
+    # only a CURRENT deferred_revenue node exists.
+    "2.02.01.03": "liability.noncurrent.debt",       # Parcelamentos Fiscais - Longo Prazo
+    "2.02.01.05": "liability.noncurrent.deferred_tax",  # Passivos Fiscais Diferidos - Longo Prazo (exact fit)
+    "2.02.01.07.01": "liability.noncurrent.debt",    # Debêntures a Pagar - Longo Prazo
+    "2.02.01.07.02": "liability.noncurrent.debt",    # Prêmio na Emissão de Debêntures
+    "2.02.01.07.04": "liability.noncurrent.debt",    # Notas Promissórias a Pagar
+    "2.02.01.07.05": "liability.noncurrent.debt",    # Bonds a Pagar
+    "2.02.01.07.06": "liability.noncurrent.debt",    # CRI
+    "2.02.01.07.07": "liability.noncurrent.debt",    # CRA
+    "2.02.01.07.25": "liability.noncurrent.debt",    # Outros Títulos de Dívida - Custo Amortizado
+    "2.02.01.07.28": "liability.noncurrent.debt",    # ...Valor Justo (VJPR)
+    # 2.02.01.09 Provisões - Longo Prazo (trabalhista/tributária/cível): no
+    # rule -- no dedicated NONCURRENT provision/accrued node exists.
+    # 2.02.01.10 Obrigações Fiscais - Longo Prazo: no rule -- only current tax node exists.
+    "2.02.01.11.01": "liability.noncurrent.debt",    # Mútuos - Partes Não Relacionadas - No País - LP
+    "2.02.01.11.02": "liability.noncurrent.debt",    # ...No Exterior
+    "2.02.01.11.03": "liability.noncurrent.debt",    # Mútuos - Partes Relacionadas - No País - LP
+    "2.02.01.11.04": "liability.noncurrent.debt",    # ...No Exterior
+    "2.02.01.11.22": "liability.noncurrent.debt",    # Direitos Creditórios a Pagar - Longo Prazo
+    # 2.02.01.11.10 (passivo contingente), .11/.12 (JCP/dividendos longo
+    # prazo -- only current accrued node exists), .13 (AFAC-passivo,
+    # genuinely ambiguous equity-vs-liability), .15/.16 (cost control),
+    # .28 (generic "other"), .60 (CPC 47 longo prazo -- only current
+    # deferred_revenue node exists): no rule -- no dedicated node.
+    # 2.02.01.21 Receitas Diferidas - Longo Prazo: no rule -- only current
+    # deferred_revenue node exists.
+
+    # ===== L100A: PATRIMÔNIO LÍQUIDO =====
+    # NOTE: Patrimônio Líquido is numbered 2.03 -- nested under the same root
+    # "2" as Passivo in Brazil's own numbering, NOT given its own top-level
+    # root digit the way EC's "3" or MX's "3" are. Verified against the
+    # actual parsed chart (2.03 sits alongside 2.01/2.02 as a sibling S-level
+    # header under root "2"), not assumed from EC/MX's convention -- see
+    # build_erpnext_tree.py's BR-specific reparenting for how this is handled
+    # when building the ERPNext tree.
+    "2.03.01": "equity.capital",           # Capital Social
+    "2.03.02": "equity.reserves",          # Reservas (capital/reavaliação/lucros)
+    "2.03.03": "equity.reserves",          # Ajustes de Avaliação Patrimonial (OCI) -- closest fit, "Other Reserves"
+    "2.03.04.01.01": "equity.retained",    # Lucros Acumulados e/ou Saldo à Disposição da Assembleia
+    "2.03.04": "equity.reserves",          # Outras Contas do PL (generic catch-all, contingent consid., prior-period adjustments)
+
+    # ===== L300A: RESULTADO (Atividade Geral) =====
+    "3.01.01.01.01": "revenue.operating",  # Receita Bruta
+    # 3.01.01.01.02 Deduções da Receita Bruta: no rule -- CONTRA-REVENUE
+    # (sales returns/discounts, ICMS/COFINS/PIS/ISS on sales), same
+    # convention as EC/MX/SYSCOHADA's contra-revenue sections. needs_review.
+    "3.01.01.03": "expense.cogs",          # Custo dos Bens e Serviços Vendidos
+    "3.01.01.05": "revenue.other",         # Outras Receitas Operacionais
+    "3.01.01.07.01.14": "expense.tax",           # PIS/PASEP
+    "3.01.01.07.01.15": "expense.tax",           # COFINS
+    "3.01.01.07.01.16": "expense.tax",           # Demais Impostos, Taxas e Contribuições
+    "3.01.01.07.01.23": "expense.depreciation",  # Encargos de Depreciação
+    "3.01.01.07.01.24": "expense.depreciation",  # Encargos de Amortização
+    "3.01.01.07": "expense.admin",         # Despesas Operacionais (flat payroll/admin-style list;
+                                            # no dedicated selling-expense node, same EC/MX precedent)
+    "3.01.01.09.01.01": "expense.fx_loss",       # Variações Cambiais Passivas
+    "3.01.01.09.01.04": "expense.interest",      # Despesas de Juros sobre o Capital Próprio
+    "3.01.01.09.01.05": "expense.interest",      # Despesas de Remuneração de Debêntures
+    "3.01.01.09.01.06": "expense.interest",      # Juros com Empréstimos de Partes Vinculadas
+    "3.01.01.09.01.07": "expense.interest",      # Despesas Financeiras Relativas a Arrendamento
+    "3.01.01.09.01.08": "expense.interest",      # Outras Despesas Financeiras
+    "3.01.01.09.01.15": "expense.interest",      # Despesas Financeiras Decorrentes dos Ajustes ao Valor Presente
+    "3.01.01.09.01.16": "expense.depreciation",  # Encargos de Depreciação de Bens Objeto de Arrendamento
+    "3.01.01.09.01.17": "expense.depreciation",  # Encargos de Amortização de Mais-Valia
+    "3.01.01.09.01.18": "expense.admin",         # Aluguéis de Bens Imóveis - Parte Relacionada
+    "3.01.01.09.01.19": "expense.admin",         # Aluguéis de Bens Imóveis - Parte Não Relacionada
+    "3.01.01.09.01.20": "expense.interest",      # Despesas com Empréstimos de Valores Mobiliários
+    "3.01.01.09.01.21": "expense.interest",      # Despesas com Corretagem e Emolumentos
+    "3.01.01.09.01.22": "expense.interest",      # Despesas com Deságio na Cessão de Títulos
+    "3.01.01.09.01.23": "expense.interest",      # Despesas em Operações de Mútuo - Parte Relacionada
+    "3.01.01.09.01.24": "expense.interest",      # ...Parte Não Relacionada
+    "3.01.01.09.01.25": "expense.interest",      # Despesas em Outros Passivos Financeiros - Custo Amortizado
+    # remaining 3.01.01.09 leaves (trading losses, equity-method losses,
+    # impairment losses, OCI reclassifications, fair-value losses on
+    # financial/biological/investment-property instruments, generic "outras
+    # despesas operacionais"): no rule -- no dedicated node, needs_review.
+    # 3.01.01.11 Outras Receitas/Despesas + Resultado de Operações
+    # Descontinuadas: no rule -- mixed disposal-gain/loss + discontinued-ops
+    # section (same kind of gap as MX's "505"/"703"), no single Level-3 node
+    # fits cleanly. needs_review.
+    # 3.01.05 Participações (profit-sharing expense -- employees, admins,
+    # debenture holders): no rule -- no dedicated node (same gap as MX's
+    # "607 PTU"). needs_review.
+    "3.02": "expense.tax",                 # Provisão para CSLL e IRPJ (income tax expense)
+
+    # ===== L300A: RESULTADO (Atividade Rural) -- mirrors Atividade Geral 1:1 =====
+    "3.11.01.01.01": "revenue.operating",
+    # 3.11.01.01.02 Deduções (rural): no rule -- contra-revenue.
+    "3.11.01.03": "expense.cogs",
+    "3.11.01.05": "revenue.other",
+    "3.11.01.07.01.14": "expense.tax",
+    "3.11.01.07.01.15": "expense.tax",
+    "3.11.01.07.01.16": "expense.tax",
+    "3.11.01.07.01.23": "expense.depreciation",
+    "3.11.01.07.01.24": "expense.depreciation",
+    "3.11.01.07": "expense.admin",
+    "3.11.01.09.01.01": "expense.fx_loss",
+    "3.11.01.09.01.04": "expense.interest",
+    "3.11.01.09.01.05": "expense.interest",
+    "3.11.01.09.01.06": "expense.interest",
+    "3.11.01.09.01.07": "expense.interest",
+    "3.11.01.09.01.08": "expense.interest",
+    "3.11.01.09.01.15": "expense.interest",
+    "3.11.01.09.01.16": "expense.depreciation",
+    "3.11.01.09.01.17": "expense.depreciation",
+    "3.11.01.09.01.18": "expense.admin",
+    "3.11.01.09.01.19": "expense.admin",
+    "3.11.01.09.01.20": "expense.interest",
+    "3.11.01.09.01.21": "expense.interest",
+    "3.11.01.09.01.22": "expense.interest",
+    "3.11.01.09.01.23": "expense.interest",
+    "3.11.01.09.01.24": "expense.interest",
+    "3.11.01.09.01.25": "expense.interest",
+    # 3.11.01.11 (rural discontinued ops), 3.11.05 (rural participações): no rule.
+    "3.12": "expense.tax",                 # Provisão CSLL (Atividade Rural)
+}
+
+
 def load_ontology_nodes():
     """Real, UUID-bearing Level-3 nodes only. The ontology file is split
     across multiple '---'-separated YAML documents (core list under the
@@ -947,7 +1213,11 @@ def longest_prefix_match(code, rules):
 # uses "9"; SAT's código agrupador uses "8" (Cuentas de orden, 800-899) --
 # these are NOT the same digit, so this must be looked up per jurisdiction
 # rather than hardcoded, or MX's 8xx codes would be silently treated as
-# regular postable leaves instead of captions.
+# regular postable leaves instead of captions. Brazil's Plano de Contas
+# Referencial (L100A/L300A) has no order/memorandum-account section at all
+# -- verified against the parsed chart (only roots "1"/"2"/"3" exist) -- so
+# no "br" entry is added here; classify()'s br branch below doesn't consult
+# this dict.
 ORDER_ACCOUNT_PREFIX = {"ec": "9", "mx": "8"}
 
 # The EC-authored subtotal/computed-row heuristic below only reflects EC's
@@ -956,6 +1226,10 @@ ORDER_ACCOUNT_PREFIX = {"ec": "9", "mx": "8"}
 # to use codes like "606", "607", "701" for entirely different, genuinely
 # postable/needs_review concepts, so applying EC's set to MX would silently
 # mislabel them as statement captions instead of the correct needs_review.
+# Brazil doesn't need this mechanism at all: TIPO ("S"=Sintética/header,
+# "A"=Analítica/leaf) is an authoritative column straight from the source,
+# so classify() reads entry["tipo"] directly for br instead of guessing
+# header/subtotal rows from a prefix heuristic -- see the br branch below.
 JURISDICTION_SUBTOTAL_PREFIXES = {"ec": SUBTOTAL_PREFIXES}
 
 # Codes that must NEVER inherit a broader prefix's mapping via
@@ -966,7 +1240,12 @@ JURISDICTION_SUBTOTAL_PREFIXES = {"ec": SUBTOTAL_PREFIXES}
 # pagos anticipados" nested under it is a CONTRA-ASSET (accumulated
 # impairment) and must not silently inherit 109's asset.current.prepaid
 # mapping via prefix match -- it needs to fall through to needs_review,
-# same as the other contra-accounts in this file.
+# same as the other contra-accounts in this file. Empty for br: Brazil's
+# per-leaf contra-account exclusion is handled generically via
+# entry["is_contra"] in classify()'s br branch (scoped to the L100A sheet
+# only -- see BR_RULES's header comment for why L300A's is_contra can't be
+# used the same way), not by hand-enumerating exception codes the way MX's
+# "109.21" needed.
 JURISDICTION_FORCE_NEEDS_REVIEW = {
     "mx": {"109.21"},
 }
@@ -974,6 +1253,43 @@ JURISDICTION_FORCE_NEEDS_REVIEW = {
 
 def classify(entry, rules, parent_codes, jurisdiction=None):
     code = entry["code"]
+
+    if jurisdiction == "br":
+        # Brazil's own source data is authoritative for both header/leaf
+        # detection (TIPO) and contra-account detection (is_contra, parsed
+        # from a literal "(-)" name prefix) -- no prefix-heuristic guessing
+        # needed here the way EC/MX require (parent_codes / SUBTOTAL_PREFIXES
+        # / JURISDICTION_FORCE_NEEDS_REVIEW), so br takes its own path
+        # entirely rather than falling through the shared EC/MX pipeline
+        # below.
+        if entry.get("tipo") == "S":
+            # Sintética: header/rollup row with more granular children in
+            # this same chart -- never independently postable. Same role
+            # EC/MX's parent_codes fallback plays, but sourced directly from
+            # the primary source instead of inferred from code containment.
+            return {"kontablo_uuid": None, "kontablo_node": None,
+                    "is_statement_caption": False, "is_aggregate": True, "needs_review": False}
+        if entry.get("source_sheet") == "L100A" and entry.get("is_contra"):
+            # Genuine contra-asset/contra-liability/contra-equity account
+            # (allowance, accumulated depreciation/amortization/exhaustion,
+            # impairment, inventory write-down, unearned-interest discount,
+            # treasury shares, accumulated losses) -- Kontablo has no
+            # dedicated contra-node yet, same gap EC/MX/SYSCOHADA leave
+            # needs_review. Deliberately scoped to L100A only: in L300A the
+            # same is_contra flag just marks "this line subtracts from
+            # Resultado Líquido" (ordinary COGS/expense/financial-expense
+            # lines are is_contra=true there too) and must NOT trigger this
+            # override -- see BR_RULES's header comment for the verified
+            # reasoning.
+            return {"kontablo_uuid": None, "kontablo_node": None,
+                    "is_statement_caption": False, "is_aggregate": False, "needs_review": True}
+        node_id = longest_prefix_match(code, rules)
+        if node_id:
+            return {"kontablo_uuid": None, "kontablo_node": node_id,
+                    "is_statement_caption": False, "is_aggregate": False, "needs_review": False}
+        return {"kontablo_uuid": None, "kontablo_node": None,
+                "is_statement_caption": False, "is_aggregate": False, "needs_review": True}
+
     oa_prefix = ORDER_ACCOUNT_PREFIX.get(jurisdiction)
     if entry["statement"] in (
         "Estado de Cambios en el Patrimonio",
@@ -1014,6 +1330,25 @@ def derive_nature(entry, jurisdiction=None):
     # single-digit-root heuristic below.
     if jurisdiction == "mx":
         return entry.get("nature")
+    if jurisdiction == "br":
+        # NATUREZA: 1=Ativo(Debit), 2=Passivo(Credit), 3=Patrimônio
+        # Líquido(Credit), 4=Resultado (mixed within the P&L). This is
+        # Brazil's own NATUREZA column, not a bare "root digit determines
+        # nature" heuristic borrowed from EC -- verified against the parsed
+        # chart: within L300A (natureza=4 for every row), is_contra=true
+        # consistently marks the Debit-nature lines (COGS/expense/
+        # deduction) and is_contra=false marks the Credit-nature lines
+        # (revenue/gain), sampled across both the Atividade Geral and
+        # Atividade Rural mirrors.
+        natureza = entry.get("natureza")
+        if natureza == 1:
+            return "Debit"
+        if natureza in (2, 3):
+            return "Credit"
+        if natureza == 4:
+            return "Debit" if entry.get("is_contra") else "Credit"
+        return None
+
     root = entry["code"][0]
     sign = entry["sign"]
     if root in ("1", "5"):
@@ -1043,6 +1378,8 @@ def main():
         rules = EC_RULES
     elif args.jurisdiction == "mx":
         rules = MX_RULES
+    elif args.jurisdiction == "br":
+        rules = BR_RULES
     else:
         rules = {}
     official = yaml.safe_load(open(args.official, encoding="utf-8"))
