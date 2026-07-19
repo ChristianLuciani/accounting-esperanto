@@ -21,9 +21,10 @@ metadata:
       that a national chart is missing.'
     blocked: Attempted; blocked on something (see notes) -- e.g. no accessible primary source PDF.
   counts:
-    partial_curated_subset: 43
+    partial_curated_subset: 42
     n/a_no_statutory_chart: 134
     verified: 18
+    blocked: 1
   total_jurisdictions: 195
   methodology: research/coa_fidelity/README.md
   generator: scripts/coa_fidelity/build_status_tracker.py
@@ -33,17 +34,48 @@ jurisdictions:
   region: Africa
   mapping_mode: statutory_chart
   chart_family: SCF_DZ
-  fidelity_status: partial_curated_subset
+  fidelity_status: blocked
   official_total_codes: null
-  current_localization_codes: null
+  current_localization_codes: 51
   source_url: null
   source_authority: null
   last_verified: null
-  notes: null
+  notes: "Round 3 attempt (2026-07-18) blocked on TOOLING, not on source non-existence
+    -- future sessions should retry, not treat this as a dead end. Candidate official
+    sources were identified via search-engine snippets: (1) Loi n 07-11 du 25 novembre
+    2007 (JO n 74, 15 Dhou El Kaada 1428) establishing the SCF; (2) Decret executif
+    n 08-156 du 26 mai 2008 (JO n 27 du 28 mai 2008) approving the conceptual
+    framework; (3) the implementing arrete of 26 juillet 2008 fixing the evaluation
+    rules and the nomenclature et regles de fonctionnement des comptes, believed
+    published in JO n 19 du 25 mars 2009 (candidate URL pattern on joradp.dz /
+    archive.gazettes.africa, unverified); (4) CNC (Conseil National de la
+    Comptabilite) Avis N89 reproducing the nomenclature, referenced via
+    scfdz.com/nomenclature_des_comptes_scf/ (unverified); (5) a CNC training manual
+    'MANUEL SCF CNC 2014' hosted on elearn.univ-tlemcen.dz (unverified). This
+    session's outbound HTTPS egress is restricted by an organization proxy policy
+    that returns 403 on CONNECT for every external host tested -- including
+    en.wikipedia.org and example.com, i.e. a blanket policy denial unrelated to
+    Algeria or these specific domains (confirmed via
+    curl --cacert /root/.ccr/ca-bundle.crt against 7+ distinct hosts, all 403;
+    only github.com/npm/pypi-class domains on the proxy's noProxy allowlist
+    succeeded). WebFetch on the same URLs returned the identical 403. WebSearch
+    (server-side, does not traverse this proxy) returned snippet-level summaries
+    only -- not full page text -- so there was no way to obtain verbatim
+    government-published account codes this round without fabricating data,
+    which the project's epistemic standards forbid. No STATUS.yaml fields beyond
+    fidelity_status/notes were changed; current_localization_codes reflects the
+    existing localizations/dz/dz_mapping.yaml (452-line curated subset, itself
+    self-flagged with 'VERIFY' notes on several rates and on author-generated
+    sub-account codes below the 4-digit level) which remains as-is, unreplaced.
+    Next session: retry with working general-internet egress, starting from the
+    5 candidate sources above; if joradp.dz/CNC direct hosting is unreachable even
+    with egress restored, consider the ohada.org-style corrobation pattern used for
+    SYSCOHADA (secondary full-text mirror + internal textual-evidence cross-check)
+    rather than declaring a true dead end."
   source_content_hash: null
   source_etag: null
   source_last_modified_header: null
-  last_checked: null
+  last_checked: "2026-07-18"
 - iso: ao
   name: Angola
   region: Africa
