@@ -1,13 +1,32 @@
 # Kontablo Localization Mapping: Germany (SKR 04)
-# Version: 0.1.0-draft
+# Version: 0.2.0-draft
 # Target: DATEV Standardkontenrahmen 04 (Process-oriented)
+# v2 (ADR-014): adds OPTIONAL structure-preservation fields — local_hierarchy
+# (the SKR04 Kontenklassen, the chart's own top-level tree), local_parent
+# (each account's class edge), and facets (the VAT-rate axis that collapses
+# when 19%-rate accounts project onto rate-agnostic Kontablo nodes).
+# Resolution behavior unchanged.
 
 metadata:
   country: de
   authority: DATEV / HGB
   standard: skr04_mapping
-  kontablo_version: 0.1.0
-  last_updated: 2026-03-11
+  kontablo_version: 0.2.0
+  last_updated: 2026-07-18
+
+# SKR04 Kontenklassen (account classes; not mappable accounts themselves).
+# Class labels per the DATEV SKR04 layout; VERIFY exact wording against the
+# current DATEV SKR04 documentation.
+local_hierarchy:
+  "1":
+    name: "Umlaufvermögen"
+    level: 1
+  "3":
+    name: "Verbindlichkeiten"
+    level: 1
+  "4":
+    name: "Betriebliche Erträge"
+    level: 1
 
 mappings:
   "1600":
@@ -15,33 +34,49 @@ mappings:
     nature: "Debit"
     level: 4
     kontablo_uuid: "00000000-0000-4000-8000-000000000101" # Cash
-  
+    local_parent: "1"
+
   "1810":
     name: "Bank"
     nature: "Debit"
     level: 4
     kontablo_uuid: "00000000-0000-4000-8000-000000000102" # Banks
+    local_parent: "1"
 
   "1200":
     name: "Forderungen aus L.L."
     nature: "Debit"
     level: 4
     kontablo_uuid: "00000000-0000-4000-8000-000000000104" # Trade Receivables
+    local_parent: "1"
 
   "3300":
     name: "Verbindlichkeiten aus L.L."
     nature: "Credit"
     level: 4
     kontablo_uuid: "00000000-0000-4000-8000-000000000201" # Trade Payables
+    local_parent: "3"
 
   "3806":
     name: "Umsatzsteuer 19%"
     nature: "Credit"
     level: 4
     kontablo_uuid: "40000000-0000-4000-8000-000000000002" # VAT/GST Output (Standard)
+    local_parent: "3"
+    facets:
+      tax: "vat_output"
+      vat_rate: "19"
+    note: >
+      SKR04 keeps one VAT account per rate (19%, 7%, …); the vat_rate facet
+      preserves the rate axis that collapses into the single rate-agnostic
+      Kontablo output-VAT node.
 
   "4400":
     name: "Erlöse 19% USt"
     nature: "Credit"
     level: 4
     kontablo_uuid: "00000000-0000-4000-8000-000000000301" # Domestic Revenue
+    local_parent: "4"
+    facets:
+      geography: "domestic"
+      vat_rate: "19"

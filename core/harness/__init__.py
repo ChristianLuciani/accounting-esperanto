@@ -38,8 +38,10 @@ from core.harness.fx_provider import (
 )
 from core.harness.ontology import (
     FAMILIES_PATH,
+    LOCALIZATIONS_DIR,
     ONTOLOGY_PATH,
     load_families,
+    load_localization,
     load_ontology,
     merge_family_codes,
 )
@@ -63,7 +65,9 @@ __all__ = [
     "is_finite_number",
     "load_ontology",
     "load_families",
+    "load_localization",
     "merge_family_codes",
+    "LOCALIZATIONS_DIR",
     "FX",
     "JCCY",
     "ONTOLOGY_PATH",

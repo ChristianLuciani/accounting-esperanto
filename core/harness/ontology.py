@@ -21,6 +21,32 @@ import yaml
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ONTOLOGY_PATH = os.path.join(ROOT, "core/schemas/level3_accounts.yaml")
 FAMILIES_PATH = os.path.join(ROOT, "core/schemas/chart_families.yaml")
+LOCALIZATIONS_DIR = os.path.join(ROOT, "localizations")
+
+
+def load_localization(iso):
+    """Load a jurisdiction's full localization mapping structure (v2-aware).
+
+    Returns the parsed YAML document of ``localizations/<iso>/*_mapping.yaml``
+    including the OPTIONAL structure-preservation fields (``local_parent``,
+    ``facets``, ``aggregation_group``, ``local_hierarchy`` — ADR-014), or
+    ``None`` if the jurisdiction has no dict-format mapping file. This is a
+    *read* surface for fiber/lineage queries; it does NOT feed the Tier-1
+    resolution index (which is built from the ontology + chart families), so
+    adding v2 fields can never change resolution behavior.
+    """
+    import glob
+
+    iso = iso.lower()
+    for path in sorted(glob.glob(os.path.join(LOCALIZATIONS_DIR, iso, "*_mapping.yaml"))):
+        doc = yaml.safe_load(open(path, encoding="utf-8"))
+        if not isinstance(doc, dict):
+            continue
+        mappings = doc.get("mappings")
+        if isinstance(mappings, dict):  # v1/v2 dict schema (legacy list = mx_sat only)
+            doc["_path"] = path
+            return doc
+    return None
 
 
 def load_families():

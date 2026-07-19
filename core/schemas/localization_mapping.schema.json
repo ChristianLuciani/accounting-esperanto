@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://kontablo.io/schemas/localization_mapping.schema.json",
+  "title": "Kontablo Localization Mapping",
+  "description": "Schema for localizations/<iso>/<standard>_mapping.yaml (dict format). v2 adds OPTIONAL structure-preservation fields (ADR-014): local_parent + local_hierarchy keep the local chart's own tree edges, facets name the analytical dimensions that the projection to a coarser Kontablo node would otherwise silently flatten, and aggregation_group declares N:1 fibers explicitly. All v2 fields are additive: every existing v1 file remains valid, and resolution behavior is unchanged (the Tier-1 index is built from the ontology, not from these files).",
+  "type": "object",
+  "required": ["metadata", "mappings"],
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "required": ["country"],
+      "properties": {
+        "country": {
+          "type": "string",
+          "pattern": "^[A-Za-z]{2}$",
+          "description": "ISO 3166-1 alpha-2. MUST be quoted in YAML (bare NO parses as boolean)."
+        },
+        "authority": { "type": "string" },
+        "standard": { "type": "string" },
+        "kontablo_version": {},
+        "last_updated": {},
+        "currency": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "local_hierarchy": {
+      "type": "object",
+      "description": "OPTIONAL (v2). Header/class nodes of the LOCAL chart's own tree that are not themselves mappable accounts (e.g. SKR04 Kontenklassen, SPED groupings). Keyed by local code. Together with per-entry local_parent, this preserves the local tree edges that the flat mapping would otherwise discard.",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["name"],
+        "properties": {
+          "name": { "type": "string" },
+          "level": { "type": "integer", "minimum": 1 },
+          "local_parent": {
+            "type": "string",
+            "description": "Parent code within local_hierarchy (the tree edge one level up)."
+          },
+          "note": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "mappings": {
+      "type": "object",
+      "description": "local statutory code -> mapping entry. Keys MUST be strings (quote numeric codes in YAML).",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["name", "kontablo_uuid"],
+        "properties": {
+          "name": { "type": "string" },
+          "nature": {
+            "type": "string",
+            "enum": ["Debit", "Credit", "debit", "credit"]
+          },
+          "level": { "type": "integer", "minimum": 1 },
+          "kontablo_uuid": {
+            "type": "string",
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$"
+          },
+          "aggregation_rules": {
+            "type": "array",
+            "items": { "type": "string", "enum": ["sum", "subtract"] }
+          },
+          "local_parent": {
+            "type": "string",
+            "description": "OPTIONAL (v2). The code of this account's parent in the LOCAL chart — either another mappings key or a local_hierarchy key. Preserves the local tree edge that the flat projection discards (loss L2, ADR-014)."
+          },
+          "facets": {
+            "type": "object",
+            "description": "OPTIONAL (v2). Named analytical dimensions of this local account that the coarser Kontablo node does not encode (e.g. {geography: domestic}, {tax: icms}, {polarity: contra}). Formalizes the disaggregation_dimension idea; makes the flattened axis explicit and re-queryable instead of silently lost.",
+            "additionalProperties": { "type": "string" }
+          },
+          "aggregation_group": {
+            "type": "string",
+            "description": "OPTIONAL (v2). Shared identifier declaring an explicit N:1 fiber: all local codes carrying the same aggregation_group collapse into one Kontablo node by design (e.g. gross receivables + contra allowance -> net receivables node)."
+          },
+          "note": { "type": "string" },
+          "research_note": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "validation_rules": {
+      "type": "array",
+      "items": { "type": "object" }
+    }
+  },
+  "additionalProperties": true
+}
