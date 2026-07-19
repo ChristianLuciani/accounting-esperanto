@@ -21,10 +21,10 @@ metadata:
       that a national chart is missing.'
     blocked: Attempted; blocked on something (see notes) -- e.g. no accessible primary source PDF.
   counts:
-    partial_curated_subset: 42
+    partial_curated_subset: 40
     n/a_no_statutory_chart: 134
-    verified: 18
-    blocked: 1
+    verified: 19
+    blocked: 2
   total_jurisdictions: 195
   methodology: research/coa_fidelity/README.md
   generator: scripts/coa_fidelity/build_status_tracker.py
@@ -609,17 +609,51 @@ jurisdictions:
   region: Africa
   mapping_mode: statutory_chart
   chart_family: CGNC_MA
-  fidelity_status: partial_curated_subset
+  fidelity_status: blocked
   official_total_codes: null
-  current_localization_codes: null
+  current_localization_codes: 58
   source_url: null
   source_authority: null
   last_verified: null
-  notes: null
+  notes: "Round 4 attempt (2026-07-19) blocked on TOOLING, not on source non-existence
+    -- future sessions should retry, not treat this as a dead end. Candidate official
+    and corroborating sources were identified via search-engine snippets: (1) the
+    Code Général de Normalisation Comptable (CGNC), adopted under Loi n 9-88 relative
+    aux obligations comptables des commercants and Decret n 2-89-61 du 10 chaabane
+    1410 (6 mars 1990), comprising the Norme Generale Comptable (NGC) and the Plan
+    Comptable General des Entreprises (PCGE) annex with the classes 1-8 nomenclature;
+    (2) a PDF candidate hosted at befec.ma/documentation/comptabilite/Plan_comptable/CGNC/cgnc.pdf;
+    (3) a PDF candidate hosted at precious.ma/documents/textes_de_lois/comptable/Code_general_de_normalisation_comptable.pdf;
+    (4) the Ministry of Finance's CNC (Conseil National de la Comptabilite) portal
+    at finances.gov.ma/fr/Nos-metiers/Pages/cnc-normes.aspx, which per search
+    snippets hosts or links CGNC Tome I/Tome II; (5) secondary teaching/mirror
+    copies referenced via crmefcasablancasettat.ma, slideshare.net, and scribd.com
+    (unverified, lower authority). This session's outbound HTTPS egress is
+    restricted by an organization proxy policy that returns 403 on CONNECT for
+    every external host tested -- including example.com and en.wikipedia.org as
+    innocuous controls, confirming this is a blanket org-wide policy and not a
+    Morocco-specific block (only github.com/npm/pypi-class domains on the proxy's
+    noProxy allowlist succeeded). WebFetch on all five candidate URLs above
+    returned the identical 403. WebSearch (server-side, does not traverse this
+    proxy) returned snippet-level summaries only -- not full page text -- so
+    there was no way to obtain verbatim government-published account codes this
+    round without fabricating data, which the project's epistemic standards
+    forbid. No STATUS.yaml fields beyond fidelity_status/current_localization_codes/notes
+    were changed; current_localization_codes (58) reflects the existing
+    localizations/ma/ma_mapping.yaml (501-line curated subset, itself self-flagged
+    with 'VERIFY' notes on Class 8 special-account codes and on the post-2023
+    progressive IS rate bands) which remains as-is, unreplaced. Next session:
+    retry with working general-internet egress, starting from the finances.gov.ma
+    CNC portal and the befec.ma/precious.ma PDF mirrors above; if none are
+    directly fetchable even with egress restored, consider the ohada.org-style
+    corroboration pattern used for SYSCOHADA (secondary full-text mirror +
+    internal textual-evidence cross-check against the two PDF mirrors, which
+    independently attribute to the same 1990/1992 CGNC text) rather than
+    declaring a true dead end."
   source_content_hash: null
   source_etag: null
   source_last_modified_header: null
-  last_checked: null
+  last_checked: "2026-07-19"
 - iso: mz
   name: Mozambique
   region: Africa
