@@ -1283,17 +1283,17 @@ jurisdictions:
   region: Americas
   mapping_mode: statutory_chart
   chart_family: SAT
-  fidelity_status: partial_curated_subset
-  official_total_codes: null
-  current_localization_codes: null
-  source_url: null
-  source_authority: null
-  last_verified: null
-  notes: null
+  fidelity_status: verified
+  official_total_codes: 1079
+  current_localization_codes: 818
+  source_url: https://www.sat.gob.mx/minisitio/NormatividadRMFyRGCE/documentos2026/rmf/anexos/Anexo_24_RMF2026-13012026.pdf
+  source_authority: Servicio de Administración Tributaria (SAT)
+  last_verified: '2026-07-18'
+  notes: "Full official SAT Código Agrupador (Anexo 24, RMF 2026, published 13 Jan 2026 DOF) transcribed verbatim in localizations/mx/sat_official_chart.yaml, classified in sat_mapping.yaml (818 mapped / 52 statement captions / 48 aggregate headers / 161 needs_review). Superseded a 14-code hand-picked 0.1.0-draft subset. map_official_chart.py's classify()/derive_nature() were made jurisdiction-aware in this round (order-account prefix, subtotal set, and nature derivation now looked up per jurisdiction instead of hardcoded to EC's scheme) -- verified EC's own classification output is byte-identical before and after. ERPNext tree in localizations/mx/default_tree_mx.json. See localizations/mx/README.md."
   source_content_hash: null
   source_etag: null
-  source_last_modified_header: null
-  last_checked: null
+  source_last_modified_header: '2026-01-13'
+  last_checked: '2026-07-18'
 - iso: ni
   name: Nicaragua
   region: Americas
