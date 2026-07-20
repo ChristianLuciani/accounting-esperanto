@@ -1,4 +1,4 @@
-"""The account-resolution decision is auditable end-to-end (ADR-014): every
+"""The account-resolution decision is auditable end-to-end (ADR-016): every
 resolved entry carries a ``MappingQuote`` naming the deterministic tier and the
 exact rule that fired, the consolidated lines expose their fiber size, and the
 lineage reconstructs each consolidated figure — and the original local trial

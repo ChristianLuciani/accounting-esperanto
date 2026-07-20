@@ -62,7 +62,7 @@ def resolve_with_rule(entry, jurisdiction, accounts, by_code):
     deterministic rule that fired (``tier1:<jurisdiction>:<code>`` /
     ``tier2:<kontablo_id>:<keyword>`` / ``None`` on escalation) so the mapping
     is auditable per entry without re-running the resolver (``MappingQuote``,
-    ADR-014).
+    ADR-016).
     """
     code = str(entry["code"])
     # Tier 1: exact local-code lookup

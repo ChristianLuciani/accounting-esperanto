@@ -189,7 +189,7 @@ message MapAccountResponse {
   string justification = 7;
   repeated AlternativeMapping alternatives = 8;
   // Resolution tier in the shared harness vocabulary (mapping provenance,
-  // ADR-014): "tier1_exact" | "tier2_keyword" | "escalated".
+  // ADR-016): "tier1_exact" | "tier2_keyword" | "escalated".
   string tier = 9;
   // Deterministic rule identifier that produced the mapping, e.g.
   // "tier1:es:572" or "tier2:asset.current.cash:cash". Empty on escalation.
@@ -289,7 +289,7 @@ message ConsolidatedEntry {
   int32 source_entries = 6;
 }
 
-// Per-entry mapping provenance (ADR-014): the local code/name, the resolved
+// Per-entry mapping provenance (ADR-016): the local code/name, the resolved
 // node, the deterministic tier/rule, and both local and converted amounts —
 // so every consolidated line is reconstructible down to its source rows.
 message MappingAuditEntry {
@@ -326,7 +326,7 @@ message ConsolidationResponse {
   repeated ConsolidatedEntry trial_balance = 4;
   int32 eliminations_applied = 5;
   repeated string warnings = 6;
-  // Lossless-translation audit trail (ADR-014): per-entry mapping provenance
+  // Lossless-translation audit trail (ADR-016): per-entry mapping provenance
   // and per-subsidiary FX provenance.
   repeated MappingAuditEntry mapping_audit = 7;
   repeated FXAuditEntry fx_audit = 8;

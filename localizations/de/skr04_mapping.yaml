@@ -1,7 +1,7 @@
 # Kontablo Localization Mapping: Germany (SKR 04)
 # Version: 0.2.0-draft
 # Target: DATEV Standardkontenrahmen 04 (Process-oriented)
-# v2 (ADR-014): adds OPTIONAL structure-preservation fields — local_hierarchy
+# v2 (ADR-016): adds OPTIONAL structure-preservation fields — local_hierarchy
 # (the SKR04 Kontenklassen, the chart's own top-level tree), local_parent
 # (each account's class edge), and facets (the VAT-rate axis that collapses
 # when 19%-rate accounts project onto rate-agnostic Kontablo nodes).

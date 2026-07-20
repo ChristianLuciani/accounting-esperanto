@@ -80,7 +80,7 @@ class ConsolidationService:
         consolidated_data = {} # Map k_id -> {debit, credit, sources}
         fx_audit: List[Dict] = []  # one FX provenance record per trial balance
         # One mapping-provenance record per source entry (the FXQuote pattern
-        # applied to the mapping decision, ADR-014): the local code/name and the
+        # applied to the mapping decision, ADR-016): the local code/name and the
         # resolution path are never discarded by the translation, so every
         # consolidated line is reconstructible down to its source rows.
         mapping_audit: List[Dict] = []

@@ -201,7 +201,7 @@ def resolve_account_impl(
         "tier": tier,
         "match_method": _TIER_TO_MATCH.get(tier, "exact_lookup"),
         "confidence": conf,
-        # Mapping provenance (ADR-014): the exact deterministic rule that fired.
+        # Mapping provenance (ADR-016): the exact deterministic rule that fired.
         "rule_id": rule,
         "cra_flags": flags,
         "note": f"Resolved deterministically via {tier}.",
@@ -352,7 +352,7 @@ def consolidate_trial_balances_impl(
             }
             for sid, q in result.fx_quotes.items()
         ],
-        # Per-entry mapping provenance (ADR-014, the fx_audit pattern applied
+        # Per-entry mapping provenance (ADR-016, the fx_audit pattern applied
         # to the mapping decision): local code/name, resolved node, the
         # deterministic tier/rule, and both local and USD amounts — every
         # consolidated line is reconstructible down to its source rows, and
@@ -384,7 +384,7 @@ def get_node_fiber_impl(
     uuid: Optional[str] = None,
     jurisdiction: Optional[str] = None,
 ) -> dict:
-    """Deterministic fiber query (ADR-014): which local statutory codes
+    """Deterministic fiber query (ADR-016): which local statutory codes
     collapse into a Kontablo node — the preimage of the projection, with the
     v2 structure fields (facets/local_parent/aggregation_group) when a
     jurisdiction is given."""

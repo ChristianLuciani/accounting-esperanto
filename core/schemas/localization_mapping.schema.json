@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://kontablo.io/schemas/localization_mapping.schema.json",
   "title": "Kontablo Localization Mapping",
-  "description": "Schema for localizations/<iso>/<standard>_mapping.yaml (dict format). v2 adds OPTIONAL structure-preservation fields (ADR-014): local_parent + local_hierarchy keep the local chart's own tree edges, facets name the analytical dimensions that the projection to a coarser Kontablo node would otherwise silently flatten, and aggregation_group declares N:1 fibers explicitly. All v2 fields are additive: every existing v1 file remains valid, and resolution behavior is unchanged (the Tier-1 index is built from the ontology, not from these files).",
+  "description": "Schema for localizations/<iso>/<standard>_mapping.yaml (dict format). v2 adds OPTIONAL structure-preservation fields (ADR-016): local_parent + local_hierarchy keep the local chart's own tree edges, facets name the analytical dimensions that the projection to a coarser Kontablo node would otherwise silently flatten, and aggregation_group declares N:1 fibers explicitly. All v2 fields are additive: every existing v1 file remains valid, and resolution behavior is unchanged (the Tier-1 index is built from the ontology, not from these files).",
   "type": "object",
   "required": ["metadata", "mappings"],
   "properties": {
@@ -64,7 +64,7 @@
           },
           "local_parent": {
             "type": "string",
-            "description": "OPTIONAL (v2). The code of this account's parent in the LOCAL chart — either another mappings key or a local_hierarchy key. Preserves the local tree edge that the flat projection discards (loss L2, ADR-014)."
+            "description": "OPTIONAL (v2). The code of this account's parent in the LOCAL chart — either another mappings key or a local_hierarchy key. Preserves the local tree edge that the flat projection discards (loss L2, ADR-016)."
           },
           "facets": {
             "type": "object",

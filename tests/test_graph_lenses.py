@@ -1,4 +1,4 @@
-"""The ontology is a DAG, not a tree (ADR-014, principle #1): every core node
+"""The ontology is a DAG, not a tree (ADR-016, principle #1): every core node
 carries multiple simultaneous rollup lenses (``groupings``), ``rollup()``
 partitions the graph under any lens, and ``node_fiber()`` answers the inverse
 question — which local codes collapse into a node — across the Tier-1 index

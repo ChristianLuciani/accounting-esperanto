@@ -1,4 +1,4 @@
-"""MCP surface of the entry-level lossless-translation guarantee (ADR-014):
+"""MCP surface of the entry-level lossless-translation guarantee (ADR-016):
 ``resolve_account`` names the exact deterministic rule that fired, and
 ``consolidate_trial_balances`` returns a per-entry ``mapping_audit`` plus
 ``source_entries`` fiber sizes so every consolidated figure is reconstructible.

@@ -65,7 +65,7 @@ def test_parent_exists():
             assert parent in all_uuids, f"Parent {parent} not found for {account['uuid']}"
 
 def test_also_rolls_up_to_targets_exist():
-    """Multi-parent edges (relations.also_rolls_up_to, ADR-014) must point at
+    """Multi-parent edges (relations.also_rolls_up_to, ADR-016) must point at
     real nodes and never duplicate the primary parent. The field was defined
     in the schema but previously unvalidated — a dangling secondary edge would
     be a silent structural error in the graph."""

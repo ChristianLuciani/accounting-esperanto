@@ -29,7 +29,7 @@ def load_localization(iso):
 
     Returns the parsed YAML document of ``localizations/<iso>/*_mapping.yaml``
     including the OPTIONAL structure-preservation fields (``local_parent``,
-    ``facets``, ``aggregation_group``, ``local_hierarchy`` — ADR-014), or
+    ``facets``, ``aggregation_group``, ``local_hierarchy`` — ADR-016), or
     ``None`` if the jurisdiction has no dict-format mapping file. This is a
     *read* surface for fiber/lineage queries; it does NOT feed the Tier-1
     resolution index (which is built from the ontology + chart families), so
@@ -56,7 +56,7 @@ def rollup(accounts, lens):
     rolled up simultaneously under different lenses (``ifrs``, ``cash_flow``,
     ...) — this is the DAG the "graph, not tree" principle promises: one UUID,
     multiple parallel rollup hierarchies. Nodes that do not carry the lens are
-    grouped under ``None`` (explicit, never silently dropped — ADR-014).
+    grouped under ``None`` (explicit, never silently dropped — ADR-016).
     """
     out = {}
     for kid in sorted(accounts):
@@ -67,7 +67,7 @@ def rollup(accounts, lens):
 
 def node_fiber(accounts, by_code, kontablo_id, jurisdiction=None):
     """The fiber of a Kontablo node: which local statutory codes collapse into
-    it, per jurisdiction (the preimage of the projection — ADR-014).
+    it, per jurisdiction (the preimage of the projection — ADR-016).
 
     Sources, in order:
       1. the deterministic Tier-1 reverse index (ontology ``local_codes`` +
@@ -148,7 +148,7 @@ def load_ontology():
 
     def ingest(item):
         if isinstance(item, dict) and "id" in item and "nature" in item:
-            # Multi-lens rollup memberships (ADR-014, principle #1 "graph, not
+            # Multi-lens rollup memberships (ADR-016, principle #1 "graph, not
             # tree"): the primary IFRS lens is composed from ``parent`` (one
             # source of truth, no duplication drift); additional lenses (e.g.
             # cash_flow) come from the node's explicit ``groupings`` block.

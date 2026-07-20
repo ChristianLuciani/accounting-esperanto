@@ -56,7 +56,7 @@ def test_map_account_tier1_exact(channel):
     assert resp.match_method == pb.MATCH_EXACT_LOOKUP
     assert resp.confidence_score == 1.0
     assert resp.kontablo_uuid  # non-empty UUID round-tripped
-    # Mapping provenance (ADR-014): tier + exact deterministic rule.
+    # Mapping provenance (ADR-016): tier + exact deterministic rule.
     assert resp.tier == "tier1_exact"
     assert resp.rule_id == "tier1:es:572"
 
@@ -116,7 +116,7 @@ def test_consolidate_with_intercompany_elimination(channel):
     total_credit = sum(e.credit for e in resp.trial_balance)
     assert round(total_debit - total_credit, 2) == 0.0
 
-    # Lossless-translation audit trail (ADR-014): one mapping record per
+    # Lossless-translation audit trail (ADR-016): one mapping record per
     # source entry (4), one FX record per subsidiary (2) — nothing dropped.
     assert len(resp.mapping_audit) == 4
     for rec in resp.mapping_audit:

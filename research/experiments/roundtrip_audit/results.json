@@ -1,0 +1,22 @@
+{
+  "conservation": {
+    "missing_rows": 0,
+    "phantom_rows": 0
+  },
+  "dataset": "identical to scripts/mass_consolidation_v2.py (imported, not duplicated)",
+  "entities": 75,
+  "entries_in": 441,
+  "entries_resolved_out": 441,
+  "fiber_mismatches": [],
+  "jurisdictions": 68,
+  "loss_ledger": {
+    "cra_flags": 2,
+    "escalated_entries": 4,
+    "non_code_placeholders": 14,
+    "ontology_code_collisions": 0
+  },
+  "note": "silent_losses counts information discarded WITHOUT a typed record. Escalations/collisions/placeholders/CRA flags are NOT silent losses: they are the loss ledger — explicit, typed, and countable.",
+  "provenance_complete": true,
+  "reconstruction_exact": true,
+  "silent_losses": 0
+}

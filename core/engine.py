@@ -112,7 +112,7 @@ class ResolvedEntry:
     # Original local-currency amounts, BEFORE FX conversion. Kept so the source
     # trial balance is reconstructible from the lineage byte-for-byte (the
     # rounded USD amounts are not invertible through the FX rate) — the
-    # entry-level lossless-translation guarantee (ADR-014).
+    # entry-level lossless-translation guarantee (ADR-016).
     debit_local: float = 0.0
     credit_local: float = 0.0
     # Provenance of the account resolution itself: which deterministic tier
@@ -156,7 +156,7 @@ class ConsolidationResult:
         consolidated line (its fiber). Together with each entry's local amounts
         and its ``mapping``/``fx`` quotes, every consolidated figure is
         reconstructible down to the original local trial-balance rows —
-        the entry-level lossless-translation guarantee (ADR-014). Escalated
+        the entry-level lossless-translation guarantee (ADR-016). Escalated
         entries are not part of any line's fiber; they are listed (never
         silently dropped) in ``escalations``."""
         fibers: Dict[str, List[ResolvedEntry]] = {}

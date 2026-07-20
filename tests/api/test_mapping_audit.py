@@ -1,5 +1,5 @@
 """The REST consolidation response carries per-entry mapping provenance
-(ADR-014): a ``mapping_audit`` array (the ``fx_audit`` pattern applied to the
+(ADR-016): a ``mapping_audit`` array (the ``fx_audit`` pattern applied to the
 mapping decision) and a ``source_entries`` fiber size per consolidated line, so
 no local code, name, or amount is discarded at the API boundary. Deterministic:
 uses Tier-1 codes and a manual exchange rate only (no AI, no network)."""

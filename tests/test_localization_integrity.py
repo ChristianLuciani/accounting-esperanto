@@ -81,7 +81,7 @@ def test_knowledge_base_loads_all_jurisdictions():
 
 
 # ---------------------------------------------------------------------------
-# v2 structure-preservation fields (ADR-014): local_parent / facets /
+# v2 structure-preservation fields (ADR-016): local_parent / facets /
 # aggregation_group / local_hierarchy. All OPTIONAL — these tests only
 # constrain files that opt in, so the 190+ v1 files stay untouched and valid.
 # ---------------------------------------------------------------------------

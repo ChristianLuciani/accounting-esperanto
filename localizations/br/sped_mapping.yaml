@@ -1,7 +1,7 @@
 # Kontablo Localization Mapping: Brazil (SPED/RFB)
 # Version: 0.2.0-draft
 # Target: Plano de Contas Referencial - SPED (ECD/ECF)
-# v2 (ADR-014): adds OPTIONAL structure-preservation fields — local_hierarchy
+# v2 (ADR-016): adds OPTIONAL structure-preservation fields — local_hierarchy
 # (the SPED chart's own grouping tree, inferred from the dotted code
 # structure), local_parent (each account's tree edge), and facets (the
 # Brazilian tax axis ICMS/PIS that collapses into coarser Kontablo nodes).

@@ -1,7 +1,7 @@
 # Kontablo Localization Mapping: Mexico (SAT)
 # Version: 0.2.0-draft
 # Target: SAT Anexo 24 (Código Agrupador de Cuentas)
-# v2 (ADR-014): adds OPTIONAL structure-preservation fields — local_parent
+# v2 (ADR-016): adds OPTIONAL structure-preservation fields — local_parent
 # (the SAT chart's own tree edges), facets (analytical dimensions the
 # projection to a coarser Kontablo node would otherwise flatten silently),
 # and aggregation_group (explicit N:1 fibers). Resolution behavior unchanged.

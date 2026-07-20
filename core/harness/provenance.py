@@ -5,7 +5,7 @@
 a universal Kontablo node produces an attachable, auditable record of *how* the
 decision was made — which deterministic tier answered, which exact rule fired,
 and with what confidence. This is the lossless-translation guarantee at the
-entry level (ADR-014): the local code and name are never discarded by the
+entry level (ADR-016): the local code and name are never discarded by the
 translation, and the decision path is reconstructible without re-running the
 resolver.
 

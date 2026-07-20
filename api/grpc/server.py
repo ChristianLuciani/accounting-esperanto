@@ -245,7 +245,7 @@ class ConsolidationServicer(pb_grpc.ConsolidationServiceServicer):
             )
             for l in result.lines
         ]
-        # Lossless-translation audit trail (ADR-014): one mapping-provenance
+        # Lossless-translation audit trail (ADR-016): one mapping-provenance
         # record per source entry, one FX record per subsidiary — parity with
         # the REST mapping_audit/fx_audit arrays.
         mapping_audit = [

@@ -136,7 +136,7 @@ def _fiber_index():
 
 @app.get("/accounts/{account_id}/fiber", tags=["accounts"])
 async def get_account_fiber(account_id: str, jurisdiction: Optional[str] = None):
-    """The FIBER of a Kontablo node (ADR-014): which local statutory codes,
+    """The FIBER of a Kontablo node (ADR-016): which local statutory codes,
     per jurisdiction, collapse into it — the preimage of the universal
     projection, for audit/traceability. With ?jurisdiction=xx the members are
     enriched from that jurisdiction's localization mapping (local name,
