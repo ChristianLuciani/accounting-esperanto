@@ -46,7 +46,7 @@ from core.engine import (  # noqa: E402
     LocalEntry,
     SubsidiaryTB,
 )
-from core.harness import cra_validate  # noqa: E402
+from core.harness import cra_validate, node_fiber  # noqa: E402
 from core.harness.fx_provider import get_fx_provider  # noqa: E402
 from core.harness.validation import ensure_finite, ensure_positive_finite  # noqa: E402
 
@@ -378,6 +378,32 @@ def consolidate_trial_balances_impl(
     }
 
 
+def get_node_fiber_impl(
+    engine: ConsolidationEngine,
+    kontablo_id: Optional[str] = None,
+    uuid: Optional[str] = None,
+    jurisdiction: Optional[str] = None,
+) -> dict:
+    """Deterministic fiber query (ADR-014): which local statutory codes
+    collapse into a Kontablo node — the preimage of the projection, with the
+    v2 structure fields (facets/local_parent/aggregation_group) when a
+    jurisdiction is given."""
+    if not kontablo_id and not uuid:
+        return {"found": False, "error": "provide either kontablo_id or uuid"}
+    kid = kontablo_id
+    if kid is None:
+        target = str(uuid)
+        kid = next(
+            (k for k, a in engine.accounts.items() if str(a.get("uuid")) == target),
+            None,
+        )
+    fiber = node_fiber(engine.accounts, engine.by_code, kid, jurisdiction) if kid else None
+    if fiber is None:
+        ref = kontablo_id or uuid
+        return {"found": False, "error": f"account {ref!r} not found"}
+    return {"found": True, **fiber}
+
+
 _COVERAGE_CACHE: Optional[dict] = None
 
 
@@ -541,6 +567,34 @@ def build_mcp(engine: Optional[ConsolidationEngine] = None) -> FastMCP:
         return consolidate_trial_balances_impl(
             engine, subsidiaries, eliminations, target_currency, parent_company_id
         )
+
+    @server.tool(
+        description="Get the FIBER of a Kontablo node: which local statutory "
+        "codes (per jurisdiction) collapse into it — the preimage of the "
+        "universal projection, for audit/traceability. With a jurisdiction, the "
+        "members are enriched from that jurisdiction's localization mapping: "
+        "local account name, local_parent (the local chart's own tree edge), "
+        "facets (analytical dimensions the projection flattens), and "
+        "aggregation_group (declared N:1 fibers). Deterministic lookup; no LLM."
+    )
+    def get_node_fiber(
+        kontablo_id: Annotated[
+            Optional[str],
+            Field(description="Kontablo node id, e.g. 'asset.current.cash'. Provide this OR uuid."),
+        ] = None,
+        uuid: Annotated[
+            Optional[str],
+            Field(description="Kontablo node UUID. Provide this OR kontablo_id."),
+        ] = None,
+        jurisdiction: Annotated[
+            Optional[str],
+            Field(description="Optional ISO 3166-1 alpha-2 filter, e.g. 'de'. When given, the "
+            "fiber is enriched with that jurisdiction's localization structure (names, "
+            "local_parent, facets, aggregation groups); when omitted, the Tier-1 view covers "
+            "all jurisdictions but without localization enrichment."),
+        ] = None,
+    ) -> dict:
+        return get_node_fiber_impl(engine, kontablo_id, uuid, jurisdiction)
 
     @server.tool(
         description="List Kontablo jurisdiction coverage from the 195-jurisdiction "

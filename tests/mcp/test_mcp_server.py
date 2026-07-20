@@ -64,6 +64,7 @@ async def test_all_tools_registered(server):
     assert tools == {
         "resolve_account",
         "get_account",
+        "get_node_fiber",
         "validate_balance_sheet",
         "consolidate_trial_balances",
         "list_jurisdictions",

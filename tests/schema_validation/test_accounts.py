@@ -58,8 +58,30 @@ def test_parent_exists():
     """If parent_uuid is specified, it must exist"""
     accounts = load_accounts()
     all_uuids = {a["uuid"] for a in accounts}
-    
+
     for account in accounts:
         parent = account.get("relations", {}).get("parent_uuid")
         if parent:
             assert parent in all_uuids, f"Parent {parent} not found for {account['uuid']}"
+
+def test_also_rolls_up_to_targets_exist():
+    """Multi-parent edges (relations.also_rolls_up_to, ADR-014) must point at
+    real nodes and never duplicate the primary parent. The field was defined
+    in the schema but previously unvalidated — a dangling secondary edge would
+    be a silent structural error in the graph."""
+    accounts = load_accounts()
+    all_uuids = {a["uuid"] for a in accounts}
+
+    for account in accounts:
+        relations = account.get("relations", {})
+        primary = relations.get("parent_uuid")
+        for target in relations.get("also_rolls_up_to", []) or []:
+            assert target in all_uuids, (
+                f"also_rolls_up_to target {target} not found for {account['uuid']}"
+            )
+            assert target != primary, (
+                f"{account['uuid']}: also_rolls_up_to duplicates the primary parent"
+            )
+            assert target != account["uuid"], (
+                f"{account['uuid']}: also_rolls_up_to points at itself"
+            )

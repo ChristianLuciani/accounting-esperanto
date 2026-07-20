@@ -44,6 +44,8 @@ from core.harness.ontology import (
     load_localization,
     load_ontology,
     merge_family_codes,
+    node_fiber,
+    rollup,
 )
 from core.harness.provenance import MappingQuote, mapping_quote
 from core.harness.resolution import TIER2_RULES, resolve, resolve_with_rule
@@ -67,6 +69,8 @@ __all__ = [
     "load_families",
     "load_localization",
     "merge_family_codes",
+    "node_fiber",
+    "rollup",
     "LOCALIZATIONS_DIR",
     "FX",
     "JCCY",
