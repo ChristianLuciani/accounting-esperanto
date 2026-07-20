@@ -212,7 +212,7 @@ pip install -r requirements.txt
 
 # Coverage manifest (195 sovereign / 61 statutory charts / 57 Tier-1-ready)
 # and the validation matrix: 76 entities, 69 jurisdictions, fourteen languages
-# across five writing systems, 97.5% deterministic resolution, 30/30 universal
+# across five writing systems, 97.6% deterministic resolution, 30/30 universal
 # nodes populated, 4 escalations to human review.
 python scripts/mass_consolidation_v2.py
 # → results in research/experiments/consolidation_v2/results.json

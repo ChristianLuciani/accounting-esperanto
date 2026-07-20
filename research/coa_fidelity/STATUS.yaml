@@ -1059,17 +1059,17 @@ jurisdictions:
   region: Americas
   mapping_mode: statutory_chart
   chart_family: SPED
-  fidelity_status: partial_curated_subset
-  official_total_codes: null
-  current_localization_codes: null
-  source_url: null
-  source_authority: null
-  last_verified: null
-  notes: null
+  fidelity_status: verified
+  official_total_codes: 1123
+  current_localization_codes: 626
+  source_url: http://sped.rfb.gov.br/arquivo/download/8002
+  source_authority: "Receita Federal do Brasil (RFB) -- SPED, Tabelas Dinâmicas e Planos de Contas Referenciais, Leiaute 12 da ECF"
+  last_verified: '2026-07-18'
+  notes: "L100A (Contas Patrimoniais, 732 codes) + L300A (Contas de Resultado, 391 codes), \"PJ do Lucro Real - PJ em Geral\" general-entity profile (L100B/C, L300B/C financial/insurance variants and the P100A/P300 Lucro Presumido set are out of scope). 1,123 codes verbatim; 626 mapped / 148 aggregate (native TIPO=S field, not a heuristic) / 349 needs_review (123 L100A contra-accounts flagged via the source's own is_contra signal, 91 L300A contra-revenue/residual items, 129 current-noncurrent ontology gaps, 6 disposal/discontinued-ops residual). map_official_chart.py's classify()/derive_nature() were extended with a br branch (this branch predates mx's PR #82 merge, so the jurisdiction dicts will need a manual 3-way reconcile with mx's entries at whichever of the two merges second -- see PR description). build_erpnext_tree.py gained a JURISDICTION_REPARENT mechanism because BR nests Patrimônio Líquido under root \"2\" alongside Liability and bundles all P&L under root \"3\", unlike EC/MX's 1:1 root-digit convention. Corrected several pre-existing fabricated/illustrative br: codes in level3_accounts.yaml (e.g. a malformed \"1.1.1.1.01-9\" and a free-text \"Impostos a Recuperar\" with no real code) to verified codes. ERPNext tree in localizations/br/default_tree_br.json. See localizations/br/README.md."
   source_content_hash: null
   source_etag: null
   source_last_modified_header: null
-  last_checked: null
+  last_checked: '2026-07-18'
 - iso: ca
   name: Canada
   region: Americas

@@ -49,7 +49,7 @@ jobs:
               ("coverage_manifest", "tier1_code_sets_ready"): 57,
               ("entities",): 76,
               ("n_countries",): 69,
-              ("deterministic_coverage_pct",): 97.5,
+              ("deterministic_coverage_pct",): 97.6,
               ("distinct_nodes_hit",): 30,
               ("escalated",): 4,
           }
