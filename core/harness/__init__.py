@@ -38,12 +38,17 @@ from core.harness.fx_provider import (
 )
 from core.harness.ontology import (
     FAMILIES_PATH,
+    LOCALIZATIONS_DIR,
     ONTOLOGY_PATH,
     load_families,
+    load_localization,
     load_ontology,
     merge_family_codes,
+    node_fiber,
+    rollup,
 )
-from core.harness.resolution import TIER2_RULES, resolve
+from core.harness.provenance import MappingQuote, mapping_quote
+from core.harness.resolution import TIER2_RULES, resolve, resolve_with_rule
 from core.harness.validation import (
     ensure_finite,
     ensure_positive_finite,
@@ -52,6 +57,9 @@ from core.harness.validation import (
 
 __all__ = [
     "resolve",
+    "resolve_with_rule",
+    "MappingQuote",
+    "mapping_quote",
     "TIER2_RULES",
     "cra_validate",
     "ensure_finite",
@@ -59,7 +67,11 @@ __all__ = [
     "is_finite_number",
     "load_ontology",
     "load_families",
+    "load_localization",
     "merge_family_codes",
+    "node_fiber",
+    "rollup",
+    "LOCALIZATIONS_DIR",
     "FX",
     "JCCY",
     "ONTOLOGY_PATH",

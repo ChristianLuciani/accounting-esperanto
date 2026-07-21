@@ -1,13 +1,59 @@
 # Kontablo Localization Mapping: Brazil (SPED/RFB)
-# Version: 0.1.0-draft
+# Version: 0.2.0-draft
 # Target: Plano de Contas Referencial - SPED (ECD/ECF)
+# v2 (ADR-016): adds OPTIONAL structure-preservation fields — local_hierarchy
+# (the SPED chart's own grouping tree, inferred from the dotted code
+# structure), local_parent (each account's tree edge), and facets (the
+# Brazilian tax axis ICMS/PIS that collapses into coarser Kontablo nodes).
+# Resolution behavior unchanged.
 
 metadata:
   country: br
   authority: Receita Federal do Brasil (RFB)
   standard: plano_referencial_sped_2024
-  kontablo_version: 0.1.0
-  last_updated: 2026-03-11
+  kontablo_version: 0.2.0
+  last_updated: 2026-07-18
+
+# The SPED referencial's own grouping levels (not mappable accounts
+# themselves). Names follow the plano referencial groupings; VERIFY exact
+# official labels against the current ECD/ECF plano referencial tables.
+local_hierarchy:
+  "1":
+    name: "Ativo"
+    level: 1
+  "1.01":
+    name: "Ativo Circulante"
+    level: 2
+    local_parent: "1"
+  "1.01.01":
+    name: "Disponibilidades"
+    level: 3
+    local_parent: "1.01"
+  "2":
+    name: "Passivo"
+    level: 1
+  "2.01":
+    name: "Passivo Circulante"
+    level: 2
+    local_parent: "2"
+  "2.01.05":
+    name: "Obrigações Fiscais"
+    level: 3
+    local_parent: "2.01"
+  "4":
+    name: "Receitas"
+    level: 1
+  "4.01":
+    name: "Receita Operacional"
+    level: 2
+    local_parent: "4"
+  "5":
+    name: "Despesas"
+    level: 1
+  "5.02":
+    name: "Despesas Operacionais"
+    level: 2
+    local_parent: "5"
 
 mappings:
   # --- ATIVO ---
@@ -16,12 +62,17 @@ mappings:
     nature: "Debit"
     level: 4
     kontablo_uuid: "00000000-0000-4000-8000-000000000101" # Cash
+    local_parent: "1.01.01"
 
   "1.01.01.02":
     name: "Bancos Conta Movimento - País"
     nature: "Debit"
     level: 4
     kontablo_uuid: "00000000-0000-4000-8000-000000000102" # Banks
+    local_parent: "1.01.01"
+    facets:
+      geography: "domestic"
+    note: "The '- País' suffix is the geographic axis of the SPED chart (domestic vs. exterior accounts)."
 
   # --- PASSIVO ---
   "2.01.01":
@@ -29,24 +80,36 @@ mappings:
     nature: "Credit"
     level: 3
     kontablo_uuid: "00000000-0000-4000-8000-000000000202" # Short-term Borrowings
+    local_parent: "2.01"
 
   "2.01.02":
     name: "Fornecedores"
     nature: "Credit"
     level: 3
     kontablo_uuid: "00000000-0000-4000-8000-000000000201" # Trade Payables
+    local_parent: "2.01"
 
   "2.01.05.01":
     name: "ICMS a Recolher"
     nature: "Credit"
     level: 4
     kontablo_uuid: "00000000-0000-4000-8000-000000000203" # VAT/ICMS Payable
+    local_parent: "2.01.05"
+    facets:
+      tax: "icms"
+    note: >
+      Brazil disaggregates indirect taxes by regime (ICMS/PIS/COFINS/ISS…);
+      the tax facet preserves that axis when several of them project onto
+      coarser Kontablo tax nodes.
 
   "2.01.05.03":
     name: "PIS a Recolher"
     nature: "Credit"
     level: 4
     kontablo_uuid: "30000000-0000-4000-8000-000000000001" # PIS/COFINS (Brazil Specific)
+    local_parent: "2.01.05"
+    facets:
+      tax: "pis"
 
   # --- RECEITAS ---
   "4.01.01":
@@ -54,6 +117,9 @@ mappings:
     nature: "Credit"
     level: 3
     kontablo_uuid: "00000000-0000-4000-8000-000000000301" # Domestic Revenue
+    local_parent: "4.01"
+    facets:
+      geography: "domestic"
 
   # --- DESPESAS ---
   "5.02.01":
@@ -61,3 +127,4 @@ mappings:
     nature: "Debit"
     level: 3
     kontablo_uuid: "00000000-0000-4000-8000-000000000501" # Deductible
+    local_parent: "5.02"

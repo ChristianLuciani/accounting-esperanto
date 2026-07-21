@@ -119,6 +119,37 @@ async def get_account(account_id: str):
         raise HTTPException(status_code=404, detail="Account not found")
     return account
 
+_FIBER_INDEX = None  # lazy (accounts, by_code) from the harness, loaded once
+
+
+def _fiber_index():
+    global _FIBER_INDEX
+    if _FIBER_INDEX is None:
+        from core.harness import (
+            load_families, load_ontology, merge_family_codes,
+        )
+        accounts, by_code, _collisions, _placeholders = load_ontology()
+        by_code = merge_family_codes(by_code, load_families())
+        _FIBER_INDEX = (accounts, by_code)
+    return _FIBER_INDEX
+
+
+@app.get("/accounts/{account_id}/fiber", tags=["accounts"])
+async def get_account_fiber(account_id: str, jurisdiction: Optional[str] = None):
+    """The FIBER of a Kontablo node (ADR-016): which local statutory codes,
+    per jurisdiction, collapse into it — the preimage of the universal
+    projection, for audit/traceability. With ?jurisdiction=xx the members are
+    enriched from that jurisdiction's localization mapping (local name,
+    local_parent tree edge, facets, aggregation groups). Deterministic."""
+    from core.harness import node_fiber
+
+    accounts, by_code = _fiber_index()
+    fiber = node_fiber(accounts, by_code, account_id, jurisdiction)
+    if fiber is None:
+        raise HTTPException(status_code=404, detail="Account not found")
+    return fiber
+
+
 @app.get("/accounts/{account_id}/local-codes", tags=["accounts"])
 async def get_local_codes(account_id: str, jurisdiction: Optional[str] = None):
     """Return jurisdiction-specific local codes mapped to a Kontablo account ID."""

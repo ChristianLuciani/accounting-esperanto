@@ -68,3 +68,30 @@ jobs:
               sys.exit(1)
           print("All published validation numbers reproduce exactly.")
           EOF
+
+      - name: Round-trip audit — zero silent losses (ADR-016)
+        # The lossless-translation gate: on the same synthetic dataset as the
+        # published validation run, every entry must be conserved, every local
+        # trial balance reconstructible from lineage alone, and every
+        # non-translation accounted for in the typed loss ledger. The script
+        # exits non-zero if silent_losses != 0; the check below additionally
+        # pins the committed artifact against drift.
+        run: |
+          python scripts/roundtrip_audit.py
+          python - <<'EOF'
+          import json, sys
+
+          r = json.load(open("research/experiments/roundtrip_audit/results.json"))
+          problems = []
+          if r["silent_losses"] != 0:
+              problems.append(f"silent_losses = {r['silent_losses']} (must be 0)")
+          if not r["reconstruction_exact"]:
+              problems.append("local trial balances no longer reconstruct exactly")
+          if not r["provenance_complete"]:
+              problems.append("some resolved entries lack mapping/FX provenance")
+          if problems:
+              print("LOSSLESS-TRANSLATION GATE FAILED:")
+              print("\n".join(problems))
+              sys.exit(1)
+          print("Round-trip audit clean: zero silent losses.")
+          EOF

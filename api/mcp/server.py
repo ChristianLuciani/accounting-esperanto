@@ -46,7 +46,7 @@ from core.engine import (  # noqa: E402
     LocalEntry,
     SubsidiaryTB,
 )
-from core.harness import cra_validate  # noqa: E402
+from core.harness import cra_validate, node_fiber  # noqa: E402
 from core.harness.fx_provider import get_fx_provider  # noqa: E402
 from core.harness.validation import ensure_finite, ensure_positive_finite  # noqa: E402
 
@@ -165,7 +165,7 @@ def resolve_account_impl(
             "error": f"nature must be one of {_VALID_NATURES} or omitted (got {nature!r}).",
         }
     entry = LocalEntry(code=local_code, name=local_name, nature=norm_nature)
-    kid, tier, conf = engine.resolve(entry, jurisdiction)
+    kid, tier, conf, rule = engine.resolve_full(entry, jurisdiction)
     if kid is None:
         return {
             "jurisdiction": jurisdiction,
@@ -178,6 +178,7 @@ def resolve_account_impl(
             "tier": tier,
             "match_method": _TIER_TO_MATCH.get(tier, "not_found"),
             "confidence": conf,
+            "rule_id": None,
             "cra_flags": [],
             "note": "No deterministic mapping (Tier-1/Tier-2); escalate to human "
             "review (Co-responsibility Architecture). Tier-3 LLM fallback is not "
@@ -200,6 +201,8 @@ def resolve_account_impl(
         "tier": tier,
         "match_method": _TIER_TO_MATCH.get(tier, "exact_lookup"),
         "confidence": conf,
+        # Mapping provenance (ADR-016): the exact deterministic rule that fired.
+        "rule_id": rule,
         "cra_flags": flags,
         "note": f"Resolved deterministically via {tier}.",
     }
@@ -320,6 +323,9 @@ def consolidate_trial_balances_impl(
                 "debit": l.debit_usd,
                 "credit": l.credit_usd,
                 "net": l.net_usd,
+                # Fiber size: how many source entries aggregated into this
+                # line (the entries themselves are in mapping_audit).
+                "source_entries": l.source_count,
             }
             for l in result.lines
         ],
@@ -346,8 +352,56 @@ def consolidate_trial_balances_impl(
             }
             for sid, q in result.fx_quotes.items()
         ],
+        # Per-entry mapping provenance (ADR-016, the fx_audit pattern applied
+        # to the mapping decision): local code/name, resolved node, the
+        # deterministic tier/rule, and both local and USD amounts — every
+        # consolidated line is reconstructible down to its source rows, and
+        # escalated entries appear here too (explicit, never silent).
+        "mapping_audit": [
+            {
+                "subsidiary_id": r.subsidiary_id,
+                "jurisdiction": r.jurisdiction,
+                "local_code": r.local_code,
+                "local_name": r.local_name,
+                "kontablo_id": r.kontablo_id,
+                "tier": r.tier,
+                "rule_id": r.mapping.rule_id if r.mapping else None,
+                "confidence": r.confidence,
+                "debit_local": r.debit_local,
+                "credit_local": r.credit_local,
+                "debit_usd": r.debit_usd,
+                "credit_usd": r.credit_usd,
+            }
+            for r in result.resolved
+        ],
         "warnings": warnings,
     }
+
+
+def get_node_fiber_impl(
+    engine: ConsolidationEngine,
+    kontablo_id: Optional[str] = None,
+    uuid: Optional[str] = None,
+    jurisdiction: Optional[str] = None,
+) -> dict:
+    """Deterministic fiber query (ADR-016): which local statutory codes
+    collapse into a Kontablo node — the preimage of the projection, with the
+    v2 structure fields (facets/local_parent/aggregation_group) when a
+    jurisdiction is given."""
+    if not kontablo_id and not uuid:
+        return {"found": False, "error": "provide either kontablo_id or uuid"}
+    kid = kontablo_id
+    if kid is None:
+        target = str(uuid)
+        kid = next(
+            (k for k, a in engine.accounts.items() if str(a.get("uuid")) == target),
+            None,
+        )
+    fiber = node_fiber(engine.accounts, engine.by_code, kid, jurisdiction) if kid else None
+    if fiber is None:
+        ref = kontablo_id or uuid
+        return {"found": False, "error": f"account {ref!r} not found"}
+    return {"found": True, **fiber}
 
 
 _COVERAGE_CACHE: Optional[dict] = None
@@ -415,7 +469,8 @@ def build_mcp(engine: Optional[ConsolidationEngine] = None) -> FastMCP:
         description="Resolve a local statutory account (jurisdiction + local "
         "code and/or name) to a universal Kontablo node UUID via the deterministic "
         "three-tier resolver (Tier-1 exact code lookup, Tier-2 multilingual "
-        "keyword rules). Returns the kontablo_id, UUID, tier, confidence, and any "
+        "keyword rules). Returns the kontablo_id, UUID, tier, confidence, the "
+        "exact deterministic rule_id that fired (mapping provenance), and any "
         "Co-responsibility boundary flags. Returns resolved=false (no guess) when "
         "neither deterministic tier matches."
     )
@@ -481,8 +536,11 @@ def build_mcp(engine: Optional[ConsolidationEngine] = None) -> FastMCP:
         description="Consolidate subsidiary trial balances into a single USD trial "
         "balance, applying explicit (structured) intercompany eliminations. Each "
         "subsidiary is resolved deterministically and normalised to USD with an "
-        "auditable per-entity FX quote. Returns the consolidated lines, "
-        "eliminations applied, balance check, escalations, FX audit, and warnings."
+        "auditable per-entity FX quote. Returns the consolidated lines (each with "
+        "its source_entries fiber size), eliminations applied, balance check, "
+        "escalations, FX audit, a per-entry mapping_audit (local code/name, "
+        "tier, rule_id, local and USD amounts — full lineage of every "
+        "consolidated figure), and warnings."
     )
     def consolidate_trial_balances(
         subsidiaries: Annotated[
@@ -509,6 +567,34 @@ def build_mcp(engine: Optional[ConsolidationEngine] = None) -> FastMCP:
         return consolidate_trial_balances_impl(
             engine, subsidiaries, eliminations, target_currency, parent_company_id
         )
+
+    @server.tool(
+        description="Get the FIBER of a Kontablo node: which local statutory "
+        "codes (per jurisdiction) collapse into it — the preimage of the "
+        "universal projection, for audit/traceability. With a jurisdiction, the "
+        "members are enriched from that jurisdiction's localization mapping: "
+        "local account name, local_parent (the local chart's own tree edge), "
+        "facets (analytical dimensions the projection flattens), and "
+        "aggregation_group (declared N:1 fibers). Deterministic lookup; no LLM."
+    )
+    def get_node_fiber(
+        kontablo_id: Annotated[
+            Optional[str],
+            Field(description="Kontablo node id, e.g. 'asset.current.cash'. Provide this OR uuid."),
+        ] = None,
+        uuid: Annotated[
+            Optional[str],
+            Field(description="Kontablo node UUID. Provide this OR kontablo_id."),
+        ] = None,
+        jurisdiction: Annotated[
+            Optional[str],
+            Field(description="Optional ISO 3166-1 alpha-2 filter, e.g. 'de'. When given, the "
+            "fiber is enriched with that jurisdiction's localization structure (names, "
+            "local_parent, facets, aggregation groups); when omitted, the Tier-1 view covers "
+            "all jurisdictions but without localization enrichment."),
+        ] = None,
+    ) -> dict:
+        return get_node_fiber_impl(engine, kontablo_id, uuid, jurisdiction)
 
     @server.tool(
         description="List Kontablo jurisdiction coverage from the 195-jurisdiction "

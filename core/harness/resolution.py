@@ -55,17 +55,35 @@ TIER2_RULES = [
 ]
 
 
-def resolve(entry, jurisdiction, accounts, by_code):
-    """Return (kontablo_id, tier, confidence)."""
+def resolve_with_rule(entry, jurisdiction, accounts, by_code):
+    """Return (kontablo_id, tier, confidence, rule_id).
+
+    Identical decision logic to :func:`resolve`, additionally naming the exact
+    deterministic rule that fired (``tier1:<jurisdiction>:<code>`` /
+    ``tier2:<kontablo_id>:<keyword>`` / ``None`` on escalation) so the mapping
+    is auditable per entry without re-running the resolver (``MappingQuote``,
+    ADR-016).
+    """
     code = str(entry["code"])
     # Tier 1: exact local-code lookup
     if code in by_code.get(jurisdiction, {}):
-        return by_code[jurisdiction][code], "tier1_exact", 1.0
+        return (
+            by_code[jurisdiction][code],
+            "tier1_exact",
+            1.0,
+            f"tier1:{jurisdiction}:{code}",
+        )
     # Tier 2: multilingual keyword rules
     name = entry["name"].lower()
     for kid, keys in TIER2_RULES:
-        if any(k in name for k in keys):
-            if kid in accounts:
-                return kid, "tier2_keyword", 0.85
+        matched = next((k for k in keys if k in name), None)
+        if matched is not None and kid in accounts:
+            return kid, "tier2_keyword", 0.85, f"tier2:{kid}:{matched}"
     # Escalate (residual -> CRA human review). Tier 3 AI not run here.
-    return None, "escalated", 0.0
+    return None, "escalated", 0.0, None
+
+
+def resolve(entry, jurisdiction, accounts, by_code):
+    """Return (kontablo_id, tier, confidence)."""
+    kid, tier, conf, _rule = resolve_with_rule(entry, jurisdiction, accounts, by_code)
+    return kid, tier, conf

@@ -78,3 +78,125 @@ def test_knowledge_base_loads_all_jurisdictions():
         f"(expected >= {SOVEREIGN_TARGET}) — a localization file is "
         "failing to load or register"
     )
+
+
+# ---------------------------------------------------------------------------
+# v2 structure-preservation fields (ADR-016): local_parent / facets /
+# aggregation_group / local_hierarchy. All OPTIONAL — these tests only
+# constrain files that opt in, so the 190+ v1 files stay untouched and valid.
+# ---------------------------------------------------------------------------
+
+def _dict_schema_files():
+    for path in MAPPING_FILES:
+        with open(path) as f:
+            data = yaml.safe_load(f) or {}
+        if isinstance(data.get("mappings"), dict):
+            yield path, data
+
+
+def test_v2_local_parent_edges_are_referentially_sound():
+    """A declared local_parent must point at a code that exists in the same
+    file (another mapping or a local_hierarchy header) — a dangling tree edge
+    would be a silent structural loss, the exact defect v2 exists to prevent."""
+    bad = []
+    for path, data in _dict_schema_files():
+        mappings = data["mappings"]
+        hierarchy = data.get("local_hierarchy") or {}
+        known = set(mappings) | set(hierarchy)
+        for code, entry in mappings.items():
+            parent = entry.get("local_parent")
+            if parent is not None and parent not in known:
+                bad.append((path, code, parent))
+        for code, node in hierarchy.items():
+            parent = node.get("local_parent")
+            if parent is not None and parent not in hierarchy:
+                bad.append((path, f"local_hierarchy:{code}", parent))
+    assert not bad, f"Dangling local_parent references: {bad[:10]}"
+
+
+def test_v2_facets_and_groups_are_well_typed():
+    bad = []
+    for path, data in _dict_schema_files():
+        for code, entry in data["mappings"].items():
+            facets = entry.get("facets")
+            if facets is not None:
+                if not isinstance(facets, dict) or not all(
+                    isinstance(k, str) and isinstance(v, str)
+                    for k, v in facets.items()
+                ):
+                    bad.append((path, code, "facets must be a dict of strings"))
+            group = entry.get("aggregation_group")
+            if group is not None and not isinstance(group, str):
+                bad.append((path, code, "aggregation_group must be a string"))
+    assert not bad, f"Malformed v2 fields: {bad[:10]}"
+
+
+def test_v2_aggregation_groups_declare_real_fibers():
+    """An aggregation_group is a declared N:1 fiber: every member must map to
+    the SAME kontablo_uuid (that is what makes it one fiber), and a group of
+    one is a tagging mistake."""
+    bad = []
+    for path, data in _dict_schema_files():
+        groups = {}
+        for code, entry in data["mappings"].items():
+            group = entry.get("aggregation_group")
+            if isinstance(group, str):
+                groups.setdefault(group, []).append(
+                    (code, entry.get("kontablo_uuid"))
+                )
+        for group, members in groups.items():
+            if len(members) < 2:
+                bad.append((path, group, "declared on fewer than 2 codes"))
+            if len({uuid for _, uuid in members}) > 1:
+                bad.append((path, group, f"members target different nodes: {members}"))
+    assert not bad, f"Inconsistent aggregation groups: {bad[:10]}"
+
+
+def test_v2_exemplars_validate_against_json_schema():
+    """The three v2 exemplar jurisdictions (mx SAT, br SPED, de SKR04) must
+    validate against the formal mapping schema, and must actually exercise the
+    v2 fields (so the schema is tested by real data, not just by absence)."""
+    import jsonschema
+
+    schema_path = os.path.join(
+        project_root, "core", "schemas", "localization_mapping.schema.json"
+    )
+    import json
+
+    with open(schema_path) as f:
+        schema = json.load(f)
+
+    exercised = {"local_parent": 0, "facets": 0, "aggregation_group": 0,
+                 "local_hierarchy": 0}
+    for iso, fname in (("mx", "sat_mapping.yaml"),
+                       ("br", "sped_mapping.yaml"),
+                       ("de", "skr04_mapping.yaml")):
+        path = os.path.join(LOCALIZATIONS_DIR, iso, fname)
+        with open(path) as f:
+            data = yaml.safe_load(f)
+        # last_updated parses as datetime.date; the schema leaves it untyped.
+        jsonschema.validate(instance=data, schema=schema)
+        if data.get("local_hierarchy"):
+            exercised["local_hierarchy"] += 1
+        for entry in data["mappings"].values():
+            for field in ("local_parent", "facets", "aggregation_group"):
+                if entry.get(field) is not None:
+                    exercised[field] += 1
+    assert all(count > 0 for count in exercised.values()), (
+        f"exemplars must exercise every v2 field, got {exercised}"
+    )
+
+
+def test_load_localization_exposes_v2_structure():
+    from core.harness import load_localization
+
+    doc = load_localization("de")
+    assert doc is not None
+    assert doc["metadata"]["country"] == "de"
+    assert "1600" in doc["mappings"]
+    assert doc["mappings"]["1600"]["local_parent"] == "1"
+    assert doc["local_hierarchy"]["1"]["name"]
+    assert doc["mappings"]["3806"]["facets"]["vat_rate"] == "19"
+    # A jurisdiction with no dict-format mapping file returns None (mx_sat's
+    # legacy list format is deliberately not served by this loader).
+    assert load_localization("zz-nonexistent") is None

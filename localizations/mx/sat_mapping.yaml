@@ -1,13 +1,17 @@
 # Kontablo Localization Mapping: Mexico (SAT)
-# Version: 0.1.0-draft
+# Version: 0.2.0-draft
 # Target: SAT Anexo 24 (Código Agrupador de Cuentas)
+# v2 (ADR-016): adds OPTIONAL structure-preservation fields — local_parent
+# (the SAT chart's own tree edges), facets (analytical dimensions the
+# projection to a coarser Kontablo node would otherwise flatten silently),
+# and aggregation_group (explicit N:1 fibers). Resolution behavior unchanged.
 
 metadata:
   country: mx
   authority: SAT
   standard: anexo_24
-  kontablo_version: 0.1.0
-  last_updated: 2026-03-09
+  kontablo_version: 0.2.0
+  last_updated: 2026-07-18
 
 mappings:
   # --- ASSETS (ACTIVO) ---
@@ -18,7 +22,8 @@ mappings:
     kontablo_uuid: "00000000-0000-4000-8000-000000000001" # Assets
     aggregation_rules:
       - "sum"
-      
+    note: "Top grouping of the SAT Código Agrupador (Anexo 24); parent of 101-1xx."
+
   "101":
     name: "Caja"
     nature: "Debit"
@@ -26,6 +31,7 @@ mappings:
     kontablo_uuid: "00000000-0000-4000-8000-000000000101" # Cash
     aggregation_rules:
       - "sum"
+    local_parent: "100"
 
   "102":
     name: "Bancos"
@@ -34,6 +40,7 @@ mappings:
     kontablo_uuid: "00000000-0000-4000-8000-000000000102" # Banks
     aggregation_rules:
       - "sum"
+    local_parent: "100"
 
   "103":
     name: "Inversiones"
@@ -42,6 +49,7 @@ mappings:
     kontablo_uuid: "00000000-0000-4000-8000-000000000103" # Short-term Investments
     aggregation_rules:
       - "sum"
+    local_parent: "100"
 
   "104":
     name: "Clientes"
@@ -50,6 +58,10 @@ mappings:
     kontablo_uuid: "00000000-0000-4000-8000-000000000104" # Trade Receivables
     aggregation_rules:
       - "sum"
+    local_parent: "100"
+    facets:
+      polarity: "gross"
+    aggregation_group: "mx_trade_receivables_net"
 
   "105":
     name: "Deudores diversos"
@@ -58,6 +70,7 @@ mappings:
     kontablo_uuid: "00000000-0000-4000-8000-000000000105" # Other Receivables
     aggregation_rules:
       - "sum"
+    local_parent: "100"
 
   "106":
     name: "Estimación de cuentas incobrables"
@@ -66,6 +79,14 @@ mappings:
     kontablo_uuid: "00000000-0000-4000-8000-000000000104" # Subtracts from Trade Receivables
     aggregation_rules:
       - "subtract"
+    local_parent: "100"
+    facets:
+      polarity: "contra"
+    aggregation_group: "mx_trade_receivables_net"
+    note: >
+      Explicit N:1 fiber with 104: gross receivables minus this allowance
+      collapse into the single Kontablo net-receivables node. The polarity
+      facet names the axis that the projection flattens.
 
   "107":
     name: "Almacén"
@@ -74,6 +95,7 @@ mappings:
     kontablo_uuid: "00000000-0000-4000-8000-000000000106" # Inventories
     aggregation_rules:
       - "sum"
+    local_parent: "100"
 
   "108":
     name: "Impuestos a favor"
@@ -82,6 +104,9 @@ mappings:
     kontablo_uuid: "00000000-0000-4000-8000-000000000107" # Current Tax Assets
     aggregation_rules:
       - "sum"
+    local_parent: "100"
+    facets:
+      tax: "recoverable"
 
 
   # --- LIABILITIES (PASIVO) ---
@@ -92,6 +117,7 @@ mappings:
     kontablo_uuid: "00000000-0000-4000-8000-000000000004" # Liabilities
     aggregation_rules:
       - "sum"
+    note: "Top grouping of the SAT Código Agrupador (Anexo 24); parent of 201-2xx."
 
   "201":
     name: "Proveedores"
@@ -100,6 +126,7 @@ mappings:
     kontablo_uuid: "00000000-0000-4000-8000-000000000201" # Trade Payables
     aggregation_rules:
       - "sum"
+    local_parent: "200"
 
   "208":
     name: "Impuestos trasladados"
@@ -108,6 +135,12 @@ mappings:
     kontablo_uuid: "00000000-0000-4000-8000-000000000203" # Current Tax Liabilities (Translated)
     aggregation_rules:
       - "sum"
+    local_parent: "200"
+    facets:
+      tax: "output_transferred"
+    note: >
+      SAT distinguishes taxes transferred to customers (trasladados) from taxes
+      withheld (211). The tax facet preserves that axis of the SAT chart.
 
   "211":
     name: "Impuestos retenidos"
@@ -116,6 +149,9 @@ mappings:
     kontablo_uuid: "00000000-0000-4000-8000-000000000204" # Current Tax Liabilities (Withheld)
     aggregation_rules:
       - "sum"
+    local_parent: "200"
+    facets:
+      tax: "withheld"
 
 
   # --- EQUITY & OTHERS (Capital, Ingresos, Costos, Gastos) ---

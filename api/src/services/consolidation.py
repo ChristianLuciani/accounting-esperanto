@@ -77,8 +77,13 @@ class ConsolidationService:
         """
         Consolidates multiple trial balances into a single Kontablo-standardized trial balance.
         """
-        consolidated_data = {} # Map k_id -> {debit, credit}
+        consolidated_data = {} # Map k_id -> {debit, credit, sources}
         fx_audit: List[Dict] = []  # one FX provenance record per trial balance
+        # One mapping-provenance record per source entry (the FXQuote pattern
+        # applied to the mapping decision, ADR-016): the local code/name and the
+        # resolution path are never discarded by the translation, so every
+        # consolidated line is reconstructible down to its source rows.
+        mapping_audit: List[Dict] = []
 
         for tb in trial_balances:
             # FX is per trial balance, resolved once (with provenance).
@@ -99,11 +104,29 @@ class ConsolidationService:
                 debit_val = entry.debit * fx_rate
                 credit_val = entry.credit * fx_rate
 
+                mapping_audit.append({
+                    "subsidiary_id": tb.subsidiary_id,
+                    "jurisdiction": tb.jurisdiction,
+                    "local_code": entry.local_code,
+                    "local_name": entry.local_name,
+                    "kontablo_id": k_id,
+                    "match_method": mapping_res.match_method,
+                    "tier": mapping_res.tier,
+                    "confidence": mapping_res.confidence_score,
+                    # Original local-currency amounts (the converted figures are
+                    # rounded and not invertible through the FX rate).
+                    "debit_local": entry.debit,
+                    "credit_local": entry.credit,
+                    "debit": round(debit_val, 2),
+                    "credit": round(credit_val, 2),
+                })
+
                 if k_id not in consolidated_data:
-                    consolidated_data[k_id] = {"debit": 0.0, "credit": 0.0}
+                    consolidated_data[k_id] = {"debit": 0.0, "credit": 0.0, "sources": 0}
 
                 consolidated_data[k_id]["debit"] += debit_val
                 consolidated_data[k_id]["credit"] += credit_val
+                consolidated_data[k_id]["sources"] += 1
 
         # 3. Format result. Per-entry amounts are validated finite at the model
         # boundary, but a sum of finite values can still overflow to ±inf; refuse
@@ -128,7 +151,10 @@ class ConsolidationService:
                 "label_en": account_info.label_en if account_info else "Unknown",
                 "debit": debit,
                 "credit": credit,
-                "net_balance": round(debit - credit, 2)
+                "net_balance": round(debit - credit, 2),
+                # Fiber size: how many source entries aggregated into this line
+                # (the entries themselves are in mapping_audit).
+                "source_entries": values["sources"],
             })
 
         balance_difference = round(total_debit - total_credit, 2)
@@ -143,4 +169,5 @@ class ConsolidationService:
             "balance_difference": balance_difference,
             "balanced": abs(balance_difference) <= 0.05,
             "fx_audit": fx_audit,
+            "mapping_audit": mapping_audit,
         }
