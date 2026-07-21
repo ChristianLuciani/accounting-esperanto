@@ -4,7 +4,7 @@
 
 `blocked` means: a round was attempted and a real obstacle was hit (most commonly: this session's outbound-HTTPS egress could not reach the primary source), **not** that no official source exists. Never treat a row here as permanently unresolvable -- retry it, ideally from a session/environment with working general-internet egress, before concluding the sweep can't cover it.
 
-**2 of 195 jurisdictions blocked** (verified: 19, partial_curated_subset: 40, n/a_no_statutory_chart: 134).
+**2 of 195 jurisdictions blocked** (verified: 20, partial_curated_subset: 39, n/a_no_statutory_chart: 134).
 
 ## Summary table
 
