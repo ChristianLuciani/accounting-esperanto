@@ -68,6 +68,38 @@ it accepts a tree-structured chart from any ERP or jurisdiction and resolves it 
 graph nodes via a three-tier confidence system (exact match → pattern disambiguation
 → semantic AI fallback). The result is always a UUID, never a local code.
 
+### How does Kontablo guarantee lossless translation?
+
+A local chart of accounts is not just a flat list of codes — it has its own
+hierarchy, tax facets, and disaggregation dimensions. Collapsing that into a single
+opaque UUID per code, with no record of what was flattened, would be exactly the
+"Accounting Babel" Kontablo exists to fix. **ADR-016** (accepted 2026-07-20) makes
+the translation lossless at the entry level: every resolution carries a
+`MappingQuote` (which deterministic tier, which exact rule, when), every local
+chart's own structure is preservable via optional `local_parent` / `facets` /
+`aggregation_group` fields, and every Kontablo node exposes its full **fiber** —
+the local codes, across jurisdictions, that collapse into it — via
+`GET /accounts/{id}/fiber` and the MCP tool `get_node_fiber`.
+
+![Kontablo lossless translation: the same node before and after ADR-016](docs/papers/drafts/figures/fig_lossless_translation.png)
+
+The claim is machine-checked, not asserted: on the same 75-entity, 68-jurisdiction
+synthetic matrix behind the deterministic-coverage number above, every local trial
+balance reconstructs **byte-for-byte from lineage alone**, and every
+non-translation (an ontology collision, an unresolved code, a CRA flag) is a typed
+record — never a silent drop.
+
+```bash
+# Round-trip audit: conservation, exact reconstruction, zero silent losses
+python scripts/roundtrip_audit.py
+# → research/experiments/roundtrip_audit/results.json: silent_losses == 0
+```
+
+The projection to a 30-account universal core stays genuinely coarser than any
+single local chart (that coarsening is deliberate, see the coverage question
+below) — the guarantee is that the **system** never loses information, only the
+**canonical rollup view** does, and even that is reconstructible on demand.
+
 ### How much of real accounting activity does the 30-account core capture?
 
 A reproducible transaction-frequency benchmark
