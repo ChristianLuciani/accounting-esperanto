@@ -21,9 +21,9 @@ metadata:
       that a national chart is missing.'
     blocked: Attempted; blocked on something (see notes) -- e.g. no accessible primary source PDF.
   counts:
-    partial_curated_subset: 40
+    partial_curated_subset: 39
     n/a_no_statutory_chart: 134
-    verified: 19
+    verified: 20
     blocked: 2
   total_jurisdictions: 195
   methodology: research/coa_fidelity/README.md
