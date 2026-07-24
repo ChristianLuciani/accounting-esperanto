@@ -1,0 +1,182 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%  clapps.cls --- Praxia / Kontablo open-access paper class
+%  ("Christian Luciani APPlied Standards" house style)
+%
+%  A clean-room house style for Praxia research preprints and standards
+%  documents. Article-based. Depends only on packages that ship with every
+%  TeX Live / MiKTeX base install (xcolor, hyperref, geometry, lmodern,
+%  microtype); every nicer package (lexend, titlesec, epigraph, tcolorbox)
+%  is used opportunistically *if present* and degrades gracefully if not, so
+%  the document always compiles with pdflatex and no engine switch.
+%
+%  House identity:
+%    - Lexend typography when available (dyslexia-friendly humanist sans),
+%      with a graceful Latin Modern fallback.
+%    - A restrained two-colour palette (deep slate ink + teal accent),
+%      deliberately distinct from any institutional template.
+%    - Sans-serif, accent-coloured section headings and title block.
+%    - A dual-readership convention: a machine-readable summary path and a
+%      human reading path, supported by \summarynote and \clappsepigraph.
+%
+%  Written from scratch. Inspired by the layout ideas of common open-access
+%  report templates but copying no code from any of them; carries no
+%  third-party licensing obligation.
+%
+%  Licence: LaTeX Project Public License (LPPL) 1.3c or later.
+%  Author:  Christian Luciani / Praxia.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesClass{clapps}[2026/06/16 v1.0 Praxia/Kontablo house style]
+
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
+\ProcessOptions\relax
+\LoadClass[a4paper]{article}
+
+% --- Page geometry -----------------------------------------------------------
+\RequirePackage[a4paper, margin=1in]{geometry}
+
+% --- Typography (always-present base; Lexend if installed) -------------------
+\RequirePackage{lmodern}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{microtype}
+
+\newif\ifclapps@lexend
+\IfFileExists{lexend.sty}{\clapps@lexendtrue}{\clapps@lexendfalse}
+\ifclapps@lexend
+  \RequirePackage{lexend}
+  \renewcommand{\familydefault}{\sfdefault}% Lexend everywhere (body + headings)
+\else
+  \ClassWarningNoLine{clapps}{Package `lexend' not found --- falling back to
+    Latin Modern. Run `tlmgr install lexend' for the full Praxia typography.}%
+\fi
+
+% --- Colour palette (subtle, two-colour) -------------------------------------
+\RequirePackage{xcolor}
+\definecolor{clappsInk}{HTML}{1F2933}    % deep slate, near-black body ink
+\definecolor{clappsAccent}{HTML}{0E7C7B} % muted teal, headings & rules
+\definecolor{clappsMuted}{HTML}{52606D}  % secondary grey for meta lines
+
+% --- Section headings (titlesec if present, else base \@startsection) --------
+% Section headings are set ragged-right with hyphenation disabled, so a heading
+% never breaks a word across lines (e.g. "Mecha-nism", "Recom-position").
+\newcommand{\clapps@headsetup}{\raggedright\hyphenpenalty=10000\exhyphenpenalty=10000\relax}
+\IfFileExists{titlesec.sty}{%
+  \RequirePackage{titlesec}%
+  \titleformat{\section}
+    {\clapps@headsetup\sffamily\Large\bfseries\color{clappsAccent}}{\color{clappsAccent}\thesection}{0.7em}{}%
+  \titleformat{\subsection}
+    {\clapps@headsetup\sffamily\large\bfseries\color{clappsInk}}{\color{clappsAccent}\thesubsection}{0.6em}{}%
+  \titleformat{\subsubsection}
+    {\clapps@headsetup\sffamily\normalsize\bfseries\color{clappsInk}}{\color{clappsAccent}\thesubsubsection}{0.5em}{}%
+}{%
+  % Base-LaTeX fallback: the final argument of \@startsection styles the whole
+  % heading (number included), giving sans + accent headings with no package.
+  \renewcommand\section{\@startsection{section}{1}{\z@}%
+     {-3.5ex \@plus -1ex \@minus -.2ex}{2.3ex \@plus.2ex}%
+     {\clapps@headsetup\sffamily\Large\bfseries\color{clappsAccent}}}%
+  \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+     {-3.25ex\@plus -1ex \@minus -.2ex}{1.5ex \@plus .2ex}%
+     {\clapps@headsetup\sffamily\large\bfseries\color{clappsInk}}}%
+  \renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+     {-3.25ex\@plus -1ex \@minus -.2ex}{1.5ex \@plus .2ex}%
+     {\clapps@headsetup\sffamily\normalsize\bfseries\color{clappsInk}}}%
+}
+
+% --- Title block (base \@maketitle override; no titling dependency) ----------
+% The accent rule under the title is sized to the rendered width of the author
+% name (not a fixed fraction), so the two visually align.
+\newlength{\clapps@rulewd}
+\renewcommand{\maketitle}{%
+  \thispagestyle{plain}\vskip 0.5em%
+  \settowidth{\clapps@rulewd}{\sffamily\large\@author}%
+  \begin{center}%
+    {\sffamily\LARGE\bfseries\color{clappsInk}\@title \par}%
+    \vskip 0.4em{\color{clappsAccent}\rule{\clapps@rulewd}{1.2pt}}\par
+    \vskip 0.7em{\sffamily\large\color{clappsInk}\@author \par}%
+    \vskip 0.5em{\sffamily\small\color{clappsMuted}\@date \par}%
+  \end{center}\par
+  \@thanks
+  \vskip 1em%
+  \setcounter{footnote}{0}%
+  \global\let\thanks\relax%
+  \global\let\maketitle\relax}
+
+% --- Links -------------------------------------------------------------------
+\RequirePackage[colorlinks=true, allcolors=clappsAccent, breaklinks=true]{hyperref}
+
+% --- Epigraph (recurring motif): use package if present, else minimal macro --
+% Note: definitions with #-parameters must live outside the \IfFileExists
+% argument (where # is illegal); we branch on a boolean instead.
+\newif\ifclapps@epigraph
+\IfFileExists{epigraph.sty}{\clapps@epigraphtrue}{\clapps@epigraphfalse}
+\ifclapps@epigraph
+  \RequirePackage{epigraph}
+  \setlength{\epigraphwidth}{0.55\textwidth}
+  \renewcommand{\epigraphflush}{center}
+  \newcommand{\clappsepigraph}[2]{\epigraph{#1}{#2}}
+\else
+  \newcommand{\clappsepigraph}[2]{%
+    \par\vspace{0.5em}\hfill\begin{minipage}{0.6\textwidth}\raggedleft\small\itshape
+      #1\par\vskip0.2em\upshape\normalfont\footnotesize\color{clappsMuted}--- #2
+    \end{minipage}\par\vspace{0.6em}}
+\fi
+
+% --- Dual-readership block: tcolorbox if present, else plain framed box -------
+\newif\ifclapps@tcb
+\IfFileExists{tcolorbox.sty}{\clapps@tcbtrue}{\clapps@tcbfalse}
+\ifclapps@tcb
+  \RequirePackage[most]{tcolorbox}
+  % breakable: a long note flows across the page boundary instead of jumping
+  % whole to the next page and leaving the prior page half empty.
+  \newtcolorbox{summarynote}{%
+    breakable, enhanced jigsaw,
+    colback=clappsAccent!4, colframe=clappsAccent!55, boxrule=0.6pt, arc=2pt,
+    left=8pt, right=8pt, top=6pt, bottom=6pt}
+\else
+  % No-package fallback: a ruled callout. Kept free of a minipage so the note
+  % breaks across pages (a minipage would jump whole and strand whitespace).
+  % A heavier accent rule above and a lighter one below read as a deliberate box.
+  \newenvironment{summarynote}{%
+    \par\addvspace{0.7em}%
+    \noindent{\color{clappsAccent}\rule{\linewidth}{1.1pt}}\par\nobreak
+    \vskip4pt\noindent\ignorespaces
+  }{%
+    \par\vskip4pt%
+    \noindent{\color{clappsAccent}\rule{\linewidth}{0.6pt}}\par
+    \addvspace{0.7em}}
+\fi
+
+% --- Aggressive URL breaking (stop long DOIs/paths bleeding past the margin) --
+\AtBeginDocument{%
+  \Urlmuskip=0mu plus 1mu\relax
+  \def\UrlBreaks{\do\/\do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+    \do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t\do\u\do\v\do\w\do\x%
+    \do\y\do\z\do\.\do\-\do\_\do\=\do\&\do\?\do\#\do\:\do\0\do\1\do\2\do\3%
+    \do\4\do\5\do\6\do\7\do\8\do\9}}
+
+% --- Figure sizing: shrink-only fit ------------------------------------------
+% \fitwidth{<content>} caps content at \linewidth but NEVER enlarges it. Using
+% this instead of \resizebox{\textwidth}{!}{...} keeps the in-figure font at its
+% true declared size (e.g. font=\small) for every diagram that already fits, so
+% figures share a consistent font size; only genuinely over-wide diagrams scale
+% down.
+\newsavebox{\clapps@figbox}
+\newcommand{\fitwidth}[1]{%
+  \sbox{\clapps@figbox}{#1}%
+  \ifdim\wd\clapps@figbox>\linewidth
+    \resizebox{\linewidth}{!}{\usebox{\clapps@figbox}}%
+  \else
+    \usebox{\clapps@figbox}%
+  \fi}
+
+% --- Compact, sections-only contents for the abstract page -------------------
+\newcommand{\compactcontents}{%
+  \begingroup
+  \setcounter{tocdepth}{1}%
+  \renewcommand{\contentsname}{\normalsize\sffamily\color{clappsInk}Contents}%
+  {\small\parskip=-2pt\tableofcontents}%
+  \endgroup}
+
+\endinput

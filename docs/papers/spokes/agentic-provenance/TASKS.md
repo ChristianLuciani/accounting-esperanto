@@ -1,0 +1,188 @@
+# Spoke 1 — Task backlog & deep-research prompts
+
+Prioritized path from the adopted **v0.1 draft** to a **publication-ready**
+arXiv cs.MA spoke. Each task is sized to be one **atomic PR** onto
+`claude/spoke1-agentic-provenance` (see `WORKFLOW.md`). Suggested branch names in
+`code`.
+
+Status legend: ☐ todo · ◐ in progress · ☑ done
+Draft baseline: v0.1 (adopted 2026-07-24), compiles, anchored on the round-trip
+audit, honest on implementation status. **Content is strong; the gaps are
+scholarly apparatus (citations, figures, positioning) and publication mechanics.**
+
+---
+
+## P0 — Blockers to a credible cs.MA submission
+
+### ☐ T1 — Related Work + populate `references.bib`  ·  `claude/spoke1-related-work`
+The draft currently has **zero `\cite`**. For cs.MA this is disqualifying on its
+own. Add a Related Work section and wire real citations throughout, positioning
+against four bodies of work:
+- agent payment/interop protocols (AP2, A2A, MCP, and adjacent: x402, ERC-8004…);
+- LLM hallucination mitigation via constrained/ontology-bounded generation;
+- multi-agent-systems work on agent economies & auditable autonomous action;
+- financial ontologies/standards for machines (FIBO, XBRL/ESEF, ISO 20022).
+**Feeds from:** DR1–DR4. **Acceptance:** ≥12 real, verifiable references; every
+claim about "others do X" carries a citation; no fabricated entries (project
+epistemic rule). Cite-back to hub DOI present.
+
+### ☐ T2 — Claim/code audit pass  ·  `claude/spoke1-claim-audit`
+Every file path and behavioral claim in `main.tex` must match current `main`
+code (epistemic rule + claims–evidence rule). Already verified this session:
+6 MCP tools ✓, round-trip numbers ✓, `clapps.cls` clean-room ✓. **Still to
+confirm and pin:** the `rule_id` string formats (`tier1:<jur>:<code>` /
+`tier2:<node>:<keyword>`) against `core/harness/provenance.py`; that REST
+`GET /accounts/{id}/fiber` and MCP `get_node_fiber` exist as described; that
+`MappingQuote` carries the listed fields; that the "97.3% / 4 escalations" cross
+-reference is consistent with the loss-ledger "4 escalated entries."
+**Acceptance:** a short `CLAIMS_AUDIT.md` mapping each in-text claim → file:line
+or command; zero unverifiable claims remain.
+
+### ☐ T3 — Figures (≥1, ≤2)  ·  `claude/spoke1-figures`
+The draft is figure-less. Add, following the hub's reproducible convention
+(`.py`→`.png` or TikZ `.tex` committed):
+- **Fig 1 (required):** the agent→layer decision flow — agent calls an MCP
+  deterministic tool → ontology-as-constraint guardrail → *either* a resolved
+  `MappingQuote` *or* a typed loss-ledger record that escalates (I1+I2), showing
+  the Tier-3/LLM path deliberately **outside** the tool surface.
+- **Fig 2 (optional):** the I3 fiber query — one universal node, its per-
+  jurisdiction preimage (fiber) with preserved local structure, queried
+  *before* the transaction.
+**Acceptance:** figure(s) compile in `main.pdf`; generator committed and
+regenerable; referenced from the text.
+
+---
+
+## P1 — Materially raises acceptance odds
+
+### ☐ T4 — Adversarial-agent threat model  ·  `claude/spoke1-threat-model`
+cs.MA reviewers will ask: *can a malicious or buggy agent defeat I1/I2/I3?* Add a
+short subsection: it can escalate-spam or submit garbage, but it **cannot** emit
+a non-existent UUID (I1), **cannot** cause a silent loss (I2 — the worst case is
+a *counted* escalation), and **cannot** hide the preimage (I3). State the residual
+attack surface honestly (e.g., a wrong-but-existing UUID is still reachable; that
+is a semantic-correctness problem I1 bounds but does not eliminate).
+**Acceptance:** one tight subsection; claims consistent with I1's "bounded, not
+eliminated" wording.
+
+### ☐ T5 — Inference-cost / resource-economy framing  ·  `claude/spoke1-inference-cost`
+Make principle #5's *consequence* concrete (as a consequence, never a banner):
+~0.9% escalation rate (4/441) ⇒ ~99% of resolutions are graph lookups that avoid
+an LLM call — token, latency, and energy cost not incurred, and no stochastic
+error to contaminate downstream steps. **Acceptance:** a short paragraph with the
+number sourced to `results.json`; framed as economy+determinism, not marketing.
+
+### ☐ T6 — Sharpen I3 novelty & math tie-in  ·  `claude/spoke1-i3-sharpen`
+"Pre-transaction fiber query" is the most novel-sounding term and must be
+airtight. Tie the fiber to the preimage / H¹-obstruction language of the hub's
+`mathematical_foundations.tex` at a level cs.MA accepts, without importing the
+full category-theory apparatus (that is **Spoke 2**'s job — cite it as
+forthcoming, do not pre-empt it). **Acceptance:** I3 reads as a systems result
+with a clean pointer to the math spoke; no overlap that invites salami critique.
+
+### ☐ T7 — Abstract/intro GEO/AEO polish  ·  `claude/spoke1-geo-polish`
+Already has "Kontablo is…" once ✓. Light pass: first-100-words direct answer,
+question-as-heading (mostly done), quantified claims traceable. Confirm keywords
+line matches venue taxonomy. **Acceptance:** GEO checklist (hub CLAUDE.md §
+"AI Discoverability") satisfied.
+
+---
+
+## P2 — Polish & publication mechanics
+
+### ☐ T8 — Modularization decision  ·  (decision, likely *no PR*)
+Decide whether to split `main.tex` into `sections/` like the 65 pp hub. For a
+~10 pp spoke the recommendation is **keep monolithic** (lower overhead, cleaner
+diffs). Record the decision; only split if the paper grows past ~16 pp.
+
+### ☐ T9 — License header + arXiv metadata  ·  `claude/spoke1-license-meta`
+Add CC BY 4.0 (matches the hub's paper license, `docs/papers/LICENSE`) and an
+arXiv metadata block (primary `cs.MA`; cross-list candidates `cs.AI`, `cs.CE`,
+`q-fin.GN`). **Acceptance:** license stated in-paper; metadata block staged for
+submission (mirrors `docs/strategy/arxiv-submission.md`).
+
+### ☐ T10 — Hub↔spoke cross-link wiring  ·  `claude/spoke1-crosslink`
+Prepare (do **not** land on `main` yet) the hub-side update: a claims-evidence
+row and a "companion paper" pointer added to the hub when the spoke gets its own
+DOI. Keep it staged as a follow-up PR to `main`, cut at publication time.
+**Acceptance:** a `HUB_UPDATE.md` note listing the exact hub edits to make on
+publication day.
+
+### ☐ T11 — Fresh-checkout reproducibility check  ·  `claude/spoke1-repro-check`
+Run the Reproducibility section's commands in a clean clone to confirm every
+number regenerates and exit codes are 0. **Acceptance:** a logged clean run;
+fix any drift.
+
+---
+
+## Deep-research prompts (run via the `deep-research` skill)
+
+Each is self-contained; paste as the research question. Outputs land in
+`docs/internal/` (working notes, gitignored) and feed the tasks noted.
+
+**DR1 — Agent payment & interoperation protocols, and what they do *not* specify.**
+> Survey the current (2025–2026) state of machine-to-machine agent payment and
+> interoperation protocols: Google's Agent Payments Protocol (AP2) and Agent2Agent
+> (A2A), Anthropic's Model Context Protocol (MCP), and adjacent efforts (x402,
+> ERC-8004, Coinbase/Skyfire/Visa agent-payment initiatives). For each: spec
+> maturity, what auditability/settlement guarantee it makes, and — critically —
+> whether it says anything about the *accounting-semantic correctness* of the
+> value moved (i.e., that the transaction is booked to the right concept). Cite
+> primary specs. Goal: substantiate the paper's "these are settlement/interop
+> layers; accounting-semantic auditability is a distinct layer beneath them."
+> *Feeds T1, positioning §5.*
+
+**DR2 — Ontology/constraint as a guardrail against LLM hallucination.**
+> Survey 2023–2026 work on preventing LLM hallucination by *constraining the
+> output space* rather than post-hoc checking: constrained/grammar/JSON-schema-
+> guided decoding, retrieval- or ontology-bounded generation, tool-use where the
+> callable surface is a fixed vocabulary, and any formal "the model cannot emit
+> a token/identifier outside the allowed set" results. Distinguish statistical
+> mitigation from constructive (unreachable-by-design) guarantees. Goal: place
+> the paper's I1 "ontology-as-constraint" in the literature and defend the
+> "a whole class of malformed bookings is unreachable, not merely unlikely" claim.
+> *Feeds T1, I1 (§3.1), T4.*
+
+**DR3 — Auditable autonomous action in multi-agent systems (venue mapping).**
+> Who publishes, and where, on autonomous-agent economies, machine-to-machine
+> financial infrastructure, and provenance/accountability for agent actions —
+> AAMAS and its workshops, AAAI, IJCAI, NeurIPS/ICML agent tracks, and dedicated
+> agentic-AI / agent-economy workshops in 2025–2026? Identify 8–15 representative
+> papers and the 3–5 best open venues for a systems-flavored cs.MA result.
+> Goal: Related Work grounding + venue shortlist for the playbook.
+> *Feeds T1 and the venue decision (playbook).*
+
+**DR4 — Financial ontologies/standards for machines, and the gap.**
+> Compare the machine-facing financial semantics standards — FIBO (EDM Council),
+> XBRL / iXBRL / ESEF, ISO 20022, GL/audit taxonomies — on: what semantics they
+> encode for machines, granularity, whether any addresses *autonomous-agent
+> posting* or per-entry provenance/lineage, and their treatment of cross-
+> jurisdiction chart mapping. Goal: position Kontablo's UUID-graph + loss-ledger
+> as complementary and identify precisely the gap it fills (per-entry, reconstruc-
+> tible, agent-native). Cite primary standards pages. *Feeds T1, positioning §5.*
+
+**DR5 — arXiv cs.MA submission & endorsement, and the de-risked open-venue path.**
+> Document the exact mechanics for submitting to arXiv **cs.MA** as an independent
+> researcher: endorsement requirements and how to obtain an endorser, moderation
+> risk, license options (confirm CC BY 4.0 compatibility), cross-listing rules,
+> and timelines. NOTE the prior context: the Kontablo hub hit the arXiv
+> "not endorsed for this archive" wall in cs.*. Produce a de-risked plan: which
+> open platform to publish on *first* so publication never blocks on endorsement
+> (Zenodo already integrated), and how arXiv + a workshop slot to layer on after.
+> Goal: the venue section of the local playbook. *Feeds the playbook + T9.*
+
+**DR6 (optional) — Provenance & lineage models to frame I2/I3 rigorously.**
+> Summarize provenance/lineage models from data systems (W3C PROV, database
+> why-/where-/how-provenance, lineage in data pipelines) at a level that lets the
+> paper describe the loss ledger (I2) and fiber query (I3) in the field's own
+> vocabulary. Goal: one or two precise citations that make I2/I3 legible to
+> reviewers who know provenance theory. *Feeds T1, I2/I3 (§3).*
+
+---
+
+## Suggested landing order
+
+`T1 → T2 → T3` (P0, unblock a submittable draft) → `T4, T5, T6` (P1, strengthen)
+→ `T7, T9, T10, T11` (polish/mechanics). `T8` is a one-line decision up front.
+Run **DR1–DR4 early** (they gate T1, the critical-path task); **DR5** before the
+playbook's venue lock; **DR6** is optional depth.

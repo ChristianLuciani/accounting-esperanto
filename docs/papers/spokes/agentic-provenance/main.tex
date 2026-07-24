@@ -1,0 +1,425 @@
+\documentclass[11pt]{clapps}  % Praxia/Kontablo house style (clean-room)
+
+% --- PACKAGES ---
+% geometry, lmodern, microtype, xcolor and hyperref are provided by clapps.cls.
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage{url}
+\DeclareUrlCommand\pathtt{\urlstyle{tt}}
+
+% --- PREAMBLE ---
+\title{Deterministic Auditability Invariants for Autonomous
+Financial Agents: The Loss Ledger and Pre-Transaction Fiber Query}
+\author{Christian Luciani}
+\date{\small{Spoke preprint v0.1 --- July 2026 --- draft for arXiv cs.MA}}
+
+\begin{document}
+
+\maketitle
+
+\noindent\textbf{Author.} Christian Luciani --- Chief Architect, Kontablo
+Project. Independent Researcher, Cuenca, Ecuador (Praxia, the initiative's
+planned entity, in incorporation). ORCID:~\href{https://orcid.org/0000-0002-6955-5384}{0000-0002-6955-5384}.
+Contact:~\href{mailto:cluciani@gmail.com}{cluciani@gmail.com}.
+
+\medskip
+
+\noindent\textbf{Normative reference.} This spoke paper is a community-facing
+result built on Kontablo, whose specification of record is the canonical
+preprint, Zenodo concept DOI
+\href{https://doi.org/10.5281/zenodo.20738795}{10.5281/zenodo.20738795}
+(cite this DOI; it resolves to the latest version). All architectural
+principles referenced by number (e.g.\ ``principle~\#5'') are defined there.
+This paper does not restate that thesis; it isolates one question that belongs
+to the multi-agent-systems community and answers it with a new, independently
+regenerable result.
+
+\begin{abstract}
+\noindent Kontablo is a graph-based, UUID-keyed universal accounting ontology
+that acts as a deterministic semantic-resolution layer between local statutory
+charts of accounts and the machine-to-machine (M2M) agentic economy. This paper
+asks a question specific to autonomous multi-agent finance: as AI agents begin
+to execute high-frequency financial transactions over protocols such as AP2
+(Agent Payments Protocol) and A2A (Agent2Agent), \emph{what deterministic
+auditability invariants must the semantic-resolution layer satisfy so those
+transactions are trustworthy without a human in the per-transaction critical
+path?} We argue the answer cannot be procedural (human review does not scale to
+M2M frequency) and must instead be \emph{architectural}. We name three
+invariants and demonstrate them in a committed reference implementation:
+(\textbf{I1}) \emph{ontology-as-constraint} --- the agent-facing interface
+exposes only deterministic tools, and no tool can emit an account identifier
+that does not exist in the graph; (\textbf{I2}) the \emph{loss ledger} --- every
+piece of information the layer cannot translate with certainty becomes a typed,
+countable record that escalates to a human, never a silent guess; and
+(\textbf{I3}) the \emph{pre-transaction fiber query} --- an agent can retrieve
+the exact preimage of any consolidated node \emph{before} acting on it, making
+auditability a pre-condition of the transaction rather than only a forensic
+afterthought. We instantiate the invariants over an agent-native
+Model Context Protocol (MCP) surface of six deterministic tools and a
+round-trip audit that, over $441$ ledger entries drawn from $75$ synthetic
+entities across $68$ jurisdictions, reconstructs every local trial balance
+byte-for-byte from lineage alone and records \emph{zero} silent losses. The
+contribution to the agent community is a concrete shape for machine-verifiable
+trust at the resolution layer that complements, rather than duplicates,
+settlement-layer protocols.
+
+\medskip
+\noindent\textbf{Keywords:} multi-agent systems, agent-to-agent protocols, M2M
+economy, deterministic auditability, provenance, Model Context Protocol,
+AP2, financial agents, ontology-as-constraint.
+\end{abstract}
+
+\compactcontents
+
+% =====================================================================
+\section{Why does trust have to move into the architecture?}
+% =====================================================================
+
+An autonomous agent that pays another agent must, at some point, commit a
+financial fact: \emph{this outflow of value corresponds to this economic event,
+booked to this account, in this entity, under this jurisdiction's rules.} In
+human-operated finance that mapping is checked --- an accountant, a controller,
+an auditor stands somewhere in the loop. The premise of the M2M agentic economy
+is that this loop closes without a human on the critical path of each
+transaction: agents transact at a frequency and volume where per-transaction
+human review is not merely expensive but structurally impossible.
+
+That premise relocates a hard problem. If no human verifies each mapping, then
+the \emph{trustworthiness} of the mapping can no longer live in the review
+\emph{process}; it must live in the \emph{architecture} that produces the
+mapping. This is the question this paper isolates for the multi-agent-systems
+community. Settlement-layer protocols --- AP2 for payment authorization, A2A for
+agent interoperation --- answer ``did the value move, and was it
+authorized?''\ They do not answer ``was the accounting semantics of the moved
+value correct and reconstructible?''\ The latter is a property of the
+\emph{semantic-resolution layer} that sits between an agent's intent and the
+ledgers it touches, and it is where an early error is most dangerous: a
+misresolved account at transaction time contaminates every downstream
+consolidation, tax computation, and audit that inherits it.
+
+We take Kontablo --- an existing, published, graph-based universal accounting
+ontology (concept DOI 10.5281/zenodo.20738795) --- as the case study, not the
+subject. The subject is the class of invariants any such layer needs. Kontablo
+is useful here precisely because it already commits to determinism as a design
+driver (its principle~\#5: move every decision that \emph{can} be made by a
+rule, a constraint, or a graph lookup off of stochastic inference), so it lets
+us make the invariants concrete and, critically, \emph{regenerable from
+committed code}.
+
+\summarynote{The claim of this paper: for autonomous high-frequency finance,
+trust in the account-resolution step must be an architectural guarantee
+(verifiable, reproducible), not a procedural one (human review). We give three
+invariants that make it so, and a committed audit that exhibits them.}
+
+% =====================================================================
+\section{What is the resolution layer, and where can it lose information?}
+% =====================================================================
+
+A universal accounting layer projects many local statutory charts onto one
+shared ontology. Kontablo keys every universal concept by a UUID and treats
+local codes as visual labels (its principles \#1--\#2: a graph, not a tree;
+UUID as truth). An agent asks the layer to resolve a local account --- say a
+Brazilian SPED line or a German SKR04 Kontenklasse --- to a universal node so
+that value booked in one jurisdiction can be reasoned about, consolidated, or
+settled alongside value booked in another.
+
+The projection is, by construction, not a bijection. Several distinct local
+concepts may legitimately collapse into one coarser universal node; the return
+trip cannot recover which local concept produced a given universal figure unless
+the layer \emph{stored} that fact. A layer can therefore lose information in
+three ways, which we must distinguish honestly (following the case study's
+ADR-016):
+
+\begin{itemize}
+  \item \textbf{Lineage loss} --- the resolution is computed but the
+  per-entry provenance is discarded at the API boundary, so no surface can
+  answer ``which local rows produced this consolidated figure?''\ This is an
+  \emph{accidental} loss and is eliminable.
+  \item \textbf{Structure loss} --- the local chart's own hierarchy and its
+  analytical dimensions (tax regime, VAT rate, geography, contra polarity) are
+  flattened away by the mapping. Also accidental; eliminable by preserving the
+  source structure alongside the projection.
+  \item \textbf{Semantic coarsening} --- $N$ local concepts genuinely map to
+  one deliberately coarser universal node. This is \emph{inherent}: the
+  universal node is coarser on purpose. It cannot be made bijective, but it can
+  be made \emph{explicit, typed, and reconstructible}.
+\end{itemize}
+
+The distinction the community should take away is: \textbf{the projection is
+lossy; the system need not be.} A layer is lossless if it stores the
+\emph{morphism} --- the annotated mapping plus the intact source --- rather than
+only the projected image. The universal view then becomes a \emph{query over
+preserved data}, never a destructive transform. The three invariants below are
+the operational form of that principle for an autonomous agent.
+
+% =====================================================================
+\section{Three invariants for machine-verifiable trust}
+% =====================================================================
+
+\subsection{I1 --- Ontology-as-constraint: the agent's tools are deterministic,
+and the graph is the guardrail}
+
+The first invariant constrains \emph{what an agent can even ask the layer to
+do}. Kontablo exposes an agent-native face over the Model Context Protocol
+(MCP): a set of tools an autonomous agent calls directly. The design decision
+that matters for trust is what is \emph{not} a tool.
+
+The reference MCP server (\pathtt{api/mcp/server.py}) registers six tools:
+\texttt{resolve\_account}, \texttt{get\_account}, \texttt{validate\_balance\_sheet},
+\texttt{consolidate\_trial\_balances}, \texttt{get\_node\_fiber}, and
+\texttt{list\_jurisdictions}. Every one is a graph lookup, a deterministic
+keyword rule, or arithmetic --- \emph{no tool calls a language model}. The
+resolver has a three-tier structure (an exact statutory index, a deterministic
+keyword rule, and a semantic/LLM fallback), and the third tier is
+\textbf{deliberately not exposed as a tool}. When neither deterministic tier
+matches, \texttt{resolve\_account} returns \texttt{resolved=false} and escalates
+to human review; it never guesses. Exposing the stochastic fallback as if it
+were just another tool would hide non-determinism from an agent that is deciding
+autonomously --- precisely the failure this invariant exists to prevent.
+
+The guardrail is the ontology itself: an agent cannot propose an account UUID
+that does not exist in the graph, because resolution is a lookup into the graph,
+not a generation of free text. This is ontology-as-constraint, and it is the
+architectural (not procedural) source of the trust: the space of possible
+outputs is bounded by committed data, so a whole class of hallucinated or
+malformed bookings is unreachable rather than merely unlikely.
+
+\subsection{I2 --- The loss ledger: nothing untranslatable is ever silent}
+
+The second invariant governs \emph{what happens at the boundary of the layer's
+competence}. The standing rule is: \emph{the pipeline may fail to translate, but
+it may never lose.} Every non-translation is a typed, countable record ---
+an ontology code collision, a non-code placeholder, an escalated entry, a
+compliance (co-responsibility) flag --- never a silent drop. We call the running
+tally the \emph{loss ledger}, and its load-bearing quantity is
+$\texttt{silent\_losses}$: information discarded \emph{without} a typed record.
+The invariant is $\texttt{silent\_losses} = 0$.
+
+Concretely, every resolution carries a \texttt{MappingQuote}
+(\pathtt{core/harness/provenance.py}) --- the analogue of a per-transaction FX
+quote --- recording the local code and name, the jurisdiction, the tier that
+answered, the \emph{exact deterministic rule identifier} that fired
+(\texttt{tier1:<jur>:<code>} or \texttt{tier2:<node>:<keyword>}), a confidence,
+and a timestamp. Escalations carry a \texttt{MappingQuote} with a null node and
+tier \texttt{escalated} --- an explicit ``I do not know,'' not an absence.
+Because the quote is attached to every resolved entry and surfaced on every
+face (REST, gRPC, MCP), a consolidated statement is auditable down to the
+individual booking that produced each figure.
+
+For an autonomous agent this is the difference between an error it can detect and
+an error it cannot. A silent loss is invisible until a much later reconciliation
+fails, by which point the contaminated fact has propagated through every agent
+that consumed it. A ledgered loss is a signal the agent can act on \emph{at the
+boundary} --- pause, escalate, seek a human --- keeping the human in the loop
+where certainty runs out, without putting a human on the critical path where it
+does not.
+
+\subsection{I3 --- The pre-transaction fiber query: audit before you act}
+
+The third invariant concerns \emph{when} auditability is available. Post-hoc
+audit is standard: after the fact, reconstruct what happened. It is insufficient
+for an agent about to commit an irreversible transaction, because the damage is
+already done by the time a forensic pass runs. The invariant is that the
+preimage of any node is queryable \emph{before} the agent acts on it.
+
+Kontablo exposes the \emph{fiber} of a universal node --- the set of local
+statutory codes that collapse into it, per jurisdiction, enriched with the
+preserved local structure (local parent, analytical facets, declared
+aggregation group). It is available as the MCP tool \texttt{get\_node\_fiber}
+and as REST \texttt{GET /accounts/\{id\}/fiber}, both over the same
+deterministic function \texttt{node\_fiber} (\pathtt{core/harness/ontology.py}).
+Dually, \texttt{rollup(accounts, lens)} partitions the same UUIDs under
+different lenses (e.g.\ IFRS presentation vs.\ cash-flow), realizing the ``one
+UUID, many parallel hierarchies'' that the graph principle promises. Nodes that
+do not carry a lens are grouped explicitly under a null key --- never silently
+dropped, consistent with I2.
+
+The agentic consequence: before an agent books value against a universal node,
+it can ask ``exactly which local concepts does this node stand for in this
+jurisdiction, and what structure was flattened to reach it?''\ and get a
+deterministic answer. Auditability becomes a \emph{precondition} of the
+transaction, not a reconstruction after it. In a high-frequency M2M setting this
+is what lets an agent make a bounded, checkable decision at machine speed:
+the preimage is a fact it can inspect and reason over, not a promise it must
+trust.
+
+% =====================================================================
+\section{Result: a round-trip audit with zero silent losses}
+% =====================================================================
+
+The invariants would be marketing if they were not regenerable. Kontablo's
+governing scientific rule is that \emph{every quantitative claim in a public
+artifact must be reproducible from a committed, deterministic command.} We honor
+it here: every number below is emitted by \pathtt{scripts/roundtrip\_audit.py}
+into \pathtt{research/experiments/roundtrip\_audit/results.json}, and the same
+script runs in CI as a hard gate.
+
+The audit runs on the \emph{same} synthetic dataset as the project's published
+consolidation validation (imported, not duplicated), so no numbers are
+constructed for this paper. On that dataset it verifies four properties:
+
+\begin{enumerate}
+  \item \textbf{Conservation.} Every input trial-balance row appears in the
+  engine's resolved output exactly once --- $441$ entries in, $441$ resolved
+  out; zero missing rows, zero phantom rows.
+  \item \textbf{Reconstruction.} Every local trial balance (code, name, side,
+  local-currency amount) is rebuilt byte-for-byte from the lineage alone,
+  across all $75$ entities.
+  \item \textbf{Fiber consistency.} Every consolidated line equals the sum of
+  its fiber --- the resolved entries that aggregated into it --- with zero
+  mismatches.
+  \item \textbf{Loss ledger.} Everything the pipeline could not translate is a
+  typed record, and the count of \emph{silent} losses is zero.
+\end{enumerate}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabular}{@{}lr@{}}
+\toprule
+\textbf{Round-trip audit (ADR-016)} & \textbf{Value} \\
+\midrule
+Entities (synthetic) & 75 \\
+Jurisdictions & 68 \\
+Entries in $\rightarrow$ resolved out & $441 \rightarrow 441$ \\
+Missing rows / phantom rows & $0$ / $0$ \\
+Reconstruction exact & true \\
+Fiber mismatches & $0$ \\
+Provenance complete (every entry) & true \\
+\midrule
+\multicolumn{2}{@{}l}{\emph{Loss ledger} (typed, countable --- not silent):}\\
+\quad Ontology code collisions & 0 \\
+\quad Non-code placeholders & 14 \\
+\quad Escalated entries & 4 \\
+\quad Co-responsibility (CRA) flags & 2 \\
+\midrule
+\textbf{Silent losses} & \textbf{0} \\
+\bottomrule
+\end{tabular}
+\caption{Output of \texttt{python scripts/roundtrip\_audit.py} (exit code 0).
+The four escalated entries are exactly the entries the resolver declines to map
+deterministically --- consistent with the published run's $97.3\%$ deterministic
+resolution rate. Escalations, placeholders, collisions and compliance flags are
+the loss ledger; they are explicit and counted, which is why the silent-loss
+count is zero.}
+\label{tab:roundtrip}
+\end{table}
+
+The reading for the agent community: the loss ledger makes the difference
+between ``the system handled everything'' and ``the system handled everything
+\emph{it was certain about}, and told you exactly what it was not certain
+about.'' The second is the honest and the safe posture for an autonomous
+transaction pipeline. The $14$ placeholders and $4$ escalations are not the
+system failing; they are the system refusing to guess, in a form an agent can
+detect and route.
+
+% =====================================================================
+\section{Positioning: this is a resolution-layer property}
+% =====================================================================
+
+We place the contribution deliberately narrowly. AP2 and A2A operate at the
+settlement and interoperation layers: they authorize and move value between
+agents. This paper's invariants operate one layer beneath the ledger's
+\emph{meaning}: they make the account-resolution step verifiable and
+reconstructible. The two are complementary --- a payment can be perfectly
+authorized (AP2) and still be booked to the wrong universal concept if the
+resolution layer guessed silently. Conversely, a lossless, ledgered resolution
+layer does not settle anything; it makes the thing being settled auditable.
+
+Honesty about implementation status matters to this community, which has seen
+much asserted and less shipped. In the case study, the MCP deterministic core is
+\emph{implemented} (the six tools above) and the round-trip audit is
+\emph{CI-gated}. The AP2 and A2A integrations are \emph{asserted architecture,
+not running code}; the reference implementation is prototype-grade relative to
+the specification. We claim the invariants and the audit that exhibits them ---
+not a production settlement stack.
+
+% =====================================================================
+\section{Limitations and threats to validity}
+% =====================================================================
+
+\begin{itemize}
+  \item \textbf{Synthetic data.} The $75$ entities and $441$ entries are
+  synthetic trial balances, not exports from live ledgers. The audit
+  demonstrates a \emph{property of the architecture} (conservation,
+  reconstruction, ledgered loss), not a measurement of real-world posting
+  distributions. Validating the invariants on real multi-jurisdiction ledgers
+  is future work.
+  \item \textbf{Semantic coarsening is still lossy.} I2 and I3 make the
+  coarsening explicit and reconstructible; they do not make it bijective. Some
+  formal claims of the case study's ontology (certain analytical-facet families
+  and consolidation roles) are only partially closed by the current schema and
+  are tracked for a later specification version.
+  \item \textbf{Scope of the agent-native face.} Only MCP's deterministic core
+  is implemented; the stochastic (Tier-3) resolution is intentionally absent
+  from the tool surface, and A2A/AP2 are not implemented. Nothing here should be
+  read as a claim of full protocol coverage.
+  \item \textbf{Single implementation.} The invariants are demonstrated in one
+  reference system. Their generality as a design pattern for other
+  resolution layers is argued, not independently replicated.
+\end{itemize}
+
+% =====================================================================
+\section{Conclusion}
+% =====================================================================
+
+For autonomous agents transacting at machine frequency, trust in the
+account-resolution step cannot be purchased with human review, because there is
+no human in the per-transaction loop to buy it from. It has to be built into the
+architecture. We named three invariants that do so --- ontology-as-constraint
+(I1), the loss ledger (I2), and the pre-transaction fiber query (I3) --- and
+exhibited them in a committed reference implementation whose round-trip audit
+records zero silent losses over $441$ entries, $75$ entities, and $68$
+jurisdictions, reconstructing every local ledger from lineage alone. The
+takeaway for the multi-agent community is a concrete, regenerable shape for
+machine-verifiable trust at the resolution layer: store the morphism, never the
+image alone; expose only deterministic tools and let the ontology be the
+guardrail; and make ``I cannot translate this with certainty'' a typed,
+countable, escalating event rather than a silent guess. Anything a system cannot
+prove, it should be architected to \emph{declare} --- and to declare it before
+the agent acts, not after.
+
+% =====================================================================
+\section*{Reproducibility}
+% =====================================================================
+
+Every quantitative claim in this paper regenerates from the following committed
+commands in the Kontablo repository (\texttt{accounting-esperanto}):
+
+\begin{itemize}
+  \item Table~\ref{tab:roundtrip} (all round-trip / loss-ledger numbers):\\
+  \texttt{python scripts/roundtrip\_audit.py} $\rightarrow$
+  \pathtt{research/experiments/roundtrip\_audit/results.json} (exit 0;
+  \texttt{silent\_losses == 0}).
+  \item Six deterministic MCP tools (I1): the registered tools in
+  \pathtt{api/mcp/server.py} (\texttt{resolve\_account}, \texttt{get\_account},
+  \texttt{validate\_balance\_sheet}, \texttt{consolidate\_trial\_balances},
+  \texttt{get\_node\_fiber}, \texttt{list\_jurisdictions}); none invoke an LLM.
+  \item Fiber / rollup (I3): \texttt{node\_fiber} and \texttt{rollup} in
+  \pathtt{core/harness/ontology.py}; surfaced at REST
+  \texttt{GET /accounts/\{id\}/fiber} and MCP \texttt{get\_node\_fiber}.
+  \item $97.3\%$ deterministic resolution, $75$ entities, $68$ jurisdictions,
+  $4$ escalations (published validation run):\\
+  \texttt{python scripts/mass\_consolidation\_v2.py} $\rightarrow$
+  \pathtt{research/experiments/consolidation\_v2/results.json}.
+\end{itemize}
+
+The design decision this paper reports is recorded as ADR-016
+(\pathtt{docs/adr/016-lossless-translation-and-provenance.md}). The normative
+specification is the canonical preprint, DOI 10.5281/zenodo.20738795.
+
+\section*{Citing this work}
+
+Cite Kontablo via its concept DOI, which resolves to the latest version:
+
+\begin{quote}\small
+Luciani, C. \emph{Kontablo: A Graph-Based Universal Accounting Ontology for the
+M2M Agentic Economy.} Zenodo. \href{https://doi.org/10.5281/zenodo.20738795}{https://doi.org/10.5281/zenodo.20738795}
+\end{quote}
+
+\noindent This spoke paper is a community-facing companion; the concept DOI is
+the citable specification of record.
+
+\end{document}

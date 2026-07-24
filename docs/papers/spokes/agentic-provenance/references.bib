@@ -1,0 +1,66 @@
+% =====================================================================
+% references.bib — Spoke 1 (Agentic Provenance)
+%
+% SEED ONLY. The draft currently has zero \cite; T1 (Related Work) + DR1–DR4
+% populate this file. Entries below are the anchors I can assert accurately
+% today (the hub self-citation + primary spec URLs verified in the project
+% CLAUDE.md). Everything marked TODO must be confirmed against the primary
+% source before use — no fabricated authors/titles/years (project epistemic
+% rule). Do NOT cite an entry still marked TODO.
+% =====================================================================
+
+% ---- The hub: normative specification of record (cite-back) ----
+@misc{kontablo_hub,
+  author       = {Luciani, Christian},
+  title        = {{Kontablo: A Graph-Based Universal Accounting Ontology
+                   for the M2M Agentic Economy}},
+  year         = {2026},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.20738795},
+  note         = {Concept DOI; resolves to the latest version.
+                  v0.3.0 version DOI: 10.5281/zenodo.21465965},
+  howpublished = {\url{https://doi.org/10.5281/zenodo.20738795}}
+}
+
+% ---- Primary protocol specs (URLs verified in CLAUDE.md; confirm exact
+%      title/version/date in DR1 before final use) ----
+@online{mcp_spec,
+  title        = {{Model Context Protocol (MCP) Specification}},
+  organization = {Anthropic},
+  url          = {https://modelcontextprotocol.io},
+  urldate      = {2026-07-24},
+  note         = {TODO(T1/DR1): pin exact spec version + date accessed}
+}
+
+@online{a2a_spec,
+  title        = {{Agent2Agent (A2A) Protocol}},
+  url          = {https://a2a-protocol.org},
+  urldate      = {2026-07-24},
+  note         = {TODO(T1/DR1): confirm steward + version}
+}
+
+@online{ap2_spec,
+  title        = {{Agent Payments Protocol (AP2)}},
+  url          = {https://ap2-protocol.org},
+  urldate      = {2026-07-24},
+  note         = {TODO(T1/DR1): confirm steward + version}
+}
+
+% ---- Financial semantics standards (positioning §5; confirm in DR4) ----
+@online{xbrl,
+  title        = {{XBRL — eXtensible Business Reporting Language}},
+  organization = {XBRL International},
+  url          = {https://www.xbrl.org},
+  urldate      = {2026-07-24},
+  note         = {TODO(T1/DR4)}
+}
+% TODO(DR4): FIBO (EDM Council), ISO 20022, ESEF/ifrs-full taxonomy.
+
+% =====================================================================
+% TODO — populated by DR1–DR4 / T1. Target ≥12 real references:
+%   DR1: AP2/A2A/MCP + x402/ERC-8004/agent-payment initiatives (done above +).
+%   DR2: constrained decoding / ontology-bounded generation / hallucination.
+%   DR3: AAMAS & multi-agent agent-economy / auditable-action papers.
+%   DR4: FIBO, ISO 20022, ESEF (financial ontologies for machines).
+%   DR6 (opt.): W3C PROV / database provenance & lineage.
+% =====================================================================

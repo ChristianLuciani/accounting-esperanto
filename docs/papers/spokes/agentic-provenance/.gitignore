@@ -1,0 +1,16 @@
+# LaTeX build artifacts — regenerable; the source of truth is main.tex + sections.
+# Kept out of the atomic-PR diffs on purpose (text-only reviews).
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+compile.log
+
+# The compiled PDF is regenerated on every edit; it is committed ONLY at the
+# publication merge to main (see WORKFLOW.md), not during development.
+main.pdf
