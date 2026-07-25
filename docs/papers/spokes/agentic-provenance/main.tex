@@ -268,8 +268,15 @@ into \pathtt{research/experiments/roundtrip\_audit/results.json}, and the same
 script runs in CI as a hard gate.
 
 The audit runs on the \emph{same} synthetic dataset as the project's published
-consolidation validation (imported, not duplicated), so no numbers are
-constructed for this paper. On that dataset it verifies four properties:
+consolidation validation (imported, not duplicated), so no rows are constructed
+for this paper. The two scripts do report different entry totals, for a
+deliberate reason worth stating plainly: the coverage run counts $366$ entries
+because it excludes the single per-entity balancing (equity-plug) line, so that
+trivially-resolving plugs cannot pad the deterministic-coverage percentage; the
+round-trip audit keeps those same lines as ordinary ledger rows, because its
+question is conservation rather than coverage, giving $441 = 366 + 75$ (one plug
+per entity). Both figures are correct for what they measure. On that dataset the
+audit verifies four properties:
 
 \begin{enumerate}
   \item \textbf{Conservation.} Every input trial-balance row appears in the
@@ -310,11 +317,13 @@ Provenance complete (every entry) & true \\
 \bottomrule
 \end{tabular}
 \caption{Output of \texttt{python scripts/roundtrip\_audit.py} (exit code 0).
-The four escalated entries are exactly the entries the resolver declines to map
-deterministically --- consistent with the published run's $97.3\%$ deterministic
-resolution rate. Escalations, placeholders, collisions and compliance flags are
-the loss ledger; they are explicit and counted, which is why the silent-loss
-count is zero.}
+The four escalated entries are exactly those the resolver declines to map
+deterministically; the count matches the published $97.3\%$ run
+(\texttt{escalated\_entries: 4} in both artifacts), and since both scripts drive
+the identical resolver over the identical generated dataset, they are expected
+to name the same four rows. Escalations, placeholders, collisions and compliance
+flags are the loss ledger; they are explicit and counted, which is why the
+silent-loss count is zero.}
 \label{tab:roundtrip}
 \end{table}
 
