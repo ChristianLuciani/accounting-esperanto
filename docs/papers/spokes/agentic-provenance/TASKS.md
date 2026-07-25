@@ -14,17 +14,39 @@ scholarly apparatus (citations, figures, positioning) and publication mechanics.
 
 ## P0 — Blockers to a credible cs.MA submission
 
-### ☐ T1 — Related Work + populate `references.bib`  ·  `claude/spoke1-related-work`
-The draft currently has **zero `\cite`**. For cs.MA this is disqualifying on its
-own. Add a Related Work section and wire real citations throughout, positioning
-against four bodies of work:
-- agent payment/interop protocols (AP2, A2A, MCP, and adjacent: x402, ERC-8004…);
-- LLM hallucination mitigation via constrained/ontology-bounded generation;
-- multi-agent-systems work on agent economies & auditable autonomous action;
-- financial ontologies/standards for machines (FIBO, XBRL/ESEF, ISO 20022).
-**Feeds from:** DR1–DR4. **Acceptance:** ≥12 real, verifiable references; every
-claim about "others do X" carries a citation; no fabricated entries (project
-epistemic rule). Cite-back to hub DOI present.
+### ☑ T1 — Related Work + populate `references.bib`  ·  `claude/spoke1-related-work`
+**DONE 2026-07-24.** `\section{Related work: where these invariants sit}`
+(label `sec:related`) with four subsections plus positioning, replacing the old
+thin "Positioning" section. **32 references, all cited, all with resolvable
+URLs** (acceptance bar was ≥12). Compiles clean: 0 bibtex warnings, 0 undefined
+citations, 12 pp.
+
+Two research findings materially **changed** the paper's claims rather than
+decorating them:
+- **Granularity is not our gap** (DR4). XBRL GL, AICPA ADS and OECD SAF-T
+  already reach journal-entry granularity. Leading with "the only entry-level
+  standard" would have been rebutted on sight. The claim now rests on the
+  *combination*: agent-callable pre-transaction query + cross-jurisdiction
+  unification + per-entry lineage + typed zero-silent-loss.
+- **I1 is not literally "constrained decoding"** (DR2). That literature
+  constrains a model's own decoding; Tier-1/Tier-2 involve no model at all.
+  Related work now states this explicitly — it is a *stricter* instance — and
+  preempts the "constraining reasoning hurts reasoning" critique
+  (`tam2024letmespeak`, `banerjee2025crane`) instead of leaving it to a reviewer.
+
+Also handled: AuditFlow (`wang2026auditflow`) is **discussed, not merely cited**
+(DR3 flagged it as the biggest related-work risk — detection on filed reports
+vs. prevention at posting time); absence-of-evidence is scoped to "within a
+bounded survey", never "nobody has done this".
+
+**Residual TODOs** (carried into T2/T9, not blockers): pin COLM 2024 proceedings
+for `koo2024automata`; confirm ICML 2025 acceptance for `luo2024gcr` before
+citing a venue; re-verify ISO 20022 metadata manually (iso.org 403s); confirm
+whether XBRL GL 2015 is still the latest Recommendation.
+
+**Excluded on purpose** (do not reintroduce without fresh verification): two
+post-cutoff single-author preprints quarantined by DR2; Mastercard Agent Pay
+(403, snippet-only); the "100M+ x402 transactions" and Visa "IOUs" claims.
 
 ### ☐ T2 — Claim/code audit pass  ·  `claude/spoke1-claim-audit`
 Every file path and behavioral claim in `main.tex` must match current `main`

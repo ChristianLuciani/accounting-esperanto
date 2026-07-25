@@ -90,8 +90,9 @@ That premise relocates a hard problem. If no human verifies each mapping, then
 the \emph{trustworthiness} of the mapping can no longer live in the review
 \emph{process}; it must live in the \emph{architecture} that produces the
 mapping. This is the question this paper isolates for the multi-agent-systems
-community. Settlement-layer protocols --- AP2 for payment authorization, A2A for
-agent interoperation --- answer ``did the value move, and was it
+community. Settlement-layer protocols --- AP2 for payment
+authorization~\cite{ap2_spec}, A2A for agent interoperation~\cite{a2a_spec} ---
+answer ``did the value move, and was it
 authorized?''\ They do not answer ``was the accounting semantics of the moved
 value correct and reconstructible?''\ The latter is a property of the
 \emph{semantic-resolution layer} that sits between an agent's intent and the
@@ -184,7 +185,11 @@ that does not exist in the graph, because resolution is a lookup into the graph,
 not a generation of free text. This is ontology-as-constraint, and it is the
 architectural (not procedural) source of the trust: the space of possible
 outputs is bounded by committed data, so a whole class of hallucinated or
-malformed bookings is unreachable rather than merely unlikely.
+malformed bookings is unreachable rather than merely unlikely. The principle is
+the one that constrained decoding and identifier-constrained retrieval
+establish~\cite{koo2024automata,decao2021genre}, carried to the point where the
+identifier-producing step has no generative surface at all; we return to that
+distinction, and to its known critiques, in Section~\ref{sec:related}.
 
 \subsection{I2 --- The loss ledger: nothing untranslatable is ever silent}
 
@@ -207,6 +212,12 @@ tier \texttt{escalated} --- an explicit ``I do not know,'' not an absence.
 Because the quote is attached to every resolved entry and surfaced on every
 face (REST, gRPC, MCP), a consolidated statement is auditable down to the
 individual booking that produced each figure.
+
+This is a stronger commitment than auditability as the surrounding literature
+usually defines it. Frameworks for auditable agents are concerned with whether a
+past action can be recovered and inspected~\cite{nian2026auditableagents,wang2026agenttraces};
+the loss ledger additionally requires that the \emph{absence} of a translation
+be a first-class, counted object.
 
 For an autonomous agent this is the difference between an error it can detect and
 an error it cannot. A silent loss is invisible until a much later reconciliation
@@ -316,15 +327,171 @@ system failing; they are the system refusing to guess, in a form an agent can
 detect and route.
 
 % =====================================================================
-\section{Positioning: this is a resolution-layer property}
+\section{Related work: where these invariants sit}
+\label{sec:related}
 % =====================================================================
+
+Four bodies of work bound this contribution: the protocols that move value
+between agents, the techniques that bound what a model can emit, the multi-agent
+literature on holding agents accountable, and the standards that encode
+financial semantics for machines. We take each in turn, and state at the end
+what is left over.
+
+\subsection{Agent interoperation, payment, and settlement protocols}
+
+The agent-commerce stack matured rapidly over 2024--2026, and it is layered:
+MCP standardizes an agent's access to tools and resources~\cite{mcp_spec}; A2A
+standardizes agent-to-agent task delegation~\cite{a2a_spec}; AP2 adds payment
+authorization via signed mandates~\cite{ap2_spec}; UCP~\cite{ucp_spec} and
+ACP~\cite{acp_spec} orchestrate commerce over those transports;
+x402~\cite{x402_spec} and ERC-8004~\cite{erc8004} add settlement and on-chain
+identity and reputation.
+
+What matters here is what these specifications say about the \emph{accounting
+semantics} of the value they move: nothing, and they say so themselves.
+ERC-8004 states that ``payments are orthogonal to this protocol and not covered
+here''~\cite{erc8004}; x402 carries an explicit out-of-scope
+list~\cite{x402_spec}; AP2 places the details of the commerce protocol outside
+its own scope~\cite{ap2_spec}; and MCP's specification is explicit that MCP
+``cannot enforce these security principles at the protocol
+level''~\cite{mcp_spec}. Across the eleven protocols and vendor programs
+surveyed for this paper, none defines, validates, or mentions which economic
+concept a moved value should be posted to. They converge instead on four
+concerns: identity, authorization, value transfer, and interoperation.
+
+This is not a deficiency in those protocols --- it is a layer boundary, and the
+surrounding literature reads it the same way. A recent systematization of
+blockchain agent-to-agent payments names ``limited accountability'' among the
+open problems of agent payment rails~\cite{zhang2026sok}, and a comparative
+study of inter-agent trust models across A2A, AP2, and ERC-8004 finds six trust
+primitives in use --- brief, claim, proof, stake, reputation, and constraint ---
+none of which asks whether the posted value is semantically
+correct~\cite{hu2025interagenttrust}. The settlement layer knows it has an
+accountability gap; its proposed fixes are cryptographic and reputational, which
+is orthogonal to, not competing with, semantic correctness.
+
+\subsection{Bounding the output space: constrained generation and ontologies}
+
+I1 belongs to an established line of work on making invalid output
+\emph{unreachable} rather than merely unlikely. Grammar- and
+automaton-constrained decoding masks token logits so that sequences outside a
+formal language carry zero probability
+mass~\cite{willard2023outlines,geng2023gcd}; Koo et al.\ give an explicit
+correctness proof that decoding cannot leave the
+constraint~\cite{koo2024automata}. This is categorically different from
+statistical mitigation, which shifts a distribution without bounding it.
+
+The closest structural analogues to resolving a local code onto a UUID that must
+already exist are not grammar papers but identifier-constrained ones. GENRE
+constrains autoregressive generation with a prefix trie built from a knowledge
+base, so the model can only ever complete a real entity
+identifier~\cite{decao2021genre}; Graph-constrained Reasoning does the analogous
+thing over knowledge-graph paths and reports ``accurate reasoning with zero
+reasoning hallucination''~\cite{luo2024gcr}. PICARD is the classic precedent in
+this shape, rejecting invalid table and column names during
+decoding~\cite{scholak2021picard}.
+
+One precision is owed to this literature. All of the above constrain a language
+model's \emph{own} decoding. The Tier-1 and Tier-2 resolvers described here do
+no decoding at all --- they are deterministic lookups over committed data, and
+the one tier that would involve a model is deliberately absent from the tool
+surface. I1 is therefore not an instance of constrained decoding in the
+technical sense those papers use the term; it is the same principle taken to its
+limit, with \emph{zero} generative surface for the identifier rather than a
+masked one. That distinction also disposes of the strongest critique of this
+family of techniques: constraining a model's reasoning tokens to a rigid grammar
+measurably degrades accuracy on reasoning-heavy
+tasks~\cite{tam2024letmespeak,banerjee2025crane}. That critique lands on systems
+that constrain reasoning; it has no purchase on a lookup that does none, which
+is precisely why the stochastic tier is kept off the tool surface rather than
+wrapped in a grammar.
+
+The empirical stakes for preferring a constructive guarantee are documented in
+an adjacent high-stakes domain. Commercial, retrieval-grounded legal research
+tools marketed as reliable still hallucinate 17--33\% of the
+time~\cite{magesh2024hallucinationfree}, and general-purpose models hallucinate
+on 58--88\% of verifiable legal queries~\cite{dahl2024legalfictions}. Grounding
+lowers a rate; it does not close a class.
+
+\subsection{Accountability, provenance, and auditability in multi-agent systems}
+
+The multi-agent community has asked how to hold autonomous systems responsible
+at least since the Blue Sky agenda of Yazdanpanah et
+al.~\cite{yazdanpanah2021responsibility}. The recent literature answers
+overwhelmingly in terms of \emph{reconstruction}. ``Auditable Agents'' defines
+five dimensions of auditability --- action recoverability, lifecycle coverage,
+policy checkability, responsibility attribution, and evidence integrity --- all
+concerning whether a past action can be recovered and
+inspected~\cite{nian2026auditableagents}. A survey of evidence tracing frames
+the field as execution provenance: a typed graph of an agent's execution and its
+projection onto support relations~\cite{wang2026agenttraces}. Atomix supplies
+transactional semantics for tool use so that effects settle together and partial
+failures do not leak~\cite{mohammadi2026atomix} --- the closest infrastructure
+analogue to I2, but over generic tool effects rather than typed accounting
+entries, and with no notion of an entry the system declines to translate.
+
+The closest architectural cousin is AuditFlow, which builds an executable
+symbolic environment from a US-GAAP taxonomy and an XBRL filing graph, exposes
+it to agents as typed tools, and reports accuracy falling from 82.09\% to
+17.91\% when the deterministic check layer is ablated~\cite{wang2026auditflow}.
+That ablation is strong independent evidence for the general thesis that
+symbolic grounding carries the weight in financial agent tasks. The difference
+is position in the transaction lifecycle: AuditFlow \emph{verifies already-filed
+reports} --- a detection task over static documents --- whereas I1 constrains
+what an agent may post \emph{at transaction time}, and I2 ledgers what that
+constraint cannot resolve. Detection after filing and prevention at posting are
+complementary, and a reader who knows AuditFlow should read this paper as
+addressing the other end of the same pipeline.
+
+Stating the gap carefully: across the venues and papers surveyed here we did not
+find work treating the ontology itself as the mechanism that makes a class of
+posting error unreachable at authoring time, nor a named, typed, continuously
+gated \texttt{silent\_losses} quantity. A broad recent agenda for multi-agent
+security likewise taxonomizes threats without naming accounting-semantic
+correctness as a threat class~\cite{schroederdewitt2025masopenchallenges}. We
+report this as an absence within a bounded survey --- 2024--2026,
+English-language, across AAMAS, AAAI, ICLR, ICML, and arXiv --- not as a claim
+that no such work exists anywhere.
+
+\subsection{Machine-facing financial semantics standards}
+
+Kontablo is not the first attempt to give machines financial semantics, and the
+comparison must be made carefully, because a claim resting on granularity alone
+would be wrong. FIBO models instruments, contracts, and legal entities in
+OWL/RDF, above the posting level, with no journal-entry primitives~\cite{fibo}.
+XBRL~\cite{xbrl21} and its inline profile under ESEF~\cite{esef_rts} tag
+period-end reporting facts and are legally mandated across the EU and the US ---
+a regulatory adoption this work does not approach and should not pretend to.
+ISO 20022 standardizes the \emph{message} that moves value between institutions,
+not how either side's ledger books it~\cite{iso20022}.
+
+Crucially, three standards \emph{do} already reach journal-entry granularity:
+XBRL GL~\cite{xbrl_gl}, the AICPA Audit Data Standards~\cite{aicpa_ads}, and
+OECD SAF-T~\cite{oecd_saft}. Entry-level granularity is therefore not this
+work's distinguishing property. What separates the resolution layer described
+here is a combination none of them provides: a live, agent-callable
+pre-transaction query surface, where all three are periodic batch exports
+consumed after the fact; one canonical ontology spanning many sovereign
+jurisdictions' charts rather than one dialect per country; per-entry lineage
+sufficient to reconstruct the source; and a typed guarantee that untranslatable
+material is counted rather than dropped.
+
+The cross-jurisdiction point has an unusually clean primary-source witness.
+OECD's own SAF-T guidance leaves the XML representation to individual revenue
+bodies~\cite{oecd_saft}, and the predictable result is a family of mutually
+incompatible national dialects --- Portugal's SAF-T PT, Poland's JPK, Romania's
+D406, Norway's SAF-T Financial. The fragmentation this work targets is not
+hypothetical; it is visible in the design of the standard that comes closest to
+addressing it.
+
+\subsection{Positioning, and honesty about implementation status}
 
 We place the contribution deliberately narrowly. AP2 and A2A operate at the
 settlement and interoperation layers: they authorize and move value between
-agents. This paper's invariants operate one layer beneath the ledger's
+agents. This paper's invariants operate one layer beneath, on the ledger's
 \emph{meaning}: they make the account-resolution step verifiable and
 reconstructible. The two are complementary --- a payment can be perfectly
-authorized (AP2) and still be booked to the wrong universal concept if the
+authorized under AP2 and still be booked to the wrong universal concept if the
 resolution layer guessed silently. Conversely, a lossless, ledgered resolution
 layer does not settle anything; it makes the thing being settled auditable.
 
@@ -421,5 +588,10 @@ M2M Agentic Economy.} Zenodo. \href{https://doi.org/10.5281/zenodo.20738795}{htt
 
 \noindent This spoke paper is a community-facing companion; the concept DOI is
 the citable specification of record.
+
+% =====================================================================
+\bibliographystyle{plain}
+\bibliography{references}
+% =====================================================================
 
 \end{document}

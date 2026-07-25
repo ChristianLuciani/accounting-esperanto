@@ -74,9 +74,11 @@ Self-contained, single-file, ~10 pp on `clapps.cls` (clean-room house class):
 ## What's left before it can be published
 
 See **[`TASKS.md`](TASKS.md)** — prioritized backlog + deep-research prompts.
-The single biggest gap is **related work / references** (the draft currently has
-zero `\cite`), which is why several of the deep-research prompts feed
-`references.bib`.
+
+**T1 (Related Work) landed 2026-07-24:** 32 verified references, all cited, all
+with resolvable URLs; the research provenance for every one is in
+[`research/`](research/) (DR1–DR4). Remaining P0 work is **T2** (claim/code
+audit) and **T3** (figures).
 
 ## Workflow
 
@@ -88,8 +90,14 @@ publication-ready. The publication/outreach **playbook is local-only**
 ## How to build
 
 ```bash
-cd docs/papers/spokes/agentic-provenance
-pdflatex main.tex && pdflatex main.tex   # twice for \compactcontents + refs
+cd docs/papers/spokes/agentic-provenance && pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex
 ```
-`clapps.cls` needs only a base TeX Live / MiKTeX install (degrades gracefully if
-Lexend/tcolorbox are absent).
+The `bibtex` pass is required since T1 — without it the citations render as
+`[?]`. `clapps.cls` needs only a base TeX Live / MiKTeX install (degrades
+gracefully if Lexend/tcolorbox are absent), and the bibliography uses the stock
+`plain` style, so no extra packages are needed.
+
+> `plain.bst` silently drops `url`/`eprint`/`doi` fields, so every entry in
+> `references.bib` carries its locator inside `howpublished` (for `@misc`) or
+> `note` (all other types). Keep that convention when adding references, or the
+> new entry will render without a working link.
