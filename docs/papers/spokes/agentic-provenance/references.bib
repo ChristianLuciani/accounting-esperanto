@@ -1,15 +1,29 @@
 % =====================================================================
 % references.bib — Spoke 1 (Agentic Provenance)
 %
-% SEED ONLY. The draft currently has zero \cite; T1 (Related Work) + DR1–DR4
-% populate this file. Entries below are the anchors I can assert accurately
-% today (the hub self-citation + primary spec URLs verified in the project
-% CLAUDE.md). Everything marked TODO must be confirmed against the primary
-% source before use — no fabricated authors/titles/years (project epistemic
-% rule). Do NOT cite an entry still marked TODO.
+% CURATION RULE (project epistemic standard): an entry appears here only if
+% its existence was confirmed against a primary page (arXiv abstract page,
+% standards-body page, official spec repo) during the DR1-DR4 research pass
+% or the orchestrator's independent re-verification. Provenance for every
+% entry is in research/dr{1,2,3,4}_*.md.
+%
+% DELIBERATELY EXCLUDED (do not reintroduce without fresh verification):
+%   - Two post-cutoff single-author preprints quarantined by DR2 as
+%     unverifiable (no peer review, no citing literature found).
+%   - Mastercard Agent Pay: mastercard.com returned HTTP 403 to every direct
+%     fetch; search-snippet evidence only.
+%   - The "100M+ x402 transactions" and Visa "IOUs" claims: unattributed,
+%     failed the claims-evidence bar.
+%   - Wikipedia and practitioner/consultant sites (used as color in the
+%     research notes, never as citable authority).
+%
+% Fields marked TODO are honest gaps in what the source page displayed, not
+% placeholders to be guessed at. Resolve before final submission.
 % =====================================================================
 
-% ---- The hub: normative specification of record (cite-back) ----
+% ---------------------------------------------------------------------
+% The hub: normative specification of record (cite-back)
+% ---------------------------------------------------------------------
 @misc{kontablo_hub,
   author       = {Luciani, Christian},
   title        = {{Kontablo: A Graph-Based Universal Accounting Ontology
@@ -22,45 +36,391 @@
   howpublished = {\url{https://doi.org/10.5281/zenodo.20738795}}
 }
 
-% ---- Primary protocol specs (URLs verified in CLAUDE.md; confirm exact
-%      title/version/date in DR1 before final use) ----
-@online{mcp_spec,
-  title        = {{Model Context Protocol (MCP) Specification}},
-  organization = {Anthropic},
-  url          = {https://modelcontextprotocol.io},
+% ---------------------------------------------------------------------
+% (1) Agent interoperation, payment and settlement protocols  [DR1]
+% ---------------------------------------------------------------------
+@misc{mcp_spec,
+  author       = {{Anthropic}},
+  howpublished = {\url{https://modelcontextprotocol.io/specification/2025-11-25}},
+  title        = {{Model Context Protocol Specification, 2025-11-25 revision}},
+  year         = {2025},
   urldate      = {2026-07-24},
-  note         = {TODO(T1/DR1): pin exact spec version + date accessed}
+  note         = {MIT licensed. States that MCP ``cannot enforce these
+                  security principles at the protocol level'' (Security and
+                  Trust \& Safety section)}
 }
 
-@online{a2a_spec,
-  title        = {{Agent2Agent (A2A) Protocol}},
-  url          = {https://a2a-protocol.org},
+@misc{a2a_spec,
+  author       = {{A2A Project}},
+  howpublished = {\url{https://a2a-protocol.org/latest/specification/}},
+  title        = {{Agent2Agent (A2A) Protocol Specification, v1.0.0}},
+  organization = {Linux Foundation},
+  year         = {2026},
   urldate      = {2026-07-24},
-  note         = {TODO(T1/DR1): confirm steward + version}
+  note         = {Apache-2.0. Announced by Google 2025-04-09; governance
+                  donated to the Linux Foundation 2025-06-23}
 }
 
-@online{ap2_spec,
-  title        = {{Agent Payments Protocol (AP2)}},
-  url          = {https://ap2-protocol.org},
+@misc{ap2_spec,
+  author       = {{Google}},
+  howpublished = {\url{https://github.com/google-agentic-commerce/AP2/blob/main/docs/ap2/specification.md}},
+  title        = {{Agent Payments Protocol (AP2) Specification, v0.2}},
+  organization = {google-agentic-commerce},
+  year         = {2026},
   urldate      = {2026-07-24},
-  note         = {TODO(T1/DR1): confirm steward + version}
+  note         = {Apache-2.0. v0.2 (2026-04-28) restructured the mandate model
+                  to Checkout + Payment; the Intent/Cart/Payment model most
+                  secondary sources still describe is v0.1 (2025-09-16).
+                  States that the details of the Commerce Protocol are
+                  outside the scope of AP2}
 }
 
-% ---- Financial semantics standards (positioning §5; confirm in DR4) ----
-@online{xbrl,
-  title        = {{XBRL — eXtensible Business Reporting Language}},
-  organization = {XBRL International},
-  url          = {https://www.xbrl.org},
+@misc{erc8004,
+  author       = {De Rossi, Marco and Crapis, Davide and Ellis, Jordan and Reppel, Erik},
+  howpublished = {\url{https://eips.ethereum.org/EIPS/eip-8004}},
+  title        = {{ERC-8004: Trustless Agents}},
+  year         = {2025},
   urldate      = {2026-07-24},
-  note         = {TODO(T1/DR4)}
+  note         = {Ethereum standards track, status Draft; created 2025-08-13.
+                  States verbatim: ``Payments are orthogonal to this protocol
+                  and not covered here.'' Extends A2A with on-chain
+                  identity/reputation/validation registries}
 }
-% TODO(DR4): FIBO (EDM Council), ISO 20022, ESEF/ifrs-full taxonomy.
 
-% =====================================================================
-% TODO — populated by DR1–DR4 / T1. Target ≥12 real references:
-%   DR1: AP2/A2A/MCP + x402/ERC-8004/agent-payment initiatives (done above +).
-%   DR2: constrained decoding / ontology-bounded generation / hallucination.
-%   DR3: AAMAS & multi-agent agent-economy / auditable-action papers.
-%   DR4: FIBO, ISO 20022, ESEF (financial ontologies for machines).
-%   DR6 (opt.): W3C PROV / database provenance & lineage.
-% =====================================================================
+@misc{x402_spec,
+  author       = {{x402 Foundation}},
+  howpublished = {\url{https://github.com/coinbase/x402/blob/main/specs/x402-specification-v2.md}},
+  title        = {{x402 Protocol Specification v2}},
+  year         = {2025},
+  urldate      = {2026-07-24},
+  note         = {Apache-2.0; document dated 2025-12-09. Carries an explicit
+                  ``Out of Scope'' list; no accounting provisions}
+}
+
+@misc{ucp_spec,
+  author       = {{Google} and {Shopify}},
+  howpublished = {\url{http://ucp.dev/2026-04-08/specification/overview/}},
+  title        = {{Universal Commerce Protocol (UCP) Specification}},
+  year         = {2026},
+  urldate      = {2026-07-24},
+  note         = {Apache-2.0; version 2026-04-08. Transports: REST, MCP, A2A,
+                  Embedded; supports the AP2 Mandates Extension}
+}
+
+@misc{acp_spec,
+  author       = {{OpenAI} and {Stripe}},
+  howpublished = {\url{https://github.com/agentic-commerce-protocol/agentic-commerce-protocol}},
+  title        = {{Agentic Commerce Protocol (ACP)}},
+  year         = {2026},
+  urldate      = {2026-07-24},
+  note         = {Apache-2.0; beta, spec version 2026-04-17}
+}
+
+% ---------------------------------------------------------------------
+% (2) Constrained generation / ontology-bounded output  [DR2]
+% ---------------------------------------------------------------------
+@inproceedings{koo2024automata,
+  author        = {Koo, Terry and Liu, Frederick and He, Luheng},
+  title         = {Automata-based constraints for language model decoding},
+  booktitle     = {Conference on Language Modeling (COLM)},
+  year          = {2024},
+  eprint        = {2407.08103},
+  archivePrefix = {arXiv},
+  note          = {arXiv:2407.08103. \url{https://arxiv.org/abs/2407.08103}. TODO: pin COLM 2024 proceedings page once available}
+}
+
+@inproceedings{decao2021genre,
+  author        = {De Cao, Nicola and Izacard, Gautier and Riedel, Sebastian and Petroni, Fabio},
+  title         = {Autoregressive Entity Retrieval},
+  booktitle     = {International Conference on Learning Representations (ICLR)},
+  note = {arXiv:2010.00904. \url{https://arxiv.org/abs/2010.00904}},
+  year          = {2021},
+  eprint        = {2010.00904},
+  archivePrefix = {arXiv},
+}
+
+@misc{luo2024gcr,
+  author        = {Luo, Linhao and Zhao, Zicheng and Haffari, Gholamreza and
+                   Li, Yuan-Fang and Gong, Chen and Pan, Shirui},
+  howpublished = {arXiv:2410.13080. \url{https://arxiv.org/abs/2410.13080}},
+  title         = {{Graph-constrained Reasoning: Faithful Reasoning on
+                    Knowledge Graphs with Large Language Models}},
+  year          = {2024},
+  eprint        = {2410.13080},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  note          = {v1 2024-10-16, v2 2025-05-28. Abstract claims ``accurate
+                   reasoning with zero reasoning hallucination'' via KG-Trie
+                   constrained decoding. TODO: confirm ICML 2025 acceptance
+                   before citing a venue}
+}
+
+@article{willard2023outlines,
+  author  = {Willard, Brandon T. and Louf, R{\'e}mi},
+  title   = {Efficient Guided Generation for Large Language Models},
+  journal = {arXiv preprint arXiv:2307.09702},
+  note = {\url{https://arxiv.org/abs/2307.09702}},
+  year    = {2023},
+}
+
+@inproceedings{geng2023gcd,
+  author        = {Geng, Saibo and Josifoski, Martin and Peyrard, Maxime and West, Robert},
+  title         = {Grammar-Constrained Decoding for Structured {NLP} Tasks without Finetuning},
+  booktitle     = {Proceedings of the 2023 Conference on Empirical Methods in
+                   Natural Language Processing (EMNLP)},
+  note = {arXiv:2305.13971. \url{https://arxiv.org/abs/2305.13971}},
+  year          = {2023},
+  eprint        = {2305.13971},
+  archivePrefix = {arXiv},
+}
+
+@inproceedings{scholak2021picard,
+  author    = {Scholak, Torsten and Schucher, Nathan and Bahdanau, Dzmitry},
+  title     = {{PICARD}: Parsing Incrementally for Constrained Auto-Regressive
+               Decoding from Language Models},
+  booktitle = {Proceedings of the 2021 Conference on Empirical Methods in
+               Natural Language Processing (EMNLP)},
+  note = {\url{https://aclanthology.org/2021.emnlp-main.779/}},
+  year      = {2021},
+}
+
+@inproceedings{tam2024letmespeak,
+  author        = {Tam, Zhi Rui and Wu, Cheng-Kuang and Tsai, Yi-Lin and
+                   Lin, Chieh-Yen and Lee, Hung-yi and Chen, Yun-Nung},
+  title         = {Let Me Speak Freely? A Study on the Impact of Format
+                   Restrictions on Performance of Large Language Models},
+  booktitle     = {Proceedings of the 2024 Conference on Empirical Methods in
+                   Natural Language Processing: Industry Track},
+  note = {arXiv:2408.02442. \url{https://arxiv.org/abs/2408.02442}},
+  year          = {2024},
+  eprint        = {2408.02442},
+  archivePrefix = {arXiv},
+}
+
+@inproceedings{banerjee2025crane,
+  author        = {Banerjee, Debangshu and Suresh, Tarun and Ugare, Shubham and
+                   Misailovic, Sasa and Singh, Gagandeep},
+  title         = {{CRANE}: Reasoning with constrained {LLM} generation},
+  booktitle     = {International Conference on Machine Learning (ICML)},
+  note = {arXiv:2502.09061. \url{https://arxiv.org/abs/2502.09061}},
+  year          = {2025},
+  eprint        = {2502.09061},
+  archivePrefix = {arXiv},
+}
+
+@misc{magesh2024hallucinationfree,
+  author        = {Magesh, Varun and Surani, Faiz and Dahl, Matthew and
+                   Suzgun, Mirac and Manning, Christopher D. and Ho, Daniel E.},
+  howpublished = {arXiv:2405.20362. \url{https://arxiv.org/abs/2405.20362}},
+  title         = {Hallucination-Free? Assessing the Reliability of Leading
+                   {AI} Legal Research Tools},
+  year          = {2024},
+  eprint        = {2405.20362},
+  archivePrefix = {arXiv},
+  note          = {Pre-registered empirical study; peer-reviewed venue not
+                   confirmed as of 2026-07-24 -- cite as preprint}
+}
+
+@article{dahl2024legalfictions,
+  author  = {Dahl, Matthew and Magesh, Varun and Suzgun, Mirac and Ho, Daniel E.},
+  title   = {Large Legal Fictions: Profiling Legal Hallucinations in Large
+             Language Models},
+  journal = {Journal of Legal Analysis},
+  volume  = {16},
+  number  = {1},
+  pages   = {64},
+  note = {\url{https://academic.oup.com/jla/article/16/1/64/7699227}},
+  year    = {2024},
+}
+
+% ---------------------------------------------------------------------
+% (3) Accountability, provenance and auditability in multi-agent systems  [DR3]
+% ---------------------------------------------------------------------
+@misc{wang2026auditflow,
+  author        = {Wang, Yan and Ai, Xuguang and Patel, Jaisal and Peng, Xueqing
+                   and Mo, Fengran and Cao, Yupeng and Li, Haohang and
+                   Cao, Mingyu and Qian, Lingfei and Guti{\'e}rrez-Basulto, V{\'i}ctor},
+  howpublished = {arXiv:2606.03031. \url{https://arxiv.org/abs/2606.03031}},
+  title         = {{AuditFlow: Executable Symbolic Environments for Structured
+                    Financial Reporting Verification}},
+  year          = {2026},
+  eprint        = {2606.03031},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  note          = {Submitted 2026-06-02. Reports 82.09\% accuracy falling to
+                   17.91\% when the deterministic check layer is ablated}
+}
+
+@misc{nian2026auditableagents,
+  author        = {Nian, Yi and Yuan, Aojie and Zhang, Haiyue and Li, Jiate and Zhao, Yue},
+  howpublished = {arXiv:2604.05485. \url{https://arxiv.org/abs/2604.05485}},
+  title         = {{Auditable Agents}},
+  year          = {2026},
+  eprint        = {2604.05485},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.AI},
+  note          = {Submitted 2026-04-07. Defines five auditability dimensions:
+                   action recoverability, lifecycle coverage, policy
+                   checkability, responsibility attribution, evidence integrity}
+}
+
+@misc{wang2026agenttraces,
+  author        = {Wang, Yiqi and Zhang, Jiaqi and Cai, Taotao and Liu, Zirui and
+                   Sun, Qingqiang and Sun, Zequn and Wu, Zhangkai and Dong, Manqing and
+                   Zheng, Mingkai and Yin, Xuefei and Zhu, Yanming},
+  howpublished = {arXiv:2606.04990. \url{https://arxiv.org/abs/2606.04990}},
+  title         = {{From Agent Traces to Trust: A Survey of Evidence Tracing
+                    and Execution Provenance in LLM Agents}},
+  year          = {2026},
+  eprint        = {2606.04990},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR},
+  note          = {Submitted 2026-06-03; v4 2026-06-28}
+}
+
+@misc{mohammadi2026atomix,
+  author        = {Mohammadi, Bardia and Potamitis, Nearchos and Klein, Lars and
+                   Arora, Akhil and Bindschaedler, Laurent},
+  howpublished = {arXiv:2602.14849. \url{https://arxiv.org/abs/2602.14849}},
+  title         = {{Atomix: Timely, Transactional Tool Use for Reliable
+                    Agentic Workflows}},
+  year          = {2026},
+  eprint        = {2602.14849},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  note          = {Submitted 2026-02-16; v2 2026-05-29}
+}
+
+@misc{zhang2026sok,
+  author        = {Zhang, Yuanzhe and Xiang, Yuexin and Lei, Yuchen and Wang, Qin and
+                   Qiu, Tian and Sun, Yujing and Zarkov, Spiridon and Yuen, Tsz Hon and
+                   Deppeler, Andreas and Yu, Jiangshan and Lam, Kwok-Yan},
+  howpublished = {arXiv:2604.03733. \url{https://arxiv.org/abs/2604.03733}},
+  title         = {{SoK: Blockchain Agent-to-Agent Payments}},
+  year          = {2026},
+  eprint        = {2604.03733},
+  archivePrefix = {arXiv},
+  primaryClass  = {q-fin.GN},
+  note          = {Submitted 2026-04-04. Names ``limited accountability'' among
+                   the open problems of agent payment rails}
+}
+
+@misc{hu2025interagenttrust,
+  author        = {Hu, Botao and Rong, Helena},
+  howpublished = {arXiv:2511.03434. \url{https://arxiv.org/abs/2511.03434}},
+  title         = {{Inter-Agent Trust Models: A Comparative Study of Brief,
+                    Claim, Proof, Stake, Reputation and Constraint in Agentic
+                    Web Protocol Design---A2A, AP2, ERC-8004, and Beyond}},
+  year          = {2025},
+  eprint        = {2511.03434},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.HC},
+  note          = {Submitted 2025-11-05. Author name stylized ``Botao `Amber'
+                   Hu'' on the source page}
+}
+
+@inproceedings{yazdanpanah2021responsibility,
+  author    = {Yazdanpanah, Vahid and Gerding, Enrico H. and Stein, Sebastian and
+               Dastani, Mehdi and Jonker, Catholijn M. and Norman, Timothy J.},
+  title     = {{Responsibility Research for Trustworthy Autonomous Systems}},
+  booktitle = {Proceedings of the 20th International Conference on Autonomous
+               Agents and MultiAgent Systems (AAMAS), Blue Sky Ideas Track},
+  pages     = {57--62},
+  note = {\url{https://www.ifaamas.org/Proceedings/aamas2021/pdfs/p57.pdf}},
+  year      = {2021},
+}
+
+@misc{schroederdewitt2025masopenchallenges,
+  author        = {Schroeder de Witt, Christian and others},
+  howpublished = {arXiv:2505.02077. \url{https://arxiv.org/abs/2505.02077}},
+  title         = {{Open Challenges in Multi-Agent Security: Towards Secure
+                    Systems of Interacting AI Agents}},
+  year          = {2025},
+  eprint        = {2505.02077},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CR},
+  note          = {v1 2025-05-04, v2 2026-04. Large multi-author consortium
+                   paper; full author list in the research note}
+}
+
+% ---------------------------------------------------------------------
+% (4) Machine-facing financial semantics standards  [DR4]
+% ---------------------------------------------------------------------
+@misc{fibo,
+  author       = {{EDM Council}},
+  howpublished = {\url{https://spec.edmcouncil.org/fibo/}},
+  title        = {{Financial Industry Business Ontology (FIBO)}},
+  year         = {2026},
+  urldate      = {2026-07-24},
+  note         = {OWL/RDF ontology co-published with the Object Management
+                  Group; Foundations v1.2 formally adopted December 2017}
+}
+
+@misc{xbrl21,
+  author       = {{XBRL International}},
+  howpublished = {\url{https://www.xbrl.org/specification/xbrl-2.1/rec-2003-12-31/xbrl-2.1-rec-2003-12-31+corrected-errata-2013-02-20.html}},
+  title        = {{Extensible Business Reporting Language (XBRL) 2.1}},
+  year         = {2003},
+  urldate      = {2026-07-24},
+  note         = {Recommendation 2003-12-31, errata corrected through 2013-02-20}
+}
+
+@misc{esef_rts,
+  author       = {{European Commission}},
+  howpublished = {\url{https://eur-lex.europa.eu/eli/reg_del/2019/815/2023-01-19/eng}},
+  title        = {{Commission Delegated Regulation (EU) 2019/815 (European
+                   Single Electronic Format)}},
+  year         = {2018},
+  urldate      = {2026-07-24},
+  note         = {Regulatory technical standards under Directive 2004/109/EC;
+                  iXBRL tagging mandatory for EU regulated-market issuers
+                  from FY2020}
+}
+
+@misc{iso20022,
+  author       = {{International Organization for Standardization}},
+  howpublished = {\url{https://www.iso20022.org/}},
+  title        = {{ISO 20022: Financial services --- Universal financial
+                   industry message scheme}},
+  year         = {2026},
+  urldate      = {2026-07-24},
+  note         = {Registration Authority services operated by SWIFT on behalf
+                  of ISO (ISO/TC 68/SC 9). PARTIAL VERIFICATION: iso.org
+                  blocked direct fetch (403/timeout); metadata corroborated
+                  via the Registration Authority site and TC68 committee
+                  pages. TODO: re-verify Part 1 edition/date manually}
+}
+
+@misc{xbrl_gl,
+  author       = {{XBRL International}},
+  howpublished = {\url{http://www.xbrl.org/int/gl/2015-03-25/gl-framework-REC-2015-03-25.html}},
+  title        = {{XBRL Global Ledger Taxonomy Framework 2015}},
+  year         = {2015},
+  urldate      = {2026-07-24},
+  note         = {Recommendation 2015-03-25; modular (COR/BUS/MUC/USK/TAF/SRCD).
+                  Journal-entry-level granularity. TODO: confirm whether the
+                  2016-12-01 draft toward a 2017 framework ever reached
+                  Recommendation before asserting 2015 as the last one}
+}
+
+@misc{aicpa_ads,
+  author       = {{AICPA Assurance Services Executive Committee}},
+  howpublished = {\url{https://www.aicpa-cima.com/resources/download/general-ledger-standard-audit-data-standards}},
+  title        = {{Audit Data Standards: General Ledger Standard}},
+  year         = {2015},
+  urldate      = {2026-07-24},
+  note         = {Published July 2015. Voluntary US standard; GL\_Detail
+                  carries journal-entry-line granularity}
+}
+
+@techreport{oecd_saft,
+  author      = {{OECD Forum on Tax Administration}},
+  title       = {{Guidance for the Standard Audit File --- Tax, Version 2.0}},
+  institution = {Organisation for Economic Co-operation and Development},
+  year        = {2010},
+  note        = {\url{https://unece.org/fileadmin/DAM/cefact/cf_forums/2019_Geneva/Conf_AccountAudit/PPT_1_3_OECD_SAF.pdf}. April 2010. Leaves the XML representation to individual
+                 revenue bodies, which is why adopting countries ship
+                 mutually incompatible national dialects (Portugal SAF-T PT,
+                 Poland JPK, Romania D406, Norway SAF-T Financial)},
+  urldate     = {2026-07-24}
+}
