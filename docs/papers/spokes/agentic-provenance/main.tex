@@ -278,6 +278,46 @@ is what lets an agent make a bounded, checkable decision at machine speed:
 the preimage is a fact it can inspect and reason over, not a promise it must
 trust.
 
+Two precisions keep this claim the size it should be. \emph{First, the
+mathematics is elementary and we do not dress it up.} Write $\pi$ for the
+projection from the disjoint union of local statutory codes
+$\coprod_{j} C_{j}$ onto the universal node set $V$; the fiber of a node
+$v \in V$ is the ordinary preimage $\pi^{-1}(v)$, and its restriction to one
+jurisdiction is $\pi^{-1}(v) \cap C_{j}$. We use ``fiber'' in exactly that
+elementary sense --- no bundle, no local triviality, no sheaf structure is
+asserted here. That many local codes collapse onto one universal node is not a
+discovery; it is what a coarsening \emph{is}.
+
+What is claimed is availability and content, not existence. \emph{Availability:}
+the preimage is materialized behind the same deterministic surface the agent
+uses to post, so it is answerable before the transaction rather than
+reconstructible after it. \emph{Content:} the query returns not the bare set
+$\pi^{-1}(v)$ but the \emph{annotated} preimage --- each member carrying the
+local parent, the analytical facets and the declared aggregation group that the
+projection discards, plus a \texttt{source} tag distinguishing a Tier-1 index
+member from a localization member. That is the operational form of storing the
+morphism rather than the image (Section~2): it makes the return trip a query
+over preserved data instead of an inference about lost data. A standard that
+publishes a periodic export can also, in principle, be inverted; what it cannot
+do is answer the question at the moment the agent needs it, over the interface
+the agent is already holding.
+
+\emph{Second, we stop short of the formal account on purpose.} The natural
+question behind I3 --- when can the local ledgers of many jurisdictions be glued
+into one globally consistent whole, and what obstructs it? --- is a
+cohomological one, and the hub sketches the intended referent: a cellular sheaf
+over the mapping graph whose $H^{0}$ is the space of globally consistent
+reconciliations and whose non-vanishing $H^{1}$ localizes the obstruction to
+gluing~\cite{kontablo_hub}. The hub is explicit that this is an \emph{intended}
+formal referent, validated by a committed toy experiment rather than proved in
+general, and we inherit that caveat rather than laundering it into a stronger
+claim by restating it. I3 is a systems result: the fiber query supplies exactly
+the data such an account requires --- the local sections, intact, per
+jurisdiction --- without asserting the theory that would consume them. The
+formal development belongs to a forthcoming companion spoke on the mathematical
+foundations, which this paper deliberately does not pre-empt. Everything claimed
+here stands or falls on the committed audit of Section~4, not on the cohomology.
+
 \input{figures/fig_fiber_query}
 
 \subsection{What can a hostile or buggy agent do to these invariants?}
