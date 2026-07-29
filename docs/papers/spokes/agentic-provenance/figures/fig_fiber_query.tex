@@ -1,0 +1,66 @@
+%% =====================================================================
+%% Figure 2 --- the pre-transaction fiber query (invariant I3)
+%%
+%% GENERATED FILE --- do not edit by hand.
+%% Regenerate with:  python docs/papers/spokes/agentic-provenance/figures/gen_fig_fiber_query.py
+%%
+%% Every code, name, local_parent and source tag below is emitted by
+%% core.harness.ontology.node_fiber() over the committed ontology and
+%% localization files --- the same function behind the MCP tool
+%% get_node_fiber and REST GET /accounts/{id}/fiber.
+%% =====================================================================
+\begin{figure}[t]
+\centering
+\fitwidth{%
+\begin{tikzpicture}[
+    >=Latex,
+    font=\small,
+    ask/.style={draw=clappsInk!80, rounded corners=4pt, fill=clappsInk!7,
+                text width=8.6cm, align=center, minimum height=0.9cm,
+                font=\small},
+    uni/.style={draw=clappsAccent!85!black, line width=1.0pt,
+                rounded corners=4pt, fill=clappsAccent!10, text width=8.6cm,
+                align=center, minimum height=1.1cm, font=\small},
+    fiber/.style={draw=clappsAccent!60!black, rounded corners=4pt, fill=white,
+                  text width=4.55cm, align=left, font=\scriptsize,
+                  anchor=north},
+    lbl/.style={font=\scriptsize, inner sep=2pt}
+]
+
+\node[ask] (ask) at (0,2.05)
+  {\textbf{Agent, \emph{before} committing the transaction:}\\[2pt]
+   \texttt{get\_node\_fiber("asset.current.cash", jurisdiction)}};
+
+\node[uni] (node) at (0,-0.45)
+  {\textbf{universal node} \texttt{asset.current.cash}\\[1pt]
+   {\scriptsize \texttt{00000000-0000-4000-8000-000000000101} --- ``Cash and Cash Equivalents''}\\[2pt]
+   {\scriptsize preimage: 57 local codes across
+    56 jurisdictions (DE, BR, MX shown)}};
+
+\draw[->, thick, clappsInk!70] (ask) -- (node);
+
+\node[fiber] (de) at (-5.35,-2.60)
+  {\textbf{DE --- SKR (Germany)}\\[3pt] \texttt{1000}\\[-1pt] {\scriptsize {\itshape tier1\_index}}\\[3pt] \texttt{1600} --- Kasse\\[-1pt] {\scriptsize parent \texttt{1} $\cdot$ {\itshape localization}}};
+\draw[->, thick, clappsAccent!70!black] (node.south) -- (de.north);
+\node[fiber] (br) at (0.00,-2.60)
+  {\textbf{BR --- SPED (Brazil)}\\[3pt] \texttt{1.01.01.01} --- Caixa Geral\\[-1pt] {\scriptsize parent \texttt{1.01.01} $\cdot$ {\itshape localization}}\\[3pt] \texttt{1.1.1.1.01-9}\\[-1pt] {\scriptsize {\itshape tier1\_index}}};
+\draw[->, thick, clappsAccent!70!black] (node.south) -- (br.north);
+\node[fiber] (mx) at (5.35,-2.60)
+  {\textbf{MX --- SAT (Mexico)}\\[3pt] \texttt{101} --- Caja\\[-1pt] {\scriptsize parent \texttt{100} $\cdot$ {\itshape tier1\_index}}};
+\draw[->, thick, clappsAccent!70!black] (node.south) -- (mx.north);
+
+\end{tikzpicture}%
+}
+\caption{The pre-transaction fiber query (\textbf{I3}). Given a universal node,
+the layer returns its \emph{preimage}: which local statutory codes collapse into
+it in each jurisdiction, with the local structure the projection would otherwise
+flatten away (the local parent, the analytical facets, the declared aggregation
+group), and a \texttt{source} tag saying whether the member came from the
+deterministic Tier-1 index or from the jurisdiction's localization file. Because
+the query is available \emph{before} the agent posts, auditability is a
+precondition of the transaction rather than a forensic reconstruction after it.
+This figure is generated, not drawn: every code and label is emitted by
+\texttt{node\_fiber} (\protect\pathtt{core/harness/ontology.py}) over the committed
+ontology, via \protect\pathtt{docs/papers/spokes/agentic-provenance/figures/gen_fig_fiber_query.py}.}
+\label{fig:fiber-query}
+\end{figure}

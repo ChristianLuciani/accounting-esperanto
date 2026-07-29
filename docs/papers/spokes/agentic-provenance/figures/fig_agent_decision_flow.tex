@@ -1,0 +1,163 @@
+% =====================================================================
+% Figure 1 — Agent -> resolution-layer decision flow (invariants I1 + I2)
+%
+% Structural diagram. Every label is taken verbatim from committed code;
+% nothing here is illustrative-only. Provenance of each label:
+%
+%   6 MCP tools, none calling a model .... api/mcp/server.py
+%                                          (6x "@server.tool(" decorators)
+%   Tier-1 exact index lookup ............ core/harness/resolution.py:69
+%                                          by_code[jurisdiction][code]
+%   tier="tier1_exact", conf=1.0,
+%   rule_id="tier1:<jur>:<code>" ......... core/harness/resolution.py:70-75
+%   Tier-2 deterministic keyword rules ... core/harness/resolution.py:25-55
+%                                          (TIER2_RULES, 10 languages)
+%   tier="tier2_keyword", conf=0.85,
+%   rule_id="tier2:<node>:<keyword>" ..... core/harness/resolution.py:81
+%   escalation (None,"escalated",0.0,None) core/harness/resolution.py:83
+%   resolved=false + escalate note ....... api/mcp/server.py resolve_account_impl
+%   MappingQuote field names ............. core/harness/provenance.py:36-44
+%   Tier 3 exists but is off the tool
+%   surface .............................. core/harness/resolution.py:9-10
+%                                          api/src/services/mapping.py
+%   loss-ledger record types ............. scripts/roundtrip_audit.py ->
+%                                          research/experiments/roundtrip_audit/
+%                                          results.json ("loss_ledger")
+%
+% Regenerate/verify the labels:
+%   grep -c "@server.tool(" api/mcp/server.py            # -> 6
+%   sed -n '58,90p' core/harness/resolution.py           # tiers + rule_id
+%   sed -n '28,49p' core/harness/provenance.py           # MappingQuote fields
+%
+% Requires: tikz with arrows.meta, positioning, fit, backgrounds.
+% NB: `step` and `stop` are reserved pgf/TikZ keys — the style names below are
+% deliberately non-colliding (tierbox / refuse / outside).
+% =====================================================================
+\begin{figure}[t]
+\centering
+\fitwidth{%
+\begin{tikzpicture}[
+    >=Latex,
+    font=\small,
+    every node/.style={inner sep=4pt},
+    agent/.style={draw=clappsInk!80, rounded corners=4pt, fill=clappsInk!7,
+                  text width=4.6cm, align=center, minimum height=0.95cm,
+                  font=\small\bfseries},
+    hdr/.style={draw=none, fill=none, text width=12.6cm, align=left,
+                font=\scriptsize},
+    tierbox/.style={draw=clappsAccent!80!black, rounded corners=4pt,
+                    fill=clappsAccent!10, text width=4.3cm, align=center,
+                    minimum height=1.0cm, font=\small},
+    refuse/.style={draw=clappsAccent!80!black, rounded corners=4pt,
+                   fill=clappsAccent!4, text width=4.3cm, align=center,
+                   minimum height=1.0cm, font=\small},
+    quote/.style={draw=clappsAccent!65!black, rounded corners=4pt,
+                  fill=white, text width=5.4cm, align=left,
+                  minimum height=0.95cm, font=\scriptsize},
+    esc/.style={draw=red!55!black, rounded corners=4pt, fill=red!7,
+                text width=5.4cm, align=left, minimum height=0.95cm,
+                font=\scriptsize},
+    ledger/.style={draw=red!55!black, rounded corners=4pt, fill=red!5,
+                   text width=5.4cm, align=center, minimum height=0.9cm,
+                   font=\scriptsize},
+    outside/.style={draw=black!45, dashed, rounded corners=4pt, fill=black!5,
+                    text width=5.0cm, align=center, font=\scriptsize\itshape,
+                    text=black!55},
+    lbl/.style={font=\scriptsize, inner sep=2pt}
+]
+
+% ---------------------------------------------------------------- agent
+\node[agent] (agent) at (-4.8,3.55)
+  {Autonomous agent\\[1pt]
+   {\scriptsize\mdseries settles over AP2 / A2A;\\ no human in this loop}};
+
+% ------------------------------ header strip (inside the tool surface)
+\node[hdr] (hdr) at (3.0,1.95)
+  {{\bfseries\color{clappsAccent!75!black}Agent-facing tool surface (MCP):
+    six deterministic tools; none calls a language model.}\\[1pt]
+   {\itshape Ontology-as-constraint} (\textbf{I1}) --- the identifier returned
+   is always a key of the committed graph
+   (\texttt{core/schemas/level3\_accounts.yaml}); there is no generative step
+   that could emit one that does not exist.};
+
+% ------------------------------------------------- deterministic spine
+\node[tierbox] (t1) at (0.6,0.35)
+  {\textbf{Tier 1} --- exact statutory\\ index lookup};
+\node[tierbox] (t2) at (0.6,-1.85)
+  {\textbf{Tier 2} --- deterministic\\ keyword rule};
+\node[refuse] (esc) at (0.6,-4.05)
+  {\texttt{resolved = false}\\[1pt]
+   {\scriptsize refuse to guess}};
+
+% ------------------------------------------------------------- outcomes
+\node[quote] (q1) at (7.0,0.35)
+  {\textbf{\texttt{MappingQuote}}\\
+   \texttt{tier1\_exact} $\cdot$ conf \texttt{1.0}\\
+   \texttt{rule\_id: tier1:<jur>:<code>}};
+\node[quote] (q2) at (7.0,-1.85)
+  {\textbf{\texttt{MappingQuote}}\\
+   \texttt{tier2\_keyword} $\cdot$ conf \texttt{0.85}\\
+   \texttt{rule\_id: tier2:<node>:<keyword>}};
+\node[esc] (q3) at (7.0,-4.05)
+  {\textbf{\texttt{MappingQuote}} --- an explicit ``I do not know''\\
+   \texttt{kontablo\_id: None} $\cdot$ \texttt{tier: escalated}\\
+   \texttt{confidence: 0.0} $\cdot$ \texttt{rule\_id: None}};
+
+% ------------------------------------------------ tool-surface boundary
+\begin{scope}[on background layer]
+  \node[draw=clappsAccent!85!black, line width=1.1pt, rounded corners=6pt,
+        fill=clappsAccent!3, fit=(hdr)(t1)(t2)(esc)(q1)(q2)(q3),
+        inner sep=10pt] (surface) {};
+\end{scope}
+
+% --------------------------------------------------------------- edges
+% The agent's call enters the surface from outside: elbow down, then in.
+\draw[->, thick] (agent.south) -- (-4.8,0.35) -- (t1.west);
+\node[lbl, anchor=east, align=right] at (-4.95,1.75)
+  {\texttt{resolve\_account(}\\ \texttt{code, name,}\\ \texttt{jurisdiction)}};
+
+\draw[->, thick] (t1) -- node[lbl, right] {no match} (t2);
+\draw[->, thick] (t2) -- node[lbl, right] {no match} (esc);
+\draw[->, thick] (t1) -- node[lbl, above] {hit} (q1);
+\draw[->, thick] (t2) -- node[lbl, above] {hit} (q2);
+\draw[->, thick] (esc) -- (q3);
+
+% ------------------------------------------- Tier 3: outside the surface
+\node[outside] (t3) at (0.6,-7.55)
+  {Tier 3 --- semantic / LLM fallback\\[2pt]
+   \upshape exists in the codebase, \textbf{not} registered as a tool};
+\draw[->, dashed, black!45] (esc) -- (t3);
+\node[font=\normalsize\bfseries, text=red!65!black] at (0.6,-6.05) {$\times$};
+\node[lbl, anchor=east, text=red!65!black, align=right] at (0.3,-6.05)
+  {never reachable from the\\ agent-facing tool surface};
+
+% ------------------------------------------------ loss ledger + human
+\node[ledger] (ll) at (7.0,-6.25)
+  {\textbf{Loss ledger (I2)} --- typed and counted:\\
+   collisions $\cdot$ placeholders $\cdot$ escalations $\cdot$ CRA flags\\
+   \texttt{silent\_losses = 0}};
+\node[ledger, fill=white, draw=clappsInk!55] (human) at (7.0,-8.35)
+  {Human review: the human remains the legal
+   principal, consulted where certainty runs out
+   --- not on every transaction};
+\draw[->, thick, red!55!black] (q3) -- (ll);
+\draw[->, thick, clappsInk!60] (ll) -- (human);
+
+\end{tikzpicture}%
+}
+\caption{How an autonomous agent reaches the resolution layer, and what it can
+get back. The agent's entire callable surface is deterministic: Tier~1 is an
+exact lookup into the committed statutory index, Tier~2 a fixed multilingual
+keyword rule, and every outcome --- including the refusal --- is stamped with a
+\texttt{MappingQuote} naming the exact rule that fired
+(\protect\pathtt{core/harness/provenance.py}). \textbf{I1} is the property that
+the identifier returned is always a key of the committed graph, so a booking to
+a non-existent account is unreachable rather than merely unlikely. \textbf{I2}
+is the property that the third branch is a \emph{typed, counted} record rather
+than a guess or a silent drop. The semantic (Tier~3) fallback exists in the
+codebase but is deliberately \emph{not} registered as an MCP tool: exposing it
+would let an agent consume a stochastic answer through an interface that looks
+deterministic. Confidence values and \texttt{rule\_id} formats are verbatim from
+\protect\pathtt{core/harness/resolution.py}.}
+\label{fig:agent-flow}
+\end{figure}
