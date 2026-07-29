@@ -213,7 +213,7 @@ def main():
         tgt = absorption.get(leg)
         return tgt is not None and tgt in extended_node_ids
     with open(CSV_PATH, "w", encoding="utf-8", newline="") as f:
-        w = csv.writer(f)
+        w = csv.writer(f, lineterminator="\n")
         w.writerow(["type", "journal", "weight", "n_legs",
                     "legs_in_min_core", "legs_in_extended", "legs"])
         for t in transactions:
