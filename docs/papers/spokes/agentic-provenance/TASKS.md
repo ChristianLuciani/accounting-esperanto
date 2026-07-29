@@ -135,12 +135,19 @@ arXiv metadata block (primary `cs.MA`; cross-list candidates `cs.AI`, `cs.CE`,
 `q-fin.GN`). **Acceptance:** license stated in-paper; metadata block staged for
 submission (mirrors `docs/strategy/arxiv-submission.md`).
 
-### ☐ T10 — Hub↔spoke cross-link wiring  ·  `claude/spoke1-crosslink`
-Prepare (do **not** land on `main` yet) the hub-side update: a claims-evidence
-row and a "companion paper" pointer added to the hub when the spoke gets its own
-DOI. Keep it staged as a follow-up PR to `main`, cut at publication time.
-**Acceptance:** a `HUB_UPDATE.md` note listing the exact hub edits to make on
-publication day.
+### ☑ T10 — Hub↔spoke cross-link wiring  ·  `claude/spoke1-crosslink`
+**DONE 2026-07-29 — staged, not applied.** See
+[`HUB_UPDATE.md`](HUB_UPDATE.md): seven items with exact file, line and
+replacement text, plus the ordering for publication day.
+
+Beyond the cross-link cosmetics the task asked for, the pass surfaced one item
+that is **not** cosmetic and should be cut whether or not the spoke ever gets a
+DOI: `docs/papers/drafts/sections/agentic_economy.tex:29` still says the MCP
+server "is specified but not yet implemented, and is tracked as roadmap work."
+That was true when the hub froze and is now false — `api/mcp/server.py`
+registers six deterministic tools. The spoke's anti-salami argument (README gate
+1) rests on the MCP core having shipped *after* the hub froze, so the two
+documents must not contradict each other in public. `HUB_UPDATE.md` item 1.
 
 ### ☑ T11 — Fresh-checkout reproducibility check  ·  `claude/spoke1-repro-check`
 **DONE 2026-07-29 — PASS.** Full log in [`REPRO_CHECK.md`](REPRO_CHECK.md).
