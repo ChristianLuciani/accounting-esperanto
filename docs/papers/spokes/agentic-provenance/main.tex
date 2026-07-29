@@ -7,7 +7,20 @@
 \usepackage{amssymb}
 \usepackage{float}
 \usepackage{url}
+\usepackage{graphicx}          % \resizebox, used by clapps.cls's \fitwidth
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, fit, backgrounds}
 \DeclareUrlCommand\pathtt{\urlstyle{tt}}
+% NOTE on \pathtt: it is a \DeclareUrlCommand, so its argument is verbatim.
+% Never write \_ inside it — the backslash prints literally. Use a bare _.
+
+% Float placement: the two TikZ figures are tall. Without these, LaTeX's
+% default topfraction/textfraction defer both to the end of the document
+% instead of placing them near their references.
+\renewcommand{\topfraction}{0.88}
+\renewcommand{\bottomfraction}{0.7}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.75}
 
 % --- PREAMBLE ---
 \title{Deterministic Auditability Invariants for Autonomous
@@ -166,6 +179,10 @@ The first invariant constrains \emph{what an agent can even ask the layer to
 do}. Kontablo exposes an agent-native face over the Model Context Protocol
 (MCP): a set of tools an autonomous agent calls directly. The design decision
 that matters for trust is what is \emph{not} a tool.
+Figure~\ref{fig:agent-flow} shows the whole decision path an agent can reach,
+including the branch it cannot.
+
+\input{figures/fig_agent_decision_flow}
 
 The reference MCP server (\pathtt{api/mcp/server.py}) registers six tools:
 \texttt{resolve\_account}, \texttt{get\_account}, \texttt{validate\_balance\_sheet},
@@ -241,6 +258,11 @@ preserved local structure (local parent, analytical facets, declared
 aggregation group). It is available as the MCP tool \texttt{get\_node\_fiber}
 and as REST \texttt{GET /accounts/\{id\}/fiber}, both over the same
 deterministic function \texttt{node\_fiber} (\pathtt{core/harness/ontology.py}).
+Figure~\ref{fig:fiber-query} shows an actual fiber, generated from the committed
+ontology rather than drawn: the universal cash node stands for $57$ distinct
+local statutory codes across $56$ jurisdictions, and the query returns, per
+jurisdiction, exactly which ones --- with the local parent and analytical facets
+that the projection would otherwise flatten away.
 Dually, \texttt{rollup(accounts, lens)} partitions the same UUIDs under
 different lenses (e.g.\ IFRS presentation vs.\ cash-flow), realizing the ``one
 UUID, many parallel hierarchies'' that the graph principle promises. Nodes that
@@ -256,6 +278,8 @@ is what lets an agent make a bounded, checkable decision at machine speed:
 the preimage is a fact it can inspect and reason over, not a promise it must
 trust.
 
+\input{figures/fig_fiber_query}
+
 % =====================================================================
 \section{Result: a round-trip audit with zero silent losses}
 % =====================================================================
@@ -263,8 +287,8 @@ trust.
 The invariants would be marketing if they were not regenerable. Kontablo's
 governing scientific rule is that \emph{every quantitative claim in a public
 artifact must be reproducible from a committed, deterministic command.} We honor
-it here: every number below is emitted by \pathtt{scripts/roundtrip\_audit.py}
-into \pathtt{research/experiments/roundtrip\_audit/results.json}, and the same
+it here: every number below is emitted by \pathtt{scripts/roundtrip_audit.py}
+into \pathtt{research/experiments/roundtrip_audit/results.json}, and the same
 script runs in CI as a hard gate.
 
 The audit runs on the \emph{same} synthetic dataset as the project's published
@@ -567,7 +591,7 @@ commands in the Kontablo repository (\texttt{accounting-esperanto}):
 \begin{itemize}
   \item Table~\ref{tab:roundtrip} (all round-trip / loss-ledger numbers):\\
   \texttt{python scripts/roundtrip\_audit.py} $\rightarrow$
-  \pathtt{research/experiments/roundtrip\_audit/results.json} (exit 0;
+  \pathtt{research/experiments/roundtrip_audit/results.json} (exit 0;
   \texttt{silent\_losses == 0}).
   \item Six deterministic MCP tools (I1): the registered tools in
   \pathtt{api/mcp/server.py} (\texttt{resolve\_account}, \texttt{get\_account},
@@ -579,7 +603,15 @@ commands in the Kontablo repository (\texttt{accounting-esperanto}):
   \item $97.3\%$ deterministic resolution, $75$ entities, $68$ jurisdictions,
   $4$ escalations (published validation run):\\
   \texttt{python scripts/mass\_consolidation\_v2.py} $\rightarrow$
-  \pathtt{research/experiments/consolidation\_v2/results.json}.
+  \pathtt{research/experiments/consolidation_v2/results.json}.
+  \item Figure~\ref{fig:fiber-query} (the $57$ local codes across $56$
+  jurisdictions, and every code, name and local parent shown):\\
+  \texttt{python}
+  \pathtt{docs/papers/spokes/agentic-provenance/figures/gen_fig_fiber_query.py}\\
+  regenerates the figure source directly from \texttt{node\_fiber} over the
+  committed ontology, so the figure cannot drift from the data it depicts.
+  Figure~\ref{fig:agent-flow} is structural; each of its labels is annotated
+  in the figure source with the file and line it is taken from.
 \end{itemize}
 
 The design decision this paper reports is recorded as ADR-016
