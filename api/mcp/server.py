@@ -14,6 +14,7 @@ Tools (each mirrors a deterministic gRPC RPC over the same engine):
   get_account              ↔ AccountService.GetAccount       (by id or UUID)
   validate_balance_sheet   ↔ ValidationService.ValidateBalanceSheet
   consolidate_trial_balances ↔ ConsolidationService.ConsolidateTrialBalances
+  get_node_fiber           ↔ AccountService.GetLocalCodes   (fiber; + localization)
   list_jurisdictions       ↔ (coverage manifest; mirrors AccountService scope)
 
 Deliberately NOT exposed in v1 (consistent with how gRPC returns UNIMPLEMENTED
