@@ -7,7 +7,8 @@ edits the hub's citable surfaces from the integration branch).
 
 Two of these are **not** cross-link cosmetics: item 1 corrects a hub statement
 that this spoke's own existence falsifies, and item 6 is the honesty check that
-must pass before the rest ship. Do item 1 whether or not the DOI has landed.
+must pass before the rest ship. **Item 1 has already been cut** (PR #102) rather
+than waiting for the DOI, which is what it said to do.
 
 Placeholders below: `<SPOKE_DOI>` = the spoke's Zenodo version DOI,
 `<SPOKE_URL>` = its resolved landing page, `<PUB_DATE>` = the publication date.
@@ -16,8 +17,11 @@ Placeholders below: `<SPOKE_DOI>` = the spoke's Zenodo version DOI,
 
 ## 1. `docs/papers/drafts/sections/agentic_economy.tex` — a stale hub claim
 
-**Priority: do this regardless of the DOI.** The hub currently states the
-opposite of what shipped.
+**☑ CUT 2026-07-29 as PR #102 to `main`, independently of the DOI** (preprint
+v1.9.3). Kept below as the record of what was changed and why. Everything from
+item 2 down is still staged and unapplied.
+
+The hub stated the opposite of what shipped.
 
 Line 29 reads:
 
@@ -148,9 +152,13 @@ Then confirm, by reading rather than grepping:
 
 1. Merge `claude/spoke1-agentic-provenance` → `main` (the spoke itself).
 2. Publish; obtain `<SPOKE_DOI>`.
-3. Cut a **separate** PR to `main` applying items 1–5, with item 6 run first.
+3. Cut a **separate** PR to `main` applying items 2–5 (item 1 already cut as
+   PR #102), with item 6 run first.
 4. Commit the built `main.pdf` (gitignored during development — `WORKFLOW.md`
    rule 4 releases it only at the publication merge).
 
-Item 1 may be cut earlier and independently; it is a correction, not a
-cross-link, and it does not depend on `<SPOKE_DOI>`.
+Item 1 was cut earlier and independently, as anticipated — it is a correction,
+not a cross-link, and it did not depend on `<SPOKE_DOI>`. **PR #102, merged or
+pending, is the record.** On publication day, verify it landed before running the
+§6 honesty check, since that check asks whether the hub and the spoke agree on
+MCP implementation status.
