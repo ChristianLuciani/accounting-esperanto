@@ -52,6 +52,7 @@ Every quantitative claim regenerates from a committed, deterministic command
 | 75 entities, 68 jurisdictions, 97.3% deterministic resolution, 4 escalations | `python scripts/mass_consolidation_v2.py` → `research/experiments/consolidation_v2/results.json` |
 | **6** deterministic MCP tools, none invoking an LLM | `api/mcp/server.py` (`resolve_account`, `get_account`, `validate_balance_sheet`, `consolidate_trial_balances`, `get_node_fiber`, `list_jurisdictions`) |
 | Fiber / rollup (I3) | `node_fiber`, `rollup` in `core/harness/ontology.py`; REST `GET /accounts/{id}/fiber`, MCP `get_node_fiber` |
+| Figure 2's 57 local codes across 56 jurisdictions, and every code/name/local-parent shown | `python docs/papers/spokes/agentic-provenance/figures/gen_fig_fiber_query.py` → `figures/fig_fiber_query.tex` (regenerates byte-for-byte identical; verified in `REPRO_CHECK.md`) |
 | Design decision of record | `docs/adr/016-lossless-translation-and-provenance.md` |
 
 **Data-honesty guardrail:** the 75 entities / 441 entries are *synthetic* trial
@@ -59,26 +60,54 @@ balances. The audit demonstrates a **property of the architecture**
 (conservation, reconstruction, ledgered loss), never a measurement of real
 ledgers. Keep that distinction in every edit (see the hub's identical rule).
 
-## Current structure of `main.tex` (v0.1, adopted 2026-07-24)
+## Current structure of `main.tex` (v0.2, 2026-07-29)
 
-Self-contained, single-file, ~10 pp on `clapps.cls` (clean-room house class):
+Self-contained, single-file, **17 pp** on `clapps.cls` (clean-room house class).
+Kept monolithic by decision — see `TASKS.md` T8:
 
 1. Why does trust have to move into the architecture? (framing)
 2. What is the resolution layer, and where can it lose information? (L1/L2/L3)
-3. Three invariants for machine-verifiable trust (I1 / I2 / I3)
+3. Which three invariants make the resolution step verifiable? (I1 / I2 / I3)
+   - 3.4 What can a hostile or buggy agent do to these invariants? (threat model)
 4. Result: a round-trip audit with zero silent losses (the anchor table)
-5. Positioning: this is a resolution-layer property (vs. AP2/A2A)
+   - 4.1 What does moving the decision off inference buy? (resource economy)
+5. Related work: where these invariants sit (4 bodies of work + positioning)
 6. Limitations and threats to validity
-7. Conclusion + Reproducibility + Citing this work
+7. Conclusion + Reproducibility + Citing this work + License (CC BY 4.0)
+
+Two figures, both regenerable: **Fig 1** the agent→layer decision flow with the
+Tier-3/LLM path outside the tool surface (hand-written TikZ, every label
+annotated with the `file:line` it comes from); **Fig 2** the pre-transaction
+fiber query, *generated* from the live ontology by
+`figures/gen_fig_fiber_query.py` so it cannot drift from the data it depicts.
 
 ## What's left before it can be published
 
-See **[`TASKS.md`](TASKS.md)** — prioritized backlog + deep-research prompts.
+**The T1–T11 backlog is complete** (2026-07-29). See
+**[`TASKS.md`](TASKS.md)** for what each task decided and
+[`WORKFLOW.md`](WORKFLOW.md#publication-gate--merge-to-main) for the merge gate.
 
-**T1 (Related Work) landed 2026-07-24:** 32 verified references, all cited, all
-with resolvable URLs; the research provenance for every one is in
-[`research/`](research/) (DR1–DR4). Remaining P0 work is **T2** (claim/code
-audit) and **T3** (figures).
+Publication-gate status:
+
+| Gate | State |
+|---|---|
+| P0: Related Work + references (T1), claim/code audit (T2), ≥1 figure (T3) | ☑ |
+| Compiles clean; Reproducibility commands exit 0 in a fresh clone (T11) | ☑ — logged in [`REPRO_CHECK.md`](REPRO_CHECK.md); both `results.json` artifacts and the generated figure come back byte-for-byte identical |
+| No unverifiable or fabricated claim; anti-salami gates hold | ☑ — residual audit TODOs closed in [`CLAIMS_AUDIT.md`](CLAIMS_AUDIT.md) §(d); the four external protocol quotations remain verified against the bibliography only, and are recorded as open rather than as verified |
+| License + arXiv metadata staged (T9); `HUB_UPDATE.md` ready (T10) | ☑ — [`ARXIV_METADATA.md`](ARXIV_METADATA.md), [`HUB_UPDATE.md`](HUB_UPDATE.md) |
+| Venue locked in the **local** playbook | ☐ — the one remaining item |
+
+**The venue decision is the blocker, and DR5 reframed it.** arXiv `cs.MA`
+requires endorsement, this project already hit that wall on the hub paper, and
+the barrier got *harder* on 2026-01-21 (an institutional email alone no longer
+suffices for auto-endorsement). So arXiv is **not** the first channel:
+Zenodo first and unconditional, endorsement pursued in parallel and
+non-blocking, arXiv when it lands. Full mechanics with primary sources in
+[`research/dr5_arxiv_submission.md`](research/dr5_arxiv_submission.md);
+submission-ready metadata in [`ARXIV_METADATA.md`](ARXIV_METADATA.md).
+
+`DR6` (provenance/lineage models — W3C PROV, why/where/how-provenance) remains
+**optional depth**, not a blocker.
 
 ## Workflow
 
