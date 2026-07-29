@@ -443,6 +443,41 @@ transaction pipeline. The $14$ placeholders and $4$ escalations are not the
 system failing; they are the system refusing to guess, in a form an agent can
 detect and route.
 
+\subsection{What does moving the decision off inference buy?}
+\label{sec:inference-cost}
+
+One consequence of I1 deserves stating, because it is easy to overclaim and we
+want the modest version on the record. In the reference implementation the
+resolution step makes \emph{no} inference calls at all: Tier-3 is not on the
+tool surface, so the count is zero by construction rather than by measurement.
+The interesting quantity is therefore counterfactual --- what a layer of this
+shape would spend if it \emph{did} fall back to a model on the residual.
+
+On the round-trip dataset, $4$ of $441$ entries escalate ($0.9\%$); the other
+$437$ ($99.1\%$) are settled by an index lookup or a fixed keyword rule. In the
+coverage run the same resolver reports $310$ Tier-1 and $46$ Tier-2 resolutions
+against $366$ counted entries, $97.3\%$ deterministic. So a layer that routed
+its residual to a language model would issue inference calls proportional to the
+\emph{escalation rate}, not to the transaction count. That is the structural
+point: determinism at the front makes the inference budget a function of the
+semantic coverage boundary rather than of transaction volume --- which is the
+difference that matters when the premise of the setting is machine-frequency
+transaction rates.
+
+The same asymmetry applies to error, and this is the more important of the two.
+A stochastic decision taken early contaminates every step that inherits it: a
+misresolved account propagates into consolidation, tax computation, and audit.
+A deterministic decision taken early is inherited cleanly. Bounding inference to
+the residual bounds the contaminable surface to the residual as well.
+
+We deliberately do not attach token, latency or energy figures to any of this.
+We have run no inference-cost benchmark, and a call that is never made is not a
+measured saving --- it is an absent cost. The claim is structural and the
+escalation rate that grounds it is a property of \emph{this} synthetic dataset
+against the current ontology coverage, not a constant: a real multi-jurisdiction
+ledger with more idiosyncratic local naming should be expected to escalate more
+often, which moves the same argument without changing its shape.
+
 % =====================================================================
 \section{Related work: where these invariants sit}
 \label{sec:related}
@@ -690,9 +725,13 @@ commands in the Kontablo repository (\texttt{accounting-esperanto}):
   \pathtt{core/harness/ontology.py}; surfaced at REST
   \texttt{GET /accounts/\{id\}/fiber} and MCP \texttt{get\_node\_fiber}.
   \item $97.3\%$ deterministic resolution, $75$ entities, $68$ jurisdictions,
-  $4$ escalations (published validation run):\\
+  $4$ escalations, and the tier distribution ($310$ Tier-1, $46$ Tier-2 over
+  $366$ counted entries) quoted in Section~\ref{sec:inference-cost}:\\
   \texttt{python scripts/mass\_consolidation\_v2.py} $\rightarrow$
-  \pathtt{research/experiments/consolidation_v2/results.json}.
+  \pathtt{research/experiments/consolidation_v2/results.json}
+  (\texttt{tier\_distribution}, \texttt{deterministic\_coverage\_pct}).
+  The $0.9\%$ / $99.1\%$ split in the same section is
+  $4/441$ and $437/441$ from the round-trip artifact above.
   \item Figure~\ref{fig:fiber-query} (the $57$ local codes across $56$
   jurisdictions, and every code, name and local parent shown):\\
   \texttt{python}
