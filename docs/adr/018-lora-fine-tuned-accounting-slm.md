@@ -1,4 +1,4 @@
-# ADR 016: LoRA Fine-Tuned Small Language Model for Tier-3 Semantic Mapping ("Kontablo-SLM")
+# ADR 018: LoRA Fine-Tuned Small Language Model for Tier-3 Semantic Mapping ("Kontablo-SLM")
 
 **Status:** Proposed
 **Date:** 2026-07-16
