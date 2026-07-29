@@ -280,6 +280,90 @@ trust.
 
 \input{figures/fig_fiber_query}
 
+\subsection{What can a hostile or buggy agent do to these invariants?}
+\label{sec:threat}
+
+The invariants are only interesting if they survive an agent that is not
+cooperative. We therefore state the threat model explicitly. The trusted
+computing base is the committed ontology, the resolver code, and the
+localization data; the \emph{agent is untrusted}. We assume it can call any
+exposed tool, arbitrarily often, with arbitrary arguments --- whether because it
+is adversarial, miscalibrated, or simply buggy. The agent supplies three fields
+to \texttt{resolve\_account}: a jurisdiction, a local code, and a local name.
+
+Three things it cannot do. It cannot cause the layer to emit an identifier that
+does not exist (I1): resolution is a dictionary lookup whose value is by
+construction a key of the loaded account graph, so there is no path from
+agent-controlled input to a fabricated UUID. It cannot cause a silent loss (I2):
+the worst outcome of garbage input is a \emph{counted} escalation, which is a
+record, not a disappearance --- an agent can make the loss ledger larger, never
+emptier. And it cannot hide a preimage (I3): \texttt{node\_fiber} is a read over
+committed data, and no tool on the surface mutates the ontology.
+
+What it \emph{can} do is where the honesty matters.
+
+\begin{itemize}
+  \item \textbf{Escalation flooding.} An agent can submit unresolvable entries
+  at machine speed and inflate the escalation queue until human review capacity
+  is exhausted. I2 guarantees each such entry is typed and counted; it does not
+  guarantee the queue stays tractable. That is an operational control ---
+  per-principal rate limits and quotas --- and the reference implementation does
+  not have one. We claim the accounting property, not availability.
+
+  \item \textbf{A wrong but existing node.} This is the decisive residual. I1
+  bounds the output space to real nodes; it does not make the chosen node the
+  \emph{correct} one. Tier-2 matches deterministic keyword rules against the
+  agent-supplied \emph{name}, so an agent that controls that string can steer
+  resolution toward a plausible-but-wrong node --- a name containing
+  ``cash'' that denotes something else will resolve to the cash node. Tier~1 is
+  not steerable by naming, since it keys on (jurisdiction, code) against the
+  committed index, but an agent that asserts the wrong local code will be
+  faithfully resolved to whatever that code means. The invariants govern the
+  \emph{translation}; they do not certify the truthfulness of the assertion
+  being translated.
+
+  What I1 and I2 do buy against this case is attribution. The wrong answer is a
+  real node accompanied by a \texttt{MappingQuote} naming the exact rule that
+  fired --- \texttt{tier2:<node>:<keyword>} identifies both the target and the
+  substring that produced it --- so the error is reviewable by querying
+  resolutions of one tier, and reproducible without re-running the resolver. The
+  contrast is with a generated identifier, where there is nothing to query. The
+  failure class is converted from unattributable to attributable, not
+  eliminated; this is the same ``bounded, not eliminated'' posture I1 takes
+  throughout.
+
+  \item \textbf{A deterministic boundary library that is itself
+  name-dependent.} A partial defence does exist:
+  \texttt{cra\_validate} (\pathtt{core/harness/boundary.py}) applies
+  accounting invariants that can catch a mis-steer --- a declared debit/credit
+  nature that disagrees with the target node, and a liquid-asset name landing on
+  a non-current node, both checked on every resolution; statement-class, VAT
+  direction and equity-versus-liability confusions, checked on proposed
+  (forced) mappings. But these checks test \emph{consistency between the
+  supplied name and the target}. An agent that supplies a name and a code that
+  are mutually consistent and jointly wrong passes all of them. We report this
+  as a bound on the boundary library, not as a gap to be papered over.
+
+  \item \textbf{Confidence is not correctness.} A \texttt{confidence} of
+  \texttt{1.0} on a Tier-1 hit means an exact index entry existed, not that the
+  booking is economically right. A downstream agent that reads the field as a
+  probability of correctness is misreading it, and the field name invites that
+  misreading.
+
+  \item \textbf{No authentication here.} The layer does not establish who the
+  calling agent is or whether it is authorized to post. Identity, mandate and
+  authorization belong to the settlement layer (AP2's signed mandates,
+  ERC-8004's on-chain identity), and MCP's own specification states it ``cannot
+  enforce these security principles at the protocol
+  level''~\cite{mcp_spec}. These invariants assume authentication; they do not
+  supply it.
+\end{itemize}
+
+The summary a reviewer should take: the invariants relocate the locus of error
+to the semantic coverage boundary --- was the right concept named? --- and make
+everything on the near side of that boundary verifiable, counted, and
+attributable. They do not claim the boundary itself has been abolished.
+
 % =====================================================================
 \section{Result: a round-trip audit with zero silent losses}
 % =====================================================================
@@ -556,6 +640,11 @@ not a production settlement stack.
   is implemented; the stochastic (Tier-3) resolution is intentionally absent
   from the tool surface, and A2A/AP2 are not implemented. Nothing here should be
   read as a claim of full protocol coverage.
+  \item \textbf{Residual attack surface.} Section~\ref{sec:threat} states what a
+  hostile or buggy agent can still achieve --- escalation flooding, and steering
+  Tier-2 toward a wrong-but-existing node via the supplied account name --- and
+  why neither is closed by these invariants. Authentication and rate limiting
+  are assumed, not provided.
   \item \textbf{Single implementation.} The invariants are demonstrated in one
   reference system. Their generality as a design pattern for other
   resolution layers is argued, not independently replicated.
