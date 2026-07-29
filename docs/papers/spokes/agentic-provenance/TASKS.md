@@ -142,10 +142,24 @@ DOI. Keep it staged as a follow-up PR to `main`, cut at publication time.
 **Acceptance:** a `HUB_UPDATE.md` note listing the exact hub edits to make on
 publication day.
 
-### ☐ T11 — Fresh-checkout reproducibility check  ·  `claude/spoke1-repro-check`
-Run the Reproducibility section's commands in a clean clone to confirm every
-number regenerates and exit codes are 0. **Acceptance:** a logged clean run;
-fix any drift.
+### ☑ T11 — Fresh-checkout reproducibility check  ·  `claude/spoke1-repro-check`
+**DONE 2026-07-29 — PASS.** Full log in [`REPRO_CHECK.md`](REPRO_CHECK.md).
+Fresh `git clone` of `c45a28f` outside the working tree; every Reproducibility
+command run in order and the tree diffed against the committed artifacts.
+
+All five commands exit 0. Both claims-evidence artifacts
+(`roundtrip_audit/results.json`, `consolidation_v2/results.json`) and the
+generated `figures/fig_fiber_query.tex` regenerate **byte-for-byte identical**.
+Paper builds clean from the clone: 16 pp, 0 undefined refs, 0 undefined
+citations, 0 bibtex warnings. `pyyaml` is the only third-party dependency any
+claim-generating script needs.
+
+One low-severity defect found: `consolidation_v2/per_entry.csv` is not
+byte-stable — the writer emits CRLF (correct for the `csv` module) while the
+committed copy is LF, so a repro run always leaves the tree dirty. Content is
+identical; no published number is affected. Fix is hub-side
+(`lineterminator="\n"` on the `DictWriter`), so it is **not** applied in this
+spoke per `WORKFLOW.md` rule 3 — filed separately.
 
 ---
 
