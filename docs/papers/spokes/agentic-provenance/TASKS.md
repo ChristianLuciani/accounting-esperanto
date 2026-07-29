@@ -48,7 +48,7 @@ whether XBRL GL 2015 is still the latest Recommendation.
 post-cutoff single-author preprints quarantined by DR2; Mastercard Agent Pay
 (403, snippet-only); the "100M+ x402 transactions" and Visa "IOUs" claims.
 
-### ☐ T2 — Claim/code audit pass  ·  `claude/spoke1-claim-audit`
+### ☑ T2 — Claim/code audit pass  ·  `claude/spoke1-claim-audit`
 Every file path and behavioral claim in `main.tex` must match current `main`
 code (epistemic rule + claims–evidence rule). Already verified this session:
 6 MCP tools ✓, round-trip numbers ✓, `clapps.cls` clean-room ✓. **Still to
@@ -60,7 +60,7 @@ confirm and pin:** the `rule_id` string formats (`tier1:<jur>:<code>` /
 **Acceptance:** a short `CLAIMS_AUDIT.md` mapping each in-text claim → file:line
 or command; zero unverifiable claims remain.
 
-### ☐ T3 — Figures (≥1, ≤2)  ·  `claude/spoke1-figures`
+### ☑ T3 — Figures (≥1, ≤2)  ·  `claude/spoke1-figures`
 The draft is figure-less. Add, following the hub's reproducible convention
 (`.py`→`.png` or TikZ `.tex` committed):
 - **Fig 1 (required):** the agent→layer decision flow — agent calls an MCP
@@ -77,7 +77,7 @@ regenerable; referenced from the text.
 
 ## P1 — Materially raises acceptance odds
 
-### ☐ T4 — Adversarial-agent threat model  ·  `claude/spoke1-threat-model`
+### ☑ T4 — Adversarial-agent threat model  ·  `claude/spoke1-threat-model`
 cs.MA reviewers will ask: *can a malicious or buggy agent defeat I1/I2/I3?* Add a
 short subsection: it can escalate-spam or submit garbage, but it **cannot** emit
 a non-existent UUID (I1), **cannot** cause a silent loss (I2 — the worst case is
@@ -87,14 +87,14 @@ is a semantic-correctness problem I1 bounds but does not eliminate).
 **Acceptance:** one tight subsection; claims consistent with I1's "bounded, not
 eliminated" wording.
 
-### ☐ T5 — Inference-cost / resource-economy framing  ·  `claude/spoke1-inference-cost`
+### ☑ T5 — Inference-cost / resource-economy framing  ·  `claude/spoke1-inference-cost`
 Make principle #5's *consequence* concrete (as a consequence, never a banner):
 ~0.9% escalation rate (4/441) ⇒ ~99% of resolutions are graph lookups that avoid
 an LLM call — token, latency, and energy cost not incurred, and no stochastic
 error to contaminate downstream steps. **Acceptance:** a short paragraph with the
 number sourced to `results.json`; framed as economy+determinism, not marketing.
 
-### ☐ T6 — Sharpen I3 novelty & math tie-in  ·  `claude/spoke1-i3-sharpen`
+### ☑ T6 — Sharpen I3 novelty & math tie-in  ·  `claude/spoke1-i3-sharpen`
 "Pre-transaction fiber query" is the most novel-sounding term and must be
 airtight. Tie the fiber to the preimage / H¹-obstruction language of the hub's
 `mathematical_foundations.tex` at a level cs.MA accepts, without importing the
@@ -102,7 +102,7 @@ full category-theory apparatus (that is **Spoke 2**'s job — cite it as
 forthcoming, do not pre-empt it). **Acceptance:** I3 reads as a systems result
 with a clean pointer to the math spoke; no overlap that invites salami critique.
 
-### ☐ T7 — Abstract/intro GEO/AEO polish  ·  `claude/spoke1-geo-polish`
+### ☑ T7 — Abstract/intro GEO/AEO polish  ·  `claude/spoke1-geo-polish`
 Already has "Kontablo is…" once ✓. Light pass: first-100-words direct answer,
 question-as-heading (mostly done), quantified claims traceable. Confirm keywords
 line matches venue taxonomy. **Acceptance:** GEO checklist (hub CLAUDE.md §
@@ -112,10 +112,22 @@ line matches venue taxonomy. **Acceptance:** GEO checklist (hub CLAUDE.md §
 
 ## P2 — Polish & publication mechanics
 
-### ☐ T8 — Modularization decision  ·  (decision, likely *no PR*)
-Decide whether to split `main.tex` into `sections/` like the 65 pp hub. For a
-~10 pp spoke the recommendation is **keep monolithic** (lower overhead, cleaner
-diffs). Record the decision; only split if the paper grows past ~16 pp.
+### ☑ T8 — Modularization decision  ·  (decision, likely *no PR*)
+**DECIDED 2026-07-29: keep monolithic.** `main.tex` stays a single file; it is
+not split into `sections/` like the 65 pp hub.
+
+Rationale, on the state as of this decision: the paper is **16 pp compiled**, of
+which ~13 pp is body text and ~3 pp is front matter plus the 34-entry
+bibliography. That is at the trigger threshold the original guidance named, but
+the threshold was a proxy for *diff pain*, and the diff pain has not
+materialized: every atomic PR from T3 through T7 touched one or two contiguous
+regions of the file and reviewed cleanly. Splitting now would buy nothing and
+would cost a rename of every `\input` path plus a build-instruction change in
+the README, on a paper that is about to freeze for submission.
+
+Revisit only if the paper grows past ~24 pp (e.g. if a reviewer round adds a
+full evaluation section), or if two tasks ever need to edit genuinely
+independent regions in parallel. Neither has happened.
 
 ### ☐ T9 — License header + arXiv metadata  ·  `claude/spoke1-license-meta`
 Add CC BY 4.0 (matches the hub's paper license, `docs/papers/LICENSE`) and an
