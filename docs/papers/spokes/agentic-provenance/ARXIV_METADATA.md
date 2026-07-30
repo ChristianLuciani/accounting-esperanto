@@ -31,9 +31,11 @@ ORCID `0000-0002-6955-5384`.
 
 ## 3. Abstract
 
-Paste the paper's abstract as plain text. It is **1907 characters**, inside
-arXiv's 1920-character limit — but with only 13 characters of headroom, so
-**re-measure after any abstract edit**:
+Paste the paper's abstract as plain text. It is **1887 characters** against
+arXiv's 1920-character limit — **33 characters of headroom**, so **re-measure
+after any abstract edit**. The abstract has already been trimmed once to make
+room for the co-responsibility clause; there is no slack left for another
+addition without a compensating cut:
 
 ```bash
 python3 - <<'PY'
@@ -105,7 +107,7 @@ Two arXiv governance facts that matter operationally:
 ## 6. Comments field
 
 ```
-16 pages, 2 figures, 1 table. Companion spoke paper to the Kontablo
+19 pages, 2 figures, 1 table. Companion spoke paper to the Kontablo
 specification (Zenodo concept DOI 10.5281/zenodo.20738795). All quantitative
 claims regenerate from committed commands in the public repository;
 reproducibility section lists them. Validation dataset is synthetic trial

@@ -69,7 +69,7 @@
 % ---------------------------------------------------------------- agent
 \node[agent] (agent) at (-4.8,3.55)
   {Autonomous agent\\[1pt]
-   {\scriptsize\mdseries settles over AP2 / A2A;\\ no human in this loop}};
+   {\scriptsize\mdseries settles over AP2 / A2A;\\ no human at transaction latency}};
 
 % ------------------------------ header strip (inside the tool surface)
 \node[hdr] (hdr) at (3.0,1.95)
@@ -137,9 +137,10 @@
    collisions $\cdot$ placeholders $\cdot$ escalations $\cdot$ CRA flags\\
    \texttt{silent\_losses = 0}};
 \node[ledger, fill=white, draw=clappsInk!55] (human) at (7.0,-8.35)
-  {Human review: the human remains the legal
-   principal, consulted where certainty runs out
-   --- not on every transaction};
+  {\textbf{Accountable human} --- authorizes the deterministic
+   policy \emph{ex ante}, disposes of this counted residual
+   \emph{asynchronously}, and can revoke a \emph{rule} rather
+   than a transaction. Legal principal in both modes};
 \draw[->, thick, red!55!black] (q3) -- (ll);
 \draw[->, thick, clappsInk!60] (ll) -- (human);
 
@@ -158,6 +159,11 @@ than a guess or a silent drop. The semantic (Tier~3) fallback exists in the
 codebase but is deliberately \emph{not} registered as an MCP tool: exposing it
 would let an agent consume a stochastic answer through an interface that looks
 deterministic. Confidence values and \texttt{rule\_id} formats are verbatim from
-\protect\pathtt{core/harness/resolution.py}.}
+\protect\pathtt{core/harness/resolution.py}. Note what the bottom-right box is
+\emph{not} saying: the human is absent from transaction latency, not from
+authority. They authorize the deterministic policy in advance, work the counted
+residual asynchronously, and --- because every resolution names the rule that
+produced it --- can revoke a rule rather than a transaction
+(Section~\ref{sec:coresponsibility}).}
 \label{fig:agent-flow}
 \end{figure}

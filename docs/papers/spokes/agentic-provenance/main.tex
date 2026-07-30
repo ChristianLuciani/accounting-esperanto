@@ -50,33 +50,33 @@ to the multi-agent-systems community and answers it with a new, independently
 regenerable result.
 
 \begin{abstract}
-\noindent Kontablo is a graph-based, UUID-keyed universal accounting ontology
-that acts as a deterministic semantic-resolution layer between local statutory
-charts of accounts and the machine-to-machine (M2M) agentic economy. This paper
-asks a question specific to autonomous multi-agent finance: as AI agents begin
-to execute high-frequency financial transactions over protocols such as AP2
-(Agent Payments Protocol) and A2A (Agent2Agent), \emph{what deterministic
-auditability invariants must the semantic-resolution layer satisfy so those
-transactions are trustworthy without a human in the per-transaction critical
-path?} We argue the answer cannot be procedural (human review does not scale to
-M2M frequency) and must instead be \emph{architectural}. We name three
-invariants and demonstrate them in a committed reference implementation:
-(\textbf{I1}) \emph{ontology-as-constraint} --- the agent-facing interface
-exposes only deterministic tools, and no tool can emit an account identifier
-that does not exist in the graph; (\textbf{I2}) the \emph{loss ledger} --- every
-piece of information the layer cannot translate with certainty becomes a typed,
-countable record that escalates to a human, never a silent guess; and
-(\textbf{I3}) the \emph{pre-transaction fiber query} --- an agent can retrieve
-the exact preimage of any consolidated node \emph{before} acting on it, making
-auditability a pre-condition of the transaction rather than only a forensic
-afterthought. We instantiate the invariants over an agent-native
-Model Context Protocol (MCP) surface of six deterministic tools and a
-round-trip audit that, over $441$ ledger entries drawn from $75$ synthetic
-entities across $68$ jurisdictions, reconstructs every local trial balance
-byte-for-byte from lineage alone and records \emph{zero} silent losses. The
-contribution to the agent community is a concrete shape for machine-verifiable
-trust at the resolution layer that complements, rather than duplicates,
-settlement-layer protocols.
+\noindent Kontablo is a graph-based, UUID-keyed universal accounting ontology: a
+deterministic semantic-resolution layer between local statutory charts of
+accounts and the machine-to-machine (M2M) agentic economy. We ask a question
+specific to autonomous multi-agent finance: as agents run
+high-frequency transactions over protocols such as AP2 and A2A, \emph{what
+deterministic auditability invariants must the semantic-resolution layer satisfy
+for those transactions to be trustworthy without a human in the per-transaction
+critical path?} The answer cannot be procedural --- per-transaction review does
+not scale --- but architectural. We name three invariants and demonstrate them
+in committed code: (\textbf{I1})
+\emph{ontology-as-constraint} --- the agent-facing interface exposes only
+deterministic tools, none able to emit an identifier not in the graph;
+(\textbf{I2}) the \emph{loss ledger} --- everything the layer cannot translate
+with certainty becomes a typed, counted record that escalates, never a silent
+guess; (\textbf{I3}) the \emph{pre-transaction fiber query} --- an agent can
+retrieve the exact preimage of any consolidated node \emph{before} acting,
+making auditability a precondition rather than a forensic afterthought. Removing
+the human from per-transaction latency is not removing the human: the invariants
+let an accountable human authorize policy \emph{ex ante}, dispose of a counted
+residual asynchronously, and revoke a \emph{rule} rather than a transaction ---
+one decision then governs every posting that rule produced. We
+instantiate the invariants over an MCP surface of six deterministic tools and a
+round-trip audit that, over $441$ ledger entries from $75$ synthetic entities in
+$68$ jurisdictions, reconstructs every local trial balance byte-for-byte from
+lineage alone and records \emph{zero} silent losses. The contribution is a shape
+for machine-verifiable trust at the resolution layer, beneath and complementary
+to settlement-layer protocols.
 
 \medskip
 \noindent\textbf{Keywords:} multi-agent systems, agent-to-agent protocols, M2M
@@ -99,7 +99,19 @@ is that this loop closes without a human on the critical path of each
 transaction: agents transact at a frequency and volume where per-transaction
 human review is not merely expensive but structurally impossible.
 
-That premise relocates a hard problem. If no human verifies each mapping, then
+It is worth being precise about what that does and does not remove, because the
+imprecise version of this argument is the one that gets Kontablo's own thesis
+wrong. What becomes impossible is human review \emph{at transaction latency, once
+per transaction}. Human \emph{authority} does not become impossible, and it does
+not become optional: the human remains the legally accountable principal, and
+nothing in this paper transfers accountability to an agent. What changes is
+\emph{when} that authority is exercised and \emph{over what unit}. We return to
+this in Section~\ref{sec:coresponsibility}, because a paper that removed the
+human from the loop without saying what the human then does would be describing
+an unaccountable system, not an auditable one.
+
+The same premise relocates a hard problem. If no human verifies each mapping at
+transaction time, then
 the \emph{trustworthiness} of the mapping can no longer live in the review
 \emph{process}; it must live in the \emph{architecture} that produces the
 mapping. This is the question this paper isolates for the multi-agent-systems
@@ -124,8 +136,11 @@ committed code}.
 
 \summarynote{The claim of this paper: for autonomous high-frequency finance,
 trust in the account-resolution step must be an architectural guarantee
-(verifiable, reproducible), not a procedural one (human review). We give three
-invariants that make it so, and a committed audit that exhibits them.}
+(verifiable, reproducible) rather than a procedural one (per-transaction human
+review). The accountable human does not disappear --- their authority moves to
+policy, to the counted residual, and to the rule
+(Section~\ref{sec:coresponsibility}). We give three invariants that make this
+so, and a committed audit that exhibits them.}
 
 % =====================================================================
 \section{What is the resolution layer, and where can it lose information?}
@@ -319,6 +334,91 @@ foundations, which this paper deliberately does not pre-empt. Everything claimed
 here stands or falls on the committed audit of Section~4, not on the cohomology.
 
 \input{figures/fig_fiber_query}
+
+\subsection{What does the accountable human do at machine frequency?}
+\label{sec:coresponsibility}
+
+The three invariants are usually read as verifiability properties. That reading
+is incomplete, and the incomplete reading is dangerous, because it invites the
+conclusion that the human has been engineered out. The opposite is the case: the
+invariants exist so that human authority can be exercised \emph{asynchronously}
+rather than not at all. This subsection says what the human actually does, since
+a system that removed the human from the loop without answering that question
+would be unaccountable rather than auditable.
+
+The case study's governing framework --- its Co-responsibility Architecture ---
+resolves this with two authorization modes and one accountable
+human~\cite{kontablo_hub}. Deterministic resolutions post under \emph{standing
+ex-ante authorization}: the responsible accountant approves the deterministic
+policy once --- the code maps and the boundary rules --- configures it, and
+retains veto and the right to inspect or reverse any posting it produced. These
+postings are logged and fully reviewable but are not individually signed, exactly
+as an accountant today authorizes a recurring posting rule without re-signing
+each instance it fires. Only the residual --- escalations, boundary flags,
+overrides --- requires \emph{per-exception disposition}. The accountant's
+signature is therefore two records rather than one: a standing authorization of
+the policy, and a sign-off on each flagged item. The review \emph{pathway} and
+the veto exist for every transaction; the \emph{act} of review is spent on the
+exceptions instead of rubber-stamping the deterministic majority. Legal
+accountability is undivided and human in both modes.
+
+What this paper adds is the mechanism that makes the asynchronous mode
+\emph{tractable}, and the three invariants map onto the three tenses of that
+authority:
+
+\begin{itemize}
+  \item \textbf{Ex ante --- authorizing the policy (I3).} A standing
+  authorization is only meaningful if the person granting it can see what they
+  are authorizing. The fiber query is what makes the ex-ante decision informed
+  rather than nominal: before approving a policy, the accountant can retrieve the
+  exact preimage of any universal node --- which local statutory codes collapse
+  into it, in which jurisdiction, with what local structure --- and decide
+  whether that coarsening is acceptable for their entity. Without I3, standing
+  authorization would be consent to something unseen.
+
+  \item \textbf{Continuously, asynchronously --- disposing of the residual
+  (I2).} A queue can only be worked if it is bounded and typed. The loss ledger
+  is exactly that: every non-translation is a counted record of a known kind ---
+  $4$ escalations, $14$ placeholders, $0$ collisions, $2$ compliance flags on the
+  dataset of Section~4 --- so the human's workload is a function of the
+  \emph{residual}, not of transaction volume. This is the quantitative form of
+  the argument: at $0.9\%$ escalation, one reviewer's attention covers a
+  transaction stream that per-transaction review could not. An unbounded ``check
+  everything'' obligation is what actually excludes a human; a counted queue is
+  what restores them.
+
+  \item \textbf{Ex post --- revoking and correcting (I1 plus provenance).} This
+  is where the unit of human decision changes, and it is the part we consider
+  most consequential. Because every resolution carries the exact rule identifier
+  that produced it (\texttt{tier1:<jur>:<code>} or
+  \texttt{tier2:<node>:<keyword>}), the accountable human's object of judgement
+  is no longer the individual transaction but \emph{the rule}. Concluding that a
+  keyword rule was wrong is a single decision that determines the disposition of
+  every posting that rule ever produced, and of every posting it would produce
+  in future. Per-transaction review scales linearly with volume; rule-level
+  review does not scale with volume at all.
+\end{itemize}
+
+So the honest summary is not that architecture replaces the human. It is that
+architecture changes the human's unit of work from the transaction to the policy
+and the exception --- which is a \emph{gain} in the reach of a single human
+decision, obtained precisely by making resolution deterministic and its
+provenance total. A stochastic resolver could not offer this: there would be no
+stable rule identifier to revoke, and therefore no class of postings to correct
+as a class.
+
+Two limits, so the claim is not read as more than it is. First, the
+\emph{records} that would support rule-level revocation are complete --- the
+\texttt{rule\_id} is stamped on every resolution and surfaced on every face ---
+but no query surface exposes them by rule: \texttt{lineage()}
+(\pathtt{core/engine.py}) groups resolved entries by consolidated line, not by
+the rule that produced them. Retrieving every posting a given rule produced is
+therefore possible from the committed audit data and is \emph{not} implemented as
+an API. We claim the provenance, not the tooling. Second, no
+review-queue workflow is part of this contribution; the loss-ledger records exist
+and are counted, and what an organization does with them is outside what is
+demonstrated here. Section~\ref{sec:threat} states the corresponding attack: an
+agent can inflate that queue faster than it is worked.
 
 \subsection{What can a hostile or buggy agent do to these invariants?}
 \label{sec:threat}
