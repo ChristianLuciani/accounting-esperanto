@@ -161,3 +161,104 @@ Each experiment directory gets its own `results.json`, a README stating exact so
 - [Eurostat bulk download](https://ec.europa.eu/eurostat/databrowser/bulk?lang=en)
 - [Eurostat government expenditure by function (COFOG), dataset `gov_10a_exp`](https://ec.europa.eu/eurostat/databrowser/view/gov_10a_exp/default/table?lang=en)
 - [UK Whole of Government Accounts collection (PDF only, confirmed)](https://www.gov.uk/government/collections/whole-of-government-accounts)
+
+---
+
+# Addendum A — execution operationalizations (dated 2026-07-30)
+
+**Status: recorded BEFORE any hypothesis was scored.** The plan above is
+pre-registered and is not edited. This addendum records decisions the plan did
+not specify, plus one factual correction to the plan itself. Each entry states
+the decision, why it was needed, and which direction it could bias the result.
+
+## A.1 Correction: the public-sector extension has 19 mappings, not 39
+
+§2 and §8 both state that `localizations/industries/public_sector_ipsas.yaml`
+carries "39 mappings". It carries **19** (`yaml.safe_load(...)["mappings"]`).
+All YAML blocks summed — 19 mappings + 4 aggregation rules + 3 validation rules
++ 5 country-specific entries — total 31, so 39 does not correspond to any
+reading of the file. This is the project's documented stale-count failure mode,
+caught here on first contact with the file. The plan text is left as written;
+this addendum is the correction of record. H5 is therefore measured against a
+**19-node** drafted extension.
+
+## A.2 H2: what "silently force-mapped" means operationally
+
+H2 requires that company-specific extensions "escalate (`resolved=false`)" and
+is weakened by "any extension silently mapped with high confidence". The plan
+does not define *silently*. Operationalization:
+
+- A **Tier-1 hit on an extension is a violation.** Tier 1 asserts exact code
+  identity at confidence 1.0; an issuer-invented tag cannot have one, so this
+  would mean the crosswalk was contaminated with non-standard codes.
+- A **Tier-2 keyword hit is not a violation and is not silent.** Tier 2 is the
+  designed name-based path, reports confidence 0.85 (not 1.0), and names the
+  exact rule that fired (`tier2:<node>:<keyword>`), so the decision is auditable
+  and reviewable rather than hidden.
+- Tier-2 extension hits are reported as their own line, never folded into either
+  bucket. Hiding them would overstate H2; calling them violations would penalize
+  the resolver for doing what Tier 2 is documented to do.
+
+## A.3 Gold sample is drawn from the whole population, not only resolved facts
+
+§6.1 says "stratified random sample of resolved facts". Sampling only resolved
+facts measures **precision** and is structurally blind to misses — a resolver
+that escalates nearly everything would score perfectly. The sample is therefore
+drawn from the entire holdout population so all four outcomes are scorable
+(correct / wrong node / missed / false positive). **Direction of bias: this can
+only lower the measured accuracy, never raise it.**
+
+## A.4 Primary population for H1 is monetary facts
+
+About 8% of real EDGAR standard face-statement facts are share counts,
+per-share amounts, percentages or ratios (the taxonomy's own declared
+`datatype`). A chart of accounts maps monetary ledger balances and structurally
+has no node for "weighted average diluted shares outstanding"; counting those
+against it would understate coverage for a reason unrelated to the ontology.
+
+The monetary subset is the primary population. The exclusion is **deterministic**
+— it reads the taxonomy's declared datatype, with no per-tag discretion — and the
+full population is reported alongside it so the exclusion stays visible and
+quantified. **Direction of bias: raises the reported number relative to scoring
+all face-statement facts; both are published.**
+
+## A.5 Gold labels are three-way, not two-way
+
+Real face statements are presentation trees and carry **subtotals** (`Assets`,
+`LiabilitiesAndStockholdersEquity`, `OperatingIncomeLoss`) alongside leaf
+accounts. Kontablo's 30 core nodes are all leaves; aggregation is computed
+through rollup lenses and never stored as a node.
+
+Calling a subtotal "outside Kontablo's scope" would be false (Kontablo does
+represent it, as a derived rollup); mapping it to a leaf node would also be
+false and would double-count against that leaf. So the gold vocabulary is:
+
+| label | class | correct resolver behavior |
+|---|---|---|
+| `<node id>` | leaf | resolve to that node |
+| `AGGREGATE:<lens>` | aggregate | escalate |
+| *(empty)* | out_of_scope | escalate |
+
+Aggregate and out-of-scope tags are scored as **correct escalations** when the
+resolver declines them, and as **false positives** when it maps them anyway.
+Each class is also reported separately, so the share of real face-statement
+fact volume that is aggregate rather than leaf is visible rather than buried.
+
+## A.6 EDGAR inventory is collapsed across taxonomy versions
+
+EDGAR keys presentation rows by `(tag, version)`, so one tag appears once per
+taxonomy vintage. Uncollapsed, this would let the same tag be drawn twice into
+the gold sample, and would report ~97% of holdout tags as "unseen in train"
+purely because the version string advanced. The hypotheses concern a *tag*
+resolving, not a tag-vintage pair, so the version dimension is summed away. An
+element declared an issuer extension in any vintage is treated as an extension
+throughout, so H2 cannot be softened by a later vintage relabelling it.
+
+## A.7 Independence of the two labeling passes is limited
+
+§6.2 permits "two independently-instructed LLM passes". Both passes here are the
+same model family under different instructed reasoning orders (tag-first vs
+node-first with default-to-no-match). This is **weaker independence than two
+unaffiliated human CPAs**: correlated errors are possible and Cohen's kappa
+overstates true independence. This caveat travels with any public wording of the
+resulting accuracy figure and is recorded inside `gold/agreement.json` itself.
