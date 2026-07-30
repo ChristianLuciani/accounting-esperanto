@@ -1,0 +1,86 @@
+{
+  "experiment": "tag_resolution_v1",
+  "files": {
+    "edgar/2024q1.zip": {
+      "bytes": 124336804,
+      "license_regime": "public_domain",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/edgar/2024q1.zip",
+      "note": "SEC EDGAR Financial Statement Data Sets, quarterly bulk export",
+      "retrieved_utc": "2026-07-30T17:32:48Z",
+      "sha256": "94c7894b00903f8ff7186c4250ba1c1daa1bde8b3a0b26fae68f72608b2ffc9b",
+      "url": "https://www.sec.gov/files/dera/data/financial-statement-data-sets/2024q1.zip"
+    },
+    "edgar/2024q2.zip": {
+      "bytes": 119119954,
+      "license_regime": "public_domain",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/edgar/2024q2.zip",
+      "note": "SEC EDGAR Financial Statement Data Sets, quarterly bulk export",
+      "retrieved_utc": "2026-07-30T17:34:17Z",
+      "sha256": "698796e9f0946501d3dc74e7696a6c8c71cf32b66026e053722a784236b37761",
+      "url": "https://www.sec.gov/files/dera/data/financial-statement-data-sets/2024q2.zip"
+    },
+    "edgar/2024q3.zip": {
+      "bytes": 118280418,
+      "license_regime": "public_domain",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/edgar/2024q3.zip",
+      "note": "SEC EDGAR Financial Statement Data Sets, quarterly bulk export",
+      "retrieved_utc": "2026-07-30T17:34:32Z",
+      "sha256": "b1823f2d65189f0d5ecbb1968d683c59df762129ae1b23bda0394093a69e0da9",
+      "url": "https://www.sec.gov/files/dera/data/financial-statement-data-sets/2024q3.zip"
+    },
+    "edgar/2024q4.zip": {
+      "bytes": 122932548,
+      "license_regime": "public_domain",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/edgar/2024q4.zip",
+      "note": "SEC EDGAR Financial Statement Data Sets, quarterly bulk export",
+      "retrieved_utc": "2026-07-30T17:34:48Z",
+      "sha256": "9a2cbbaf39c94aa642b33d512f4def92b198d3bfd12d2267bcd27abe55b9902d",
+      "url": "https://www.sec.gov/files/dera/data/financial-statement-data-sets/2024q4.zip"
+    },
+    "edgar/2025q1.zip": {
+      "bytes": 127765057,
+      "license_regime": "public_domain",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/edgar/2025q1.zip",
+      "note": "SEC EDGAR Financial Statement Data Sets, quarterly bulk export",
+      "retrieved_utc": "2026-07-30T17:35:02Z",
+      "sha256": "4386e7057cc216b6fc729d8f957998acb831d29be7b16f6d8ed0f6b1ab74eba5",
+      "url": "https://www.sec.gov/files/dera/data/financial-statement-data-sets/2025q1.zip"
+    },
+    "edgar/2025q2.zip": {
+      "bytes": 78973768,
+      "license_regime": "public_domain",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/edgar/2025q2.zip",
+      "note": "SEC EDGAR Financial Statement Data Sets, quarterly bulk export",
+      "retrieved_utc": "2026-07-30T17:35:11Z",
+      "sha256": "81bf19bdb5606d5ee0164a8de8b7e96d5546170e42e59bcbf95b652ca83ac5d7",
+      "url": "https://www.sec.gov/files/dera/data/financial-statement-data-sets/2025q2.zip"
+    },
+    "edgar/2025q3.zip": {
+      "bytes": 127842298,
+      "license_regime": "public_domain",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/edgar/2025q3.zip",
+      "note": "SEC EDGAR Financial Statement Data Sets, quarterly bulk export",
+      "retrieved_utc": "2026-07-30T17:33:07Z",
+      "sha256": "ebe25fa74c3655f4738ed9eb144af3953c3981c80f57d74829fb9ad68b114710",
+      "url": "https://www.sec.gov/files/dera/data/financial-statement-data-sets/2025q3.zip"
+    },
+    "edgar/2025q4.zip": {
+      "bytes": 65830170,
+      "license_regime": "public_domain",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/edgar/2025q4.zip",
+      "note": "SEC EDGAR Financial Statement Data Sets, quarterly bulk export",
+      "retrieved_utc": "2026-07-30T17:36:01Z",
+      "sha256": "2b36ac3850c022cf19edd882e31c3c453c7666677b9fdd2e1f7748fdb5768c6e",
+      "url": "https://www.sec.gov/files/dera/data/financial-statement-data-sets/2025q4.zip"
+    },
+    "edgar/2026q1.zip": {
+      "bytes": 85259424,
+      "license_regime": "public_domain",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/edgar/2026q1.zip",
+      "note": "SEC EDGAR Financial Statement Data Sets, quarterly bulk export",
+      "retrieved_utc": "2026-07-30T17:37:07Z",
+      "sha256": "d18c01c615da8f5cd46273b0dacaeee5b1163f4089171da0f84153a5f3c362f6",
+      "url": "https://www.sec.gov/files/dera/data/financial-statement-data-sets/2026q1.zip"
+    }
+  }
+}

@@ -66,6 +66,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import gzip
 import json
 import os
 import re
@@ -131,8 +132,23 @@ def classify_measure(datatype: str) -> str:
 
 
 def _read_csv(path: str) -> list[dict]:
-    with open(path, encoding="utf-8", newline="") as fh:
+    """Read a derived CSV, transparently handling the gzipped inventories.
+
+    The EDGAR tag inventories are committed gzipped (~110 MB raw, ~11 MB
+    compressed) so that scoring stays hermetic and offline without vendoring a
+    hundred megabytes of derived text.
+    """
+    opener = gzip.open if path.endswith(".gz") else open
+    with opener(path, "rt", encoding="utf-8", newline="") as fh:
         return list(csv.DictReader(fh))
+
+
+def _find(base: str, stem: str) -> str | None:
+    """Locate a derived artifact whether it is stored plain or gzipped."""
+    for candidate in (os.path.join(base, stem), os.path.join(base, stem + ".gz")):
+        if os.path.exists(candidate):
+            return candidate
+    return None
 
 
 def _require(row: dict, path: str, *cols: str) -> None:
@@ -157,11 +173,11 @@ def load_inventory(experiment: str) -> list[dict]:
     rows: list[dict] = []
 
     edgar = {
-        "train": os.path.join(base, "edgar_tags_train.csv"),
-        "holdout": os.path.join(base, "edgar_tags_holdout.csv"),
+        "train": _find(base, "edgar_tags_train.csv"),
+        "holdout": _find(base, "edgar_tags_holdout.csv"),
     }
     for window, path in edgar.items():
-        if not os.path.exists(path):
+        if path is None:
             continue
         raw = _read_csv(path)
         if raw:
@@ -179,8 +195,8 @@ def load_inventory(experiment: str) -> list[dict]:
                 "n_filings": _int(r.get("n_filings")),
             })
 
-    esef = os.path.join(base, "esef_tags.csv")
-    if os.path.exists(esef):
+    esef = _find(base, "esef_tags.csv")
+    if esef:
         raw = _read_csv(esef)
         if raw:
             _require(raw[0], esef, "local_name", "taxonomy_class", "window", "n_facts")
@@ -200,8 +216,8 @@ def load_inventory(experiment: str) -> list[dict]:
 
     for source, fname in (("imf_gfs", "imf_gfs_usage.csv"),
                           ("eurostat_cofog", "eurostat_cofog_usage.csv")):
-        path = os.path.join(base, fname)
-        if not os.path.exists(path):
+        path = _find(base, fname)
+        if path is None:
             continue
         raw = _read_csv(path)
         if raw:
@@ -221,7 +237,41 @@ def load_inventory(experiment: str) -> list[dict]:
                 "n_filings": _int(r.get("n_countries")) or _int(r.get("n_filings")),
             })
 
-    return rows
+    return collapse_versions(rows)
+
+
+def collapse_versions(rows: list[dict]) -> list[dict]:
+    """Aggregate to one row per (source, taxonomy, window, code).
+
+    EDGAR's inventory is keyed by (tag, version), so a tag that survives a
+    taxonomy release appears once per vintage -- e.g. Assets under both
+    us-gaap/2024 and us-gaap/2025. Left uncollapsed this would (a) let the same
+    tag be drawn twice into the gold sample and labeled twice, and (b) make
+    "unseen in train" wildly overstated, since almost every holdout
+    (tag, version) pair is new purely because the version string advanced. The
+    hypothesis is about a TAG resolving, not about a tag-vintage pair, so the
+    version dimension is summed away here.
+    """
+    merged: dict[tuple, dict] = {}
+    for row in rows:
+        key = (row["source"], row["taxonomy"], row["window"], row["code"])
+        node = merged.get(key)
+        if node is None:
+            merged[key] = dict(row)
+            continue
+        node["n_facts"] += row["n_facts"]
+        node["n_filings"] = max(node["n_filings"], row["n_filings"])
+        # Prefer a populated label and a decided measure class over an empty one.
+        if not node["name"] and row["name"]:
+            node["name"] = row["name"]
+        if node["measure_class"] == "unknown" and row["measure_class"] != "unknown":
+            node["measure_class"] = row["measure_class"]
+        # An element declared as an issuer extension in ANY vintage is treated as
+        # an extension throughout: H2 must not be softened by a later vintage
+        # that happens to label the same name as standard.
+        if row["taxonomy_class"] == "extension":
+            node["taxonomy_class"] = "extension"
+    return sorted(merged.values(), key=lambda r: (r["source"], r["window"], r["code"]))
 
 
 # ---------------------------------------------------------------------------
@@ -445,15 +495,39 @@ def summarize_h2(detail: list[dict]) -> dict:
     return out
 
 
+def gold_class(gold: str) -> str:
+    """Classify a gold label into the three kinds of thing a real tag can be.
+
+    Real face statements are presentation trees, not trial balances: alongside
+    leaf accounts they carry SUBTOTALS (Assets, LiabilitiesAndStockholdersEquity,
+    OperatingIncomeLoss). Kontablo's 30 core nodes are all leaves -- aggregation
+    is computed by the engine through rollup lenses, never stored as a node.
+
+    Folding subtotals into "outside Kontablo's scope" would be false: Kontablo
+    does represent them, as derived rollups. Mapping them to a leaf node would
+    also be false, and would silently double-count against that leaf. So they get
+    their own class. For scoring, the correct resolver behavior on an aggregate
+    is to ESCALATE -- the deterministic tiers resolve leaves, and a subtotal
+    reaching a leaf node is a real error worth catching.
+
+      "<node id>"              leaf      resolvable to a Kontablo core node
+      "AGGREGATE:<lens>"       aggregate representable only as a computed rollup
+      ""                       out_of_scope  no Kontablo concept at all
+    """
+    if not gold:
+        return "out_of_scope"
+    return "aggregate" if gold.startswith("AGGREGATE:") else "leaf"
+
+
 def summarize_accuracy(detail: list[dict]) -> dict:
     """Accuracy over the gold-labeled sample. This is the H1/H5 headline.
 
     Outcome taxonomy:
-      correct                  predicted node == gold node
+      correct                  predicted node == gold node (leaf labels only)
       wrong_node               resolved, but to the wrong node
-      false_positive           gold says out-of-core; resolver mapped it anyway
-      missed                   gold has a node; resolver escalated
-      correct_escalation       gold says out-of-core and resolver escalated
+      missed                   gold has a leaf node; resolver escalated
+      correct_escalation       gold is aggregate/out-of-scope and resolver escalated
+      false_positive           gold is aggregate/out-of-scope; resolver mapped it anyway
     """
     out: dict = {}
     for row in detail:
@@ -461,8 +535,13 @@ def summarize_accuracy(detail: list[dict]) -> dict:
             continue
         window = row["window"]
         stratum = "seen_in_train" if row["seen_in_train"] else "unseen_in_train"
-        for scope in (out.setdefault(window, {}).setdefault("pooled", {}),
-                      out[window].setdefault("by_stratum", {}).setdefault(stratum, {})):
+        klass = gold_class(row["gold"])
+        scopes = (
+            out.setdefault(window, {}).setdefault("pooled", {}),
+            out[window].setdefault("by_stratum", {}).setdefault(stratum, {}),
+            out[window].setdefault("by_gold_class", {}).setdefault(klass, {}),
+        )
+        for scope in scopes:
             scope.setdefault("n_codes", 0)
             scope.setdefault("n_facts", 0)
             for k in ("correct", "wrong_node", "false_positive", "missed", "correct_escalation"):
@@ -471,19 +550,22 @@ def summarize_accuracy(detail: list[dict]) -> dict:
 
         gold_id = row["gold"]
         predicted = row["resolved_id"]
-        if gold_id:
+        if klass == "leaf":
             outcome = "correct" if predicted == gold_id else ("missed" if predicted is None else "wrong_node")
         else:
+            # Aggregates and out-of-scope tags: escalating is the right answer.
             outcome = "correct_escalation" if predicted is None else "false_positive"
 
-        for scope in (out[window]["pooled"], out[window]["by_stratum"][stratum]):
+        for scope in scopes:
             scope["n_codes"] += 1
             scope["n_facts"] += row["n_facts"]
             scope[outcome] += 1
             scope[f"{outcome}_facts"] += row["n_facts"]
 
     for window, node in out.items():
-        for scope in [node["pooled"], *node["by_stratum"].values()]:
+        scopes = [node["pooled"], *node["by_stratum"].values(),
+                  *node.get("by_gold_class", {}).values()]
+        for scope in scopes:
             # "Correct" credits both a right mapping and a right refusal: a
             # resolver that correctly declines an out-of-core tag is behaving
             # exactly as designed and must not be scored as a miss.
