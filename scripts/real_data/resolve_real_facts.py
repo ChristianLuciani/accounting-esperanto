@@ -277,6 +277,41 @@ def collapse_versions(rows: list[dict]) -> list[dict]:
 # ---------------------------------------------------------------------------
 # Crosswalk -> pseudo-jurisdiction code table
 # ---------------------------------------------------------------------------
+PUBLIC_SECTOR_EXT = os.path.join(ROOT, "localizations/industries/public_sector_ipsas.yaml")
+
+
+def load_public_sector_nodes() -> dict:
+    """Load the drafted IPSAS/public-sector nodes as SCORING-LOCAL ontology entries.
+
+    The extension is deliberately NOT wired into core/harness/ontology.py, and
+    plan §14 puts wiring it explicitly out of scope for round 2 -- that decision
+    comes only after H5 clears its threshold. But H5 cannot be measured at all if
+    the nodes do not exist in the scoring vocabulary.
+
+    So this loader augments the accounts dict used by THIS BENCHMARK ONLY. The
+    live resolver is untouched: no core file is modified and nothing is written
+    back. Running the production resolver against a government chart today still
+    resolves nothing, which is exactly the status quo the plan describes and the
+    reason public-sector coverage must stay described as "drafted, not yet
+    empirically validated" until the threshold clears.
+    """
+    if not os.path.exists(PUBLIC_SECTOR_EXT):
+        return {}
+    doc = yaml.safe_load(open(PUBLIC_SECTOR_EXT, encoding="utf-8")) or {}
+    nodes = {}
+    for key, entry in (doc.get("mappings") or {}).items():
+        entry = entry or {}
+        nodes[str(key)] = {
+            "uuid": entry.get("kontablo_uuid"),
+            "label": entry.get("name", str(key)),
+            "nature": str(entry.get("nature", "unknown")).lower(),
+            "statement": entry.get("statement", "unknown"),
+            "local_codes": {},
+            "groupings": {"ifrs": entry.get("parent_kontablo")},
+        }
+    return nodes
+
+
 def load_crosswalk(taxonomy: str) -> tuple[dict, dict]:
     """Return (code -> kontablo_id for mapped codes, full annotation dict).
 
@@ -608,6 +643,13 @@ def run(experiment: str, accounts: dict) -> dict:
     rows = load_inventory(experiment)
     if not rows:
         return {}
+    # H5 is measured against the drafted public-sector extension, which is not
+    # part of the live resolver's ontology (plan §2/§14). Augment the scoring
+    # vocabulary here, never core/harness/.
+    public_sector_nodes = {}
+    if any(r["taxonomy"] == "gfs" for r in rows):
+        public_sector_nodes = load_public_sector_nodes()
+        accounts = {**accounts, **public_sector_nodes}
     taxonomies = sorted({r["taxonomy"] for r in rows})
     crosswalk_tables, annotations = {}, {}
     for taxonomy in taxonomies:
@@ -628,6 +670,12 @@ def run(experiment: str, accounts: dict) -> dict:
             ),
         },
         "taxonomies": taxonomies,
+        "public_sector_extension_nodes_loaded": len(public_sector_nodes),
+        "public_sector_extension_status": (
+            "scoring-local augmentation only; NOT wired into core/harness (plan §14). "
+            "Public-sector coverage stays 'drafted, not yet empirically validated' in all "
+            "public wording until H5 clears its threshold."
+        ) if public_sector_nodes else None,
         "crosswalk_sizes": {t: len(crosswalk_tables[t]) for t in taxonomies},
         "crosswalk_declared_out_of_core": {
             t: sum(1 for e in (annotations[t] or {}).values() if not (e or {}).get("kontablo_id"))
