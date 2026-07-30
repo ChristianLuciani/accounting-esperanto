@@ -101,14 +101,22 @@ human review is not merely expensive but structurally impossible.
 
 It is worth being precise about what that does and does not remove, because the
 imprecise version of this argument is the one that gets Kontablo's own thesis
-wrong. What becomes impossible is human review \emph{at transaction latency, once
-per transaction}. Human \emph{authority} does not become impossible, and it does
-not become optional: the human remains the legally accountable principal, and
-nothing in this paper transfers accountability to an agent. What changes is
-\emph{when} that authority is exercised and \emph{over what unit}. We return to
-this in Section~\ref{sec:coresponsibility}, because a paper that removed the
-human from the loop without saying what the human then does would be describing
-an unaccountable system, not an auditable one.
+wrong. The distinction that matters is between an \emph{authority} and its
+\emph{exercise}. What machine frequency makes impossible is the exercise of human
+review once per transaction, at transaction latency. It makes nothing whatever
+impossible about the authority: the human remains the legally accountable
+principal, retains the power to pause, inspect, slow, or reverse, and that power
+is not suspended at any layer --- including the layer where resolutions are being
+applied automatically. That it is not normally exercised on a given transaction is
+a fact about normal operation, not a gap in the human's standing.
+
+We are explicit about this because the usual shorthand --- ``human out of the
+loop'' --- names a different and considerably worse system than the one described
+here, and because a paper that removed the human without saying what the human
+then does would be describing something unaccountable rather than something
+auditable. Section~\ref{sec:coresponsibility} states what the human does, and
+argues that the three invariants are precisely what make that authority
+exercisable asynchronously instead of not at all.
 
 The same premise relocates a hard problem. If no human verifies each mapping at
 transaction time, then
@@ -362,6 +370,26 @@ the veto exist for every transaction; the \emph{act} of review is spent on the
 exceptions instead of rubber-stamping the deterministic majority. Legal
 accountability is undivided and human in both modes.
 
+Standing authorization is revocable at will, and that is what keeps it an
+authorization rather than an abdication. The accountable human can withdraw it
+from a rule, a jurisdiction, or an ontology node at any moment
+(\texttt{ReviewPolicy}, \pathtt{core/harness/oversight.py}); matching resolutions
+then stop being applied and come back with \texttt{tier="held"} and a
+\texttt{rule\_id} of \texttt{held:<scope>:<the rule that was withheld>}. A hold is
+deliberately \emph{not} an escalation: an escalation means no deterministic answer
+existed, a hold means one existed and a human decided it must not be applied
+unreviewed. Both are typed and counted, so neither is silent (I2). The point of
+mentioning a mechanism this small in a paper is what its existence establishes:
+the power to interrupt automatic classification is continuous, and the normal
+case --- not exercising it --- is a choice rather than a limitation.
+
+That capability is also, deliberately, \emph{not} on the agent-facing tool
+surface. An agent must not be able to place or release a hold, or revoke a rule;
+that would hand the constraint to the party the constraint exists to bound. I1
+narrows what the agent may ask for, and the same reasoning narrows what the agent
+may ask \emph{of the oversight mechanism} --- namely nothing. The six deterministic
+tools remain the whole of the agent's surface.
+
 What this paper adds is the mechanism that makes the asynchronous mode
 \emph{tractable}, and the three invariants map onto the three tenses of that
 authority:
@@ -396,7 +424,13 @@ authority:
   keyword rule was wrong is a single decision that determines the disposition of
   every posting that rule ever produced, and of every posting it would produce
   in future. Per-transaction review scales linearly with volume; rule-level
-  review does not scale with volume at all.
+  review does not scale with volume at all. Operationally this is
+  \texttt{by\_rule()} (\pathtt{core/engine.py}) --- the dual of
+  \texttt{lineage()}, grouping resolved entries by the rule that produced them
+  rather than by the line they aggregated into --- and
+  \texttt{revocation\_impact()}, which reports how many postings, nodes and
+  jurisdictions a revocation would touch \emph{before} it is applied. It reports
+  and does not mutate: applying a revocation is a separate, human-authorized act.
 \end{itemize}
 
 So the honest summary is not that architecture replaces the human. It is that
@@ -407,18 +441,18 @@ provenance total. A stochastic resolver could not offer this: there would be no
 stable rule identifier to revoke, and therefore no class of postings to correct
 as a class.
 
-Two limits, so the claim is not read as more than it is. First, the
-\emph{records} that would support rule-level revocation are complete --- the
-\texttt{rule\_id} is stamped on every resolution and surfaced on every face ---
-but no query surface exposes them by rule: \texttt{lineage()}
-(\pathtt{core/engine.py}) groups resolved entries by consolidated line, not by
-the rule that produced them. Retrieving every posting a given rule produced is
-therefore possible from the committed audit data and is \emph{not} implemented as
-an API. We claim the provenance, not the tooling. Second, no
-review-queue workflow is part of this contribution; the loss-ledger records exist
-and are counted, and what an organization does with them is outside what is
-demonstrated here. Section~\ref{sec:threat} states the corresponding attack: an
-agent can inflate that queue faster than it is worked.
+Two limits, so the claim is not read as more than it is. First, what is
+implemented is the \emph{mechanism} --- the hold, the rule-level grouping, the
+revocation-impact report, each covered by tests --- not an operator product. There
+is no review-queue workflow, no user interface, and no persistence layer for the
+policy: a deployment supplies those. The loss-ledger records exist and are
+counted; what an organization does with them is outside what is demonstrated here.
+Second, holding and revoking bound the damage a wrong rule can do, but neither
+makes the resolver's judgement correct. A rule can be right for every entity but
+one, and the mechanism has no way to know that --- it enforces a human's decision,
+it does not supply one. Section~\ref{sec:threat} states the corresponding attack:
+an agent can inflate the review queue faster than a human works it, and neither
+the hold nor the ledger prevents that.
 
 \subsection{What can a hostile or buggy agent do to these invariants?}
 \label{sec:threat}
@@ -899,6 +933,15 @@ commands in the Kontablo repository (\texttt{accounting-esperanto}):
   \item Fiber / rollup (I3): \texttt{node\_fiber} and \texttt{rollup} in
   \pathtt{core/harness/ontology.py}; surfaced at REST
   \texttt{GET /accounts/\{id\}/fiber} and MCP \texttt{get\_node\_fiber}.
+  \item Human oversight (Section~\ref{sec:coresponsibility}):
+  \texttt{ReviewPolicy}, \texttt{postings\_by\_rule} and
+  \texttt{revocation\_impact} in \pathtt{core/harness/oversight.py}, plus
+  \texttt{ConsolidationResult.by\_rule()} in \pathtt{core/engine.py}; tests in
+  \pathtt{tests/test\_oversight.py}. Deliberately absent from
+  \pathtt{api/mcp/server.py}: the agent surface stays at six tools. The default
+  (no policy) holds nothing, so the numbers above are unaffected --- both
+  \texttt{results.json} artifacts regenerate byte-for-byte with the oversight
+  code present.
   \item $97.3\%$ deterministic resolution, $75$ entities, $68$ jurisdictions,
   $4$ escalations, and the tier distribution ($310$ Tier-1, $46$ Tier-2 over
   $366$ counted entries) quoted in Section~\ref{sec:inference-cost}:\\
