@@ -13,7 +13,17 @@ WHY THIS EXISTS
   does NOT score anything — that is a separate, later step (per the plan's
   Tier A design, §10).
 
-SOURCES (both license_regime="open_data" per project decision)
+LICENSING (corrected 2026-07-30 after inspecting the responses themselves)
+  Eurostat responses are open data. IMF responses are NOT: every fetched IMF
+  SDMX payload carries LICENSE="(c) International Monetary Fund Copyright. All
+  Rights Reserved. https://www.imf.org/external/terms.htm". That is not an
+  open-data grant, so IMF payloads take the plan's ambiguous-license regime
+  (§7): the snapshot is hashed and manifested but NEVER redistributed. Only
+  Kontablo's own derived output -- code lists and observation counts, which are
+  original work -- is committed. This was found by reading the payloads rather
+  than assuming, and the regime label was corrected to match.
+
+SOURCES
   1. IMF SDMX 2.1 API (https://api.imf.org/external/sdmx/2.1/) — the GFSM 2014
      statement dataflows GFS_COFOG (Classification of Functions of
      Government), GFS_SOO (Statement of Operations: revenue/expense) and
@@ -107,7 +117,9 @@ from scripts.real_data import _snapshot as snap  # noqa: E402
 
 EXPERIMENT = "public_sector_gfs_v1"
 DERIVED_DIR = os.path.join(ROOT, "research", "experiments", EXPERIMENT, "derived")
-LICENSE_REGIME = "open_data"
+LICENSE_REGIME_EUROSTAT = "open_data"
+# IMF payloads are All-Rights-Reserved; hash-and-manifest only, never redistribute.
+LICENSE_REGIME_IMF = "no_redistribution"
 
 TRAIN_MAX_YEAR = 2020  # inclusive; holdout is everything after this (pre-registered)
 
@@ -165,7 +177,7 @@ def imf_fetch_dataflow_versions() -> dict:
         f"{IMF_SDMX_BASE}/dataflow",
         EXPERIMENT,
         key="imf_dataflow_list",
-        license_regime=LICENSE_REGIME,
+        license_regime=LICENSE_REGIME_IMF,
         relpath="imf/dataflow_list.xml",
         timeout=120,
         note="Full IMF SDMX dataflow catalogue; parsed for GFS_COFOG/GFS_SOO/GFS_BS versions.",
@@ -191,7 +203,7 @@ def imf_fetch_codelist() -> list:
         f"{IMF_SDMX_BASE}/codelist/IMF.STA/CL_GFS_INDICATOR",
         EXPERIMENT,
         key="imf_codelist_gfs_indicator",
-        license_regime=LICENSE_REGIME,
+        license_regime=LICENSE_REGIME_IMF,
         relpath="imf/codelist_gfs_indicator.xml",
         timeout=60,
         note="IMF.STA:CL_GFS_INDICATOR — INDICATOR dimension codelist shared by all GFSM 2014 GFS dataflows.",
@@ -236,7 +248,7 @@ def imf_fetch_data(dataflow_id: str, agency: str, version: str, codes: list, key
         url,
         EXPERIMENT,
         key=f"imf_data_{key_suffix}",
-        license_regime=LICENSE_REGIME,
+        license_regime=LICENSE_REGIME_IMF,
         relpath=f"imf/data_{key_suffix}.xml",
         timeout=300,
         retries=3,
@@ -307,7 +319,7 @@ def eurostat_fetch_geo_list() -> list:
         url,
         EXPERIMENT,
         key="eurostat_geo_probe",
-        license_regime=LICENSE_REGIME,
+        license_regime=LICENSE_REGIME_EUROSTAT,
         relpath="eurostat/geo_probe.json",
         timeout=60,
         note="Single-slice probe (unit=MIO_EUR, na_item=D1, cofog99=GF01, time=2022) to enumerate reporters.",
@@ -327,7 +339,7 @@ def eurostat_fetch_country(geo: str) -> str:
         url,
         EXPERIMENT,
         key=f"eurostat_data_{geo}",
-        license_regime=LICENSE_REGIME,
+        license_regime=LICENSE_REGIME_EUROSTAT,
         relpath=f"eurostat/data_{geo}.json",
         timeout=120,
         note=f"gov_10a_exp full time series for geo={geo}, unit={EUROSTAT_UNIT}, sector={EUROSTAT_SECTOR}.",

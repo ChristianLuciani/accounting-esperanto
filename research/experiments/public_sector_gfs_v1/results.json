@@ -1,0 +1,153 @@
+{
+  "accuracy_gold_sample": {},
+  "baseline_naive_label_match": {},
+  "coverage": {
+    "all": {
+      "holdout": {
+        "by_stratum": {
+          "seen_in_train": {
+            "escalated_codes": 174,
+            "escalated_facts": 284822,
+            "n_codes": 212,
+            "n_facts": 394013,
+            "resolved_pct_unweighted": 17.9,
+            "resolved_pct_weighted": 27.7,
+            "tier1_codes": 19,
+            "tier1_facts": 85634,
+            "tier2_codes": 19,
+            "tier2_facts": 23557
+          }
+        },
+        "pooled": {
+          "escalated_codes": 174,
+          "escalated_facts": 284822,
+          "n_codes": 212,
+          "n_facts": 394013,
+          "resolved_pct_unweighted": 17.9,
+          "resolved_pct_weighted": 27.7,
+          "tier1_codes": 19,
+          "tier1_facts": 85634,
+          "tier2_codes": 19,
+          "tier2_facts": 23557
+        }
+      },
+      "train": {
+        "by_stratum": {
+          "seen_in_train": {
+            "escalated_codes": 174,
+            "escalated_facts": 1636154,
+            "n_codes": 212,
+            "n_facts": 2262829,
+            "resolved_pct_unweighted": 17.9,
+            "resolved_pct_weighted": 27.7,
+            "tier1_codes": 19,
+            "tier1_facts": 493363,
+            "tier2_codes": 19,
+            "tier2_facts": 133312
+          }
+        },
+        "pooled": {
+          "escalated_codes": 174,
+          "escalated_facts": 1636154,
+          "n_codes": 212,
+          "n_facts": 2262829,
+          "resolved_pct_unweighted": 17.9,
+          "resolved_pct_weighted": 27.7,
+          "tier1_codes": 19,
+          "tier1_facts": 493363,
+          "tier2_codes": 19,
+          "tier2_facts": 133312
+        }
+      }
+    },
+    "monetary": {
+      "holdout": {
+        "by_stratum": {
+          "seen_in_train": {
+            "escalated_codes": 174,
+            "escalated_facts": 284822,
+            "n_codes": 212,
+            "n_facts": 394013,
+            "resolved_pct_unweighted": 17.9,
+            "resolved_pct_weighted": 27.7,
+            "tier1_codes": 19,
+            "tier1_facts": 85634,
+            "tier2_codes": 19,
+            "tier2_facts": 23557
+          }
+        },
+        "pooled": {
+          "escalated_codes": 174,
+          "escalated_facts": 284822,
+          "n_codes": 212,
+          "n_facts": 394013,
+          "resolved_pct_unweighted": 17.9,
+          "resolved_pct_weighted": 27.7,
+          "tier1_codes": 19,
+          "tier1_facts": 85634,
+          "tier2_codes": 19,
+          "tier2_facts": 23557
+        }
+      },
+      "train": {
+        "by_stratum": {
+          "seen_in_train": {
+            "escalated_codes": 174,
+            "escalated_facts": 1636154,
+            "n_codes": 212,
+            "n_facts": 2262829,
+            "resolved_pct_unweighted": 17.9,
+            "resolved_pct_weighted": 27.7,
+            "tier1_codes": 19,
+            "tier1_facts": 493363,
+            "tier2_codes": 19,
+            "tier2_facts": 133312
+          }
+        },
+        "pooled": {
+          "escalated_codes": 174,
+          "escalated_facts": 1636154,
+          "n_codes": 212,
+          "n_facts": 2262829,
+          "resolved_pct_unweighted": 17.9,
+          "resolved_pct_weighted": 27.7,
+          "tier1_codes": 19,
+          "tier1_facts": 493363,
+          "tier2_codes": 19,
+          "tier2_facts": 133312
+        }
+      }
+    }
+  },
+  "crosswalk_declared_out_of_core": {
+    "gfs": 28
+  },
+  "crosswalk_sizes": {
+    "gfs": 19
+  },
+  "experiment": "public_sector_gfs_v1",
+  "gold_labels_loaded": 0,
+  "h2_extensions": {},
+  "inventory": {
+    "by_window": {
+      "holdout": {
+        "n_codes": 212,
+        "n_facts": 394013
+      },
+      "train": {
+        "n_codes": 212,
+        "n_facts": 2262829
+      }
+    },
+    "n_rows": 424
+  },
+  "provenance": {
+    "corpus": "real public filings / official statistics; see manifest.json",
+    "synthetic_comparison": "NOT comparable to the 97.3% synthetic figure from scripts/mass_consolidation_v2.py -- different corpus, different question"
+  },
+  "public_sector_extension_nodes_loaded": 19,
+  "public_sector_extension_status": "scoring-local augmentation only; NOT wired into core/harness (plan \u00a714). Public-sector coverage stays 'drafted, not yet empirically validated' in all public wording until H5 clears its threshold.",
+  "taxonomies": [
+    "gfs"
+  ]
+}

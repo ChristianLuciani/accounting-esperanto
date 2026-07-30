@@ -214,17 +214,14 @@ def load_inventory(experiment: str) -> list[dict]:
                 "n_filings": _int(r.get("n_filings")),
             })
 
-    for source, fname in (("imf_gfs", "imf_gfs_usage.csv"),
-                          ("eurostat_cofog", "eurostat_cofog_usage.csv")):
-        path = _find(base, fname)
-        if path is None:
-            continue
-        raw = _read_csv(path)
+    imf = _find(base, "imf_gfs_usage.csv")
+    if imf:
+        raw = _read_csv(imf)
         if raw:
-            _require(raw[0], path, "code", "window")
+            _require(raw[0], imf, "code", "window")
         for r in raw:
             rows.append({
-                "source": source,
+                "source": "imf_gfs",
                 "taxonomy": "gfs",
                 "window": r["window"],
                 "code": r["code"],
@@ -233,9 +230,38 @@ def load_inventory(experiment: str) -> list[dict]:
                 # Government finance statistics report monetary aggregates
                 # throughout; there is no share-count analogue in GFS/COFOG.
                 "measure_class": "monetary",
-                "n_facts": _int(r.get("n_observations")) or _int(r.get("n_facts")),
-                "n_filings": _int(r.get("n_countries")) or _int(r.get("n_filings")),
+                "n_facts": _int(r.get("n_observations")),
+                "n_filings": _int(r.get("n_countries")),
             })
+
+    # Eurostat gov_10a_exp is a TWO-DIMENSIONAL cube: every cell is one
+    # (cofog99 function x na_item economic transaction) pair. Those axes are not
+    # interchangeable and must not be pooled into one "code" column:
+    #   na_item  is the account-like axis (compensation of employees, subsidies)
+    #   cofog99  is the functional axis (health, defence) -- a rollup LENS, not
+    #            an account, since the same payroll euro carries both at once
+    # Each axis is emitted separately with observation counts summed over the
+    # other, so H5 can score the account axis while the functional axis is
+    # measured and reported as the orthogonal dimension it is.
+    euro = _find(base, "eurostat_cofog_usage.csv")
+    if euro:
+        raw = _read_csv(euro)
+        if raw:
+            _require(raw[0], euro, "cofog99", "na_item", "window")
+        for axis, source in (("na_item", "eurostat_na_item"),
+                             ("cofog99", "eurostat_cofog")):
+            for r in raw:
+                rows.append({
+                    "source": source,
+                    "taxonomy": "gfs",
+                    "window": r["window"],
+                    "code": r[axis],
+                    "name": r.get(f"{axis}_label_en") or "",
+                    "taxonomy_class": "standard",
+                    "measure_class": "monetary",
+                    "n_facts": _int(r.get("n_observations")),
+                    "n_filings": _int(r.get("n_countries")),
+                })
 
     return collapse_versions(rows)
 
@@ -545,13 +571,28 @@ def gold_class(gold: str) -> str:
     is to ESCALATE -- the deterministic tiers resolve leaves, and a subtotal
     reaching a leaf node is a real error worth catching.
 
+    A fourth class appears only in the public-sector corpus. COFOG codes
+    (GF01 "General public services", GF07 "Health") classify spending by
+    PURPOSE, not by account: the same payroll euro is simultaneously an
+    economic-type expense and a functional-category expense. That is an
+    orthogonal axis, not a node and not a subtotal of nodes -- in Kontablo terms
+    it is a rollup LENS (principle #1, "graph, not tree": one UUID, multiple
+    parallel hierarchies). Scoring functional codes as though they had to resolve
+    to an account would be a category error that penalizes the ontology for a
+    distinction it models correctly, so they get their own class.
+
       "<node id>"              leaf      resolvable to a Kontablo core node
       "AGGREGATE:<lens>"       aggregate representable only as a computed rollup
+      "LENS:<axis>"            lens      an orthogonal classification axis
       ""                       out_of_scope  no Kontablo concept at all
     """
     if not gold:
         return "out_of_scope"
-    return "aggregate" if gold.startswith("AGGREGATE:") else "leaf"
+    if gold.startswith("AGGREGATE:"):
+        return "aggregate"
+    if gold.startswith("LENS:"):
+        return "lens"
+    return "leaf"
 
 
 def summarize_accuracy(detail: list[dict]) -> dict:

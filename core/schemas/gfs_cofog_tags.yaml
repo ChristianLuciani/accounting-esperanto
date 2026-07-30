@@ -1,0 +1,373 @@
+# Kontablo crosswalk: government finance statistics -> Kontablo public-sector nodes
+#
+# WHAT THIS IS
+#   A curated crosswalk from the classification codes actually used in real
+#   government finance statistics (IMF GFSM 2014 economic-type indicators and
+#   Eurostat/ESA 2010 na_item transaction codes) to the drafted IPSAS extension
+#   in localizations/industries/public_sector_ipsas.yaml (19 nodes, UUID range
+#   A0000000-...), falling back to the 30-node corporate core where the public
+#   sector shares a concept with it.
+#
+#   Built for Tier A5 / hypothesis H5 of research/real_data_validation_plan.md.
+#
+# BUILT FROM THE TRAIN WINDOW ONLY
+#   Codes and labels were taken from observations up to and including 2020
+#   (research/experiments/public_sector_gfs_v1/derived/*_usage.csv, window=train).
+#   The holdout window (2021+) was not inspected while writing this file.
+#
+# THE THREE KINDS OF NON-MAPPING, ALL DELIBERATE AND TYPED
+#   A null kontablo_id here is never an omission. It is one of:
+#     aggregate   a balancing item or total the ontology computes by rolling up
+#                 leaves (Revenue, Expense, Net lending/borrowing). Kontablo
+#                 represents these, but as derived values, not as nodes.
+#     lens        a FUNCTIONAL classification (COFOG GF01..GF10). These classify
+#                 spending by purpose, not by account: the same payroll euro is
+#                 simultaneously an economic-type expense and a functional-category
+#                 expense. That is an orthogonal axis -- in Kontablo it is a rollup
+#                 lens (principle #1, "graph, not tree"), not a node. Treating a
+#                 COFOG function as an account would be a category error.
+#     out_of_scope  no Kontablo concept at any level.
+#
+# STATUS
+#   The public-sector extension is DRAFTED, NOT YET EMPIRICALLY VALIDATED, and
+#   is not wired into core/harness/ontology.py. This crosswalk does not change
+#   that. Per plan §2 and §14, promotion to "active" requires H5 to clear its
+#   threshold AND a separate, explicit decision to wire it in.
+
+metadata:
+  source_taxonomy: "gfs"
+  standards: ["IMF GFSM 2014", "ESA 2010 (Eurostat gov_10a_exp)", "COFOG 1999"]
+  built_from_window: "train (years <= 2020)"
+  built_from:
+    - "research/experiments/public_sector_gfs_v1/derived/imf_gfs_usage.csv"
+    - "research/experiments/public_sector_gfs_v1/derived/eurostat_cofog_usage.csv"
+  holdout_seen: false
+  target_extension: "localizations/industries/public_sector_ipsas.yaml"
+  kontablo_version: "0.3.0"
+  last_updated: "2026-07-30"
+
+mappings:
+
+  # ---------------------------------------------------------------------------
+  # IMF GFSM 2014 -- revenue (economic type)
+  # ---------------------------------------------------------------------------
+  "G11_T":
+    kontablo_id: "GOV_TaxRevenue"
+    label_en: "Taxes, Transactions"
+    confidence: "high"
+    note: "GFSM 2014 revenue class 11 = taxes; IPSAS 23 non-exchange revenue."
+
+  "G12_T":
+    kontablo_id: "GOV_SocialContributions"
+    label_en: "Social contributions, Transactions"
+    confidence: "high"
+
+  "G13_T":
+    kontablo_id: "GOV_TransfersReceived"
+    label_en: "Grants receivable, Transactions"
+    confidence: "high"
+    note: "GFSM class 13 grants receivable = intergovernmental/foreign transfers received."
+
+  "G14_T":
+    kontablo_id: "GOV_FeeRevenue_Exchange"
+    label_en: "Other revenue, Transactions"
+    confidence: "low"
+    note: >-
+      GFSM class 14 bundles sales of goods and services (exchange, IPSAS 9) with
+      property income, fines and voluntary transfers (non-exchange). The node
+      covers only the exchange component, so this is a partial mapping and the
+      residual is a known imprecision, not a clean identity.
+
+  "G1_T":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "revenue"
+    label_en: "Revenue, Transactions"
+    note: "Total revenue = G11+G12+G13+G14. Computed rollup, not a node."
+
+  # ---------------------------------------------------------------------------
+  # IMF GFSM 2014 -- expense (economic type)
+  # ---------------------------------------------------------------------------
+  "G21_T":
+    kontablo_id: "EXP_PersonnelCosts_Gov"
+    label_en: "Compensation of employees, Transactions"
+    confidence: "high"
+
+  "G22_T":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    label_en: "Use of goods and services, Transactions"
+    note: >-
+      Intermediate consumption. The drafted public-sector extension has no node
+      for it and the corporate core's expense.admin is not equivalent (it is
+      general and administrative expense, a narrower concept that excludes
+      service delivery inputs). Recorded as a genuine gap rather than force-fitted
+      -- this is one of the largest real government expense lines by observation
+      count, so the gap is material.
+
+  "G23_T":
+    kontablo_id: "expense.depreciation"
+    label_en: "Consumption of fixed capital (CFC), Transactions"
+    confidence: "medium"
+    note: >-
+      CFC is the national-accounts analogue of depreciation. Mapped to the
+      corporate core node because the public-sector extension defines no separate
+      one; measurement basis differs (CFC is current-cost, accounting
+      depreciation is typically historical-cost), so this is an economic
+      equivalence, not an identity.
+
+  "G24_T":
+    kontablo_id: "EXP_DebtService"
+    label_en: "Interest payable, Transactions"
+    confidence: "high"
+
+  "G25_T":
+    kontablo_id: "EXP_GrantsAndSubsidiesPaid"
+    label_en: "Subsidies payable, Transactions"
+    confidence: "high"
+
+  "G26_T":
+    kontablo_id: "EXP_GrantsAndSubsidiesPaid"
+    label_en: "Grants payable, Transactions"
+    confidence: "high"
+    note: >-
+      Subsidies (G25) and grants payable (G26) both collapse into the single
+      extension node. A real many-to-one projection: the node cannot distinguish
+      them, which is a deliberate coarsening (an L3 loss in ADR-016 terms), not
+      an error.
+
+  "G27_T":
+    kontablo_id: "EXP_SocialBenefitsExpense"
+    label_en: "Social benefits, Transactions"
+    confidence: "high"
+    note: "IPSAS 42 social benefits."
+
+  "G28_T":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    label_en: "Other expense, Transactions"
+    note: "Residual expense class; no single node corresponds to it."
+
+  "G2_T":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "expense"
+    label_en: "Expense, Transactions"
+    note: "Total expense = G21..G28. Computed rollup, not a node."
+
+  # ---------------------------------------------------------------------------
+  # IMF GFSM 2014 -- balancing items and stock positions
+  # ---------------------------------------------------------------------------
+  "GPB_T":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "income"
+    label_en: "Primary net lending (+) / net borrowing (-), Transactions"
+    note: >-
+      Balancing item. public_sector_ipsas.yaml already defines it as a computed
+      aggregation rule (primary_balance), which is precisely the point: it is
+      derived, not posted.
+
+  "GGB_T":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "income"
+    label_en: "Government balance per national definition, Transactions"
+    note: "Balancing item under a national fiscal definition; derived, not posted."
+
+  "G6_A_SP":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "equity"
+    label_en: "Net worth, Assets, Stock positions"
+    note: >-
+      Net worth = assets - liabilities, the public-sector analogue of equity.
+      EQ_AccumulatedSurplusDeficit is a component of it, not the same thing, so
+      this is scored as an aggregate rather than mapped to that node.
+
+  "NFA_A_SP":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "asset.noncurrent"
+    label_en: "Nonfinancial assets, Stock positions"
+    note: >-
+      Total nonfinancial assets spans the extension's infrastructure, heritage
+      and military nodes plus general PP&E; it is their rollup, not any one node.
+
+  # ---------------------------------------------------------------------------
+  # COFOG functional classification (IMF GF* and Eurostat cofog99)
+  # An orthogonal axis, deliberately not an account. See header.
+  # ---------------------------------------------------------------------------
+  "GF01_T":
+    kontablo_id: null
+    out_of_core_reason: "lens"
+    lens_axis: "cofog"
+    label_en: "General public services, Transactions"
+  "GF02_T":
+    kontablo_id: null
+    out_of_core_reason: "lens"
+    lens_axis: "cofog"
+    label_en: "Defence, Transactions"
+  "GF03_T":
+    kontablo_id: null
+    out_of_core_reason: "lens"
+    lens_axis: "cofog"
+    label_en: "Public order and safety, Transactions"
+  "GF04_T":
+    kontablo_id: null
+    out_of_core_reason: "lens"
+    lens_axis: "cofog"
+    label_en: "Economic affairs, Transactions"
+  "GF05_T":
+    kontablo_id: null
+    out_of_core_reason: "lens"
+    lens_axis: "cofog"
+    label_en: "Environmental protection, Transactions"
+  "GF06_T":
+    kontablo_id: null
+    out_of_core_reason: "lens"
+    lens_axis: "cofog"
+    label_en: "Housing and community amenities, Transactions"
+  "GF07_T":
+    kontablo_id: null
+    out_of_core_reason: "lens"
+    lens_axis: "cofog"
+    label_en: "Health, Transactions"
+  "GF08_T":
+    kontablo_id: null
+    out_of_core_reason: "lens"
+    lens_axis: "cofog"
+    label_en: "Recreation, culture and religion, Transactions"
+  "GF09_T":
+    kontablo_id: null
+    out_of_core_reason: "lens"
+    lens_axis: "cofog"
+    label_en: "Education, Transactions"
+  "GF10_T":
+    kontablo_id: null
+    out_of_core_reason: "lens"
+    lens_axis: "cofog"
+    label_en: "Social protection, Transactions"
+
+  # ---------------------------------------------------------------------------
+  # Eurostat / ESA 2010 na_item transaction codes
+  # ---------------------------------------------------------------------------
+  "D1":
+    kontablo_id: "EXP_PersonnelCosts_Gov"
+    label_en: "Compensation of employees"
+    confidence: "high"
+    note: "ESA 2010 D.1; the same concept as GFSM G21."
+
+  "D3":
+    kontablo_id: "EXP_GrantsAndSubsidiesPaid"
+    label_en: "Subsidies"
+    confidence: "high"
+
+  "D4":
+    kontablo_id: "EXP_DebtService"
+    label_en: "Property income"
+    confidence: "low"
+    note: >-
+      D.4 payable by government is dominated by interest, but also includes rent
+      and other property income. Mapped to debt service on the dominant
+      component; the residual is a known imprecision.
+
+  "D62":
+    kontablo_id: "EXP_SocialBenefitsExpense"
+    label_en: "Social benefits other than social transfers in kind"
+    confidence: "high"
+
+  "D632":
+    kontablo_id: "EXP_SocialBenefitsExpense"
+    label_en: "Social transfers in kind - purchased market production"
+    confidence: "medium"
+    note: "In-kind social transfers; same node, different delivery mechanism."
+
+  "D7":
+    kontablo_id: "EXP_GrantsAndSubsidiesPaid"
+    label_en: "Other current transfers"
+    confidence: "medium"
+
+  "D9":
+    kontablo_id: "EXP_GrantsAndSubsidiesPaid"
+    label_en: "Capital transfers"
+    confidence: "medium"
+    note: "Capital rather than current transfers; the node does not distinguish them."
+
+  "D92":
+    kontablo_id: "EXP_GrantsAndSubsidiesPaid"
+    label_en: "Investment grants"
+    confidence: "medium"
+
+  "P2":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    label_en: "Intermediate consumption"
+    note: "Same gap as GFSM G22 -- no node for service-delivery inputs."
+
+  "P51G":
+    kontablo_id: "ASSET_InfrastructureAssets"
+    label_en: "Gross fixed capital formation"
+    confidence: "low"
+    note: >-
+      GFCF is capital EXPENDITURE that creates fixed assets; government GFCF is
+      dominated by infrastructure. Mapped on that dominance, but it is a flow
+      into an asset, not the asset balance itself -- a real imprecision, flagged
+      rather than hidden.
+
+  "P5":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "asset.noncurrent"
+    label_en: "Gross capital formation"
+    note: "GFCF plus inventory changes; a rollup."
+
+  "P3":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "expense"
+    label_en: "Final consumption expenditure"
+    note: "National-accounts aggregate spanning compensation, intermediate consumption and CFC."
+
+  "P31":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "expense"
+    label_en: "Individual consumption expenditure"
+
+  "P32":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "expense"
+    label_en: "Collective consumption expenditure"
+
+  "TE":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "expense"
+    label_en: "Total general government expenditure"
+    note: "The top-level expenditure total."
+
+  "NP":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    label_en: "Acquisitions less disposals of non-financial non-produced assets"
+    note: "Land and similar non-produced assets; no node in the drafted extension."
+
+  "OP5ANP":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "asset.noncurrent"
+    label_en: "Gross capital formation and acquisitions less disposals of non-financial non-produced assets"
+
+  "D29_D5_D8":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    label_en: "Other taxes on production; current taxes on income, wealth, etc; adjustment for the change in pension entitlements"
+    note: "A composite Eurostat line bundling unrelated concepts; no single node applies."
+
+  "P2_D29_D5_D8":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    label_en: "Intermediate consumption; other taxes on production; current taxes on income, wealth, etc.; adjustment for the change in pension entitlements"
+    note: "Composite line; no single node applies."

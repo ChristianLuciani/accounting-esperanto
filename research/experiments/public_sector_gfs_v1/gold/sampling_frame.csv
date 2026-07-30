@@ -1,0 +1,213 @@
+source,taxonomy,code,name,measure_class,n_facts,n_filings,band,seen_in_train,stratum
+eurostat_cofog,gfs,TOTAL,Total,monetary,2456,30,head,True,head/seen
+eurostat_cofog,gfs,GF07,Health,monetary,2408,30,head,True,head/seen
+eurostat_cofog,gfs,GF10,Social protection,monetary,2408,30,head,True,head/seen
+eurostat_cofog,gfs,GF08,"Recreation, culture and religion",monetary,2404,30,head,True,head/seen
+eurostat_cofog,gfs,GF09,Education,monetary,2403,30,head,True,head/seen
+eurostat_cofog,gfs,GF04,Economic affairs,monetary,2390,30,head,True,head/seen
+eurostat_cofog,gfs,GF0802,Cultural services,monetary,2374,30,head,True,head/seen
+eurostat_cofog,gfs,GF0703,Hospital services,monetary,2372,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF1002,Old age,monetary,2370,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0801,Recreational and sporting services,monetary,2365,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF1004,Family and children,monetary,2360,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0904,Tertiary education,monetary,2359,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF1001,Sickness and disability,monetary,2359,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF01,General public services,monetary,2357,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF1007,Social exclusion n.e.c.,monetary,2357,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF05,Environmental protection,monetary,2352,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0702,Outpatient services,monetary,2351,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0901,Pre-primary and primary education,monetary,2350,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0902,Secondary education,monetary,2348,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0905,Education not definable by level,monetary,2348,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0906,Subsidiary services to education,monetary,2348,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF1009,Social protection n.e.c.,monetary,2347,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF1006,Housing,monetary,2343,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0704,Public health services,monetary,2342,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF06,Housing and community amenities,monetary,2340,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0101,"Executive and legislative organs, financial and fiscal affairs, external affairs",monetary,2338,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0506,Environmental protection n.e.c.,monetary,2338,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0401,"General economic, commercial and labour affairs",monetary,2335,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0405,Transport,monetary,2334,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0706,Health n.e.c.,monetary,2332,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0804,Religious and other community services,monetary,2332,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0501,Waste management,monetary,2330,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF03,Public order and safety,monetary,2329,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0407,Other industries,monetary,2328,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0601,Housing development,monetary,2328,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0402,"Agriculture, forestry, fishing and hunting",monetary,2327,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0602,Community development,monetary,2327,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF1005,Unemployment,monetary,2325,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0606,Housing and community amenities n.e.c.,monetary,2324,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0603,Water supply,monetary,2323,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0908,Education n.e.c.,monetary,2323,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0106,General public services n.e.c.,monetary,2319,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF02,Defence,monetary,2317,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0403,Fuel and energy,monetary,2317,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0803,Broadcasting and publishing services,monetary,2315,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0104,Basic research,monetary,2314,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0103,General services,monetary,2313,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0406,Communication,monetary,2312,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0903,Post-secondary non-tertiary education,monetary,2308,29,mid,True,mid/seen
+eurostat_cofog,gfs,GF0302,Fire-protection services,monetary,2307,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0404,"Mining, manufacturing and construction",monetary,2307,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0907,R&D Education,monetary,2306,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0306,Public order and safety n.e.c.,monetary,2303,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0502,Waste water management,monetary,2301,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0201,Military defence,monetary,2300,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0504,Protection of biodiversity and landscape,monetary,2299,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0301,Police services,monetary,2296,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0303,Law courts,monetary,2296,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0205,Defence n.e.c.,monetary,2290,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0304,Prisons,monetary,2288,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0604,Street lighting,monetary,2286,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0305,R&D Public order and safety,monetary,2285,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0806,"Recreation, culture and religion n.e.c.",monetary,2285,29,mid,True,mid/seen
+eurostat_cofog,gfs,GF0408,R&D Economic affairs,monetary,2284,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0701,"Medical products, appliances and equipment",monetary,2284,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0203,Foreign military aid,monetary,2279,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF1003,Survivors,monetary,2278,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0503,Pollution abatement,monetary,2264,29,mid,True,mid/seen
+eurostat_cofog,gfs,GF0705,R&D Health,monetary,2262,29,mid,True,mid/seen
+eurostat_cofog,gfs,GF0505,R&D Environmental protection,monetary,2259,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0102,Foreign economic aid,monetary,2257,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0805,"R&D Recreation, culture and religion",monetary,2253,30,mid,True,mid/seen
+eurostat_cofog,gfs,GF0202,Civil defence,monetary,2250,29,mid,True,mid/seen
+eurostat_cofog,gfs,GF0409,Economic affairs n.e.c.,monetary,2249,29,mid,True,mid/seen
+eurostat_cofog,gfs,GF0204,R&D Defence,monetary,2248,29,mid,True,mid/seen
+eurostat_cofog,gfs,GF0107,Public debt transactions,monetary,2241,30,tail,True,tail/seen
+eurostat_cofog,gfs,GF1008,R&D Social protection,monetary,2211,29,tail,True,tail/seen
+eurostat_cofog,gfs,GF0105,R&D General public services,monetary,2208,29,tail,True,tail/seen
+eurostat_cofog,gfs,GF0605,R&D Housing and community amenities,monetary,2200,28,tail,True,tail/seen
+eurostat_cofog,gfs,GF0108,Transfers of a general character between different levels of government,monetary,2188,28,tail,True,tail/seen
+eurostat_na_item,gfs,TE,Total general government expenditure,monetary,9621,30,head,True,head/seen
+eurostat_na_item,gfs,P3,Final consumption expenditure,monetary,9600,30,head,True,head/seen
+eurostat_na_item,gfs,P2,Intermediate consumption,monetary,9594,30,head,True,head/seen
+eurostat_na_item,gfs,OP5ANP,Gross capital formation and acquisitions less disposals of non-financial non-produced assets,monetary,9560,30,head,True,head/seen
+eurostat_na_item,gfs,P5,Gross capital formation,monetary,9560,30,head,True,head/seen
+eurostat_na_item,gfs,P51G,Gross fixed capital formation,monetary,9559,30,head,True,head/seen
+eurostat_na_item,gfs,D1,Compensation of employees,monetary,9556,30,head,True,head/seen
+eurostat_na_item,gfs,D7,Other current transfers,monetary,9507,30,head,True,head/seen
+eurostat_na_item,gfs,D9,Capital transfers,monetary,9311,30,head,True,head/seen
+eurostat_na_item,gfs,P2_D29_D5_D8,"Intermediate consumption; other taxes on production; current taxes on income, wealth, etc.; adjustment for the change in pension entitlements",monetary,9274,29,head,True,head/seen
+eurostat_na_item,gfs,D92,Investment grants,monetary,9266,30,head,True,head/seen
+eurostat_na_item,gfs,D3,Subsidies,monetary,9228,30,head,True,head/seen
+eurostat_na_item,gfs,NP,Acquisitions less disposals of non-financial non-produced assets,monetary,9012,30,head,True,head/seen
+eurostat_na_item,gfs,D29_D5_D8,"""Other taxes on production; current taxes on income, wealth, etc; adjustment for the change in pension entitlements""",monetary,8917,30,head,True,head/seen
+eurostat_na_item,gfs,D62_D632,Social benefits other than social transfers in kind and social transfers in kind - purchased market production,monetary,8789,30,head,True,head/seen
+eurostat_na_item,gfs,D62,Social benefits other than social transfers in kind,monetary,8767,30,head,True,head/seen
+eurostat_na_item,gfs,D632,Social transfers in kind - purchased market production,monetary,8701,30,head,True,head/seen
+eurostat_na_item,gfs,D4,Property income,monetary,8607,30,head,True,head/seen
+eurostat_na_item,gfs,P32,Collective consumption expenditure,monetary,8078,29,head,True,head/seen
+eurostat_na_item,gfs,P31,Individual consumption expenditure,monetary,6968,29,head,True,head/seen
+eurostat_na_item,gfs,D4_S1311,"Property income, of which payable to subsector S1311",monetary,324,2,tail,True,tail/seen
+eurostat_na_item,gfs,D4_S1312,"Property income, of which payable to subsector S1312",monetary,324,2,tail,True,tail/seen
+eurostat_na_item,gfs,D4_S1313,"Property income, of which payable to subsector S1313",monetary,324,2,tail,True,tail/seen
+eurostat_na_item,gfs,D4_S1314,"Property income, of which payable to subsector S1314",monetary,324,2,tail,True,tail/seen
+eurostat_na_item,gfs,D7_S1311,"Other current transfers,of which payable to subsector S1311",monetary,324,2,tail,True,tail/seen
+eurostat_na_item,gfs,D7_S1312,"Other current transfers,of which payable to subsector S1312",monetary,324,2,tail,True,tail/seen
+eurostat_na_item,gfs,D7_S1313,"Other current transfers,of which payable to subsector S1313",monetary,324,2,tail,True,tail/seen
+eurostat_na_item,gfs,D7_S1314,"Other current transfers,of which payable to subsector S1314",monetary,324,2,tail,True,tail/seen
+eurostat_na_item,gfs,D9_S1311,"Capital transfers, expenditure, of which to subsector central government (S1311)",monetary,324,2,tail,True,tail/seen
+eurostat_na_item,gfs,D9_S1312,"Capital transfers, expenditure, of which to subsector state government (S1312)",monetary,324,2,tail,True,tail/seen
+eurostat_na_item,gfs,D9_S1313,"Capital transfers, expenditure, of which to subsector local government (S1313)",monetary,324,2,tail,True,tail/seen
+eurostat_na_item,gfs,D9_S1314,"Capital transfers, expenditure, of which to subsector social security funds (S1314)",monetary,324,2,tail,True,tail/seen
+imf_gfs,gfs,G12_T,"Social contributions, Transactions",monetary,338,94,tail,True,tail/seen
+imf_gfs,gfs,G11_T,"Taxes, Transactions",monetary,337,94,tail,True,tail/seen
+imf_gfs,gfs,G2_T,"Expense, Transactions",monetary,335,94,tail,True,tail/seen
+imf_gfs,gfs,G1_T,"Revenue, Transactions",monetary,333,93,tail,True,tail/seen
+imf_gfs,gfs,G24_T,"Interest payable, Transactions",monetary,332,94,tail,True,tail/seen
+imf_gfs,gfs,G21_T,"Compensation of employees, Transactions",monetary,331,93,tail,True,tail/seen
+imf_gfs,gfs,G22_T,"Use of goods and services, Transactions",monetary,331,93,tail,True,tail/seen
+imf_gfs,gfs,G25_T,"Subsidies payable, Transactions",monetary,331,93,tail,True,tail/seen
+imf_gfs,gfs,G27_T,"Social benefits, Transactions",monetary,331,93,tail,True,tail/seen
+imf_gfs,gfs,GPB_T,"Primary net lending (+) / net borrowing (-), Transactions",monetary,328,92,tail,True,tail/seen
+imf_gfs,gfs,G14_T,"Other revenue, Transactions",monetary,308,87,tail,True,tail/seen
+imf_gfs,gfs,G26_T,"Grants payable, Transactions",monetary,308,88,tail,True,tail/seen
+imf_gfs,gfs,G28_T,"Other expense, Transactions",monetary,308,88,tail,True,tail/seen
+imf_gfs,gfs,G13_T,"Grants receivable, Transactions",monetary,307,87,tail,True,tail/seen
+imf_gfs,gfs,GF04_T,"Economic affairs, Transactions",monetary,252,73,tail,True,tail/seen
+imf_gfs,gfs,GF05_T,"Environmental protection, Transactions",monetary,252,73,tail,True,tail/seen
+imf_gfs,gfs,GF06_T,"Housing and community amenities, Transactions",monetary,252,73,tail,True,tail/seen
+imf_gfs,gfs,GF07_T,"Health, Transactions",monetary,252,73,tail,True,tail/seen
+imf_gfs,gfs,GF08_T,"Recreation, culture and religion, Transactions",monetary,252,73,tail,True,tail/seen
+imf_gfs,gfs,GF09_T,"Education, Transactions",monetary,252,73,tail,True,tail/seen
+imf_gfs,gfs,GF10_T,"Social protection, Transactions",monetary,252,73,tail,True,tail/seen
+imf_gfs,gfs,GF01_T,"General public services, Transactions",monetary,251,73,tail,True,tail/seen
+imf_gfs,gfs,GF03_T,"Public order and safety, Transactions",monetary,250,73,tail,True,tail/seen
+imf_gfs,gfs,GF02_T,"Defence, Transactions",monetary,248,74,tail,True,tail/seen
+imf_gfs,gfs,GF0170_T,"Public debt transactions, Transactions",monetary,233,68,tail,True,tail/seen
+imf_gfs,gfs,GF042_T,"Agriculture, forestry, fishing and hunting, Transactions",monetary,233,68,tail,True,tail/seen
+imf_gfs,gfs,GF043_T,"Fuel and energy, Transactions",monetary,233,68,tail,True,tail/seen
+imf_gfs,gfs,GF044_T,"Mining, manufacturing and construction, Transactions",monetary,233,68,tail,True,tail/seen
+imf_gfs,gfs,GF045_T,"Transport, Transactions",monetary,233,68,tail,True,tail/seen
+imf_gfs,gfs,GF072_T,"Outpatient services, Transactions",monetary,233,68,tail,True,tail/seen
+imf_gfs,gfs,GF073_T,"Hospital services, Transactions",monetary,233,68,tail,True,tail/seen
+imf_gfs,gfs,GF0740_T,"Public health services, Transactions",monetary,233,68,tail,True,tail/seen
+imf_gfs,gfs,GF094_T,"Tertiary education, Transactions",monetary,233,68,tail,True,tail/seen
+imf_gfs,gfs,GF0160_T,"General public services n.e.c., Transactions",monetary,232,68,tail,True,tail/seen
+imf_gfs,gfs,GF025_T,"Defence n.e.c., Transactions",monetary,232,70,tail,True,tail/seen
+imf_gfs,gfs,GF041_T,"General economic, commercial and labour affairs, Transactions",monetary,232,68,tail,True,tail/seen
+imf_gfs,gfs,GF0712_T,"Other medical products, Transactions",monetary,232,68,tail,True,tail/seen
+imf_gfs,gfs,GF0760_T,"Health n.e.c., Transactions",monetary,232,68,tail,True,tail/seen
+imf_gfs,gfs,GF0950_T,"Education not definable by level, Transactions",monetary,232,68,tail,True,tail/seen
+imf_gfs,gfs,GF0980_T,"Education n.e.c., Transactions",monetary,232,68,tail,True,tail/seen
+imf_gfs,gfs,GF0610_T,"Housing development, Transactions",monetary,231,68,tail,True,tail/seen
+imf_gfs,gfs,GF0630_T,"Water supply, Transactions",monetary,231,68,tail,True,tail/seen
+imf_gfs,gfs,GF0640_T,"Street lighting, Transactions",monetary,231,68,tail,True,tail/seen
+imf_gfs,gfs,GF0660_T,"Housing and community amenities n.e.c., Transactions",monetary,231,68,tail,True,tail/seen
+imf_gfs,gfs,GF0810_T,"Recreational and sporting services, Transactions",monetary,231,68,tail,True,tail/seen
+imf_gfs,gfs,GF0820_T,"Cultural services, Transactions",monetary,231,68,tail,True,tail/seen
+imf_gfs,gfs,GF0830_T,"Broadcasting and publishing services, Transactions",monetary,231,68,tail,True,tail/seen
+imf_gfs,gfs,GF012_T,"Foreign economic aid, Transactions",monetary,230,67,tail,True,tail/seen
+imf_gfs,gfs,GF013_T,"General services, Transactions",monetary,230,67,tail,True,tail/seen
+imf_gfs,gfs,GF0140_T,"Basic research, Transactions",monetary,230,67,tail,True,tail/seen
+imf_gfs,gfs,GF0180_T,"Transfers of a general character between different levels of government, Transactions",monetary,230,67,tail,True,tail/seen
+imf_gfs,gfs,GF0210_T,"Military defence, Transactions",monetary,230,69,tail,True,tail/seen
+imf_gfs,gfs,GF0230_T,"Foreign military aid, Transactions",monetary,230,69,tail,True,tail/seen
+imf_gfs,gfs,GF011_T,"Executive and legislative organs, financial and fiscal affairs, external affairs, Transactions",monetary,229,67,tail,True,tail/seen
+imf_gfs,gfs,GF0460_T,"Communication, Transactions",monetary,229,67,tail,True,tail/seen
+imf_gfs,gfs,GF0510_T,"Waste management, Transactions",monetary,229,68,tail,True,tail/seen
+imf_gfs,gfs,GF0520_T,"Waste water management, Transactions",monetary,229,68,tail,True,tail/seen
+imf_gfs,gfs,GF0540_T,"Protection of biodiversity and landscape, Transactions",monetary,229,68,tail,True,tail/seen
+imf_gfs,gfs,GF0560_T,"Environmental protection n.e.c., Transactions",monetary,229,68,tail,True,tail/seen
+imf_gfs,gfs,GF091_T,"Pre-primary and primary education, Transactions",monetary,229,67,tail,True,tail/seen
+imf_gfs,gfs,GF092_T,"Secondary education, Transactions",monetary,229,67,tail,True,tail/seen
+imf_gfs,gfs,GF0930_T,"Post-secondary non-tertiary education, Transactions",monetary,229,67,tail,True,tail/seen
+imf_gfs,gfs,GF047_T,"Other industries, Transactions",monetary,228,67,tail,True,tail/seen
+imf_gfs,gfs,GF048_T,"R&D Economic affairs, Transactions",monetary,228,67,tail,True,tail/seen
+imf_gfs,gfs,GF0490_T,"Economic affairs n.e.c., Transactions",monetary,228,67,tail,True,tail/seen
+imf_gfs,gfs,GF0860_T,"Recreation, culture and religion n.e.c., Transactions",monetary,228,67,tail,True,tail/seen
+imf_gfs,gfs,GF0960_T,"Subsidiary services to education, Transactions",monetary,228,67,tail,True,tail/seen
+imf_gfs,gfs,GF0970_T,"R&D Education, Transactions",monetary,228,67,tail,True,tail/seen
+imf_gfs,gfs,GF101_T,"Sickness and disability, Transactions",monetary,228,67,tail,True,tail/seen
+imf_gfs,gfs,GF1020_T,"Old age, Transactions",monetary,228,67,tail,True,tail/seen
+imf_gfs,gfs,GF1040_T,"Family and children, Transactions",monetary,228,67,tail,True,tail/seen
+imf_gfs,gfs,GF1050_T,"Unemployment, Transactions",monetary,228,67,tail,True,tail/seen
+imf_gfs,gfs,GF1060_T,"Housing, Transactions",monetary,228,67,tail,True,tail/seen
+imf_gfs,gfs,GF1070_T,"Social exclusion n.e.c., Transactions",monetary,228,67,tail,True,tail/seen
+imf_gfs,gfs,GF1090_T,"Social protection n.e.c., Transactions",monetary,228,67,tail,True,tail/seen
+imf_gfs,gfs,GF0310_T,"Police services, Transactions",monetary,227,67,tail,True,tail/seen
+imf_gfs,gfs,GF0320_T,"Fire-protection services, Transactions",monetary,227,67,tail,True,tail/seen
+imf_gfs,gfs,GF0330_T,"Law courts, Transactions",monetary,227,67,tail,True,tail/seen
+imf_gfs,gfs,GF0340_T,"Prisons, Transactions",monetary,227,67,tail,True,tail/seen
+imf_gfs,gfs,GF0360_T,"Public order and safety n.e.c., Transactions",monetary,227,67,tail,True,tail/seen
+imf_gfs,gfs,GF0620_T,"Community development, Transactions",monetary,227,67,tail,True,tail/seen
+imf_gfs,gfs,GF0840_T,"Religious and other community services, Transactions",monetary,227,67,tail,True,tail/seen
+imf_gfs,gfs,GF0220_T,"Civil defence, Transactions",monetary,226,68,tail,True,tail/seen
+imf_gfs,gfs,GF0530_T,"Pollution abatement, Transactions",monetary,226,67,tail,True,tail/seen
+imf_gfs,gfs,GF075_T,"R&D Health, Transactions",monetary,225,66,tail,True,tail/seen
+imf_gfs,gfs,GF0850_T,"R&D Recreation, culture and religion, Transactions",monetary,224,67,tail,True,tail/seen
+imf_gfs,gfs,GF0240_T,"R&D Defence, Transactions",monetary,223,67,tail,True,tail/seen
+imf_gfs,gfs,GF0350_T,"R&D Public order and safety, Transactions",monetary,223,66,tail,True,tail/seen
+imf_gfs,gfs,GF0550_T,"R&D Environmental protection, Transactions",monetary,223,67,tail,True,tail/seen
+imf_gfs,gfs,GF1030_T,"Survivors, Transactions",monetary,221,65,tail,True,tail/seen
+imf_gfs,gfs,GF1080_T,"R&D Social protection, Transactions",monetary,221,65,tail,True,tail/seen
+imf_gfs,gfs,GF0150_T,"R&D General public services, Transactions",monetary,220,65,tail,True,tail/seen
+imf_gfs,gfs,GF0650_T,"R&D Housing and community amenities, Transactions",monetary,220,65,tail,True,tail/seen
+imf_gfs,gfs,G23_T,"Consumption of fixed capital (CFC), Transactions",monetary,209,59,tail,True,tail/seen
+imf_gfs,gfs,G6_A_SP,"Net worth, Assets, Stock positions",monetary,108,31,tail,True,tail/seen
+imf_gfs,gfs,NFA_A_SP,"Nonfinancial assets, Stock positions",monetary,108,31,tail,True,tail/seen
+imf_gfs,gfs,GGB_T,"Government balance per national definition, Transactions",monetary,7,3,tail,True,tail/seen
+imf_gfs,gfs,FA_A_SP,"Financial assets, Stock positions",monetary,0,0,tail,True,tail/seen
+imf_gfs,gfs,GF066_T,"Housing and community amenities n.e.c., Transactions",monetary,0,0,tail,True,tail/seen
+imf_gfs,gfs,L_SP,"Liabilities, Stock positions",monetary,0,0,tail,True,tail/seen
