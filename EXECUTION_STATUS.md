@@ -54,12 +54,16 @@ Active work: round-2 validation against real, publicly filed financial data (SEC
 
 ## 🛠 Active Work & Next Steps
 
-### 1. Phase 4: Real-Data Validation (Round 2) — Active
-- [ ] Tier A1: EDGAR us-gaap crosswalk + held-out resolution benchmark (H1, H2).
-- [ ] Tier A5: IMF GFS / Eurostat COFOG public-sector crosswalk (H5) — validates the drafted `public_sector_ipsas.yaml` extension.
-- [ ] Tier A2: ESEF/ifrs-full sample benchmark (H1, H2).
-- [ ] Tier B: UK Companies House real-subsidiary case study (H3, H4).
-- Full design, pre-registered hypotheses, and falsification thresholds: [`research/real_data_validation_plan.md`](research/real_data_validation_plan.md).
+### 1. Phase 4: Real-Data Validation (Round 2) — first execution run 2026-07-30
+Results, verdicts and the "what must not be claimed" list: [`research/experiments/ROUND2_RESULTS.md`](research/experiments/ROUND2_RESULTS.md).
+Design and pre-registered thresholds: [`research/real_data_validation_plan.md`](research/real_data_validation_plan.md) (+ Addendum A, execution operationalizations).
+
+- [x] Tier A1: EDGAR ingestion (53,255 filings, 5.44M facts) + train-only crosswalk (130 tags). **Coverage measured (48.4% weighted holdout); H1 unscored.**
+- [x] Tier A5: IMF GFS / Eurostat COFOG ingestion + 47-entry crosswalk. **Coverage measured (27.7%); H5 unscored.**
+- [x] Tier B: UK Companies House case study (n=10). **H4 supported (100%); H3 falsified (22.7% vs 30% floor).**
+- [ ] Tier A2: ESEF/ifrs-full sample benchmark — **outstanding** (45 payloads fetched, no derived output; downloader not committed).
+- [ ] **Gold standard labeling (blocks H1 and H5).** Sampling frames and blind sheets are committed and deterministic (320 tags for A1, 212-code census for A5); the two independent labeling passes did not complete. H1/H5 are *accuracy* thresholds and cannot be scored from coverage.
+- [ ] Follow-up from the H3 falsification: the Tier-2 rule set lacks British-English vocabulary and 6 of 30 nodes have no rule at all. **Fixing it requires a fresh holdout** — repairing and re-running against the same corpus would be tuning on the test set.
 
 ### 2. Expert Validation (still open — not yet started as of 2026-07-18)
 - [ ] Conduct structured validation interviews with international CPAs.
