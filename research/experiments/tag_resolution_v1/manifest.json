@@ -81,6 +81,411 @@
       "retrieved_utc": "2026-07-30T17:37:07Z",
       "sha256": "d18c01c615da8f5cd46273b0dacaeee5b1163f4089171da0f84153a5f3c362f6",
       "url": "https://www.sec.gov/files/dera/data/financial-statement-data-sets/2026q1.zip"
+    },
+    "esef/029200711C4S4CB2E982-2024-12-31-ESEF-GB-0.json": {
+      "bytes": 9648040,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/029200711C4S4CB2E982-2024-12-31-ESEF-GB-0.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:46:20Z",
+      "sha256": "3734fa4f311166ee28d73e531a02d0143103c75f4b4f10c32e3546af924c67ad",
+      "url": "https://filings.xbrl.org/029200711C4S4CB2E982/2024-12-31/ESEF/GB/0/029200711C4S4CB2E982-2024-12-31-T01.json"
+    },
+    "esef/029200711C4S4CB2E982-2025-12-31-ESEF-GB-0.json": {
+      "bytes": 7354554,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/029200711C4S4CB2E982-2025-12-31-ESEF-GB-0.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:46:24Z",
+      "sha256": "2fbbd3fc54e4e31e415e0ea2f7f27f8e3a6f942383f575410708b1237a262e16",
+      "url": "https://filings.xbrl.org/029200711C4S4CB2E982/2025-12-31/ESEF/GB/0/029200711C4S4CB2E982-2025-12-31-T01.json"
+    },
+    "esef/0W5QHUNYV4W7GJO62R27-2020-12-31-ESEF-AT-1.json": {
+      "bytes": 93190,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/0W5QHUNYV4W7GJO62R27-2020-12-31-ESEF-AT-1.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:57:53Z",
+      "sha256": "0df07c57e01882346d6b1ec4a3a27385fe40343471b9e66490ed7bc6e474cb98",
+      "url": "https://filings.xbrl.org/0W5QHUNYV4W7GJO62R27/2020-12-31/ESEF/AT/1/htb-2020-12-31.json"
+    },
+    "esef/2138003DUDZ8R67LEO26-2021-12-31-ESEF-CY-0.json": {
+      "bytes": 55193,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/2138003DUDZ8R67LEO26-2021-12-31-ESEF-CY-0.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:58:05Z",
+      "sha256": "9dea6fc4b0a294bc8e03c964fc39f6eecd09b1ed36524ae975afb4f7c3d6eb74",
+      "url": "https://filings.xbrl.org/2138003DUDZ8R67LEO26/2021-12-31/ESEF/CY/0/Blue-Island-2021-12-31.json"
+    },
+    "esef/2138003E6AHESY1SPW44-2021-12-31-ESEF-CY-0.json": {
+      "bytes": 69856,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/2138003E6AHESY1SPW44-2021-12-31-ESEF-CY-0.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:58:07Z",
+      "sha256": "11e5b34de255da18f7ad335eb40c4890d9340f5da62f2970bd0d54cb804182b1",
+      "url": "https://filings.xbrl.org/2138003E6AHESY1SPW44/2021-12-31/ESEF/CY/0/2138003E6AHESY1SPW44-2021-12-31_el.json"
+    },
+    "esef/21380045SZ5TC6QV4H71-2021-12-31-ESEF-CY-0.json": {
+      "bytes": 34012,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/21380045SZ5TC6QV4H71-2021-12-31-ESEF-CY-0.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:58:08Z",
+      "sha256": "c2475eeb12fda3f454c62be8d803f5f2fc4f2467f0d27e7a5203e6f99a5c2d3c",
+      "url": "https://filings.xbrl.org/21380045SZ5TC6QV4H71/2021-12-31/ESEF/CY/0/21380045SZ5TC6QV4H71-2021-12-31-el.json"
+    },
+    "esef/2138004BSTFFGSKF4X46-2021-12-31-ESEF-CY-0.json": {
+      "bytes": 95431,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/2138004BSTFFGSKF4X46-2021-12-31-ESEF-CY-0.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:58:09Z",
+      "sha256": "d259ce81e50e70a7cfda9df8ed2dc5db9acf592fc44bac80dee6e1dcb5629108",
+      "url": "https://filings.xbrl.org/2138004BSTFFGSKF4X46/2021-12-31/ESEF/CY/0/2138004BSTFFGSKF4X46-2021-12-31-el.json"
+    },
+    "esef/2138005EK8KF8ID61A07-2021-12-31-ESEF-CY-0.json": {
+      "bytes": 57386,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/2138005EK8KF8ID61A07-2021-12-31-ESEF-CY-0.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:58:11Z",
+      "sha256": "3c9d3a34136490edd50a70a067a41c535b7af06da64f43c2b6587757708e2788",
+      "url": "https://filings.xbrl.org/2138005EK8KF8ID61A07/2021-12-31/ESEF/CY/0/2138005EK8KF8ID61A07-2021-12-31-el.json"
+    },
+    "esef/213800H2CDP9I374WH83-2020-12-31-ESEF-BE-0.json": {
+      "bytes": 188667,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/213800H2CDP9I374WH83-2020-12-31-ESEF-BE-0.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:58:00Z",
+      "sha256": "af9dcfeff040c49c26e52929a6a320039fac0a56bf270408198c8c2a591f9fc6",
+      "url": "https://filings.xbrl.org/213800H2CDP9I374WH83/2020-12-31/ESEF/BE/0/titancement-2020-12-31AR.json"
+    },
+    "esef/213800H2CDP9I374WH83-2020-12-31-ESEF-BE-1.json": {
+      "bytes": 188767,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/213800H2CDP9I374WH83-2020-12-31-ESEF-BE-1.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:58:01Z",
+      "sha256": "8f57e2368d5f4f9a6e147009cc412f444e2a1ea11fed5a05c94dc8e9e20d6ee3",
+      "url": "https://filings.xbrl.org/213800H2CDP9I374WH83/2020-12-31/ESEF/BE/1/titancement-2020-12-31AR.json"
+    },
+    "esef/213800OJ67K27RCO2J56-2020-12-31-ESEF-AT-0.json": {
+      "bytes": 116686,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/213800OJ67K27RCO2J56-2020-12-31-ESEF-AT-0.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:57:54Z",
+      "sha256": "a5ee71878165bc2625ef2a7a120121742d6f545db14fd5197459e446cb34a66f",
+      "url": "https://filings.xbrl.org/213800OJ67K27RCO2J56/2020-12-31/ESEF/AT/0/ATRI-2020-12-31.json"
+    },
+    "esef/213800OJ67K27RCO2J56-2020-12-31-ESEF-AT-1.json": {
+      "bytes": 119153,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/213800OJ67K27RCO2J56-2020-12-31-ESEF-AT-1.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:57:56Z",
+      "sha256": "8531ba26bcee00d02188b7943c81d89d5bc9853dce9be5b81cb60f447a3e819e",
+      "url": "https://filings.xbrl.org/213800OJ67K27RCO2J56/2020-12-31/ESEF/AT/1/ATRI-2020-12-31.json"
+    },
+    "esef/31570010000000026673-2020-12-31-ESEF-CZ-0.json": {
+      "bytes": 78379,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/31570010000000026673-2020-12-31-ESEF-CZ-0.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:58:12Z",
+      "sha256": "99a4cc0d21fe6465dacec1b4c3435ddc01155b408cfa7f657b472c180b693a0b",
+      "url": "https://filings.xbrl.org/31570010000000026673/2020-12-31/ESEF/CZ/0/equa-2020-12-31.json"
+    },
+    "esef/31570010000000043842-2020-12-31-ESEF-CZ-0.json": {
+      "bytes": 164484,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/31570010000000043842-2020-12-31-ESEF-CZ-0.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:58:13Z",
+      "sha256": "df97b9a809df5014b3b539a8bafea78ffcbeccfe141422432c49f2aebd60613d",
+      "url": "https://filings.xbrl.org/31570010000000043842/2020-12-31/ESEF/CZ/0/31570010000000043842-2020-12-31.json"
+    },
+    "esef/315700NENYPIXFR94T49-2020-12-31-ESEF-BE-0.json": {
+      "bytes": 64027,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/315700NENYPIXFR94T49-2020-12-31-ESEF-BE-0.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:58:02Z",
+      "sha256": "5b757f0abad0907b70207a8ab1fb1beecf9562a28889a0c03a32cd25d1b6466f",
+      "url": "https://filings.xbrl.org/315700NENYPIXFR94T49/2020-12-31/ESEF/BE/0/315700NENYPIXFR94T49-2020-12-31.json"
+    },
+    "esef/5299000DUMZ99SBBX121-2020-12-31-ESEF-AT-0.json": {
+      "bytes": 127628,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/5299000DUMZ99SBBX121-2020-12-31-ESEF-AT-0.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:57:58Z",
+      "sha256": "605a2748d38669bd2cb3d6301845e740249db46915f1a1b3a86f43d386c14660",
+      "url": "https://filings.xbrl.org/5299000DUMZ99SBBX121/2020-12-31/ESEF/AT/0/5299000DUMZ99SBBX121-2020-12-31.json"
+    },
+    "esef/5299000ML1154IW9K192-2020-12-31-ESEF-AT-0.json": {
+      "bytes": 111618,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/5299000ML1154IW9K192-2020-12-31-ESEF-AT-0.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:57:59Z",
+      "sha256": "5377c7ac126c19b057df3a3e96aa5b1f7dc1d5bacb9f942df61f4cd6b38b4e01",
+      "url": "https://filings.xbrl.org/5299000ML1154IW9K192/2020-12-31/ESEF/AT/0/novomaticag-2020-12-31.json"
+    },
+    "esef/5493006G5O9JP185PU76-2020-12-31-ESEF-BE-0.json": {
+      "bytes": 133600,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/5493006G5O9JP185PU76-2020-12-31-ESEF-BE-0.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:58:03Z",
+      "sha256": "9ab7505c030f437003c4445e7b2a09afac37f2c75fc7ceb131dcb960e8b7ec35",
+      "url": "https://filings.xbrl.org/5493006G5O9JP185PU76/2020-12-31/ESEF/BE/0/econocom-2020-12-31AR.json"
+    },
+    "esef/5493008SR6XZECH6BN71-2020-12-31-ESEF-BE-0.json": {
+      "bytes": 112734,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/5493008SR6XZECH6BN71-2020-12-31-ESEF-BE-0.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:58:04Z",
+      "sha256": "6b4b9e71afda0ae1a3460ab56213cdfa73cc04a677131013855d65fe4fcdc8ad",
+      "url": "https://filings.xbrl.org/5493008SR6XZECH6BN71/2020-12-31/ESEF/BE/0/5493008SR6XZECH6BN71-2020-12-31.json"
+    },
+    "esef/index/page-0001.json": {
+      "bytes": 1041762,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0001.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:45:56Z",
+      "sha256": "8ae8dce041ddf45e10a7a0b14df57b38a92792d630ea8ae0b508a02fb84a8576",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=1"
+    },
+    "esef/index/page-0002.json": {
+      "bytes": 1044442,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0002.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:47:05Z",
+      "sha256": "b524902ef9296d013eaf25e12a1cb613759939c85715e4fc780cb1c1a7069494",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=2"
+    },
+    "esef/index/page-0003.json": {
+      "bytes": 1043373,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0003.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:47:28Z",
+      "sha256": "5352eb41fc7f3149f0f26846fda19a114b68e27289068f51f760db8a66bcbe69",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=3"
+    },
+    "esef/index/page-0004.json": {
+      "bytes": 1028180,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0004.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:47:51Z",
+      "sha256": "184c6d1bd0e087aa27e2039631f6c92336d93899f87bb8e16d71796c02722bc5",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=4"
+    },
+    "esef/index/page-0005.json": {
+      "bytes": 999072,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0005.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:48:15Z",
+      "sha256": "694d5a8279446d45bee19e8deaa076eea8c46183ab7c7601e430f6ec7c99b3f6",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=5"
+    },
+    "esef/index/page-0006.json": {
+      "bytes": 1027913,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0006.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:48:38Z",
+      "sha256": "5bb9335553f311cea3efeca83a062ef1bf04bd830707e9e04367b323a9e7bc96",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=6"
+    },
+    "esef/index/page-0007.json": {
+      "bytes": 1025610,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0007.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:49:16Z",
+      "sha256": "63c80b3a84906538c36502ec2b0e4678acc7af029471f004dd12950909624fef",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=7"
+    },
+    "esef/index/page-0008.json": {
+      "bytes": 1037864,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0008.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:49:41Z",
+      "sha256": "3384c69f3c2f36c3fe1a6f2253024658d19237fc70be00ac699e3ad9dd9c668c",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=8"
+    },
+    "esef/index/page-0009.json": {
+      "bytes": 1032935,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0009.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:50:06Z",
+      "sha256": "6d01433e28e90d09b556f26cb926856e5857d450178b3bb7023b8c32dbc7d9f2",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=9"
+    },
+    "esef/index/page-0010.json": {
+      "bytes": 1033433,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0010.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:50:31Z",
+      "sha256": "9f6ae5f44dbb0bc8c0e130582dcd9733cd224bbeebb6b4830f0c0e95170c4315",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=10"
+    },
+    "esef/index/page-0011.json": {
+      "bytes": 1034192,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0011.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:51:31Z",
+      "sha256": "0903f6aa05f8786ce56ffa4428a110eae076f88d6ed4973068399cd66bff76d5",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=11"
+    },
+    "esef/index/page-0012.json": {
+      "bytes": 1038393,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0012.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:51:55Z",
+      "sha256": "85330e669a89e7b919ed25933b3e6e14eaa2b5f60ff24e1661ae18b00fe77cb7",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=12"
+    },
+    "esef/index/page-0013.json": {
+      "bytes": 1045156,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0013.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:52:20Z",
+      "sha256": "cbf3cf47b089d919addd975c445b26d60de4e91a19d3faa278ea64fbfa577b77",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=13"
+    },
+    "esef/index/page-0014.json": {
+      "bytes": 1051751,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0014.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:52:44Z",
+      "sha256": "75792033b1ae14be41d2e40eece48b82224c7ea91c46736b72e9155e21d17482",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=14"
+    },
+    "esef/index/page-0015.json": {
+      "bytes": 1026065,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0015.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:53:37Z",
+      "sha256": "699d54737aeac3335e8c84d50d333aa5a8b17c53bff5027905fd463407cd571d",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=15"
+    },
+    "esef/index/page-0016.json": {
+      "bytes": 913039,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0016.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:54:00Z",
+      "sha256": "d11740fca62c095e1a536f5754e88f36a304216b62c5ba4baf00cc642f0f934c",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=16"
+    },
+    "esef/index/page-0017.json": {
+      "bytes": 843512,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0017.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:54:23Z",
+      "sha256": "e69a104fdbb5da31d954870ae176354872ab57d84d4178ffd34ccc4773d56de8",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=17"
+    },
+    "esef/index/page-0018.json": {
+      "bytes": 843630,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0018.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:54:48Z",
+      "sha256": "df9ad9897ac83e474846c14a61eac96dd3f6066e22dd77aecd42e77cfe3c579b",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=18"
+    },
+    "esef/index/page-0019.json": {
+      "bytes": 843645,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0019.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:55:12Z",
+      "sha256": "159c15f0fca70d2f3987ccc58a82318ce58985dbd2ec6f9bb644c3c1a78e8977",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=19"
+    },
+    "esef/index/page-0020.json": {
+      "bytes": 844080,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0020.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:55:36Z",
+      "sha256": "a27e49f4dce99181c5ec80efd2766add15d9b2babd7ae9bc40a2787061a3615c",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=20"
+    },
+    "esef/index/page-0021.json": {
+      "bytes": 844140,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0021.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:56:00Z",
+      "sha256": "772e329cd34a48a02be8d99606aa8f37089819f5989ac6550570708059ff7a86",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=21"
+    },
+    "esef/index/page-0022.json": {
+      "bytes": 844140,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0022.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:56:25Z",
+      "sha256": "dd42eeea2b4815b4f19d220519d2e56cb273003b9dfc4e1ad4c286c65f20bb61",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=22"
+    },
+    "esef/index/page-0023.json": {
+      "bytes": 844101,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0023.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:56:50Z",
+      "sha256": "f2fa7d5ada94f76fbc4fd65c0d1ebe7e92c6ff6e73e61ed94900b4b50ef00911",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=23"
+    },
+    "esef/index/page-0024.json": {
+      "bytes": 844041,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0024.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:57:14Z",
+      "sha256": "fecf2aa14e2f40fd7e157eec217b410f513bef4d53ecf66f0a950a4634987d28",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=24"
+    },
+    "esef/index/page-0025.json": {
+      "bytes": 844642,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0025.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:57:39Z",
+      "sha256": "e167be6c7cd9a475426abde8f3d9c7bca75bcdb6315cbb7ab1514629a10e1adb",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=25"
+    },
+    "esef/index/page-0026.json": {
+      "bytes": 473615,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/tag_resolution_v1/esef/index/page-0026.json",
+      "note": "issuer public disclosure; see filings.xbrl.org terms",
+      "retrieved_utc": "2026-07-30T17:57:51Z",
+      "sha256": "386cf887d840cbff9bc795ad2b5cdc56d036e2e788bf48396001f095f7f6d9a0",
+      "url": "https://filings.xbrl.org/api/filings?filter=%5B%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22ge%22%2C%22val%22%3A%222015-01-01%22%7D%2C%7B%22name%22%3A%22period_end%22%2C%22op%22%3A%22le%22%2C%22val%22%3A%222025-12-31%22%7D%5D&sort=fxo_id&page%5Bsize%5D=1000&page%5Bnumber%5D=26"
     }
   }
 }

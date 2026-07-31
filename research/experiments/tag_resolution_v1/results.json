@@ -1,0 +1,206 @@
+{
+  "accuracy_gold_sample": {},
+  "baseline_naive_label_match": {},
+  "coverage": {
+    "all": {
+      "holdout": {
+        "by_stratum": {
+          "seen_in_train": {
+            "escalated_codes": 3205,
+            "escalated_facts": 770512,
+            "n_codes": 4832,
+            "n_facts": 1452023,
+            "resolved_pct_unweighted": 33.7,
+            "resolved_pct_weighted": 46.9,
+            "tier1_codes": 41,
+            "tier1_facts": 270963,
+            "tier2_codes": 1586,
+            "tier2_facts": 410548
+          },
+          "unseen_in_train": {
+            "escalated_codes": 118,
+            "escalated_facts": 295,
+            "n_codes": 164,
+            "n_facts": 611,
+            "resolved_pct_unweighted": 28.0,
+            "resolved_pct_weighted": 51.7,
+            "tier1_codes": 0,
+            "tier1_facts": 0,
+            "tier2_codes": 46,
+            "tier2_facts": 316
+          }
+        },
+        "pooled": {
+          "escalated_codes": 3323,
+          "escalated_facts": 770807,
+          "n_codes": 4996,
+          "n_facts": 1452634,
+          "resolved_pct_unweighted": 33.5,
+          "resolved_pct_weighted": 46.9,
+          "tier1_codes": 41,
+          "tier1_facts": 270963,
+          "tier2_codes": 1632,
+          "tier2_facts": 410864
+        }
+      },
+      "train": {
+        "by_stratum": {
+          "seen_in_train": {
+            "escalated_codes": 3532,
+            "escalated_facts": 1396964,
+            "n_codes": 5305,
+            "n_facts": 2812626,
+            "resolved_pct_unweighted": 33.4,
+            "resolved_pct_weighted": 50.3,
+            "tier1_codes": 41,
+            "tier1_facts": 581219,
+            "tier2_codes": 1732,
+            "tier2_facts": 834443
+          }
+        },
+        "pooled": {
+          "escalated_codes": 3532,
+          "escalated_facts": 1396964,
+          "n_codes": 5305,
+          "n_facts": 2812626,
+          "resolved_pct_unweighted": 33.4,
+          "resolved_pct_weighted": 50.3,
+          "tier1_codes": 41,
+          "tier1_facts": 581219,
+          "tier2_codes": 1732,
+          "tier2_facts": 834443
+        }
+      }
+    },
+    "monetary": {
+      "holdout": {
+        "by_stratum": {
+          "seen_in_train": {
+            "escalated_codes": 3080,
+            "escalated_facts": 679605,
+            "n_codes": 4624,
+            "n_facts": 1318112,
+            "resolved_pct_unweighted": 33.4,
+            "resolved_pct_weighted": 48.4,
+            "tier1_codes": 41,
+            "tier1_facts": 270963,
+            "tier2_codes": 1503,
+            "tier2_facts": 367544
+          },
+          "unseen_in_train": {
+            "escalated_codes": 109,
+            "escalated_facts": 276,
+            "n_codes": 153,
+            "n_facts": 590,
+            "resolved_pct_unweighted": 28.8,
+            "resolved_pct_weighted": 53.2,
+            "tier1_codes": 0,
+            "tier1_facts": 0,
+            "tier2_codes": 44,
+            "tier2_facts": 314
+          }
+        },
+        "pooled": {
+          "escalated_codes": 3189,
+          "escalated_facts": 679881,
+          "n_codes": 4777,
+          "n_facts": 1318702,
+          "resolved_pct_unweighted": 33.2,
+          "resolved_pct_weighted": 48.4,
+          "tier1_codes": 41,
+          "tier1_facts": 270963,
+          "tier2_codes": 1547,
+          "tier2_facts": 367858
+        }
+      },
+      "train": {
+        "by_stratum": {
+          "seen_in_train": {
+            "escalated_codes": 3385,
+            "escalated_facts": 1221466,
+            "n_codes": 5069,
+            "n_facts": 2559543,
+            "resolved_pct_unweighted": 33.2,
+            "resolved_pct_weighted": 52.3,
+            "tier1_codes": 41,
+            "tier1_facts": 581219,
+            "tier2_codes": 1643,
+            "tier2_facts": 756858
+          }
+        },
+        "pooled": {
+          "escalated_codes": 3385,
+          "escalated_facts": 1221466,
+          "n_codes": 5069,
+          "n_facts": 2559543,
+          "resolved_pct_unweighted": 33.2,
+          "resolved_pct_weighted": 52.3,
+          "tier1_codes": 41,
+          "tier1_facts": 581219,
+          "tier2_codes": 1643,
+          "tier2_facts": 756858
+        }
+      }
+    }
+  },
+  "crosswalk_declared_out_of_core": {
+    "us-gaap": 89
+  },
+  "crosswalk_sizes": {
+    "us-gaap": 41
+  },
+  "experiment": "tag_resolution_v1",
+  "gold_labels_loaded": 0,
+  "h2_extensions": {
+    "holdout": {
+      "escalated": 43544,
+      "escalated_facts": 180771,
+      "escalation_rate_pct_unweighted": 55.6,
+      "escalation_rate_pct_weighted": 59.1,
+      "h2_holds": true,
+      "n_extension_codes": 78267,
+      "n_extension_facts": 306090,
+      "tier1_violation_facts": 0,
+      "tier1_violations": 0,
+      "tier2_name_match_facts": 125319,
+      "tier2_name_matches": 34723,
+      "violating_codes": []
+    },
+    "train": {
+      "escalated": 65470,
+      "escalated_facts": 560647,
+      "escalation_rate_pct_unweighted": 56.2,
+      "escalation_rate_pct_weighted": 64.5,
+      "h2_holds": true,
+      "n_extension_codes": 116451,
+      "n_extension_facts": 868967,
+      "tier1_violation_facts": 0,
+      "tier1_violations": 0,
+      "tier2_name_match_facts": 308320,
+      "tier2_name_matches": 50981,
+      "violating_codes": []
+    }
+  },
+  "inventory": {
+    "by_window": {
+      "holdout": {
+        "n_codes": 83263,
+        "n_facts": 1758724
+      },
+      "train": {
+        "n_codes": 121756,
+        "n_facts": 3681593
+      }
+    },
+    "n_rows": 205019
+  },
+  "provenance": {
+    "corpus": "real public filings / official statistics; see manifest.json",
+    "synthetic_comparison": "NOT comparable to the 97.3% synthetic figure from scripts/mass_consolidation_v2.py -- different corpus, different question"
+  },
+  "public_sector_extension_nodes_loaded": 0,
+  "public_sector_extension_status": null,
+  "taxonomies": [
+    "us-gaap"
+  ]
+}
