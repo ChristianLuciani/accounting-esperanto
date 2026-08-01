@@ -22,8 +22,22 @@
   },
   "artifact_status": "synthetic_reference_distribution (not measured field data)",
   "minimum_core_node_count": 30,
-  "extended_core_node_count": 34,
+  "extended_core_node_count": 35,
   "extended_core_added": [
+    "asset.current.other_receivables",
+    "asset.current.withholding_tax",
+    "liability.current.deferred_revenue",
+    "liability.current.lease",
+    "liability.current.payroll"
+  ],
+  "extended_core_admission_basis": {
+    "asset.current.other_receivables": "synthetic_posting_volume",
+    "asset.current.withholding_tax": "synthetic_posting_volume",
+    "liability.current.deferred_revenue": "synthetic_posting_volume",
+    "liability.current.lease": "real_disclosure_frequency",
+    "liability.current.payroll": "synthetic_posting_volume"
+  },
+  "extended_core_admitted_on_this_benchmark": [
     "asset.current.other_receivables",
     "asset.current.withholding_tax",
     "liability.current.deferred_revenue",

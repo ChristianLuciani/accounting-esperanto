@@ -184,6 +184,89 @@ the CRA owns the instrumented, human-resolved edge. Neither absorbs the other.
   proposal. The policy bounds and documents that judgement; it does not remove
   it.
 
+---
+
+## Addendum A — First run against real data (2026-07-31)
+
+This policy was written 2026-06-11 and **first exercised 2026-07-31**, against
+the real corpora round 2 committed. Full decision record, with all five criteria
+and measured volumes per candidate:
+[`research/experiments/adr015_admission_v1/DECISION_RECORD.md`](../../research/experiments/adr015_admission_v1/DECISION_RECORD.md).
+Regenerate: `python scripts/adr015_admission_gate.py`.
+
+**Outcome: one admission of seven candidates.** `liability.current.lease` (the
+current portion of an IFRS 16 lease liability) cleared A1–A5 — 0.645% of
+3,878,245 EDGAR standard monetary face-statement facts, `ifrs-full:CurrentLeaseLiabilities`
+attested in the ESEF corpus, and a gap the ontology already documented against
+itself (`liability.noncurrent.lease`'s own notes conceded the split had no home).
+It entered **`extended_core`**; the minimum core remains frozen at 30.
+
+### The threshold is a parameter, not a law — and this run proved it
+
+The "Negative / risks" section above anticipated that "the ~0.5% volume gate is
+calibrated to the current synthetic benchmark; a real-ledger corpus may shift
+it. The threshold should be re-validated, not treated as eternal." **It shifted,
+and by more than expected.**
+
+EDGAR and ESEF do not measure posting volume. They measure how often a concept
+is **presented as a fact on a face statement** — a different quantity, and one
+that ranks concepts differently. Measured on EDGAR, **all four already-admitted
+extended nodes fall below 0.5%**:
+
+| Already-admitted node | EDGAR share |
+|---|---:|
+| `liability.current.deferred_revenue` | 0.344% |
+| `asset.current.other_receivables` | 0.144% |
+| `asset.current.withholding_tax` | 0.124% |
+| `liability.current.payroll` | **0.100%** |
+
+Applying the literal threshold to this population would reject every node this
+policy has already admitted. The sharpest illustration is `liability.current.payroll`,
+which the Context section above records as capturing "by far the largest residual
+slice" of posting volume and which ranks **smallest** here: payroll is posted
+constantly and disclosed once.
+
+**Resolution, and it does not require amending A1.** This policy never defined
+0.5% axiomatically — it defined it *operationally*, as "roughly the marginal
+contribution of the smallest of the four extended nodes already admitted". The
+faithful transfer to a new population is to re-derive the floor the same way. On
+EDGAR that yields **0.100%**. `scripts/adr015_admission_gate.py` reports both
+verdicts (literal and calibrated) for every candidate, and treats a pass within
+1.25× of the floor as **marginal**, which is not a pass — a result inside the
+floor's own noise band is not evidence.
+
+**Standing rule this establishes:** A1 must be measured on a population, and the
+population must be named alongside the number. A volume figure without its
+population is not a measurement.
+
+### Admission basis is now recorded per node
+
+Two bases are in use and they are **not interchangeable**: `synthetic_posting_volume`
+(the original four, each closing a measured slice of the 94%→99% gap) and
+`real_disclosure_frequency` (the fifth, invisible to the synthetic benchmark and
+contributing **0.0 pp** to the ~99%). Every `extended_core` node therefore carries
+an explicit `admission:` block, `coverage_benchmark.py` emits the split, and
+`tests/test_coverage_claim.py` pins it — so "~99% with a 35-account extended
+core" can never be read as though all 35 earned it.
+
+### What the run declined, and why that is the policy working
+
+Six candidates were not admitted: restricted cash (A2 — attested in 3 of 100
+ESEF filings), non-current tiers of tax/provision/payables (A1 — 0.048%), OCI
+total (A4 — it is a subtotal, and subtotals are computed rollups, never nodes),
+OCI components (A3 — no statement class fits without corrupting the `net_income`
+rule), intermediate consumption (A2 — no IFRS anchor; routes to the public-sector
+overlay, which stays unwired), and **contra-asset representation, deferred** —
+0.106% against a 0.100% floor is inside the noise band, and both corpora
+structurally under-observe the class because they measure face-statement
+presentation while contra accounts live in the notes (`PropertyPlantAndEquipmentNet`
+34,510 facts vs `PropertyPlantAndEquipmentGross` 695, a 49:1 ratio). Its missing
+measurement is named in the decision record; *no measurement, no admission*
+governs until it exists.
+
+Six of seven failing is this policy behaving as designed: "*Most* candidates
+will fail here, by design."
+
 ## References
 
 - ADR-001 — Graph, not tree (IFRS-anchored universal core + local overlays).
