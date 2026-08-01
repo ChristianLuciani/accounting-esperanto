@@ -58,6 +58,8 @@ INPUTS (all committed and small; raw filings are never vendored -- see §7)
 OUTPUT
   research/experiments/tag_resolution_v1/results.json
   research/experiments/public_sector_gfs_v1/results.json
+  research/experiments/*/resolution_detail.csv.gz   per-code scoring trace,
+      gzipped like the derived inventories; read it with _read_csv/_find.
 
 Run:  venv/bin/python scripts/real_data/resolve_real_facts.py
 """
@@ -67,6 +69,7 @@ from __future__ import annotations
 import argparse
 import csv
 import gzip
+import io
 import json
 import os
 import re
@@ -826,14 +829,23 @@ def run(experiment: str, accounts: dict) -> dict:
         json.dump(results, fh, indent=2, sort_keys=True)
         fh.write("\n")
 
-    detail_path = os.path.join(ROOT, "research/experiments", experiment, "resolution_detail.csv")
+    # Gzipped for the same reason as the derived tag inventories: this file is
+    # one row per (source, code) over the whole corpus (~43 MB raw, ~5 MB
+    # compressed) and it is rewritten by every scoring run. _read_csv/_find
+    # above resolve the .gz transparently, so readers are unaffected. filename
+    # and mtime are pinned out of the gzip header so a re-run reproduces
+    # byte-identical output instead of a fresh blob (same rule as
+    # download_edgar.py:_write_csv).
+    detail_path = os.path.join(ROOT, "research/experiments", experiment, "resolution_detail.csv.gz")
     fields = [
         "source", "taxonomy", "window", "code", "name", "taxonomy_class",
         "measure_class", "n_facts", "n_filings", "resolved_id", "tier", "confidence", "rule",
         "seen_in_train", "in_crosswalk", "declared_out_of_core",
         "baseline_naive", "gold",
     ]
-    with open(detail_path, "w", encoding="utf-8", newline="") as fh:
+    with open(detail_path, "wb") as raw, \
+            gzip.GzipFile(filename="", fileobj=raw, mode="wb", mtime=0) as gz, \
+            io.TextIOWrapper(gz, encoding="utf-8", newline="") as fh:
         writer = csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         for row in sorted(detail, key=lambda r: (r["source"], r["window"], -r["n_facts"], r["code"])):

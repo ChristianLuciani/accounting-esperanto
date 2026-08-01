@@ -206,12 +206,13 @@ def test_h5_clears_its_threshold_but_the_caveat_survives():
 
 def test_a2_esef_extensions_never_force_mapped():
     """H2 on a second, independent corpus: 0 Tier-1 hits on issuer extensions."""
-    detail = ROOT / "research/experiments/tag_resolution_v1/resolution_detail.csv"
+    detail = ROOT / "research/experiments/tag_resolution_v1/resolution_detail.csv.gz"
     if not detail.exists():
-        pytest.skip("resolution_detail.csv not generated")
+        pytest.skip("resolution_detail.csv.gz not generated")
     import csv
+    import gzip
 
-    with detail.open(encoding="utf-8", newline="") as fh:
+    with gzip.open(detail, "rt", encoding="utf-8", newline="") as fh:
         esef = [r for r in csv.DictReader(fh) if r["source"] == "esef"]
     if not esef:
         pytest.skip("ESEF inventory not present")
