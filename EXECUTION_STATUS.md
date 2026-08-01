@@ -68,7 +68,9 @@ Design and pre-registered thresholds: [`research/real_data_validation_plan.md`](
 - [x] **H1 scored: partial at 74.3% weighted**, 0.7 pp below the ≥75% support band. Failure mode is over-mapping (87 false positives vs 5 wrong-node); in-core accuracy 94.6% weighted.
 - [x] **H5 scored: 82.3% weighted, clearing its ≥70% threshold — but structurally weak.** 75% of the census is COFOG codes whose correct answer is "escalate"; only 13 codes test real mapping and 12 of 19 drafted nodes get zero evidence.
 
-**Open decisions and follow-ups (not blockers, but do not lose them):**
+**Open decisions and follow-ups (not blockers, but do not lose them).**
+Work items, cost classes and spoke allocation: [`research/round2_followups.md`](research/round2_followups.md).
+Note the two hazard classes recorded there — *gated* changes (touching the core node set) trip the CI claims gate and force all four citable surfaces in the same PR, and *fresh-holdout* changes must have their split reserved **before** they are built.
 
 - [ ] **Owner decision: do NOT promote public-sector wording on H5 alone.** Plan §2 ties promotion to H5 clearing its threshold; it cleared, but on 13 mapped codes covering 7 of 19 nodes. Recommendation recorded in ROUND2_RESULTS.md: keep "drafted, not yet empirically validated" and keep the extension unwired (plan §14) until a census that exercises the stock nodes exists.
 - [ ] **Ontology defects surfaced by real data** (4 internal inconsistencies + 1 non-injective field). Highest-value: `ifrs_tag` maps 30 nodes onto 27 tags, so `CashAndCashEquivalents`, `CurrentTaxLiabilitiesCurrent` and `OtherNonCurrentFinancialLiabilities` cannot resolve deterministically. Also `asset.noncurrent.investments` (label vs `ifrs_tag`), `expense.admin` (`ifrs_tag` vs the EBIT aggregation rule), `liability.noncurrent.lease` (note vs node id), `EXP_SocialBenefitsExpense` (`ipsas_ref` vs `examples`).
