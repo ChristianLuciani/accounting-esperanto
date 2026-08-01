@@ -262,3 +262,98 @@ node-first with default-to-no-match). This is **weaker independence than two
 unaffiliated human CPAs**: correlated errors are possible and Cohen's kappa
 overstates true independence. This caveat travels with any public wording of the
 resulting accuracy figure and is recorded inside `gold/agreement.json` itself.
+
+---
+
+# Addendum B — second execution session (dated 2026-07-31)
+
+**Status: B.1–B.5 recorded BEFORE H1/H5 were scored; B.6 is a disclosure, not a
+methodology choice.** Same discipline as Addendum A: the pre-registered plan and
+its thresholds are not edited.
+
+## B.1 Tier A2's mechanical sample produced an EMPTY holdout
+
+The selection rule committed in `download_esef_sample.py` sorts eligible filings
+by `(country, period_end, fxo_id)` and takes up to 5 per country alphabetically.
+Because `period_end` sorts ascending, this deterministically selects each
+country's **earliest** filings. Against a 24,376-filing eligible pool the result
+is 100 filings with `period_end` between 2018-06-30 and 2021-12-31 — **all in the
+TRAIN window, none in the holdout.**
+
+The rule was fixed before any data was inspected, so it is **not** re-run with a
+different rule after seeing this: that would be exactly the post-hoc selection
+tuning the anti-cherry-picking convention forbids. The consequence is reported
+instead: **A2 does not exercise the pre-registered temporal split**, and its
+numbers are a train-window measurement.
+
+This costs A2 less than the same defect would cost A1, because **no crosswalk was
+ever fitted to the ESEF corpus** (see B.2). A1's non-circularity rests on the
+temporal holdout; A2's rests on provenance. Both are stated, neither is implied.
+
+## B.2 Tier A2 scores against the ontology's own `ifrs_tag`, not a new crosswalk
+
+Plan §10.2 specifies "no new crosswalk needed — `level3_accounts.yaml` already
+carries an `ifrs_tag` field per node". Authoring an `ifrs_full_tags.yaml` during
+this round would have destroyed the one property that makes A2 the least
+circular tier: `ifrs_tag` was introduced 2026-03-23 and last modified 2026-07-20,
+both **before** the round-2 branch opened (2026-07-30), so it cannot have been
+fitted to this corpus. Verifiable with `git log -S'ifrs_tag' -- core/schemas/level3_accounts.yaml`.
+
+## B.3 The `ifrs_tag` field is not injective; ambiguous tags escalate
+
+The 30 core nodes carry only **27 distinct** `ifrs_tag` values. Three IFRS tags
+are each claimed by two nodes:
+
+| IFRS tag | claimed by |
+|---|---|
+| `ifrs-full:CashAndCashEquivalents` | `asset.current.cash`, `asset.current.bank` |
+| `ifrs-full:CurrentTaxLiabilitiesCurrent` | `liability.current.vat_output`, `liability.current.tax` |
+| `ifrs-full:OtherNonCurrentFinancialLiabilities` | `liability.noncurrent.debt`, `liability.noncurrent.lease` |
+
+Given only the tag, the correct leaf is genuinely undetermined. Selecting one by
+sort order would be a coin flip presented as determinism — the failure mode
+principle #5 exists to forbid — and would be silently wrong for roughly half of
+those facts. **Ambiguous tags are therefore excluded from the code table and
+escalate**, and the collisions are reported in `results.json`.
+**Direction of bias: this can only lower A2's coverage, never raise it.**
+
+## B.4 ESEF monetary classification is derived from the XBRL unit
+
+Addendum A.4 makes the monetary subset the primary population for H1 and requires
+the exclusion to be deterministic. EDGAR supplies a `datatype` column; xBRL-JSON
+does not, but declares a `unit` per numeric fact carrying the same information
+(`iso4217:*` → monetary, `xbrli:shares` → shares, `xbrli:pure` → pure, a compound
+`a/b` unit → per-share). A concept whose facts carry mixed unit kinds is reported
+`unknown` rather than guessed. Applied to the sample, **every** concept resolved
+to a single unit kind (zero unknowns), so the classification is unambiguous here.
+
+## B.5 Coverage is reported per source; the pooled figure across A1+A2 is not a quantity
+
+`research/experiments/tag_resolution_v1/` holds **two** corpora (A1 EDGAR
+`us-gaap`, A2 ESEF `ifrs-full`). They answer the same hypothesis over different
+vocabularies against different crosswalks, so a single pooled percentage across
+both is not meaningful — and, once `esef_tags.csv` existed, it silently moved the
+previously reported A1 "all population" train figure. `summarize_coverage` now
+emits a `by_source` breakdown, and **every per-tier figure quoted publicly comes
+from `by_source`**, never from `pooled`.
+
+## B.6 Crosswalk authorship vs. gold authorship — disclosure
+
+The `us_gaap_tags.yaml` and `gfs_cofog_tags.yaml` crosswalks under test were
+authored by the **previous** session's orchestrator (2026-07-30). The gold labels
+were produced in this session by **four separate labeling agents that never read
+either crosswalk**, nor `resolve_real_facts.py`, `core/harness/resolution.py`, any
+`results.json`, any `resolution_detail.csv`, or each other's sheets; each
+confirmed this explicitly in its report. Crosswalk and gold therefore do **not**
+share an author, and the accuracy figures are not a self-consistency check.
+
+Two residual limitations, stated rather than papered over:
+
+1. The **adjudicator** (third pass over disagreements only) was this session's
+   orchestrator, which had by then read `resolve_real_facts.py` — though never
+   either crosswalk YAML, so no per-tag mapping answer was visible. Adjudication
+   touched 34 of 320 A1 rows and 21 of 212 A5 rows; the remaining 89.4% and 90.1%
+   are the labelers' unmediated agreement.
+2. Addendum A.7 still applies in full: same model family under different
+   instructed reasoning orders is weaker independence than two unaffiliated human
+   CPAs, and kappa overstates true independence.

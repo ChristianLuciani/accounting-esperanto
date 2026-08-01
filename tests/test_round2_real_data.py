@@ -86,6 +86,186 @@ def test_h1_and_h5_are_not_reported_as_scored():
         )
 
 
+# ---------------------------------------------------------------------------
+# Gold-standard accuracy (scored 2026-07-31)
+# ---------------------------------------------------------------------------
+
+def _agreement(experiment):
+    path = ROOT / "research/experiments" / experiment / "gold/agreement.json"
+    if not path.exists():
+        pytest.skip(f"{path.relative_to(ROOT)} not generated")
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def test_gold_sets_are_fully_adjudicated():
+    """A half-arbitrated gold set is not admissible evidence (plan §6.3).
+
+    `adjudicate_gold.py` DROPS an unadjudicated disagreement rather than
+    resolving it by coin flip, so a pending row silently shrinks the sample
+    instead of failing loudly. This is the loud failure.
+    """
+    for experiment, n_expected in (("tag_resolution_v1", 320), ("public_sector_gfs_v1", 212)):
+        gold = ROOT / "research/experiments" / experiment / "gold/gold_labels_edgar.csv"
+        if not gold.exists():
+            pytest.skip(f"{experiment} gold not generated")
+        rows = gold.read_text(encoding="utf-8").strip().splitlines()[1:]
+        assert len(rows) == n_expected, (
+            f"{experiment}: gold set has {len(rows)} rows, expected {n_expected}. "
+            "A shortfall means a disagreement lost its adjudication note and was "
+            "dropped -- re-run scripts/real_data/adjudicate_gold.py."
+        )
+
+
+def test_inter_annotator_agreement_is_reported_at_both_granularities():
+    """Quoting only the coarse kappa would overstate agreement (plan §6.3)."""
+    for experiment, exact, coarse in (
+        ("tag_resolution_v1", 0.797, 0.777),
+        ("public_sector_gfs_v1", 0.771, 0.807),
+    ):
+        agreement = _agreement(experiment)
+        assert agreement["kappa_exact"]["kappa"] == pytest.approx(exact, abs=0.02), (
+            f"{experiment}: kappa (exact) moved from {exact}. The gold labels changed; "
+            "that must be a deliberate, documented relabeling, not silent drift."
+        )
+        assert agreement["kappa_class"]["kappa"] == pytest.approx(coarse, abs=0.02)
+        assert "independence" in json.dumps(agreement).lower(), (
+            f"{experiment}: the Addendum A.7 independence caveat must travel with "
+            "the agreement statistics, not be stripped from them."
+        )
+
+
+def test_h1_is_partial_not_supported():
+    """H1 measured 74.3% weighted -- inside the 50-75% PARTIAL band, not supported.
+
+    The pre-registered bands are >=75% supports, 50-75% partial, <50% weakens.
+    74.3% is 0.7 pp short of support. If this number moves up past 75, that is a
+    real change of verdict and must be reported as such -- it must NOT be reached
+    by rounding, nor by editing this assertion.
+    """
+    results = _load(TAG_RESULTS)
+    pooled = results["accuracy_gold_sample"]["holdout"]["pooled"]
+    assert pooled["n_codes"] == 320
+    assert pooled["accuracy_pct_weighted"] == pytest.approx(74.3, abs=0.5)
+    assert pooled["accuracy_pct_weighted"] < 75.0, (
+        "H1 was PARTIAL at 74.3%. Crossing the 75% support threshold is a verdict "
+        "change requiring a documented, dated addendum."
+    )
+
+
+def test_h1_failure_mode_is_over_mapping_not_wrong_node():
+    """The load-bearing diagnosis: H1 loses points to false positives, not confusion.
+
+    87 of 320 holdout codes were mapped when the gold says escalate; only 5
+    resolved to the wrong node. If that ratio inverts, the resolver's failure mode
+    has changed character and the write-up in ROUND2_RESULTS.md is stale.
+    """
+    results = _load(TAG_RESULTS)
+    pooled = results["accuracy_gold_sample"]["holdout"]["pooled"]
+    assert pooled["false_positive"] > 10 * pooled["wrong_node"], (
+        f"H1's documented failure mode is over-mapping: {pooled['false_positive']} "
+        f"false positives vs {pooled['wrong_node']} wrong-node errors."
+    )
+    leaf = results["accuracy_gold_sample"]["holdout"]["by_gold_class"]["leaf"]
+    assert leaf["accuracy_pct_weighted"] == pytest.approx(94.6, abs=1.0), (
+        "In-core accuracy (tags that genuinely ARE a core account) was 94.6% "
+        "weighted. This is the number that says the resolver is accurate when the "
+        "concept exists; it must not drift silently."
+    )
+
+
+def test_h5_clears_its_threshold_but_the_caveat_survives():
+    """H5 scored 82.3% (>=70%), but 75% of the population is correct REFUSALS.
+
+    The threshold is cleared as pre-registered. What must never be lost is that
+    159 of 212 codes are COFOG functional codes whose correct answer is 'escalate',
+    which the resolver achieves by having no COFOG rules at all -- and that only 13
+    codes test real mapping. Stripping that caveat turns a weak result into a false
+    validation claim.
+    """
+    results = _load(GFS_RESULTS)
+    holdout = results["accuracy_gold_sample"]["holdout"]
+    assert holdout["pooled"]["accuracy_pct_weighted"] == pytest.approx(82.3, abs=0.5)
+    by_class = holdout["by_gold_class"]
+    assert by_class["lens"]["n_codes"] == 159, (
+        "The COFOG lens population drove H5's score; its size is load-bearing context."
+    )
+    assert by_class["leaf"]["n_codes"] == 13, (
+        "Only 13 codes exercise an actual public-sector node mapping. If this grows, "
+        "H5 becomes a stronger test and the write-up must be revisited."
+    )
+    text = SUMMARY.read_text(encoding="utf-8") if SUMMARY.exists() else ""
+    assert "drafted, not yet empirically validated" in text, (
+        "H5 clearing its numeric threshold does NOT license promoting public-sector "
+        "coverage; ROUND2_RESULTS.md must keep the qualified wording."
+    )
+
+
+# ---------------------------------------------------------------------------
+# Tier A2 -- ESEF (completed 2026-07-31)
+# ---------------------------------------------------------------------------
+
+def test_a2_esef_extensions_never_force_mapped():
+    """H2 on a second, independent corpus: 0 Tier-1 hits on issuer extensions."""
+    detail = ROOT / "research/experiments/tag_resolution_v1/resolution_detail.csv"
+    if not detail.exists():
+        pytest.skip("resolution_detail.csv not generated")
+    import csv
+
+    with detail.open(encoding="utf-8", newline="") as fh:
+        esef = [r for r in csv.DictReader(fh) if r["source"] == "esef"]
+    if not esef:
+        pytest.skip("ESEF inventory not present")
+    extensions = [r for r in esef if r["taxonomy_class"] == "extension"]
+    assert len(extensions) == 1404
+    violations = [r for r in extensions if r["tier"] == "tier1_exact"]
+    assert not violations, (
+        f"H2 violated on ESEF: {len(violations)} issuer extensions reached Tier 1 "
+        "(exact code identity, confidence 1.0). An invented tag cannot have one; "
+        "this means the crosswalk was contaminated with non-standard codes."
+    )
+
+
+def test_a2_ifrs_tag_ambiguity_is_recorded_not_coin_flipped():
+    """The ontology's ifrs_tag field is not injective; ambiguous tags must escalate.
+
+    Resolving them by sort order would be a coin flip presented as determinism
+    (principle #5). The collisions are a reportable ontology defect, so they must
+    stay visible in results.json rather than being quietly tie-broken away.
+    """
+    results = _load(TAG_RESULTS)
+    ambiguous = results.get("ifrs_full_ambiguous_tags") or {}
+    if not ambiguous:
+        pytest.skip("ESEF inventory not present")
+    assert set(ambiguous) == {
+        "CashAndCashEquivalents",
+        "CurrentTaxLiabilitiesCurrent",
+        "OtherNonCurrentFinancialLiabilities",
+    }
+    for claimants in ambiguous.values():
+        assert len(claimants) > 1
+    assert results["crosswalk_sizes"]["ifrs-full"] == 24, (
+        "27 distinct ifrs_tag values minus 3 ambiguous = 24 usable anchors."
+    )
+
+
+def test_a2_sample_is_train_only_and_says_so():
+    """A2's mechanical rule produced an empty holdout; that must not be papered over."""
+    summary = ROOT / "research/experiments/tag_resolution_v1/derived/esef_sample_summary.csv"
+    if not summary.exists():
+        pytest.skip("ESEF sample summary not generated")
+    import csv
+
+    with summary.open(encoding="utf-8", newline="") as fh:
+        rows = {r["window"]: r for r in csv.DictReader(fh)}
+    assert int(rows["train"]["n_filings"]) == 100
+    assert int(rows["holdout"]["n_filings"]) == 0, (
+        "A2's sample was entirely train-window. If a later run produces holdout "
+        "filings, the selection rule changed -- which is post-hoc tuning unless "
+        "recorded as a dated addendum."
+    )
+    assert int(rows["train"]["n_countries"]) == 20
+
+
 def test_public_sector_extension_stays_unwired_and_qualified():
     """H5 is unscored, so the extension must remain scoring-local and qualified."""
     results = _load(GFS_RESULTS)
