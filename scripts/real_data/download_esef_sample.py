@@ -244,16 +244,57 @@ def window_for(period_end: str) -> str:
 # --------------------------------------------------------------------------
 
 def download_filing(record: dict) -> str:
-    url = FILINGS_HOST + record["json_url"]
+    # json_url is a raw filesystem-derived path, NOT a URL: 154 of the 25,182
+    # indexed paths contain literal spaces and 11 contain non-ASCII characters
+    # (the filer named the report file in Czech/Polish/Croatian). urllib refuses
+    # a URL with control characters, so the path MUST be percent-encoded before
+    # it is a legal URL. No indexed path contains a literal '%', so encoding is
+    # unconditional and cannot double-encode. The manifest records the encoded
+    # URL, which is what was actually requested.
+    url = FILINGS_HOST + urllib.parse.quote(record["json_url"], safe="/")
     key = f"esef/{record['fxo_id']}.json"
     return fetch(url, EXPERIMENT, key, LICENSE_REGIME, timeout=300, note=LICENSE_NOTE)
 
 
-def parse_filing(path: str) -> tuple[Counter, dict, dict]:
-    """Return (concept_counts, concept_prefix, namespaces) for one filing.
+def classify_unit(unit: str) -> str:
+    """Map an xBRL-JSON unit reference onto the datatype vocabulary the scorer reads.
+
+    Addendum A.4 makes the MONETARY subset the primary population for H1, and
+    requires the exclusion to be deterministic -- read from the filing's own
+    declared type, with no per-tag discretion. EDGAR supplies a `datatype`
+    column directly; xBRL-JSON does not, but it declares a `unit` per numeric
+    fact, which carries the same information:
+
+      iso4217:EUR              a currency amount            -> monetary
+      iso4217:EUR/xbrli:shares a compound (per-share) unit  -> pershare
+      xbrli:shares             a share count                -> shares
+      xbrli:pure               a ratio/percentage           -> pure
+
+    The returned strings are exactly the tokens resolve_real_facts.py's
+    MONETARY_DATATYPES / NON_MONETARY_DATATYPES already recognize, so no
+    scorer-side special-casing is needed for this corpus.
+    """
+    u = (unit or "").strip()
+    if not u:
+        return ""
+    if "/" in u:  # compound unit: an amount PER something, not a ledger balance
+        return "pershare"
+    low = u.lower()
+    if low.startswith("iso4217:"):
+        return "monetary"
+    if low.endswith(":shares"):
+        return "shares"
+    if low.endswith(":pure"):
+        return "pure"
+    return ""
+
+
+def parse_filing(path: str) -> tuple[Counter, dict, dict, dict]:
+    """Return (concept_counts, concept_prefix, concept_units, namespaces) for one filing.
 
     concept_counts: {(namespace_uri, local_name): n_qualifying_facts}
     concept_prefix: {(namespace_uri, local_name): prefix_as_declared}
+    concept_units:  {(namespace_uri, local_name): Counter(datatype_token)}
     namespaces: prefix -> namespace_uri, exactly as documentInfo declares it
     """
     with open(path, encoding="utf-8") as fh:
@@ -263,6 +304,7 @@ def parse_filing(path: str) -> tuple[Counter, dict, dict]:
 
     concept_counts: Counter = Counter()
     concept_prefix: dict = {}
+    concept_units: dict = defaultdict(Counter)
 
     for fact in facts.values():
         dims = fact.get("dimensions") or {}
@@ -278,8 +320,22 @@ def parse_filing(path: str) -> tuple[Counter, dict, dict]:
         key = (uri, local)
         concept_counts[key] += 1
         concept_prefix.setdefault(key, prefix)
+        concept_units[key][classify_unit(dims.get("unit"))] += 1
 
-    return concept_counts, concept_prefix, namespaces
+    return concept_counts, concept_prefix, concept_units, namespaces
+
+
+def decide_datatype(counter: Counter) -> str:
+    """Collapse a concept's observed unit kinds to ONE declared datatype.
+
+    Deterministic and conservative: a concept whose qualifying facts all carry
+    the same unit kind is reported as that kind; a concept reported under mixed
+    units (or under a unit this script does not recognize) is reported as
+    unknown -- which excludes it from the monetary primary population rather
+    than guessing. Guessing here would silently move H1's denominator.
+    """
+    kinds = {kind for kind, n in counter.items() if n}
+    return next(iter(kinds)) if len(kinds) == 1 else ""
 
 
 def classify_namespace(uri: str, namespace_entities: dict) -> str:
@@ -322,9 +378,9 @@ def main() -> None:
     for i, record in enumerate(sample, 1):
         _log(f"  [{i}/{len(sample)}] {record['fxo_id']}")
         path = download_filing(record)
-        concept_counts, concept_prefix, namespaces = parse_filing(path)
+        concept_counts, concept_prefix, concept_units, namespaces = parse_filing(path)
         window = window_for(record["period_end"])
-        filing_data.append((record, window, concept_counts, concept_prefix))
+        filing_data.append((record, window, concept_counts, concept_prefix, concept_units))
         for uri in namespaces.values():
             namespace_entities[uri].add(record["entity_identifier"])
 
@@ -332,19 +388,20 @@ def main() -> None:
     # sample, using the cross-filing namespace-sharing signal for anything
     # that isn't ifrs_full/esef_core by URI pattern.
     all_concept_keys = set()
-    for _, _, concept_counts, _ in filing_data:
+    for _, _, concept_counts, _, _ in filing_data:
         all_concept_keys.update(concept_counts.keys())
     classification = {key: classify_namespace(key[0], namespace_entities) for key in all_concept_keys}
 
     # Aggregate esef_tags.csv rows: (concept, window) -> stats.
     tag_facts: dict = defaultdict(lambda: defaultdict(int))          # key -> window -> n_facts
     tag_filings: dict = defaultdict(lambda: defaultdict(set))        # key -> window -> {fxo_id}
+    tag_units: dict = defaultdict(lambda: defaultdict(Counter))      # key -> window -> Counter(datatype)
     tag_prefix: dict = {}
 
     # esef_filings_sample.csv rows.
     filings_rows = []
 
-    for record, window, concept_counts, concept_prefix in filing_data:
+    for record, window, concept_counts, concept_prefix, concept_units in filing_data:
         n_facts = sum(concept_counts.values())
         n_concepts = len(concept_counts)
         n_ifrs_full = sum(1 for k in concept_counts if classification[k] == "ifrs_full")
@@ -367,6 +424,7 @@ def main() -> None:
         for key, cnt in concept_counts.items():
             tag_facts[key][window] += cnt
             tag_filings[key][window].add(record["fxo_id"])
+            tag_units[key][window].update(concept_units[key])
             tag_prefix.setdefault(key, concept_prefix[key])
 
     # Build esef_tags.csv rows.
@@ -388,6 +446,7 @@ def main() -> None:
                 "window": window,
                 "n_facts": n_facts,
                 "n_filings": len(tag_filings[key].get(window, ())),
+                "datatype": decide_datatype(tag_units[key].get(window, Counter())),
                 "label_en": "",  # confirmed absent from this corpus's xBRL-JSON (see module docstring)
             })
 
@@ -432,7 +491,7 @@ def main() -> None:
         os.path.join(DERIVED_DIR, "esef_tags.csv"),
         tags_rows,
         ["concept_qname", "namespace_uri", "local_name", "taxonomy_class", "window",
-         "n_facts", "n_filings", "label_en"],
+         "n_facts", "n_filings", "datatype", "label_en"],
     )
     _write_csv(
         os.path.join(DERIVED_DIR, "esef_sample_summary.csv"),

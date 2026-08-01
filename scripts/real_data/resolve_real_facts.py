@@ -338,6 +338,65 @@ def load_public_sector_nodes() -> dict:
     return nodes
 
 
+LEVEL3_PATH = os.path.join(ROOT, "core/schemas/level3_accounts.yaml")
+
+
+def load_ifrs_full_crosswalk(accounts: dict) -> tuple[dict, dict, dict]:
+    """Derive the ifrs-full code table from the ontology's OWN ``ifrs_tag`` field.
+
+    Plan §10.2 is explicit that Tier A2 needs NO new crosswalk: "level3_accounts.yaml
+    already carries an ifrs_tag field per node ... score against the same ifrs_tag
+    field." Authoring a fresh ifrs_full_tags.yaml during this round would have
+    destroyed exactly what makes A2 the strongest non-circular tier in it — the
+    ``ifrs_tag`` field was written 2026-03-23 and last touched 2026-07-20, both
+    BEFORE the round-2 branch opened (2026-07-30), so it could not have been fitted
+    to this corpus. A2's non-circularity therefore rests on PROVENANCE, not on the
+    temporal holdout (which this sample does not exercise -- see Addendum A.8).
+
+    NON-INJECTIVITY IS A REAL FINDING, NOT A NUISANCE (recorded before scoring):
+      The 30 core nodes carry only 27 distinct ifrs_tag values. Three IFRS tags
+      are each claimed by TWO nodes:
+        ifrs-full:CashAndCashEquivalents         cash        vs bank
+        ifrs-full:CurrentTaxLiabilitiesCurrent   vat_output  vs tax
+        ifrs-full:OtherNonCurrentFinancialLiabilities  debt  vs lease
+      Given only the tag, the correct leaf is genuinely undetermined. Picking one
+      by sort order would be a coin flip dressed as determinism -- the exact
+      failure principle #5 exists to forbid -- and would be silently wrong for
+      roughly half of those facts. So an ambiguous tag is EXCLUDED from the code
+      table and escalates, and the collisions are reported explicitly.
+
+      Direction of bias: this can only LOWER A2's measured coverage, never raise
+      it -- the same conservative discipline as Addendum A.3 and A.4.
+
+    Returns (by_code, annotations, ambiguous) where ``ambiguous`` maps a dropped
+    tag to the list of node ids that claimed it.
+    """
+    docs = list(yaml.safe_load_all(open(LEVEL3_PATH, encoding="utf-8")))
+    claimed: dict[str, list[str]] = {}
+    for doc in docs:
+        entries = doc.get("level3") if isinstance(doc, dict) else doc
+        if not isinstance(entries, list):
+            continue
+        for entry in entries:
+            if not isinstance(entry, dict) or "id" not in entry:
+                continue
+            node_id = entry["id"]
+            # Only nodes the live resolver actually knows about are eligible
+            # targets; scoring against a node the resolver cannot return would
+            # measure a vocabulary that does not exist at runtime.
+            if node_id not in accounts:
+                continue
+            tag = (entry.get("ifrs_tag") or "").strip()
+            if not tag:
+                continue
+            claimed.setdefault(tag.split(":", 1)[-1], []).append(node_id)
+
+    by_code = {code: ids[0] for code, ids in claimed.items() if len(ids) == 1}
+    ambiguous = {code: sorted(ids) for code, ids in claimed.items() if len(ids) > 1}
+    annotations = {code: {"kontablo_id": by_code.get(code)} for code in claimed}
+    return by_code, annotations, ambiguous
+
+
 def load_crosswalk(taxonomy: str) -> tuple[dict, dict]:
     """Return (code -> kontablo_id for mapped codes, full annotation dict).
 
@@ -484,14 +543,22 @@ def summarize_coverage(detail: list[dict]) -> dict:
         stratum = "seen_in_train" if row["seen_in_train"] else "unseen_in_train"
         for population in populations:
             node = out.setdefault(population, {}).setdefault(
-                row["window"], {"pooled": _bucket(), "by_stratum": {}}
+                row["window"], {"pooled": _bucket(), "by_stratum": {}, "by_source": {}}
             )
             _add(node["pooled"], row)
             _add(node["by_stratum"].setdefault(stratum, _bucket()), row)
+            # tag_resolution_v1 holds TWO corpora (A1 EDGAR us-gaap and A2 ESEF
+            # ifrs-full). They answer the same hypothesis over different
+            # vocabularies scored against different crosswalks, so a pooled
+            # percentage across both is not a meaningful quantity -- it silently
+            # mixes A1's number with A2's. `pooled` is retained for continuity;
+            # every per-tier figure quoted publicly must come from `by_source`.
+            _add(node["by_source"].setdefault(row["source"], _bucket()), row)
 
     for windows in out.values():
         for node in windows.values():
-            for bucket in [node["pooled"], *node["by_stratum"].values()]:
+            for bucket in [node["pooled"], *node["by_stratum"].values(),
+                           *node["by_source"].values()]:
                 resolved_codes = bucket["tier1_codes"] + bucket["tier2_codes"]
                 resolved_facts = bucket["tier1_facts"] + bucket["tier2_facts"]
                 bucket["resolved_pct_unweighted"] = _pct(resolved_codes, bucket["n_codes"])
@@ -693,8 +760,14 @@ def run(experiment: str, accounts: dict) -> dict:
         accounts = {**accounts, **public_sector_nodes}
     taxonomies = sorted({r["taxonomy"] for r in rows})
     crosswalk_tables, annotations = {}, {}
+    ifrs_ambiguous: dict = {}
     for taxonomy in taxonomies:
-        table, annotation = load_crosswalk(taxonomy)
+        if taxonomy == "ifrs-full":
+            # A2 scores against the ontology's own pre-existing ifrs_tag field
+            # (plan §10.2), NOT against a crosswalk authored during this round.
+            table, annotation, ifrs_ambiguous = load_ifrs_full_crosswalk(accounts)
+        else:
+            table, annotation = load_crosswalk(taxonomy)
         crosswalk_tables[taxonomy] = table
         annotations[taxonomy] = annotation
 
@@ -718,6 +791,14 @@ def run(experiment: str, accounts: dict) -> dict:
             "public wording until H5 clears its threshold."
         ) if public_sector_nodes else None,
         "crosswalk_sizes": {t: len(crosswalk_tables[t]) for t in taxonomies},
+        "ifrs_full_ambiguous_tags": ifrs_ambiguous,
+        "ifrs_full_ambiguity_note": (
+            "IFRS tags claimed by more than one core node. The ontology's ifrs_tag "
+            "field is not injective (30 nodes -> 27 distinct tags), so for these the "
+            "correct leaf is undetermined from the tag alone. They are excluded from "
+            "the code table and escalate rather than being resolved by an arbitrary "
+            "tie-break (principle #5). This lowers A2 coverage; it never raises it."
+        ) if ifrs_ambiguous else None,
         "crosswalk_declared_out_of_core": {
             t: sum(1 for e in (annotations[t] or {}).values() if not (e or {}).get("kontablo_id"))
             for t in taxonomies
@@ -794,6 +875,13 @@ def main() -> None:
                     print(f"          {stratum:<16} weighted {bucket['resolved_pct_weighted']:>5.1f}%   "
                           f"unweighted {bucket['resolved_pct_unweighted']:>5.1f}%   "
                           f"(n={bucket['n_codes']})")
+                if len(node["by_source"]) > 1:
+                    # Two corpora share this experiment dir (A1 EDGAR, A2 ESEF);
+                    # the pooled line above mixes them and must not be quoted.
+                    for source, bucket in sorted(node["by_source"].items()):
+                        print(f"          src {source:<12} weighted {bucket['resolved_pct_weighted']:>5.1f}%   "
+                              f"unweighted {bucket['resolved_pct_unweighted']:>5.1f}%   "
+                              f"(n={bucket['n_codes']} codes / {bucket['n_facts']} facts)")
         for window, node in sorted(results["h2_extensions"].items()):
             print(f"  [{window}] H2 extensions: {node['n_extension_codes']} codes   "
                   f"tier1 violations: {node['tier1_violations']}   "
