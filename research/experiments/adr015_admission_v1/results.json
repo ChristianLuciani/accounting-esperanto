@@ -1,0 +1,857 @@
+{
+  "admitted": [
+    "liability.current.lease"
+  ],
+  "core_ifrs_tags_in_use": 27,
+  "decisions": [
+    {
+      "A1": {
+        "marginal": false,
+        "measured_pct": 0.6454,
+        "verdict": "pass",
+        "vs_calibrated_floor": {
+          "derived_from": "liability.current.payroll",
+          "floor_pct": 0.1003,
+          "verdict": "pass"
+        },
+        "vs_literal_threshold": {
+          "threshold_pct": 0.5,
+          "verdict": "pass"
+        }
+      },
+      "A2": {
+        "basis": "IFRS 16 (mandatory 2019-01-01) and ASC 842 both require the current/non-current split of the lease liability, so the concept is not chart-family specific. ifrs-full:CurrentLeaseLiabilities is a distinct element of the IFRS taxonomy and is attested in the round-2 ESEF corpus (count computed below).",
+        "esef_attestation": {
+          "max_filings_single_tag": 29,
+          "n_facts": 125,
+          "n_tags": 1,
+          "n_tags_observed": 1,
+          "pct_of_population": 0.3783,
+          "per_tag": [
+            {
+              "n_facts": 125,
+              "n_filings": 29,
+              "pct_of_population": 0.3783,
+              "tag": "CurrentLeaseLiabilities"
+            }
+          ]
+        },
+        "verdict": "pass"
+      },
+      "A3": {
+        "basis": "Fixed nature (credit), fixed statement (balance_sheet), and a distinct IFRS anchor that collides with none of the 27 tags already in use (checked mechanically below). The boundary is binary: the portion of the lease liability due within twelve months of the reporting date.",
+        "collision_check": {
+          "checked": true,
+          "collides_with_existing_core_tag": false,
+          "proposed_ifrs_tag": "ifrs-full:CurrentLeaseLiabilities"
+        },
+        "verdict": "pass"
+      },
+      "A4": {
+        "basis": "Not representable today. liability.noncurrent.lease is explicitly non-current, and its own notes field concedes the balance is 'split between current portion and non-current' while providing no home for the current half (ROUND2_RESULTS.md defect 3; labeler B logged OperatingLeaseLiabilityCurrent as 'current portion; lease node is explicitly non-current'). Netting it into the non-current node destroys the maturity distinction, which is decision-relevant and is consumed by the ontology's own working_capital and total_current_liabilities rules.",
+        "verdict": "pass"
+      },
+      "A5": {
+        "basis": "IFRS 16 effective 2019-01-01, ASC 842 effective 2019 for public filers. Seven years in force; not emergent.",
+        "verdict": "pass"
+      },
+      "admitted": true,
+      "blocking_criteria": [],
+      "corpus": "edgar",
+      "id": "liability.current.lease",
+      "proposed_node": {
+        "ifrs_tag": "ifrs-full:CurrentLeaseLiabilities",
+        "nature": "credit",
+        "parent": "liability.current",
+        "statement": "balance_sheet"
+      },
+      "title": "Current portion of lease liabilities (IFRS 16 / ASC 842)",
+      "volume": {
+        "edgar": {
+          "max_filings_single_tag": 9450,
+          "n_facts": 25031,
+          "n_tags": 2,
+          "n_tags_observed": 2,
+          "pct_of_population": 0.6454,
+          "per_tag": [
+            {
+              "n_facts": 21367,
+              "n_filings": 9450,
+              "pct_of_population": 0.5509,
+              "tag": "OperatingLeaseLiabilityCurrent"
+            },
+            {
+              "n_facts": 3664,
+              "n_filings": 1627,
+              "pct_of_population": 0.0945,
+              "tag": "FinanceLeaseLiabilityCurrent"
+            }
+          ]
+        },
+        "population": "edgar standard monetary face-statement facts"
+      }
+    },
+    {
+      "A1": {
+        "marginal": false,
+        "measured_pct": 0.4632,
+        "verdict": "pass",
+        "vs_calibrated_floor": {
+          "derived_from": "liability.current.payroll",
+          "floor_pct": 0.1003,
+          "verdict": "pass"
+        },
+        "vs_literal_threshold": {
+          "threshold_pct": 0.5,
+          "verdict": "fail"
+        }
+      },
+      "A2": {
+        "basis": "The IFRS element exists, but attestation across jurisdictions is thin: it appears in a small minority of the 100-filing, 20-country ESEF sample (count computed below), against 37 filings for CurrentLeaseLiabilities in the same sample. ASU 2016-18 makes the concept prominent in US reporting specifically; that is a jurisdictional-prominence signal, which ADR-015 routes to an overlay rather than the universal core.",
+        "esef_attestation": {
+          "max_filings_single_tag": 3,
+          "n_facts": 14,
+          "n_tags": 2,
+          "n_tags_observed": 2,
+          "pct_of_population": 0.0424,
+          "per_tag": [
+            {
+              "n_facts": 12,
+              "n_filings": 3,
+              "pct_of_population": 0.0363,
+              "tag": "CurrentRestrictedCashAndCashEquivalents"
+            },
+            {
+              "n_facts": 2,
+              "n_filings": 1,
+              "pct_of_population": 0.0061,
+              "tag": "RestrictedCashAndCashEquivalents"
+            }
+          ]
+        },
+        "verdict": "fail"
+      },
+      "A3": {
+        "basis": "The current/non-current split is filed both ways and the untiered variants outweigh either tier, so the node boundary (one node or two) is not determined by the evidence.",
+        "collision_check": {
+          "checked": true,
+          "collides_with_existing_core_tag": false,
+          "proposed_ifrs_tag": "ifrs-full:CurrentRestrictedCashAndCashEquivalents"
+        },
+        "verdict": "contested"
+      },
+      "A4": {
+        "basis": "Arguable both ways, and recorded as such rather than resolved. For: the restriction is decision-relevant (liquidity), so netting into asset.current.cash loses information. Against: 'restricted' is a property OF cash, and asset.current.cash already carries a cash_flow grouping lens -- restricted-vs-unrestricted is naturally a value on that lens, not a second leaf. Principle #1 favours the lens reading; a leaf would also collide conceptually with the cash/bank pair item 3 documents.",
+        "verdict": "contested"
+      },
+      "A5": {
+        "basis": "IAS 7 and ASU 2016-18 (2018) are settled.",
+        "verdict": "pass"
+      },
+      "admitted": false,
+      "blocking_criteria": [
+        "A2",
+        "A3",
+        "A4"
+      ],
+      "corpus": "edgar",
+      "id": "asset.current.restricted_cash",
+      "proposed_node": {
+        "ifrs_tag": "ifrs-full:CurrentRestrictedCashAndCashEquivalents",
+        "nature": "debit",
+        "parent": "asset.current",
+        "statement": "balance_sheet"
+      },
+      "title": "Restricted cash and cash equivalents",
+      "volume": {
+        "edgar": {
+          "max_filings_single_tag": 1805,
+          "n_facts": 17963,
+          "n_tags": 8,
+          "n_tags_observed": 8,
+          "pct_of_population": 0.4632,
+          "per_tag": [
+            {
+              "n_facts": 4878,
+              "n_filings": 1805,
+              "pct_of_population": 0.1258,
+              "tag": "RestrictedCashCurrent"
+            },
+            {
+              "n_facts": 4411,
+              "n_filings": 1472,
+              "pct_of_population": 0.1137,
+              "tag": "RestrictedCashAndCashEquivalents"
+            },
+            {
+              "n_facts": 3743,
+              "n_filings": 1436,
+              "pct_of_population": 0.0965,
+              "tag": "RestrictedCashNoncurrent"
+            },
+            {
+              "n_facts": 3172,
+              "n_filings": 1185,
+              "pct_of_population": 0.0818,
+              "tag": "RestrictedCashAndCashEquivalentsAtCarryingValue"
+            },
+            {
+              "n_facts": 1407,
+              "n_filings": 528,
+              "pct_of_population": 0.0363,
+              "tag": "RestrictedCashAndCashEquivalentsNoncurrent"
+            },
+            {
+              "n_facts": 159,
+              "n_filings": 55,
+              "pct_of_population": 0.0041,
+              "tag": "RestrictedCashEquivalents"
+            },
+            {
+              "n_facts": 110,
+              "n_filings": 37,
+              "pct_of_population": 0.0028,
+              "tag": "RestrictedCashEquivalentsCurrent"
+            },
+            {
+              "n_facts": 83,
+              "n_filings": 32,
+              "pct_of_population": 0.0021,
+              "tag": "RestrictedCashEquivalentsNoncurrent"
+            }
+          ]
+        },
+        "population": "edgar standard monetary face-statement facts"
+      }
+    },
+    {
+      "A1": {
+        "marginal": false,
+        "measured_pct": 0.0484,
+        "verdict": "fail",
+        "vs_calibrated_floor": {
+          "derived_from": "liability.current.payroll",
+          "floor_pct": 0.1003,
+          "verdict": "fail"
+        },
+        "vs_literal_threshold": {
+          "threshold_pct": 0.5,
+          "verdict": "fail"
+        }
+      },
+      "A2": {
+        "basis": "The current/non-current split is IAS 1 doctrine and universal.",
+        "esef_attestation": {
+          "max_filings_single_tag": 0,
+          "n_facts": 0,
+          "n_tags": 0,
+          "n_tags_observed": 0,
+          "pct_of_population": 0.0,
+          "per_tag": []
+        },
+        "verdict": "pass"
+      },
+      "A3": {
+        "basis": "Each tier has a fixed nature and statement.",
+        "collision_check": {
+          "checked": false,
+          "reason": "no concrete node proposed for this candidate"
+        },
+        "verdict": "pass"
+      },
+      "A4": {
+        "basis": "Genuinely unrepresentable: liability.current.tax, .payables and .accrued are current-only, so a non-current balance of the same concept has no home. Both labelers logged this independently ('tax node is current only', 'payables node is current only', 'accrued node is current only').",
+        "verdict": "pass"
+      },
+      "A5": {
+        "basis": "IAS 1 is settled.",
+        "verdict": "pass"
+      },
+      "admitted": false,
+      "blocking_criteria": [
+        "A1"
+      ],
+      "corpus": "edgar",
+      "id": "liability.noncurrent.tiers",
+      "proposed_node": null,
+      "title": "Non-current tiers of tax / provision / payables (current-only nodes)",
+      "volume": {
+        "edgar": {
+          "max_filings_single_tag": 581,
+          "n_facts": 1877,
+          "n_tags": 5,
+          "n_tags_observed": 5,
+          "pct_of_population": 0.0484,
+          "per_tag": [
+            {
+              "n_facts": 1347,
+              "n_filings": 581,
+              "pct_of_population": 0.0347,
+              "tag": "AccruedIncomeTaxesNoncurrent"
+            },
+            {
+              "n_facts": 285,
+              "n_filings": 124,
+              "pct_of_population": 0.0073,
+              "tag": "AccountsPayableAndAccruedLiabilitiesNoncurrent"
+            },
+            {
+              "n_facts": 158,
+              "n_filings": 60,
+              "pct_of_population": 0.0041,
+              "tag": "NoncurrentPayables"
+            },
+            {
+              "n_facts": 79,
+              "n_filings": 35,
+              "pct_of_population": 0.002,
+              "tag": "LossContingencyAccrualCarryingValueNoncurrent"
+            },
+            {
+              "n_facts": 8,
+              "n_filings": 5,
+              "pct_of_population": 0.0002,
+              "tag": "AccountsPayableInterestBearingNoncurrent"
+            }
+          ]
+        },
+        "population": "edgar standard monetary face-statement facts"
+      }
+    },
+    {
+      "A1": {
+        "marginal": true,
+        "measured_pct": 0.106,
+        "verdict": "pass",
+        "vs_calibrated_floor": {
+          "derived_from": "liability.current.payroll",
+          "floor_pct": 0.1003,
+          "verdict": "pass"
+        },
+        "vs_literal_threshold": {
+          "threshold_pct": 0.5,
+          "verdict": "fail"
+        }
+      },
+      "A2": {
+        "basis": "Contra accounts are universal in native statutory charts -- SKR04, PCG and PUC all carry explicit accumulated-depreciation accounts -- but neither committed corpus can attest that, because both measure face-statement presentation and the gross/accumulated pair is presented in the NOTES. The ESEF face-statement sample contains no accumulated-depreciation concept at all.",
+        "esef_attestation": {
+          "max_filings_single_tag": 0,
+          "n_facts": 0,
+          "n_tags": 0,
+          "n_tags_observed": 0,
+          "pct_of_population": 0.0,
+          "per_tag": []
+        },
+        "verdict": "not_measurable"
+      },
+      "A3": {
+        "basis": "A contra-asset node has a fixed nature (credit against a debit parent) and a fixed statement (balance_sheet).",
+        "collision_check": {
+          "checked": false,
+          "reason": "no concrete node proposed for this candidate"
+        },
+        "verdict": "pass"
+      },
+      "A4": {
+        "basis": "Strongly non-decomposable, and the sharpest A4 case in this run. Only the net carrying amount maps today, so net = gross - accumulated is inexpressible. Both A1 labelers ruled PropertyPlantAndEquipmentGross and the accumulated-depreciation elements out of scope for the same reason: mapping gross AND net to one leaf would double-count and there is no contra leaf to pair with.",
+        "verdict": "pass"
+      },
+      "A5": {
+        "basis": "IAS 16 is settled; contra accounts predate it.",
+        "verdict": "pass"
+      },
+      "admitted": false,
+      "blocking_criteria": [
+        "A2",
+        "A1(marginal)"
+      ],
+      "corpus": "edgar",
+      "id": "asset.contra",
+      "proposed_node": null,
+      "title": "Contra-asset representation (accumulated depreciation/amortisation, allowances, and the gross carrying amount they pair with)",
+      "volume": {
+        "edgar": {
+          "max_filings_single_tag": 1041,
+          "n_facts": 4111,
+          "n_tags": 8,
+          "n_tags_observed": 8,
+          "pct_of_population": 0.106,
+          "per_tag": [
+            {
+              "n_facts": 2474,
+              "n_filings": 1041,
+              "pct_of_population": 0.0638,
+              "tag": "AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipment"
+            },
+            {
+              "n_facts": 695,
+              "n_filings": 616,
+              "pct_of_population": 0.0179,
+              "tag": "PropertyPlantAndEquipmentGross"
+            },
+            {
+              "n_facts": 358,
+              "n_filings": 142,
+              "pct_of_population": 0.0092,
+              "tag": "AccountsReceivableGrossCurrent"
+            },
+            {
+              "n_facts": 296,
+              "n_filings": 116,
+              "pct_of_population": 0.0076,
+              "tag": "AllowanceForDoubtfulAccountsReceivableCurrent"
+            },
+            {
+              "n_facts": 172,
+              "n_filings": 76,
+              "pct_of_population": 0.0044,
+              "tag": "FiniteLivedIntangibleAssetsGross"
+            },
+            {
+              "n_facts": 57,
+              "n_filings": 20,
+              "pct_of_population": 0.0015,
+              "tag": "AllowanceForDoubtfulAccountsReceivable"
+            },
+            {
+              "n_facts": 55,
+              "n_filings": 22,
+              "pct_of_population": 0.0014,
+              "tag": "FiniteLivedIntangibleAssetsAccumulatedAmortization"
+            },
+            {
+              "n_facts": 4,
+              "n_filings": 2,
+              "pct_of_population": 0.0001,
+              "tag": "AllowanceForDoubtfulAccountsReceivableNoncurrent"
+            }
+          ]
+        },
+        "population": "edgar standard monetary face-statement facts"
+      }
+    },
+    {
+      "A1": {
+        "marginal": false,
+        "measured_pct": 0.5304,
+        "verdict": "pass",
+        "vs_calibrated_floor": {
+          "derived_from": "liability.current.payroll",
+          "floor_pct": 0.1003,
+          "verdict": "pass"
+        },
+        "vs_literal_threshold": {
+          "threshold_pct": 0.5,
+          "verdict": "pass"
+        }
+      },
+      "A2": {
+        "basis": "IAS 1 mandates OCI presentation; well attested in ESEF.",
+        "esef_attestation": {
+          "max_filings_single_tag": 48,
+          "n_facts": 921,
+          "n_tags": 1,
+          "n_tags_observed": 1,
+          "pct_of_population": 2.7876,
+          "per_tag": [
+            {
+              "n_facts": 921,
+              "n_filings": 48,
+              "pct_of_population": 2.7876,
+              "tag": "OtherComprehensiveIncome"
+            }
+          ]
+        },
+        "verdict": "pass"
+      },
+      "A3": {
+        "basis": "See income.oci_components -- no statement class fits.",
+        "collision_check": {
+          "checked": false,
+          "reason": "no concrete node proposed for this candidate"
+        },
+        "verdict": "fail"
+      },
+      "A4": {
+        "basis": "It is a SUBTOTAL. Every one of Kontablo's core nodes is a leaf; aggregation is computed through rollup lenses and never stored as a node -- the same rule that keeps GrossProfit out of the core. Storing the OCI total as a node would double-count against its own components. Labeler B classified it AGGREGATE:income for exactly this reason.",
+        "verdict": "fail"
+      },
+      "A5": {
+        "basis": "IAS 1 is settled.",
+        "verdict": "pass"
+      },
+      "admitted": false,
+      "blocking_criteria": [
+        "A3",
+        "A4"
+      ],
+      "corpus": "edgar",
+      "id": "income.oci_total",
+      "proposed_node": null,
+      "title": "Other comprehensive income -- period total",
+      "volume": {
+        "edgar": {
+          "max_filings_single_tag": 6044,
+          "n_facts": 20572,
+          "n_tags": 1,
+          "n_tags_observed": 1,
+          "pct_of_population": 0.5304,
+          "per_tag": [
+            {
+              "n_facts": 20572,
+              "n_filings": 6044,
+              "pct_of_population": 0.5304,
+              "tag": "OtherComprehensiveIncomeLossNetOfTax"
+            }
+          ]
+        },
+        "population": "edgar standard monetary face-statement facts"
+      }
+    },
+    {
+      "A1": {
+        "marginal": false,
+        "measured_pct": 0.396,
+        "verdict": "pass",
+        "vs_calibrated_floor": {
+          "derived_from": "liability.current.payroll",
+          "floor_pct": 0.1003,
+          "verdict": "pass"
+        },
+        "vs_literal_threshold": {
+          "threshold_pct": 0.5,
+          "verdict": "fail"
+        }
+      },
+      "A2": {
+        "basis": "A single component (translation differences) does have a distinct IFRS element and is attested. But 'OCI components' as a class is a family of dozens of elements, so admitting the class has no single anchor; admitting only translation differences privileges one component with no stated rule for the rest.",
+        "esef_attestation": {
+          "max_filings_single_tag": 20,
+          "n_facts": 190,
+          "n_tags": 1,
+          "n_tags_observed": 1,
+          "pct_of_population": 0.5751,
+          "per_tag": [
+            {
+              "n_facts": 190,
+              "n_filings": 20,
+              "pct_of_population": 0.5751,
+              "tag": "OtherComprehensiveIncomeNetOfTaxExchangeDifferencesOnTranslation"
+            }
+          ]
+        },
+        "verdict": "contested"
+      },
+      "A3": {
+        "basis": "NO DETERMINABLE STATEMENT CLASS -- this is the blocking criterion. The ontology defines exactly two: balance_sheet (22 nodes) and income_statement (8). OCI is by construction outside profit or loss, so filing it under income_statement would silently pull it into the ebt and net_income aggregation rules and corrupt both. The accumulated OCI *balance* already has a home (equity.reserves, gold-adjudicated); what is missing is the *flow*, and the flow has no statement to belong to. Admitting it requires a new statement class plus a comprehensive-income rollup lens -- a schema-structural change, which ADR-015 puts at major-version governance, not at extended-core admission.",
+        "collision_check": {
+          "checked": false,
+          "reason": "no concrete node proposed for this candidate"
+        },
+        "verdict": "fail"
+      },
+      "A4": {
+        "basis": "The OCI flow is not representable by any existing node.",
+        "verdict": "pass"
+      },
+      "A5": {
+        "basis": "IAS 1 is settled.",
+        "verdict": "pass"
+      },
+      "admitted": false,
+      "blocking_criteria": [
+        "A2",
+        "A3"
+      ],
+      "corpus": "edgar",
+      "id": "income.oci_components",
+      "proposed_node": null,
+      "title": "Other comprehensive income -- components (largest: FX translation reserve)",
+      "volume": {
+        "edgar": {
+          "max_filings_single_tag": 5186,
+          "n_facts": 15359,
+          "n_tags": 1,
+          "n_tags_observed": 1,
+          "pct_of_population": 0.396,
+          "per_tag": [
+            {
+              "n_facts": 15359,
+              "n_filings": 5186,
+              "pct_of_population": 0.396,
+              "tag": "OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax"
+            }
+          ]
+        },
+        "population": "edgar standard monetary face-statement facts"
+      }
+    },
+    {
+      "A1": {
+        "marginal": false,
+        "measured_pct": 5.1901,
+        "verdict": "pass",
+        "vs_calibrated_floor": {
+          "derived_from": "liability.current.payroll",
+          "floor_pct": 0.1003,
+          "verdict": "pass"
+        },
+        "vs_literal_threshold": {
+          "threshold_pct": 0.5,
+          "verdict": "pass"
+        }
+      },
+      "A2": {
+        "basis": "Decisive, and a rejection FROM THE UNIVERSAL CORE only. Intermediate consumption is a national-accounts / government-sector concept with no IFRS anchor at all. ADR-015's non-growth criteria route a single-sector concept to an overlay by construction. Its real volume (measured below) makes it the highest-priority addition to the public-sector overlay -- which stays UNWIRED per the round-2 H5 recommendation, since H5's threshold cleared on evidence too thin to carry a validation claim.",
+        "esef_attestation": {
+          "max_filings_single_tag": 0,
+          "n_facts": 0,
+          "n_tags": 0,
+          "n_tags_observed": 0,
+          "pct_of_population": 0.0,
+          "per_tag": []
+        },
+        "verdict": "fail"
+      },
+      "A3": {
+        "basis": "Fixed nature (debit) and a settled GFSM definition.",
+        "collision_check": {
+          "checked": false,
+          "reason": "no concrete node proposed for this candidate"
+        },
+        "verdict": "pass"
+      },
+      "A4": {
+        "basis": "No node exists. Both round-2 labelers flagged it independently as the single most consequential gap in the drafted public-sector extension.",
+        "verdict": "pass"
+      },
+      "A5": {
+        "basis": "GFSM 2014 and ESA 2010 are settled.",
+        "verdict": "pass"
+      },
+      "admitted": false,
+      "blocking_criteria": [
+        "A2"
+      ],
+      "corpus": "government",
+      "id": "gov.intermediate_consumption",
+      "proposed_node": null,
+      "title": "Intermediate consumption / use of goods and services (ESA P2, GFSM G22)",
+      "volume": {
+        "eurostat_na_item": {
+          "max_filings_single_tag": 0,
+          "n_facts": 65395,
+          "n_tags": 1,
+          "n_tags_observed": 1,
+          "pct_of_population": 5.1901,
+          "per_tag": [
+            {
+              "n_facts": 65395,
+              "n_filings": 0,
+              "pct_of_population": 5.1901,
+              "tag": "P2"
+            }
+          ]
+        },
+        "imf_gfs": {
+          "max_filings_single_tag": 0,
+          "n_facts": 2229,
+          "n_tags": 1,
+          "n_tags_observed": 1,
+          "pct_of_population": 1.629,
+          "per_tag": [
+            {
+              "n_facts": 2229,
+              "n_filings": 0,
+              "pct_of_population": 1.629,
+              "tag": "G22_T"
+            }
+          ]
+        },
+        "population": "government finance census (observation counts)"
+      }
+    }
+  ],
+  "evidence": "research/experiments/ROUND2_RESULTS.md",
+  "experiment": "adr015_admission_v1",
+  "not_admitted": [
+    "asset.contra",
+    "asset.current.restricted_cash",
+    "gov.intermediate_consumption",
+    "income.oci_components",
+    "income.oci_total",
+    "liability.noncurrent.tiers"
+  ],
+  "ontology_code_collisions": 0,
+  "policy": "docs/adr/015-core-node-admission-and-growth-policy.md",
+  "populations": {
+    "edgar_distinct_tags": 5330,
+    "edgar_standard_monetary_face_facts": 3878245,
+    "esef_standard_monetary_facts": 33039,
+    "eurostat_na_item_observations": 1260004,
+    "imf_gfs_observations": 136834
+  },
+  "threshold_calibration": {
+    "anchors": [
+      {
+        "label": "Payroll liabilities (wages & statutory withholdings)",
+        "measurement": {
+          "max_filings_single_tag": 2144,
+          "n_facts": 3889,
+          "n_tags": 6,
+          "n_tags_observed": 6,
+          "pct_of_population": 0.1003,
+          "per_tag": [
+            {
+              "n_facts": 2398,
+              "n_filings": 2144,
+              "pct_of_population": 0.0618,
+              "tag": "EmployeeRelatedLiabilitiesCurrent"
+            },
+            {
+              "n_facts": 498,
+              "n_filings": 224,
+              "pct_of_population": 0.0128,
+              "tag": "AccruedSalariesCurrent"
+            },
+            {
+              "n_facts": 454,
+              "n_filings": 205,
+              "pct_of_population": 0.0117,
+              "tag": "AccruedEmployeeBenefitsCurrent"
+            },
+            {
+              "n_facts": 334,
+              "n_filings": 168,
+              "pct_of_population": 0.0086,
+              "tag": "AccruedPayrollTaxesCurrent"
+            },
+            {
+              "n_facts": 171,
+              "n_filings": 78,
+              "pct_of_population": 0.0044,
+              "tag": "AccruedBonusesCurrent"
+            },
+            {
+              "n_facts": 34,
+              "n_filings": 14,
+              "pct_of_population": 0.0009,
+              "tag": "AccruedVacationCurrent"
+            }
+          ]
+        },
+        "node": "liability.current.payroll"
+      },
+      {
+        "label": "Contract liabilities / deferred revenue (IFRS 15)",
+        "measurement": {
+          "max_filings_single_tag": 5058,
+          "n_facts": 13325,
+          "n_tags": 4,
+          "n_tags_observed": 4,
+          "pct_of_population": 0.3436,
+          "per_tag": [
+            {
+              "n_facts": 11471,
+              "n_filings": 5058,
+              "pct_of_population": 0.2958,
+              "tag": "ContractWithCustomerLiabilityCurrent"
+            },
+            {
+              "n_facts": 969,
+              "n_filings": 878,
+              "pct_of_population": 0.025,
+              "tag": "DeferredRevenueCurrent"
+            },
+            {
+              "n_facts": 652,
+              "n_filings": 275,
+              "pct_of_population": 0.0168,
+              "tag": "ContractWithCustomerLiability"
+            },
+            {
+              "n_facts": 233,
+              "n_filings": 188,
+              "pct_of_population": 0.006,
+              "tag": "DeferredRevenue"
+            }
+          ]
+        },
+        "node": "liability.current.deferred_revenue"
+      },
+      {
+        "label": "Tax withheld at source / tax credits receivable",
+        "measurement": {
+          "max_filings_single_tag": 1326,
+          "n_facts": 4816,
+          "n_tags": 3,
+          "n_tags_observed": 3,
+          "pct_of_population": 0.1242,
+          "per_tag": [
+            {
+              "n_facts": 3155,
+              "n_filings": 1326,
+              "pct_of_population": 0.0814,
+              "tag": "IncomeTaxesReceivable"
+            },
+            {
+              "n_facts": 909,
+              "n_filings": 386,
+              "pct_of_population": 0.0234,
+              "tag": "PrepaidTaxes"
+            },
+            {
+              "n_facts": 752,
+              "n_filings": 322,
+              "pct_of_population": 0.0194,
+              "tag": "IncomeTaxReceivable"
+            }
+          ]
+        },
+        "node": "asset.current.withholding_tax"
+      },
+      {
+        "label": "Other / non-trade receivables",
+        "measurement": {
+          "max_filings_single_tag": 1618,
+          "n_facts": 5597,
+          "n_tags": 3,
+          "n_tags_observed": 3,
+          "pct_of_population": 0.1443,
+          "per_tag": [
+            {
+              "n_facts": 3673,
+              "n_filings": 1618,
+              "pct_of_population": 0.0947,
+              "tag": "OtherReceivablesNetCurrent"
+            },
+            {
+              "n_facts": 1878,
+              "n_filings": 808,
+              "pct_of_population": 0.0484,
+              "tag": "OtherReceivables"
+            },
+            {
+              "n_facts": 46,
+              "n_filings": 19,
+              "pct_of_population": 0.0012,
+              "tag": "OtherReceivablesGrossCurrent"
+            }
+          ]
+        },
+        "node": "asset.current.other_receivables"
+      }
+    ],
+    "calibrated_floor_derived_from": "liability.current.payroll",
+    "calibrated_floor_pct": 0.1003,
+    "literal_adr015_threshold_pct": 0.5,
+    "literal_threshold_transfers_to_this_population": false,
+    "method": "ADR-015 defines its threshold operationally as the marginal contribution of the smallest already-admitted extended node. The floor is re-derived the same way on the EDGAR population.",
+    "note": "Every one of the four already-admitted extended nodes falls below 0.5% here, so the literal threshold cannot be applied to this population without rejecting nodes ADR-015 has already admitted. The re-derived floor is the faithful transfer of the policy, not a relaxation of it."
+  },
+  "what_this_is_not": [
+    "Not a re-scoring of any round-2 hypothesis. H1 and H5 are untouched.",
+    "Not a measurement of posting volume. EDGAR/ESEF measure how often a concept is presented on a face statement, which is a different quantity."
+  ]
+}
