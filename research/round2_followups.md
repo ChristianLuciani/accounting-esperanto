@@ -48,6 +48,33 @@ an anti-pattern, and it would cost weeks to add a paragraph.
 If a round-2 finding sharpens a spoke-1 invariant, that is a **citation from
 spoke 2 back to spoke 1**, not an edit to spoke 1.
 
+### The gated batch also has a mechanical dependency on spoke 1 (verified)
+
+Not just an editorial one. `docs/papers/spokes/agentic-provenance/figures/gen_fig_fiber_query.py`
+(on `claude/spoke1-agentic-provenance`) **generates** spoke 1's Figure 2 by calling
+`core.harness.ontology.load_ontology()` and `node_fiber()` — over
+`NODE = "asset.current.cash"`, which is one of the two nodes in item 3's
+`CashAndCashEquivalents` collision. Spoke 1's T11 repro check asserts that figure
+**regenerates byte-identical in a clean clone**.
+
+So any gated change that alters `load_ontology()` / `node_fiber()` output for that
+node breaks a claim spoke 1 has already published. Whether item 3 *specifically*
+does depends on how it is implemented — a pure metadata/typing change to
+`ifrs_tag` should not touch `node_fiber`, which reads `local_codes`, while
+restructuring `groupings` or `local_codes` would. Items 5 and 7 add nodes and are
+riskier.
+
+**Practical rule: do not land the gated batch (3/5/7) while spoke 1 is in flight.**
+It is cheap insurance — the batch is not urgent, and spoke 1 is waiting only on a
+venue decision. Verify by regenerating Figure 2 before and after, whenever the
+batch does land.
+
+**Note that item 3 is already half-done.** The collision is recorded in
+`results.json` (`ifrs_full_ambiguous_tags`) and CI-pinned by
+`test_a2_ifrs_tag_ambiguity_is_recorded_not_coin_flipped`, so the finding is
+captured and protected against silent tie-breaking. What remains is the formal
+treatment (spoke 3) and any structural change — and only the latter is gated.
+
 ---
 
 ## 1. Deterministic aggregate detection (XBRL calculation linkbase)
