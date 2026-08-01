@@ -78,12 +78,32 @@ spoke 1" is not automatically right:**
   repo the moment the ontology changes. **Stale-surface drift is this project's
   single most documented failure mode.**
 
-**The deciding factor is timing, not principle.** Spoke 1 is blocked on one
-decision that could resolve in days; the gated batch is a multi-session job. On
-that expectation spoke 1 lands first, and the practical rule stands — *don't
-start the gated batch while the stack is mid-merge* — but it is a **scheduling
-preference, not an integrity constraint**, and it should be revisited if spoke 1
-stays blocked.
+### DECIDED 2026-07-31 (Christian): gated batch lands FIRST
+
+**Spoke 1 publishes against a corrected ontology rather than drifting from it.**
+The trade accepted knowingly: rework in spoke 1's unmerged stack now, in exchange
+for eliminating a future drift between a published spoke and the live repo —
+the failure mode this project has hit most often. Cheap precisely *because*
+spoke 1 is still a draft; this option disappears the moment it publishes.
+
+Consequences that follow, and are binding on the implementing session:
+
+- Items 3, 5 and 7 ship as **one PR**, one claims-evidence rerun, one surface
+  update.
+- Item 7's *analysis* runs first — measuring real frequencies and emitting an
+  ADR-015 decision record changes no number. Only its *outcome* is gated. Item 5
+  is decided **by** item 7, not by fiat.
+- Spoke 1's Figure 2 is regenerated **before and after** and any change reported,
+  so its stack absorbs the new figure before publishing.
+
+**The gold set does not survive this change.** The four blind labelers were
+instructed to use "one of the 30 core leaves" and to invent nothing outside it, so
+a tag labeled empty *because no node existed* may now have a node. Adding nodes
+makes the committed gold **stale for accuracy purposes**. H1 and H5 must therefore
+**not** be re-scored after this batch: doing so would be invalid twice over —
+stale gold, and evaluating a change on the set it was designed against. Measuring
+the effect requires a fresh labeling round against the new vocabulary, which is a
+separate piece of work.
 
 **What is non-negotiable either way:** regenerate Figure 2 and re-run the T11
 repro check whenever the batch lands. If spoke 1 has published by then, the
