@@ -1,0 +1,213 @@
+taxonomy,code,name,stratum,gold_kontablo_id,labeler_note
+gfs,TOTAL,Total,head/seen,AGGREGATE:expense,"total across all COFOG functions = total expenditure; a total, not a leaf"
+gfs,GF07,Health,head/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF10,Social protection,head/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF08,"Recreation, culture and religion",head/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF09,Education,head/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF04,Economic affairs,head/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0802,Cultural services,head/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0703,Hospital services,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF1002,Old age,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0801,Recreational and sporting services,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF1004,Family and children,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0904,Tertiary education,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF1001,Sickness and disability,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF01,General public services,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF1007,Social exclusion n.e.c.,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF05,Environmental protection,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0702,Outpatient services,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0901,Pre-primary and primary education,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0902,Secondary education,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0905,Education not definable by level,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0906,Subsidiary services to education,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF1009,Social protection n.e.c.,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF1006,Housing,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0704,Public health services,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF06,Housing and community amenities,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0101,"Executive and legislative organs, financial and fiscal affairs, external affairs",mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0506,Environmental protection n.e.c.,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0401,"General economic, commercial and labour affairs",mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0405,Transport,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0706,Health n.e.c.,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0804,Religious and other community services,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0501,Waste management,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF03,Public order and safety,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0407,Other industries,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0601,Housing development,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0402,"Agriculture, forestry, fishing and hunting",mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0602,Community development,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF1005,Unemployment,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0606,Housing and community amenities n.e.c.,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0603,Water supply,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0908,Education n.e.c.,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0106,General public services n.e.c.,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF02,Defence,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0403,Fuel and energy,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0803,Broadcasting and publishing services,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0104,Basic research,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0103,General services,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0406,Communication,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0903,Post-secondary non-tertiary education,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0302,Fire-protection services,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0404,"Mining, manufacturing and construction",mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0907,R&D Education,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0306,Public order and safety n.e.c.,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0502,Waste water management,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0201,Military defence,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0504,Protection of biodiversity and landscape,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0301,Police services,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0303,Law courts,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0205,Defence n.e.c.,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0304,Prisons,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0604,Street lighting,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0305,R&D Public order and safety,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0806,"Recreation, culture and religion n.e.c.",mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0408,R&D Economic affairs,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0701,"Medical products, appliances and equipment",mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0203,Foreign military aid,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF1003,Survivors,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0503,Pollution abatement,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0705,R&D Health,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0505,R&D Environmental protection,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0102,Foreign economic aid,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0805,"R&D Recreation, culture and religion",mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0202,Civil defence,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0409,Economic affairs n.e.c.,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0204,R&D Defence,mid/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0107,Public debt transactions,tail/seen,LENS:cofog,COFOG 01.7 function; overlaps EXP_DebtService economically but is a purpose code
+gfs,GF1008,R&D Social protection,tail/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0105,R&D General public services,tail/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0605,R&D Housing and community amenities,tail/seen,LENS:cofog,"COFOG function (purpose), not an account"
+gfs,GF0108,Transfers of a general character between different levels of government,tail/seen,LENS:cofog,"COFOG 01.8 function; intergovernmental transfers viewed by purpose, not an account"
+gfs,TE,Total general government expenditure,head/seen,AGGREGATE:expense,"total general government expenditure; a total, not a leaf"
+gfs,P3,Final consumption expenditure,head/seen,AGGREGATE:expense,"final consumption expenditure = P31+P32; derived NA aggregate, not an account"
+gfs,P2,Intermediate consumption,head/seen,,intermediate consumption / use of goods and services: no Kontablo node denotes it
+gfs,OP5ANP,Gross capital formation and acquisitions less disposals of non-financial non-produced assets,head/seen,AGGREGATE:asset.noncurrent,"P5+NP; capital-formation rollup (period movement in non-current assets), not a balance"
+gfs,P5,Gross capital formation,head/seen,AGGREGATE:asset.noncurrent,"gross capital formation; rolls up acquisitions of non-current assets, not a balance"
+gfs,P51G,Gross fixed capital formation,head/seen,AGGREGATE:asset.noncurrent,"GFCF = period additions to ppe/infrastructure/military assets; movement, not a balance"
+gfs,D1,Compensation of employees,head/seen,EXP_PersonnelCosts_Gov,compensation of employees = government personnel and compensation
+gfs,D7,Other current transfers,head/seen,EXP_GrantsAndSubsidiesPaid,other current transfers payable = grants/intergovernmental transfers paid
+gfs,D9,Capital transfers,head/seen,EXP_GrantsAndSubsidiesPaid,"capital transfers payable, dominated by investment grants; D99 debt forgiveness is residual"
+gfs,P2_D29_D5_D8,"Intermediate consumption; other taxes on production; current taxes on income, wealth, etc.; adjustment for the change in pension entitlements",head/seen,AGGREGATE:expense,"compound presentational bundle of four heterogeneous items; a subtotal, not a leaf"
+gfs,D92,Investment grants,head/seen,EXP_GrantsAndSubsidiesPaid,investment grants payable = grants paid
+gfs,D3,Subsidies,head/seen,EXP_GrantsAndSubsidiesPaid,subsidies payable; node explicitly covers subsidies
+gfs,NP,Acquisitions less disposals of non-financial non-produced assets,head/seen,AGGREGATE:asset.noncurrent,net acquisitions of land/subsoil/licences; movement rolling up ppe+intangibles
+gfs,D29_D5_D8,"""Other taxes on production; current taxes on income, wealth, etc; adjustment for the change in pension entitlements""",head/seen,AGGREGATE:expense,compound bundle of taxes payable by govt + pension-entitlement adjustment; subtotal
+gfs,D62_D632,Social benefits other than social transfers in kind and social transfers in kind - purchased market production,head/seen,EXP_SocialBenefitsExpense,"both constituents denote social benefits expense, so the bundle denotes that one node"
+gfs,D62,Social benefits other than social transfers in kind,head/seen,EXP_SocialBenefitsExpense,cash social benefits paid to households
+gfs,D632,Social transfers in kind - purchased market production,head/seen,EXP_SocialBenefitsExpense,social transfers in kind purchased from market producers = benefit expense in kind
+gfs,D4,Property income,head/seen,EXP_DebtService,property income payable is overwhelmingly interest on public debt; also holds rent (imperfect)
+gfs,P32,Collective consumption expenditure,head/seen,AGGREGATE:expense,"collective consumption; derived NA construct (P2+D1+CFC-sales split), not an account"
+gfs,P31,Individual consumption expenditure,head/seen,AGGREGATE:expense,"individual consumption; derived NA construct, not an account"
+gfs,D4_S1311,"Property income, of which payable to subsector S1311",tail/seen,EXP_DebtService,'of which' counterparty slice of D4; counterparty is a dimension
+gfs,D4_S1312,"Property income, of which payable to subsector S1312",tail/seen,EXP_DebtService,'of which' counterparty slice of D4; counterparty is a dimension
+gfs,D4_S1313,"Property income, of which payable to subsector S1313",tail/seen,EXP_DebtService,'of which' counterparty slice of D4; counterparty is a dimension
+gfs,D4_S1314,"Property income, of which payable to subsector S1314",tail/seen,EXP_DebtService,'of which' counterparty slice of D4; counterparty is a dimension
+gfs,D7_S1311,"Other current transfers,of which payable to subsector S1311",tail/seen,EXP_GrantsAndSubsidiesPaid,'of which' counterparty slice of D7 (intergovernmental transfers paid)
+gfs,D7_S1312,"Other current transfers,of which payable to subsector S1312",tail/seen,EXP_GrantsAndSubsidiesPaid,'of which' counterparty slice of D7 (intergovernmental transfers paid)
+gfs,D7_S1313,"Other current transfers,of which payable to subsector S1313",tail/seen,EXP_GrantsAndSubsidiesPaid,'of which' counterparty slice of D7 (intergovernmental transfers paid)
+gfs,D7_S1314,"Other current transfers,of which payable to subsector S1314",tail/seen,EXP_GrantsAndSubsidiesPaid,'of which' counterparty slice of D7 (intergovernmental transfers paid)
+gfs,D9_S1311,"Capital transfers, expenditure, of which to subsector central government (S1311)",tail/seen,EXP_GrantsAndSubsidiesPaid,'of which' counterparty slice of D9 capital transfers paid
+gfs,D9_S1312,"Capital transfers, expenditure, of which to subsector state government (S1312)",tail/seen,EXP_GrantsAndSubsidiesPaid,'of which' counterparty slice of D9 capital transfers paid
+gfs,D9_S1313,"Capital transfers, expenditure, of which to subsector local government (S1313)",tail/seen,EXP_GrantsAndSubsidiesPaid,'of which' counterparty slice of D9 capital transfers paid
+gfs,D9_S1314,"Capital transfers, expenditure, of which to subsector social security funds (S1314)",tail/seen,EXP_GrantsAndSubsidiesPaid,'of which' counterparty slice of D9 capital transfers paid
+gfs,G12_T,"Social contributions, Transactions",tail/seen,GOV_SocialContributions,GFS 12 social contributions revenue
+gfs,G11_T,"Taxes, Transactions",tail/seen,GOV_TaxRevenue,GFS 11 taxes = non-exchange tax revenue
+gfs,G2_T,"Expense, Transactions",tail/seen,AGGREGATE:expense,"GFS total expense; a total, not a leaf"
+gfs,G1_T,"Revenue, Transactions",tail/seen,AGGREGATE:revenue,"GFS total revenue; a total, not a leaf"
+gfs,G24_T,"Interest payable, Transactions",tail/seen,EXP_DebtService,GFS 24 interest payable on government debt
+gfs,G21_T,"Compensation of employees, Transactions",tail/seen,EXP_PersonnelCosts_Gov,GFS 21 compensation of employees
+gfs,G22_T,"Use of goods and services, Transactions",tail/seen,,GFS 22 use of goods and services: no Kontablo node denotes it
+gfs,G25_T,"Subsidies payable, Transactions",tail/seen,EXP_GrantsAndSubsidiesPaid,GFS 25 subsidies payable
+gfs,G27_T,"Social benefits, Transactions",tail/seen,EXP_SocialBenefitsExpense,GFS 27 social benefits expense
+gfs,GPB_T,"Primary net lending (+) / net borrowing (-), Transactions",tail/seen,AGGREGATE:income,"primary net lending/borrowing is a computed balancing item, not an account"
+gfs,G14_T,"Other revenue, Transactions",tail/seen,AGGREGATE:revenue,GFS 14 residual bucket (sales of goods/services + property income + fines); spans several nodes
+gfs,G26_T,"Grants payable, Transactions",tail/seen,EXP_GrantsAndSubsidiesPaid,GFS 26 grants payable
+gfs,G28_T,"Other expense, Transactions",tail/seen,AGGREGATE:expense,GFS 28 residual bucket (non-interest property expense + misc transfers); spans several nodes
+gfs,G13_T,"Grants receivable, Transactions",tail/seen,GOV_TransfersReceived,GFS 13 grants receivable = transfers/grants received
+gfs,GF04_T,"Economic affairs, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF05_T,"Environmental protection, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF06_T,"Housing and community amenities, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF07_T,"Health, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF08_T,"Recreation, culture and religion, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF09_T,"Education, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF10_T,"Social protection, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF01_T,"General public services, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF03_T,"Public order and safety, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF02_T,"Defence, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0170_T,"Public debt transactions, Transactions",tail/seen,LENS:cofog,COFOG 01.7 function; overlaps EXP_DebtService economically but is a purpose code
+gfs,GF042_T,"Agriculture, forestry, fishing and hunting, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF043_T,"Fuel and energy, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF044_T,"Mining, manufacturing and construction, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF045_T,"Transport, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF072_T,"Outpatient services, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF073_T,"Hospital services, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0740_T,"Public health services, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF094_T,"Tertiary education, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0160_T,"General public services n.e.c., Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF025_T,"Defence n.e.c., Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF041_T,"General economic, commercial and labour affairs, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0712_T,"Other medical products, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0760_T,"Health n.e.c., Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0950_T,"Education not definable by level, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0980_T,"Education n.e.c., Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0610_T,"Housing development, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0630_T,"Water supply, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0640_T,"Street lighting, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0660_T,"Housing and community amenities n.e.c., Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0810_T,"Recreational and sporting services, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0820_T,"Cultural services, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0830_T,"Broadcasting and publishing services, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF012_T,"Foreign economic aid, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF013_T,"General services, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0140_T,"Basic research, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0180_T,"Transfers of a general character between different levels of government, Transactions",tail/seen,LENS:cofog,"COFOG 01.8 function; intergovernmental transfers viewed by purpose, not an account"
+gfs,GF0210_T,"Military defence, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0230_T,"Foreign military aid, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF011_T,"Executive and legislative organs, financial and fiscal affairs, external affairs, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0460_T,"Communication, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0510_T,"Waste management, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0520_T,"Waste water management, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0540_T,"Protection of biodiversity and landscape, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0560_T,"Environmental protection n.e.c., Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF091_T,"Pre-primary and primary education, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF092_T,"Secondary education, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0930_T,"Post-secondary non-tertiary education, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF047_T,"Other industries, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF048_T,"R&D Economic affairs, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0490_T,"Economic affairs n.e.c., Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0860_T,"Recreation, culture and religion n.e.c., Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0960_T,"Subsidiary services to education, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0970_T,"R&D Education, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF101_T,"Sickness and disability, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF1020_T,"Old age, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF1040_T,"Family and children, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF1050_T,"Unemployment, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF1060_T,"Housing, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF1070_T,"Social exclusion n.e.c., Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF1090_T,"Social protection n.e.c., Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0310_T,"Police services, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0320_T,"Fire-protection services, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0330_T,"Law courts, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0340_T,"Prisons, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0360_T,"Public order and safety n.e.c., Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0620_T,"Community development, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0840_T,"Religious and other community services, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0220_T,"Civil defence, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0530_T,"Pollution abatement, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF075_T,"R&D Health, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0850_T,"R&D Recreation, culture and religion, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0240_T,"R&D Defence, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0350_T,"R&D Public order and safety, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0550_T,"R&D Environmental protection, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF1030_T,"Survivors, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF1080_T,"R&D Social protection, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0150_T,"R&D General public services, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,GF0650_T,"R&D Housing and community amenities, Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,G23_T,"Consumption of fixed capital (CFC), Transactions",tail/seen,expense.depreciation,consumption of fixed capital is the national-accounts term for depreciation
+gfs,G6_A_SP,"Net worth, Assets, Stock positions",tail/seen,AGGREGATE:equity,"net worth = assets minus liabilities; computed balancing total, not a leaf"
+gfs,NFA_A_SP,"Nonfinancial assets, Stock positions",tail/seen,AGGREGATE:asset,total nonfinancial assets; spans fixed assets (non-current) and inventories (current)
+gfs,GGB_T,"Government balance per national definition, Transactions",tail/seen,AGGREGATE:income,"government balance per national definition is a balancing item, not an account"
+gfs,FA_A_SP,"Financial assets, Stock positions",tail/seen,AGGREGATE:asset,"total financial assets; spans cash, receivables and investments"
+gfs,GF066_T,"Housing and community amenities n.e.c., Transactions",tail/seen,LENS:cofog,COFOG function crossed with transactions; still a functional lens
+gfs,L_SP,"Liabilities, Stock positions",tail/seen,AGGREGATE:liability,"total liabilities; a total, not a leaf"

@@ -1,0 +1,321 @@
+taxonomy,code,name,stratum,gold_kontablo_id,labeler_note
+us-gaap,StockholdersEquity,"Equity, Attributable to Parent",head/seen,AGGREGATE:equity,total equity subtotal
+us-gaap,ProfitLoss,Profit (loss),head/seen,AGGREGATE:income,bottom-line subtotal (net_income rule)
+us-gaap,Assets,Assets,head/seen,AGGREGATE:asset,total assets subtotal
+us-gaap,NetCashProvidedByUsedInOperatingActivities,Net Cash Provided by (Used in) Operating Activities,head/seen,AGGREGATE:cash_flow,cash-flow subtotal
+us-gaap,LiabilitiesAndStockholdersEquity,Liabilities and Equity,head/seen,AGGREGATE:liability,L+E total; no combined lens in vocabulary
+us-gaap,NetCashProvidedByUsedInFinancingActivities,Net Cash Provided by (Used in) Financing Activities,head/seen,AGGREGATE:cash_flow,cash-flow subtotal
+us-gaap,RetainedEarningsAccumulatedDeficit,Retained Earnings (Accumulated Deficit),head/seen,equity.retained,exact: cumulative undistributed profit
+us-gaap,Liabilities,Liabilities,head/seen,AGGREGATE:liability,total liabilities subtotal
+us-gaap,CommonStockValue,"Common Stock, Value, Issued",head/seen,equity.capital,issued capital balance
+us-gaap,CashAndCashEquivalentsAtCarryingValue,"Cash and Cash Equivalents, at Carrying Value",head/seen,asset.current.cash,exact: cash and cash equivalents
+us-gaap,NetCashProvidedByUsedInInvestingActivities,Net Cash Provided by (Used in) Investing Activities,head/seen,AGGREGATE:cash_flow,cash-flow subtotal
+us-gaap,StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest,"Equity, Including Portion Attributable to Noncontrolling Interest",head/seen,AGGREGATE:equity,total equity incl NCI
+us-gaap,AssetsCurrent,"Assets, Current",head/seen,AGGREGATE:asset.current,total_current_assets rule
+us-gaap,LiabilitiesCurrent,"Liabilities, Current",head/seen,AGGREGATE:liability.current,total_current_liabilities rule
+us-gaap,OperatingIncomeLoss,Operating Income (Loss),head/seen,AGGREGATE:income,ebit-type subtotal
+us-gaap,IncomeTaxExpenseBenefit,Income Tax Expense (Benefit),head/seen,expense.tax,exact: income tax expense for period
+us-gaap,CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,"Cash, Cash Equivalents, Restricted Cash, and Restricted Cash Equivalents, Period Increase (Decrease), Including Exchange Rate Effect",head/seen,AGGREGATE:cash_flow,net change in cash - cash-flow subtotal
+us-gaap,CommitmentsAndContingencies,Commitments and Contingencies,head/seen,,"disclosure placeholder line, not an account"
+us-gaap,IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,"Income (Loss) from Continuing Operations before Income Taxes, Noncontrolling Interest",head/seen,AGGREGATE:income,pre-tax income subtotal (ebt)
+us-gaap,PropertyPlantAndEquipmentNet,"Property, Plant and Equipment, Net",head/seen,asset.noncurrent.ppe,exact: PPE carrying amount
+us-gaap,ComprehensiveIncomeNetOfTax,"Comprehensive Income (Loss), Net of Tax, Attributable to Parent",head/seen,AGGREGATE:income,income-statement subtotal
+us-gaap,AccumulatedOtherComprehensiveIncomeLossNetOfTax,"Accumulated Other Comprehensive Income (Loss), Net of Tax",head/seen,equity.reserves,equity component other than capital/retained
+us-gaap,PaymentsToAcquirePropertyPlantAndEquipment,"Payments to Acquire Property, Plant, and Equipment",head/seen,,"capex movement, not a balance (R1)"
+us-gaap,AdditionalPaidInCapital,Additional Paid in Capital,head/seen,equity.capital,paid-in capital balance
+us-gaap,AccountsPayableCurrent,"Accounts Payable, Current",head/seen,liability.current.payables,exact: trade payables
+us-gaap,InterestPaidNet,"Interest Paid, Excluding Capitalized Interest, Operating Activities",head/seen,,"cash-paid disclosure, not accrual finance cost (R1)"
+us-gaap,OperatingLeaseRightOfUseAsset,"Operating Lease, Right-of-Use Asset",head/seen,asset.noncurrent.rou_assets,exact: ROU asset
+us-gaap,PreferredStockValue,"Preferred Stock, Value, Issued",head/seen,equity.capital,issued capital balance
+us-gaap,OtherAssetsNoncurrent,"Other Assets, Noncurrent",head/seen,,"undifferentiated residual bucket, no node satisfied"
+us-gaap,GeneralAndAdministrativeExpense,General and administrative expense,head/seen,expense.admin,exact: G&A expense
+us-gaap,AccountsReceivableNetCurrent,"Accounts Receivable, after Allowance for Credit Loss, Current",head/seen,asset.current.receivables,exact: trade receivables net of ECL
+us-gaap,IncreaseDecreaseInAccountsReceivable,Increase (Decrease) in Accounts Receivable,head/seen,,period movement (R1)
+us-gaap,AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,"APIC, Share-Based Payment Arrangement, Increase for Cost Recognition",head/seen,,movement in APIC (R1)
+us-gaap,OperatingLeaseLiabilityNoncurrent,"Operating Lease, Liability, Noncurrent",head/seen,liability.noncurrent.lease,exact: non-current lease liability
+us-gaap,CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations,"Cash, Cash Equivalents, Restricted Cash, and Restricted Cash Equivalents, Including Disposal Group and Discontinued Operations",head/seen,,includes restricted cash + disposal group; breaks cash definition
+us-gaap,OperatingExpenses,Operating Expenses,head/seen,AGGREGATE:expense,operating expense subtotal
+us-gaap,Goodwill,Goodwill,head/seen,asset.noncurrent.goodwill,exact: goodwill balance
+us-gaap,DepreciationDepletionAndAmortization,"Depreciation, Depletion and Amortization",head/seen,expense.depreciation,D&A expense for period
+us-gaap,RevenueFromContractWithCustomerExcludingAssessedTax,"Revenue from Contract with Customer, Excluding Assessed Tax",head/seen,revenue.operating,exact: IFRS15/ASC606 revenue
+us-gaap,OtherLiabilitiesNoncurrent,"Other Liabilities, Noncurrent",head/seen,,undifferentiated residual bucket
+us-gaap,PrepaidExpenseAndOtherAssetsCurrent,"Prepaid Expense and Other Assets, Current",head/seen,,combined prepaid + other; spills outside CurrentPrepayments (R2)
+us-gaap,IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets,Increase (Decrease) in Prepaid Expense and Other Assets,head/seen,,period movement (R1)
+us-gaap,OperatingLeaseLiabilityCurrent,"Operating Lease, Liability, Current",head/seen,,current portion; lease node is explicitly non-current
+us-gaap,OtherComprehensiveIncomeLossNetOfTax,"Other Comprehensive Income (Loss), Net of Tax",head/seen,AGGREGATE:income,OCI subtotal
+us-gaap,NonoperatingIncomeExpense,Nonoperating Income (Expense),head/seen,AGGREGATE:income,net non-operating subtotal
+us-gaap,InventoryNet,"Inventory, Net",head/seen,asset.current.inventory,exact: inventory carrying amount
+us-gaap,IncreaseDecreaseInAccountsPayable,Increase (Decrease) in Accounts Payable,head/seen,,period movement (R1)
+us-gaap,GrossProfit,Gross profit,head/seen,AGGREGATE:income,gross_profit aggregation rule
+us-gaap,IncreaseDecreaseInInventories,Increase (Decrease) in Inventories,head/seen,,period movement (R1)
+us-gaap,PaymentsForRepurchaseOfCommonStock,Payments for Repurchase of Common Stock,head/seen,,financing movement (R1)
+us-gaap,AccruedLiabilitiesCurrent,"Accrued Liabilities, Current",head/seen,liability.current.accrued,exact: current accrued liabilities
+us-gaap,StockIssuedDuringPeriodValueNewIssues,"Stock Issued During Period, Value, New Issues",head/seen,,equity movement (R1)
+us-gaap,IntangibleAssetsNetExcludingGoodwill,"Intangible Assets, Net (Excluding Goodwill)",head/seen,asset.noncurrent.intangibles,exact: intangibles other than goodwill
+us-gaap,Revenues,Revenues,head/seen,AGGREGATE:revenue,total revenue subtotal
+us-gaap,ResearchAndDevelopmentExpense,Research and development expense,head/seen,,R&D is not AdministrativeExpenses; no core node
+us-gaap,SellingGeneralAndAdministrativeExpense,"Selling, general and administrative expense",head/seen,,combined selling+G&A; selling portion has no node (R2)
+us-gaap,OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,"Other Comprehensive Income (Loss), Net of Tax, Portion Attributable to Parent",head/seen,AGGREGATE:income,OCI subtotal
+us-gaap,AdditionalPaidInCapitalCommonStock,"Additional Paid in Capital, Common Stock",head/seen,equity.capital,paid-in capital balance
+us-gaap,InterestExpenseNonoperating,"Interest Expense, Nonoperating",head/seen,expense.interest,exact: finance cost
+us-gaap,DeferredIncomeTaxExpenseBenefit,Deferred Income Tax Expense (Benefit),head/seen,expense.tax,deferred component of income tax expense (R2)
+us-gaap,ProceedsFromIssuanceOfCommonStock,Proceeds from Issuance of Common Stock,head/seen,,financing movement (R1)
+us-gaap,CostOfGoodsAndServicesSold,Cost of Goods and Services Sold,head/seen,expense.cogs,exact: cost of sales
+us-gaap,IncreaseDecreaseInAccountsPayableAndAccruedLiabilities,Increase (Decrease) in Accounts Payable and Accrued Liabilities,head/seen,,period movement (R1)
+us-gaap,DeferredIncomeTaxLiabilitiesNet,"Deferred Income Tax Liabilities, Net",head/seen,liability.noncurrent.deferred_tax,exact: deferred tax liability
+us-gaap,OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,"Other Comprehensive Income (Loss), Foreign Currency Transaction and Translation Adjustment, Net of Tax",head/seen,,CTA in OCI; fx_loss node is P&L only
+us-gaap,DepreciationAndAmortization,"Depreciation, Depletion and Amortization, Nonproduction",head/seen,expense.depreciation,D&A expense for period
+us-gaap,GainsLossesOnExtinguishmentOfDebt,Gain (Loss) on Extinguishment of Debt,head/seen,,no gain/loss-on-extinguishment node
+us-gaap,EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents,"Effect of Exchange Rate on Cash, Cash Equivalents, Restricted Cash, and Restricted Cash Equivalents, Continuing Operations",head/seen,,"FX effect on cash in CF stmt; not P&L fx_loss, not a rollup"
+us-gaap,NetIncomeLossAttributableToNoncontrollingInterest,Net Income (Loss) Attributable to Noncontrolling Interest,head/seen,,NCI profit allocation; no NCI concept in core
+us-gaap,PaymentsRelatedToTaxWithholdingForShareBasedCompensation,"Payment, Tax Withholding, Share-Based Payment Arrangement",head/seen,,cash movement (R1)
+us-gaap,OtherLiabilitiesCurrent,"Other Liabilities, Current",head/seen,,undifferentiated residual bucket
+us-gaap,DeferredIncomeTaxAssetsNet,"Deferred Income Tax Assets, Net",head/seen,,no deferred tax ASSET node (only the liability)
+us-gaap,LongTermDebtNoncurrent,"Long-Term Debt, Excluding Current Maturities",head/seen,liability.noncurrent.debt,exact: long-term debt excl current maturities
+us-gaap,MinorityInterest,"Equity, Attributable to Noncontrolling Interest",mid/seen,,NCI equity balance; no NCI node
+us-gaap,ProceedsFromStockOptionsExercised,Proceeds from Stock Options Exercised,mid/seen,,financing movement (R1)
+us-gaap,PaymentsOfDebtIssuanceCosts,Payments of Debt Issuance Costs,mid/seen,,cash movement (R1)
+us-gaap,ProvisionForDoubtfulAccounts,"Accounts Receivable, Credit Loss Expense (Reversal)",mid/seen,,"credit-loss expense; distinct IFRS line, not G&A"
+us-gaap,ProceedsFromIssuanceOfLongTermDebt,Proceeds from Issuance of Long-Term Debt,mid/seen,,financing movement (R1)
+us-gaap,RightOfUseAssetObtainedInExchangeForOperatingLeaseLiability,Right-of-Use Asset Obtained in Exchange for Operating Lease Liability,mid/seen,,"non-cash addition, not a balance (R1)"
+us-gaap,ProfessionalFees,Professional Fees,mid/seen,expense.admin,narrower component of G&A (R2)
+us-gaap,Cash,Cash,mid/seen,asset.current.cash,exact: cash balance
+us-gaap,OtherLiabilities,Other liabilities,mid/seen,,undifferentiated residual bucket
+us-gaap,PaymentsToAcquireIntangibleAssets,Payments to Acquire Intangible Assets,mid/seen,,investing movement (R1)
+us-gaap,OtherOperatingActivitiesCashFlowStatement,"Other Operating Activities, Cash Flow Statement",mid/seen,,"cash-flow residual line, not an account"
+us-gaap,AccruedIncomeTaxesCurrent,"Accrued Income Taxes, Current",mid/seen,liability.current.tax,exact: current income tax payable
+us-gaap,UnrealizedGainLossOnInvestments,Unrealized Gain (Loss) on Investments,mid/seen,,fair-value remeasurement; no node
+us-gaap,IncreaseDecreaseInDeferredRevenue,Increase (Decrease) in Deferred Revenue,mid/seen,,"movement, and deferred revenue is extended_core (R1/R4)"
+us-gaap,IncreaseDecreaseInOtherNoncurrentAssets,Increase (Decrease) in Other Noncurrent Assets,mid/seen,,period movement (R1)
+us-gaap,FinanceLeaseLiabilityNoncurrent,"Finance Lease, Liability, Noncurrent",mid/seen,liability.noncurrent.lease,non-current lease liability
+us-gaap,PaymentsToAcquireProductiveAssets,Payments to Acquire Productive Assets,mid/seen,,investing movement (R1)
+us-gaap,IncreaseDecreaseInOtherNoncurrentLiabilities,Increase (Decrease) in Other Noncurrent Liabilities,mid/seen,,period movement (R1)
+us-gaap,RepaymentsOfDebt,Repayments of Debt,mid/seen,,financing movement (R1)
+us-gaap,AccruedLiabilitiesAndOtherLiabilities,Accrued Liabilities and Other Liabilities,mid/seen,,combined accrued + undifferentiated other (R2)
+us-gaap,EquityMethodInvestments,Equity Method Investments,mid/seen,asset.noncurrent.investments,exact match to node ifrs_tag
+us-gaap,InterestIncomeExpenseAfterProvisionForLoanLoss,"Interest Income (Expense), after Provision for Loan Loss",mid/seen,,"net interest income measure, not a finance cost"
+us-gaap,RestructuringCharges,Restructuring Charges,mid/seen,,no restructuring node; not G&A
+us-gaap,InterestReceivable,Interest Receivable,mid/seen,,"accrued interest receivable, not a trade receivable"
+us-gaap,PaymentsToMinorityShareholders,Payments to Noncontrolling Interests,mid/seen,,financing movement (R1)
+us-gaap,BusinessCombinationContingentConsiderationArrangementsChangeInAmountOfContingentConsiderationLiability1,"Business Combination, Contingent Consideration Arrangements, Change in Amount of Contingent Consideration, Liability",mid/seen,,movement in contingent consideration (R1)
+us-gaap,IncreaseDecreaseInDeferredIncomeTaxes,Increase (Decrease) in Deferred Income Taxes,mid/seen,,period movement (R1)
+us-gaap,IncreaseDecreaseInReceivables,Increase (Decrease) in Receivables,mid/seen,,period movement (R1)
+us-gaap,InterestExpenseDeposits,"Interest Expense, Deposits",mid/seen,expense.interest,interest on deposits = finance cost (R2)
+us-gaap,OtherAccruedLiabilitiesCurrent,"Other Accrued Liabilities, Current",mid/seen,liability.current.accrued,subset of current accrued liabilities (R2)
+us-gaap,DividendsPayableCurrentAndNoncurrent,Dividends Payable,mid/seen,,declared distribution liability; not trade payable or accrual
+us-gaap,IncreaseDecreaseInOtherCurrentLiabilities,Increase (Decrease) in Other Current Liabilities,mid/seen,,period movement (R1)
+us-gaap,InvestmentIncomeNet,"Investment Income, Net",mid/seen,revenue.other,non-operating income (ebt rule places it here)
+us-gaap,OtherComprehensiveIncomeLossCashFlowHedgeGainLossAfterReclassificationAndTaxParent,"Other Comprehensive Income (Loss), Cash Flow Hedge, Gain (Loss), after Reclassification and Tax, Parent",mid/seen,,OCI hedge component; no node
+us-gaap,BankOwnedLifeInsurance,Bank Owned Life Insurance,mid/seen,,BOLI asset; no node
+us-gaap,PropertyPlantAndEquipmentGross,"Property, Plant and Equipment, Gross",mid/seen,,cost measure; node is carrying amount and Net already maps (R3)
+us-gaap,IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments,"Income (Loss) from Continuing Operations before Equity Method Investments, Income Taxes, Noncontrolling Interest",mid/seen,AGGREGATE:income,pre-tax income subtotal
+us-gaap,DividendsPreferredStock,"Dividends, Preferred Stock",mid/seen,,distribution to owners; equity movement (R1)
+us-gaap,RepaymentsOfShortTermDebt,Repayments of Short-Term Debt,mid/seen,,financing movement (R1)
+us-gaap,ProceedsFromSaleAndMaturityOfAvailableForSaleSecurities,"Proceeds from Sale and Maturity of Debt Securities, Available-for-Sale",mid/seen,,investing movement (R1)
+us-gaap,OtherReceivables,Other receivables,mid/seen,,"non-trade receivables = extended_core node, not in the 30 (R4)"
+us-gaap,DebtAndEquitySecuritiesUnrealizedGainLoss,"Debt and Equity Securities, Unrealized Gain (Loss)",mid/seen,,fair-value remeasurement; no node
+us-gaap,StockIssuedDuringPeriodValueConversionOfUnits,"Stock Issued During Period, Value, Conversion of Units",mid/seen,,equity movement (R1)
+us-gaap,InterestIncomeSecuritiesTaxable,"Interest Income, Securities, Operating, Taxable",mid/seen,revenue.other,non-operating interest income
+us-gaap,DepositsAssetsNoncurrent,"Deposits Assets, Noncurrent",mid/seen,,deposits placed; no node
+us-gaap,PaidInKindInterest,Paid-in-Kind Interest,mid/seen,,"non-cash PIK adjustment, ambiguous direction; no node satisfied"
+us-gaap,GainLossOnSaleOfOtherAssets,Gain (Loss) on Disposition of Other Assets,mid/seen,,disposal gain/loss; no node
+us-gaap,OtherGeneralAndAdministrativeExpense,Other General and Administrative Expense,mid/seen,expense.admin,narrower component of G&A (R2)
+us-gaap,IntangibleAssetsNetIncludingGoodwill,"Intangible Assets, Net (Including Goodwill)",mid/seen,AGGREGATE:asset.noncurrent,rollup of intangibles + goodwill leaves
+us-gaap,CashProvidedByUsedInInvestingActivitiesDiscontinuedOperations,"Cash Provided by (Used in) Investing Activities, Discontinued Operations",mid/seen,AGGREGATE:cash_flow,cash-flow subtotal
+us-gaap,ProceedsFromSaleOfEquitySecuritiesFvNi,"Proceeds from Sale of Equity Securities, FV-NI",mid/seen,,investing movement (R1)
+us-gaap,NetCashProvidedByUsedInInvestingActivitiesContinuingOperations,"Net Cash Provided by (Used in) Investing Activities, Continuing Operations",mid/seen,AGGREGATE:cash_flow,cash-flow subtotal
+us-gaap,PaymentsForPurchaseOfInvestmentOperatingActivity,"Payment for Purchase, Investment, Operating Activity",mid/seen,,cash movement (R1)
+us-gaap,InterestIncomeDepositsWithFinancialInstitutions,"Interest Income, Deposits with Financial Institutions",mid/seen,revenue.other,non-operating interest income
+us-gaap,InterestAndOtherIncome,Interest and Other Income,mid/seen,revenue.other,"non-operating income, both parts inside the node"
+us-gaap,NotesAndLoansReceivableNetCurrent,"Financing Receivable, after Allowance for Credit Loss, Current",mid/seen,,"financing receivable, not a trade receivable"
+us-gaap,IncreaseDecreaseInManagementFeePayable,Increase (Decrease) in Management Fee Payable,mid/seen,,period movement (R1)
+us-gaap,RealEstateInvestmentPropertyAccumulatedDepreciation,"Real Estate Investment Property, Accumulated Depreciation",mid/seen,,"contra-asset balance, not depreciation expense (R3)"
+us-gaap,StockGrantedDuringPeriodValueSharebasedCompensation,"Shares Granted, Value, Share-Based Payment Arrangement, after Forfeiture",mid/seen,,equity movement (R1)
+us-gaap,GoodwillAndIntangibleAssetImpairment,Goodwill and Intangible Asset Impairment,mid/seen,,impairment charge; no impairment node
+us-gaap,OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentBeforeTax,"Other Comprehensive Income (Loss), Foreign Currency Transaction and Translation Adjustment, before Tax",mid/seen,,CTA in OCI; fx_loss node is P&L only
+us-gaap,AccruedIncomeTaxesNoncurrent,"Accrued Income Taxes, Noncurrent",mid/seen,,non-current tax liability; tax node is current only
+us-gaap,SubordinatedDebt,Subordinated Debt,mid/seen,,spans current+non-current debt; no stated split
+us-gaap,CashFlowsFromUsedInFinancingActivities,Cash flows from (used in) financing activities,mid/seen,AGGREGATE:cash_flow,cash-flow subtotal
+us-gaap,OtherComprehensiveIncomeLossBeforeTax,"Other Comprehensive Income (Loss), before Tax",mid/seen,AGGREGATE:income,OCI subtotal
+us-gaap,WarrantsAndRightsOutstanding,Warrants and Rights Outstanding,mid/seen,,warrant instrument; not issued capital
+us-gaap,ImpairmentOfIntangibleAssetsExcludingGoodwill,Impairment of Intangible Assets (Excluding Goodwill),mid/seen,,impairment charge; no node
+us-gaap,IncreaseDecreaseInOperatingCapital,Increase (Decrease) in Operating Capital,mid/seen,,working-capital movement (R1)
+us-gaap,RepaymentsOfOtherDebt,Repayments of Other Debt,mid/seen,,financing movement (R1)
+us-gaap,ProceedsFromSaleOfShortTermInvestments,Proceeds from Sale of Short-Term Investments,mid/seen,,investing movement (R1)
+us-gaap,RealEstateInvestmentPropertyAtCost,"Real Estate Investment Property, at Cost",mid/seen,,investment property (IAS 40) at cost; not PPE (R3)
+us-gaap,ProceedsFromIssuanceOrSaleOfEquity,Proceeds from Issuance or Sale of Equity,mid/seen,,financing movement (R1)
+us-gaap,ProceedsFromSaleOfEquityMethodInvestments,Proceeds from Sale of Equity Method Investments,mid/seen,,investing movement (R1)
+us-gaap,StockIssuedDuringPeriodValueShareBasedCompensationGross,"Shares Issued, Value, Share-Based Payment Arrangement, before Forfeiture",mid/seen,,equity movement (R1)
+us-gaap,EquityAndLiabilities,Equity and liabilities,mid/seen,AGGREGATE:liability,L+E total; no combined lens in vocabulary
+us-gaap,CurrentLiabilities,Current liabilities,mid/seen,AGGREGATE:liability.current,total_current_liabilities rule
+us-gaap,PaymentsForCapitalImprovements,Payments for Capital Improvements,mid/seen,,capex movement (R1)
+us-gaap,ImpairmentOfRealEstate,Impairment of Real Estate,mid/seen,,impairment charge; no node
+us-gaap,FinancingReceivableExcludingAccruedInterestCreditLossExpenseReversal,"Financing Receivable, Excluding Accrued Interest, Credit Loss Expense (Reversal)",mid/seen,,credit-loss expense on loans; no node
+us-gaap,AdvertisingExpense,Advertising expense,mid/seen,,"selling/distribution cost, not AdministrativeExpenses"
+us-gaap,InvestmentCompanyExpenseAfterReductionOfFeeWaiverAndReimbursement,"Investment Company, Expense, after Reduction of Fee Waiver and Reimbursement",mid/seen,AGGREGATE:expense,total expenses subtotal
+us-gaap,BusinessCombinationContingentConsiderationLiabilityNoncurrent,"Business Combination, Contingent Consideration, Liability, Noncurrent",mid/seen,,contingent consideration liability; no node
+us-gaap,LifeInsuranceCorporateOrBankOwnedChangeInValue,"Life Insurance, Corporate or Bank Owned, Change in Value",mid/seen,,remeasurement of BOLI; no node
+us-gaap,InvestmentIncomeOperatingAfterExpenseAndTax,"Investment Income, Operating, after Expense and Tax",mid/seen,AGGREGATE:income,net income subtotal for a fund
+us-gaap,NoncontrollingInterestIncreaseFromBusinessCombination,"Noncontrolling Interest, Increase from Business Combination",mid/seen,,NCI movement (R1); no NCI node
+us-gaap,PrepaidTaxes,Prepaid Taxes,mid/seen,,advance tax; ontology puts this in extended_core withholding_tax (R4)
+us-gaap,IncreaseDecreaseInOtherNoncurrentAssetsAndLiabilitiesNet,"Increase (Decrease) in Other Noncurrent Assets and Liabilities, Net",mid/seen,,period movement (R1)
+us-gaap,GainLossOnSalesOfAssetsAndAssetImpairmentCharges,Gain (Loss) on Sale of Assets and Asset Impairment Charges,mid/seen,,disposal gain/loss + impairment; no node
+us-gaap,DepositsAssetsCurrent,"Deposits Assets, Current",mid/seen,,deposits placed; not prepaid expenses
+us-gaap,AssetRetirementObligationAccretionExpense,"Asset Retirement Obligation, Accretion Expense",mid/seen,,accretion of an ARO provision Kontablo does not model
+us-gaap,DerivativeAssetsNoncurrent,"Derivative Asset, Noncurrent",mid/seen,,derivative asset; no node
+us-gaap,PaymentsOfOrdinaryDividends,Payments of Ordinary Dividends,mid/seen,,financing movement (R1)
+us-gaap,LimitedPartnersCapitalAccount,Limited Partners' Capital Account,mid/seen,,commingles contributions and accumulated earnings (R2)
+us-gaap,ImpairmentOfIntangibleAssetsFinitelived,"Impairment of Intangible Assets, Finite-Lived",mid/seen,,impairment charge; no node
+us-gaap,DefinedBenefitPensionPlanLiabilitiesNoncurrent,"Liability, Defined Benefit Pension Plan, Noncurrent",mid/seen,,no pension/employee-benefit obligation node
+us-gaap,UnearnedPremiums,Unearned Premiums,mid/seen,,unearned revenue = extended_core deferred_revenue (R4)
+us-gaap,TreasuryStockRetiredCostMethodAmount,"Treasury Stock, Retired, Cost Method, Amount",mid/seen,,contra-equity treasury stock; no node
+us-gaap,EquityMethodInvestmentRealizedGainLossOnDisposal,"Equity Method Investment, Realized Gain (Loss) on Disposal",mid/seen,,disposal gain/loss; no node
+us-gaap,InterestIncomeOperatingPaidInCash,"Interest Income, Operating, Paid in Cash",mid/seen,,"cash-basis measure, not accrual income (R1)"
+us-gaap,TradeAndOtherCurrentPayables,Trade and other current payables,mid/seen,liability.current.payables,exact match to node ifrs_tag
+us-gaap,UnsecuredDebt,Unsecured Debt,mid/seen,,spans current+non-current debt; no stated split
+us-gaap,IncreaseDecreaseInAccountsAndNotesReceivable,Increase (Decrease) in Accounts and Notes Receivable,mid/seen,,period movement (R1)
+us-gaap,NoncurrentLiabilities,Non-current liabilities,mid/seen,AGGREGATE:liability.noncurrent,total_noncurrent_liabilities rule
+us-gaap,ProceedsFromSaleOfMortgageLoansHeldForSale,"Proceeds from Sale, Loan, Mortgage, Held-for-Sale",mid/seen,,cash movement (R1)
+us-gaap,NoncashOrPartNoncashAcquisitionFixedAssetsAcquired1,"Noncash or Part Noncash Acquisition, Fixed Assets Acquired",mid/seen,,non-cash acquisition movement (R1)
+us-gaap,MinorityInterestChangeInRedemptionValue,"Noncontrolling Interest, Change in Redemption Value",mid/seen,,NCI movement (R1); no NCI node
+us-gaap,CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsDisposalGroupIncludingDiscontinuedOperations,"Cash, Cash Equivalents, Restricted Cash, and Restricted Cash Equivalents, Disposal Group, Including Discontinued Operations",mid/seen,,restricted cash + disposal group; breaks cash definition
+us-gaap,LegalFees,Legal Fees,mid/seen,expense.admin,narrower component of G&A (R2)
+us-gaap,OtherComprehensiveIncomeLossAmortizationAdjustmentFromAOCIPensionAndOtherPostretirementBenefitPlansForNetPriorServiceCostCreditNetOfTax,"Other Comprehensive (Income) Loss, Defined Benefit Plan, Prior Service Cost (Credit), Reclassification Adjustment from AOCI, after Tax",tail/seen,,OCI pension reclassification; no node
+us-gaap,OtherComprehensiveIncomeLossPensionAndOtherPostretirementBenefitPlansNetUnamortizedGainLossArisingDuringPeriodBeforeTax,"Other Comprehensive Income (Loss), Defined Benefit Plan, Gain (Loss) Arising During Period, before Tax",tail/seen,,OCI pension component; no node
+us-gaap,NoncontrollingInterestIncreaseFromSaleOfParentEquityInterest,"Noncontrolling Interest, Increase from Sale of Parent Equity Interest",tail/seen,,NCI movement (R1); no NCI node
+us-gaap,ProceedsFromRepaymentsOfCommercialPaper,Proceeds from (Repayments of) Commercial Paper,tail/seen,,financing movement (R1)
+us-gaap,InterestExpenseFederalHomeLoanBankAndFederalReserveBankAdvancesLongTerm,"Interest Expense, Federal Home Loan Bank and Federal Reserve Bank Advances, Long-Term",tail/seen,expense.interest,interest on borrowings = finance cost (R2)
+us-gaap,HeldToMaturitySecurities,"Debt Securities, Held-to-Maturity, Amortized Cost, before Allowance for Credit Loss",tail/seen,,HTM portfolio spans current+non-current; not equity-method investment
+us-gaap,TangibleAssetImpairmentCharges,Tangible Asset Impairment Charges,tail/seen,,impairment charge; no node
+us-gaap,OtherComprehensiveIncomeLossCashFlowHedgeGainLossBeforeReclassificationTax,"Other Comprehensive Income (Loss), Cash Flow Hedge, Gain (Loss), before Reclassification, Tax",tail/seen,,OCI hedge component; no node
+us-gaap,OtherRealEstateAndForeclosedAssets,"Other Real Estate, Foreclosed Assets, and Repossessed Assets",tail/seen,,foreclosed/repossessed assets; no node
+us-gaap,PensionContributions,Payment for Pension Benefits,tail/seen,,cash payment (R1); no pension node
+us-gaap,RevenueNotFromContractWithCustomer,Revenue Not from Contract with Customer,tail/seen,revenue.other,income outside IFRS15 scope -> other income
+us-gaap,AccountsReceivableGrossCurrent,"Accounts Receivable, before Allowance for Credit Loss, Current",tail/seen,,gross before allowance; net already maps (R3)
+us-gaap,IncentiveFeeExpenseIncomeBased,"Incentive Fee Expense, Income-Based",tail/seen,expense.admin,external management fee = administrative expense (R2)
+us-gaap,IncreaseDecreaseInOperatingAssets,Increase (Decrease) in Operating Assets,tail/seen,,period movement (R1)
+us-gaap,SalariesWagesAndOfficersCompensation,"Salary and Wage, Excluding Cost of Good and Service Sold",tail/seen,,no payroll-EXPENSE node in the core; spans admin+selling
+us-gaap,OtherReceivableAfterAllowanceForCreditLossNoncurrent,"Other Receivable, after Allowance for Credit Loss, Noncurrent",tail/seen,,non-trade AND non-current; no node
+us-gaap,PaymentsForAdvanceToAffiliate,Payments for Advance to Affiliate,tail/seen,,cash movement (R1)
+us-gaap,NoncashOrPartNoncashAcquisitionNetNonmonetaryAssetsAcquiredLiabilitiesAssumed1,"Noncash or Part Noncash Acquisition, Net Nonmonetary Assets Acquired (Liabilities Assumed)",tail/seen,,non-cash acquisition movement (R1)
+us-gaap,ProceedsFromPaymentsForLongTermLoansForRelatedParties,Proceeds from Collection of (Payments to Fund) Long-Term Loans to Related Parties,tail/seen,,cash movement (R1)
+us-gaap,InvestmentCompanyIncreaseDecreaseFromShareTransaction,"Investment Company, Capital Share Transaction, Increase (Decrease)",tail/seen,,capital share movement (R1)
+us-gaap,IncreaseDecreaseInMortgageLoansHeldForSale,"Increase (Decrease) in Loan, Mortgage, Held-for-Sale",tail/seen,,period movement (R1)
+us-gaap,PartnersCapitalAccountUnitBasedCompensation,"Partners' Capital Account, Unit-Based Payment Arrangement, Amount",tail/seen,,equity movement (R1)
+us-gaap,CommissionsPayableToBrokerDealersAndClearingOrganizations,Commission Payable to Broker-Dealer and Clearing Organization,tail/seen,liability.current.payables,amount owed for services = trade/other current payable (R2)
+us-gaap,GainsLossesOnChangeInFairValueOfDerivatives,Gains (losses) on change in fair value of derivatives,tail/seen,,fair-value remeasurement; no node
+us-gaap,OtherComprehensiveIncomeLossFinalizationOfPensionAndNonPensionPostretirementPlanValuationNetOfTax,"Other Comprehensive Income (Loss), Defined Benefit Plan, Settlement and Curtailment Gain (Loss), after Tax",tail/seen,,OCI pension component; no node
+us-gaap,StraightLineRentAdjustments,Straight Line Rent Adjustments,tail/seen,,rent-levelling adjustment; no node
+us-gaap,ProceedsFromDivestitureOfInterestInJointVenture,Proceeds from Divestiture of Interest in Joint Venture,tail/seen,,investing movement (R1)
+us-gaap,RevenueNotFromContractWithCustomerOther,"Revenue Not from Contract with Customer, Other",tail/seen,revenue.other,income outside IFRS15 scope -> other income
+us-gaap,ProceedsFromAnnuitiesAndInvestmentCertificates,Proceeds from Annuities and Investment Certificates,tail/seen,,financing movement (R1)
+us-gaap,NoncurrentPayables,Trade and other non-current payables,tail/seen,,non-current payables; payables node is current only
+us-gaap,EnergyRelatedInventoryNaturalGasInStorage,"Energy Related Inventory, Natural Gas in Storage",tail/seen,asset.current.inventory,inventory of gas held; narrower than node (R2)
+us-gaap,IncreaseDecreaseInIntangibleAssetsCurrent,"Increase (Decrease) in Intangible Assets, Current",tail/seen,,period movement (R1)
+us-gaap,CryptoAssetRealizedGainLossOperating,"Crypto Asset, Realized Gain (Loss), Operating",tail/seen,,"crypto is pending_accounts, and this is a gain/loss (R4)"
+us-gaap,DeferredIncome,Deferred Income,tail/seen,,"deferred revenue = extended_core node, not in the 30 (R4)"
+us-gaap,MinorityInterestInLimitedPartnerships,Noncontrolling Interest in Limited Partnerships,tail/seen,,NCI equity balance; no NCI node
+us-gaap,TradeAndLoansReceivablesHeldForSaleNetNotPartOfDisposalGroup,"Accounts and Financing Receivables, Held-for-Sale, Not Part of Disposal Group, after Valuation Allowance",tail/seen,,held-for-sale receivables incl loans; not trade receivables
+us-gaap,LossContingencyAccrualCarryingValueNoncurrent,"Loss Contingency, Accrual, Noncurrent",tail/seen,,non-current provision; accrued node is current only
+us-gaap,ProceedsFromSalesOfInvestmentsAccountedForUsingEquityMethod,Proceeds from sales of investments accounted for using equity method,tail/seen,,investing movement (R1)
+us-gaap,AllowanceForFundsUsedDuringConstructionInvestingActivities,"Allowance for Funds Used During Construction, Investing Activities",tail/seen,,AFUDC capitalization credit; no node
+us-gaap,CurrentDeferredIncomeIncludingCurrentContractLiabilities,Current deferred income including current contract liabilities,tail/seen,,contract liabilities = extended_core node (R4)
+us-gaap,IncreaseDecreaseInPrepaidRent,Increase (Decrease) in Prepaid Rent,tail/seen,,period movement (R1)
+us-gaap,LeaseDepositLiability,Lease Deposit Liability,tail/seen,,security deposit received; no node
+us-gaap,BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedAssets,"Business Combination, Recognized Asset Acquired, Asset",tail/seen,,"acquisition-date disclosure, not a ledger balance"
+us-gaap,FinancingReceivableBeforeAllowanceForCreditLossAndFee,"Financing Receivable, before Allowance for Credit Loss, Fee and Loan in Process",tail/seen,,"loan receivable, gross; not trade receivables (R3)"
+us-gaap,TradingIncomeExpense,Trading income (expense),tail/seen,,net trading result; no node
+us-gaap,DerivativeFairValueHedgeIncludedInEffectivenessGainLoss,"Derivative, Fair Value Hedge, Included in Effectiveness, Gain (Loss)",tail/seen,,hedge effectiveness gain/loss; no node
+us-gaap,GainLossArisingFromDifferenceBetweenCarryingAmountOfFinancialLiabilityExtinguishedAndConsiderationPaid,Gain (loss) arising from difference between carrying amount of financial liability extinguished and consideration paid,tail/seen,,extinguishment gain/loss; no node
+us-gaap,NoncurrentFinancialAssetsAtFairValueThroughProfitOrLoss,Non-current financial assets at fair value through profit or loss,tail/seen,asset.noncurrent.investments,explicitly non-current investment balance
+us-gaap,OtherComprehensiveIncomeDefinedBenefitPlansAdjustmentNetOfTaxPortionAttributableToNoncontrollingInterest,"Other Comprehensive (Income) Loss, Defined Benefit Plan, after Tax and Reclassification Adjustment, Attributable to Noncontrolling Interest",tail/seen,,OCI pension component attributable to NCI; no node
+us-gaap,BeneficialInterest,Beneficial Interest Liability,tail/seen,,beneficial interest liability; no node
+us-gaap,InterestBearingDomesticDepositOtherTimeDeposit,"Interest-Bearing Domestic Deposit, Other Time Deposit",tail/seen,,"bank customer deposits, not CurrentBorrowings"
+us-gaap,DefinedBenefitPlanAmountsRecognizedInOtherComprehensiveIncomeLossNetGainLossBeforeTax,"Other Comprehensive Income (Loss), Defined Benefit Plan, Gain (Loss), after Reclassification Adjustment, before Tax",tail/seen,,OCI pension component; no node
+us-gaap,PreferredStockConversionsInducements,"Preferred Stock Conversions, Inducements",tail/seen,,equity movement (R1)
+us-gaap,PurchaseOfFinancialAssetsMeasuredAtFairValueThroughOtherComprehensiveIncomeClassifiedAsInvestingActivities,"Purchase of Financial assets at fair value through other comprehensive income, Statement of Cashflows",tail/seen,,investing movement (R1)
+us-gaap,BalancesWithBanks,Balances with banks,tail/seen,asset.current.bank,exact: bank deposits
+us-gaap,NotesAndDebenturesIssued,Notes and debentures issued,tail/seen,,"issuance during period, not a balance (R1)"
+us-gaap,ShareOfProfitLossOfContinuingOperationsOfAssociatesAndJointVenturesAccountedForUsingEquityMethod,Share of profit (loss) from continuing operations of associates and joint ventures accounted for using equity method,tail/seen,,"equity-method result is a distinct IFRS line, not other income"
+us-gaap,FinancialInstrumentsOwnedPrincipalInvestmentsAtFairValue,"Financial Instruments, Owned, Principal Investments, at Fair Value",tail/seen,,"trading portfolio, term unspecified; not long-term investments"
+us-gaap,NoncurrentFinanceLeaseReceivables,Non-current finance lease receivables,tail/seen,,lessor lease receivable; no node
+us-gaap,NoncurrentReceivablesFromTaxesOtherThanIncomeTax,Non-current receivables from taxes other than income tax,tail/seen,,non-current tax receivable; vat_input node is current and VAT-specific
+us-gaap,OtherComprehensiveIncomeLossReclassificationAdjustmentFromAociForInvestmentTransferredFromAvailableForSaleToEquityMethodTax,"Other Comprehensive Income (Loss), Reclassification Adjustment from AOCI for Investment Transferred from Available-for-Sale to Equity Method, Tax",tail/seen,,OCI reclassification; no node
+us-gaap,PremiumReceivableCreditLossExpenseReversal,"Premium Receivable, Credit Loss Expense (Reversal)",tail/seen,,credit-loss expense; no node
+us-gaap,PreproductionCostsRelatedToLongTermSupplyArrangementsAssetForMoldsDiesAndToolsNotOwned,"Preproduction Costs Related to Long-Term Supply Arrangements, Asset for Molds Dies and Tools Not Owned",tail/seen,,preproduction cost asset; no node
+us-gaap,BusinessCombinationProvisionalInformationInitialAccountingIncompleteAdjustmentEquityInterests,"Business Combination, Provisional Information, Initial Accounting Incomplete, Adjustment, Equity Interests",tail/seen,,provisional acquisition adjustment (R1)
+us-gaap,PrincipalAmountOutstandingOnLoansHeldForSaleOrSecuritization,"Loan, Held-for-Sale or Securitization or Asset-Backed Financing Arrangement, Principal Outstanding",tail/seen,,loan principal disclosure; no node
+us-gaap,ResultsOfOperationsIncomeBeforeIncomeTaxes,"Oil and Gas, Result of Operation, before Income Tax Expense (Benefit)",tail/seen,AGGREGATE:income,pre-tax result subtotal (oil & gas supplemental)
+us-gaap,SelfInsuranceReserve,Self Insurance Reserve,tail/seen,,self-insurance provision spanning current+non-current
+us-gaap,UndistributedEarningsLossAvailableToCommonShareholdersDiluted,"Undistributed Earnings (Loss) Available to Common Shareholders, Diluted",tail/seen,,"EPS allocation measure, not a ledger balance"
+us-gaap,CumulativeGainLossPreviouslyRecognisedInOtherComprehensiveIncomeArisingFromReclassificationOfFinancialAssetsOutOfFairValueThroughOtherComprehensiveIncomeIntoFairValueThroughProfitOrLossMeasurementCategory,Cumulative gain (loss) previously recognised in other comprehensive income arising from reclassification of financial assets out of fair value through other comprehensive income into fair value through profit or loss measurement category,tail/seen,,OCI reclassification disclosure; no node
+us-gaap,DeferredRevenuePeriodIncreaseDecrease,"Deferred Revenue, Period Increase (Decrease)",tail/seen,,period movement (R1); deferred revenue is extended_core
+us-gaap,GainLossRecognisedAsResultOfRemeasuringToFairValueEquityInterestInAcquireeHeldByAcquirerBeforeBusinessCombination,Gain (loss) recognised as result of remeasuring to fair value equity interest in acquiree held by acquirer before business combination,tail/seen,,step-acquisition remeasurement gain; no node
+us-gaap,IncreaseDecreaseInAllowanceAccountForCreditLossesOfFinancialAssets,Increase (decrease) in allowance account for credit losses of financial assets,tail/seen,,movement in a contra-asset allowance (R1/R3)
+us-gaap,LossesOnDisposalsOfNoncurrentAssets,Losses on disposals of non-current assets,tail/seen,,disposal loss; no node
+us-gaap,ProvisionUsedOtherProvisions,"Provision used, other provisions",tail/seen,,provision utilisation movement (R1)
+us-gaap,CurrentFinancialLiabilitiesAtAmortisedCost,Current financial liabilities at amortised cost,tail/seen,,measurement-category grouping spanning payables and borrowings
+us-gaap,DefinedBenefitPlanContributionsByEmployer,"Defined Benefit Plan, Plan Assets, Contributions by Employer",tail/seen,,cash contribution movement (R1)
+us-gaap,GainOrLossOnSaleOfPreviouslyUnissuedStockByEquityInvestee,Gain (Loss) on Sale of Previously Unissued Stock by Equity Investee,tail/seen,,investee equity gain/loss; no node
+us-gaap,LoansReceived,Loans received,tail/seen,,financing proceeds movement (R1)
+us-gaap,SalesTypeLeaseNetInvestmentInLeaseNonaccrual,"Sales-type Lease, Net Investment in Lease, Nonaccrual",tail/seen,,lessor net investment in lease; no node
+us-gaap,IncentiveFeePayableIncomeBased,"Incentive Fee Payable, Income-Based",tail/unseen,liability.current.payables,fee payable for services = other current payable (R2)
+us-gaap,IncreaseDecreaseInIncentiveFeePayableIncomeBased,"Increase (Decrease) in Incentive Fee Payable, Income-Based",tail/unseen,,period movement (R1)
+us-gaap,OrganizationalAndOfferingCostsExpense,"Offering and Organizational Costs, Expense",tail/unseen,,offering costs relate to equity issuance; not G&A
+us-gaap,CryptoAssetUnrealizedLossNonoperating,"Crypto Asset, Unrealized Loss, Nonoperating",tail/unseen,,crypto is pending_accounts; unrealized remeasurement (R4)
+us-gaap,IncomeTaxPaidStateAndLocalBeforeRefundReceived,"Income Tax Paid, State and Local, before Refund Received",tail/unseen,,cash paid disclosure (R1)
+us-gaap,InvestmentCompanyIncentiveFeeWaivedIncomeBased,"Investment Company, Incentive Fee Waived, Income-Based",tail/unseen,,fee waiver (contra-expense); no node
+us-gaap,InvestmentCompanyManagementFeeVoluntaryFeeWaived,"Investment Company, Management Fee, Voluntary Fee Waived",tail/unseen,,fee waiver (contra-expense); no node
+us-gaap,ProceedsFromIncomeTaxRefundStateAndLocal,"Proceeds from Income Tax Refund, State and Local",tail/unseen,,cash received movement (R1)
+us-gaap,BusinessCombinationSeparatelyRecognizedTransactionsAdditionalDisclosuresAcquisitionCostExpensed,"Business Combination, Separately Recognized Transaction, Acquisition-Related Cost, Expensed",tail/unseen,,acquisition-cost disclosure; no node
+us-gaap,CryptoAssetUnrealizedGainOperating,"Crypto Asset, Unrealized Gain, Operating",tail/unseen,,crypto is pending_accounts; unrealized remeasurement (R4)
+us-gaap,ReceivablesFairValueDisclosure,"Receivables, Fair Value Disclosure",tail/unseen,,"fair-value disclosure, not the carrying balance"
+us-gaap,InvestmentCompanyExcessExpenseReimbursable,"Investment Company, Reimbursable Excess Expense",tail/unseen,,expense reimbursement receivable; no node
+us-gaap,CryptoAssetCostRestricted,"Crypto Asset, Cost, Restricted",tail/unseen,,"crypto is pending_accounts, and restricted (R4)"
+us-gaap,DebtInstrumentAnnualPrincipalPayment,"Debt Instrument, Annual Principal Payment",tail/unseen,,"scheduled maturity disclosure, not a balance"
+us-gaap,ForeignCurrencyFairValueHedgeAssetAtFairValue,Foreign Currency Fair Value Hedge Asset at Fair Value,tail/unseen,,derivative hedge asset; no node
+us-gaap,GovernmentAssistanceNonoperatingExpense,"Government Assistance, Nonoperating Expense, Decrease (Increase)",tail/unseen,,government grant effect; no node
+us-gaap,InvestmentCompanyAverageNetAssets,"Investment Company, Average Net Assets",tail/unseen,,"statistical average, not a ledger balance"
+us-gaap,InvestmentCompanyFeePaidIndirectly,"Investment Company, Fee Paid Indirectly",tail/unseen,,indirect fee offset disclosure; no node
+us-gaap,PaymentsToAcquireWaterSystems,Payments to Acquire Water Systems,tail/unseen,,capex movement (R1)
+us-gaap,RealEstateOwnedValuationAllowancePeriodIncreaseDecrease,"Real Estate Owned, Valuation Allowance, Period Increase (Decrease)",tail/unseen,,movement in a contra-asset allowance (R1/R3)
+us-gaap,AcquisitiondateFairValueOfTotalConsiderationTransferred,"Consideration transferred, acquisition-date fair value",tail/unseen,,business-combination disclosure; no node
+us-gaap,AdjustmentsForCurrentTaxOfPriorPeriod,Adjustments for current tax of prior periods,tail/unseen,,prior-period tax true-up disclosure; no node
+us-gaap,AgriculturalRelatedInventoryGrowingCrops,"Agricultural Related Inventory, Growing Crops",tail/unseen,,"growing crops = biological assets, a pending_account (R4)"
+us-gaap,AllowanceForLoanAndLeaseLossesForeignCurrencyTranslation,"Allowance for Loan and Lease Losses, Foreign Currency Translation",tail/unseen,,FX movement in a contra-asset allowance (R1/R3)
+us-gaap,BusinessCombinationContingentConsiderationAsset,"Business Combination, Contingent Consideration, Asset",tail/unseen,,contingent consideration asset; no node
+us-gaap,ChangeInReportingEntityInvestmentCumulativeIncreaseDecrease,"Change in Reporting Entity, Investment, Cumulative Increase (Decrease)",tail/unseen,,restatement movement (R1)
+us-gaap,CostsInExcessOfBillingsOnUncompletedContractsOrProgramsExpectedToBeCollectedWithinOneYear,"Costs in Excess of Billings, Current",tail/unseen,,contract asset; no contract-asset node in the 30
+us-gaap,CurrentAssetsRecognisedAsOfAcquisitionDate,Current assets recognised as of acquisition date,tail/unseen,,"acquisition-date disclosure, not a ledger balance"
+us-gaap,CurrentForeignTaxExpenseBenefit,Current Foreign Tax Expense (Benefit),tail/unseen,expense.tax,current foreign component of income tax expense (R2)
+us-gaap,CurrentRetentionPayables,Current retention payables,tail/unseen,liability.current.payables,retentions owed to suppliers = trade payable (R2)
+us-gaap,DebtSecuritiesAvailableForSaleAllowanceForCreditLossRecovery,"Debt Securities, Available-for-Sale, Allowance for Credit Loss, Recovery",tail/unseen,,movement in a credit-loss allowance (R1/R3)
+us-gaap,DeferredPolicyAcquisitionCostsAdditions,"Deferred Policy Acquisition Cost, Capitalization",tail/unseen,,DAC capitalization movement (R1)
+us-gaap,DisposalGroupIncludingDiscontinuedOperationDepreciationAndAmortization,"Disposal Group, Including Discontinued Operation, Depreciation and Amortization",tail/unseen,,"discontinued-operation disclosure, segregated from continuing D&A"
+us-gaap,DisposalGroupIncludingDiscontinuedOperationIntangibleAssets,"Disposal Group, Including Discontinued Operation, Intangible Assets",tail/unseen,,"held-for-sale disposal group, reclassified out of intangibles"
+us-gaap,DisposalGroupIncludingDiscontinuedOperationInterestIncome,"Disposal Group, Including Discontinued Operation, Interest Income",tail/unseen,,discontinued-operation disclosure; no node
+us-gaap,DisposalGroupIncludingDiscontinuedOperationLiabilityForClaimsAndClaimsAdjustmentExpense,"Disposal Group, Including Discontinued Operation, Liability for Claims and Claims Adjustment Expense",tail/unseen,,insurance claims liability in a disposal group; no node
+us-gaap,FairValueGainsOrLossThatWouldHaveBeenRecognisedInProfitOrLossIfFinancialAssetsHadNotBeenReclassified,Fair value gain (loss) that would have been recognised in profit or loss if financial assets had not been reclassified,tail/unseen,,hypothetical what-if disclosure; not an account
+us-gaap,FuelAndEnergyExpense,Fuel and energy expense,tail/unseen,,"input cost, ambiguous between COGS and opex; no node satisfied"
+us-gaap,GoodwillRecognisedAsOfAcquisitionDate,Goodwill recognised as of acquisition date,tail/unseen,,"acquisition-date movement, not the goodwill balance (R1)"
+us-gaap,IncomeTaxReconciliationOtherAdjustments,"Effective Income Tax Rate Reconciliation, Other Adjustments, Amount",tail/unseen,,effective-rate reconciliation disclosure; no node
+us-gaap,IncreaseDecreaseThroughOtherChangesInvestmentProperty,"Increase (decrease) through other changes, investment property",tail/unseen,,roll-forward movement (R1)
+us-gaap,InterestExpenseDepositsFromOtherFederalHomeLoanBanks,"Interest Expense, Deposits from Other Federal Home Loan Banks",tail/unseen,expense.interest,interest on borrowings = finance cost (R2)
+us-gaap,InventorySuppliesNetOfReserves,"Inventory, Supplies, Net of Reserves",tail/unseen,asset.current.inventory,supplies inventory; narrower than node (R2)
+us-gaap,InvestmentProgramProportionalAmortizationMethodElectedIncomeTaxCredit,"Investment Program, Proportional Amortization Method, Elected, Income Tax Credit",tail/unseen,,tax-credit investment disclosure; no node
+us-gaap,LiabilityForAsbestosAndEnvironmentalClaimsNetPeriodIncreaseDecrease,"Liability for Asbestos and Environmental Claims, Net, Period Increase (Decrease)",tail/unseen,,period movement in a provision (R1)
+us-gaap,LifeSettlementContractsInvestmentMethodFaceValue,"Life Settlement Contracts, Investment Method, Face Value",tail/unseen,,face value of life settlement contracts; no node
+us-gaap,LoansAndAdvancesMeasuredAtFairValueThroughOtherComprehensiveIncome,Loans and advances measured at fair value through other comprehensive income,tail/unseen,,"loan portfolio, not a long-term investment in an entity"
+us-gaap,LoansAndLeasesReceivableRelatedPartiesAdditions,"Loans and Leases Receivable, Related Parties, Additions",tail/unseen,,roll-forward addition (R1)
+us-gaap,OciEquityMethodInvestmentTax,"OCI, Equity Method Investment, Tax",tail/unseen,,OCI tax component; no node
+us-gaap,OperatingProfitLossOperating,OperatingProfitLossOperating,tail/unseen,AGGREGATE:income,operating result subtotal (ebit)
+us-gaap,ProceedsFromIssueOfRegulatoryCapitalEquity,"Proceeds from issue of regulatory capital, equity",tail/unseen,,financing movement (R1)
+us-gaap,ProceedsFromSecuritizationsOfConsumerLoans,Proceeds from Securitizations of Consumer Loans,tail/unseen,,financing movement (R1)
+us-gaap,RealEstateAccumulatedDepreciationOtherAdditions,"SEC Schedule, 12-28, Real Estate Companies, Investment in Real Estate, Accumulated Depreciation, Other Addition",tail/unseen,,movement in a contra-asset balance (R1/R3)
+us-gaap,RecoveriesOnLoansPreviouslyWrittenOff,Recoveries on loans previously written off,tail/unseen,,recovery movement in an allowance (R1/R3)
+us-gaap,ReductionOfShortTermCapitalLeaseObligations,Reduction of Short-Term Capital Lease Obligations,tail/unseen,,"period reduction, not a balance (R1)"
+us-gaap,SecuredDemandNotes,Secured Demand Notes,tail/unseen,,"broker-dealer instrument, direction/term ambiguous; no node satisfied"
+us-gaap,SecuritiesForReverseRepurchaseAgreements,Securities for Reverse Repurchase Agreements,tail/unseen,,repo collateral; no node
+us-gaap,ServicingAssetAtFairValueChangesInFairValueResultingFromChangesInValuationInputsOrChangesInAssumptions,"Servicing Asset at Fair Value, Changes in Fair Value Resulting from Changes in Valuation Inputs or Changes in Assumptions",tail/unseen,,fair-value movement of a servicing asset (R1)
+us-gaap,ShortTermDebtRefinancedAmount,"Short-Term Debt, Refinanced, Amount",tail/unseen,,"refinancing disclosure, not a balance"
+us-gaap,UnrealizedGainOnPriceRiskCashFlowDerivativesBeforeTax,"Unrealized Gain on Price Risk Cash Flow Derivatives, before Tax",tail/unseen,,derivative remeasurement; no node
