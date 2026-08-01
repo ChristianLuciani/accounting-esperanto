@@ -17,8 +17,10 @@ abstract: >
   fourteen languages and five writing systems, with the
   deterministic tiers resolving 97% of entries.
   Its 30-account Level 3 minimum core covers an estimated ~94% of routine
-  transaction volume by posting count (rising to ~99% with a 34-account extended
-  core), reproducible from a committed transaction-frequency benchmark.
+  transaction volume by posting count (rising to ~99% once four extended-core
+  accounts are added, at 34; the extended core carries 35, the fifth admitted on
+  real filing frequency rather than on this benchmark and contributing 0.0 pp to
+  it), reproducible from a committed transaction-frequency benchmark.
 authors:
   - family-names: Luciani
     given-names: Christian
