@@ -122,6 +122,49 @@ def node_fiber(accounts, by_code, kontablo_id, jurisdiction=None):
     }
 
 
+def load_ifrs_tag_projection():
+    """The ``ifrs_tag`` projection and its fibers, over minimum core + extended core.
+
+    ``ifrs_tag`` is a MANY-TO-ONE projection onto IFRS taxonomy concepts, not an
+    identity — declared in ``level3_accounts.yaml``'s ``ifrs_tag_projection``
+    block and enforced by ``tests/test_ifrs_tag_projection.py``. Its inverse is
+    not a function: it returns a *fiber*, which may be empty, a singleton, or
+    larger. A node is determined from a tag alone only when the fiber is a
+    singleton; on a larger fiber the resolver must escalate rather than
+    tie-break (principle #5).
+
+    Returns ``(projection, fibers, declaration)`` where ``projection`` is
+    ``{kontablo_id: ifrs_tag}`` (both layers — a collision that straddles them
+    is still a collision) and ``fibers`` is ``{ifrs_tag: [kontablo_id, ...]}``.
+
+    Deliberately SEPARATE from :func:`load_ontology`, which does not read
+    ``ifrs_tag`` at all: the projection is a read-only lens over the ontology,
+    never an input to Tier-1 resolution, so adding it cannot move a published
+    resolution number.
+    """
+    docs = list(yaml.safe_load_all(open(ONTOLOGY_PATH, encoding="utf-8")))
+    projection = {}
+    declaration = {}
+    for doc in docs:
+        if isinstance(doc, dict) and "ifrs_tag_projection" in doc:
+            declaration = doc["ifrs_tag_projection"]
+        if isinstance(doc, dict) and "level3" in doc:
+            items = doc["level3"]
+        elif isinstance(doc, dict) and "extended_core" in doc:
+            items = doc["extended_core"]
+        elif isinstance(doc, list):
+            items = doc
+        else:
+            continue
+        for item in items:
+            if isinstance(item, dict) and "id" in item and "nature" in item and item.get("ifrs_tag"):
+                projection[item["id"]] = item["ifrs_tag"]
+    fibers = defaultdict(list)
+    for kid, tag in projection.items():
+        fibers[tag].append(kid)
+    return projection, {t: sorted(n) for t, n in sorted(fibers.items())}, declaration
+
+
 def load_families():
     """family -> {members:[iso], codes:{kontablo_id: local_code}}."""
     doc = yaml.safe_load(open(FAMILIES_PATH, encoding="utf-8"))

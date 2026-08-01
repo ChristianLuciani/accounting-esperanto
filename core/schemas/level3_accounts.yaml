@@ -18,6 +18,93 @@ metadata:
     across all jurisdictions. They are IFRS-anchored but include local adaptations
     via the localization overlay system.
 
+# ─────────────────────────────────────────────────────────────────────────────
+# WHAT `ifrs_tag` IS — a projection, not an identity
+# ─────────────────────────────────────────────────────────────────────────────
+# Declared 2026-07-31 after real ESEF filings made the property observable
+# (research/experiments/ROUND2_RESULTS.md, "The ontology's ifrs_tag field is not
+# injective"). This block is DECLARATIVE metadata: no loader reads it for
+# resolution, and `tests/test_ifrs_tag_projection.py` enforces it.
+ifrs_tag_projection:
+  semantics: |
+    `ifrs_tag` is a MANY-TO-ONE PROJECTION from Kontablo nodes onto IFRS
+    taxonomy concepts. It is not an identifier, not a key, and not injective.
+
+        pi : Node -> IFRSConcept          total, many-to-one
+        pi^-1 : IFRSConcept -> Set[Node]  NOT a function; returns a FIBER
+
+    The inverse is a fiber, not a value: it may be empty (the IFRS taxonomy is
+    far larger than the core), a singleton, or larger than one. Only the
+    UUID is an identity (principle #2); `ifrs_tag` is one lens among several,
+    exactly as `groupings.cash_flow` is another (principle #1, graph not tree).
+
+    This is the tree-vs-graph tension appearing INSIDE the ontology. It is a
+    declared structural property with a worked instance, not a defect awaiting
+    repair, and the repair people reach for first is wrong: inventing distinct
+    IFRS tags to break a collision would falsify the taxonomy.
+    `ifrs-full:CashAndCashEquivalents` genuinely IS one IFRS concept —
+    cash-vs-bank is a finer distinction Kontablo chose to make.
+  resolution_rule: |
+    Given only an `ifrs_tag`, a node is determined IF AND ONLY IF its fiber is a
+    singleton. On a larger fiber the resolver MUST escalate. Tie-breaking by
+    order, by code, or by any other incidental property would be a coin flip
+    dressed as determinism (principle #5). The visible cost is that
+    `ifrs-full:CashAndCashEquivalents`, the most fundamental IFRS balance-sheet
+    tag of all, does not resolve — that cost is accepted knowingly.
+  governance: |
+    Every non-singleton fiber MUST be listed under `known_multi_node_fibers`
+    with a reason. A new collision that is not listed FAILS THE BUILD; a listed
+    fiber that no longer collides ALSO fails, so the list cannot rot into a
+    rubber stamp. Scope is the minimum core AND the extended core: a collision
+    that straddles the two layers is still a collision.
+  known_multi_node_fibers:
+    - ifrs_tag: "ifrs-full:CashAndCashEquivalents"
+      nodes: ["asset.current.bank", "asset.current.cash"]
+      status: "intended"
+      reason: |
+        One genuine IFRS concept. IAS 7.6 defines cash and cash equivalents as a
+        single category; the cash/bank split is a local-reporting distinction
+        Kontablo adds (see asset.current.bank notes: "Often merged with cash in
+        IFRS presentation. Separate for local reporting clarity."). The finer
+        Kontablo partition is deliberate and the projection collapses it. No
+        action.
+    - ifrs_tag: "ifrs-full:CurrentTaxLiabilitiesCurrent"
+      nodes: ["liability.current.tax", "liability.current.vat_output"]
+      status: "intended"
+      reason: |
+        Both are current tax liabilities under IFRS, which does not separate
+        indirect-tax (VAT/GST output) balances from income-tax balances at the
+        taxonomy-element level. Kontablo separates them because nearly every
+        statutory chart does and because they settle on different cycles to
+        different authorities. Deliberate; the projection collapses it.
+    - ifrs_tag: "ifrs-full:CurrentTaxAssetsCurrent"
+      nodes: ["asset.current.vat_input", "asset.current.withholding_tax"]
+      status: "intended"
+      reason: |
+        The asset-side mirror of the CurrentTaxLiabilitiesCurrent case:
+        recoverable input VAT and tax withheld at source are both current tax
+        assets under IFRS. This fiber STRADDLES the minimum core
+        (asset.current.vat_input) and the extended core
+        (asset.current.withholding_tax), which is why the round-2 analysis —
+        scoped to the 30 core nodes — reported three collisions and not four.
+        Surfaced 2026-07-31 by this test's core+extended scope.
+    - ifrs_tag: "ifrs-full:OtherNonCurrentFinancialLiabilities"
+      nodes: ["liability.noncurrent.debt", "liability.noncurrent.lease"]
+      status: "candidate_mistag"
+      reason: |
+        The one fiber here that is NOT clearly intended, recorded as such rather
+        than quietly grandfathered. IFRS has a dedicated
+        `ifrs-full:NoncurrentLeaseLiabilities`, attested in the round-2 ESEF
+        corpus at 134 facts across 31 filings, so liability.noncurrent.lease is
+        plausibly mis-tagged rather than genuinely collapsed.
+
+        NOT retagged here, deliberately. Changing it would move round-2's
+        published A2 coverage figure in the favourable direction on the very
+        corpus that measured it, and would break the provenance argument
+        carrying A2's non-circularity (`ifrs_tag` last touched 2026-07-20,
+        before the round-2 branch opened 2026-07-30). It belongs to a
+        fresh-corpus round. See research/experiments/adr015_admission_v1/DECISION_RECORD.md.
+
 ---
 
 ## ASSETS
