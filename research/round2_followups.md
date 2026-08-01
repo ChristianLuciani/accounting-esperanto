@@ -30,8 +30,8 @@ accordingly — a gated change is never a quick fix in this repo.
 
 | | Target | Status |
 |---|---|---|
-| **Hub** | Zenodo + SSRN monolith | frozen canonical; v1.10 planned |
-| **Spoke 1** — agentic-provenance | arXiv cs.MA | **content-complete**, blocked only on venue lock |
+| **Hub** | Zenodo + SSRN monolith | **published**; frozen canonical; v1.10 planned |
+| **Spoke 1** — agentic-provenance | arXiv cs.MA | **draft — NOT published.** Content-complete, nine PRs stacked unmerged, never merged to `main`, blocked on venue lock |
 | **Spoke 2** — accountants / real data | SSRN → journal | **not started; this is round 2's spoke** |
 | **Spoke 3** — mathematical | math.CT / ACT | pending; H¹ obstruction now demonstrable |
 | **Spoke 4** — architecture | — | only if it accumulates its own result |
@@ -57,17 +57,38 @@ Not just an editorial one. `docs/papers/spokes/agentic-provenance/figures/gen_fi
 `CashAndCashEquivalents` collision. Spoke 1's T11 repro check asserts that figure
 **regenerates byte-identical in a clean clone**.
 
-So any gated change that alters `load_ontology()` / `node_fiber()` output for that
-node breaks a claim spoke 1 has already published. Whether item 3 *specifically*
-does depends on how it is implemented — a pure metadata/typing change to
-`ifrs_tag` should not touch `node_fiber`, which reads `local_codes`, while
-restructuring `groupings` or `local_codes` would. Items 5 and 7 add nodes and are
-riskier.
+So a gated change that alters `load_ontology()` / `node_fiber()` output for that
+node changes that figure. Whether item 3 *specifically* does depends on how it is
+implemented — a pure metadata/typing change to `ifrs_tag` should not touch
+`node_fiber`, which reads `local_codes`, while restructuring `groupings` or
+`local_codes` would. Items 5 and 7 add nodes and are riskier.
 
-**Practical rule: do not land the gated batch (3/5/7) while spoke 1 is in flight.**
-It is cheap insurance — the batch is not urgent, and spoke 1 is waiting only on a
-venue decision. Verify by regenerating Figure 2 before and after, whenever the
-batch does land.
+**Spoke 1 is NOT published.** It is a content-complete *draft*: nine PRs still
+stacked and unmerged, never merged to `main`, blocked on the venue lock. So the
+cost of disturbing it is **rework in an unmerged stack** — regenerate Figure 2,
+re-verify the T11 repro check — not damage to a published artifact. That is
+cheaper and fully reversible.
+
+**Which means the sequencing argument cuts both ways, and the naive "wait for
+spoke 1" is not automatically right:**
+
+- *Land the gated batch first* → rework in the stack now, but spoke 1 publishes
+  against a **corrected** ontology and never drifts from it.
+- *Land it after* → no rework now, but a published spoke 1 drifts from the live
+  repo the moment the ontology changes. **Stale-surface drift is this project's
+  single most documented failure mode.**
+
+**The deciding factor is timing, not principle.** Spoke 1 is blocked on one
+decision that could resolve in days; the gated batch is a multi-session job. On
+that expectation spoke 1 lands first, and the practical rule stands — *don't
+start the gated batch while the stack is mid-merge* — but it is a **scheduling
+preference, not an integrity constraint**, and it should be revisited if spoke 1
+stays blocked.
+
+**What is non-negotiable either way:** regenerate Figure 2 and re-run the T11
+repro check whenever the batch lands. If spoke 1 has published by then, the
+ontology change joins the reconciliation list for its next revision rather than
+being left as silent drift.
 
 **Note that item 3 is already half-done.** The collision is recorded in
 `results.json` (`ifrs_full_ambiguous_tags`) and CI-pinned by
