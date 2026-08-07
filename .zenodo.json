@@ -40,7 +40,7 @@
     },
     {
       "relation": "isIdenticalTo",
-      "identifier": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598",
+      "identifier": "10.2139/ssrn.6960598",
       "resource_type": "publication-preprint"
     },
     {
@@ -53,5 +53,5 @@
     {"identifier": "zenodo"},
     {"identifier": "software"}
   ],
-  "notes": "Preprint deposited on Zenodo (concept DOI 10.5281/zenodo.20738795, resolves to the latest version) and SSRN (abstract 6960598, https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598). Source License: Business Source License 1.1, converting to Apache 2.0 on 2030-06-18 (the Change Date in LICENSE)."
+  "notes": "Preprint deposited on Zenodo (concept DOI 10.5281/zenodo.20738795, resolves to the latest version) and SSRN (DOI 10.2139/ssrn.6960598, abstract 6960598, https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598). Source License: Business Source License 1.1, converting to Apache 2.0 on 2030-06-18 (the Change Date in LICENSE)."
 }

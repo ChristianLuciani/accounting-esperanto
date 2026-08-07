@@ -40,6 +40,9 @@ identifiers:
   - type: doi
     value: "10.5281/zenodo.20739765"
     description: "Zenodo version DOI for the v0.1.1 release (previous version)"
+  - type: doi
+    value: "10.2139/ssrn.6960598"
+    description: "SSRN preprint DOI (Crossref-registered 2026-07-29)"
   - type: url
     value: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598"
     description: "SSRN preprint (abstract 6960598)"
@@ -66,7 +69,7 @@ preferred-citation:
   type: unpublished
   title: >
     Kontablo: A Graph-Based Universal Accounting Ontology
-    for Multi-Jurisdictional Financial Integration
+    for the M2M Agentic Economy
   authors:
     - family-names: Luciani
       given-names: Christian
@@ -74,5 +77,5 @@ preferred-citation:
       affiliation: "Independent Researcher, Cuenca, Ecuador"
   year: 2026
   doi: "10.5281/zenodo.20738795"
-  notes: "Preprint on Zenodo (concept DOI 10.5281/zenodo.20738795, resolves to the latest version) and SSRN (abstract 6960598, https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598)."
+  notes: "Preprint on Zenodo (concept DOI 10.5281/zenodo.20738795, resolves to the latest version) and SSRN (DOI 10.2139/ssrn.6960598, abstract 6960598, https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598)."
   url: "https://doi.org/10.5281/zenodo.20738795"
