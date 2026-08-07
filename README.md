@@ -309,7 +309,7 @@ documented in the preprint (Appendix and Section on expanded validation).
 ```bibtex
 @misc{luciani2026kontablo,
   title        = {Kontablo: A Graph-Based Universal Accounting Ontology
-                  for the M2M Agentic Economy},
+                  for Multi-Jurisdictional Financial Integration},
   author       = {Luciani, Christian},
   year         = {2026},
   doi          = {10.5281/zenodo.20738795},
@@ -324,7 +324,7 @@ documented in the preprint (Appendix and Section on expanded validation).
 **APA:**
 
 Luciani, C. (2026). *Kontablo: A graph-based universal accounting ontology for
-the M2M agentic economy* [Preprint]. Zenodo.
+multi-jurisdictional financial integration* [Preprint]. Zenodo.
 https://doi.org/10.5281/zenodo.20738795
 
 *SSRN preprint: [DOI 10.2139/ssrn.6960598](https://doi.org/10.2139/ssrn.6960598) · [papers.ssrn.com/abstract=6960598](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598) (abstract 6960598).*
