@@ -94,7 +94,8 @@ claims-evidence CI gate reproduces them byte-for-byte.
 ## Citation
 Concept DOI (always resolves to the latest version):
 [10.5281/zenodo.20738795](https://doi.org/10.5281/zenodo.20738795) ·
-SSRN [abstract 6960598](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598).
+SSRN [DOI 10.2139/ssrn.6960598](https://doi.org/10.2139/ssrn.6960598) ·
+[abstract 6960598](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598).
 
 ## Release checklist (owner-gated — Christian)
 The code/docs are ready on `main`; cutting the public release is a manual step
