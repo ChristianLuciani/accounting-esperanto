@@ -69,7 +69,7 @@
 % ---------------------------------------------------------------- agent
 \node[agent] (agent) at (-4.8,3.55)
   {Autonomous agent\\[1pt]
-   {\scriptsize\mdseries settles over AP2 / A2A;\\ no human at transaction latency}};
+   {\scriptsize\mdseries settles over AP2 / A2A,\\ at machine frequency}};
 
 % ------------------------------ header strip (inside the tool surface)
 \node[hdr] (hdr) at (3.0,1.95)
@@ -136,13 +136,22 @@
   {\textbf{Loss ledger (I2)} --- typed and counted:\\
    collisions $\cdot$ placeholders $\cdot$ escalations $\cdot$ CRA flags\\
    \texttt{silent\_losses = 0}};
-\node[ledger, fill=white, draw=clappsInk!55] (human) at (7.0,-8.35)
-  {\textbf{Accountable human} --- authorizes the deterministic
-   policy \emph{ex ante}, disposes of this counted residual
-   \emph{asynchronously}, and can revoke a \emph{rule} rather
-   than a transaction. Legal principal in both modes};
+\node[ledger, fill=white, draw=clappsInk!55, anchor=north,
+      text width=5.9cm] (human) at (7.0,-7.45)
+  {\textbf{Accountable human --- standing authority over
+   \emph{every} branch above, not only this one}\\[2pt]
+   authorizes the policy \emph{ex ante} $\cdot$ may hold any rule,
+   jurisdiction or node at any time (\texttt{tier=held}) $\cdot$
+   disposes of the counted residual \emph{asynchronously} $\cdot$
+   revokes a \emph{rule}, not a transaction $\cdot$ legal principal
+   throughout};
 \draw[->, thick, red!55!black] (q3) -- (ll);
-\draw[->, thick, clappsInk!60] (ll) -- (human);
+\draw[->, thick, clappsInk!60] (ll) -- (human.north);
+% The human's authority is NOT downstream of the residual — it reaches the whole
+% surface. Drawn as a standing (dashed) relation rather than a step in the flow,
+% routed outside the diagram so it reads as ambient rather than sequential.
+\draw[<-, dashed, clappsInk!45, shorten <=1pt]
+  (surface.east) -- ++(0.7,0) |- (human.east);
 
 \end{tikzpicture}%
 }
@@ -160,10 +169,14 @@ codebase but is deliberately \emph{not} registered as an MCP tool: exposing it
 would let an agent consume a stochastic answer through an interface that looks
 deterministic. Confidence values and \texttt{rule\_id} formats are verbatim from
 \protect\pathtt{core/harness/resolution.py}. Note what the bottom-right box is
-\emph{not} saying: the human is absent from transaction latency, not from
-authority. They authorize the deterministic policy in advance, work the counted
-residual asynchronously, and --- because every resolution names the rule that
-produced it --- can revoke a rule rather than a transaction
+\emph{not} saying. The accountable human is not absent from any layer here, and
+the dashed line is drawn to the whole tool surface rather than to the escalation
+branch for that reason: their authority is standing and continuous, including
+over the branches that resolve automatically. What machine frequency changes is
+whether that authority must be \emph{exercised} on each transaction, not whether
+it exists. They may hold any rule, jurisdiction or node at any moment
+(\texttt{tier=held}), and --- because every resolution names the rule that
+produced it --- revoke a rule rather than a transaction
 (Section~\ref{sec:coresponsibility}).}
 \label{fig:agent-flow}
 \end{figure}
