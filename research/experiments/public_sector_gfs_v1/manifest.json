@@ -1,0 +1,329 @@
+{
+  "experiment": "public_sector_gfs_v1",
+  "files": {
+    "eurostat_data_AT": {
+      "bytes": 966679,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_AT.json",
+      "note": "gov_10a_exp full time series for geo=AT, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:47:08Z",
+      "sha256": "04769cc8a8759c53c7414c0130059ef0bb4b8120a7c59876536329eec73cfe80",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=AT"
+    },
+    "eurostat_data_BE": {
+      "bytes": 884971,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_BE.json",
+      "note": "gov_10a_exp full time series for geo=BE, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:47:12Z",
+      "sha256": "d99af65de669a798c71d4b88d421d6d90afd4c400b3510d7506f3dc3a25481a2",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=BE"
+    },
+    "eurostat_data_BG": {
+      "bytes": 925317,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_BG.json",
+      "note": "gov_10a_exp full time series for geo=BG, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:47:15Z",
+      "sha256": "a7c80901f415fb888121d695121a1c618e645e9c3b84ea3814770552a50e20bb",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=BG"
+    },
+    "eurostat_data_CH": {
+      "bytes": 962747,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_CH.json",
+      "note": "gov_10a_exp full time series for geo=CH, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:47:17Z",
+      "sha256": "f633f55467d94b900e4cd868dbce4278c042c81d107484f379d75c5340a45ee9",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=CH"
+    },
+    "eurostat_data_CY": {
+      "bytes": 937558,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_CY.json",
+      "note": "gov_10a_exp full time series for geo=CY, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:47:20Z",
+      "sha256": "fa1d4c70e0d35ab60b8b4196e0fb7253bc651b20359a491ae12a2a28c31c1b1c",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=CY"
+    },
+    "eurostat_data_CZ": {
+      "bytes": 959771,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_CZ.json",
+      "note": "gov_10a_exp full time series for geo=CZ, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:47:22Z",
+      "sha256": "098a2f1870554fa2f8e1c38887b104b4a1bcd70f87faebed6359c1f65d9c7cc9",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=CZ"
+    },
+    "eurostat_data_DE": {
+      "bytes": 875222,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_DE.json",
+      "note": "gov_10a_exp full time series for geo=DE, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:47:24Z",
+      "sha256": "90372fc182fcca2dd0a186b7b74e000aad41afa142a468a12bde243865969b7f",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=DE"
+    },
+    "eurostat_data_DK": {
+      "bytes": 870887,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_DK.json",
+      "note": "gov_10a_exp full time series for geo=DK, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:47:29Z",
+      "sha256": "2682c1a6fbe92c283f75d18358c9932ad673d65e3808bc178ded4b37769507ac",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=DK"
+    },
+    "eurostat_data_EE": {
+      "bytes": 939069,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_EE.json",
+      "note": "gov_10a_exp full time series for geo=EE, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:47:33Z",
+      "sha256": "78c735faf7234f5c007d1a333244d2494a22942564247d4f76659aba5665eee3",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=EE"
+    },
+    "eurostat_data_EL": {
+      "bytes": 849379,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_EL.json",
+      "note": "gov_10a_exp full time series for geo=EL, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:47:35Z",
+      "sha256": "f9236db6a0a7ba23624b6bbd783b7bdedd0c444bc30bdcc25ab28912abe00496",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=EL"
+    },
+    "eurostat_data_ES": {
+      "bytes": 646031,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_ES.json",
+      "note": "gov_10a_exp full time series for geo=ES, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:47:38Z",
+      "sha256": "18a20da19b7b75eb0c6ee4d1010d126894bcf77757e97af2ba6a96d1a71eed08",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=ES"
+    },
+    "eurostat_data_FI": {
+      "bytes": 851856,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_FI.json",
+      "note": "gov_10a_exp full time series for geo=FI, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:47:42Z",
+      "sha256": "869a2881c6dc493521c838e997db05c526e3b049cb05845f38e7cb3999949d0c",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=FI"
+    },
+    "eurostat_data_FR": {
+      "bytes": 1021888,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_FR.json",
+      "note": "gov_10a_exp full time series for geo=FR, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:47:47Z",
+      "sha256": "d8071bcbcead0915c19e32e191b320d235c04a2acbf1e517d4a13e6f15cd9477",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=FR"
+    },
+    "eurostat_data_HR": {
+      "bytes": 948520,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_HR.json",
+      "note": "gov_10a_exp full time series for geo=HR, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:47:51Z",
+      "sha256": "81548d14167ceec7522057996ff005852d84c1b47de14c47a68749df8e7f79b9",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=HR"
+    },
+    "eurostat_data_HU": {
+      "bytes": 955252,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_HU.json",
+      "note": "gov_10a_exp full time series for geo=HU, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:47:54Z",
+      "sha256": "44a50f744a1d9577a7aa9973ceee012a0a7a9fbf675b360b9b2089424629a876",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=HU"
+    },
+    "eurostat_data_IE": {
+      "bytes": 670170,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_IE.json",
+      "note": "gov_10a_exp full time series for geo=IE, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:47:56Z",
+      "sha256": "61b260588b239fd2d2e4f645f2487448be537c02810cf788517e756c546d8faf",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=IE"
+    },
+    "eurostat_data_IS": {
+      "bytes": 845277,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_IS.json",
+      "note": "gov_10a_exp full time series for geo=IS, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:47:59Z",
+      "sha256": "0fcb7ba679759223da8d7087b744e01b5ab00418968fac8f413061671e3a1667",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=IS"
+    },
+    "eurostat_data_IT": {
+      "bytes": 879763,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_IT.json",
+      "note": "gov_10a_exp full time series for geo=IT, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:48:01Z",
+      "sha256": "54a9bf0990de8e55718843b306a4e87178f89ae19e7abac9a52c962d0f74b7b8",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=IT"
+    },
+    "eurostat_data_LT": {
+      "bytes": 892566,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_LT.json",
+      "note": "gov_10a_exp full time series for geo=LT, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:48:05Z",
+      "sha256": "55145f4814eba37c3fe52db8b48b92d33e5e629983c1ca436291fe2495f429a4",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=LT"
+    },
+    "eurostat_data_LU": {
+      "bytes": 976076,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_LU.json",
+      "note": "gov_10a_exp full time series for geo=LU, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:48:09Z",
+      "sha256": "8b716fb55b647082e965269a62a54377f7933468535c8fc68b4655bdd5305b9f",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=LU"
+    },
+    "eurostat_data_LV": {
+      "bytes": 839624,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_LV.json",
+      "note": "gov_10a_exp full time series for geo=LV, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:48:11Z",
+      "sha256": "6866cd9c18693ffef965e8df751ee02cdeea243dada400eab429e3fd6771ef59",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=LV"
+    },
+    "eurostat_data_MT": {
+      "bytes": 774992,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_MT.json",
+      "note": "gov_10a_exp full time series for geo=MT, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:48:14Z",
+      "sha256": "b03110542355989a5e09bd15c35e59541b9e9ad8e681ead57fa9804ab5e44156",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=MT"
+    },
+    "eurostat_data_NL": {
+      "bytes": 977778,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_NL.json",
+      "note": "gov_10a_exp full time series for geo=NL, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:48:18Z",
+      "sha256": "03c827ca868a5ec30dc630f294e137e6801d5de52416abe915eefd2f4ff7118a",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=NL"
+    },
+    "eurostat_data_NO": {
+      "bytes": 966454,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_NO.json",
+      "note": "gov_10a_exp full time series for geo=NO, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:48:21Z",
+      "sha256": "ea8eadd8c1e7c8e004d4e1ffe443396001cf7b62bffd741eb05e6b368009781e",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=NO"
+    },
+    "eurostat_data_PL": {
+      "bytes": 844852,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_PL.json",
+      "note": "gov_10a_exp full time series for geo=PL, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:48:24Z",
+      "sha256": "b2b5232390ac1cf6cab262124ef850a70db42212666c0ce600c5cbd8039c7222",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=PL"
+    },
+    "eurostat_data_PT": {
+      "bytes": 970109,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_PT.json",
+      "note": "gov_10a_exp full time series for geo=PT, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:48:27Z",
+      "sha256": "efe04d5e6f9e05a8b19dd9d8fc7b992161bbd452f0eacaa56d514ca1eacc09e9",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=PT"
+    },
+    "eurostat_data_RO": {
+      "bytes": 889450,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_RO.json",
+      "note": "gov_10a_exp full time series for geo=RO, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:48:31Z",
+      "sha256": "840e059eec6dab916714e0032b7fe55a1fd21948904f6323fa156e5a39de57b0",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=RO"
+    },
+    "eurostat_data_SE": {
+      "bytes": 885173,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_SE.json",
+      "note": "gov_10a_exp full time series for geo=SE, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:48:33Z",
+      "sha256": "f19528d2fb3ca350e97dda9a40a5a7f6d0610a549195429963fa573bb0602aea",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=SE"
+    },
+    "eurostat_data_SI": {
+      "bytes": 945267,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_SI.json",
+      "note": "gov_10a_exp full time series for geo=SI, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:48:36Z",
+      "sha256": "ef90ef9fc16f345fa1ac17021f6a1d86d5505c7dfc10138c6db44e2c2b08182b",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=SI"
+    },
+    "eurostat_data_SK": {
+      "bytes": 707900,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/data_SK.json",
+      "note": "gov_10a_exp full time series for geo=SK, unit=MIO_EUR, sector=S13.",
+      "retrieved_utc": "2026-07-30T17:48:38Z",
+      "sha256": "2f76f22f541f451cf935dedb8f1f52a66138d5d56bfe6c201e80cce8c2724aaa",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&unit=MIO_EUR&sector=S13&geo=SK"
+    },
+    "eurostat_geo_probe": {
+      "bytes": 6059,
+      "license_regime": "open_data",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/eurostat/geo_probe.json",
+      "note": "Single-slice probe (unit=MIO_EUR, na_item=D1, cofog99=GF01, time=2022) to enumerate reporters.",
+      "retrieved_utc": "2026-07-30T17:47:02Z",
+      "sha256": "8d3bd7f0aa894defc482e1d0bb500852fc61acbf7723c9e36cbcf2a86224cf79",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/gov_10a_exp?format=JSON&time=2022&unit=MIO_EUR&na_item=D1&cofog99=GF01"
+    },
+    "imf_codelist_gfs_indicator": {
+      "bytes": 345225,
+      "license_regime": "no_redistribution",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/imf/codelist_gfs_indicator.xml",
+      "note": "IMF SDMX payload; response carries 'All Rights Reserved' (imf.org/external/terms.htm). Hashed and manifested, never redistributed.",
+      "retrieved_utc": "2026-07-30T17:45:55Z",
+      "sha256": "6e5f9ad7f5a4c87cf26bcfadfb4e14c27ac91550670fceee4557baf9295d415c",
+      "url": "https://api.imf.org/external/sdmx/2.1/codelist/IMF.STA/CL_GFS_INDICATOR"
+    },
+    "imf_data_bs": {
+      "bytes": 2068442,
+      "license_regime": "no_redistribution",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/imf/data_bs.xml",
+      "note": "IMF SDMX payload; response carries 'All Rights Reserved' (imf.org/external/terms.htm). Hashed and manifested, never redistributed.",
+      "retrieved_utc": "2026-07-30T17:47:01Z",
+      "sha256": "c07f2a47749e05a3e31bc903f4cd496935fb9ca8a9e6f1719c788627884a94ce",
+      "url": "https://api.imf.org/external/sdmx/2.1/data/IMF.STA,GFS_BS,12.0.0/.S13..FA_A_SP+G6_A_SP+L_SP+NFA_A_SP.POGDP_PT.A?startPeriod=1990&endPeriod=2025"
+    },
+    "imf_data_cofog": {
+      "bytes": 83232625,
+      "license_regime": "no_redistribution",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/imf/data_cofog.xml",
+      "note": "IMF SDMX payload; response carries 'All Rights Reserved' (imf.org/external/terms.htm). Hashed and manifested, never redistributed.",
+      "retrieved_utc": "2026-07-30T17:46:36Z",
+      "sha256": "ae7907f39453ea801071ef75b305669fcb3d9db985e340fcbe67320c80c0bd1a",
+      "url": "https://api.imf.org/external/sdmx/2.1/data/IMF.STA,GFS_COFOG,11.0.0/.S13..GF011_T+GF012_T+GF013_T+GF0140_T+GF0150_T+GF0160_T+GF0170_T+GF0180_T+GF01_T+GF0210_T+GF0220_T+GF0230_T+GF0240_T+GF025_T+GF02_T+GF0310_T+GF0320_T+GF0330_T+GF0340_T+GF0350_T+GF0360_T+GF03_T+GF041_T+GF042_T+GF043_T+GF044_T+GF045_T+GF0460_T+GF047_T+GF048_T+GF0490_T+GF04_T+GF0510_T+GF0520_T+GF0530_T+GF0540_T+GF0550_T+GF0560_T+GF05_T+GF0610_T+GF0620_T+GF0630_T+GF0640_T+GF0650_T+GF0660_T+GF066_T+GF06_T+GF0712_T+GF072_T+GF073_T+GF0740_T+GF075_T+GF0760_T+GF07_T+GF0810_T+GF0820_T+GF0830_T+GF0840_T+GF0850_T+GF0860_T+GF08_T+GF091_T+GF092_T+GF0930_T+GF094_T+GF0950_T+GF0960_T+GF0970_T+GF0980_T+GF09_T+GF101_T+GF1020_T+GF1030_T+GF1040_T+GF1050_T+GF1060_T+GF1070_T+GF1080_T+GF1090_T+GF10_T.POGDP_PT.A?startPeriod=1990&endPeriod=2025"
+    },
+    "imf_data_soo": {
+      "bytes": 15045194,
+      "license_regime": "no_redistribution",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/imf/data_soo.xml",
+      "note": "IMF SDMX payload; response carries 'All Rights Reserved' (imf.org/external/terms.htm). Hashed and manifested, never redistributed.",
+      "retrieved_utc": "2026-07-30T17:46:57Z",
+      "sha256": "b23413a058a13be7b6df1641a624b8d4f237773a2395fceb3e1555b2cbe14229",
+      "url": "https://api.imf.org/external/sdmx/2.1/data/IMF.STA,GFS_SOO,12.0.0/.S13..G11_T+G12_T+G13_T+G14_T+G1_T+G21_T+G22_T+G23_T+G24_T+G25_T+G26_T+G27_T+G28_T+G2_T+GGB_T+GPB_T.POGDP_PT.A?startPeriod=1990&endPeriod=2025"
+    },
+    "imf_dataflow_list": {
+      "bytes": 444501,
+      "license_regime": "no_redistribution",
+      "local_path": "research/real_data_snapshots/public_sector_gfs_v1/imf/dataflow_list.xml",
+      "note": "IMF SDMX payload; response carries 'All Rights Reserved' (imf.org/external/terms.htm). Hashed and manifested, never redistributed.",
+      "retrieved_utc": "2026-07-30T17:45:54Z",
+      "sha256": "41ade81b9c4c22b776b6e9037e57c20ec5e5f1bd1f6a71f5ce21e9a4794975de",
+      "url": "https://api.imf.org/external/sdmx/2.1/dataflow"
+    }
+  }
+}

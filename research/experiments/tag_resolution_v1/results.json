@@ -1,0 +1,532 @@
+{
+  "accuracy_gold_sample": {
+    "holdout": {
+      "by_gold_class": {
+        "aggregate": {
+          "accuracy_pct_unweighted": 68.8,
+          "accuracy_pct_weighted": 72.7,
+          "correct": 0,
+          "correct_escalation": 22,
+          "correct_escalation_facts": 196638,
+          "correct_facts": 0,
+          "false_positive": 10,
+          "false_positive_facts": 73874,
+          "in_core_accuracy_pct_unweighted": 0.0,
+          "in_core_accuracy_pct_weighted": 0.0,
+          "missed": 0,
+          "missed_facts": 0,
+          "n_codes": 32,
+          "n_facts": 270512,
+          "wrong_node": 0,
+          "wrong_node_facts": 0
+        },
+        "leaf": {
+          "accuracy_pct_unweighted": 65.5,
+          "accuracy_pct_weighted": 94.6,
+          "correct": 38,
+          "correct_escalation": 0,
+          "correct_escalation_facts": 0,
+          "correct_facts": 222649,
+          "false_positive": 0,
+          "false_positive_facts": 0,
+          "in_core_accuracy_pct_unweighted": 65.5,
+          "in_core_accuracy_pct_weighted": 94.6,
+          "missed": 15,
+          "missed_facts": 12265,
+          "n_codes": 58,
+          "n_facts": 235248,
+          "wrong_node": 5,
+          "wrong_node_facts": 334
+        },
+        "out_of_scope": {
+          "accuracy_pct_unweighted": 66.5,
+          "accuracy_pct_weighted": 56.3,
+          "correct": 0,
+          "correct_escalation": 153,
+          "correct_escalation_facts": 135786,
+          "correct_facts": 0,
+          "false_positive": 77,
+          "false_positive_facts": 105281,
+          "in_core_accuracy_pct_unweighted": 0.0,
+          "in_core_accuracy_pct_weighted": 0.0,
+          "missed": 0,
+          "missed_facts": 0,
+          "n_codes": 230,
+          "n_facts": 241067,
+          "wrong_node": 0,
+          "wrong_node_facts": 0
+        }
+      },
+      "by_stratum": {
+        "seen_in_train": {
+          "accuracy_pct_unweighted": 65.0,
+          "accuracy_pct_weighted": 74.3,
+          "correct": 35,
+          "correct_escalation": 134,
+          "correct_escalation_facts": 332314,
+          "correct_facts": 222573,
+          "false_positive": 74,
+          "false_positive_facts": 179089,
+          "in_core_accuracy_pct_unweighted": 67.3,
+          "in_core_accuracy_pct_weighted": 94.6,
+          "missed": 13,
+          "missed_facts": 12263,
+          "n_codes": 260,
+          "n_facts": 746572,
+          "wrong_node": 4,
+          "wrong_node_facts": 333
+        },
+        "unseen_in_train": {
+          "accuracy_pct_unweighted": 73.3,
+          "accuracy_pct_weighted": 72.9,
+          "correct": 3,
+          "correct_escalation": 41,
+          "correct_escalation_facts": 110,
+          "correct_facts": 76,
+          "false_positive": 13,
+          "false_positive_facts": 66,
+          "in_core_accuracy_pct_unweighted": 50.0,
+          "in_core_accuracy_pct_weighted": 96.2,
+          "missed": 2,
+          "missed_facts": 2,
+          "n_codes": 60,
+          "n_facts": 255,
+          "wrong_node": 1,
+          "wrong_node_facts": 1
+        }
+      },
+      "pooled": {
+        "accuracy_pct_unweighted": 66.6,
+        "accuracy_pct_weighted": 74.3,
+        "correct": 38,
+        "correct_escalation": 175,
+        "correct_escalation_facts": 332424,
+        "correct_facts": 222649,
+        "false_positive": 87,
+        "false_positive_facts": 179155,
+        "in_core_accuracy_pct_unweighted": 65.5,
+        "in_core_accuracy_pct_weighted": 94.6,
+        "missed": 15,
+        "missed_facts": 12265,
+        "n_codes": 320,
+        "n_facts": 746827,
+        "wrong_node": 5,
+        "wrong_node_facts": 334
+      }
+    },
+    "train": {
+      "by_gold_class": {
+        "aggregate": {
+          "accuracy_pct_unweighted": 64.5,
+          "accuracy_pct_weighted": 67.4,
+          "correct": 0,
+          "correct_escalation": 20,
+          "correct_escalation_facts": 385530,
+          "correct_facts": 0,
+          "false_positive": 11,
+          "false_positive_facts": 186895,
+          "in_core_accuracy_pct_unweighted": 0.0,
+          "in_core_accuracy_pct_weighted": 0.0,
+          "missed": 0,
+          "missed_facts": 0,
+          "n_codes": 31,
+          "n_facts": 572425,
+          "wrong_node": 0,
+          "wrong_node_facts": 0
+        },
+        "leaf": {
+          "accuracy_pct_unweighted": 67.3,
+          "accuracy_pct_weighted": 94.6,
+          "correct": 35,
+          "correct_escalation": 0,
+          "correct_escalation_facts": 0,
+          "correct_facts": 468173,
+          "false_positive": 0,
+          "false_positive_facts": 0,
+          "in_core_accuracy_pct_unweighted": 67.3,
+          "in_core_accuracy_pct_weighted": 94.6,
+          "missed": 13,
+          "missed_facts": 25854,
+          "n_codes": 52,
+          "n_facts": 494744,
+          "wrong_node": 4,
+          "wrong_node_facts": 717
+        },
+        "out_of_scope": {
+          "accuracy_pct_unweighted": 63.3,
+          "accuracy_pct_weighted": 54.3,
+          "correct": 0,
+          "correct_escalation": 112,
+          "correct_escalation_facts": 272385,
+          "correct_facts": 0,
+          "false_positive": 65,
+          "false_positive_facts": 228983,
+          "in_core_accuracy_pct_unweighted": 0.0,
+          "in_core_accuracy_pct_weighted": 0.0,
+          "missed": 0,
+          "missed_facts": 0,
+          "n_codes": 177,
+          "n_facts": 501368,
+          "wrong_node": 0,
+          "wrong_node_facts": 0
+        }
+      },
+      "by_stratum": {
+        "seen_in_train": {
+          "accuracy_pct_unweighted": 64.2,
+          "accuracy_pct_weighted": 71.8,
+          "correct": 35,
+          "correct_escalation": 132,
+          "correct_escalation_facts": 657915,
+          "correct_facts": 468173,
+          "false_positive": 76,
+          "false_positive_facts": 415878,
+          "in_core_accuracy_pct_unweighted": 67.3,
+          "in_core_accuracy_pct_weighted": 94.6,
+          "missed": 13,
+          "missed_facts": 25854,
+          "n_codes": 260,
+          "n_facts": 1568537,
+          "wrong_node": 4,
+          "wrong_node_facts": 717
+        }
+      },
+      "pooled": {
+        "accuracy_pct_unweighted": 64.2,
+        "accuracy_pct_weighted": 71.8,
+        "correct": 35,
+        "correct_escalation": 132,
+        "correct_escalation_facts": 657915,
+        "correct_facts": 468173,
+        "false_positive": 76,
+        "false_positive_facts": 415878,
+        "in_core_accuracy_pct_unweighted": 67.3,
+        "in_core_accuracy_pct_weighted": 94.6,
+        "missed": 13,
+        "missed_facts": 25854,
+        "n_codes": 260,
+        "n_facts": 1568537,
+        "wrong_node": 4,
+        "wrong_node_facts": 717
+      }
+    }
+  },
+  "baseline_naive_label_match": {
+    "holdout": {
+      "accuracy_pct_unweighted": 72.2,
+      "accuracy_pct_weighted": 33.3,
+      "correct": 231,
+      "correct_facts": 248679,
+      "n_codes": 320,
+      "n_facts": 746827
+    },
+    "train": {
+      "accuracy_pct_unweighted": 68.5,
+      "accuracy_pct_weighted": 33.0,
+      "correct": 178,
+      "correct_facts": 517504,
+      "n_codes": 260,
+      "n_facts": 1568537
+    }
+  },
+  "coverage": {
+    "all": {
+      "holdout": {
+        "by_source": {
+          "edgar": {
+            "escalated_codes": 3323,
+            "escalated_facts": 770807,
+            "n_codes": 4996,
+            "n_facts": 1452634,
+            "resolved_pct_unweighted": 33.5,
+            "resolved_pct_weighted": 46.9,
+            "tier1_codes": 41,
+            "tier1_facts": 270963,
+            "tier2_codes": 1632,
+            "tier2_facts": 410864
+          }
+        },
+        "by_stratum": {
+          "seen_in_train": {
+            "escalated_codes": 3205,
+            "escalated_facts": 770512,
+            "n_codes": 4832,
+            "n_facts": 1452023,
+            "resolved_pct_unweighted": 33.7,
+            "resolved_pct_weighted": 46.9,
+            "tier1_codes": 41,
+            "tier1_facts": 270963,
+            "tier2_codes": 1586,
+            "tier2_facts": 410548
+          },
+          "unseen_in_train": {
+            "escalated_codes": 118,
+            "escalated_facts": 295,
+            "n_codes": 164,
+            "n_facts": 611,
+            "resolved_pct_unweighted": 28.0,
+            "resolved_pct_weighted": 51.7,
+            "tier1_codes": 0,
+            "tier1_facts": 0,
+            "tier2_codes": 46,
+            "tier2_facts": 316
+          }
+        },
+        "pooled": {
+          "escalated_codes": 3323,
+          "escalated_facts": 770807,
+          "n_codes": 4996,
+          "n_facts": 1452634,
+          "resolved_pct_unweighted": 33.5,
+          "resolved_pct_weighted": 46.9,
+          "tier1_codes": 41,
+          "tier1_facts": 270963,
+          "tier2_codes": 1632,
+          "tier2_facts": 410864
+        }
+      },
+      "train": {
+        "by_source": {
+          "edgar": {
+            "escalated_codes": 3532,
+            "escalated_facts": 1396964,
+            "n_codes": 5305,
+            "n_facts": 2812626,
+            "resolved_pct_unweighted": 33.4,
+            "resolved_pct_weighted": 50.3,
+            "tier1_codes": 41,
+            "tier1_facts": 581219,
+            "tier2_codes": 1732,
+            "tier2_facts": 834443
+          },
+          "esef": {
+            "escalated_codes": 691,
+            "escalated_facts": 31342,
+            "n_codes": 707,
+            "n_facts": 33434,
+            "resolved_pct_unweighted": 2.3,
+            "resolved_pct_weighted": 6.3,
+            "tier1_codes": 16,
+            "tier1_facts": 2092,
+            "tier2_codes": 0,
+            "tier2_facts": 0
+          }
+        },
+        "by_stratum": {
+          "seen_in_train": {
+            "escalated_codes": 4223,
+            "escalated_facts": 1428306,
+            "n_codes": 6012,
+            "n_facts": 2846060,
+            "resolved_pct_unweighted": 29.8,
+            "resolved_pct_weighted": 49.8,
+            "tier1_codes": 57,
+            "tier1_facts": 583311,
+            "tier2_codes": 1732,
+            "tier2_facts": 834443
+          }
+        },
+        "pooled": {
+          "escalated_codes": 4223,
+          "escalated_facts": 1428306,
+          "n_codes": 6012,
+          "n_facts": 2846060,
+          "resolved_pct_unweighted": 29.8,
+          "resolved_pct_weighted": 49.8,
+          "tier1_codes": 57,
+          "tier1_facts": 583311,
+          "tier2_codes": 1732,
+          "tier2_facts": 834443
+        }
+      }
+    },
+    "monetary": {
+      "holdout": {
+        "by_source": {
+          "edgar": {
+            "escalated_codes": 3189,
+            "escalated_facts": 679881,
+            "n_codes": 4777,
+            "n_facts": 1318702,
+            "resolved_pct_unweighted": 33.2,
+            "resolved_pct_weighted": 48.4,
+            "tier1_codes": 41,
+            "tier1_facts": 270963,
+            "tier2_codes": 1547,
+            "tier2_facts": 367858
+          }
+        },
+        "by_stratum": {
+          "seen_in_train": {
+            "escalated_codes": 3080,
+            "escalated_facts": 679605,
+            "n_codes": 4624,
+            "n_facts": 1318112,
+            "resolved_pct_unweighted": 33.4,
+            "resolved_pct_weighted": 48.4,
+            "tier1_codes": 41,
+            "tier1_facts": 270963,
+            "tier2_codes": 1503,
+            "tier2_facts": 367544
+          },
+          "unseen_in_train": {
+            "escalated_codes": 109,
+            "escalated_facts": 276,
+            "n_codes": 153,
+            "n_facts": 590,
+            "resolved_pct_unweighted": 28.8,
+            "resolved_pct_weighted": 53.2,
+            "tier1_codes": 0,
+            "tier1_facts": 0,
+            "tier2_codes": 44,
+            "tier2_facts": 314
+          }
+        },
+        "pooled": {
+          "escalated_codes": 3189,
+          "escalated_facts": 679881,
+          "n_codes": 4777,
+          "n_facts": 1318702,
+          "resolved_pct_unweighted": 33.2,
+          "resolved_pct_weighted": 48.4,
+          "tier1_codes": 41,
+          "tier1_facts": 270963,
+          "tier2_codes": 1547,
+          "tier2_facts": 367858
+        }
+      },
+      "train": {
+        "by_source": {
+          "edgar": {
+            "escalated_codes": 3385,
+            "escalated_facts": 1221466,
+            "n_codes": 5069,
+            "n_facts": 2559543,
+            "resolved_pct_unweighted": 33.2,
+            "resolved_pct_weighted": 52.3,
+            "tier1_codes": 41,
+            "tier1_facts": 581219,
+            "tier2_codes": 1643,
+            "tier2_facts": 756858
+          },
+          "esef": {
+            "escalated_codes": 676,
+            "escalated_facts": 30947,
+            "n_codes": 692,
+            "n_facts": 33039,
+            "resolved_pct_unweighted": 2.3,
+            "resolved_pct_weighted": 6.3,
+            "tier1_codes": 16,
+            "tier1_facts": 2092,
+            "tier2_codes": 0,
+            "tier2_facts": 0
+          }
+        },
+        "by_stratum": {
+          "seen_in_train": {
+            "escalated_codes": 4061,
+            "escalated_facts": 1252413,
+            "n_codes": 5761,
+            "n_facts": 2592582,
+            "resolved_pct_unweighted": 29.5,
+            "resolved_pct_weighted": 51.7,
+            "tier1_codes": 57,
+            "tier1_facts": 583311,
+            "tier2_codes": 1643,
+            "tier2_facts": 756858
+          }
+        },
+        "pooled": {
+          "escalated_codes": 4061,
+          "escalated_facts": 1252413,
+          "n_codes": 5761,
+          "n_facts": 2592582,
+          "resolved_pct_unweighted": 29.5,
+          "resolved_pct_weighted": 51.7,
+          "tier1_codes": 57,
+          "tier1_facts": 583311,
+          "tier2_codes": 1643,
+          "tier2_facts": 756858
+        }
+      }
+    }
+  },
+  "crosswalk_declared_out_of_core": {
+    "ifrs-full": 3,
+    "us-gaap": 89
+  },
+  "crosswalk_sizes": {
+    "ifrs-full": 24,
+    "us-gaap": 41
+  },
+  "experiment": "tag_resolution_v1",
+  "gold_labels_loaded": 320,
+  "h2_extensions": {
+    "holdout": {
+      "escalated": 43544,
+      "escalated_facts": 180771,
+      "escalation_rate_pct_unweighted": 55.6,
+      "escalation_rate_pct_weighted": 59.1,
+      "h2_holds": true,
+      "n_extension_codes": 78267,
+      "n_extension_facts": 306090,
+      "tier1_violation_facts": 0,
+      "tier1_violations": 0,
+      "tier2_name_match_facts": 125319,
+      "tier2_name_matches": 34723,
+      "violating_codes": []
+    },
+    "train": {
+      "escalated": 66874,
+      "escalated_facts": 566106,
+      "escalation_rate_pct_unweighted": 56.7,
+      "escalation_rate_pct_weighted": 64.7,
+      "h2_holds": true,
+      "n_extension_codes": 117855,
+      "n_extension_facts": 874426,
+      "tier1_violation_facts": 0,
+      "tier1_violations": 0,
+      "tier2_name_match_facts": 308320,
+      "tier2_name_matches": 50981,
+      "violating_codes": []
+    }
+  },
+  "ifrs_full_ambiguity_note": "IFRS tags claimed by more than one core node. The ontology's ifrs_tag field is not injective (30 nodes -> 27 distinct tags), so for these the correct leaf is undetermined from the tag alone. They are excluded from the code table and escalate rather than being resolved by an arbitrary tie-break (principle #5). This lowers A2 coverage; it never raises it.",
+  "ifrs_full_ambiguous_tags": {
+    "CashAndCashEquivalents": [
+      "asset.current.bank",
+      "asset.current.cash"
+    ],
+    "CurrentTaxLiabilitiesCurrent": [
+      "liability.current.tax",
+      "liability.current.vat_output"
+    ],
+    "OtherNonCurrentFinancialLiabilities": [
+      "liability.noncurrent.debt",
+      "liability.noncurrent.lease"
+    ]
+  },
+  "inventory": {
+    "by_window": {
+      "holdout": {
+        "n_codes": 83263,
+        "n_facts": 1758724
+      },
+      "train": {
+        "n_codes": 123867,
+        "n_facts": 3720486
+      }
+    },
+    "n_rows": 207130
+  },
+  "provenance": {
+    "corpus": "real public filings / official statistics; see manifest.json",
+    "synthetic_comparison": "NOT comparable to the 97.3% synthetic figure from scripts/mass_consolidation_v2.py -- different corpus, different question"
+  },
+  "public_sector_extension_nodes_loaded": 0,
+  "public_sector_extension_status": null,
+  "taxonomies": [
+    "ifrs-full",
+    "us-gaap"
+  ]
+}

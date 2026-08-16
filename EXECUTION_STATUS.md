@@ -54,12 +54,30 @@ Active work: round-2 validation against real, publicly filed financial data (SEC
 
 ## 🛠 Active Work & Next Steps
 
-### 1. Phase 4: Real-Data Validation (Round 2) — Active
-- [ ] Tier A1: EDGAR us-gaap crosswalk + held-out resolution benchmark (H1, H2).
-- [ ] Tier A5: IMF GFS / Eurostat COFOG public-sector crosswalk (H5) — validates the drafted `public_sector_ipsas.yaml` extension.
-- [ ] Tier A2: ESEF/ifrs-full sample benchmark (H1, H2).
-- [ ] Tier B: UK Companies House real-subsidiary case study (H3, H4).
-- Full design, pre-registered hypotheses, and falsification thresholds: [`research/real_data_validation_plan.md`](research/real_data_validation_plan.md).
+### 1. Phase 4: Real-Data Validation (Round 2) — executed 2026-07-30, **completed 2026-07-31**
+Results, verdicts and the "what must not be claimed" list: [`research/experiments/ROUND2_RESULTS.md`](research/experiments/ROUND2_RESULTS.md).
+Design and pre-registered thresholds: [`research/real_data_validation_plan.md`](research/real_data_validation_plan.md) (+ Addendum A and Addendum B, execution operationalizations).
+
+**All five hypotheses are now scored.** No hypothesis remains outstanding.
+
+- [x] Tier A1: EDGAR ingestion (53,255 filings, 5.44M facts) + train-only crosswalk (130 tags). Coverage 48.4% weighted holdout.
+- [x] Tier A2: ESEF/ifrs-full — 100 filings, 20 countries, 2,821 concepts, parsed from xBRL-JSON (no Arelle/GPL). Coverage vs `ifrs_tag` 6.3% weighted / 2.3% unweighted; H2 clean on 1,404 extension codes.
+- [x] Tier A5: IMF GFS / Eurostat COFOG ingestion + 47-entry crosswalk. Coverage 27.7%.
+- [x] Tier B: UK Companies House case study (n=10). **H4 supported (100%); H3 falsified (22.7% vs 30% floor).**
+- [x] **Gold standard labeling.** Four blind passes (two per experiment, tag-first vs node-first), κ 0.797/0.777 (A1, n=320) and 0.771/0.807 (A5, n=212), 34 + 21 disagreements adjudicated by a third pass.
+- [x] **H1 scored: partial at 74.3% weighted**, 0.7 pp below the ≥75% support band. Failure mode is over-mapping (87 false positives vs 5 wrong-node); in-core accuracy 94.6% weighted.
+- [x] **H5 scored: 82.3% weighted, clearing its ≥70% threshold — but structurally weak.** 75% of the census is COFOG codes whose correct answer is "escalate"; only 13 codes test real mapping and 12 of 19 drafted nodes get zero evidence.
+
+**Open decisions and follow-ups (not blockers, but do not lose them).**
+Work items, cost classes and spoke allocation: [`research/round2_followups.md`](research/round2_followups.md).
+Note the two hazard classes recorded there — *gated* changes (touching the core node set) trip the CI claims gate and force all four citable surfaces in the same PR, and *fresh-holdout* changes must have their split reserved **before** they are built.
+
+- [ ] **Owner decision: do NOT promote public-sector wording on H5 alone.** Plan §2 ties promotion to H5 clearing its threshold; it cleared, but on 13 mapped codes covering 7 of 19 nodes. Recommendation recorded in ROUND2_RESULTS.md: keep "drafted, not yet empirically validated" and keep the extension unwired (plan §14) until a census that exercises the stock nodes exists.
+- [ ] **Ontology defects surfaced by real data** (4 internal inconsistencies + 1 non-injective field). Highest-value: `ifrs_tag` maps 30 nodes onto 27 tags, so `CashAndCashEquivalents`, `CurrentTaxLiabilitiesCurrent` and `OtherNonCurrentFinancialLiabilities` cannot resolve deterministically. Also `asset.noncurrent.investments` (label vs `ifrs_tag`), `expense.admin` (`ifrs_tag` vs the EBIT aggregation rule), `liability.noncurrent.lease` (note vs node id), `EXP_SocialBenefitsExpense` (`ipsas_ref` vs `examples`).
+- [ ] **Missing core nodes named by the gold pass**: intermediate consumption / use of goods and services (the largest unmapped government expense line), non-current tax / provision / payables tiers, current lease-liability portion, contra-asset representation, OCI components, restricted cash.
+- [ ] **Label-vocabulary gap**: no combined liability+equity lens, so `LiabilitiesAndStockholdersEquity` has no correct aggregate label.
+- [ ] **A2 has no temporal holdout** — the committed mechanical rule selects earliest-per-country. A future round needs a rule that stratifies on period, introduced as a dated addendum rather than a silent edit.
+- [ ] Follow-up from the H3 falsification: the Tier-2 rule set lacks British-English vocabulary and 6 of 30 nodes have no rule at all. **Fixing it requires a fresh holdout** — repairing and re-running against the same corpus would be tuning on the test set.
 
 ### 2. Expert Validation (still open — not yet started as of 2026-07-18)
 - [ ] Conduct structured validation interviews with international CPAs.
