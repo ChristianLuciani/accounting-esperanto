@@ -461,7 +461,7 @@ def main():
     with open(os.path.join(OUT_DIR, "results.json"), "w") as f:
         json.dump(summary, f, indent=2, ensure_ascii=False)
     with open(os.path.join(OUT_DIR, "per_entry.csv"), "w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=list(per_entry[0].keys()))
+        w = csv.DictWriter(f, fieldnames=list(per_entry[0].keys()), lineterminator="\n")
         w.writeheader()
         w.writerows(per_entry)
     print(f"Artifacts written to {os.path.relpath(OUT_DIR, ROOT)}/ (results.json, per_entry.csv)")

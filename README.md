@@ -26,7 +26,7 @@ overlays for the 60 jurisdictions that mandate a national chart.
 |---|---|
 | **Website** | **[christianluciani.github.io/accounting-esperanto](https://christianluciani.github.io/accounting-esperanto/)** — project site & overview article |
 | **Status** | Published — v0.3.0 (lossless translation, entry-level, July 2026) |
-| **Preprint** | [DOI 10.5281/zenodo.20738795](https://doi.org/10.5281/zenodo.20738795) · [SSRN abstract 6960598](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598) · [ResearchGate](https://www.researchgate.net/publication/407549570_Kontablo_A_Graph-Based_Universal_Accounting_Ontology_for_the_M2M_Agentic_Economy) · `docs/papers/drafts/kontablo_preprint_modular.pdf` |
+| **Preprint** | [DOI 10.5281/zenodo.20738795](https://doi.org/10.5281/zenodo.20738795) · [SSRN DOI 10.2139/ssrn.6960598](https://doi.org/10.2139/ssrn.6960598) · [SSRN abstract 6960598](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598) · [ResearchGate](https://www.researchgate.net/publication/407549570_Kontablo_A_Graph-Based_Universal_Accounting_Ontology_for_the_M2M_Agentic_Economy) · `docs/papers/drafts/kontablo_preprint_modular.pdf` |
 | **License** | Code: [BSL 1.1](LICENSE) → Apache 2.0 on 2030-06-18 · ERPNext & Odoo connectors: [Apache 2.0](connectors/erpnext/LICENSE) · Paper text: [CC BY 4.0](docs/papers/LICENSE) |
 | **Author** | Christian Luciani · [ORCID 0000-0002-6955-5384](https://orcid.org/0000-0002-6955-5384) |
 
@@ -314,7 +314,7 @@ documented in the preprint (Appendix and Section on expanded validation).
   year         = {2026},
   doi          = {10.5281/zenodo.20738795},
   url          = {https://doi.org/10.5281/zenodo.20738795},
-  note         = {Preprint. Zenodo and SSRN (abstract 6960598). Source at
+  note         = {Preprint. Zenodo and SSRN (DOI 10.2139/ssrn.6960598, abstract 6960598). Source at
                   \url{https://github.com/ChristianLuciani/accounting-esperanto}},
   institution  = {Independent Researcher, Cuenca, Ecuador},
   orcid        = {0000-0002-6955-5384}
@@ -327,7 +327,7 @@ Luciani, C. (2026). *Kontablo: A graph-based universal accounting ontology for
 multi-jurisdictional financial integration* [Preprint]. Zenodo.
 https://doi.org/10.5281/zenodo.20738795
 
-*SSRN preprint: [papers.ssrn.com/abstract=6960598](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598) (abstract 6960598).*
+*SSRN preprint: [DOI 10.2139/ssrn.6960598](https://doi.org/10.2139/ssrn.6960598) · [papers.ssrn.com/abstract=6960598](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6960598) (abstract 6960598).*
 
 ---
 

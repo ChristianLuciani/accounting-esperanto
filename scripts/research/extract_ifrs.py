@@ -318,7 +318,7 @@ class IFRSExtractor:
         fieldnames = accounts[0].keys()
         
         with open(output_file, 'w', newline='') as f:
-            writer = csv.DictWriter(f, fieldnames=fieldnames)
+            writer = csv.DictWriter(f, fieldnames=fieldnames, lineterminator='\n')
             writer.writeheader()
             writer.writerows(accounts)
         
