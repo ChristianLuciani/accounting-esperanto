@@ -20,13 +20,14 @@ this MCP surface.
 | `get_account` | `AccountService.GetAccount` | Look up an ontology node by `account_id` **or** by `uuid`. Returns label, nature, statement, and the jurisdiction local-code overlay. |
 | `validate_balance_sheet` | `ValidationService.ValidateBalanceSheet` | Checks the double-entry identity Σdebits − Σcredits == 0 deterministically. |
 | `consolidate_trial_balances` | `ConsolidationService.ConsolidateTrialBalances` | Consolidate subsidiary trial balances to USD with explicit (structured) intercompany elimination. Returns consolidated lines, eliminations applied, balance check, escalations, and a per-entity **FX audit trail** (`FXQuote`). |
+| `get_node_fiber` | `AccountService.GetLocalCodes` (superset) | The **fiber** of a node: which local statutory codes (per jurisdiction) collapse into it — the preimage of the universal projection, for audit/traceability (ADR-016). With a `jurisdiction`, members are enriched from that jurisdiction's localization mapping (local name, `local_parent`, `facets`, `aggregation_group`); the gRPC RPC returns the bare codes only. |
 | `list_jurisdictions` | (coverage scope) | List jurisdiction coverage from the 195-jurisdiction manifest. Filters: `region`, `mapping_mode`, `tier1_only`. Returns the headline summary (195 / 60 / 56). |
 
 ## Status (honest)
 
 | Capability | Status |
 |---|---|
-| The five deterministic tools above | ✅ implemented (Tier-1/Tier-2, graph lookups, arithmetic) |
+| The six deterministic tools above | ✅ implemented (Tier-1/Tier-2, graph lookups, arithmetic) |
 | Tier-3 semantic / LLM fallback as an MCP tool | ⛔ **not exposed** — planned |
 
 This mirrors the same honesty bar the gRPC server uses (it returns
@@ -62,7 +63,8 @@ python -m api.mcp.demo
 
 ```
 Kontablo MCP tools: ['resolve_account', 'get_account', 'validate_balance_sheet',
-                     'consolidate_trial_balances', 'list_jurisdictions']
+                     'consolidate_trial_balances', 'get_node_fiber',
+                     'list_jurisdictions']
 resolve(MX, SAT, 101, 'Caja') -> asset.current.cash
     (uuid=00000000-0000-4000-8000-000000000101, tier=tier1_exact, conf=1.0)
 get_account(uuid) -> asset.current.cash: Cash and Cash Equivalents (debit)
@@ -85,7 +87,7 @@ list_jurisdictions -> total=195, statutory_chart=60, tier1_codes_available=56
 }
 ```
 
-Once registered, an agent discovers the five tools automatically; every tool and
+Once registered, an agent discovers the six tools automatically; every tool and
 every parameter is self-describing (the input JSON schema carries a description
 for each field, enforced by `tests/mcp/test_mcp_server.py`). The reference below
 is for humans — agents read the same information from the schema.
@@ -223,7 +225,56 @@ To eliminate a parent receivable against a subsidiary payable, add
 Lines that fail to resolve appear in `escalations`; an unsupported currency
 returns `{"ok": false, "error": "..."}`.
 
-### 5. `list_jurisdictions`
+### 5. `get_node_fiber`
+
+The **fiber** (preimage) of a node: which local statutory codes collapse into it.
+This is the audit/traceability direction of the projection — see
+[ADR-016](../../docs/adr/016-lossless-translation-and-provenance.md). The REST
+equivalent is `GET /accounts/{id}/fiber`.
+
+| Param | Type | Required | Description |
+|---|---|---|---|
+| `kontablo_id` | string | one of | Kontablo node id, e.g. `"asset.current.cash"`. |
+| `uuid` | string | one of | Kontablo node UUID. |
+| `jurisdiction` | string | – | ISO 3166-1 alpha-2 filter, e.g. `"mx"`. **When given**, members are enriched from that jurisdiction's localization mapping; when omitted, the Tier-1 view spans all jurisdictions but without enrichment. |
+
+Each member carries a `source`: `tier1_index` (the bare Tier-1 code index) or
+`localization` (enriched from the jurisdiction's mapping file). `name`,
+`local_parent`, `facets`, and `aggregation_group` appear only on `localization`
+members, and only where the mapping declares them.
+
+```jsonc
+// request
+{ "kontablo_id": "asset.current.receivables", "jurisdiction": "mx" }
+// response
+{
+  "found": true,
+  "kontablo_id": "asset.current.receivables",
+  "kontablo_uuid": "00000000-0000-4000-8000-000000000104",
+  "label_en": "Trade Receivables",
+  "jurisdictions": {
+    "mx": [
+      { "code": "104", "source": "localization", "name": "Clientes",
+        "local_parent": "100", "facets": { "polarity": "gross" },
+        "aggregation_group": "mx_trade_receivables_net" },
+      { "code": "105", "source": "tier1_index" },
+      { "code": "106", "source": "localization",
+        "name": "Estimación de cuentas incobrables",
+        "local_parent": "100", "facets": { "polarity": "contra" },
+        "aggregation_group": "mx_trade_receivables_net" }
+    ]
+  },
+  "total_codes": 3
+}
+// not found -> { "found": false, "error": "account 'nope' not found" }
+```
+
+The example above is the N:1 case the projection deliberately coarsens: MX `104`
+(gross) and `106` (the contra allowance) share one `aggregation_group` and both
+land on the same universal node. The fiber is how that collapse stays auditable —
+**the projection is lossy; the system is not.**
+
+### 6. `list_jurisdictions`
 
 List coverage from the 195-jurisdiction manifest.
 
@@ -256,8 +307,9 @@ Agents should branch on both:
    the offending field. The server stays alive — fix the call and retry.
 2. **In-band domain result.** The call was well-formed but the *accounting*
    answer is "no": `resolve_account` → `resolved: false` (escalate to a human;
-   do not invent a UUID); `get_account` → `found: false`; `consolidate_trial_balances`
-   → `ok: false` (e.g. unsupported currency) or a populated `escalations` /
+   do not invent a UUID); `get_account` / `get_node_fiber` → `found: false`;
+   `consolidate_trial_balances` → `ok: false` (e.g. unsupported currency) or a
+   populated `escalations` /
    `warnings` array. These are normal outcomes, not failures.
 
 Determinism guarantee (principle #5): the same input always yields byte-identical
@@ -289,10 +341,14 @@ The tool inputs are validated at the boundary (Pydantic + explicit checks):
 `tests/mcp/test_mcp_server.py` asserts (not print-only) that every tool returns
 the same answers as the engine that backs REST and gRPC, **and** that the input
 hardening above holds (non-finite amounts, invalid FX rates, and a malformed
-call that the server survives). It runs hermetically (no live FX, no LLM key —
-the session forces `KONTABLO_FX_MODE=static`) and exercises each tool both
-through its pure `*_impl` function and through the real FastMCP `call_tool`
-dispatch.
+call that the server survives). It also pins the **tool count**: one test asserts
+the registered tool-name set equals the expected six, and another asserts the
+`server.py` module docstring documents exactly those six — the tool count is a
+published claim, so adding a tool without updating the docs fails CI. (The fiber
+tool's behaviour is additionally covered by `tests/test_graph_lenses.py`.) It runs
+hermetically (no live FX, no LLM key — the session forces
+`KONTABLO_FX_MODE=static`) and exercises each tool both through its pure `*_impl`
+function and through the real FastMCP `call_tool` dispatch.
 
 ## License
 
