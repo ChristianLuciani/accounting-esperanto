@@ -535,7 +535,9 @@ The agent-commerce stack matured rapidly over 2024--2026, and it is layered:
 MCP standardizes an agent's access to tools and resources~\cite{mcp_spec}; A2A
 standardizes agent-to-agent task delegation~\cite{a2a_spec}; AP2 adds payment
 authorization via signed mandates~\cite{ap2_spec}; UCP~\cite{ucp_spec} and
-ACP~\cite{acp_spec} orchestrate commerce over those transports;
+ACP~\cite{acp_spec} orchestrate commerce on top of them --- UCP over four
+declared transports including MCP and A2A, ACP over its own HTTP/OpenAPI
+checkout surface with an MCP transport binding under open proposal;
 x402~\cite{x402_spec} and ERC-8004~\cite{erc8004} add settlement and on-chain
 identity and reputation.
 
@@ -549,7 +551,13 @@ its own scope~\cite{ap2_spec}; and MCP's specification is explicit that MCP
 level''~\cite{mcp_spec}. Across the eleven protocols and vendor programs
 surveyed for this paper, none defines, validates, or mentions which economic
 concept a moved value should be posted to. They converge instead on four
-concerns: identity, authorization, value transfer, and interoperation.
+concerns: identity, authorization, value transfer, and interoperation. The
+eleven are enumerated, with their layer, governance and the date each fact was
+verified against its primary specification, in the case study's committed
+protocol register (\pathtt{docs/strategy/protocol-compatibility-register.md});
+that file is maintained as the landscape moves, so the survey's scope is
+checkable rather than asserted, and a reader can see when a claim here was last
+confirmed.
 
 This is not a deficiency in those protocols --- it is a layer boundary, and the
 surrounding literature reads it the same way. A recent systematization of
@@ -686,6 +694,33 @@ reconstructible. The two are complementary --- a payment can be perfectly
 authorized under AP2 and still be booked to the wrong universal concept if the
 resolution layer guessed silently. Conversely, a lossless, ledgered resolution
 layer does not settle anything; it makes the thing being settled auditable.
+
+That layer separation has a practical consequence worth stating, because a
+reviewer will reasonably ask what happens to this contribution when the protocol
+landscape shifts --- and in 2026 it is shifting fast enough that no one can name
+tomorrow's standards. If the invariants live beneath the protocol layer, then
+protocol churn is absorbed as a \emph{transport} concern rather than a redesign:
+a new face is an adapter over the same deterministic resolver, and no adapter
+carries accounting logic of its own. The current stack supplies evidence that
+this boundary is real and cheap to cross. Two independently developed commerce
+protocols both route to the same tool transport --- UCP declares MCP among its
+four transports, and ACP has an MCP transport binding under open
+proposal~\cite{ucp_spec,acp_spec} --- so a single deterministic tool surface is
+reachable from both without either protocol knowing anything about charts of
+accounts. Breadth of compatibility here is not a feature list; it is what keeps a
+semantic layer alive across a protocol generation.
+
+We can therefore state the condition under which this positioning would fail,
+which is the honest way to hold it. The claim that these invariants belong to a
+distinct layer rests on an empirical observation, not a theorem: across the
+protocols surveyed here, none defines, validates, or mentions which economic
+concept a moved value should be posted to. Were a settlement or commerce protocol
+to begin specifying accounting semantics itself --- binding a taxonomy, or
+requiring that a booking be reconstructible from the payload --- the layer
+boundary this paper argues for would collapse into that protocol, and the
+contribution would have to be re-stated as a proposal \emph{to} it rather than a
+layer beneath it. We are not aware of any protocol doing so today, and we name
+the condition rather than assume it away.
 
 Honesty about implementation status matters to this community, which has seen
 much asserted and less shipped. In the case study, the MCP deterministic core is
