@@ -129,11 +129,31 @@ Revisit only if the paper grows past ~24 pp (e.g. if a reviewer round adds a
 full evaluation section), or if two tasks ever need to edit genuinely
 independent regions in parallel. Neither has happened.
 
-### ☐ T9 — License header + arXiv metadata  ·  `claude/spoke1-license-meta`
-Add CC BY 4.0 (matches the hub's paper license, `docs/papers/LICENSE`) and an
-arXiv metadata block (primary `cs.MA`; cross-list candidates `cs.AI`, `cs.CE`,
-`q-fin.GN`). **Acceptance:** license stated in-paper; metadata block staged for
-submission (mirrors `docs/strategy/arxiv-submission.md`).
+### ☑ T9 — License header + arXiv metadata  ·  `claude/spoke1-license-meta`
+**DONE 2026-07-29.** CC BY 4.0 stated in-paper (new License section, drawing
+the paper-vs-implementation boundary explicitly), and the submission metadata is
+staged in [`ARXIV_METADATA.md`](ARXIV_METADATA.md).
+
+Note: `docs/strategy/arxiv-submission.md` — named in the original task as the
+file to mirror — **does not exist** in the repo. `ARXIV_METADATA.md` is
+therefore self-contained and lives beside the paper it describes.
+
+Two things DR5 changed relative to the original plan:
+
+- **One cross-list, not three.** arXiv's own page says *"it is rarely
+  appropriate to add more than one or two cross-lists"* and *"Bad cross-lists
+  will be removed."* `cs.AI` is dropped because the arXiv taxonomy's own
+  description of `cs.AI` explicitly **excludes** Multiagent Systems; `q-fin.GN`
+  is dropped as a thin fit (this is an ontology/systems result, not a
+  quantitative methodology). Final: primary `cs.MA`, cross-list `cs.CE` only.
+- **arXiv is not the first channel.** `cs.MA` requires endorsement, the project
+  has already hit that wall once, and DR5 found the barrier got *harder* on
+  2026-01-21 (institutional email alone no longer suffices for auto-endorsement).
+  Publication order is Zenodo first and unconditional, endorsement pursued in
+  parallel and non-blocking, arXiv when it lands. See `ARXIV_METADATA.md` §8.
+
+CC BY 4.0 is confirmed selectable on arXiv, with the license irrevocable per
+version and metadata CC0 regardless — both sourced to `info.arxiv.org`.
 
 ### ☑ T10 — Hub↔spoke cross-link wiring  ·  `claude/spoke1-crosslink`
 **DONE 2026-07-29 — staged, not applied.** See
@@ -216,7 +236,7 @@ Each is self-contained; paste as the research question. Outputs land in
 > as complementary and identify precisely the gap it fills (per-entry, reconstruc-
 > tible, agent-native). Cite primary standards pages. *Feeds T1, positioning §5.*
 
-**DR5 — arXiv cs.MA submission & endorsement, and the de-risked open-venue path.**
+**DR5 — arXiv cs.MA submission & endorsement, and the de-risked open-venue path.** ☑ DONE 2026-07-29 — [`research/dr5_arxiv_submission.md`](research/dr5_arxiv_submission.md).
 > Document the exact mechanics for submitting to arXiv **cs.MA** as an independent
 > researcher: endorsement requirements and how to obtain an endorser, moderation
 > risk, license options (confirm CC BY 4.0 compatibility), cross-listing rules,
