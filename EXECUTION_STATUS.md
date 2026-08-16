@@ -2,7 +2,7 @@
 
 ## 🚀 Current Milestone: Phase 4 — Post-Publication: Real-Data Validation (Round 2)
 
-**Kontablo v0.1.0 shipped 2026-06-17; current release v0.2.1 (2026-06-25).** Zenodo concept DOI [10.5281/zenodo.20738795](https://doi.org/10.5281/zenodo.20738795) (resolves to latest version), SSRN preprint (abstract 6960598), ResearchGate (publication 407549570) — see `CITATION.cff` / `.zenodo.json` for the authoritative, up-to-date record. This banner was stale until 2026-07-18 (it still said "release day pending" a month after release); **trust `CITATION.cff`/`.zenodo.json` over this file's phase banner if they ever disagree again.**
+**Kontablo v0.1.0 shipped 2026-06-17; current release v0.3.0 (2026-07-20).** Zenodo concept DOI [10.5281/zenodo.20738795](https://doi.org/10.5281/zenodo.20738795) (resolves to latest version), SSRN preprint (DOI [10.2139/ssrn.6960598](https://doi.org/10.2139/ssrn.6960598), abstract 6960598), ResearchGate (publication 407549570) — see `CITATION.cff` / `.zenodo.json` for the authoritative, up-to-date record. This banner was stale until 2026-07-18 (it still said "release day pending" a month after release); **trust `CITATION.cff`/`.zenodo.json` over this file's phase banner if they ever disagree again.**
 
 Active work: round-2 validation against real, publicly filed financial data (SEC EDGAR, ESEF/filings.xbrl.org, UK Companies House, IMF/Eurostat government finance statistics), complementing — not replacing — the synthetic 97.3% figure. Full pre-registered design: [`research/real_data_validation_plan.md`](research/real_data_validation_plan.md). This round also activates and validates the previously-drafted-but-unwired public-sector/IPSAS extension (see that plan, §2).
 
