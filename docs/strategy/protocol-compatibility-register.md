@@ -4,11 +4,33 @@
 This file is the *state*; the ADR is the *policy*. Review per Kontablo release,
 and before any public claim of protocol compatibility.
 
-**Last full verification: 2026-07-29.** Facts marked *verified* were retrieved
+**Last full verification: 2026-07-29** (Agent Client Protocol verdict and the ACP name-collision warning added the same day). Facts marked *verified* were retrieved
 from the protocol's own primary specification on that date, with the source
 given. Facts inherited from the DR1 protocol survey
 (`docs/papers/spokes/agentic-provenance/research/dr1_agent_protocols.md`,
 verified 2026-07-24) are marked as such.
+
+---
+
+## ⚠️ Read this before writing "ACP" anywhere
+
+**Three different protocols are called ACP.** This has already cost one round of
+misdirected research (2026-07-29: a survey of the commerce ACP was carried out
+when the protocol under discussion was the editor one). Always write the name in
+full on first use.
+
+| Name | Owner | What it is | Status here |
+|---|---|---|---|
+| **Agentic Commerce Protocol** | OpenAI + Stripe | Agent-driven checkout and commerce | In the open-standards section below |
+| **Agent Client Protocol** | Zed | Editor ↔ coding-agent communication | **Out of scope** — see below |
+| **Agent Communication Protocol** | IBM / BeeAI | Agent-to-agent messaging | Not surveyed; reported to have largely converged toward A2A. Verify before citing |
+
+Unqualified "ACP" in this register always means the **Agentic Commerce
+Protocol**. Everywhere else, spell it out.
+
+This is a general argument for the project's own naming discipline: Kontablo
+coins its distinctive terms in full ("loss ledger", "pre-transaction fiber
+query", "ontology-as-constraint") precisely so they cannot collide this way.
 
 ---
 
@@ -103,6 +125,12 @@ epistemic-standards violation, not a marketing shortcut.
   here (an optional field on the checkout object), but because extensions attach
   at session level rather than per item, it must carry a **mapping** — line-item
   identifier → Kontablo UUID — rather than annotating items in place.
+- **Contribution drafted and staged:** `docs/standards/acp-sep135-mcp-transport-comment.md`
+  (comment on SEP #135) and `docs/standards/acp-accounting-semantics-extension.md`
+  (an `accounting_semantics` extension RFC, deliberately ontology-neutral). Both
+  carry a FIRE WHEN gate — not to be posted before the spoke-1 paper has a DOI,
+  because a contribution that can cite a published result is a different document
+  from one that cannot.
 - **Next action — this is the cheapest high-leverage move on the board.**
   SEP #135 is `proposal` and open. An open proposal is the moment an outside
   contributor has influence; once it merges, the window narrows to filing a new
@@ -159,6 +187,38 @@ epistemic-standards violation, not a marketing shortcut.
 - **Verbatim, and load-bearing for Kontablo's positioning:** "Payments are
   orthogonal to this protocol and not covered here." *(DR1)* A protocol that
   explicitly disclaims payments is not going to define posting semantics.
+
+---
+
+## Out of scope — recorded so the question is not re-asked
+
+### Agent Client Protocol (Zed) — not Kontablo's layer
+- **What it is, verbatim from its own README:** it "standardizes communication
+  between *code editors* (interactive programs for viewing and editing source
+  code) and *coding agents* (programs that use generative AI to autonomously
+  modify code)."
+- **Verified 2026-07-29** via the GitHub API on
+  `agentclientprotocol/agent-client-protocol`: created 2025-06-23, ~3.8k stars,
+  pushed the same day it was checked — genuinely active, not abandoned. Stable
+  protocol version `1`; JSON-RPC wire format with capability negotiation at
+  `initialize` via `protocolVersion`; JSON Schema artifacts under `schema/v1` and
+  `schema/v2`; Rust crates `agent-client-protocol` and
+  `agent-client-protocol-schema`.
+- **Verdict: OUT OF SCOPE.** It is developer tooling, not the agent economy.
+  There is no transaction in its path, no value transfer, and therefore no
+  accounting semantics to supply. Kontablo has nothing to offer it and nothing to
+  gain from it. Its traction is real but irrelevant to this layer.
+- **Why it is recorded anyway.** Two reasons. First, it is structurally the same
+  *shape* as MCP in a different domain — a JSON-RPC tool/context protocol between
+  a host and an agent — which is evidence for ADR-017's category argument that
+  agent-native transports proliferate and betting on one is a survival risk.
+  Second, so this question is not researched twice.
+- **Monitoring condition — the only thing that would change the verdict:** if it
+  developed a *general* tool-calling surface and began displacing MCP outside
+  coding, Kontablo would need an adapter for it, on exactly the same
+  adapter-over-one-brain terms as any other tool-surface protocol. Today it is
+  coding-specific. Watch for scope expansion beyond editors and coding agents,
+  not for adoption growth — growth within its own domain changes nothing here.
 
 ---
 
@@ -238,3 +298,4 @@ table above.
 | x402 | settlement | open (x402 Foundation) | Not addressed — depends on HTTP/MCP/A2A anyway |
 | ERC-8004 | identity/reputation | open (EIP) | Not addressed — disclaims payments explicitly |
 | Visa TAP · Mastercard Agent Pay · Skyfire KYA | vendor | proprietary | **Track only** |
+| Agent Client Protocol (Zed) | editor ↔ coding agent | open | **Out of scope** — no transaction in its path |

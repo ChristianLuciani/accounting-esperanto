@@ -34,6 +34,7 @@ from core.harness import (
     resolve as harness_resolve,
     resolve_with_rule as harness_resolve_with_rule,
 )
+from core.harness.oversight import postings_by_rule
 from core.harness.provenance import MappingQuote, mapping_quote
 from core.harness import FX as _HARNESS_FX
 from core.harness import JCCY as _HARNESS_JCCY
@@ -164,6 +165,24 @@ class ConsolidationResult:
             if rec.kontablo_id is not None:
                 fibers.setdefault(rec.kontablo_id, []).append(rec)
         return fibers
+
+    def by_rule(self) -> Dict[Optional[str], List["ResolvedEntry"]]:
+        """``rule_id`` -> the resolved entries that rule produced.
+
+        The dual of :meth:`lineage`: lineage groups entries by the consolidated
+        line they aggregated into (*what* was produced); this groups them by the
+        deterministic rule that produced them (*why*). Both are views over the
+        same committed provenance.
+
+        This is the view the accountable human needs, and it is what makes the
+        unit of human judgement the rule rather than the transaction: concluding
+        that a rule was wrong resolves the disposition of every posting it
+        produced, past and future. See
+        :func:`core.harness.oversight.revocation_impact` for the blast radius of
+        revoking one, and :class:`core.harness.oversight.ReviewPolicy` for
+        withdrawing it going forward.
+        """
+        return postings_by_rule(self.resolved)
 
     @property
     def total_debits(self) -> float:
