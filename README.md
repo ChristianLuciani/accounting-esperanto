@@ -106,9 +106,22 @@ A reproducible transaction-frequency benchmark
 ([`research/coverage_benchmark/`](research/coverage_benchmark/),
 [`scripts/coverage_benchmark.py`](scripts/coverage_benchmark.py)) estimates that
 the **30-account Level 3 minimum core covers ~94% of routine transaction volume**
-by posting count (~87% counted by whole transaction). A **34-account extended
-core** — adding payroll, deferred revenue (IFRS 15), withholding-tax, and
-non-trade-receivable nodes — reaches **~99%**. The remaining few percent is a
+by posting count (~87% counted by whole transaction). Adding **four
+extended-core nodes** — payroll, deferred revenue (IFRS 15), withholding-tax and
+non-trade-receivable — reaches **~99%**, at 34 accounts.
+
+The extended core now carries **35**. `liability.current.lease` (the current
+portion of an IFRS 16 lease liability) was admitted on 2026-07-31 through the
+[ADR-015 admission gate](docs/adr/015-core-node-admission-and-growth-policy.md)
+on a *different* criterion — **real** filing frequency, 0.645% of 5.44M SEC
+EDGAR face-statement facts — and contributes **0.0 pp** to the ~99%, which this
+synthetic benchmark cannot see. Both bases are legitimate; they are not
+interchangeable, so `coverage_results.json` records the basis per node
+([decision record](research/experiments/adr015_admission_v1/DECISION_RECORD.md)).
+The **minimum core stays frozen at 30** — ADR-015 admits to the extended layer,
+never to the minimum.
+
+The remaining few percent is a
 deliberately-retained *principled residual* (suspense, intercompany, novel
 instruments) that escalates to a human via the Co-responsibility Architecture
 rather than being force-mapped. The figure is a **model-based estimate** over a

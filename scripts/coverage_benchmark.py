@@ -55,7 +55,7 @@ CSV_PATH = os.path.join(ROOT, "research/coverage_benchmark/coverage_breakdown.cs
 
 
 def load_core_and_extended():
-    """Return (minimum_core_ids:set, extended_core_ids:set).
+    """Return (minimum_core_ids:set, extended_core_ids:set, admission_basis:dict).
 
     Minimum core = every account dict (has both 'id' and 'nature') reachable
     from the 'level3:' dict block and the bare-list sections (LIABILITIES,
@@ -65,9 +65,24 @@ def load_core_and_extended():
     Extended core = node dicts under the optional 'extended_core:' dict block.
     Kept under its own key precisely so the minimum-core loader (and the 30
     headline) never picks them up.
+
+    ``admission_basis`` maps each extended node to the criterion it was admitted
+    on. Two are in use and they are NOT interchangeable:
+
+      synthetic_posting_volume   the original four -- each closed a measured
+                                 slice of the 94% -> ~99% gap in THIS benchmark
+      real_disclosure_frequency  admitted via the ADR-015 gate against real
+                                 filing frequencies (EDGAR/ESEF), which this
+                                 benchmark's synthetic dataset cannot see, so
+                                 the node contributes 0.0 pp to the ~99%
+
+    Emitting the split keeps the node count honest: "~99% with a 35-account
+    extended core" is true, "the 35th earned part of the 99%" is not. Without
+    this the distinction would live only in prose and would drift.
     """
     docs = list(yaml.safe_load_all(open(ONTOLOGY_PATH, encoding="utf-8")))
     core, extended = set(), set()
+    admission = {}
 
     def is_account(item):
         return isinstance(item, dict) and "id" in item and "nature" in item
@@ -85,7 +100,8 @@ def load_core_and_extended():
             for a in d["extended_core"]:
                 if is_account(a):
                     extended.add(a["id"])
-    return core, extended
+                    admission[a["id"]] = (a.get("admission") or {}).get("basis", "undeclared")
+    return core, extended, admission
 
 
 def load_dataset():
@@ -163,7 +179,7 @@ def main():
                          "default 1.0 = the committed distribution).")
     args = ap.parse_args()
 
-    core_ids, extended_node_ids = load_core_and_extended()
+    core_ids, extended_node_ids, admission_basis = load_core_and_extended()
     transactions, absorption, meta = load_dataset()
     transactions = scale_misc(transactions, args.misc_weight)
 
@@ -195,6 +211,13 @@ def main():
         "minimum_core_node_count": len(core_ids),
         "extended_core_node_count": len(core_ids) + len(extended_node_ids),
         "extended_core_added": sorted(extended_node_ids),
+        # Which criterion each extended node was admitted on. The ~99% headline
+        # is produced by the synthetic_posting_volume nodes ALONE; nodes admitted
+        # on real_disclosure_frequency are invisible to this synthetic dataset
+        # and add 0.0 pp. Pinned by tests/test_coverage_claim.py.
+        "extended_core_admission_basis": dict(sorted(admission_basis.items())),
+        "extended_core_admitted_on_this_benchmark": sorted(
+            n for n, b in admission_basis.items() if b == "synthetic_posting_volume"),
         "line_weighted": line_res,
         "transaction_weighted": txn_res,
         # headline numbers (line-weighted, the natural "by volume / count" sense)

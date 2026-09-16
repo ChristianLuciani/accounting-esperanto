@@ -18,6 +18,93 @@ metadata:
     across all jurisdictions. They are IFRS-anchored but include local adaptations
     via the localization overlay system.
 
+# ─────────────────────────────────────────────────────────────────────────────
+# WHAT `ifrs_tag` IS — a projection, not an identity
+# ─────────────────────────────────────────────────────────────────────────────
+# Declared 2026-07-31 after real ESEF filings made the property observable
+# (research/experiments/ROUND2_RESULTS.md, "The ontology's ifrs_tag field is not
+# injective"). This block is DECLARATIVE metadata: no loader reads it for
+# resolution, and `tests/test_ifrs_tag_projection.py` enforces it.
+ifrs_tag_projection:
+  semantics: |
+    `ifrs_tag` is a MANY-TO-ONE PROJECTION from Kontablo nodes onto IFRS
+    taxonomy concepts. It is not an identifier, not a key, and not injective.
+
+        pi : Node -> IFRSConcept          total, many-to-one
+        pi^-1 : IFRSConcept -> Set[Node]  NOT a function; returns a FIBER
+
+    The inverse is a fiber, not a value: it may be empty (the IFRS taxonomy is
+    far larger than the core), a singleton, or larger than one. Only the
+    UUID is an identity (principle #2); `ifrs_tag` is one lens among several,
+    exactly as `groupings.cash_flow` is another (principle #1, graph not tree).
+
+    This is the tree-vs-graph tension appearing INSIDE the ontology. It is a
+    declared structural property with a worked instance, not a defect awaiting
+    repair, and the repair people reach for first is wrong: inventing distinct
+    IFRS tags to break a collision would falsify the taxonomy.
+    `ifrs-full:CashAndCashEquivalents` genuinely IS one IFRS concept —
+    cash-vs-bank is a finer distinction Kontablo chose to make.
+  resolution_rule: |
+    Given only an `ifrs_tag`, a node is determined IF AND ONLY IF its fiber is a
+    singleton. On a larger fiber the resolver MUST escalate. Tie-breaking by
+    order, by code, or by any other incidental property would be a coin flip
+    dressed as determinism (principle #5). The visible cost is that
+    `ifrs-full:CashAndCashEquivalents`, the most fundamental IFRS balance-sheet
+    tag of all, does not resolve — that cost is accepted knowingly.
+  governance: |
+    Every non-singleton fiber MUST be listed under `known_multi_node_fibers`
+    with a reason. A new collision that is not listed FAILS THE BUILD; a listed
+    fiber that no longer collides ALSO fails, so the list cannot rot into a
+    rubber stamp. Scope is the minimum core AND the extended core: a collision
+    that straddles the two layers is still a collision.
+  known_multi_node_fibers:
+    - ifrs_tag: "ifrs-full:CashAndCashEquivalents"
+      nodes: ["asset.current.bank", "asset.current.cash"]
+      status: "intended"
+      reason: |
+        One genuine IFRS concept. IAS 7.6 defines cash and cash equivalents as a
+        single category; the cash/bank split is a local-reporting distinction
+        Kontablo adds (see asset.current.bank notes: "Often merged with cash in
+        IFRS presentation. Separate for local reporting clarity."). The finer
+        Kontablo partition is deliberate and the projection collapses it. No
+        action.
+    - ifrs_tag: "ifrs-full:CurrentTaxLiabilitiesCurrent"
+      nodes: ["liability.current.tax", "liability.current.vat_output"]
+      status: "intended"
+      reason: |
+        Both are current tax liabilities under IFRS, which does not separate
+        indirect-tax (VAT/GST output) balances from income-tax balances at the
+        taxonomy-element level. Kontablo separates them because nearly every
+        statutory chart does and because they settle on different cycles to
+        different authorities. Deliberate; the projection collapses it.
+    - ifrs_tag: "ifrs-full:CurrentTaxAssetsCurrent"
+      nodes: ["asset.current.vat_input", "asset.current.withholding_tax"]
+      status: "intended"
+      reason: |
+        The asset-side mirror of the CurrentTaxLiabilitiesCurrent case:
+        recoverable input VAT and tax withheld at source are both current tax
+        assets under IFRS. This fiber STRADDLES the minimum core
+        (asset.current.vat_input) and the extended core
+        (asset.current.withholding_tax), which is why the round-2 analysis —
+        scoped to the 30 core nodes — reported three collisions and not four.
+        Surfaced 2026-07-31 by this test's core+extended scope.
+    - ifrs_tag: "ifrs-full:OtherNonCurrentFinancialLiabilities"
+      nodes: ["liability.noncurrent.debt", "liability.noncurrent.lease"]
+      status: "candidate_mistag"
+      reason: |
+        The one fiber here that is NOT clearly intended, recorded as such rather
+        than quietly grandfathered. IFRS has a dedicated
+        `ifrs-full:NoncurrentLeaseLiabilities`, attested in the round-2 ESEF
+        corpus at 134 facts across 31 filings, so liability.noncurrent.lease is
+        plausibly mis-tagged rather than genuinely collapsed.
+
+        NOT retagged here, deliberately. Changing it would move round-2's
+        published A2 coverage figure in the favourable direction on the very
+        corpus that measured it, and would break the provenance argument
+        carrying A2's non-circularity (`ifrs_tag` last touched 2026-07-20,
+        before the round-2 branch opened 2026-07-30). It belongs to a
+        fresh-corpus round. See research/experiments/adr015_admission_v1/DECISION_RECORD.md.
+
 ---
 
 ## ASSETS
@@ -401,7 +488,7 @@ level3:
     is_aggregate: false
     optional: true
     min_standard_version: "IFRS_2019"
-    notes: "IFRS 16 only. Split between current portion (12-month) and non-current."
+    notes: "IFRS 16 only. Holds the NON-CURRENT portion. The 12-month portion this note has always referred to had no home until 2026-07-31; it is now liability.current.lease (extended_core), admitted through the ADR-015 gate at 0.645% of real EDGAR face-statement facts. Recorded as defect 3 in research/experiments/ROUND2_RESULTS.md before the split existed."
 
   - id: "liability.noncurrent.deferred_tax"
     uuid: "00000000-0000-4000-8000-000000000213"
@@ -759,6 +846,18 @@ pending_accounts:
 # named statutory charts (French PCG, Spanish PGC RD 1514/2007, Vietnamese VAS
 # Circular 200/2014, Colombian PUC) and should be verified against the primary
 # source before being promoted into the production Tier-1 index.
+#
+# ADMISSION BASIS — read before citing the node count.
+# The four nodes above were admitted on SYNTHETIC POSTING VOLUME: each closed a
+# measured slice of the 94% -> ~99% gap in coverage_benchmark.py. The fifth
+# (liability.current.lease, admitted 2026-07-31) was admitted on a DIFFERENT
+# criterion — real disclosure frequency in 5.44M SEC EDGAR face-statement facts —
+# and contributes 0.0 pp to that ~99%, because the synthetic dataset has no
+# residual label routing to it. Both bases are legitimate under ADR-015, but they
+# are not interchangeable, so every node carries an explicit `admission:` block
+# and coverage_benchmark.py reports the split. "~99% with a 35-account extended
+# core" is true; "the 35th node earned part of the 99%" is not.
+# Decision record: research/experiments/adr015_admission_v1/DECISION_RECORD.md
 
 extended_core:
   - id: "liability.current.payroll"
@@ -772,6 +871,9 @@ extended_core:
     level: 3
     is_aggregate: false
     extended_core: true
+    admission:
+      basis: "synthetic_posting_volume"
+      record: "research/coverage_benchmark/README.md"
     local_codes:
       fr: "421"     # PCG: "Personnel - rémunérations dues"
       es: "465"     # PGC RD 1514/2007: "Remuneraciones pendientes de pago"
@@ -789,6 +891,9 @@ extended_core:
     level: 3
     is_aggregate: false
     extended_core: true
+    admission:
+      basis: "synthetic_posting_volume"
+      record: "research/coverage_benchmark/README.md"
     local_codes:
       fr: "487"     # PCG: "Produits constatés d'avance"
       es: "485"     # PGC: "Ingresos anticipados"
@@ -806,6 +911,9 @@ extended_core:
     level: 3
     is_aggregate: false
     extended_core: true
+    admission:
+      basis: "synthetic_posting_volume"
+      record: "research/coverage_benchmark/README.md"
     local_codes:
       co: "1355"    # PUC: "Anticipo de impuestos y contribuciones o saldos a favor" (retenciones)
       es: "473"     # PGC: "Hacienda Pública, retenciones y pagos a cuenta"
@@ -822,7 +930,56 @@ extended_core:
     level: 3
     is_aggregate: false
     extended_core: true
+    admission:
+      basis: "synthetic_posting_volume"
+      record: "research/coverage_benchmark/README.md"
     local_codes:
       fr: "425"     # PCG: "Personnel - avances et acomptes"
       es: "440"     # PGC: "Deudores varios"
     notes: "Employee advances, deposits, and other non-trade amounts receivable; distinct from trade receivables."
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # Admitted 2026-07-31 by the FIRST run of the ADR-015 gate against real filing
+  # frequencies. Decision record (all five criteria, with measured volumes):
+  # research/experiments/adr015_admission_v1/DECISION_RECORD.md
+  #
+  # A1 0.645% of 3,878,245 EDGAR standard monetary face-statement facts -- 6.5x
+  #    the EDGAR-calibrated floor, and the only candidate of seven also above the
+  #    literal 0.5%. (OperatingLeaseLiabilityCurrent 21,367 facts / 9,450
+  #    filings; FinanceLeaseLiabilityCurrent 3,664 / 1,627.)
+  # A2 ifrs-full:CurrentLeaseLiabilities is a distinct IFRS element attested at
+  #    125 facts across 29 filings of the 100-filing, 20-country ESEF sample.
+  #    IFRS 16 and ASC 842 both mandate the split, so it is not chart-specific.
+  # A3 Fixed nature/statement; anchor collides with none of the tags already in
+  #    use (tests/test_ifrs_tag_projection.py); ontology_code_collisions == 0.
+  # A4 The ontology documents this gap against ITSELF: liability.noncurrent.lease
+  #    is explicitly non-current and its own notes concede the balance is "split
+  #    between current portion and non-current" with no home for the current
+  #    half (ROUND2_RESULTS.md defect 3). Netting it into the non-current node
+  #    destroys the maturity distinction that working_capital and
+  #    total_current_liabilities consume.
+  # A5 IFRS 16 effective 2019-01-01; ASC 842 effective 2019. Seven years.
+  # ───────────────────────────────────────────────────────────────────────────
+  - id: "liability.current.lease"
+    uuid: "50000000-0000-4000-8000-000000000005"
+    label_en: "Lease Liabilities — Current Portion (IFRS 16)"
+    label_es: "Pasivos por Arrendamiento — Porción Corriente (NIIF 16)"
+    ifrs_tag: "ifrs-full:CurrentLeaseLiabilities"
+    nature: "credit"
+    statement: "balance_sheet"
+    parent: "liability.current"
+    level: 3
+    is_aggregate: false
+    extended_core: true
+    admission:
+      basis: "real_disclosure_frequency"
+      record: "research/experiments/adr015_admission_v1/DECISION_RECORD.md"
+      measured_pct: 0.645
+      corpus: "SEC EDGAR face-statement facts, 2024q1-2026q1"
+      contributes_to_synthetic_coverage_pp: 0.0
+    local_codes:
+      es: "524"     # PGC RD 1514/2007: "Acreedores por arrendamiento financiero a
+                    # corto plazo". FINANCE-lease only, and NOT re-verified against
+                    # the primary text in this session — treat as provisional under
+                    # the section header's verification caveat.
+    notes: "Portion of the lease liability due within twelve months of the reporting date. Pairs with liability.noncurrent.lease, whose own notes concede this split had no home before 2026-07-31. Most statutory charts PREDATE IFRS 16 and carry a finance-lease creditor account but none for operating-lease liabilities, which is why local_codes here is nearly empty and why Distance-4 (native coded local charts) will meet this gap again."

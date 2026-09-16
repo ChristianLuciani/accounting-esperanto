@@ -54,9 +54,34 @@ def results():
 
 def test_node_counts(results):
     assert results["minimum_core_node_count"] == 30, \
-        "Minimum core must stay exactly 30 (the frozen Pareto headline)."
-    assert results["extended_core_node_count"] == 34, \
-        "Extended core must be 34 (minimum core + 4 extended nodes)."
+        "Minimum core must stay exactly 30 (the frozen Pareto headline). ADR-015 " \
+        "freezes this layer: admitted nodes go to extended_core, never here."
+    assert results["extended_core_node_count"] == 35, \
+        "Extended core must be 35 (minimum core + 5 extended nodes; " \
+        "liability.current.lease admitted 2026-07-31 via the ADR-015 gate)."
+
+
+def test_admission_basis_is_declared_and_the_headline_is_attributed(results):
+    """The ~99% belongs to the volume-admitted nodes, and the split must be explicit.
+
+    Four extended nodes were admitted on SYNTHETIC POSTING VOLUME measured by
+    this benchmark; the fifth was admitted on REAL DISCLOSURE FREQUENCY (EDGAR),
+    which this synthetic dataset cannot see, so it adds 0.0 pp. Both bases are
+    legitimate under ADR-015 and they are not interchangeable. Without this
+    assertion, "~99% with a 35-account extended core" would silently read as
+    though all 35 earned it.
+    """
+    basis = results["extended_core_admission_basis"]
+    assert "undeclared" not in basis.values(), \
+        f"every extended_core node must declare an `admission.basis`: {basis}"
+    assert set(basis.values()) <= {"synthetic_posting_volume", "real_disclosure_frequency"}
+
+    on_benchmark = results["extended_core_admitted_on_this_benchmark"]
+    assert len(on_benchmark) == 4, \
+        "The ~99% headline is produced by exactly the four volume-admitted nodes."
+    assert "liability.current.lease" not in on_benchmark, \
+        "liability.current.lease was admitted on real EDGAR frequency, not on this " \
+        "benchmark, and contributes 0.0 pp to the extended-core coverage figure."
 
 
 def test_benchmark_is_in_expected_band(results):

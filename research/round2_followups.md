@@ -118,6 +118,48 @@ treatment (spoke 3) and any structural change — and only the latter is gated.
 
 ---
 
+### STATUS 2026-07-31: the gated batch (3 / 5 / 7) has LANDED
+
+Shipped as one PR, one claims-evidence rerun, one surface update, in the
+sequence this document specified. Decision record:
+[`research/experiments/adr015_admission_v1/DECISION_RECORD.md`](experiments/adr015_admission_v1/DECISION_RECORD.md);
+policy addendum: [ADR-015 Addendum A](../docs/adr/015-core-node-admission-and-growth-policy.md).
+
+- **Item 3 — done.** `ifrs_tag` is declared a many-to-one projection in
+  `level3_accounts.yaml` and gated by `tests/test_ifrs_tag_projection.py`, whose
+  allowlist fails the build in *both* directions (new undeclared collision, and
+  stale entry). Scoping the gate to core **+ extended** immediately surfaced a
+  **fourth** collision this document did not know about:
+  `ifrs-full:CurrentTaxAssetsCurrent`, claimed by `asset.current.vat_input` and
+  `asset.current.withholding_tax`. Round 2 scoped to the 30 and saw three.
+- **Item 7 — done, and it produced a methodological result larger than the
+  admission.** The literal 0.5% threshold **does not transfer** to real filing
+  frequencies: all four already-admitted extended nodes fall below it on EDGAR,
+  so applying it would reject the nodes ADR-015 already admitted. The floor is
+  re-derived the way ADR-015 itself defines it (smallest already-admitted node,
+  same population) → **0.100%**. One admission of seven:
+  `liability.current.lease` at 0.645%.
+- **Item 5 — DEFERRED, not delivered.** Item 7 decided it, as specified, and
+  decided against: contra-assets measure 0.106% against a 0.100% floor — inside
+  the noise band — and both corpora structurally under-observe the class because
+  they measure face-statement presentation while contra accounts live in the
+  notes (`PropertyPlantAndEquipmentNet` 34,510 facts vs `…Gross` 695). **The
+  Distance-4 blocker this item names is therefore still open**, with the missing
+  measurement now stated precisely rather than assumed.
+- **Published numbers:** only one moved — extended core 34 → **35**. All eight
+  CI-pinned validation figures and every coverage percentage are unchanged
+  (`load_ontology()` never ingests `extended_core`; verified empirically, not
+  assumed). Four citable surfaces updated in the same PR.
+- **Spoke 1:** Figure 2 regenerated before and after — **byte-identical**, and
+  identical to spoke 1's committed copy, so its T11 repro check still passes and
+  the stack needs no rework. The prediction in this document held: a pure
+  metadata/typing change to `ifrs_tag` does not touch `node_fiber`, which reads
+  `local_codes`, and the admitted node landed in a layer the loader never reads.
+- **H1 and H5 were NOT re-scored**, deliberately. See the closing section of the
+  decision record.
+
+Items 1, 2, 4 and 6 below remain open and unchanged.
+
 ## 1. Deterministic aggregate detection (XBRL calculation linkbase)
 
 **Evidence.** H1's dominant error is over-mapping: **87 of 320 codes (27%)** were
