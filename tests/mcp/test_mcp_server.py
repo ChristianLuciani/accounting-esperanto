@@ -74,6 +74,37 @@ async def test_all_tools_registered(server):
 
 
 @pytest.mark.asyncio
+async def test_module_docstring_documents_every_registered_tool(server):
+    """Docs-drift guard: the module docstring's ``Tools`` table must list exactly
+    the registered tools — no more, no less.
+
+    This drifted once: ``get_node_fiber`` was registered but missing from the
+    docstring, so the docstring implied five tools while six were live. The count
+    is a *published* claim (spoke-1 paper §3.1 + its Reproducibility section, and
+    CLAUDE.md principle #4), so a reader cross-referencing the docstring against
+    the paper miscounted. Asserting the coupling here means the next tool added
+    without a docstring row fails CI instead of silently republishing a wrong
+    number."""
+    import api.mcp.server as mcp_server
+
+    doc = mcp_server.__doc__ or ""
+    marker = "Tools (each mirrors a deterministic gRPC RPC over the same engine):"
+    assert marker in doc, "module docstring lost its 'Tools' table header"
+
+    # The table is the indented block between the header and the next blank line.
+    table = doc.split(marker, 1)[1].split("\n\n", 1)[0]
+    documented = {line.split()[0] for line in table.splitlines() if line.strip()}
+
+    registered = {t.name for t in await server.list_tools()}
+    assert documented == registered, (
+        "api/mcp/server.py docstring is out of sync with the registered tools — "
+        f"documented but not registered: {sorted(documented - registered)}; "
+        f"registered but not documented: {sorted(registered - documented)}. "
+        "Update the docstring table, CLAUDE.md principle #4, and api/mcp/README.md."
+    )
+
+
+@pytest.mark.asyncio
 async def test_tools_are_self_describing_for_agents(server):
     """Documentation bar: every tool carries a description AND every parameter in
     its input schema carries a description — that schema is what an LLM agent
