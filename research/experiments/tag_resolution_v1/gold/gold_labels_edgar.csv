@@ -1,0 +1,321 @@
+taxonomy,code,name,stratum,gold_kontablo_id,basis
+us-gaap,AccountsPayableCurrent,"Accounts Payable, Current",head/seen,liability.current.payables,agreed
+us-gaap,AccountsReceivableGrossCurrent,"Accounts Receivable, before Allowance for Credit Loss, Current",tail/seen,,adjudicated
+us-gaap,AccountsReceivableNetCurrent,"Accounts Receivable, after Allowance for Credit Loss, Current",head/seen,asset.current.receivables,agreed
+us-gaap,AccruedIncomeTaxesCurrent,"Accrued Income Taxes, Current",mid/seen,liability.current.tax,agreed
+us-gaap,AccruedIncomeTaxesNoncurrent,"Accrued Income Taxes, Noncurrent",mid/seen,,adjudicated
+us-gaap,AccruedLiabilitiesAndOtherLiabilities,Accrued Liabilities and Other Liabilities,mid/seen,,adjudicated
+us-gaap,AccruedLiabilitiesCurrent,"Accrued Liabilities, Current",head/seen,liability.current.accrued,agreed
+us-gaap,AccumulatedOtherComprehensiveIncomeLossNetOfTax,"Accumulated Other Comprehensive Income (Loss), Net of Tax",head/seen,equity.reserves,agreed
+us-gaap,AcquisitiondateFairValueOfTotalConsiderationTransferred,"Consideration transferred, acquisition-date fair value",tail/unseen,,agreed
+us-gaap,AdditionalPaidInCapital,Additional Paid in Capital,head/seen,equity.capital,agreed
+us-gaap,AdditionalPaidInCapitalCommonStock,"Additional Paid in Capital, Common Stock",head/seen,equity.capital,agreed
+us-gaap,AdjustmentsForCurrentTaxOfPriorPeriod,Adjustments for current tax of prior periods,tail/unseen,expense.tax,adjudicated
+us-gaap,AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,"APIC, Share-Based Payment Arrangement, Increase for Cost Recognition",head/seen,,agreed
+us-gaap,AdvertisingExpense,Advertising expense,mid/seen,,agreed
+us-gaap,AgriculturalRelatedInventoryGrowingCrops,"Agricultural Related Inventory, Growing Crops",tail/unseen,,adjudicated
+us-gaap,AllowanceForFundsUsedDuringConstructionInvestingActivities,"Allowance for Funds Used During Construction, Investing Activities",tail/seen,,agreed
+us-gaap,AllowanceForLoanAndLeaseLossesForeignCurrencyTranslation,"Allowance for Loan and Lease Losses, Foreign Currency Translation",tail/unseen,,agreed
+us-gaap,AssetRetirementObligationAccretionExpense,"Asset Retirement Obligation, Accretion Expense",mid/seen,expense.interest,adjudicated
+us-gaap,Assets,Assets,head/seen,AGGREGATE:asset,agreed
+us-gaap,AssetsCurrent,"Assets, Current",head/seen,AGGREGATE:asset.current,agreed
+us-gaap,BalancesWithBanks,Balances with banks,tail/seen,asset.current.bank,agreed
+us-gaap,BankOwnedLifeInsurance,Bank Owned Life Insurance,mid/seen,,agreed
+us-gaap,BeneficialInterest,Beneficial Interest Liability,tail/seen,,agreed
+us-gaap,BusinessCombinationContingentConsiderationArrangementsChangeInAmountOfContingentConsiderationLiability1,"Business Combination, Contingent Consideration Arrangements, Change in Amount of Contingent Consideration, Liability",mid/seen,,agreed
+us-gaap,BusinessCombinationContingentConsiderationAsset,"Business Combination, Contingent Consideration, Asset",tail/unseen,,agreed
+us-gaap,BusinessCombinationContingentConsiderationLiabilityNoncurrent,"Business Combination, Contingent Consideration, Liability, Noncurrent",mid/seen,,agreed
+us-gaap,BusinessCombinationProvisionalInformationInitialAccountingIncompleteAdjustmentEquityInterests,"Business Combination, Provisional Information, Initial Accounting Incomplete, Adjustment, Equity Interests",tail/seen,,agreed
+us-gaap,BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedAssets,"Business Combination, Recognized Asset Acquired, Asset",tail/seen,,adjudicated
+us-gaap,BusinessCombinationSeparatelyRecognizedTransactionsAdditionalDisclosuresAcquisitionCostExpensed,"Business Combination, Separately Recognized Transaction, Acquisition-Related Cost, Expensed",tail/unseen,,agreed
+us-gaap,Cash,Cash,mid/seen,asset.current.cash,agreed
+us-gaap,CashAndCashEquivalentsAtCarryingValue,"Cash and Cash Equivalents, at Carrying Value",head/seen,asset.current.cash,agreed
+us-gaap,CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsDisposalGroupIncludingDiscontinuedOperations,"Cash, Cash Equivalents, Restricted Cash, and Restricted Cash Equivalents, Disposal Group, Including Discontinued Operations",mid/seen,,adjudicated
+us-gaap,CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations,"Cash, Cash Equivalents, Restricted Cash, and Restricted Cash Equivalents, Including Disposal Group and Discontinued Operations",head/seen,,adjudicated
+us-gaap,CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,"Cash, Cash Equivalents, Restricted Cash, and Restricted Cash Equivalents, Period Increase (Decrease), Including Exchange Rate Effect",head/seen,AGGREGATE:cash_flow,agreed
+us-gaap,CashFlowsFromUsedInFinancingActivities,Cash flows from (used in) financing activities,mid/seen,AGGREGATE:cash_flow,agreed
+us-gaap,CashProvidedByUsedInInvestingActivitiesDiscontinuedOperations,"Cash Provided by (Used in) Investing Activities, Discontinued Operations",mid/seen,AGGREGATE:cash_flow,agreed
+us-gaap,ChangeInReportingEntityInvestmentCumulativeIncreaseDecrease,"Change in Reporting Entity, Investment, Cumulative Increase (Decrease)",tail/unseen,,agreed
+us-gaap,CommissionsPayableToBrokerDealersAndClearingOrganizations,Commission Payable to Broker-Dealer and Clearing Organization,tail/seen,liability.current.payables,agreed
+us-gaap,CommitmentsAndContingencies,Commitments and Contingencies,head/seen,,agreed
+us-gaap,CommonStockValue,"Common Stock, Value, Issued",head/seen,equity.capital,agreed
+us-gaap,ComprehensiveIncomeNetOfTax,"Comprehensive Income (Loss), Net of Tax, Attributable to Parent",head/seen,AGGREGATE:income,agreed
+us-gaap,CostOfGoodsAndServicesSold,Cost of Goods and Services Sold,head/seen,expense.cogs,agreed
+us-gaap,CostsInExcessOfBillingsOnUncompletedContractsOrProgramsExpectedToBeCollectedWithinOneYear,"Costs in Excess of Billings, Current",tail/unseen,,agreed
+us-gaap,CryptoAssetCostRestricted,"Crypto Asset, Cost, Restricted",tail/unseen,,agreed
+us-gaap,CryptoAssetRealizedGainLossOperating,"Crypto Asset, Realized Gain (Loss), Operating",tail/seen,,agreed
+us-gaap,CryptoAssetUnrealizedGainOperating,"Crypto Asset, Unrealized Gain, Operating",tail/unseen,,agreed
+us-gaap,CryptoAssetUnrealizedLossNonoperating,"Crypto Asset, Unrealized Loss, Nonoperating",tail/unseen,,agreed
+us-gaap,CumulativeGainLossPreviouslyRecognisedInOtherComprehensiveIncomeArisingFromReclassificationOfFinancialAssetsOutOfFairValueThroughOtherComprehensiveIncomeIntoFairValueThroughProfitOrLossMeasurementCategory,Cumulative gain (loss) previously recognised in other comprehensive income arising from reclassification of financial assets out of fair value through other comprehensive income into fair value through profit or loss measurement category,tail/seen,,agreed
+us-gaap,CurrentAssetsRecognisedAsOfAcquisitionDate,Current assets recognised as of acquisition date,tail/unseen,,adjudicated
+us-gaap,CurrentDeferredIncomeIncludingCurrentContractLiabilities,Current deferred income including current contract liabilities,tail/seen,,agreed
+us-gaap,CurrentFinancialLiabilitiesAtAmortisedCost,Current financial liabilities at amortised cost,tail/seen,AGGREGATE:liability.current,adjudicated
+us-gaap,CurrentForeignTaxExpenseBenefit,Current Foreign Tax Expense (Benefit),tail/unseen,expense.tax,agreed
+us-gaap,CurrentLiabilities,Current liabilities,mid/seen,AGGREGATE:liability.current,agreed
+us-gaap,CurrentRetentionPayables,Current retention payables,tail/unseen,liability.current.payables,agreed
+us-gaap,DebtAndEquitySecuritiesUnrealizedGainLoss,"Debt and Equity Securities, Unrealized Gain (Loss)",mid/seen,,agreed
+us-gaap,DebtInstrumentAnnualPrincipalPayment,"Debt Instrument, Annual Principal Payment",tail/unseen,,agreed
+us-gaap,DebtSecuritiesAvailableForSaleAllowanceForCreditLossRecovery,"Debt Securities, Available-for-Sale, Allowance for Credit Loss, Recovery",tail/unseen,,agreed
+us-gaap,DeferredIncome,Deferred Income,tail/seen,,agreed
+us-gaap,DeferredIncomeTaxAssetsNet,"Deferred Income Tax Assets, Net",head/seen,,agreed
+us-gaap,DeferredIncomeTaxExpenseBenefit,Deferred Income Tax Expense (Benefit),head/seen,expense.tax,agreed
+us-gaap,DeferredIncomeTaxLiabilitiesNet,"Deferred Income Tax Liabilities, Net",head/seen,liability.noncurrent.deferred_tax,agreed
+us-gaap,DeferredPolicyAcquisitionCostsAdditions,"Deferred Policy Acquisition Cost, Capitalization",tail/unseen,,agreed
+us-gaap,DeferredRevenuePeriodIncreaseDecrease,"Deferred Revenue, Period Increase (Decrease)",tail/seen,,agreed
+us-gaap,DefinedBenefitPensionPlanLiabilitiesNoncurrent,"Liability, Defined Benefit Pension Plan, Noncurrent",mid/seen,,agreed
+us-gaap,DefinedBenefitPlanAmountsRecognizedInOtherComprehensiveIncomeLossNetGainLossBeforeTax,"Other Comprehensive Income (Loss), Defined Benefit Plan, Gain (Loss), after Reclassification Adjustment, before Tax",tail/seen,,agreed
+us-gaap,DefinedBenefitPlanContributionsByEmployer,"Defined Benefit Plan, Plan Assets, Contributions by Employer",tail/seen,,agreed
+us-gaap,DepositsAssetsCurrent,"Deposits Assets, Current",mid/seen,,agreed
+us-gaap,DepositsAssetsNoncurrent,"Deposits Assets, Noncurrent",mid/seen,,agreed
+us-gaap,DepreciationAndAmortization,"Depreciation, Depletion and Amortization, Nonproduction",head/seen,expense.depreciation,agreed
+us-gaap,DepreciationDepletionAndAmortization,"Depreciation, Depletion and Amortization",head/seen,expense.depreciation,agreed
+us-gaap,DerivativeAssetsNoncurrent,"Derivative Asset, Noncurrent",mid/seen,,agreed
+us-gaap,DerivativeFairValueHedgeIncludedInEffectivenessGainLoss,"Derivative, Fair Value Hedge, Included in Effectiveness, Gain (Loss)",tail/seen,,agreed
+us-gaap,DisposalGroupIncludingDiscontinuedOperationDepreciationAndAmortization,"Disposal Group, Including Discontinued Operation, Depreciation and Amortization",tail/unseen,,adjudicated
+us-gaap,DisposalGroupIncludingDiscontinuedOperationIntangibleAssets,"Disposal Group, Including Discontinued Operation, Intangible Assets",tail/unseen,,adjudicated
+us-gaap,DisposalGroupIncludingDiscontinuedOperationInterestIncome,"Disposal Group, Including Discontinued Operation, Interest Income",tail/unseen,,adjudicated
+us-gaap,DisposalGroupIncludingDiscontinuedOperationLiabilityForClaimsAndClaimsAdjustmentExpense,"Disposal Group, Including Discontinued Operation, Liability for Claims and Claims Adjustment Expense",tail/unseen,,agreed
+us-gaap,DividendsPayableCurrentAndNoncurrent,Dividends Payable,mid/seen,,agreed
+us-gaap,DividendsPreferredStock,"Dividends, Preferred Stock",mid/seen,,agreed
+us-gaap,EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents,"Effect of Exchange Rate on Cash, Cash Equivalents, Restricted Cash, and Restricted Cash Equivalents, Continuing Operations",head/seen,,agreed
+us-gaap,EnergyRelatedInventoryNaturalGasInStorage,"Energy Related Inventory, Natural Gas in Storage",tail/seen,asset.current.inventory,agreed
+us-gaap,EquityAndLiabilities,Equity and liabilities,mid/seen,AGGREGATE:liability,agreed
+us-gaap,EquityMethodInvestmentRealizedGainLossOnDisposal,"Equity Method Investment, Realized Gain (Loss) on Disposal",mid/seen,,agreed
+us-gaap,EquityMethodInvestments,Equity Method Investments,mid/seen,asset.noncurrent.investments,agreed
+us-gaap,FairValueGainsOrLossThatWouldHaveBeenRecognisedInProfitOrLossIfFinancialAssetsHadNotBeenReclassified,Fair value gain (loss) that would have been recognised in profit or loss if financial assets had not been reclassified,tail/unseen,,agreed
+us-gaap,FinanceLeaseLiabilityNoncurrent,"Finance Lease, Liability, Noncurrent",mid/seen,liability.noncurrent.lease,agreed
+us-gaap,FinancialInstrumentsOwnedPrincipalInvestmentsAtFairValue,"Financial Instruments, Owned, Principal Investments, at Fair Value",tail/seen,,agreed
+us-gaap,FinancingReceivableBeforeAllowanceForCreditLossAndFee,"Financing Receivable, before Allowance for Credit Loss, Fee and Loan in Process",tail/seen,,agreed
+us-gaap,FinancingReceivableExcludingAccruedInterestCreditLossExpenseReversal,"Financing Receivable, Excluding Accrued Interest, Credit Loss Expense (Reversal)",mid/seen,,agreed
+us-gaap,ForeignCurrencyFairValueHedgeAssetAtFairValue,Foreign Currency Fair Value Hedge Asset at Fair Value,tail/unseen,,agreed
+us-gaap,FuelAndEnergyExpense,Fuel and energy expense,tail/unseen,,agreed
+us-gaap,GainLossArisingFromDifferenceBetweenCarryingAmountOfFinancialLiabilityExtinguishedAndConsiderationPaid,Gain (loss) arising from difference between carrying amount of financial liability extinguished and consideration paid,tail/seen,,agreed
+us-gaap,GainLossOnSaleOfOtherAssets,Gain (Loss) on Disposition of Other Assets,mid/seen,,agreed
+us-gaap,GainLossOnSalesOfAssetsAndAssetImpairmentCharges,Gain (Loss) on Sale of Assets and Asset Impairment Charges,mid/seen,,agreed
+us-gaap,GainLossRecognisedAsResultOfRemeasuringToFairValueEquityInterestInAcquireeHeldByAcquirerBeforeBusinessCombination,Gain (loss) recognised as result of remeasuring to fair value equity interest in acquiree held by acquirer before business combination,tail/seen,,agreed
+us-gaap,GainOrLossOnSaleOfPreviouslyUnissuedStockByEquityInvestee,Gain (Loss) on Sale of Previously Unissued Stock by Equity Investee,tail/seen,,agreed
+us-gaap,GainsLossesOnChangeInFairValueOfDerivatives,Gains (losses) on change in fair value of derivatives,tail/seen,,agreed
+us-gaap,GainsLossesOnExtinguishmentOfDebt,Gain (Loss) on Extinguishment of Debt,head/seen,,agreed
+us-gaap,GeneralAndAdministrativeExpense,General and administrative expense,head/seen,expense.admin,agreed
+us-gaap,Goodwill,Goodwill,head/seen,asset.noncurrent.goodwill,agreed
+us-gaap,GoodwillAndIntangibleAssetImpairment,Goodwill and Intangible Asset Impairment,mid/seen,,agreed
+us-gaap,GoodwillRecognisedAsOfAcquisitionDate,Goodwill recognised as of acquisition date,tail/unseen,,adjudicated
+us-gaap,GovernmentAssistanceNonoperatingExpense,"Government Assistance, Nonoperating Expense, Decrease (Increase)",tail/unseen,,agreed
+us-gaap,GrossProfit,Gross profit,head/seen,AGGREGATE:income,agreed
+us-gaap,HeldToMaturitySecurities,"Debt Securities, Held-to-Maturity, Amortized Cost, before Allowance for Credit Loss",tail/seen,,adjudicated
+us-gaap,ImpairmentOfIntangibleAssetsExcludingGoodwill,Impairment of Intangible Assets (Excluding Goodwill),mid/seen,,agreed
+us-gaap,ImpairmentOfIntangibleAssetsFinitelived,"Impairment of Intangible Assets, Finite-Lived",mid/seen,,agreed
+us-gaap,ImpairmentOfRealEstate,Impairment of Real Estate,mid/seen,,agreed
+us-gaap,IncentiveFeeExpenseIncomeBased,"Incentive Fee Expense, Income-Based",tail/seen,expense.admin,adjudicated
+us-gaap,IncentiveFeePayableIncomeBased,"Incentive Fee Payable, Income-Based",tail/unseen,liability.current.payables,agreed
+us-gaap,IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,"Income (Loss) from Continuing Operations before Income Taxes, Noncontrolling Interest",head/seen,AGGREGATE:income,agreed
+us-gaap,IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments,"Income (Loss) from Continuing Operations before Equity Method Investments, Income Taxes, Noncontrolling Interest",mid/seen,AGGREGATE:income,agreed
+us-gaap,IncomeTaxExpenseBenefit,Income Tax Expense (Benefit),head/seen,expense.tax,agreed
+us-gaap,IncomeTaxPaidStateAndLocalBeforeRefundReceived,"Income Tax Paid, State and Local, before Refund Received",tail/unseen,,agreed
+us-gaap,IncomeTaxReconciliationOtherAdjustments,"Effective Income Tax Rate Reconciliation, Other Adjustments, Amount",tail/unseen,,agreed
+us-gaap,IncreaseDecreaseInAccountsAndNotesReceivable,Increase (Decrease) in Accounts and Notes Receivable,mid/seen,,agreed
+us-gaap,IncreaseDecreaseInAccountsPayable,Increase (Decrease) in Accounts Payable,head/seen,,agreed
+us-gaap,IncreaseDecreaseInAccountsPayableAndAccruedLiabilities,Increase (Decrease) in Accounts Payable and Accrued Liabilities,head/seen,,agreed
+us-gaap,IncreaseDecreaseInAccountsReceivable,Increase (Decrease) in Accounts Receivable,head/seen,,agreed
+us-gaap,IncreaseDecreaseInAllowanceAccountForCreditLossesOfFinancialAssets,Increase (decrease) in allowance account for credit losses of financial assets,tail/seen,,agreed
+us-gaap,IncreaseDecreaseInDeferredIncomeTaxes,Increase (Decrease) in Deferred Income Taxes,mid/seen,,agreed
+us-gaap,IncreaseDecreaseInDeferredRevenue,Increase (Decrease) in Deferred Revenue,mid/seen,,agreed
+us-gaap,IncreaseDecreaseInIncentiveFeePayableIncomeBased,"Increase (Decrease) in Incentive Fee Payable, Income-Based",tail/unseen,,agreed
+us-gaap,IncreaseDecreaseInIntangibleAssetsCurrent,"Increase (Decrease) in Intangible Assets, Current",tail/seen,,agreed
+us-gaap,IncreaseDecreaseInInventories,Increase (Decrease) in Inventories,head/seen,,agreed
+us-gaap,IncreaseDecreaseInManagementFeePayable,Increase (Decrease) in Management Fee Payable,mid/seen,,agreed
+us-gaap,IncreaseDecreaseInMortgageLoansHeldForSale,"Increase (Decrease) in Loan, Mortgage, Held-for-Sale",tail/seen,,agreed
+us-gaap,IncreaseDecreaseInOperatingAssets,Increase (Decrease) in Operating Assets,tail/seen,,agreed
+us-gaap,IncreaseDecreaseInOperatingCapital,Increase (Decrease) in Operating Capital,mid/seen,,agreed
+us-gaap,IncreaseDecreaseInOtherCurrentLiabilities,Increase (Decrease) in Other Current Liabilities,mid/seen,,agreed
+us-gaap,IncreaseDecreaseInOtherNoncurrentAssets,Increase (Decrease) in Other Noncurrent Assets,mid/seen,,agreed
+us-gaap,IncreaseDecreaseInOtherNoncurrentAssetsAndLiabilitiesNet,"Increase (Decrease) in Other Noncurrent Assets and Liabilities, Net",mid/seen,,agreed
+us-gaap,IncreaseDecreaseInOtherNoncurrentLiabilities,Increase (Decrease) in Other Noncurrent Liabilities,mid/seen,,agreed
+us-gaap,IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets,Increase (Decrease) in Prepaid Expense and Other Assets,head/seen,,agreed
+us-gaap,IncreaseDecreaseInPrepaidRent,Increase (Decrease) in Prepaid Rent,tail/seen,,agreed
+us-gaap,IncreaseDecreaseInReceivables,Increase (Decrease) in Receivables,mid/seen,,agreed
+us-gaap,IncreaseDecreaseThroughOtherChangesInvestmentProperty,"Increase (decrease) through other changes, investment property",tail/unseen,,agreed
+us-gaap,IntangibleAssetsNetExcludingGoodwill,"Intangible Assets, Net (Excluding Goodwill)",head/seen,asset.noncurrent.intangibles,agreed
+us-gaap,IntangibleAssetsNetIncludingGoodwill,"Intangible Assets, Net (Including Goodwill)",mid/seen,AGGREGATE:asset.noncurrent,agreed
+us-gaap,InterestAndOtherIncome,Interest and Other Income,mid/seen,revenue.other,agreed
+us-gaap,InterestBearingDomesticDepositOtherTimeDeposit,"Interest-Bearing Domestic Deposit, Other Time Deposit",tail/seen,,agreed
+us-gaap,InterestExpenseDeposits,"Interest Expense, Deposits",mid/seen,expense.interest,agreed
+us-gaap,InterestExpenseDepositsFromOtherFederalHomeLoanBanks,"Interest Expense, Deposits from Other Federal Home Loan Banks",tail/unseen,expense.interest,agreed
+us-gaap,InterestExpenseFederalHomeLoanBankAndFederalReserveBankAdvancesLongTerm,"Interest Expense, Federal Home Loan Bank and Federal Reserve Bank Advances, Long-Term",tail/seen,expense.interest,agreed
+us-gaap,InterestExpenseNonoperating,"Interest Expense, Nonoperating",head/seen,expense.interest,agreed
+us-gaap,InterestIncomeDepositsWithFinancialInstitutions,"Interest Income, Deposits with Financial Institutions",mid/seen,revenue.other,agreed
+us-gaap,InterestIncomeExpenseAfterProvisionForLoanLoss,"Interest Income (Expense), after Provision for Loan Loss",mid/seen,,agreed
+us-gaap,InterestIncomeOperatingPaidInCash,"Interest Income, Operating, Paid in Cash",mid/seen,,adjudicated
+us-gaap,InterestIncomeSecuritiesTaxable,"Interest Income, Securities, Operating, Taxable",mid/seen,revenue.other,agreed
+us-gaap,InterestPaidNet,"Interest Paid, Excluding Capitalized Interest, Operating Activities",head/seen,,agreed
+us-gaap,InterestReceivable,Interest Receivable,mid/seen,,agreed
+us-gaap,InventoryNet,"Inventory, Net",head/seen,asset.current.inventory,agreed
+us-gaap,InventorySuppliesNetOfReserves,"Inventory, Supplies, Net of Reserves",tail/unseen,asset.current.inventory,agreed
+us-gaap,InvestmentCompanyAverageNetAssets,"Investment Company, Average Net Assets",tail/unseen,,agreed
+us-gaap,InvestmentCompanyExcessExpenseReimbursable,"Investment Company, Reimbursable Excess Expense",tail/unseen,,agreed
+us-gaap,InvestmentCompanyExpenseAfterReductionOfFeeWaiverAndReimbursement,"Investment Company, Expense, after Reduction of Fee Waiver and Reimbursement",mid/seen,AGGREGATE:expense,agreed
+us-gaap,InvestmentCompanyFeePaidIndirectly,"Investment Company, Fee Paid Indirectly",tail/unseen,,agreed
+us-gaap,InvestmentCompanyIncentiveFeeWaivedIncomeBased,"Investment Company, Incentive Fee Waived, Income-Based",tail/unseen,,agreed
+us-gaap,InvestmentCompanyIncreaseDecreaseFromShareTransaction,"Investment Company, Capital Share Transaction, Increase (Decrease)",tail/seen,,agreed
+us-gaap,InvestmentCompanyManagementFeeVoluntaryFeeWaived,"Investment Company, Management Fee, Voluntary Fee Waived",tail/unseen,,agreed
+us-gaap,InvestmentIncomeNet,"Investment Income, Net",mid/seen,revenue.other,agreed
+us-gaap,InvestmentIncomeOperatingAfterExpenseAndTax,"Investment Income, Operating, after Expense and Tax",mid/seen,AGGREGATE:income,agreed
+us-gaap,InvestmentProgramProportionalAmortizationMethodElectedIncomeTaxCredit,"Investment Program, Proportional Amortization Method, Elected, Income Tax Credit",tail/unseen,,agreed
+us-gaap,LeaseDepositLiability,Lease Deposit Liability,tail/seen,,agreed
+us-gaap,LegalFees,Legal Fees,mid/seen,expense.admin,agreed
+us-gaap,Liabilities,Liabilities,head/seen,AGGREGATE:liability,agreed
+us-gaap,LiabilitiesAndStockholdersEquity,Liabilities and Equity,head/seen,AGGREGATE:liability,agreed
+us-gaap,LiabilitiesCurrent,"Liabilities, Current",head/seen,AGGREGATE:liability.current,agreed
+us-gaap,LiabilityForAsbestosAndEnvironmentalClaimsNetPeriodIncreaseDecrease,"Liability for Asbestos and Environmental Claims, Net, Period Increase (Decrease)",tail/unseen,,agreed
+us-gaap,LifeInsuranceCorporateOrBankOwnedChangeInValue,"Life Insurance, Corporate or Bank Owned, Change in Value",mid/seen,,agreed
+us-gaap,LifeSettlementContractsInvestmentMethodFaceValue,"Life Settlement Contracts, Investment Method, Face Value",tail/unseen,,agreed
+us-gaap,LimitedPartnersCapitalAccount,Limited Partners' Capital Account,mid/seen,,adjudicated
+us-gaap,LoansAndAdvancesMeasuredAtFairValueThroughOtherComprehensiveIncome,Loans and advances measured at fair value through other comprehensive income,tail/unseen,,agreed
+us-gaap,LoansAndLeasesReceivableRelatedPartiesAdditions,"Loans and Leases Receivable, Related Parties, Additions",tail/unseen,,agreed
+us-gaap,LoansReceived,Loans received,tail/seen,,agreed
+us-gaap,LongTermDebtNoncurrent,"Long-Term Debt, Excluding Current Maturities",head/seen,liability.noncurrent.debt,agreed
+us-gaap,LossContingencyAccrualCarryingValueNoncurrent,"Loss Contingency, Accrual, Noncurrent",tail/seen,,adjudicated
+us-gaap,LossesOnDisposalsOfNoncurrentAssets,Losses on disposals of non-current assets,tail/seen,,agreed
+us-gaap,MinorityInterest,"Equity, Attributable to Noncontrolling Interest",mid/seen,,agreed
+us-gaap,MinorityInterestChangeInRedemptionValue,"Noncontrolling Interest, Change in Redemption Value",mid/seen,,agreed
+us-gaap,MinorityInterestInLimitedPartnerships,Noncontrolling Interest in Limited Partnerships,tail/seen,,agreed
+us-gaap,NetCashProvidedByUsedInFinancingActivities,Net Cash Provided by (Used in) Financing Activities,head/seen,AGGREGATE:cash_flow,agreed
+us-gaap,NetCashProvidedByUsedInInvestingActivities,Net Cash Provided by (Used in) Investing Activities,head/seen,AGGREGATE:cash_flow,agreed
+us-gaap,NetCashProvidedByUsedInInvestingActivitiesContinuingOperations,"Net Cash Provided by (Used in) Investing Activities, Continuing Operations",mid/seen,AGGREGATE:cash_flow,agreed
+us-gaap,NetCashProvidedByUsedInOperatingActivities,Net Cash Provided by (Used in) Operating Activities,head/seen,AGGREGATE:cash_flow,agreed
+us-gaap,NetIncomeLossAttributableToNoncontrollingInterest,Net Income (Loss) Attributable to Noncontrolling Interest,head/seen,,agreed
+us-gaap,NoncashOrPartNoncashAcquisitionFixedAssetsAcquired1,"Noncash or Part Noncash Acquisition, Fixed Assets Acquired",mid/seen,,agreed
+us-gaap,NoncashOrPartNoncashAcquisitionNetNonmonetaryAssetsAcquiredLiabilitiesAssumed1,"Noncash or Part Noncash Acquisition, Net Nonmonetary Assets Acquired (Liabilities Assumed)",tail/seen,,agreed
+us-gaap,NoncontrollingInterestIncreaseFromBusinessCombination,"Noncontrolling Interest, Increase from Business Combination",mid/seen,,agreed
+us-gaap,NoncontrollingInterestIncreaseFromSaleOfParentEquityInterest,"Noncontrolling Interest, Increase from Sale of Parent Equity Interest",tail/seen,,agreed
+us-gaap,NoncurrentFinanceLeaseReceivables,Non-current finance lease receivables,tail/seen,,agreed
+us-gaap,NoncurrentFinancialAssetsAtFairValueThroughProfitOrLoss,Non-current financial assets at fair value through profit or loss,tail/seen,asset.noncurrent.investments,agreed
+us-gaap,NoncurrentLiabilities,Non-current liabilities,mid/seen,AGGREGATE:liability.noncurrent,agreed
+us-gaap,NoncurrentPayables,Trade and other non-current payables,tail/seen,,adjudicated
+us-gaap,NoncurrentReceivablesFromTaxesOtherThanIncomeTax,Non-current receivables from taxes other than income tax,tail/seen,,agreed
+us-gaap,NonoperatingIncomeExpense,Nonoperating Income (Expense),head/seen,AGGREGATE:income,agreed
+us-gaap,NotesAndDebenturesIssued,Notes and debentures issued,tail/seen,,agreed
+us-gaap,NotesAndLoansReceivableNetCurrent,"Financing Receivable, after Allowance for Credit Loss, Current",mid/seen,,agreed
+us-gaap,OciEquityMethodInvestmentTax,"OCI, Equity Method Investment, Tax",tail/unseen,,agreed
+us-gaap,OperatingExpenses,Operating Expenses,head/seen,AGGREGATE:expense,agreed
+us-gaap,OperatingIncomeLoss,Operating Income (Loss),head/seen,AGGREGATE:income,agreed
+us-gaap,OperatingLeaseLiabilityCurrent,"Operating Lease, Liability, Current",head/seen,,adjudicated
+us-gaap,OperatingLeaseLiabilityNoncurrent,"Operating Lease, Liability, Noncurrent",head/seen,liability.noncurrent.lease,agreed
+us-gaap,OperatingLeaseRightOfUseAsset,"Operating Lease, Right-of-Use Asset",head/seen,asset.noncurrent.rou_assets,agreed
+us-gaap,OperatingProfitLossOperating,OperatingProfitLossOperating,tail/unseen,AGGREGATE:income,agreed
+us-gaap,OrganizationalAndOfferingCostsExpense,"Offering and Organizational Costs, Expense",tail/unseen,,agreed
+us-gaap,OtherAccruedLiabilitiesCurrent,"Other Accrued Liabilities, Current",mid/seen,liability.current.accrued,agreed
+us-gaap,OtherAssetsNoncurrent,"Other Assets, Noncurrent",head/seen,,agreed
+us-gaap,OtherComprehensiveIncomeDefinedBenefitPlansAdjustmentNetOfTaxPortionAttributableToNoncontrollingInterest,"Other Comprehensive (Income) Loss, Defined Benefit Plan, after Tax and Reclassification Adjustment, Attributable to Noncontrolling Interest",tail/seen,,agreed
+us-gaap,OtherComprehensiveIncomeLossAmortizationAdjustmentFromAOCIPensionAndOtherPostretirementBenefitPlansForNetPriorServiceCostCreditNetOfTax,"Other Comprehensive (Income) Loss, Defined Benefit Plan, Prior Service Cost (Credit), Reclassification Adjustment from AOCI, after Tax",tail/seen,,agreed
+us-gaap,OtherComprehensiveIncomeLossBeforeTax,"Other Comprehensive Income (Loss), before Tax",mid/seen,,adjudicated
+us-gaap,OtherComprehensiveIncomeLossCashFlowHedgeGainLossAfterReclassificationAndTaxParent,"Other Comprehensive Income (Loss), Cash Flow Hedge, Gain (Loss), after Reclassification and Tax, Parent",mid/seen,,agreed
+us-gaap,OtherComprehensiveIncomeLossCashFlowHedgeGainLossBeforeReclassificationTax,"Other Comprehensive Income (Loss), Cash Flow Hedge, Gain (Loss), before Reclassification, Tax",tail/seen,,agreed
+us-gaap,OtherComprehensiveIncomeLossFinalizationOfPensionAndNonPensionPostretirementPlanValuationNetOfTax,"Other Comprehensive Income (Loss), Defined Benefit Plan, Settlement and Curtailment Gain (Loss), after Tax",tail/seen,,agreed
+us-gaap,OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentBeforeTax,"Other Comprehensive Income (Loss), Foreign Currency Transaction and Translation Adjustment, before Tax",mid/seen,,agreed
+us-gaap,OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,"Other Comprehensive Income (Loss), Foreign Currency Transaction and Translation Adjustment, Net of Tax",head/seen,,agreed
+us-gaap,OtherComprehensiveIncomeLossNetOfTax,"Other Comprehensive Income (Loss), Net of Tax",head/seen,,adjudicated
+us-gaap,OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,"Other Comprehensive Income (Loss), Net of Tax, Portion Attributable to Parent",head/seen,,adjudicated
+us-gaap,OtherComprehensiveIncomeLossPensionAndOtherPostretirementBenefitPlansNetUnamortizedGainLossArisingDuringPeriodBeforeTax,"Other Comprehensive Income (Loss), Defined Benefit Plan, Gain (Loss) Arising During Period, before Tax",tail/seen,,agreed
+us-gaap,OtherComprehensiveIncomeLossReclassificationAdjustmentFromAociForInvestmentTransferredFromAvailableForSaleToEquityMethodTax,"Other Comprehensive Income (Loss), Reclassification Adjustment from AOCI for Investment Transferred from Available-for-Sale to Equity Method, Tax",tail/seen,,agreed
+us-gaap,OtherGeneralAndAdministrativeExpense,Other General and Administrative Expense,mid/seen,expense.admin,agreed
+us-gaap,OtherLiabilities,Other liabilities,mid/seen,,agreed
+us-gaap,OtherLiabilitiesCurrent,"Other Liabilities, Current",head/seen,,agreed
+us-gaap,OtherLiabilitiesNoncurrent,"Other Liabilities, Noncurrent",head/seen,,agreed
+us-gaap,OtherOperatingActivitiesCashFlowStatement,"Other Operating Activities, Cash Flow Statement",mid/seen,,agreed
+us-gaap,OtherRealEstateAndForeclosedAssets,"Other Real Estate, Foreclosed Assets, and Repossessed Assets",tail/seen,,agreed
+us-gaap,OtherReceivableAfterAllowanceForCreditLossNoncurrent,"Other Receivable, after Allowance for Credit Loss, Noncurrent",tail/seen,,agreed
+us-gaap,OtherReceivables,Other receivables,mid/seen,,agreed
+us-gaap,PaidInKindInterest,Paid-in-Kind Interest,mid/seen,,agreed
+us-gaap,PartnersCapitalAccountUnitBasedCompensation,"Partners' Capital Account, Unit-Based Payment Arrangement, Amount",tail/seen,,agreed
+us-gaap,PaymentsForAdvanceToAffiliate,Payments for Advance to Affiliate,tail/seen,,agreed
+us-gaap,PaymentsForCapitalImprovements,Payments for Capital Improvements,mid/seen,,agreed
+us-gaap,PaymentsForPurchaseOfInvestmentOperatingActivity,"Payment for Purchase, Investment, Operating Activity",mid/seen,,agreed
+us-gaap,PaymentsForRepurchaseOfCommonStock,Payments for Repurchase of Common Stock,head/seen,,agreed
+us-gaap,PaymentsOfDebtIssuanceCosts,Payments of Debt Issuance Costs,mid/seen,,agreed
+us-gaap,PaymentsOfOrdinaryDividends,Payments of Ordinary Dividends,mid/seen,,agreed
+us-gaap,PaymentsRelatedToTaxWithholdingForShareBasedCompensation,"Payment, Tax Withholding, Share-Based Payment Arrangement",head/seen,,agreed
+us-gaap,PaymentsToAcquireIntangibleAssets,Payments to Acquire Intangible Assets,mid/seen,,agreed
+us-gaap,PaymentsToAcquireProductiveAssets,Payments to Acquire Productive Assets,mid/seen,,agreed
+us-gaap,PaymentsToAcquirePropertyPlantAndEquipment,"Payments to Acquire Property, Plant, and Equipment",head/seen,,agreed
+us-gaap,PaymentsToAcquireWaterSystems,Payments to Acquire Water Systems,tail/unseen,,agreed
+us-gaap,PaymentsToMinorityShareholders,Payments to Noncontrolling Interests,mid/seen,,agreed
+us-gaap,PensionContributions,Payment for Pension Benefits,tail/seen,,agreed
+us-gaap,PreferredStockConversionsInducements,"Preferred Stock Conversions, Inducements",tail/seen,,agreed
+us-gaap,PreferredStockValue,"Preferred Stock, Value, Issued",head/seen,equity.capital,agreed
+us-gaap,PremiumReceivableCreditLossExpenseReversal,"Premium Receivable, Credit Loss Expense (Reversal)",tail/seen,,agreed
+us-gaap,PrepaidExpenseAndOtherAssetsCurrent,"Prepaid Expense and Other Assets, Current",head/seen,,adjudicated
+us-gaap,PrepaidTaxes,Prepaid Taxes,mid/seen,,adjudicated
+us-gaap,PreproductionCostsRelatedToLongTermSupplyArrangementsAssetForMoldsDiesAndToolsNotOwned,"Preproduction Costs Related to Long-Term Supply Arrangements, Asset for Molds Dies and Tools Not Owned",tail/seen,,agreed
+us-gaap,PrincipalAmountOutstandingOnLoansHeldForSaleOrSecuritization,"Loan, Held-for-Sale or Securitization or Asset-Backed Financing Arrangement, Principal Outstanding",tail/seen,,agreed
+us-gaap,ProceedsFromAnnuitiesAndInvestmentCertificates,Proceeds from Annuities and Investment Certificates,tail/seen,,agreed
+us-gaap,ProceedsFromDivestitureOfInterestInJointVenture,Proceeds from Divestiture of Interest in Joint Venture,tail/seen,,agreed
+us-gaap,ProceedsFromIncomeTaxRefundStateAndLocal,"Proceeds from Income Tax Refund, State and Local",tail/unseen,,agreed
+us-gaap,ProceedsFromIssuanceOfCommonStock,Proceeds from Issuance of Common Stock,head/seen,,agreed
+us-gaap,ProceedsFromIssuanceOfLongTermDebt,Proceeds from Issuance of Long-Term Debt,mid/seen,,agreed
+us-gaap,ProceedsFromIssuanceOrSaleOfEquity,Proceeds from Issuance or Sale of Equity,mid/seen,,agreed
+us-gaap,ProceedsFromIssueOfRegulatoryCapitalEquity,"Proceeds from issue of regulatory capital, equity",tail/unseen,,agreed
+us-gaap,ProceedsFromPaymentsForLongTermLoansForRelatedParties,Proceeds from Collection of (Payments to Fund) Long-Term Loans to Related Parties,tail/seen,,agreed
+us-gaap,ProceedsFromRepaymentsOfCommercialPaper,Proceeds from (Repayments of) Commercial Paper,tail/seen,,agreed
+us-gaap,ProceedsFromSaleAndMaturityOfAvailableForSaleSecurities,"Proceeds from Sale and Maturity of Debt Securities, Available-for-Sale",mid/seen,,agreed
+us-gaap,ProceedsFromSaleOfEquityMethodInvestments,Proceeds from Sale of Equity Method Investments,mid/seen,,agreed
+us-gaap,ProceedsFromSaleOfEquitySecuritiesFvNi,"Proceeds from Sale of Equity Securities, FV-NI",mid/seen,,agreed
+us-gaap,ProceedsFromSaleOfMortgageLoansHeldForSale,"Proceeds from Sale, Loan, Mortgage, Held-for-Sale",mid/seen,,agreed
+us-gaap,ProceedsFromSaleOfShortTermInvestments,Proceeds from Sale of Short-Term Investments,mid/seen,,agreed
+us-gaap,ProceedsFromSalesOfInvestmentsAccountedForUsingEquityMethod,Proceeds from sales of investments accounted for using equity method,tail/seen,,agreed
+us-gaap,ProceedsFromSecuritizationsOfConsumerLoans,Proceeds from Securitizations of Consumer Loans,tail/unseen,,agreed
+us-gaap,ProceedsFromStockOptionsExercised,Proceeds from Stock Options Exercised,mid/seen,,agreed
+us-gaap,ProfessionalFees,Professional Fees,mid/seen,expense.admin,agreed
+us-gaap,ProfitLoss,Profit (loss),head/seen,AGGREGATE:income,agreed
+us-gaap,PropertyPlantAndEquipmentGross,"Property, Plant and Equipment, Gross",mid/seen,,adjudicated
+us-gaap,PropertyPlantAndEquipmentNet,"Property, Plant and Equipment, Net",head/seen,asset.noncurrent.ppe,agreed
+us-gaap,ProvisionForDoubtfulAccounts,"Accounts Receivable, Credit Loss Expense (Reversal)",mid/seen,,agreed
+us-gaap,ProvisionUsedOtherProvisions,"Provision used, other provisions",tail/seen,,agreed
+us-gaap,PurchaseOfFinancialAssetsMeasuredAtFairValueThroughOtherComprehensiveIncomeClassifiedAsInvestingActivities,"Purchase of Financial assets at fair value through other comprehensive income, Statement of Cashflows",tail/seen,,agreed
+us-gaap,RealEstateAccumulatedDepreciationOtherAdditions,"SEC Schedule, 12-28, Real Estate Companies, Investment in Real Estate, Accumulated Depreciation, Other Addition",tail/unseen,,agreed
+us-gaap,RealEstateInvestmentPropertyAccumulatedDepreciation,"Real Estate Investment Property, Accumulated Depreciation",mid/seen,,agreed
+us-gaap,RealEstateInvestmentPropertyAtCost,"Real Estate Investment Property, at Cost",mid/seen,,agreed
+us-gaap,RealEstateOwnedValuationAllowancePeriodIncreaseDecrease,"Real Estate Owned, Valuation Allowance, Period Increase (Decrease)",tail/unseen,,agreed
+us-gaap,ReceivablesFairValueDisclosure,"Receivables, Fair Value Disclosure",tail/unseen,,agreed
+us-gaap,RecoveriesOnLoansPreviouslyWrittenOff,Recoveries on loans previously written off,tail/unseen,,agreed
+us-gaap,ReductionOfShortTermCapitalLeaseObligations,Reduction of Short-Term Capital Lease Obligations,tail/unseen,,agreed
+us-gaap,RepaymentsOfDebt,Repayments of Debt,mid/seen,,agreed
+us-gaap,RepaymentsOfOtherDebt,Repayments of Other Debt,mid/seen,,agreed
+us-gaap,RepaymentsOfShortTermDebt,Repayments of Short-Term Debt,mid/seen,,agreed
+us-gaap,ResearchAndDevelopmentExpense,Research and development expense,head/seen,,agreed
+us-gaap,RestructuringCharges,Restructuring Charges,mid/seen,,agreed
+us-gaap,ResultsOfOperationsIncomeBeforeIncomeTaxes,"Oil and Gas, Result of Operation, before Income Tax Expense (Benefit)",tail/seen,AGGREGATE:income,agreed
+us-gaap,RetainedEarningsAccumulatedDeficit,Retained Earnings (Accumulated Deficit),head/seen,equity.retained,agreed
+us-gaap,RevenueFromContractWithCustomerExcludingAssessedTax,"Revenue from Contract with Customer, Excluding Assessed Tax",head/seen,revenue.operating,agreed
+us-gaap,RevenueNotFromContractWithCustomer,Revenue Not from Contract with Customer,tail/seen,revenue.other,agreed
+us-gaap,RevenueNotFromContractWithCustomerOther,"Revenue Not from Contract with Customer, Other",tail/seen,revenue.other,agreed
+us-gaap,Revenues,Revenues,head/seen,AGGREGATE:revenue,agreed
+us-gaap,RightOfUseAssetObtainedInExchangeForOperatingLeaseLiability,Right-of-Use Asset Obtained in Exchange for Operating Lease Liability,mid/seen,,agreed
+us-gaap,SalariesWagesAndOfficersCompensation,"Salary and Wage, Excluding Cost of Good and Service Sold",tail/seen,expense.admin,adjudicated
+us-gaap,SalesTypeLeaseNetInvestmentInLeaseNonaccrual,"Sales-type Lease, Net Investment in Lease, Nonaccrual",tail/seen,,agreed
+us-gaap,SecuredDemandNotes,Secured Demand Notes,tail/unseen,,adjudicated
+us-gaap,SecuritiesForReverseRepurchaseAgreements,Securities for Reverse Repurchase Agreements,tail/unseen,,agreed
+us-gaap,SelfInsuranceReserve,Self Insurance Reserve,tail/seen,liability.current.accrued,adjudicated
+us-gaap,SellingGeneralAndAdministrativeExpense,"Selling, general and administrative expense",head/seen,expense.admin,adjudicated
+us-gaap,ServicingAssetAtFairValueChangesInFairValueResultingFromChangesInValuationInputsOrChangesInAssumptions,"Servicing Asset at Fair Value, Changes in Fair Value Resulting from Changes in Valuation Inputs or Changes in Assumptions",tail/unseen,,agreed
+us-gaap,ShareOfProfitLossOfContinuingOperationsOfAssociatesAndJointVenturesAccountedForUsingEquityMethod,Share of profit (loss) from continuing operations of associates and joint ventures accounted for using equity method,tail/seen,,agreed
+us-gaap,ShortTermDebtRefinancedAmount,"Short-Term Debt, Refinanced, Amount",tail/unseen,,agreed
+us-gaap,StockGrantedDuringPeriodValueSharebasedCompensation,"Shares Granted, Value, Share-Based Payment Arrangement, after Forfeiture",mid/seen,,agreed
+us-gaap,StockIssuedDuringPeriodValueConversionOfUnits,"Stock Issued During Period, Value, Conversion of Units",mid/seen,,agreed
+us-gaap,StockIssuedDuringPeriodValueNewIssues,"Stock Issued During Period, Value, New Issues",head/seen,,agreed
+us-gaap,StockIssuedDuringPeriodValueShareBasedCompensationGross,"Shares Issued, Value, Share-Based Payment Arrangement, before Forfeiture",mid/seen,,agreed
+us-gaap,StockholdersEquity,"Equity, Attributable to Parent",head/seen,AGGREGATE:equity,agreed
+us-gaap,StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest,"Equity, Including Portion Attributable to Noncontrolling Interest",head/seen,AGGREGATE:equity,agreed
+us-gaap,StraightLineRentAdjustments,Straight Line Rent Adjustments,tail/seen,,agreed
+us-gaap,SubordinatedDebt,Subordinated Debt,mid/seen,,adjudicated
+us-gaap,TangibleAssetImpairmentCharges,Tangible Asset Impairment Charges,tail/seen,,agreed
+us-gaap,TradeAndLoansReceivablesHeldForSaleNetNotPartOfDisposalGroup,"Accounts and Financing Receivables, Held-for-Sale, Not Part of Disposal Group, after Valuation Allowance",tail/seen,,agreed
+us-gaap,TradeAndOtherCurrentPayables,Trade and other current payables,mid/seen,liability.current.payables,agreed
+us-gaap,TradingIncomeExpense,Trading income (expense),tail/seen,,agreed
+us-gaap,TreasuryStockRetiredCostMethodAmount,"Treasury Stock, Retired, Cost Method, Amount",mid/seen,,agreed
+us-gaap,UndistributedEarningsLossAvailableToCommonShareholdersDiluted,"Undistributed Earnings (Loss) Available to Common Shareholders, Diluted",tail/seen,,agreed
+us-gaap,UnearnedPremiums,Unearned Premiums,mid/seen,,agreed
+us-gaap,UnrealizedGainLossOnInvestments,Unrealized Gain (Loss) on Investments,mid/seen,,agreed
+us-gaap,UnrealizedGainOnPriceRiskCashFlowDerivativesBeforeTax,"Unrealized Gain on Price Risk Cash Flow Derivatives, before Tax",tail/unseen,,agreed
+us-gaap,UnsecuredDebt,Unsecured Debt,mid/seen,,adjudicated
+us-gaap,WarrantsAndRightsOutstanding,Warrants and Rights Outstanding,mid/seen,,agreed

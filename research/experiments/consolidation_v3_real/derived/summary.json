@@ -1,0 +1,82 @@
+{
+  "experiment": "consolidation_v3_real",
+  "stage1": {
+    "ch_total_bytes": 580015726,
+    "daily_zip_dates_used": [
+      "2026-07-24",
+      "2026-07-25",
+      "2026-07-28",
+      "2026-07-29",
+      "2026-07-30"
+    ],
+    "gleif": {
+      "level1_bulk_downloaded": false,
+      "level1_compressed_bytes": 496893413,
+      "level1_record_count": 3389465,
+      "level1_skip_reason": "3,389,465 records exceeds GLEIF_LEVEL1_MAX_RECORDS (1,000,000); RR's own measured ~10x compressed:uncompressed ratio extrapolates Level 1 to an estimated multi-GB uncompressed CSV.",
+      "level2_bulk_downloaded": true,
+      "level2_compressed_bytes": 24141257,
+      "level2_record_count": 482767
+    }
+  },
+  "stage2": {
+    "accounts_type_distribution": {
+      "(blank)": 77,
+      "abridged": 2693,
+      "filleted": 20304,
+      "full": 15835,
+      "micro-entity": 27806,
+      "small": 10548
+    },
+    "n_filings": 77263,
+    "parse_status_distribution": {
+      "ok": 77118,
+      "partial": 145
+    },
+    "taxonomy_namespace_distribution": {
+      "(blank)": 145,
+      "FRS-101-2023-01-01": 8,
+      "FRS-101-2024-01-01": 1,
+      "FRS-101-2025-01-01": 26,
+      "FRS-102-2022-01-01": 154,
+      "FRS-102-2023-01-01": 22713,
+      "FRS-102-2023-01-01|char-2023-01-01": 1,
+      "FRS-102-2024-01-01": 6777,
+      "FRS-102-2025-01-01": 44731,
+      "FRS-102-2025-01-01|char-2025-01-01": 7,
+      "FRS-102-2026-01-01": 2176,
+      "IFRS-2023-01-01": 418,
+      "IFRS-2024-01-01": 1,
+      "IFRS-2025-01-01": 8,
+      "char-2023-01-01": 3,
+      "char-2024-01-01": 2,
+      "char-2025-01-01": 86,
+      "char-2026-01-01": 6
+    }
+  },
+  "stage3": {
+    "caption_recovery_rate": 1.0,
+    "chosen_company_numbers": [
+      "12521524",
+      "01841889",
+      "02299747",
+      "00698834",
+      "13236228",
+      "02812527",
+      "11178390",
+      "13984507",
+      "02497396",
+      "06160326"
+    ],
+    "n_filings_extracted": 10,
+    "n_line_items": 4685,
+    "n_with_caption": 4685
+  },
+  "stage4": {
+    "distinct_children_of_top_parents": 11397,
+    "distinct_parents_in_rr": 51699,
+    "gb_children_resolved": 1027,
+    "matches_in_downloaded_corpus": 2,
+    "top_parents_selected": 100
+  }
+}

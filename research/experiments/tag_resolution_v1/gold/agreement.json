@@ -1,0 +1,31 @@
+{
+  "class_confusion": {
+    "aggregate|aggregate": 31,
+    "aggregate|out_of_scope": 3,
+    "leaf|leaf": 52,
+    "leaf|out_of_scope": 27,
+    "out_of_scope|aggregate": 3,
+    "out_of_scope|leaf": 1,
+    "out_of_scope|out_of_scope": 203
+  },
+  "experiment": "tag_resolution_v1",
+  "independence_caveat": "Both passes are the same model family under different instructed reasoning orders (tag-first vs node-first). Weaker independence than two unaffiliated human CPAs; correlated errors are possible and kappa overstates true independence. Carry this caveat into any public wording.",
+  "kappa_class": {
+    "expected_agreement": 0.5232,
+    "interpretation": "substantial",
+    "kappa": 0.7772,
+    "n": 320,
+    "n_categories": 3,
+    "observed_agreement": 0.8938
+  },
+  "kappa_exact": {
+    "expected_agreement": 0.4753,
+    "interpretation": "substantial",
+    "kappa": 0.7975,
+    "n": 320,
+    "n_categories": 39,
+    "observed_agreement": 0.8938
+  },
+  "n_disagreements": 34,
+  "n_items": 320
+}

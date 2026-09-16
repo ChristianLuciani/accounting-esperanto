@@ -1,0 +1,553 @@
+{
+  "accuracy_gold_sample": {
+    "holdout": {
+      "by_gold_class": {
+        "aggregate": {
+          "accuracy_pct_unweighted": 35.1,
+          "accuracy_pct_weighted": 54.8,
+          "correct": 0,
+          "correct_escalation": 13,
+          "correct_escalation_facts": 73693,
+          "correct_facts": 0,
+          "false_positive": 24,
+          "false_positive_facts": 60849,
+          "in_core_accuracy_pct_unweighted": 0.0,
+          "in_core_accuracy_pct_weighted": 0.0,
+          "missed": 0,
+          "missed_facts": 0,
+          "n_codes": 37,
+          "n_facts": 134542,
+          "wrong_node": 0,
+          "wrong_node_facts": 0
+        },
+        "leaf": {
+          "accuracy_pct_unweighted": 100.0,
+          "accuracy_pct_weighted": 100.0,
+          "correct": 13,
+          "correct_escalation": 0,
+          "correct_escalation_facts": 0,
+          "correct_facts": 39641,
+          "false_positive": 0,
+          "false_positive_facts": 0,
+          "in_core_accuracy_pct_unweighted": 100.0,
+          "in_core_accuracy_pct_weighted": 100.0,
+          "missed": 0,
+          "missed_facts": 0,
+          "n_codes": 13,
+          "n_facts": 39641,
+          "wrong_node": 0,
+          "wrong_node_facts": 0
+        },
+        "lens": {
+          "accuracy_pct_unweighted": 100.0,
+          "accuracy_pct_weighted": 100.0,
+          "correct": 0,
+          "correct_escalation": 159,
+          "correct_escalation_facts": 201204,
+          "correct_facts": 0,
+          "false_positive": 0,
+          "false_positive_facts": 0,
+          "in_core_accuracy_pct_unweighted": 0.0,
+          "in_core_accuracy_pct_weighted": 0.0,
+          "missed": 0,
+          "missed_facts": 0,
+          "n_codes": 159,
+          "n_facts": 201204,
+          "wrong_node": 0,
+          "wrong_node_facts": 0
+        },
+        "out_of_scope": {
+          "accuracy_pct_unweighted": 66.7,
+          "accuracy_pct_weighted": 53.3,
+          "correct": 0,
+          "correct_escalation": 2,
+          "correct_escalation_facts": 9925,
+          "correct_facts": 0,
+          "false_positive": 1,
+          "false_positive_facts": 8701,
+          "in_core_accuracy_pct_unweighted": 0.0,
+          "in_core_accuracy_pct_weighted": 0.0,
+          "missed": 0,
+          "missed_facts": 0,
+          "n_codes": 3,
+          "n_facts": 18626,
+          "wrong_node": 0,
+          "wrong_node_facts": 0
+        }
+      },
+      "by_stratum": {
+        "seen_in_train": {
+          "accuracy_pct_unweighted": 88.2,
+          "accuracy_pct_weighted": 82.3,
+          "correct": 13,
+          "correct_escalation": 174,
+          "correct_escalation_facts": 284822,
+          "correct_facts": 39641,
+          "false_positive": 25,
+          "false_positive_facts": 69550,
+          "in_core_accuracy_pct_unweighted": 100.0,
+          "in_core_accuracy_pct_weighted": 100.0,
+          "missed": 0,
+          "missed_facts": 0,
+          "n_codes": 212,
+          "n_facts": 394013,
+          "wrong_node": 0,
+          "wrong_node_facts": 0
+        }
+      },
+      "pooled": {
+        "accuracy_pct_unweighted": 88.2,
+        "accuracy_pct_weighted": 82.3,
+        "correct": 13,
+        "correct_escalation": 174,
+        "correct_escalation_facts": 284822,
+        "correct_facts": 39641,
+        "false_positive": 25,
+        "false_positive_facts": 69550,
+        "in_core_accuracy_pct_unweighted": 100.0,
+        "in_core_accuracy_pct_weighted": 100.0,
+        "missed": 0,
+        "missed_facts": 0,
+        "n_codes": 212,
+        "n_facts": 394013,
+        "wrong_node": 0,
+        "wrong_node_facts": 0
+      }
+    },
+    "train": {
+      "by_gold_class": {
+        "aggregate": {
+          "accuracy_pct_unweighted": 35.1,
+          "accuracy_pct_weighted": 55.3,
+          "correct": 0,
+          "correct_escalation": 13,
+          "correct_escalation_facts": 433138,
+          "correct_facts": 0,
+          "false_positive": 24,
+          "false_positive_facts": 350184,
+          "in_core_accuracy_pct_unweighted": 0.0,
+          "in_core_accuracy_pct_weighted": 0.0,
+          "missed": 0,
+          "missed_facts": 0,
+          "n_codes": 37,
+          "n_facts": 783322,
+          "wrong_node": 0,
+          "wrong_node_facts": 0
+        },
+        "leaf": {
+          "accuracy_pct_unweighted": 100.0,
+          "accuracy_pct_weighted": 100.0,
+          "correct": 13,
+          "correct_escalation": 0,
+          "correct_escalation_facts": 0,
+          "correct_facts": 227625,
+          "false_positive": 0,
+          "false_positive_facts": 0,
+          "in_core_accuracy_pct_unweighted": 100.0,
+          "in_core_accuracy_pct_weighted": 100.0,
+          "missed": 0,
+          "missed_facts": 0,
+          "n_codes": 13,
+          "n_facts": 227625,
+          "wrong_node": 0,
+          "wrong_node_facts": 0
+        },
+        "lens": {
+          "accuracy_pct_unweighted": 100.0,
+          "accuracy_pct_weighted": 100.0,
+          "correct": 0,
+          "correct_escalation": 159,
+          "correct_escalation_facts": 1145317,
+          "correct_facts": 0,
+          "false_positive": 0,
+          "false_positive_facts": 0,
+          "in_core_accuracy_pct_unweighted": 0.0,
+          "in_core_accuracy_pct_weighted": 0.0,
+          "missed": 0,
+          "missed_facts": 0,
+          "n_codes": 159,
+          "n_facts": 1145317,
+          "wrong_node": 0,
+          "wrong_node_facts": 0
+        },
+        "out_of_scope": {
+          "accuracy_pct_unweighted": 66.7,
+          "accuracy_pct_weighted": 54.1,
+          "correct": 0,
+          "correct_escalation": 2,
+          "correct_escalation_facts": 57699,
+          "correct_facts": 0,
+          "false_positive": 1,
+          "false_positive_facts": 48866,
+          "in_core_accuracy_pct_unweighted": 0.0,
+          "in_core_accuracy_pct_weighted": 0.0,
+          "missed": 0,
+          "missed_facts": 0,
+          "n_codes": 3,
+          "n_facts": 106565,
+          "wrong_node": 0,
+          "wrong_node_facts": 0
+        }
+      },
+      "by_stratum": {
+        "seen_in_train": {
+          "accuracy_pct_unweighted": 88.2,
+          "accuracy_pct_weighted": 82.4,
+          "correct": 13,
+          "correct_escalation": 174,
+          "correct_escalation_facts": 1636154,
+          "correct_facts": 227625,
+          "false_positive": 25,
+          "false_positive_facts": 399050,
+          "in_core_accuracy_pct_unweighted": 100.0,
+          "in_core_accuracy_pct_weighted": 100.0,
+          "missed": 0,
+          "missed_facts": 0,
+          "n_codes": 212,
+          "n_facts": 2262829,
+          "wrong_node": 0,
+          "wrong_node_facts": 0
+        }
+      },
+      "pooled": {
+        "accuracy_pct_unweighted": 88.2,
+        "accuracy_pct_weighted": 82.4,
+        "correct": 13,
+        "correct_escalation": 174,
+        "correct_escalation_facts": 1636154,
+        "correct_facts": 227625,
+        "false_positive": 25,
+        "false_positive_facts": 399050,
+        "in_core_accuracy_pct_unweighted": 100.0,
+        "in_core_accuracy_pct_weighted": 100.0,
+        "missed": 0,
+        "missed_facts": 0,
+        "n_codes": 212,
+        "n_facts": 2262829,
+        "wrong_node": 0,
+        "wrong_node_facts": 0
+      }
+    }
+  },
+  "baseline_naive_label_match": {
+    "holdout": {
+      "accuracy_pct_unweighted": 1.4,
+      "accuracy_pct_weighted": 4.7,
+      "correct": 3,
+      "correct_facts": 18626,
+      "n_codes": 212,
+      "n_facts": 394013
+    },
+    "train": {
+      "accuracy_pct_unweighted": 1.4,
+      "accuracy_pct_weighted": 4.7,
+      "correct": 3,
+      "correct_facts": 106565,
+      "n_codes": 212,
+      "n_facts": 2262829
+    }
+  },
+  "coverage": {
+    "all": {
+      "holdout": {
+        "by_source": {
+          "eurostat_cofog": {
+            "escalated_codes": 80,
+            "escalated_facts": 185363,
+            "n_codes": 80,
+            "n_facts": 185363,
+            "resolved_pct_unweighted": 0.0,
+            "resolved_pct_weighted": 0.0,
+            "tier1_codes": 0,
+            "tier1_facts": 0,
+            "tier2_codes": 0,
+            "tier2_facts": 0
+          },
+          "eurostat_na_item": {
+            "escalated_codes": 9,
+            "escalated_facts": 79853,
+            "n_codes": 32,
+            "n_facts": 185363,
+            "resolved_pct_unweighted": 71.9,
+            "resolved_pct_weighted": 56.9,
+            "tier1_codes": 9,
+            "tier1_facts": 82502,
+            "tier2_codes": 14,
+            "tier2_facts": 23008
+          },
+          "imf_gfs": {
+            "escalated_codes": 85,
+            "escalated_facts": 19606,
+            "n_codes": 100,
+            "n_facts": 23287,
+            "resolved_pct_unweighted": 15.0,
+            "resolved_pct_weighted": 15.8,
+            "tier1_codes": 10,
+            "tier1_facts": 3132,
+            "tier2_codes": 5,
+            "tier2_facts": 549
+          }
+        },
+        "by_stratum": {
+          "seen_in_train": {
+            "escalated_codes": 174,
+            "escalated_facts": 284822,
+            "n_codes": 212,
+            "n_facts": 394013,
+            "resolved_pct_unweighted": 17.9,
+            "resolved_pct_weighted": 27.7,
+            "tier1_codes": 19,
+            "tier1_facts": 85634,
+            "tier2_codes": 19,
+            "tier2_facts": 23557
+          }
+        },
+        "pooled": {
+          "escalated_codes": 174,
+          "escalated_facts": 284822,
+          "n_codes": 212,
+          "n_facts": 394013,
+          "resolved_pct_unweighted": 17.9,
+          "resolved_pct_weighted": 27.7,
+          "tier1_codes": 19,
+          "tier1_facts": 85634,
+          "tier2_codes": 19,
+          "tier2_facts": 23557
+        }
+      },
+      "train": {
+        "by_source": {
+          "eurostat_cofog": {
+            "escalated_codes": 80,
+            "escalated_facts": 1074641,
+            "n_codes": 80,
+            "n_facts": 1074641,
+            "resolved_pct_unweighted": 0.0,
+            "resolved_pct_weighted": 0.0,
+            "tier1_codes": 0,
+            "tier1_facts": 0,
+            "tier2_codes": 0,
+            "tier2_facts": 0
+          },
+          "eurostat_na_item": {
+            "escalated_codes": 9,
+            "escalated_facts": 468138,
+            "n_codes": 32,
+            "n_facts": 1074641,
+            "resolved_pct_unweighted": 71.9,
+            "resolved_pct_weighted": 56.4,
+            "tier1_codes": 9,
+            "tier1_facts": 476050,
+            "tier2_codes": 14,
+            "tier2_facts": 130453
+          },
+          "imf_gfs": {
+            "escalated_codes": 85,
+            "escalated_facts": 93375,
+            "n_codes": 100,
+            "n_facts": 113547,
+            "resolved_pct_unweighted": 15.0,
+            "resolved_pct_weighted": 17.8,
+            "tier1_codes": 10,
+            "tier1_facts": 17313,
+            "tier2_codes": 5,
+            "tier2_facts": 2859
+          }
+        },
+        "by_stratum": {
+          "seen_in_train": {
+            "escalated_codes": 174,
+            "escalated_facts": 1636154,
+            "n_codes": 212,
+            "n_facts": 2262829,
+            "resolved_pct_unweighted": 17.9,
+            "resolved_pct_weighted": 27.7,
+            "tier1_codes": 19,
+            "tier1_facts": 493363,
+            "tier2_codes": 19,
+            "tier2_facts": 133312
+          }
+        },
+        "pooled": {
+          "escalated_codes": 174,
+          "escalated_facts": 1636154,
+          "n_codes": 212,
+          "n_facts": 2262829,
+          "resolved_pct_unweighted": 17.9,
+          "resolved_pct_weighted": 27.7,
+          "tier1_codes": 19,
+          "tier1_facts": 493363,
+          "tier2_codes": 19,
+          "tier2_facts": 133312
+        }
+      }
+    },
+    "monetary": {
+      "holdout": {
+        "by_source": {
+          "eurostat_cofog": {
+            "escalated_codes": 80,
+            "escalated_facts": 185363,
+            "n_codes": 80,
+            "n_facts": 185363,
+            "resolved_pct_unweighted": 0.0,
+            "resolved_pct_weighted": 0.0,
+            "tier1_codes": 0,
+            "tier1_facts": 0,
+            "tier2_codes": 0,
+            "tier2_facts": 0
+          },
+          "eurostat_na_item": {
+            "escalated_codes": 9,
+            "escalated_facts": 79853,
+            "n_codes": 32,
+            "n_facts": 185363,
+            "resolved_pct_unweighted": 71.9,
+            "resolved_pct_weighted": 56.9,
+            "tier1_codes": 9,
+            "tier1_facts": 82502,
+            "tier2_codes": 14,
+            "tier2_facts": 23008
+          },
+          "imf_gfs": {
+            "escalated_codes": 85,
+            "escalated_facts": 19606,
+            "n_codes": 100,
+            "n_facts": 23287,
+            "resolved_pct_unweighted": 15.0,
+            "resolved_pct_weighted": 15.8,
+            "tier1_codes": 10,
+            "tier1_facts": 3132,
+            "tier2_codes": 5,
+            "tier2_facts": 549
+          }
+        },
+        "by_stratum": {
+          "seen_in_train": {
+            "escalated_codes": 174,
+            "escalated_facts": 284822,
+            "n_codes": 212,
+            "n_facts": 394013,
+            "resolved_pct_unweighted": 17.9,
+            "resolved_pct_weighted": 27.7,
+            "tier1_codes": 19,
+            "tier1_facts": 85634,
+            "tier2_codes": 19,
+            "tier2_facts": 23557
+          }
+        },
+        "pooled": {
+          "escalated_codes": 174,
+          "escalated_facts": 284822,
+          "n_codes": 212,
+          "n_facts": 394013,
+          "resolved_pct_unweighted": 17.9,
+          "resolved_pct_weighted": 27.7,
+          "tier1_codes": 19,
+          "tier1_facts": 85634,
+          "tier2_codes": 19,
+          "tier2_facts": 23557
+        }
+      },
+      "train": {
+        "by_source": {
+          "eurostat_cofog": {
+            "escalated_codes": 80,
+            "escalated_facts": 1074641,
+            "n_codes": 80,
+            "n_facts": 1074641,
+            "resolved_pct_unweighted": 0.0,
+            "resolved_pct_weighted": 0.0,
+            "tier1_codes": 0,
+            "tier1_facts": 0,
+            "tier2_codes": 0,
+            "tier2_facts": 0
+          },
+          "eurostat_na_item": {
+            "escalated_codes": 9,
+            "escalated_facts": 468138,
+            "n_codes": 32,
+            "n_facts": 1074641,
+            "resolved_pct_unweighted": 71.9,
+            "resolved_pct_weighted": 56.4,
+            "tier1_codes": 9,
+            "tier1_facts": 476050,
+            "tier2_codes": 14,
+            "tier2_facts": 130453
+          },
+          "imf_gfs": {
+            "escalated_codes": 85,
+            "escalated_facts": 93375,
+            "n_codes": 100,
+            "n_facts": 113547,
+            "resolved_pct_unweighted": 15.0,
+            "resolved_pct_weighted": 17.8,
+            "tier1_codes": 10,
+            "tier1_facts": 17313,
+            "tier2_codes": 5,
+            "tier2_facts": 2859
+          }
+        },
+        "by_stratum": {
+          "seen_in_train": {
+            "escalated_codes": 174,
+            "escalated_facts": 1636154,
+            "n_codes": 212,
+            "n_facts": 2262829,
+            "resolved_pct_unweighted": 17.9,
+            "resolved_pct_weighted": 27.7,
+            "tier1_codes": 19,
+            "tier1_facts": 493363,
+            "tier2_codes": 19,
+            "tier2_facts": 133312
+          }
+        },
+        "pooled": {
+          "escalated_codes": 174,
+          "escalated_facts": 1636154,
+          "n_codes": 212,
+          "n_facts": 2262829,
+          "resolved_pct_unweighted": 17.9,
+          "resolved_pct_weighted": 27.7,
+          "tier1_codes": 19,
+          "tier1_facts": 493363,
+          "tier2_codes": 19,
+          "tier2_facts": 133312
+        }
+      }
+    }
+  },
+  "crosswalk_declared_out_of_core": {
+    "gfs": 28
+  },
+  "crosswalk_sizes": {
+    "gfs": 19
+  },
+  "experiment": "public_sector_gfs_v1",
+  "gold_labels_loaded": 212,
+  "h2_extensions": {},
+  "ifrs_full_ambiguity_note": null,
+  "ifrs_full_ambiguous_tags": {},
+  "inventory": {
+    "by_window": {
+      "holdout": {
+        "n_codes": 212,
+        "n_facts": 394013
+      },
+      "train": {
+        "n_codes": 212,
+        "n_facts": 2262829
+      }
+    },
+    "n_rows": 424
+  },
+  "provenance": {
+    "corpus": "real public filings / official statistics; see manifest.json",
+    "synthetic_comparison": "NOT comparable to the 97.3% synthetic figure from scripts/mass_consolidation_v2.py -- different corpus, different question"
+  },
+  "public_sector_extension_nodes_loaded": 19,
+  "public_sector_extension_status": "scoring-local augmentation only; NOT wired into core/harness (plan \u00a714). Public-sector coverage stays 'drafted, not yet empirically validated' in all public wording until H5 clears its threshold.",
+  "taxonomies": [
+    "gfs"
+  ]
+}

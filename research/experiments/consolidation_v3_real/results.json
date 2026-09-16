@@ -1,0 +1,309 @@
+{
+  "design": "case study, n=10 real UK filings -- NOT a statistical benchmark",
+  "experiment": "consolidation_v3_real",
+  "h3_caption_resolution": {
+    "all_tagged_facts": {
+      "n_distinct_captions": 610,
+      "n_distinct_captions_resolved": 114,
+      "n_line_items": 4685,
+      "n_resolved": 817,
+      "resolved_pct_by_distinct_caption": 18.7,
+      "resolved_pct_by_line": 17.4
+    },
+    "balances_incl_subtotals": {
+      "n_distinct_captions": 483,
+      "n_distinct_captions_resolved": 98,
+      "n_line_items": 3036,
+      "n_resolved": 738,
+      "resolved_pct_by_distinct_caption": 20.3,
+      "resolved_pct_by_line": 24.3
+    },
+    "leaf_line_items_only": {
+      "n_distinct_captions": 433,
+      "n_distinct_captions_resolved": 87,
+      "n_line_items": 2573,
+      "n_resolved": 583,
+      "resolved_pct_by_distinct_caption": 20.1,
+      "resolved_pct_by_line": 22.7
+    },
+    "population_mix": {
+      "balance": 3036,
+      "movement": 624,
+      "period_marker": 1025
+    },
+    "resolved_examples": [
+      {
+        "caption": "(Increase)/Decrease in trade and other debtors",
+        "resolved_id": "asset.current.receivables",
+        "rule": "tier2:asset.current.receivables:debtors"
+      },
+      {
+        "caption": "(Increase)/decrease in trade debtors",
+        "resolved_id": "asset.current.receivables",
+        "rule": "tier2:asset.current.receivables:debtors"
+      },
+      {
+        "caption": "Accelerated capital allowances",
+        "resolved_id": "equity.capital",
+        "rule": "tier2:equity.capital:capital"
+      },
+      {
+        "caption": "Accelerated tax depreciation",
+        "resolved_id": "expense.depreciation",
+        "rule": "tier2:expense.depreciation:depreciation"
+      },
+      {
+        "caption": "Acquisition of intangible assets",
+        "resolved_id": "asset.noncurrent.intangibles",
+        "rule": "tier2:asset.noncurrent.intangibles:intangible"
+      },
+      {
+        "caption": "Acquisition of investments in subsidiary, net of cash acquired",
+        "resolved_id": "asset.current.cash",
+        "rule": "tier2:asset.current.cash:cash"
+      },
+      {
+        "caption": "Administrative expenses",
+        "resolved_id": "expense.admin",
+        "rule": "tier2:expense.admin:administrative"
+      },
+      {
+        "caption": "Bank borrowings",
+        "resolved_id": "asset.current.bank",
+        "rule": "tier2:asset.current.bank:bank"
+      },
+      {
+        "caption": "Bank loans",
+        "resolved_id": "asset.current.bank",
+        "rule": "tier2:asset.current.bank:bank"
+      },
+      {
+        "caption": "Bank loans and overdrafts",
+        "resolved_id": "asset.current.bank",
+        "rule": "tier2:asset.current.bank:bank"
+      },
+      {
+        "caption": "Bank overdrafts",
+        "resolved_id": "asset.current.bank",
+        "rule": "tier2:asset.current.bank:bank"
+      },
+      {
+        "caption": "Cash (absorbed by)/generated from operations",
+        "resolved_id": "asset.current.cash",
+        "rule": "tier2:asset.current.cash:cash"
+      },
+      {
+        "caption": "Cash and cash equivalents",
+        "resolved_id": "asset.current.cash",
+        "rule": "tier2:asset.current.cash:cash"
+      },
+      {
+        "caption": "Cash and cash equivalents at 1 December",
+        "resolved_id": "asset.current.cash",
+        "rule": "tier2:asset.current.cash:cash"
+      },
+      {
+        "caption": "Cash and cash equivalents at 1 January",
+        "resolved_id": "asset.current.cash",
+        "rule": "tier2:asset.current.cash:cash"
+      },
+      {
+        "caption": "Cash and cash equivalents at 1 November 2024",
+        "resolved_id": "asset.current.cash",
+        "rule": "tier2:asset.current.cash:cash"
+      },
+      {
+        "caption": "Cash and cash equivalents at 1st January 2025",
+        "resolved_id": "asset.current.cash",
+        "rule": "tier2:asset.current.cash:cash"
+      },
+      {
+        "caption": "Cash and cash equivalents at 31st December 2025",
+        "resolved_id": "asset.current.cash",
+        "rule": "tier2:asset.current.cash:cash"
+      },
+      {
+        "caption": "Cash and cash equivalents at beginning of year",
+        "resolved_id": "asset.current.cash",
+        "rule": "tier2:asset.current.cash:cash"
+      },
+      {
+        "caption": "Cash and cash equivalents at end of year",
+        "resolved_id": "asset.current.cash",
+        "rule": "tier2:asset.current.cash:cash"
+      },
+      {
+        "caption": "Cash at bank",
+        "resolved_id": "asset.current.cash",
+        "rule": "tier2:asset.current.cash:cash"
+      },
+      {
+        "caption": "Cash at bank and in hand",
+        "resolved_id": "asset.current.cash",
+        "rule": "tier2:asset.current.cash:cash"
+      },
+      {
+        "caption": "Cash from operations",
+        "resolved_id": "asset.current.cash",
+        "rule": "tier2:asset.current.cash:cash"
+      },
+      {
+        "caption": "Cash generated from operations",
+        "resolved_id": "asset.current.cash",
+        "rule": "tier2:asset.current.cash:cash"
+      },
+      {
+        "caption": "Cash on hand",
+        "resolved_id": "asset.current.cash",
+        "rule": "tier2:asset.current.cash:cash"
+      }
+    ],
+    "unresolved_top_captions": [
+      {
+        "caption": "Profit for the year",
+        "n": 64
+      },
+      {
+        "caption": "Dividends",
+        "n": 40
+      },
+      {
+        "caption": "%",
+        "n": 33
+      },
+      {
+        "caption": "Prepayments",
+        "n": 32
+      },
+      {
+        "caption": "Trade creditors",
+        "n": 32
+      },
+      {
+        "caption": "Indirect",
+        "n": 30
+      },
+      {
+        "caption": "Deferred income",
+        "n": 29
+      },
+      {
+        "caption": "Tangible assets",
+        "n": 28
+      },
+      {
+        "caption": "Wages and salaries",
+        "n": 28
+      },
+      {
+        "caption": "Other creditors",
+        "n": 27
+      },
+      {
+        "caption": "Investments",
+        "n": 22
+      },
+      {
+        "caption": "Investments in subsidiaries",
+        "n": 22
+      },
+      {
+        "caption": "Pension costs",
+        "n": 22
+      },
+      {
+        "caption": "Ordinary",
+        "n": 21
+      },
+      {
+        "caption": ": Amounts falling due within one year",
+        "n": 20
+      },
+      {
+        "caption": "Accruals and deferred income",
+        "n": 20
+      },
+      {
+        "caption": "Profit before tax",
+        "n": 20
+      },
+      {
+        "caption": "Social security and other taxes",
+        "n": 20
+      },
+      {
+        "caption": "Later than one year and not later than five years",
+        "n": 19
+      },
+      {
+        "caption": "Interest received",
+        "n": 18
+      },
+      {
+        "caption": "Pension costs, defined contribution scheme",
+        "n": 18
+      },
+      {
+        "caption": "Remuneration",
+        "n": 18
+      },
+      {
+        "caption": "Other borrowings",
+        "n": 17
+      },
+      {
+        "caption": "Other operating income",
+        "n": 17
+      },
+      {
+        "caption": "Total comprehensive income",
+        "n": 17
+      },
+      {
+        "caption": "Accrued expenses",
+        "n": 16
+      },
+      {
+        "caption": "England",
+        "n": 16
+      },
+      {
+        "caption": "Finance costs",
+        "n": 16
+      },
+      {
+        "caption": "Income tax expense",
+        "n": 16
+      },
+      {
+        "caption": "Other employee expense",
+        "n": 16
+      }
+    ]
+  },
+  "h4_subtotal_reconciliation": {
+    "by_identity": {
+      "balance_sheet_equation": {
+        "n": 30,
+        "ok": 30,
+        "reconcile_pct": 100.0
+      },
+      "intangibles_net_of_amortisation": {
+        "n": 28,
+        "ok": 28,
+        "reconcile_pct": 100.0
+      },
+      "ppe_net_of_depreciation": {
+        "n": 86,
+        "ok": 86,
+        "reconcile_pct": 100.0
+      }
+    },
+    "failures": [],
+    "n_checks": 144,
+    "n_companies": 10,
+    "n_reconciled": 144,
+    "reconcile_pct": 100.0
+  },
+  "provenance": "UK Companies House free bulk accounts data (5 daily ZIPs, 77k filings inventoried, 10 extracted). No explicit reuse license published, so raw filings are hash-manifested and never redistributed."
+}

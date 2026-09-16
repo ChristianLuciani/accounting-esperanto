@@ -1,0 +1,3 @@
+window,n_quarters,n_filings,n_facts,n_distinct_tags,n_distinct_base_tags,n_standard_tags,n_custom_tags,pct_facts_custom,form_10K,form_10Q,form_20F,form_40F
+train,6,36112,3681593,400172,121756,13893,386279,10.7415,10578,23431,1856,259
+holdout,3,17143,1758724,196405,83263,8772,187633,10.94,4997,11499,549,132

@@ -1,0 +1,1053 @@
+# Kontablo crosswalk: real us-gaap face-statement tags -> Kontablo core nodes
+#
+# WHAT THIS IS
+#   A curated crosswalk from the us-gaap XBRL tags that real SEC filers actually
+#   put on their face statements, to the 30-node Kontablo Level-3 core. Built for
+#   Tier A1 / hypotheses H1 and H2 of research/real_data_validation_plan.md.
+#
+# BUILT FROM THE TRAIN WINDOW ONLY
+#   Tags, labels and frequencies come from EDGAR 2024q1-2025q2
+#   (research/experiments/tag_resolution_v1/derived/edgar_tags_train.csv.gz).
+#   The holdout window (2025q3-2026q1) was never opened while authoring this
+#   file. That is what makes the holdout score a real test rather than a
+#   restatement of the training data.
+#
+# EVERY NON-MAPPING IS TYPED, NONE IS AN OMISSION
+#   aggregate     a subtotal the ontology computes by rolling up leaves (Assets,
+#                 GrossProfit, NetCashProvidedByUsedInOperatingActivities).
+#                 Kontablo represents these as derived values, not as nodes.
+#   out_of_scope  no Kontablo core node at any level -- period MOVEMENTS
+#                 (IncreaseDecreaseIn*, ProceedsFrom*), residual "Other*"
+#                 buckets, contra-accounts, and genuine gaps in the 30-node core
+#                 (research and development, selling and marketing, personnel
+#                 costs, non-controlling interest). The gaps are recorded rather
+#                 than force-fitted: a wrong mapping is worse than an honest
+#                 refusal, and these gaps are a finding in their own right.
+#
+# SELECTION RULE
+#   Top 130 monetary standard face-statement tags by presentation frequency in the
+#   train window (1,614,952 facts). Frequency rank is an objective,
+#   pre-stated criterion, so the tag set cannot be accused of being chosen to
+#   flatter the score.
+
+metadata:
+  source_taxonomy: "us-gaap"
+  built_from_window: "train (EDGAR 2024q1-2025q2)"
+  built_from: "research/experiments/tag_resolution_v1/derived/edgar_tags_train.csv.gz"
+  selection_rule: "top 130 monetary standard face-statement tags by presentation frequency"
+  holdout_seen: false
+  n_tags: 130
+  n_leaf: 41
+  n_aggregate: 23
+  n_out_of_scope: 66
+  kontablo_version: "0.3.0"
+  last_updated: "2026-07-30"
+
+mappings:
+  "ProfitLoss":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "income"
+    tlabel: "Profit (loss)"
+    crdr: "C"
+    stmt: "IS"
+
+  "Assets":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "asset"
+    tlabel: "Assets"
+    crdr: "D"
+    stmt: "BS"
+
+  "NetCashProvidedByUsedInOperatingActivities":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "cash_flow"
+    tlabel: "Net Cash Provided by (Used in) Operating Activities"
+    crdr: ""
+    stmt: "CF"
+
+  "LiabilitiesAndStockholdersEquity":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "liability"
+    tlabel: "Liabilities and Equity"
+    crdr: "C"
+    stmt: "BS"
+
+  "NetCashProvidedByUsedInFinancingActivities":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "cash_flow"
+    tlabel: "Net Cash Provided by (Used in) Financing Activities"
+    crdr: "D"
+    stmt: "CF"
+
+  "RetainedEarningsAccumulatedDeficit":
+    kontablo_id: "equity.retained"
+    confidence: "high"
+    tlabel: "Retained Earnings (Accumulated Deficit)"
+    crdr: "C"
+    stmt: "BS"
+
+  "CashAndCashEquivalentsAtCarryingValue":
+    kontablo_id: "asset.current.cash"
+    confidence: "high"
+    tlabel: "Cash and Cash Equivalents, at Carrying Value"
+    crdr: "D"
+    stmt: "BS"
+
+  "Liabilities":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "liability"
+    tlabel: "Liabilities"
+    crdr: "C"
+    stmt: "BS"
+
+  "CommonStockValue":
+    kontablo_id: "equity.capital"
+    confidence: "high"
+    tlabel: "Common Stock, Value, Issued"
+    crdr: "C"
+    stmt: "BS"
+
+  "NetCashProvidedByUsedInInvestingActivities":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "cash_flow"
+    tlabel: "Net Cash Provided by (Used in) Investing Activities"
+    crdr: "D"
+    stmt: "CF"
+
+  "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "equity"
+    tlabel: "Stockholders' Equity, Including Portion Attributable to Noncontrolling Interest"
+    crdr: "C"
+    stmt: "EQ"
+
+  "AssetsCurrent":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "asset.current"
+    tlabel: "Assets, Current"
+    crdr: "D"
+    stmt: "BS"
+
+  "LiabilitiesCurrent":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "liability.current"
+    tlabel: "Liabilities, Current"
+    crdr: "C"
+    stmt: "BS"
+
+  "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "cash_flow"
+    tlabel: "Cash, Cash Equivalents, Restricted Cash, and Restricted Cash Equivalents, Period Increase (Decrease), Including Exchange Rate Effect"
+    crdr: "D"
+    stmt: "CF"
+
+  "OperatingIncomeLoss":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "income"
+    tlabel: "Operating Income (Loss)"
+    crdr: "C"
+    stmt: "IS"
+
+  "IncomeTaxExpenseBenefit":
+    kontablo_id: "expense.tax"
+    confidence: "high"
+    tlabel: "Income Tax Expense (Benefit)"
+    crdr: "D"
+    stmt: "IS"
+
+  "IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "income"
+    tlabel: "Income (Loss) from Continuing Operations before Income Taxes, Noncontrolling Interest"
+    crdr: "C"
+    stmt: "IS"
+
+  "PropertyPlantAndEquipmentNet":
+    kontablo_id: "asset.noncurrent.ppe"
+    confidence: "high"
+    tlabel: "Property, Plant and Equipment, Net"
+    crdr: "D"
+    stmt: "BS"
+
+  "ComprehensiveIncomeNetOfTax":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "income"
+    tlabel: "Comprehensive Income (Loss), Net of Tax, Attributable to Parent"
+    crdr: "C"
+    stmt: "CI"
+
+  "AccumulatedOtherComprehensiveIncomeLossNetOfTax":
+    kontablo_id: "equity.reserves"
+    confidence: "high"
+    tlabel: "Accumulated Other Comprehensive Income (Loss), Net of Tax"
+    crdr: "C"
+    stmt: "BS"
+
+  "AccountsPayableCurrent":
+    kontablo_id: "liability.current.payables"
+    confidence: "high"
+    tlabel: "Accounts Payable, Current"
+    crdr: "C"
+    stmt: "BS"
+
+  "AdditionalPaidInCapital":
+    kontablo_id: "equity.capital"
+    confidence: "high"
+    tlabel: "Additional Paid in Capital"
+    crdr: "C"
+    stmt: "BS"
+
+  "OperatingLeaseRightOfUseAsset":
+    kontablo_id: "asset.noncurrent.rou_assets"
+    confidence: "high"
+    tlabel: "Operating Lease, Right-of-Use Asset"
+    crdr: "D"
+    stmt: "BS"
+
+  "InterestPaidNet":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Supplemental cash-flow disclosure, not an account."
+    tlabel: "Interest Paid, Excluding Capitalized Interest, Operating Activities"
+    crdr: "C"
+    stmt: "CF"
+
+  "PreferredStockValue":
+    kontablo_id: "equity.capital"
+    confidence: "medium"
+    note: "Preferred stock is share capital; the core does not separate preferred from common."
+    tlabel: "Preferred Stock, Value, Issued"
+    crdr: "C"
+    stmt: "BS"
+
+  "OtherAssetsNoncurrent":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Residual bucket, not a specific account."
+    tlabel: "Other Assets, Noncurrent"
+    crdr: "D"
+    stmt: "BS"
+
+  "AccountsReceivableNetCurrent":
+    kontablo_id: "asset.current.receivables"
+    confidence: "high"
+    tlabel: "Accounts Receivable, after Allowance for Credit Loss, Current"
+    crdr: "D"
+    stmt: "BS"
+
+  "GeneralAndAdministrativeExpense":
+    kontablo_id: "expense.admin"
+    confidence: "high"
+    tlabel: "General and administrative expense"
+    crdr: "D"
+    stmt: "IS"
+
+  "AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "APIC, Share-Based Payment Arrangement, Increase for Cost Recognition"
+    crdr: "C"
+    stmt: "EQ"
+
+  "IncreaseDecreaseInAccountsReceivable":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Increase (Decrease) in Accounts Receivable"
+    crdr: "C"
+    stmt: "CF"
+
+  "OperatingLeaseLiabilityNoncurrent":
+    kontablo_id: "liability.noncurrent.lease"
+    confidence: "high"
+    tlabel: "Operating Lease, Liability, Noncurrent"
+    crdr: "C"
+    stmt: "BS"
+
+  "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Cash, Cash Equivalents, Restricted Cash, and Restricted Cash Equivalents, Including Disposal Group and Discontinued Operations"
+    crdr: "D"
+    stmt: "CF"
+
+  "OperatingExpenses":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "expense"
+    tlabel: "Operating Expenses"
+    crdr: "D"
+    stmt: "IS"
+
+  "Goodwill":
+    kontablo_id: "asset.noncurrent.goodwill"
+    confidence: "high"
+    tlabel: "Goodwill"
+    crdr: "D"
+    stmt: "BS"
+
+  "DepreciationDepletionAndAmortization":
+    kontablo_id: "expense.depreciation"
+    confidence: "medium"
+    note: "Includes depletion, which the core does not model separately."
+    tlabel: "Depreciation, Depletion and Amortization"
+    crdr: "D"
+    stmt: "CF"
+
+  "RevenueFromContractWithCustomerExcludingAssessedTax":
+    kontablo_id: "revenue.operating"
+    confidence: "high"
+    tlabel: "Revenue from Contract with Customer, Excluding Assessed Tax"
+    crdr: "C"
+    stmt: "IS"
+
+  "PrepaidExpenseAndOtherAssetsCurrent":
+    kontablo_id: "asset.current.prepaid"
+    confidence: "medium"
+    note: "Bundles prepaid expenses with other current assets; partial mapping."
+    tlabel: "Prepaid Expense and Other Assets, Current"
+    crdr: "D"
+    stmt: "BS"
+
+  "OtherLiabilitiesNoncurrent":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Residual bucket, not a specific account."
+    tlabel: "Other Liabilities, Noncurrent"
+    crdr: "C"
+    stmt: "BS"
+
+  "IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Increase (Decrease) in Prepaid Expense and Other Assets"
+    crdr: "C"
+    stmt: "CF"
+
+  "OperatingLeaseLiabilityCurrent":
+    kontablo_id: "liability.noncurrent.lease"
+    confidence: "medium"
+    note: "The core has a single lease-liability node and does not split current/non-current."
+    tlabel: "Operating Lease, Liability, Current"
+    crdr: "C"
+    stmt: "BS"
+
+  "OtherComprehensiveIncomeLossNetOfTax":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Other Comprehensive Income (Loss), Net of Tax"
+    crdr: "C"
+    stmt: "EQ"
+
+  "InventoryNet":
+    kontablo_id: "asset.current.inventory"
+    confidence: "high"
+    tlabel: "Inventory, Net"
+    crdr: "D"
+    stmt: "BS"
+
+  "GrossProfit":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "income"
+    tlabel: "Gross profit"
+    crdr: "C"
+    stmt: "IS"
+
+  "IncreaseDecreaseInInventories":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Increase (Decrease) in Inventories"
+    crdr: "C"
+    stmt: "CF"
+
+  "IncreaseDecreaseInAccountsPayable":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Increase (Decrease) in Accounts Payable"
+    crdr: "D"
+    stmt: "CF"
+
+  "NonoperatingIncomeExpense":
+    kontablo_id: "revenue.other"
+    confidence: "low"
+    note: "Net non-operating result; may be a net expense, in which case the credit-nature node is a poor fit."
+    tlabel: "Nonoperating Income (Expense)"
+    crdr: "C"
+    stmt: "IS"
+
+  "AccruedLiabilitiesCurrent":
+    kontablo_id: "liability.current.accrued"
+    confidence: "high"
+    tlabel: "Accrued Liabilities, Current"
+    crdr: "C"
+    stmt: "BS"
+
+  "IntangibleAssetsNetExcludingGoodwill":
+    kontablo_id: "asset.noncurrent.intangibles"
+    confidence: "high"
+    tlabel: "Intangible Assets, Net (Excluding Goodwill)"
+    crdr: "D"
+    stmt: "BS"
+
+  "ResearchAndDevelopmentExpense":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "No R&D expense node in the 30-node core. A real gap."
+    tlabel: "Research and development expense"
+    crdr: "D"
+    stmt: "IS"
+
+  "Revenues":
+    kontablo_id: "revenue.operating"
+    confidence: "high"
+    tlabel: "Revenues"
+    crdr: "C"
+    stmt: "IS"
+
+  "AdditionalPaidInCapitalCommonStock":
+    kontablo_id: "equity.capital"
+    confidence: "high"
+    tlabel: "Additional Paid in Capital, Common Stock"
+    crdr: "C"
+    stmt: "BS"
+
+  "SellingGeneralAndAdministrativeExpense":
+    kontablo_id: "expense.admin"
+    confidence: "low"
+    note: "Bundles selling costs into G&A; the core has no selling-expense node."
+    tlabel: "Selling, general and administrative expense"
+    crdr: "D"
+    stmt: "IS"
+
+  "InterestExpense":
+    kontablo_id: "expense.interest"
+    confidence: "high"
+    tlabel: "Interest expense"
+    crdr: "D"
+    stmt: "IS"
+
+  "CostOfGoodsAndServicesSold":
+    kontablo_id: "expense.cogs"
+    confidence: "high"
+    tlabel: "Cost of Goods and Services Sold"
+    crdr: "D"
+    stmt: "IS"
+
+  "StockIssuedDuringPeriodValueNewIssues":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Stock Issued During Period, Value, New Issues"
+    crdr: "C"
+    stmt: "EQ"
+
+  "DeferredIncomeTaxExpenseBenefit":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Deferred-tax movement in the cash-flow reconciliation."
+    tlabel: "Deferred Income Tax Expense (Benefit)"
+    crdr: "D"
+    stmt: "CF"
+
+  "OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Other Comprehensive Income (Loss), Net of Tax, Portion Attributable to Parent"
+    crdr: "C"
+    stmt: "EQ"
+
+  "OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Other Comprehensive Income (Loss), Foreign Currency Transaction and Translation Adjustment, Net of Tax"
+    crdr: "C"
+    stmt: "CI"
+
+  "IncreaseDecreaseInAccountsPayableAndAccruedLiabilities":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Increase (Decrease) in Accounts Payable and Accrued Liabilities"
+    crdr: "D"
+    stmt: "CF"
+
+  "DepreciationAndAmortization":
+    kontablo_id: "expense.depreciation"
+    confidence: "high"
+    tlabel: "Depreciation, Depletion and Amortization, Nonproduction"
+    crdr: "D"
+    stmt: "CF"
+
+  "DeferredIncomeTaxLiabilitiesNet":
+    kontablo_id: "liability.noncurrent.deferred_tax"
+    confidence: "high"
+    tlabel: "Deferred Income Tax Liabilities, Net"
+    crdr: "C"
+    stmt: "BS"
+
+  "NetIncomeLossAttributableToNoncontrollingInterest":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "income"
+    tlabel: "Net Income (Loss) Attributable to Noncontrolling Interest"
+    crdr: "D"
+    stmt: "IS"
+
+  "EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Effect of Exchange Rate on Cash, Cash Equivalents, Restricted Cash, and Restricted Cash Equivalents, Continuing Operations"
+    crdr: "D"
+    stmt: "CF"
+
+  "ProceedsFromIssuanceOfCommonStock":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Proceeds from Issuance of Common Stock"
+    crdr: "D"
+    stmt: "CF"
+
+  "GainsLossesOnExtinguishmentOfDebt":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Non-recurring gain/loss; no core node."
+    tlabel: "Gain (Loss) on Extinguishment of Debt"
+    crdr: "C"
+    stmt: "IS"
+
+  "MinorityInterest":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Non-controlling interest is a distinct equity component the core does not model."
+    tlabel: "Stockholders' Equity Attributable to Noncontrolling Interest"
+    crdr: "C"
+    stmt: "BS"
+
+  "OtherLiabilitiesCurrent":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Residual bucket, not a specific account."
+    tlabel: "Other Liabilities, Current"
+    crdr: "C"
+    stmt: "BS"
+
+  "PaymentsRelatedToTaxWithholdingForShareBasedCompensation":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Payment, Tax Withholding, Share-Based Payment Arrangement"
+    crdr: "C"
+    stmt: "CF"
+
+  "LongTermDebtNoncurrent":
+    kontablo_id: "liability.noncurrent.debt"
+    confidence: "high"
+    tlabel: "Long-Term Debt, Excluding Current Maturities"
+    crdr: "C"
+    stmt: "BS"
+
+  "DeferredIncomeTaxAssetsNet":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "The core models a deferred tax LIABILITY only, not the asset."
+    tlabel: "Deferred Income Tax Assets, Net"
+    crdr: "D"
+    stmt: "BS"
+
+  "ComprehensiveIncomeNetOfTaxIncludingPortionAttributableToNoncontrollingInterest":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "income"
+    tlabel: "Comprehensive Income (Loss), Net of Tax, Including Portion Attributable to Noncontrolling Interest"
+    crdr: "C"
+    stmt: "CI"
+
+  "IncreaseDecreaseInOtherOperatingAssets":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Increase (Decrease) in Other Operating Assets"
+    crdr: "C"
+    stmt: "CF"
+
+  "IncreaseDecreaseInAccruedLiabilities":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Increase (Decrease) in Accrued Liabilities"
+    crdr: "D"
+    stmt: "CF"
+
+  "ContractWithCustomerLiabilityCurrent":
+    kontablo_id: "liability.current.accrued"
+    confidence: "low"
+    note: "Deferred revenue. The core has no contract-liability node; accrued liabilities is the nearest fit."
+    tlabel: "Contract with Customer, Liability, Current"
+    crdr: "C"
+    stmt: "BS"
+
+  "IncomeLossFromEquityMethodInvestments":
+    kontablo_id: "revenue.other"
+    confidence: "low"
+    tlabel: "Income (Loss) from Equity Method Investments"
+    crdr: "C"
+    stmt: "IS"
+
+  "Depreciation":
+    kontablo_id: "expense.depreciation"
+    confidence: "high"
+    tlabel: "Depreciation"
+    crdr: "D"
+    stmt: "CF"
+
+  "CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseExcludingExchangeRateEffect":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "No Kontablo core node corresponds to this concept."
+    tlabel: "Cash, Cash Equivalents, Restricted Cash, and Restricted Cash Equivalents, Period Increase (Decrease), Excluding Exchange Rate Effect"
+    crdr: "D"
+    stmt: "CF"
+
+  "ProceedsFromStockOptionsExercised":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Proceeds from Stock Options Exercised"
+    crdr: "D"
+    stmt: "CF"
+
+  "CostOfRevenue":
+    kontablo_id: "expense.cogs"
+    confidence: "high"
+    tlabel: "Cost of Revenue"
+    crdr: "D"
+    stmt: "IS"
+
+  "StockIssuedDuringPeriodValueShareBasedCompensation":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Shares Issued, Value, Share-Based Payment Arrangement, after Forfeiture"
+    crdr: "C"
+    stmt: "EQ"
+
+  "OtherAssetsCurrent":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Residual bucket, not a specific account."
+    tlabel: "Other Assets, Current"
+    crdr: "D"
+    stmt: "BS"
+
+  "IncreaseDecreaseInOperatingLeaseLiability":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Increase (Decrease) in Operating Lease Liability"
+    crdr: "D"
+    stmt: "CF"
+
+  "CostsAndExpenses":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "expense"
+    tlabel: "Costs and Expenses"
+    crdr: "D"
+    stmt: "IS"
+
+  "AmortizationOfIntangibleAssets":
+    kontablo_id: "expense.depreciation"
+    confidence: "medium"
+    note: "The core bundles depreciation and amortization in one node."
+    tlabel: "Amortization of Intangible Assets"
+    crdr: "D"
+    stmt: "IS"
+
+  "IncreaseDecreaseInContractWithCustomerLiability":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Increase (Decrease) in Contract with Customer, Liability"
+    crdr: "D"
+    stmt: "CF"
+
+  "RepaymentsOfLongTermDebt":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Repayments of Long-Term Debt"
+    crdr: "C"
+    stmt: "CF"
+
+  "PaymentsToAcquireBusinessesNetOfCashAcquired":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Payments to Acquire Businesses, Net of Cash Acquired"
+    crdr: "C"
+    stmt: "CF"
+
+  "ProvisionForDoubtfulAccounts":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Contra-receivable movement, not an account balance."
+    tlabel: "Accounts Receivable, Credit Loss Expense (Reversal)"
+    crdr: "D"
+    stmt: "CF"
+
+  "NetIncomeLossAvailableToCommonStockholdersBasic":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "income"
+    tlabel: "Net Income (Loss) Available to Common Stockholders, Basic"
+    crdr: "C"
+    stmt: "IS"
+
+  "PaymentsOfDividendsCommonStock":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Payments of Ordinary Dividends, Common Stock"
+    crdr: "C"
+    stmt: "CF"
+
+  "PaymentsForProceedsFromOtherInvestingActivities":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Payments for (Proceeds from) Other Investing Activities"
+    crdr: "C"
+    stmt: "CF"
+
+  "CapitalExpendituresIncurredButNotYetPaid":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Non-cash supplemental disclosure."
+    tlabel: "Capital Expenditures Incurred but Not yet Paid"
+    crdr: "C"
+    stmt: "CF"
+
+  "GainLossOnSaleOfPropertyPlantEquipment":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Disposal gain/loss; no core node."
+    tlabel: "Gain (Loss) on Disposition of Property Plant Equipment"
+    crdr: "C"
+    stmt: "CF"
+
+  "OtherAssets":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Residual bucket, not a specific account."
+    tlabel: "Other assets"
+    crdr: "D"
+    stmt: "BS"
+
+  "ProceedsFromPaymentsForOtherFinancingActivities":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Proceeds from (Payments for) Other Financing Activities"
+    crdr: "D"
+    stmt: "CF"
+
+  "ComprehensiveIncomeNetOfTaxAttributableToNoncontrollingInterest":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "income"
+    tlabel: "Comprehensive Income (Loss), Net of Tax, Attributable to Noncontrolling Interest"
+    crdr: "D"
+    stmt: "IS"
+
+  "PrepaidExpenseCurrent":
+    kontablo_id: "asset.current.prepaid"
+    confidence: "high"
+    tlabel: "Prepaid Expense, Current"
+    crdr: "D"
+    stmt: "BS"
+
+  "LongTermDebtCurrent":
+    kontablo_id: "liability.current.short_term_debt"
+    confidence: "medium"
+    note: "Current portion of long-term debt; the core models it as short-term borrowing."
+    tlabel: "Long-Term Debt, Current Maturities"
+    crdr: "C"
+    stmt: "BS"
+
+  "AmortizationOfFinancingCosts":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Amortization of debt issuance costs; no core node."
+    tlabel: "Amortization of Debt Issuance Costs"
+    crdr: "D"
+    stmt: "CF"
+
+  "SellingAndMarketingExpense":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "No selling/marketing expense node in the core. A real gap."
+    tlabel: "Selling and Marketing Expense"
+    crdr: "D"
+    stmt: "IS"
+
+  "OperatingLeaseRightOfUseAssetAmortizationExpense":
+    kontablo_id: "expense.depreciation"
+    confidence: "medium"
+    tlabel: "Operating Lease, Right-of-Use Asset, Amortization Expense"
+    crdr: "D"
+    stmt: "CF"
+
+  "PaymentsOfDebtIssuanceCosts":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Payments of Debt Issuance Costs"
+    crdr: "C"
+    stmt: "CF"
+
+  "IncomeTaxesPaid":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Supplemental cash-flow disclosure, not an account."
+    tlabel: "Income Taxes Paid"
+    crdr: "C"
+    stmt: "CF"
+
+  "OtherComprehensiveIncomeForeignCurrencyTransactionAndTranslationAdjustmentNetOfTaxPortionAttributableToParent":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Other Comprehensive Income (Loss), Foreign Currency Transaction and Translation Adjustment, Net of Tax, Portion Attributable to Parent"
+    crdr: "C"
+    stmt: "CI"
+
+  "IncreaseDecreaseInOtherOperatingLiabilities":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Increase (Decrease) in Other Operating Liabilities"
+    crdr: "D"
+    stmt: "CF"
+
+  "TreasuryStockValueAcquiredCostMethod":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Treasury Stock, Value, Acquired, Cost Method"
+    crdr: "D"
+    stmt: "EQ"
+
+  "TreasuryStockValue":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Contra-equity; the core has no treasury-stock node."
+    tlabel: "Treasury Stock, Value"
+    crdr: "D"
+    stmt: "BS"
+
+  "DividendsCommonStockCash":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Dividends, Common Stock, Cash"
+    crdr: "D"
+    stmt: "EQ"
+
+  "InterestIncomeExpenseNet":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "income"
+    tlabel: "Interest Income (Expense), Net"
+    crdr: "C"
+    stmt: "IS"
+
+  "LiabilitiesNoncurrent":
+    kontablo_id: null
+    out_of_core_reason: "aggregate"
+    aggregate_lens: "liability.noncurrent"
+    tlabel: "Liabilities, Noncurrent"
+    crdr: "C"
+    stmt: "BS"
+
+  "PaymentsOfDividends":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Payments of Dividends"
+    crdr: "C"
+    stmt: "CF"
+
+  "FairValueAdjustmentOfWarrants":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Fair-value remeasurement; no core node."
+    tlabel: "Fair Value Adjustment of Warrants"
+    crdr: "D"
+    stmt: "CF"
+
+  "ProceedsFromIssuanceOfLongTermDebt":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Proceeds from Issuance of Long-Term Debt"
+    crdr: "D"
+    stmt: "CF"
+
+  "OtherComprehensiveIncomeUnrealizedHoldingGainLossOnSecuritiesArisingDuringPeriodNetOfTax":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "OCI, Debt Securities, Available-for-Sale, Unrealized Holding Gain (Loss), before Adjustment, after Tax"
+    crdr: "C"
+    stmt: "CI"
+
+  "IncreaseDecreaseInPrepaidExpense":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Increase (Decrease) in Prepaid Expense"
+    crdr: "C"
+    stmt: "CF"
+
+  "PaymentsToAcquireAvailableForSaleSecuritiesDebt":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Payments to Acquire Debt Securities, Available-for-Sale"
+    crdr: "C"
+    stmt: "CF"
+
+  "ProfessionalFees":
+    kontablo_id: "expense.admin"
+    confidence: "medium"
+    tlabel: "Professional Fees"
+    crdr: "D"
+    stmt: "IS"
+
+  "RightOfUseAssetObtainedInExchangeForOperatingLeaseLiability":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Non-cash lease addition; a movement."
+    tlabel: "Right-of-Use Asset Obtained in Exchange for Operating Lease Liability"
+    crdr: "D"
+    stmt: "CF"
+
+  "AccretionAmortizationOfDiscountsAndPremiumsInvestments":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Investment discount accretion; no core node."
+    tlabel: "Accretion (Amortization) of Discounts and Premiums, Investments"
+    crdr: "C"
+    stmt: "CF"
+
+  "TemporaryEquityCarryingAmountAttributableToParent":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Mezzanine/temporary equity is outside the core."
+    tlabel: "Temporary Equity, Carrying Amount, Attributable to Parent"
+    crdr: "C"
+    stmt: "BS"
+
+  "FinanceLeasePrincipalPayments":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Cash-flow movement, not an account."
+    tlabel: "Finance Lease, Principal Payments"
+    crdr: "C"
+    stmt: "CF"
+
+  "IncreaseDecreaseInAccruedIncomeTaxesPayable":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Increase (Decrease) in Income Taxes Payable"
+    crdr: "D"
+    stmt: "CF"
+
+  "FiniteLivedIntangibleAssetsNet":
+    kontablo_id: "asset.noncurrent.intangibles"
+    confidence: "high"
+    tlabel: "Finite-Lived Intangible Assets, Net"
+    crdr: "D"
+    stmt: "BS"
+
+  "EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Effect of Exchange Rate on Cash, Cash Equivalents, Restricted Cash, and Restricted Cash Equivalents, Including Disposal Group and Discontinued Operations"
+    crdr: "D"
+    stmt: "CF"
+
+  "LaborAndRelatedExpense":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "No personnel-cost node in the core. A real gap."
+    tlabel: "Labor and Related Expense"
+    crdr: "D"
+    stmt: "IS"
+
+  "AdjustmentsRelatedToTaxWithholdingForShareBasedCompensation":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Share-Based Payment Arrangement, Decrease for Tax Withholding Obligation"
+    crdr: "D"
+    stmt: "EQ"
+
+  "AssetImpairmentCharges":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Impairment charge; no core node."
+    tlabel: "Asset Impairment Charges"
+    crdr: "D"
+    stmt: "CF"
+
+  "StockRepurchasedDuringPeriodValue":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Stock Repurchased During Period, Value"
+    crdr: "D"
+    stmt: "EQ"
+
+  "IncreaseDecreaseInOtherOperatingCapitalNet":
+    kontablo_id: null
+    out_of_core_reason: "out_of_scope"
+    note: "Period movement in a cash-flow or equity reconciliation, not an account balance."
+    tlabel: "Increase (Decrease) in Other Operating Assets and Liabilities, Net"
+    crdr: "C"
+    stmt: "CF"
+
+  "Cash":
+    kontablo_id: "asset.current.cash"
+    confidence: "high"
+    tlabel: "Cash"
+    crdr: "D"
+    stmt: "BS"

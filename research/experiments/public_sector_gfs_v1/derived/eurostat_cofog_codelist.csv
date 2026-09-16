@@ -1,0 +1,113 @@
+dimension,code,label_en,parent_code
+cofog99,GF01,General public services,TOTAL
+cofog99,GF0101,"Executive and legislative organs, financial and fiscal affairs, external affairs",GF01
+cofog99,GF0102,Foreign economic aid,GF01
+cofog99,GF0103,General services,GF01
+cofog99,GF0104,Basic research,GF01
+cofog99,GF0105,R&D General public services,GF01
+cofog99,GF0106,General public services n.e.c.,GF01
+cofog99,GF0107,Public debt transactions,GF01
+cofog99,GF0108,Transfers of a general character between different levels of government,GF01
+cofog99,GF02,Defence,TOTAL
+cofog99,GF0201,Military defence,GF02
+cofog99,GF0202,Civil defence,GF02
+cofog99,GF0203,Foreign military aid,GF02
+cofog99,GF0204,R&D Defence,GF02
+cofog99,GF0205,Defence n.e.c.,GF02
+cofog99,GF03,Public order and safety,TOTAL
+cofog99,GF0301,Police services,GF03
+cofog99,GF0302,Fire-protection services,GF03
+cofog99,GF0303,Law courts,GF03
+cofog99,GF0304,Prisons,GF03
+cofog99,GF0305,R&D Public order and safety,GF03
+cofog99,GF0306,Public order and safety n.e.c.,GF03
+cofog99,GF04,Economic affairs,TOTAL
+cofog99,GF0401,"General economic, commercial and labour affairs",GF04
+cofog99,GF0402,"Agriculture, forestry, fishing and hunting",GF04
+cofog99,GF0403,Fuel and energy,GF04
+cofog99,GF0404,"Mining, manufacturing and construction",GF04
+cofog99,GF0405,Transport,GF04
+cofog99,GF0406,Communication,GF04
+cofog99,GF0407,Other industries,GF04
+cofog99,GF0408,R&D Economic affairs,GF04
+cofog99,GF0409,Economic affairs n.e.c.,GF04
+cofog99,GF05,Environmental protection,TOTAL
+cofog99,GF0501,Waste management,GF05
+cofog99,GF0502,Waste water management,GF05
+cofog99,GF0503,Pollution abatement,GF05
+cofog99,GF0504,Protection of biodiversity and landscape,GF05
+cofog99,GF0505,R&D Environmental protection,GF05
+cofog99,GF0506,Environmental protection n.e.c.,GF05
+cofog99,GF06,Housing and community amenities,TOTAL
+cofog99,GF0601,Housing development,GF06
+cofog99,GF0602,Community development,GF06
+cofog99,GF0603,Water supply,GF06
+cofog99,GF0604,Street lighting,GF06
+cofog99,GF0605,R&D Housing and community amenities,GF06
+cofog99,GF0606,Housing and community amenities n.e.c.,GF06
+cofog99,GF07,Health,TOTAL
+cofog99,GF0701,"Medical products, appliances and equipment",GF07
+cofog99,GF0702,Outpatient services,GF07
+cofog99,GF0703,Hospital services,GF07
+cofog99,GF0704,Public health services,GF07
+cofog99,GF0705,R&D Health,GF07
+cofog99,GF0706,Health n.e.c.,GF07
+cofog99,GF08,"Recreation, culture and religion",TOTAL
+cofog99,GF0801,Recreational and sporting services,GF08
+cofog99,GF0802,Cultural services,GF08
+cofog99,GF0803,Broadcasting and publishing services,GF08
+cofog99,GF0804,Religious and other community services,GF08
+cofog99,GF0805,"R&D Recreation, culture and religion",GF08
+cofog99,GF0806,"Recreation, culture and religion n.e.c.",GF08
+cofog99,GF09,Education,TOTAL
+cofog99,GF0901,Pre-primary and primary education,GF09
+cofog99,GF0902,Secondary education,GF09
+cofog99,GF0903,Post-secondary non-tertiary education,GF09
+cofog99,GF0904,Tertiary education,GF09
+cofog99,GF0905,Education not definable by level,GF09
+cofog99,GF0906,Subsidiary services to education,GF09
+cofog99,GF0907,R&D Education,GF09
+cofog99,GF0908,Education n.e.c.,GF09
+cofog99,GF10,Social protection,TOTAL
+cofog99,GF1001,Sickness and disability,GF10
+cofog99,GF1002,Old age,GF10
+cofog99,GF1003,Survivors,GF10
+cofog99,GF1004,Family and children,GF10
+cofog99,GF1005,Unemployment,GF10
+cofog99,GF1006,Housing,GF10
+cofog99,GF1007,Social exclusion n.e.c.,GF10
+cofog99,GF1008,R&D Social protection,GF10
+cofog99,GF1009,Social protection n.e.c.,GF10
+cofog99,TOTAL,Total,
+na_item,D1,Compensation of employees,
+na_item,D29_D5_D8,"""Other taxes on production; current taxes on income, wealth, etc; adjustment for the change in pension entitlements""",
+na_item,D3,Subsidies,
+na_item,D4,Property income,
+na_item,D4_S1311,"Property income, of which payable to subsector S1311",
+na_item,D4_S1312,"Property income, of which payable to subsector S1312",
+na_item,D4_S1313,"Property income, of which payable to subsector S1313",
+na_item,D4_S1314,"Property income, of which payable to subsector S1314",
+na_item,D62,Social benefits other than social transfers in kind,
+na_item,D62_D632,Social benefits other than social transfers in kind and social transfers in kind - purchased market production,
+na_item,D632,Social transfers in kind - purchased market production,
+na_item,D7,Other current transfers,
+na_item,D7_S1311,"Other current transfers,of which payable to subsector S1311",
+na_item,D7_S1312,"Other current transfers,of which payable to subsector S1312",
+na_item,D7_S1313,"Other current transfers,of which payable to subsector S1313",
+na_item,D7_S1314,"Other current transfers,of which payable to subsector S1314",
+na_item,D9,Capital transfers,
+na_item,D92,Investment grants,
+na_item,D9_S1311,"Capital transfers, expenditure, of which to subsector central government (S1311)",
+na_item,D9_S1312,"Capital transfers, expenditure, of which to subsector state government (S1312)",
+na_item,D9_S1313,"Capital transfers, expenditure, of which to subsector local government (S1313)",
+na_item,D9_S1314,"Capital transfers, expenditure, of which to subsector social security funds (S1314)",
+na_item,NP,Acquisitions less disposals of non-financial non-produced assets,
+na_item,OP5ANP,Gross capital formation and acquisitions less disposals of non-financial non-produced assets,
+na_item,P2,Intermediate consumption,
+na_item,P2_D29_D5_D8,"Intermediate consumption; other taxes on production; current taxes on income, wealth, etc.; adjustment for the change in pension entitlements",
+na_item,P3,Final consumption expenditure,
+na_item,P31,Individual consumption expenditure,
+na_item,P32,Collective consumption expenditure,
+na_item,P5,Gross capital formation,
+na_item,P51G,Gross fixed capital formation,
+na_item,TE,Total general government expenditure,

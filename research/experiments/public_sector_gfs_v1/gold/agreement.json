@@ -1,0 +1,30 @@
+{
+  "class_confusion": {
+    "aggregate|aggregate": 21,
+    "leaf|aggregate": 4,
+    "leaf|leaf": 13,
+    "leaf|out_of_scope": 13,
+    "lens|lens": 159,
+    "out_of_scope|out_of_scope": 2
+  },
+  "experiment": "public_sector_gfs_v1",
+  "independence_caveat": "Both passes are the same model family under different instructed reasoning orders (tag-first vs node-first). Weaker independence than two unaffiliated human CPAs; correlated errors are possible and kappa overstates true independence. Carry this caveat into any public wording.",
+  "kappa_class": {
+    "expected_agreement": 0.5835,
+    "interpretation": "substantial",
+    "kappa": 0.8075,
+    "n": 212,
+    "n_categories": 4,
+    "observed_agreement": 0.9198
+  },
+  "kappa_exact": {
+    "expected_agreement": 0.5678,
+    "interpretation": "substantial",
+    "kappa": 0.7708,
+    "n": 212,
+    "n_categories": 18,
+    "observed_agreement": 0.9009
+  },
+  "n_disagreements": 21,
+  "n_items": 212
+}

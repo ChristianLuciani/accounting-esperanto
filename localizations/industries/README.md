@@ -24,7 +24,7 @@ additive extensions activated per entity type.
 | **Real Estate** | `real_estate_ias40.yaml` | IAS 40, IFRS 16, IFRS 15 | AE, CN, BR, MX, UK, DE | ✅ v0.1 |
 | **Telecommunications** | `telecom_ifrs15.yaml` | IFRS 15, IFRS 16, IAS 38 | US, UK, MX, BR, IN, CN, DE | ✅ v0.1 |
 | **Healthcare & Pharma** | `healthcare_pharma_ias38.yaml` | IAS 38, IFRS 15, IAS 37 | US, UK, DE, CH, IN, IL | ✅ v0.1 |
-| **Public Sector / Government** | `public_sector_ipsas.yaml` | IPSAS | BR, MX, CO, ZA, UK, AU, NZ, PH, KE, GH | 🚧 Drafted (v0.1.0-draft) — **not wired into `core/harness/ontology.py`'s resolver, not yet empirically validated.** Activation gated on real-data validation (H5), see [`research/real_data_validation_plan.md`](../../research/real_data_validation_plan.md). Domain explicitly claimed as in-scope 2026-07-18. |
+| **Public Sector / Government** | `public_sector_ipsas.yaml` | IPSAS | BR, MX, CO, ZA, UK, AU, NZ, PH, KE, GH | 🚧 Drafted (v0.1.0-draft), **19 mappings** — **not wired into `core/harness/ontology.py`'s resolver, not yet empirically validated.** Activation gated on real-data validation (H5), see [`research/real_data_validation_plan.md`](../../research/real_data_validation_plan.md). H5 remains **unscored** as of round 2 (2026-07-30): see [`research/experiments/ROUND2_RESULTS.md`](../../research/experiments/ROUND2_RESULTS.md). Domain explicitly claimed as in-scope 2026-07-18. |
 
 ---
 

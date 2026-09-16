@@ -1,0 +1,201 @@
+code,label_en,window,n_observations,n_countries,n_years,sum_abs_value
+FA_A_SP,"Financial assets, Stock positions",holdout,0,0,0,0.0
+FA_A_SP,"Financial assets, Stock positions",train,0,0,0,0.0
+G11_T,"Taxes, Transactions",holdout,337,94,5,7277.159139
+G11_T,"Taxes, Transactions",train,1940,113,31,42156.058305
+G12_T,"Social contributions, Transactions",holdout,338,94,5,2101.906307
+G12_T,"Social contributions, Transactions",train,1943,113,31,13042.557442
+G13_T,"Grants receivable, Transactions",holdout,307,87,5,384.460562
+G13_T,"Grants receivable, Transactions",train,1677,110,31,2665.804015
+G14_T,"Other revenue, Transactions",holdout,308,87,5,2261.874512
+G14_T,"Other revenue, Transactions",train,1668,110,31,12064.949542
+G1_T,"Revenue, Transactions",holdout,333,93,5,12137.357734
+G1_T,"Revenue, Transactions",train,1924,112,31,71176.791062
+G21_T,"Compensation of employees, Transactions",holdout,331,93,5,3137.639155
+G21_T,"Compensation of employees, Transactions",train,1909,112,31,18466.006266
+G22_T,"Use of goods and services, Transactions",holdout,331,93,5,2152.235314
+G22_T,"Use of goods and services, Transactions",train,1898,112,31,12416.307873
+G23_T,"Consumption of fixed capital (CFC), Transactions",holdout,209,59,5,448.526976
+G23_T,"Consumption of fixed capital (CFC), Transactions",train,1144,62,31,2878.543358
+G24_T,"Interest payable, Transactions",holdout,332,94,5,608.262436
+G24_T,"Interest payable, Transactions",train,1929,113,31,4350.976695
+G25_T,"Subsidies payable, Transactions",holdout,331,93,5,599.477749
+G25_T,"Subsidies payable, Transactions",train,1779,112,31,2605.048607
+G26_T,"Grants payable, Transactions",holdout,308,88,5,188.49251
+G26_T,"Grants payable, Transactions",train,1548,105,31,841.204732
+G27_T,"Social benefits, Transactions",holdout,331,93,5,3658.70706
+G27_T,"Social benefits, Transactions",train,1776,112,31,19367.839975
+G28_T,"Other expense, Transactions",holdout,308,88,5,932.297498
+G28_T,"Other expense, Transactions",train,1520,104,31,3995.255528
+G2_T,"Expense, Transactions",holdout,335,94,5,11933.161122
+G2_T,"Expense, Transactions",train,1911,113,31,67802.109377
+G6_A_SP,"Net worth, Assets, Stock positions",holdout,108,31,5,5723.434728
+G6_A_SP,"Net worth, Assets, Stock positions",train,459,32,31,24378.105069
+GF011_T,"Executive and legislative organs, financial and fiscal affairs, external affairs, Transactions",holdout,229,67,4,405.119973
+GF011_T,"Executive and legislative organs, financial and fiscal affairs, external affairs, Transactions",train,986,68,31,2085.195356
+GF012_T,"Foreign economic aid, Transactions",holdout,230,67,4,32.864338
+GF012_T,"Foreign economic aid, Transactions",train,984,68,31,186.797959
+GF013_T,"General services, Transactions",holdout,230,67,4,190.766524
+GF013_T,"General services, Transactions",train,986,68,31,887.850439
+GF0140_T,"Basic research, Transactions",holdout,230,67,4,63.637641
+GF0140_T,"Basic research, Transactions",train,986,68,31,351.580442
+GF0150_T,"R&D General public services, Transactions",holdout,220,65,4,11.653154
+GF0150_T,"R&D General public services, Transactions",train,934,66,31,33.614559
+GF0160_T,"General public services n.e.c., Transactions",holdout,232,68,4,63.276624
+GF0160_T,"General public services n.e.c., Transactions",train,1006,69,31,243.713774
+GF0170_T,"Public debt transactions, Transactions",holdout,233,68,4,435.664656
+GF0170_T,"Public debt transactions, Transactions",train,1519,99,31,3221.531747
+GF0180_T,"Transfers of a general character between different levels of government, Transactions",holdout,230,67,4,20.992635
+GF0180_T,"Transfers of a general character between different levels of government, Transactions",train,1191,80,31,81.762097
+GF01_T,"General public services, Transactions",holdout,251,73,5,1348.428801
+GF01_T,"General public services, Transactions",train,1472,86,31,9155.135826
+GF0210_T,"Military defence, Transactions",holdout,230,69,4,279.174119
+GF0210_T,"Military defence, Transactions",train,999,69,31,1155.438749
+GF0220_T,"Civil defence, Transactions",holdout,226,68,4,9.486475
+GF0220_T,"Civil defence, Transactions",train,960,68,31,27.597338
+GF0230_T,"Foreign military aid, Transactions",holdout,230,69,4,10.083598
+GF0230_T,"Foreign military aid, Transactions",train,970,69,31,28.470883
+GF0240_T,"R&D Defence, Transactions",holdout,223,67,4,2.783567
+GF0240_T,"R&D Defence, Transactions",train,960,67,31,14.565567
+GF025_T,"Defence n.e.c., Transactions",holdout,232,70,4,52.482078
+GF025_T,"Defence n.e.c., Transactions",train,1017,70,31,94.482408
+GF02_T,"Defence, Transactions",holdout,248,74,5,403.582562
+GF02_T,"Defence, Transactions",train,1446,82,31,2535.59376
+GF0310_T,"Police services, Transactions",holdout,227,67,4,222.015209
+GF0310_T,"Police services, Transactions",train,993,68,31,982.62495
+GF0320_T,"Fire-protection services, Transactions",holdout,227,67,4,36.58334
+GF0320_T,"Fire-protection services, Transactions",train,993,68,31,177.275766
+GF0330_T,"Law courts, Transactions",holdout,227,67,4,77.870197
+GF0330_T,"Law courts, Transactions",train,993,68,31,349.114983
+GF0340_T,"Prisons, Transactions",holdout,227,67,4,34.432851
+GF0340_T,"Prisons, Transactions",train,993,68,31,172.074732
+GF0350_T,"R&D Public order and safety, Transactions",holdout,223,66,4,1.520165
+GF0350_T,"R&D Public order and safety, Transactions",train,967,67,31,5.884294
+GF0360_T,"Public order and safety n.e.c., Transactions",holdout,227,67,4,46.673926
+GF0360_T,"Public order and safety n.e.c., Transactions",train,992,68,31,171.695417
+GF03_T,"Public order and safety, Transactions",holdout,250,73,5,473.812726
+GF03_T,"Public order and safety, Transactions",train,1454,84,31,2889.343986
+GF041_T,"General economic, commercial and labour affairs, Transactions",holdout,232,68,4,211.752484
+GF041_T,"General economic, commercial and labour affairs, Transactions",train,1038,70,31,892.459526
+GF042_T,"Agriculture, forestry, fishing and hunting, Transactions",holdout,233,68,4,125.276473
+GF042_T,"Agriculture, forestry, fishing and hunting, Transactions",train,1242,77,31,858.711907
+GF043_T,"Fuel and energy, Transactions",holdout,233,68,4,163.033614
+GF043_T,"Fuel and energy, Transactions",train,1223,77,31,500.14623
+GF044_T,"Mining, manufacturing and construction, Transactions",holdout,233,68,4,59.267651
+GF044_T,"Mining, manufacturing and construction, Transactions",train,1235,77,31,312.075885
+GF045_T,"Transport, Transactions",holdout,233,68,4,485.368176
+GF045_T,"Transport, Transactions",train,1239,77,31,2770.989488
+GF0460_T,"Communication, Transactions",holdout,229,67,4,11.512757
+GF0460_T,"Communication, Transactions",train,1148,75,31,73.407168
+GF047_T,"Other industries, Transactions",holdout,228,67,4,45.58627
+GF047_T,"Other industries, Transactions",train,1026,69,31,187.025505
+GF048_T,"R&D Economic affairs, Transactions",holdout,228,67,4,37.260266
+GF048_T,"R&D Economic affairs, Transactions",train,1005,69,31,199.755665
+GF0490_T,"Economic affairs n.e.c., Transactions",holdout,228,67,4,71.19121
+GF0490_T,"Economic affairs n.e.c., Transactions",train,988,69,31,255.645724
+GF04_T,"Economic affairs, Transactions",holdout,252,73,5,1345.859094
+GF04_T,"Economic affairs, Transactions",train,1471,85,31,7491.341172
+GF0510_T,"Waste management, Transactions",holdout,229,68,4,50.108288
+GF0510_T,"Waste management, Transactions",train,1061,70,31,240.62398
+GF0520_T,"Waste water management, Transactions",holdout,229,68,4,23.99564
+GF0520_T,"Waste water management, Transactions",train,1050,70,31,170.72778
+GF0530_T,"Pollution abatement, Transactions",holdout,226,67,4,20.845576
+GF0530_T,"Pollution abatement, Transactions",train,1030,69,31,75.268344
+GF0540_T,"Protection of biodiversity and landscape, Transactions",holdout,229,68,4,15.234467
+GF0540_T,"Protection of biodiversity and landscape, Transactions",train,1047,70,31,74.698424
+GF0550_T,"R&D Environmental protection, Transactions",holdout,223,67,4,3.239622
+GF0550_T,"R&D Environmental protection, Transactions",train,1021,68,31,16.819373
+GF0560_T,"Environmental protection n.e.c., Transactions",holdout,229,68,4,16.908451
+GF0560_T,"Environmental protection n.e.c., Transactions",train,1062,70,31,87.449962
+GF05_T,"Environmental protection, Transactions",holdout,252,73,5,146.359974
+GF05_T,"Environmental protection, Transactions",train,1427,85,31,830.164706
+GF0610_T,"Housing development, Transactions",holdout,231,68,4,57.867519
+GF0610_T,"Housing development, Transactions",train,1001,69,31,241.844171
+GF0620_T,"Community development, Transactions",holdout,227,67,4,65.786773
+GF0620_T,"Community development, Transactions",train,989,68,31,275.483331
+GF0630_T,"Water supply, Transactions",holdout,231,68,4,38.399946
+GF0630_T,"Water supply, Transactions",train,1002,69,31,168.86071
+GF0640_T,"Street lighting, Transactions",holdout,231,68,4,10.370636
+GF0640_T,"Street lighting, Transactions",train,1001,69,31,52.625038
+GF0650_T,"R&D Housing and community amenities, Transactions",holdout,220,65,4,1.444716
+GF0650_T,"R&D Housing and community amenities, Transactions",train,941,66,31,4.260902
+GF0660_T,"Housing and community amenities n.e.c., Transactions",holdout,231,68,4,24.74646
+GF0660_T,"Housing and community amenities n.e.c., Transactions",train,1002,69,31,101.328244
+GF066_T,"Housing and community amenities n.e.c., Transactions",holdout,0,0,0,0.0
+GF066_T,"Housing and community amenities n.e.c., Transactions",train,0,0,0,0.0
+GF06_T,"Housing and community amenities, Transactions",holdout,252,73,5,219.988362
+GF06_T,"Housing and community amenities, Transactions",train,1469,85,31,1411.682637
+GF0712_T,"Other medical products, Transactions",holdout,232,68,4,117.409793
+GF0712_T,"Other medical products, Transactions",train,1037,73,31,696.11194
+GF072_T,"Outpatient services, Transactions",holdout,233,68,4,276.333664
+GF072_T,"Outpatient services, Transactions",train,1146,77,31,1346.953002
+GF073_T,"Hospital services, Transactions",holdout,233,68,4,574.22023
+GF073_T,"Hospital services, Transactions",train,1160,76,31,2848.429491
+GF0740_T,"Public health services, Transactions",holdout,233,68,4,118.172897
+GF0740_T,"Public health services, Transactions",train,1127,76,31,352.814629
+GF075_T,"R&D Health, Transactions",holdout,225,66,4,16.906324
+GF075_T,"R&D Health, Transactions",train,1003,71,31,89.758917
+GF0760_T,"Health n.e.c., Transactions",holdout,232,68,4,137.572868
+GF0760_T,"Health n.e.c., Transactions",train,1042,73,31,389.084411
+GF07_T,"Health, Transactions",holdout,252,73,5,1370.759131
+GF07_T,"Health, Transactions",train,1471,85,31,7139.410547
+GF0810_T,"Recreational and sporting services, Transactions",holdout,231,68,4,71.006314
+GF0810_T,"Recreational and sporting services, Transactions",train,1014,70,31,334.67198
+GF0820_T,"Cultural services, Transactions",holdout,231,68,4,91.146425
+GF0820_T,"Cultural services, Transactions",train,1014,70,31,474.515
+GF0830_T,"Broadcasting and publishing services, Transactions",holdout,231,68,4,28.602558
+GF0830_T,"Broadcasting and publishing services, Transactions",train,1014,70,31,171.662308
+GF0840_T,"Religious and other community services, Transactions",holdout,227,67,4,14.777121
+GF0840_T,"Religious and other community services, Transactions",train,1001,69,31,79.608351
+GF0850_T,"R&D Recreation, culture and religion, Transactions",holdout,224,67,4,2.511449
+GF0850_T,"R&D Recreation, culture and religion, Transactions",train,955,69,31,14.553007
+GF0860_T,"Recreation, culture and religion n.e.c., Transactions",holdout,228,67,4,10.643676
+GF0860_T,"Recreation, culture and religion n.e.c., Transactions",train,988,69,31,44.520437
+GF08_T,"Recreation, culture and religion, Transactions",holdout,252,73,5,230.9364
+GF08_T,"Recreation, culture and religion, Transactions",train,1471,85,31,1473.574144
+GF091_T,"Pre-primary and primary education, Transactions",holdout,229,67,4,328.495161
+GF091_T,"Pre-primary and primary education, Transactions",train,1111,75,31,1751.037604
+GF092_T,"Secondary education, Transactions",holdout,229,67,4,349.702964
+GF092_T,"Secondary education, Transactions",train,1149,75,31,1960.521676
+GF0930_T,"Post-secondary non-tertiary education, Transactions",holdout,229,67,4,18.43679
+GF0930_T,"Post-secondary non-tertiary education, Transactions",train,1002,69,31,84.444521
+GF094_T,"Tertiary education, Transactions",holdout,233,68,4,192.257142
+GF094_T,"Tertiary education, Transactions",train,1163,76,31,1045.584478
+GF0950_T,"Education not definable by level, Transactions",holdout,232,68,4,41.825452
+GF0950_T,"Education not definable by level, Transactions",train,1016,69,31,230.711892
+GF0960_T,"Subsidiary services to education, Transactions",holdout,228,67,4,44.764778
+GF0960_T,"Subsidiary services to education, Transactions",train,1003,68,31,186.006549
+GF0970_T,"R&D Education, Transactions",holdout,228,67,4,5.66069
+GF0970_T,"R&D Education, Transactions",train,990,68,31,37.096216
+GF0980_T,"Education n.e.c., Transactions",holdout,232,68,4,92.248288
+GF0980_T,"Education n.e.c., Transactions",train,1017,69,31,297.0714
+GF09_T,"Education, Transactions",holdout,252,73,5,1188.120618
+GF09_T,"Education, Transactions",train,1471,85,31,7258.738943
+GF101_T,"Sickness and disability, Transactions",holdout,228,67,4,377.891489
+GF101_T,"Sickness and disability, Transactions",train,978,68,31,2111.23375
+GF1020_T,"Old age, Transactions",holdout,228,67,4,1462.393093
+GF1020_T,"Old age, Transactions",train,979,68,31,7055.438424
+GF1030_T,"Survivors, Transactions",holdout,221,65,4,119.414265
+GF1030_T,"Survivors, Transactions",train,950,67,31,730.731942
+GF1040_T,"Family and children, Transactions",holdout,228,67,4,311.337785
+GF1040_T,"Family and children, Transactions",train,979,68,31,1596.42801
+GF1050_T,"Unemployment, Transactions",holdout,228,67,4,111.024196
+GF1050_T,"Unemployment, Transactions",train,978,68,31,832.529002
+GF1060_T,"Housing, Transactions",holdout,228,67,4,36.010518
+GF1060_T,"Housing, Transactions",train,978,68,31,242.079678
+GF1070_T,"Social exclusion n.e.c., Transactions",holdout,228,67,4,131.982311
+GF1070_T,"Social exclusion n.e.c., Transactions",train,978,68,31,586.920077
+GF1080_T,"R&D Social protection, Transactions",holdout,221,65,4,0.822491
+GF1080_T,"R&D Social protection, Transactions",train,940,67,31,5.959005
+GF1090_T,"Social protection n.e.c., Transactions",holdout,228,67,4,221.389973
+GF1090_T,"Social protection n.e.c., Transactions",train,980,68,31,495.320823
+GF10_T,"Social protection, Transactions",holdout,252,73,5,2987.0475
+GF10_T,"Social protection, Transactions",train,1469,85,31,17609.703784
+GGB_T,"Government balance per national definition, Transactions",holdout,7,3,3,2.404371
+GGB_T,"Government balance per national definition, Transactions",train,94,10,31,81.567141
+GPB_T,"Primary net lending (+) / net borrowing (-), Transactions",holdout,328,92,5,1055.598564
+GPB_T,"Primary net lending (+) / net borrowing (-), Transactions",train,1859,110,31,7008.341793
+L_SP,"Liabilities, Stock positions",holdout,0,0,0,0.0
+L_SP,"Liabilities, Stock positions",train,0,0,0,0.0
+NFA_A_SP,"Nonfinancial assets, Stock positions",holdout,108,31,5,6097.409433
+NFA_A_SP,"Nonfinancial assets, Stock positions",train,476,33,31,28264.572085

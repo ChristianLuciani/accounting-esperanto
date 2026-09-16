@@ -56,3 +56,7 @@ graphify-out/
 
 # Internal (non-public) working docs — launch playbook, submission notes, etc.
 docs/internal/
+
+# Round-2 real-data snapshots (payloads are hashed in each experiment manifest.json,
+# never vendored — see research/real_data_validation_plan.md §7)
+research/real_data_snapshots/

@@ -1,0 +1,321 @@
+source,taxonomy,code,name,measure_class,n_facts,n_filings,band,seen_in_train,stratum
+edgar,us-gaap,StockholdersEquity,"Equity, Attributable to Parent",monetary,36365,14020,head,True,head/seen
+edgar,us-gaap,ProfitLoss,Profit (loss),monetary,20117,6928,head,True,head/seen
+edgar,us-gaap,Assets,Assets,monetary,17063,15126,head,True,head/seen
+edgar,us-gaap,NetCashProvidedByUsedInOperatingActivities,Net Cash Provided by (Used in) Operating Activities,monetary,16451,14871,head,True,head/seen
+edgar,us-gaap,LiabilitiesAndStockholdersEquity,Liabilities and Equity,monetary,16411,14856,head,True,head/seen
+edgar,us-gaap,NetCashProvidedByUsedInFinancingActivities,Net Cash Provided by (Used in) Financing Activities,monetary,16284,14745,head,True,head/seen
+edgar,us-gaap,RetainedEarningsAccumulatedDeficit,Retained Earnings (Accumulated Deficit),monetary,15896,14355,head,True,head/seen
+edgar,us-gaap,Liabilities,Liabilities,monetary,15158,13439,head,True,head/seen
+edgar,us-gaap,CommonStockValue,"Common Stock, Value, Issued",monetary,15105,13662,head,True,head/seen
+edgar,us-gaap,CashAndCashEquivalentsAtCarryingValue,"Cash and Cash Equivalents, at Carrying Value",monetary,15049,11523,head,True,head/seen
+edgar,us-gaap,NetCashProvidedByUsedInInvestingActivities,Net Cash Provided by (Used in) Investing Activities,monetary,14791,13363,head,True,head/seen
+edgar,us-gaap,StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest,"Equity, Including Portion Attributable to Noncontrolling Interest",monetary,14595,4782,head,True,head/seen
+edgar,us-gaap,AssetsCurrent,"Assets, Current",monetary,12996,11783,head,True,head/seen
+edgar,us-gaap,LiabilitiesCurrent,"Liabilities, Current",monetary,12931,11729,head,True,head/seen
+edgar,us-gaap,OperatingIncomeLoss,Operating Income (Loss),monetary,12805,11578,head,True,head/seen
+edgar,us-gaap,IncomeTaxExpenseBenefit,Income Tax Expense (Benefit),monetary,12777,11474,head,True,head/seen
+edgar,us-gaap,CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect,"Cash, Cash Equivalents, Restricted Cash, and Restricted Cash Equivalents, Period Increase (Decrease), Including Exchange Rate Effect",monetary,12641,11502,head,True,head/seen
+edgar,us-gaap,CommitmentsAndContingencies,Commitments and Contingencies,monetary,11851,10868,head,True,head/seen
+edgar,us-gaap,IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest,"Income (Loss) from Continuing Operations before Income Taxes, Noncontrolling Interest",monetary,11529,10423,head,True,head/seen
+edgar,us-gaap,PropertyPlantAndEquipmentNet,"Property, Plant and Equipment, Net",monetary,10860,9787,head,True,head/seen
+edgar,us-gaap,ComprehensiveIncomeNetOfTax,"Comprehensive Income (Loss), Net of Tax, Attributable to Parent",monetary,10550,9210,head,True,head/seen
+edgar,us-gaap,AccumulatedOtherComprehensiveIncomeLossNetOfTax,"Accumulated Other Comprehensive Income (Loss), Net of Tax",monetary,10233,9223,head,True,head/seen
+edgar,us-gaap,PaymentsToAcquirePropertyPlantAndEquipment,"Payments to Acquire Property, Plant, and Equipment",monetary,9795,8904,head,True,head/seen
+edgar,us-gaap,AdditionalPaidInCapital,Additional Paid in Capital,monetary,9630,8800,head,True,head/seen
+edgar,us-gaap,AccountsPayableCurrent,"Accounts Payable, Current",monetary,9376,8487,head,True,head/seen
+edgar,us-gaap,InterestPaidNet,"Interest Paid, Excluding Capitalized Interest, Operating Activities",monetary,9273,8473,head,True,head/seen
+edgar,us-gaap,OperatingLeaseRightOfUseAsset,"Operating Lease, Right-of-Use Asset",monetary,9013,8214,head,True,head/seen
+edgar,us-gaap,PreferredStockValue,"Preferred Stock, Value, Issued",monetary,8840,8051,head,True,head/seen
+edgar,us-gaap,OtherAssetsNoncurrent,"Other Assets, Noncurrent",monetary,8583,7827,head,True,head/seen
+edgar,us-gaap,GeneralAndAdministrativeExpense,General and administrative expense,monetary,8320,7428,head,True,head/seen
+edgar,us-gaap,AccountsReceivableNetCurrent,"Accounts Receivable, after Allowance for Credit Loss, Current",monetary,8211,7492,head,True,head/seen
+edgar,us-gaap,IncreaseDecreaseInAccountsReceivable,Increase (Decrease) in Accounts Receivable,monetary,8154,7402,head,True,head/seen
+edgar,us-gaap,AdjustmentsToAdditionalPaidInCapitalSharebasedCompensationRequisiteServicePeriodRecognitionValue,"APIC, Share-Based Payment Arrangement, Increase for Cost Recognition",monetary,8109,7357,head,True,head/seen
+edgar,us-gaap,OperatingLeaseLiabilityNoncurrent,"Operating Lease, Liability, Noncurrent",monetary,7957,7265,head,True,head/seen
+edgar,us-gaap,CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsIncludingDisposalGroupAndDiscontinuedOperations,"Cash, Cash Equivalents, Restricted Cash, and Restricted Cash Equivalents, Including Disposal Group and Discontinued Operations",monetary,7937,3661,head,True,head/seen
+edgar,us-gaap,OperatingExpenses,Operating Expenses,monetary,7613,6927,head,True,head/seen
+edgar,us-gaap,Goodwill,Goodwill,monetary,7612,6823,head,True,head/seen
+edgar,us-gaap,DepreciationDepletionAndAmortization,"Depreciation, Depletion and Amortization",monetary,7532,5975,head,True,head/seen
+edgar,us-gaap,RevenueFromContractWithCustomerExcludingAssessedTax,"Revenue from Contract with Customer, Excluding Assessed Tax",monetary,7190,6573,head,True,head/seen
+edgar,us-gaap,OtherLiabilitiesNoncurrent,"Other Liabilities, Noncurrent",monetary,7095,6456,head,True,head/seen
+edgar,us-gaap,PrepaidExpenseAndOtherAssetsCurrent,"Prepaid Expense and Other Assets, Current",monetary,7079,6474,head,True,head/seen
+edgar,us-gaap,IncreaseDecreaseInPrepaidDeferredExpenseAndOtherAssets,Increase (Decrease) in Prepaid Expense and Other Assets,monetary,6928,6341,head,True,head/seen
+edgar,us-gaap,OperatingLeaseLiabilityCurrent,"Operating Lease, Liability, Current",monetary,6726,6137,head,True,head/seen
+edgar,us-gaap,OtherComprehensiveIncomeLossNetOfTax,"Other Comprehensive Income (Loss), Net of Tax",monetary,6582,4077,head,True,head/seen
+edgar,us-gaap,NonoperatingIncomeExpense,Nonoperating Income (Expense),monetary,6497,5939,head,True,head/seen
+edgar,us-gaap,InventoryNet,"Inventory, Net",monetary,6462,5835,head,True,head/seen
+edgar,us-gaap,IncreaseDecreaseInAccountsPayable,Increase (Decrease) in Accounts Payable,monetary,6294,5693,head,True,head/seen
+edgar,us-gaap,GrossProfit,Gross profit,monetary,6289,5569,head,True,head/seen
+edgar,us-gaap,IncreaseDecreaseInInventories,Increase (Decrease) in Inventories,monetary,6278,5660,head,True,head/seen
+edgar,us-gaap,PaymentsForRepurchaseOfCommonStock,Payments for Repurchase of Common Stock,monetary,6240,5660,head,True,head/seen
+edgar,us-gaap,AccruedLiabilitiesCurrent,"Accrued Liabilities, Current",monetary,5904,5395,head,True,head/seen
+edgar,us-gaap,StockIssuedDuringPeriodValueNewIssues,"Stock Issued During Period, Value, New Issues",monetary,5846,5401,head,True,head/seen
+edgar,us-gaap,IntangibleAssetsNetExcludingGoodwill,"Intangible Assets, Net (Excluding Goodwill)",monetary,5838,5321,head,True,head/seen
+edgar,us-gaap,Revenues,Revenues,monetary,5421,4833,head,True,head/seen
+edgar,us-gaap,ResearchAndDevelopmentExpense,Research and development expense,monetary,5418,4898,head,True,head/seen
+edgar,us-gaap,SellingGeneralAndAdministrativeExpense,"Selling, general and administrative expense",monetary,5346,4741,head,True,head/seen
+edgar,us-gaap,OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent,"Other Comprehensive Income (Loss), Net of Tax, Portion Attributable to Parent",monetary,5343,3425,head,True,head/seen
+edgar,us-gaap,AdditionalPaidInCapitalCommonStock,"Additional Paid in Capital, Common Stock",monetary,5337,4764,head,True,head/seen
+edgar,us-gaap,InterestExpenseNonoperating,"Interest Expense, Nonoperating",monetary,5145,4801,head,True,head/seen
+edgar,us-gaap,DeferredIncomeTaxExpenseBenefit,Deferred Income Tax Expense (Benefit),monetary,5059,4490,head,True,head/seen
+edgar,us-gaap,ProceedsFromIssuanceOfCommonStock,Proceeds from Issuance of Common Stock,monetary,5045,4646,head,True,head/seen
+edgar,us-gaap,CostOfGoodsAndServicesSold,Cost of Goods and Services Sold,monetary,5035,4544,head,True,head/seen
+edgar,us-gaap,IncreaseDecreaseInAccountsPayableAndAccruedLiabilities,Increase (Decrease) in Accounts Payable and Accrued Liabilities,monetary,4962,4485,head,True,head/seen
+edgar,us-gaap,DeferredIncomeTaxLiabilitiesNet,"Deferred Income Tax Liabilities, Net",monetary,4863,4387,head,True,head/seen
+edgar,us-gaap,OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax,"Other Comprehensive Income (Loss), Foreign Currency Transaction and Translation Adjustment, Net of Tax",monetary,4844,3432,head,True,head/seen
+edgar,us-gaap,DepreciationAndAmortization,"Depreciation, Depletion and Amortization, Nonproduction",monetary,4772,3670,head,True,head/seen
+edgar,us-gaap,GainsLossesOnExtinguishmentOfDebt,Gain (Loss) on Extinguishment of Debt,monetary,4662,2716,head,True,head/seen
+edgar,us-gaap,EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents,"Effect of Exchange Rate on Cash, Cash Equivalents, Restricted Cash, and Restricted Cash Equivalents, Continuing Operations",monetary,4587,4218,head,True,head/seen
+edgar,us-gaap,NetIncomeLossAttributableToNoncontrollingInterest,Net Income (Loss) Attributable to Noncontrolling Interest,monetary,4567,3535,head,True,head/seen
+edgar,us-gaap,PaymentsRelatedToTaxWithholdingForShareBasedCompensation,"Payment, Tax Withholding, Share-Based Payment Arrangement",monetary,4352,3953,head,True,head/seen
+edgar,us-gaap,OtherLiabilitiesCurrent,"Other Liabilities, Current",monetary,4256,3869,head,True,head/seen
+edgar,us-gaap,DeferredIncomeTaxAssetsNet,"Deferred Income Tax Assets, Net",monetary,4134,3759,head,True,head/seen
+edgar,us-gaap,LongTermDebtNoncurrent,"Long-Term Debt, Excluding Current Maturities",monetary,4101,3713,head,True,head/seen
+edgar,us-gaap,MinorityInterest,"Equity, Attributable to Noncontrolling Interest",monetary,4068,3659,mid,True,mid/seen
+edgar,us-gaap,ProceedsFromStockOptionsExercised,Proceeds from Stock Options Exercised,monetary,3543,3218,mid,True,mid/seen
+edgar,us-gaap,PaymentsOfDebtIssuanceCosts,Payments of Debt Issuance Costs,monetary,2984,2745,mid,True,mid/seen
+edgar,us-gaap,ProvisionForDoubtfulAccounts,"Accounts Receivable, Credit Loss Expense (Reversal)",monetary,2953,2541,mid,True,mid/seen
+edgar,us-gaap,ProceedsFromIssuanceOfLongTermDebt,Proceeds from Issuance of Long-Term Debt,monetary,2344,2134,mid,True,mid/seen
+edgar,us-gaap,RightOfUseAssetObtainedInExchangeForOperatingLeaseLiability,Right-of-Use Asset Obtained in Exchange for Operating Lease Liability,monetary,2290,2109,mid,True,mid/seen
+edgar,us-gaap,ProfessionalFees,Professional Fees,monetary,2165,1945,mid,True,mid/seen
+edgar,us-gaap,Cash,Cash,monetary,1814,1538,mid,True,mid/seen
+edgar,us-gaap,OtherLiabilities,Other liabilities,monetary,1813,1591,mid,True,mid/seen
+edgar,us-gaap,PaymentsToAcquireIntangibleAssets,Payments to Acquire Intangible Assets,monetary,1560,1418,mid,True,mid/seen
+edgar,us-gaap,OtherOperatingActivitiesCashFlowStatement,"Other Operating Activities, Cash Flow Statement",monetary,1544,1398,mid,True,mid/seen
+edgar,us-gaap,AccruedIncomeTaxesCurrent,"Accrued Income Taxes, Current",monetary,1543,1388,mid,True,mid/seen
+edgar,us-gaap,UnrealizedGainLossOnInvestments,Unrealized Gain (Loss) on Investments,monetary,1543,1049,mid,True,mid/seen
+edgar,us-gaap,IncreaseDecreaseInDeferredRevenue,Increase (Decrease) in Deferred Revenue,monetary,1487,1330,mid,True,mid/seen
+edgar,us-gaap,IncreaseDecreaseInOtherNoncurrentAssets,Increase (Decrease) in Other Noncurrent Assets,monetary,1444,1322,mid,True,mid/seen
+edgar,us-gaap,FinanceLeaseLiabilityNoncurrent,"Finance Lease, Liability, Noncurrent",monetary,1253,1129,mid,True,mid/seen
+edgar,us-gaap,PaymentsToAcquireProductiveAssets,Payments to Acquire Productive Assets,monetary,1240,1124,mid,True,mid/seen
+edgar,us-gaap,IncreaseDecreaseInOtherNoncurrentLiabilities,Increase (Decrease) in Other Noncurrent Liabilities,monetary,1187,1100,mid,True,mid/seen
+edgar,us-gaap,RepaymentsOfDebt,Repayments of Debt,monetary,1179,1077,mid,True,mid/seen
+edgar,us-gaap,AccruedLiabilitiesAndOtherLiabilities,Accrued Liabilities and Other Liabilities,monetary,1167,1050,mid,True,mid/seen
+edgar,us-gaap,EquityMethodInvestments,Equity Method Investments,monetary,1165,1057,mid,True,mid/seen
+edgar,us-gaap,InterestIncomeExpenseAfterProvisionForLoanLoss,"Interest Income (Expense), after Provision for Loan Loss",monetary,1083,945,mid,True,mid/seen
+edgar,us-gaap,RestructuringCharges,Restructuring Charges,monetary,1078,949,mid,True,mid/seen
+edgar,us-gaap,InterestReceivable,Interest Receivable,monetary,1054,926,mid,True,mid/seen
+edgar,us-gaap,PaymentsToMinorityShareholders,Payments to Noncontrolling Interests,monetary,984,889,mid,True,mid/seen
+edgar,us-gaap,BusinessCombinationContingentConsiderationArrangementsChangeInAmountOfContingentConsiderationLiability1,"Business Combination, Contingent Consideration Arrangements, Change in Amount of Contingent Consideration, Liability",monetary,983,706,mid,True,mid/seen
+edgar,us-gaap,IncreaseDecreaseInDeferredIncomeTaxes,Increase (Decrease) in Deferred Income Taxes,monetary,961,880,mid,True,mid/seen
+edgar,us-gaap,IncreaseDecreaseInReceivables,Increase (Decrease) in Receivables,monetary,923,843,mid,True,mid/seen
+edgar,us-gaap,InterestExpenseDeposits,"Interest Expense, Deposits",monetary,894,788,mid,True,mid/seen
+edgar,us-gaap,OtherAccruedLiabilitiesCurrent,"Other Accrued Liabilities, Current",monetary,842,726,mid,True,mid/seen
+edgar,us-gaap,DividendsPayableCurrentAndNoncurrent,Dividends Payable,monetary,825,666,mid,True,mid/seen
+edgar,us-gaap,IncreaseDecreaseInOtherCurrentLiabilities,Increase (Decrease) in Other Current Liabilities,monetary,803,727,mid,True,mid/seen
+edgar,us-gaap,InvestmentIncomeNet,"Investment Income, Net",monetary,734,637,mid,True,mid/seen
+edgar,us-gaap,OtherComprehensiveIncomeLossCashFlowHedgeGainLossAfterReclassificationAndTaxParent,"Other Comprehensive Income (Loss), Cash Flow Hedge, Gain (Loss), after Reclassification and Tax, Parent",monetary,730,606,mid,True,mid/seen
+edgar,us-gaap,BankOwnedLifeInsurance,Bank Owned Life Insurance,monetary,698,616,mid,True,mid/seen
+edgar,us-gaap,PropertyPlantAndEquipmentGross,"Property, Plant and Equipment, Gross",monetary,695,616,mid,True,mid/seen
+edgar,us-gaap,IncomeLossFromContinuingOperationsBeforeIncomeTaxesMinorityInterestAndIncomeLossFromEquityMethodInvestments,"Income (Loss) from Continuing Operations before Equity Method Investments, Income Taxes, Noncontrolling Interest",monetary,693,602,mid,True,mid/seen
+edgar,us-gaap,DividendsPreferredStock,"Dividends, Preferred Stock",monetary,683,587,mid,True,mid/seen
+edgar,us-gaap,RepaymentsOfShortTermDebt,Repayments of Short-Term Debt,monetary,631,589,mid,True,mid/seen
+edgar,us-gaap,ProceedsFromSaleAndMaturityOfAvailableForSaleSecurities,"Proceeds from Sale and Maturity of Debt Securities, Available-for-Sale",monetary,600,551,mid,True,mid/seen
+edgar,us-gaap,OtherReceivables,Other receivables,monetary,596,539,mid,True,mid/seen
+edgar,us-gaap,DebtAndEquitySecuritiesUnrealizedGainLoss,"Debt and Equity Securities, Unrealized Gain (Loss)",monetary,587,359,mid,True,mid/seen
+edgar,us-gaap,StockIssuedDuringPeriodValueConversionOfUnits,"Stock Issued During Period, Value, Conversion of Units",monetary,560,499,mid,True,mid/seen
+edgar,us-gaap,InterestIncomeSecuritiesTaxable,"Interest Income, Securities, Operating, Taxable",monetary,536,475,mid,True,mid/seen
+edgar,us-gaap,DepositsAssetsNoncurrent,"Deposits Assets, Noncurrent",monetary,534,492,mid,True,mid/seen
+edgar,us-gaap,PaidInKindInterest,Paid-in-Kind Interest,monetary,526,476,mid,True,mid/seen
+edgar,us-gaap,GainLossOnSaleOfOtherAssets,Gain (Loss) on Disposition of Other Assets,monetary,508,416,mid,True,mid/seen
+edgar,us-gaap,OtherGeneralAndAdministrativeExpense,Other General and Administrative Expense,monetary,504,472,mid,True,mid/seen
+edgar,us-gaap,IntangibleAssetsNetIncludingGoodwill,"Intangible Assets, Net (Including Goodwill)",monetary,497,450,mid,True,mid/seen
+edgar,us-gaap,CashProvidedByUsedInInvestingActivitiesDiscontinuedOperations,"Cash Provided by (Used in) Investing Activities, Discontinued Operations",monetary,479,449,mid,True,mid/seen
+edgar,us-gaap,ProceedsFromSaleOfEquitySecuritiesFvNi,"Proceeds from Sale of Equity Securities, FV-NI",monetary,467,434,mid,True,mid/seen
+edgar,us-gaap,NetCashProvidedByUsedInInvestingActivitiesContinuingOperations,"Net Cash Provided by (Used in) Investing Activities, Continuing Operations",monetary,446,418,mid,True,mid/seen
+edgar,us-gaap,PaymentsForPurchaseOfInvestmentOperatingActivity,"Payment for Purchase, Investment, Operating Activity",monetary,446,423,mid,True,mid/seen
+edgar,us-gaap,InterestIncomeDepositsWithFinancialInstitutions,"Interest Income, Deposits with Financial Institutions",monetary,436,375,mid,True,mid/seen
+edgar,us-gaap,InterestAndOtherIncome,Interest and Other Income,monetary,435,396,mid,True,mid/seen
+edgar,us-gaap,NotesAndLoansReceivableNetCurrent,"Financing Receivable, after Allowance for Credit Loss, Current",monetary,420,383,mid,True,mid/seen
+edgar,us-gaap,IncreaseDecreaseInManagementFeePayable,Increase (Decrease) in Management Fee Payable,monetary,400,370,mid,True,mid/seen
+edgar,us-gaap,RealEstateInvestmentPropertyAccumulatedDepreciation,"Real Estate Investment Property, Accumulated Depreciation",monetary,396,358,mid,True,mid/seen
+edgar,us-gaap,StockGrantedDuringPeriodValueSharebasedCompensation,"Shares Granted, Value, Share-Based Payment Arrangement, after Forfeiture",monetary,394,362,mid,True,mid/seen
+edgar,us-gaap,GoodwillAndIntangibleAssetImpairment,Goodwill and Intangible Asset Impairment,monetary,392,254,mid,True,mid/seen
+edgar,us-gaap,OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentBeforeTax,"Other Comprehensive Income (Loss), Foreign Currency Transaction and Translation Adjustment, before Tax",monetary,389,346,mid,True,mid/seen
+edgar,us-gaap,AccruedIncomeTaxesNoncurrent,"Accrued Income Taxes, Noncurrent",monetary,383,347,mid,True,mid/seen
+edgar,us-gaap,SubordinatedDebt,Subordinated Debt,monetary,379,341,mid,True,mid/seen
+edgar,us-gaap,CashFlowsFromUsedInFinancingActivities,Cash flows from (used in) financing activities,monetary,367,276,mid,True,mid/seen
+edgar,us-gaap,OtherComprehensiveIncomeLossBeforeTax,"Other Comprehensive Income (Loss), before Tax",monetary,365,322,mid,True,mid/seen
+edgar,us-gaap,WarrantsAndRightsOutstanding,Warrants and Rights Outstanding,monetary,365,325,mid,True,mid/seen
+edgar,us-gaap,ImpairmentOfIntangibleAssetsExcludingGoodwill,Impairment of Intangible Assets (Excluding Goodwill),monetary,361,254,mid,True,mid/seen
+edgar,us-gaap,IncreaseDecreaseInOperatingCapital,Increase (Decrease) in Operating Capital,monetary,361,311,mid,True,mid/seen
+edgar,us-gaap,RepaymentsOfOtherDebt,Repayments of Other Debt,monetary,359,313,mid,True,mid/seen
+edgar,us-gaap,ProceedsFromSaleOfShortTermInvestments,Proceeds from Sale of Short-Term Investments,monetary,352,334,mid,True,mid/seen
+edgar,us-gaap,RealEstateInvestmentPropertyAtCost,"Real Estate Investment Property, at Cost",monetary,351,320,mid,True,mid/seen
+edgar,us-gaap,ProceedsFromIssuanceOrSaleOfEquity,Proceeds from Issuance or Sale of Equity,monetary,345,287,mid,True,mid/seen
+edgar,us-gaap,ProceedsFromSaleOfEquityMethodInvestments,Proceeds from Sale of Equity Method Investments,monetary,339,312,mid,True,mid/seen
+edgar,us-gaap,StockIssuedDuringPeriodValueShareBasedCompensationGross,"Shares Issued, Value, Share-Based Payment Arrangement, before Forfeiture",monetary,337,312,mid,True,mid/seen
+edgar,us-gaap,EquityAndLiabilities,Equity and liabilities,monetary,335,260,mid,True,mid/seen
+edgar,us-gaap,CurrentLiabilities,Current liabilities,monetary,328,251,mid,True,mid/seen
+edgar,us-gaap,PaymentsForCapitalImprovements,Payments for Capital Improvements,monetary,322,292,mid,True,mid/seen
+edgar,us-gaap,ImpairmentOfRealEstate,Impairment of Real Estate,monetary,318,189,mid,True,mid/seen
+edgar,us-gaap,FinancingReceivableExcludingAccruedInterestCreditLossExpenseReversal,"Financing Receivable, Excluding Accrued Interest, Credit Loss Expense (Reversal)",monetary,316,182,mid,True,mid/seen
+edgar,us-gaap,AdvertisingExpense,Advertising expense,monetary,314,276,mid,True,mid/seen
+edgar,us-gaap,InvestmentCompanyExpenseAfterReductionOfFeeWaiverAndReimbursement,"Investment Company, Expense, after Reduction of Fee Waiver and Reimbursement",monetary,311,294,mid,True,mid/seen
+edgar,us-gaap,BusinessCombinationContingentConsiderationLiabilityNoncurrent,"Business Combination, Contingent Consideration, Liability, Noncurrent",monetary,308,280,mid,True,mid/seen
+edgar,us-gaap,LifeInsuranceCorporateOrBankOwnedChangeInValue,"Life Insurance, Corporate or Bank Owned, Change in Value",monetary,302,249,mid,True,mid/seen
+edgar,us-gaap,InvestmentIncomeOperatingAfterExpenseAndTax,"Investment Income, Operating, after Expense and Tax",monetary,301,255,mid,True,mid/seen
+edgar,us-gaap,NoncontrollingInterestIncreaseFromBusinessCombination,"Noncontrolling Interest, Increase from Business Combination",monetary,298,269,mid,True,mid/seen
+edgar,us-gaap,PrepaidTaxes,Prepaid Taxes,monetary,298,261,mid,True,mid/seen
+edgar,us-gaap,IncreaseDecreaseInOtherNoncurrentAssetsAndLiabilitiesNet,"Increase (Decrease) in Other Noncurrent Assets and Liabilities, Net",monetary,293,256,mid,True,mid/seen
+edgar,us-gaap,GainLossOnSalesOfAssetsAndAssetImpairmentCharges,Gain (Loss) on Sale of Assets and Asset Impairment Charges,monetary,292,218,mid,True,mid/seen
+edgar,us-gaap,DepositsAssetsCurrent,"Deposits Assets, Current",monetary,274,260,mid,True,mid/seen
+edgar,us-gaap,AssetRetirementObligationAccretionExpense,"Asset Retirement Obligation, Accretion Expense",monetary,270,169,mid,True,mid/seen
+edgar,us-gaap,DerivativeAssetsNoncurrent,"Derivative Asset, Noncurrent",monetary,266,244,mid,True,mid/seen
+edgar,us-gaap,PaymentsOfOrdinaryDividends,Payments of Ordinary Dividends,monetary,264,242,mid,True,mid/seen
+edgar,us-gaap,LimitedPartnersCapitalAccount,Limited Partners' Capital Account,monetary,261,219,mid,True,mid/seen
+edgar,us-gaap,ImpairmentOfIntangibleAssetsFinitelived,"Impairment of Intangible Assets, Finite-Lived",monetary,260,183,mid,True,mid/seen
+edgar,us-gaap,DefinedBenefitPensionPlanLiabilitiesNoncurrent,"Liability, Defined Benefit Pension Plan, Noncurrent",monetary,259,225,mid,True,mid/seen
+edgar,us-gaap,UnearnedPremiums,Unearned Premiums,monetary,259,244,mid,True,mid/seen
+edgar,us-gaap,TreasuryStockRetiredCostMethodAmount,"Treasury Stock, Retired, Cost Method, Amount",monetary,257,237,mid,True,mid/seen
+edgar,us-gaap,EquityMethodInvestmentRealizedGainLossOnDisposal,"Equity Method Investment, Realized Gain (Loss) on Disposal",monetary,254,171,mid,True,mid/seen
+edgar,us-gaap,InterestIncomeOperatingPaidInCash,"Interest Income, Operating, Paid in Cash",monetary,254,241,mid,True,mid/seen
+edgar,us-gaap,TradeAndOtherCurrentPayables,Trade and other current payables,monetary,251,194,mid,True,mid/seen
+edgar,us-gaap,UnsecuredDebt,Unsecured Debt,monetary,246,230,mid,True,mid/seen
+edgar,us-gaap,IncreaseDecreaseInAccountsAndNotesReceivable,Increase (Decrease) in Accounts and Notes Receivable,monetary,244,216,mid,True,mid/seen
+edgar,us-gaap,NoncurrentLiabilities,Non-current liabilities,monetary,243,187,mid,True,mid/seen
+edgar,us-gaap,ProceedsFromSaleOfMortgageLoansHeldForSale,"Proceeds from Sale, Loan, Mortgage, Held-for-Sale",monetary,241,221,mid,True,mid/seen
+edgar,us-gaap,NoncashOrPartNoncashAcquisitionFixedAssetsAcquired1,"Noncash or Part Noncash Acquisition, Fixed Assets Acquired",monetary,239,211,mid,True,mid/seen
+edgar,us-gaap,MinorityInterestChangeInRedemptionValue,"Noncontrolling Interest, Change in Redemption Value",monetary,236,196,mid,True,mid/seen
+edgar,us-gaap,CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsDisposalGroupIncludingDiscontinuedOperations,"Cash, Cash Equivalents, Restricted Cash, and Restricted Cash Equivalents, Disposal Group, Including Discontinued Operations",monetary,233,188,mid,True,mid/seen
+edgar,us-gaap,LegalFees,Legal Fees,monetary,227,200,mid,True,mid/seen
+edgar,us-gaap,OtherComprehensiveIncomeLossAmortizationAdjustmentFromAOCIPensionAndOtherPostretirementBenefitPlansForNetPriorServiceCostCreditNetOfTax,"Other Comprehensive (Income) Loss, Defined Benefit Plan, Prior Service Cost (Credit), Reclassification Adjustment from AOCI, after Tax",monetary,199,174,tail,True,tail/seen
+edgar,us-gaap,OtherComprehensiveIncomeLossPensionAndOtherPostretirementBenefitPlansNetUnamortizedGainLossArisingDuringPeriodBeforeTax,"Other Comprehensive Income (Loss), Defined Benefit Plan, Gain (Loss) Arising During Period, before Tax",monetary,187,163,tail,True,tail/seen
+edgar,us-gaap,NoncontrollingInterestIncreaseFromSaleOfParentEquityInterest,"Noncontrolling Interest, Increase from Sale of Parent Equity Interest",monetary,186,169,tail,True,tail/seen
+edgar,us-gaap,ProceedsFromRepaymentsOfCommercialPaper,Proceeds from (Repayments of) Commercial Paper,monetary,185,167,tail,True,tail/seen
+edgar,us-gaap,InterestExpenseFederalHomeLoanBankAndFederalReserveBankAdvancesLongTerm,"Interest Expense, Federal Home Loan Bank and Federal Reserve Bank Advances, Long-Term",monetary,173,161,tail,True,tail/seen
+edgar,us-gaap,HeldToMaturitySecurities,"Debt Securities, Held-to-Maturity, Amortized Cost, before Allowance for Credit Loss",monetary,162,136,tail,True,tail/seen
+edgar,us-gaap,TangibleAssetImpairmentCharges,Tangible Asset Impairment Charges,monetary,133,111,tail,True,tail/seen
+edgar,us-gaap,OtherComprehensiveIncomeLossCashFlowHedgeGainLossBeforeReclassificationTax,"Other Comprehensive Income (Loss), Cash Flow Hedge, Gain (Loss), before Reclassification, Tax",monetary,120,111,tail,True,tail/seen
+edgar,us-gaap,OtherRealEstateAndForeclosedAssets,"Other Real Estate, Foreclosed Assets, and Repossessed Assets",monetary,110,103,tail,True,tail/seen
+edgar,us-gaap,PensionContributions,Payment for Pension Benefits,monetary,108,98,tail,True,tail/seen
+edgar,us-gaap,RevenueNotFromContractWithCustomer,Revenue Not from Contract with Customer,monetary,108,100,tail,True,tail/seen
+edgar,us-gaap,AccountsReceivableGrossCurrent,"Accounts Receivable, before Allowance for Credit Loss, Current",monetary,105,91,tail,True,tail/seen
+edgar,us-gaap,IncentiveFeeExpenseIncomeBased,"Incentive Fee Expense, Income-Based",monetary,103,103,tail,True,tail/seen
+edgar,us-gaap,IncreaseDecreaseInOperatingAssets,Increase (Decrease) in Operating Assets,monetary,88,76,tail,True,tail/seen
+edgar,us-gaap,SalariesWagesAndOfficersCompensation,"Salary and Wage, Excluding Cost of Good and Service Sold",monetary,85,83,tail,True,tail/seen
+edgar,us-gaap,OtherReceivableAfterAllowanceForCreditLossNoncurrent,"Other Receivable, after Allowance for Credit Loss, Noncurrent",monetary,79,72,tail,True,tail/seen
+edgar,us-gaap,PaymentsForAdvanceToAffiliate,Payments for Advance to Affiliate,monetary,78,72,tail,True,tail/seen
+edgar,us-gaap,NoncashOrPartNoncashAcquisitionNetNonmonetaryAssetsAcquiredLiabilitiesAssumed1,"Noncash or Part Noncash Acquisition, Net Nonmonetary Assets Acquired (Liabilities Assumed)",monetary,72,64,tail,True,tail/seen
+edgar,us-gaap,ProceedsFromPaymentsForLongTermLoansForRelatedParties,Proceeds from Collection of (Payments to Fund) Long-Term Loans to Related Parties,monetary,71,61,tail,True,tail/seen
+edgar,us-gaap,InvestmentCompanyIncreaseDecreaseFromShareTransaction,"Investment Company, Capital Share Transaction, Increase (Decrease)",monetary,68,68,tail,True,tail/seen
+edgar,us-gaap,IncreaseDecreaseInMortgageLoansHeldForSale,"Increase (Decrease) in Loan, Mortgage, Held-for-Sale",monetary,66,56,tail,True,tail/seen
+edgar,us-gaap,PartnersCapitalAccountUnitBasedCompensation,"Partners' Capital Account, Unit-Based Payment Arrangement, Amount",monetary,65,60,tail,True,tail/seen
+edgar,us-gaap,CommissionsPayableToBrokerDealersAndClearingOrganizations,Commission Payable to Broker-Dealer and Clearing Organization,monetary,64,64,tail,True,tail/seen
+edgar,us-gaap,GainsLossesOnChangeInFairValueOfDerivatives,Gains (losses) on change in fair value of derivatives,monetary,62,42,tail,True,tail/seen
+edgar,us-gaap,OtherComprehensiveIncomeLossFinalizationOfPensionAndNonPensionPostretirementPlanValuationNetOfTax,"Other Comprehensive Income (Loss), Defined Benefit Plan, Settlement and Curtailment Gain (Loss), after Tax",monetary,62,52,tail,True,tail/seen
+edgar,us-gaap,StraightLineRentAdjustments,Straight Line Rent Adjustments,monetary,56,53,tail,True,tail/seen
+edgar,us-gaap,ProceedsFromDivestitureOfInterestInJointVenture,Proceeds from Divestiture of Interest in Joint Venture,monetary,51,43,tail,True,tail/seen
+edgar,us-gaap,RevenueNotFromContractWithCustomerOther,"Revenue Not from Contract with Customer, Other",monetary,49,40,tail,True,tail/seen
+edgar,us-gaap,ProceedsFromAnnuitiesAndInvestmentCertificates,Proceeds from Annuities and Investment Certificates,monetary,48,47,tail,True,tail/seen
+edgar,us-gaap,NoncurrentPayables,Trade and other non-current payables,monetary,40,30,tail,True,tail/seen
+edgar,us-gaap,EnergyRelatedInventoryNaturalGasInStorage,"Energy Related Inventory, Natural Gas in Storage",monetary,36,27,tail,True,tail/seen
+edgar,us-gaap,IncreaseDecreaseInIntangibleAssetsCurrent,"Increase (Decrease) in Intangible Assets, Current",monetary,31,26,tail,True,tail/seen
+edgar,us-gaap,CryptoAssetRealizedGainLossOperating,"Crypto Asset, Realized Gain (Loss), Operating",monetary,29,24,tail,True,tail/seen
+edgar,us-gaap,DeferredIncome,Deferred Income,monetary,29,24,tail,True,tail/seen
+edgar,us-gaap,MinorityInterestInLimitedPartnerships,Noncontrolling Interest in Limited Partnerships,monetary,28,26,tail,True,tail/seen
+edgar,us-gaap,TradeAndLoansReceivablesHeldForSaleNetNotPartOfDisposalGroup,"Accounts and Financing Receivables, Held-for-Sale, Not Part of Disposal Group, after Valuation Allowance",monetary,27,26,tail,True,tail/seen
+edgar,us-gaap,LossContingencyAccrualCarryingValueNoncurrent,"Loss Contingency, Accrual, Noncurrent",monetary,26,24,tail,True,tail/seen
+edgar,us-gaap,ProceedsFromSalesOfInvestmentsAccountedForUsingEquityMethod,Proceeds from sales of investments accounted for using equity method,monetary,23,19,tail,True,tail/seen
+edgar,us-gaap,AllowanceForFundsUsedDuringConstructionInvestingActivities,"Allowance for Funds Used During Construction, Investing Activities",monetary,21,20,tail,True,tail/seen
+edgar,us-gaap,CurrentDeferredIncomeIncludingCurrentContractLiabilities,Current deferred income including current contract liabilities,monetary,20,18,tail,True,tail/seen
+edgar,us-gaap,IncreaseDecreaseInPrepaidRent,Increase (Decrease) in Prepaid Rent,monetary,20,19,tail,True,tail/seen
+edgar,us-gaap,LeaseDepositLiability,Lease Deposit Liability,monetary,19,15,tail,True,tail/seen
+edgar,us-gaap,BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedAssets,"Business Combination, Recognized Asset Acquired, Asset",monetary,16,16,tail,True,tail/seen
+edgar,us-gaap,FinancingReceivableBeforeAllowanceForCreditLossAndFee,"Financing Receivable, before Allowance for Credit Loss, Fee and Loan in Process",monetary,14,14,tail,True,tail/seen
+edgar,us-gaap,TradingIncomeExpense,Trading income (expense),monetary,13,9,tail,True,tail/seen
+edgar,us-gaap,DerivativeFairValueHedgeIncludedInEffectivenessGainLoss,"Derivative, Fair Value Hedge, Included in Effectiveness, Gain (Loss)",monetary,12,9,tail,True,tail/seen
+edgar,us-gaap,GainLossArisingFromDifferenceBetweenCarryingAmountOfFinancialLiabilityExtinguishedAndConsiderationPaid,Gain (loss) arising from difference between carrying amount of financial liability extinguished and consideration paid,monetary,11,7,tail,True,tail/seen
+edgar,us-gaap,NoncurrentFinancialAssetsAtFairValueThroughProfitOrLoss,Non-current financial assets at fair value through profit or loss,monetary,10,8,tail,True,tail/seen
+edgar,us-gaap,OtherComprehensiveIncomeDefinedBenefitPlansAdjustmentNetOfTaxPortionAttributableToNoncontrollingInterest,"Other Comprehensive (Income) Loss, Defined Benefit Plan, after Tax and Reclassification Adjustment, Attributable to Noncontrolling Interest",monetary,10,10,tail,True,tail/seen
+edgar,us-gaap,BeneficialInterest,Beneficial Interest Liability,monetary,9,9,tail,True,tail/seen
+edgar,us-gaap,InterestBearingDomesticDepositOtherTimeDeposit,"Interest-Bearing Domestic Deposit, Other Time Deposit",monetary,9,9,tail,True,tail/seen
+edgar,us-gaap,DefinedBenefitPlanAmountsRecognizedInOtherComprehensiveIncomeLossNetGainLossBeforeTax,"Other Comprehensive Income (Loss), Defined Benefit Plan, Gain (Loss), after Reclassification Adjustment, before Tax",monetary,8,7,tail,True,tail/seen
+edgar,us-gaap,PreferredStockConversionsInducements,"Preferred Stock Conversions, Inducements",monetary,8,8,tail,True,tail/seen
+edgar,us-gaap,PurchaseOfFinancialAssetsMeasuredAtFairValueThroughOtherComprehensiveIncomeClassifiedAsInvestingActivities,"Purchase of Financial assets at fair value through other comprehensive income, Statement of Cashflows",monetary,7,7,tail,True,tail/seen
+edgar,us-gaap,BalancesWithBanks,Balances with banks,monetary,6,6,tail,True,tail/seen
+edgar,us-gaap,NotesAndDebenturesIssued,Notes and debentures issued,monetary,6,3,tail,True,tail/seen
+edgar,us-gaap,ShareOfProfitLossOfContinuingOperationsOfAssociatesAndJointVenturesAccountedForUsingEquityMethod,Share of profit (loss) from continuing operations of associates and joint ventures accounted for using equity method,monetary,6,5,tail,True,tail/seen
+edgar,us-gaap,FinancialInstrumentsOwnedPrincipalInvestmentsAtFairValue,"Financial Instruments, Owned, Principal Investments, at Fair Value",monetary,5,5,tail,True,tail/seen
+edgar,us-gaap,NoncurrentFinanceLeaseReceivables,Non-current finance lease receivables,monetary,5,4,tail,True,tail/seen
+edgar,us-gaap,NoncurrentReceivablesFromTaxesOtherThanIncomeTax,Non-current receivables from taxes other than income tax,monetary,5,3,tail,True,tail/seen
+edgar,us-gaap,OtherComprehensiveIncomeLossReclassificationAdjustmentFromAociForInvestmentTransferredFromAvailableForSaleToEquityMethodTax,"Other Comprehensive Income (Loss), Reclassification Adjustment from AOCI for Investment Transferred from Available-for-Sale to Equity Method, Tax",monetary,4,3,tail,True,tail/seen
+edgar,us-gaap,PremiumReceivableCreditLossExpenseReversal,"Premium Receivable, Credit Loss Expense (Reversal)",monetary,4,4,tail,True,tail/seen
+edgar,us-gaap,PreproductionCostsRelatedToLongTermSupplyArrangementsAssetForMoldsDiesAndToolsNotOwned,"Preproduction Costs Related to Long-Term Supply Arrangements, Asset for Molds Dies and Tools Not Owned",monetary,4,3,tail,True,tail/seen
+edgar,us-gaap,BusinessCombinationProvisionalInformationInitialAccountingIncompleteAdjustmentEquityInterests,"Business Combination, Provisional Information, Initial Accounting Incomplete, Adjustment, Equity Interests",monetary,3,3,tail,True,tail/seen
+edgar,us-gaap,PrincipalAmountOutstandingOnLoansHeldForSaleOrSecuritization,"Loan, Held-for-Sale or Securitization or Asset-Backed Financing Arrangement, Principal Outstanding",monetary,3,3,tail,True,tail/seen
+edgar,us-gaap,ResultsOfOperationsIncomeBeforeIncomeTaxes,"Oil and Gas, Result of Operation, before Income Tax Expense (Benefit)",monetary,3,2,tail,True,tail/seen
+edgar,us-gaap,SelfInsuranceReserve,Self Insurance Reserve,monetary,3,3,tail,True,tail/seen
+edgar,us-gaap,UndistributedEarningsLossAvailableToCommonShareholdersDiluted,"Undistributed Earnings (Loss) Available to Common Shareholders, Diluted",monetary,3,3,tail,True,tail/seen
+edgar,us-gaap,CumulativeGainLossPreviouslyRecognisedInOtherComprehensiveIncomeArisingFromReclassificationOfFinancialAssetsOutOfFairValueThroughOtherComprehensiveIncomeIntoFairValueThroughProfitOrLossMeasurementCategory,Cumulative gain (loss) previously recognised in other comprehensive income arising from reclassification of financial assets out of fair value through other comprehensive income into fair value through profit or loss measurement category,monetary,2,1,tail,True,tail/seen
+edgar,us-gaap,DeferredRevenuePeriodIncreaseDecrease,"Deferred Revenue, Period Increase (Decrease)",monetary,2,2,tail,True,tail/seen
+edgar,us-gaap,GainLossRecognisedAsResultOfRemeasuringToFairValueEquityInterestInAcquireeHeldByAcquirerBeforeBusinessCombination,Gain (loss) recognised as result of remeasuring to fair value equity interest in acquiree held by acquirer before business combination,monetary,2,2,tail,True,tail/seen
+edgar,us-gaap,IncreaseDecreaseInAllowanceAccountForCreditLossesOfFinancialAssets,Increase (decrease) in allowance account for credit losses of financial assets,monetary,2,1,tail,True,tail/seen
+edgar,us-gaap,LossesOnDisposalsOfNoncurrentAssets,Losses on disposals of non-current assets,monetary,2,1,tail,True,tail/seen
+edgar,us-gaap,ProvisionUsedOtherProvisions,"Provision used, other provisions",monetary,2,2,tail,True,tail/seen
+edgar,us-gaap,CurrentFinancialLiabilitiesAtAmortisedCost,Current financial liabilities at amortised cost,monetary,1,1,tail,True,tail/seen
+edgar,us-gaap,DefinedBenefitPlanContributionsByEmployer,"Defined Benefit Plan, Plan Assets, Contributions by Employer",monetary,1,1,tail,True,tail/seen
+edgar,us-gaap,GainOrLossOnSaleOfPreviouslyUnissuedStockByEquityInvestee,Gain (Loss) on Sale of Previously Unissued Stock by Equity Investee,monetary,1,1,tail,True,tail/seen
+edgar,us-gaap,LoansReceived,Loans received,monetary,1,1,tail,True,tail/seen
+edgar,us-gaap,SalesTypeLeaseNetInvestmentInLeaseNonaccrual,"Sales-type Lease, Net Investment in Lease, Nonaccrual",monetary,1,1,tail,True,tail/seen
+edgar,us-gaap,IncentiveFeePayableIncomeBased,"Incentive Fee Payable, Income-Based",monetary,74,74,tail,False,tail/unseen
+edgar,us-gaap,IncreaseDecreaseInIncentiveFeePayableIncomeBased,"Increase (Decrease) in Incentive Fee Payable, Income-Based",monetary,51,51,tail,False,tail/unseen
+edgar,us-gaap,OrganizationalAndOfferingCostsExpense,"Offering and Organizational Costs, Expense",monetary,18,18,tail,False,tail/unseen
+edgar,us-gaap,CryptoAssetUnrealizedLossNonoperating,"Crypto Asset, Unrealized Loss, Nonoperating",monetary,11,6,tail,False,tail/unseen
+edgar,us-gaap,IncomeTaxPaidStateAndLocalBeforeRefundReceived,"Income Tax Paid, State and Local, before Refund Received",monetary,8,7,tail,False,tail/unseen
+edgar,us-gaap,InvestmentCompanyIncentiveFeeWaivedIncomeBased,"Investment Company, Incentive Fee Waived, Income-Based",monetary,8,8,tail,False,tail/unseen
+edgar,us-gaap,InvestmentCompanyManagementFeeVoluntaryFeeWaived,"Investment Company, Management Fee, Voluntary Fee Waived",monetary,7,7,tail,False,tail/unseen
+edgar,us-gaap,ProceedsFromIncomeTaxRefundStateAndLocal,"Proceeds from Income Tax Refund, State and Local",monetary,7,7,tail,False,tail/unseen
+edgar,us-gaap,BusinessCombinationSeparatelyRecognizedTransactionsAdditionalDisclosuresAcquisitionCostExpensed,"Business Combination, Separately Recognized Transaction, Acquisition-Related Cost, Expensed",monetary,4,4,tail,False,tail/unseen
+edgar,us-gaap,CryptoAssetUnrealizedGainOperating,"Crypto Asset, Unrealized Gain, Operating",monetary,4,2,tail,False,tail/unseen
+edgar,us-gaap,ReceivablesFairValueDisclosure,"Receivables, Fair Value Disclosure",monetary,4,4,tail,False,tail/unseen
+edgar,us-gaap,InvestmentCompanyExcessExpenseReimbursable,"Investment Company, Reimbursable Excess Expense",monetary,3,3,tail,False,tail/unseen
+edgar,us-gaap,CryptoAssetCostRestricted,"Crypto Asset, Cost, Restricted",monetary,2,1,tail,False,tail/unseen
+edgar,us-gaap,DebtInstrumentAnnualPrincipalPayment,"Debt Instrument, Annual Principal Payment",monetary,2,2,tail,False,tail/unseen
+edgar,us-gaap,ForeignCurrencyFairValueHedgeAssetAtFairValue,Foreign Currency Fair Value Hedge Asset at Fair Value,monetary,2,2,tail,False,tail/unseen
+edgar,us-gaap,GovernmentAssistanceNonoperatingExpense,"Government Assistance, Nonoperating Expense, Decrease (Increase)",monetary,2,2,tail,False,tail/unseen
+edgar,us-gaap,InvestmentCompanyAverageNetAssets,"Investment Company, Average Net Assets",monetary,2,2,tail,False,tail/unseen
+edgar,us-gaap,InvestmentCompanyFeePaidIndirectly,"Investment Company, Fee Paid Indirectly",monetary,2,2,tail,False,tail/unseen
+edgar,us-gaap,PaymentsToAcquireWaterSystems,Payments to Acquire Water Systems,monetary,2,2,tail,False,tail/unseen
+edgar,us-gaap,RealEstateOwnedValuationAllowancePeriodIncreaseDecrease,"Real Estate Owned, Valuation Allowance, Period Increase (Decrease)",monetary,2,2,tail,False,tail/unseen
+edgar,us-gaap,AcquisitiondateFairValueOfTotalConsiderationTransferred,"Consideration transferred, acquisition-date fair value",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,AdjustmentsForCurrentTaxOfPriorPeriod,Adjustments for current tax of prior periods,monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,AgriculturalRelatedInventoryGrowingCrops,"Agricultural Related Inventory, Growing Crops",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,AllowanceForLoanAndLeaseLossesForeignCurrencyTranslation,"Allowance for Loan and Lease Losses, Foreign Currency Translation",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,BusinessCombinationContingentConsiderationAsset,"Business Combination, Contingent Consideration, Asset",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,ChangeInReportingEntityInvestmentCumulativeIncreaseDecrease,"Change in Reporting Entity, Investment, Cumulative Increase (Decrease)",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,CostsInExcessOfBillingsOnUncompletedContractsOrProgramsExpectedToBeCollectedWithinOneYear,"Costs in Excess of Billings, Current",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,CurrentAssetsRecognisedAsOfAcquisitionDate,Current assets recognised as of acquisition date,monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,CurrentForeignTaxExpenseBenefit,Current Foreign Tax Expense (Benefit),monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,CurrentRetentionPayables,Current retention payables,monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,DebtSecuritiesAvailableForSaleAllowanceForCreditLossRecovery,"Debt Securities, Available-for-Sale, Allowance for Credit Loss, Recovery",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,DeferredPolicyAcquisitionCostsAdditions,"Deferred Policy Acquisition Cost, Capitalization",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,DisposalGroupIncludingDiscontinuedOperationDepreciationAndAmortization,"Disposal Group, Including Discontinued Operation, Depreciation and Amortization",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,DisposalGroupIncludingDiscontinuedOperationIntangibleAssets,"Disposal Group, Including Discontinued Operation, Intangible Assets",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,DisposalGroupIncludingDiscontinuedOperationInterestIncome,"Disposal Group, Including Discontinued Operation, Interest Income",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,DisposalGroupIncludingDiscontinuedOperationLiabilityForClaimsAndClaimsAdjustmentExpense,"Disposal Group, Including Discontinued Operation, Liability for Claims and Claims Adjustment Expense",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,FairValueGainsOrLossThatWouldHaveBeenRecognisedInProfitOrLossIfFinancialAssetsHadNotBeenReclassified,Fair value gain (loss) that would have been recognised in profit or loss if financial assets had not been reclassified,monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,FuelAndEnergyExpense,Fuel and energy expense,monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,GoodwillRecognisedAsOfAcquisitionDate,Goodwill recognised as of acquisition date,monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,IncomeTaxReconciliationOtherAdjustments,"Effective Income Tax Rate Reconciliation, Other Adjustments, Amount",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,IncreaseDecreaseThroughOtherChangesInvestmentProperty,"Increase (decrease) through other changes, investment property",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,InterestExpenseDepositsFromOtherFederalHomeLoanBanks,"Interest Expense, Deposits from Other Federal Home Loan Banks",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,InventorySuppliesNetOfReserves,"Inventory, Supplies, Net of Reserves",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,InvestmentProgramProportionalAmortizationMethodElectedIncomeTaxCredit,"Investment Program, Proportional Amortization Method, Elected, Income Tax Credit",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,LiabilityForAsbestosAndEnvironmentalClaimsNetPeriodIncreaseDecrease,"Liability for Asbestos and Environmental Claims, Net, Period Increase (Decrease)",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,LifeSettlementContractsInvestmentMethodFaceValue,"Life Settlement Contracts, Investment Method, Face Value",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,LoansAndAdvancesMeasuredAtFairValueThroughOtherComprehensiveIncome,Loans and advances measured at fair value through other comprehensive income,monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,LoansAndLeasesReceivableRelatedPartiesAdditions,"Loans and Leases Receivable, Related Parties, Additions",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,OciEquityMethodInvestmentTax,"OCI, Equity Method Investment, Tax",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,OperatingProfitLossOperating,OperatingProfitLossOperating,monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,ProceedsFromIssueOfRegulatoryCapitalEquity,"Proceeds from issue of regulatory capital, equity",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,ProceedsFromSecuritizationsOfConsumerLoans,Proceeds from Securitizations of Consumer Loans,monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,RealEstateAccumulatedDepreciationOtherAdditions,"SEC Schedule, 12-28, Real Estate Companies, Investment in Real Estate, Accumulated Depreciation, Other Addition",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,RecoveriesOnLoansPreviouslyWrittenOff,Recoveries on loans previously written off,monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,ReductionOfShortTermCapitalLeaseObligations,Reduction of Short-Term Capital Lease Obligations,monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,SecuredDemandNotes,Secured Demand Notes,monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,SecuritiesForReverseRepurchaseAgreements,Securities for Reverse Repurchase Agreements,monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,ServicingAssetAtFairValueChangesInFairValueResultingFromChangesInValuationInputsOrChangesInAssumptions,"Servicing Asset at Fair Value, Changes in Fair Value Resulting from Changes in Valuation Inputs or Changes in Assumptions",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,ShortTermDebtRefinancedAmount,"Short-Term Debt, Refinanced, Amount",monetary,1,1,tail,False,tail/unseen
+edgar,us-gaap,UnrealizedGainOnPriceRiskCashFlowDerivativesBeforeTax,"Unrealized Gain on Price Risk Cash Flow Derivatives, before Tax",monetary,1,1,tail,False,tail/unseen
