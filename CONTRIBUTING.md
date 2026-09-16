@@ -84,6 +84,55 @@ docs(adr): add ADR-015 for gRPC versioning strategy
 5. All PRs require review by a maintainer before merge.
 6. If your PR adds or modifies a jurisdiction mapping, include a primary source
    reference (official standards document or government publication).
+7. Fill in `.github/PULL_REQUEST_TEMPLATE.md`. It is short, and its claims section is
+   not optional if your PR touches a published number.
+8. If your PR changes a number that appears in public documentation, update all four
+   citable surfaces in the same PR — see **Claims and numbers** below.
+
+---
+
+## Claims and numbers
+
+Every quantitative claim in a public artifact must be regenerable from a committed,
+deterministic command. The four citable surfaces are:
+
+| Surface | File |
+|---|---|
+| Paper abstract | `docs/papers/drafts/sections/abstract.tex` |
+| Repository README | `README.md` |
+| Citation metadata | `CITATION.cff` |
+| Deposit metadata | `.zenodo.json` |
+
+If a headline number changes, all four move **in the same PR**. Stale-count drift across
+them is the documented failure mode — the "23 jurisdictions" residue survived two
+release-prep passes. If the number is asserted in `.github/workflows/ci.yml`, update that
+block too. A red build on claim drift is working as designed; never weaken the assertion
+to make it pass.
+
+Rounding moves toward the command's figure, never away from it: the script reports 97.3%,
+so the abstract may say 97%, never 98%.
+
+The authoritative version of this rule, with the current claim-to-command map, lives in
+`CLAUDE.md` under *Claims–evidence traceability*.
+
+---
+
+## Issue labels
+
+Issue templates apply their own labels; maintainers may add more. The set in use:
+
+| Label | Use for |
+|---|---|
+| `decision` | Something needing an explicit decision before work can proceed |
+| `research` | A research deliverable or investigation |
+| `standard-analysis` | Analysis of a national or industry accounting standard |
+| `claims-evidence` | Touches a published number — regenerate it and update the four surfaces |
+| `cleanup` | Housekeeping: branches, worktrees, dead tooling, stale artifacts |
+| `needs-review` | Awaiting maintainer review |
+| `blocked` | Cannot proceed pending an external dependency or an open decision |
+
+Plus the GitHub defaults: `bug`, `documentation`, `enhancement`, `good first issue`,
+`help wanted`, `question`, `duplicate`, `invalid`, `wontfix`, `dependencies`.
 
 ---
 

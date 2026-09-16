@@ -2,7 +2,7 @@
 name: Research Task
 about: Track a specific research deliverable
 title: '[RESEARCH] '
-labels: research, phase-0
+labels: research
 assignees: ''
 ---
 
