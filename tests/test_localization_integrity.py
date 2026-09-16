@@ -187,6 +187,148 @@ def test_v2_exemplars_validate_against_json_schema():
     )
 
 
+# ---------------------------------------------------------------------------
+# Cross-surface agreement between the ontology and the localization files.
+#
+# Two independent surfaces assert what a local statutory code means:
+#   1. the ontology's per-node ``local_codes`` (core/schemas/level3_accounts.yaml),
+#      which builds the deterministic Tier-1 resolution index;
+#   2. each localization file's ``kontablo_uuid``, a *read* surface consumed by
+#      node_fiber()/lineage queries (ADR-016).
+#
+# node_fiber() MERGES both, so a disagreement makes a node's fiber report a
+# preimage the resolver would never produce. That is exactly how PCG 211
+# "Terrains" (Land, a Class-2 fixed asset) came to appear in the France fiber
+# of asset.current.cash: the localization carried the cash UUID while the
+# ontology correctly carried fr: "211" on asset.noncurrent.ppe.
+#
+# The check is restricted to (jurisdiction, code) pairs BOTH surfaces speak
+# about — currently 32 pairs. Within that set a contradiction is decidable from
+# the two committed files alone, with no semantic heuristic and no judgment
+# about what the local account "really" is. It therefore subsumes, for every
+# pair it can decide, the weaker "fixed-asset code pointing at a current-asset
+# node" test: 211 -> cash is caught because the ontology says otherwise, not
+# because a name was pattern-matched.
+#
+# It CANNOT be widened to the whole corpus today: the 177 bulk-generated
+# jurisdiction files use a different UUID vocabulary from the 23 hand-written
+# ones (e.g. ...0201 means PP&E there but is liability.current.payables in
+# level3_accounts.yaml), so 4182 of 6845 localization UUID references do not
+# denote a level3 node at all and ~1086 of those that do denote one of a
+# conflicting class. Reconciling those namespaces is separate work; widening
+# this gate before that lands would just make CI permanently red.
+# ---------------------------------------------------------------------------
+
+# (iso, local_code) -> why the two surfaces disagree and why it is not fixed
+# here. Each entry is a real open question, NOT a rubber stamp. The test also
+# fails on a STALE entry, so this list can only shrink.
+KNOWN_SURFACE_DIVERGENCES = {
+    ("fr", "512"): (
+        "PCG 512 'Banques': localization says asset.current.bank, ontology "
+        "carries fr: '512' on asset.current.cash. The cash/bank presentation "
+        "split is defensible either way (IFRS merges them; the ontology's "
+        "asset.current.bank note says so explicitly). Moving it changes the "
+        "Tier-1 index and therefore possibly the published claims-evidence "
+        "numbers, so it needs its own PR with the CI gate re-run."
+    ),
+    ("es", "572"): (
+        "PGC 572 'Bancos' — same cash/bank presentation split as fr 512."
+    ),
+    ("tr", "102"): (
+        "TAS 102 'Bankalar' — same cash/bank presentation split as fr 512."
+    ),
+    ("co", "2408"): (
+        "PUC 2408 'Impuesto sobre las ventas por pagar': localization says "
+        "liability.current.vat_output, ontology carries co: '2408' on "
+        "asset.current.vat_input. Unlike the cash/bank split this looks like a "
+        "genuine error on the ONTOLOGY side (PUC class 2 is pasivo), and it "
+        "does affect Tier-1 resolution — hence a separate PR, not a drive-by."
+    ),
+}
+
+
+def _ontology_local_code_claims():
+    """(iso, code) -> {kontablo_id} as asserted by the ontology's local_codes."""
+    from core.harness.ontology import load_ontology
+
+    accounts, _, _, _ = load_ontology()
+    claims = {}
+    for kid, account in accounts.items():
+        for iso, code in account["local_codes"].items():
+            claims.setdefault((iso.lower(), str(code)), set()).add(kid)
+    uuid_to_id = {
+        str(a["uuid"]): kid for kid, a in accounts.items() if a.get("uuid")
+    }
+    return claims, uuid_to_id
+
+
+def test_localization_uuid_agrees_with_ontology_local_codes():
+    claims, uuid_to_id = _ontology_local_code_claims()
+
+    contradictions = {}
+    for path, data in _dict_schema_files():
+        iso = os.path.basename(os.path.dirname(path)).lower()
+        for code, entry in data["mappings"].items():
+            if not isinstance(entry, dict):
+                continue
+            uuid = entry.get("kontablo_uuid")
+            if uuid is None:
+                continue
+            claimed = claims.get((iso, str(code)))
+            if not claimed:
+                continue  # ontology says nothing about this code — undecidable
+            target = uuid_to_id.get(str(uuid))
+            if target is None:
+                continue  # UUID outside the level3 namespace — see comment above
+            if target not in claimed:
+                contradictions[(iso, str(code))] = (
+                    f"{path}: {code} {entry.get('name')!r} -> {target}, but the "
+                    f"ontology claims {sorted(claimed)}"
+                )
+
+    unexpected = {k: v for k, v in contradictions.items()
+                  if k not in KNOWN_SURFACE_DIVERGENCES}
+    assert not unexpected, (
+        "Localization kontablo_uuid contradicts the ontology's local_codes for "
+        f"{sorted(unexpected)}. The node's fiber (node_fiber) will report a "
+        "preimage the Tier-1 resolver would never produce. Fix the localization "
+        "UUID, or — if the ontology is the wrong surface — add the pair to "
+        f"KNOWN_SURFACE_DIVERGENCES with a reason. Details: {unexpected}"
+    )
+
+    stale = set(KNOWN_SURFACE_DIVERGENCES) - set(contradictions)
+    assert not stale, (
+        f"KNOWN_SURFACE_DIVERGENCES entries no longer contradict: {sorted(stale)}. "
+        "Remove them — the allowlist must only ever shrink."
+    )
+
+
+def test_pcg_211_terrains_is_not_cash():
+    """Regression pin for the specific defect: PCG 211 'Terrains' (Land) is a
+    Class-2 fixed asset and must not sit in the France fiber of
+    asset.current.cash."""
+    from core.harness import load_localization
+    from core.harness.ontology import (
+        load_families,
+        load_ontology,
+        merge_family_codes,
+        node_fiber,
+    )
+
+    doc = load_localization("fr")
+    assert doc["mappings"]["211"]["name"] == "Terrains"
+
+    accounts, by_code, _, _ = load_ontology()
+    ppe = accounts["asset.noncurrent.ppe"]
+    assert doc["mappings"]["211"]["kontablo_uuid"] == str(ppe["uuid"])
+
+    by_code = merge_family_codes(by_code, load_families())
+    cash_fr = node_fiber(accounts, by_code, "asset.current.cash", "fr")
+    assert "211" not in {m["code"] for m in cash_fr["jurisdictions"]["fr"]}
+    ppe_fr = node_fiber(accounts, by_code, "asset.noncurrent.ppe", "fr")
+    assert "211" in {m["code"] for m in ppe_fr["jurisdictions"]["fr"]}
+
+
 def test_load_localization_exposes_v2_structure():
     from core.harness import load_localization
 

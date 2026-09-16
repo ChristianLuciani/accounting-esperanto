@@ -22,7 +22,7 @@ mappings:
     name: "Terrains"
     nature: "Debit"
     level: 3
-    kontablo_uuid: "00000000-0000-4000-8000-000000000101" # Fixed Assets root or specific PPE
+    kontablo_uuid: "00000000-0000-4000-8000-000000000110" # asset.noncurrent.ppe (PP&E) — matches local_codes.fr on that node
 
   # Class 4: Comptes de tiers
   "411":
