@@ -36,6 +36,14 @@ from core.harness.fx_provider import (
     static_fx_provider,
     usd_per_unit,
 )
+from core.harness.oversight import (
+    TIER_HELD,
+    ReviewPolicy,
+    RevocationImpact,
+    held_rule_id,
+    postings_by_rule,
+    revocation_impact,
+)
 from core.harness.ontology import (
     FAMILIES_PATH,
     LOCALIZATIONS_DIR,
@@ -58,6 +66,15 @@ from core.harness.validation import (
 __all__ = [
     "resolve",
     "resolve_with_rule",
+    # Human oversight — the Co-responsibility Architecture as operations, not
+    # prose. Deliberately NOT exposed on the agent-facing MCP tool surface: an
+    # agent must not be able to place a hold or revoke a rule.
+    "ReviewPolicy",
+    "RevocationImpact",
+    "TIER_HELD",
+    "held_rule_id",
+    "postings_by_rule",
+    "revocation_impact",
     "MappingQuote",
     "mapping_quote",
     "TIER2_RULES",

@@ -13,9 +13,16 @@ Keeping this in the harness package means every surface (the engine, the gRPC
 servicer, the validation runner) shares the exact same Tier-1/Tier-2 rules that
 produce the published deterministic-coverage number, so they cannot drift apart
 behind the claims-evidence gate.
+
+An optional ``ReviewPolicy`` (``core.harness.oversight``) lets the accountable
+human withdraw standing authorization from a rule, a jurisdiction or a node, at
+which point matching resolutions are *held* rather than applied. The default is
+no policy, which is exactly the prior behaviour.
 """
 
 from __future__ import annotations
+
+from core.harness.oversight import TIER_HELD, held_rule_id
 
 # ---------------------------------------------------------------------------
 # Tier 2 deterministic multilingual keyword rules (auditable, no AI)
@@ -55,7 +62,7 @@ TIER2_RULES = [
 ]
 
 
-def resolve_with_rule(entry, jurisdiction, accounts, by_code):
+def resolve_with_rule(entry, jurisdiction, accounts, by_code, policy=None):
     """Return (kontablo_id, tier, confidence, rule_id).
 
     Identical decision logic to :func:`resolve`, additionally naming the exact
@@ -63,24 +70,56 @@ def resolve_with_rule(entry, jurisdiction, accounts, by_code):
     ``tier2:<kontablo_id>:<keyword>`` / ``None`` on escalation) so the mapping
     is auditable per entry without re-running the resolver (``MappingQuote``,
     ADR-016).
+
+    ``policy`` is an optional :class:`core.harness.oversight.ReviewPolicy` — the
+    accountable human's standing authorization, and specifically the parts of it
+    they have *withdrawn*. When a resolution the resolver would otherwise make
+    falls inside a held scope it is not applied: the entry comes back with
+    ``tier="held"`` and a ``rule_id`` of ``held:<scope>:<withheld rule>``, so both
+    the intervention and the rule it withheld are on the record. A held entry is
+    a typed, counted record, never a silent gap (invariant I2), and it is
+    deliberately distinct from an escalation: an escalation means no deterministic
+    answer existed, a hold means one existed and a human decided it must not be
+    applied unreviewed.
+
+    ``policy=None`` (the default) holds nothing, so this behaves exactly as it did
+    before the parameter existed and the published deterministic-coverage numbers
+    are unaffected.
     """
     code = str(entry["code"])
     # Tier 1: exact local-code lookup
     if code in by_code.get(jurisdiction, {}):
-        return (
-            by_code[jurisdiction][code],
-            "tier1_exact",
-            1.0,
-            f"tier1:{jurisdiction}:{code}",
-        )
+        kid = by_code[jurisdiction][code]
+        rule = f"tier1:{jurisdiction}:{code}"
+        held = _hold_scope(policy, rule, jurisdiction, kid)
+        if held is not None:
+            return None, TIER_HELD, 0.0, held_rule_id(held, rule)
+        return kid, "tier1_exact", 1.0, rule
     # Tier 2: multilingual keyword rules
     name = entry["name"].lower()
     for kid, keys in TIER2_RULES:
         matched = next((k for k in keys if k in name), None)
         if matched is not None and kid in accounts:
-            return kid, "tier2_keyword", 0.85, f"tier2:{kid}:{matched}"
+            rule = f"tier2:{kid}:{matched}"
+            held = _hold_scope(policy, rule, jurisdiction, kid)
+            if held is not None:
+                return None, TIER_HELD, 0.0, held_rule_id(held, rule)
+            return kid, "tier2_keyword", 0.85, rule
     # Escalate (residual -> CRA human review). Tier 3 AI not run here.
     return None, "escalated", 0.0, None
+
+
+def _hold_scope(policy, rule_id, jurisdiction, kontablo_id):
+    """Which scope of ``policy`` withholds this resolution, or ``None``.
+
+    A module-local helper rather than an inline call so the fast path — no policy
+    configured, which is every validation run — is a single ``is None`` check.
+    """
+    if policy is None:
+        return None
+    return policy.hold_scope(
+        rule_id=rule_id, jurisdiction=jurisdiction, kontablo_id=kontablo_id
+    )
 
 
 def resolve(entry, jurisdiction, accounts, by_code):
