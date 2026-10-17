@@ -3,6 +3,10 @@
 **Status:** Ready to Execute  
 **Date:** 2025-01-27
 
+> **Alcance declarado** (`agos` §Convenciones):
+> Cubre: el plan de ejecución de **Phase 0 Week 1** tal como se escribió el 2025-01-27 (superado) · No cubre: el trabajo posterior a Phase 0 ni el estado real del repo — release v0.3.0 publicada (`CITATION.cff`) · as_of: 2026-10-16
+> Si una pieza no aparece, no asumas que no existe: reportá el hueco.
+
 ---
 
 ## 📋 PHASE 0: Setup (DONE ✅)

@@ -1,5 +1,9 @@
 # Kontablo Global Accounting Protocol: Execution Status
 
+> **Alcance declarado** (`agos` §Convenciones):
+> Cubre: el **registro** del hito activo y su narrativa, actualizado por última vez el 2026-07-18 · No cubre: **la release publicada ni la fase real** — manda `CITATION.cff`, que es la **única** fuente con esos dos datos (`version` + `date-released`; `.zenodo.json` no los declara) —, ni el estado del código · as_of: 2026-10-16
+> Si una pieza no aparece, no asumas que no existe: reportá el hueco.
+
 ## 🚀 Current Milestone: Phase 4 — Post-Publication: Real-Data Validation (Round 2)
 
 **Kontablo v0.1.0 shipped 2026-06-17; current release v0.3.0 (2026-07-20).** Zenodo concept DOI [10.5281/zenodo.20738795](https://doi.org/10.5281/zenodo.20738795) (resolves to latest version), SSRN preprint (DOI [10.2139/ssrn.6960598](https://doi.org/10.2139/ssrn.6960598), abstract 6960598), ResearchGate (publication 407549570) — see `CITATION.cff` / `.zenodo.json` for the authoritative, up-to-date record. This banner was stale until 2026-07-18 (it still said "release day pending" a month after release); **trust `CITATION.cff`/`.zenodo.json` over this file's phase banner if they ever disagree again.**
