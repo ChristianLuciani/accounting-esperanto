@@ -1,7 +1,7 @@
 # Kontablo Global Accounting Protocol: Execution Status
 
 > **Alcance declarado** (`agos` §Convenciones):
-> Cubre: el **registro** del hito activo y su narrativa, actualizado por última vez el 2026-07-18 · No cubre: **la release publicada ni la fase real** — manda `CITATION.cff` / `.zenodo.json` (hoy v0.3.0, 2026-07-20; este banner dice v0.2.1), ni el estado del código · as_of: 2026-10-16
+> Cubre: el **registro** del hito activo y su narrativa, actualizado por última vez el 2026-07-18 · No cubre: **la release publicada ni la fase real** — manda `CITATION.cff`, que es la **única** fuente con esos dos datos (`version` + `date-released`; `.zenodo.json` no los declara) —, ni el estado del código · as_of: 2026-10-16
 > Si una pieza no aparece, no asumas que no existe: reportá el hueco.
 
 ## 🚀 Current Milestone: Phase 4 — Post-Publication: Real-Data Validation (Round 2)

@@ -4,6 +4,10 @@
 This file is the *state*; the ADR is the *policy*. Review per Kontablo release,
 and before any public claim of protocol compatibility.
 
+> **Alcance declarado** (`agos` §Convenciones):
+> Cubre: el **estado de compatibilidad verificado el 2026-07-29** (los hechos marcados *verified*, con su fuente primaria de esa fecha) · No cubre: la **política** —ésa es `ADR-017`— ni la compatibilidad real de versiones posteriores a esa fecha, ni protocolos sin fila · as_of: 2026-10-16
+> Si un protocolo no aparece, no asumas que no existe: reportá el hueco.
+
 **Last full verification: 2026-07-29.** Facts marked *verified* were retrieved
 from the protocol's own primary specification on that date, with the source
 given. Facts inherited from the DR1 protocol survey

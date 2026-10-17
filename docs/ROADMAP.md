@@ -5,8 +5,8 @@
 **Target Completion:** 2025-06-30 (Phase 2)
 
 > **Alcance declarado** (`agos` §Convenciones):
-> Cubre: el **plan** de fases de Phase 0 (Research), escrito desde el 2025-01-27 · No cubre: el avance real — el proyecto está en post-publicación con v0.3.0 publicada (`CITATION.cff`), muy por delante de «Phase 0»; el tablero canónico es el GitHub Project enlazado · as_of: 2026-10-16
-> Si una fase no aparece, no asumas que no existe: reportá el hueco.
+> Cubre: el **plan** de fases de Phase 0 (Research), escrito desde el 2025-01-27 · No cubre: el avance real — el proyecto está en post-publicación con v0.3.0 publicada (`CITATION.cff`), muy por delante de «Phase 0» —, ni el tablero de progreso: el enlace a GitHub Project de la línea 72 **no resuelve hoy** (el repo `kontablo/kontablo-core` da 404), así que no lo tomes como autoridad de estado · as_of: 2026-10-16
+> Si una pieza no aparece, no asumas que no existe: reportá el hueco.
 
 ## Phase 0: Research & Validation (Weeks 1-12)
 
