@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Question or general discussion
+    url: https://github.com/ChristianLuciani/accounting-esperanto/discussions
+    about: Ask a question here rather than opening an issue.
+  - name: Security vulnerability
+    url: https://github.com/ChristianLuciani/accounting-esperanto/security/policy
+    about: Do not open a public issue for a vulnerability — follow the security policy.
